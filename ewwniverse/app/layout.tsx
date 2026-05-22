@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Creepster } from "next/font/google";
+import { Creepster, Boogaloo } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -9,6 +9,13 @@ const creepster = Creepster({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-creepster",
+  display: "swap",
+});
+
+const boogaloo = Boogaloo({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-boogaloo",
   display: "swap",
 });
 
@@ -73,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={creepster.variable}>
+    <html lang="en" className={`${creepster.variable} ${boogaloo.variable}`}>
       <body>
         {/* Google Analytics */}
         <Script

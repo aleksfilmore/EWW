@@ -78,24 +78,24 @@ export default function HeroSection() {
           />
 
           {/* ── HEADLINE ─────────────────────────────────────────── */}
-          <motion.div {...fadeUp(0.2)} className="flex flex-col leading-none gap-1">
+          <motion.div {...fadeUp(0.2)} className="flex flex-col leading-none gap-0">
 
-            {/* Line 1 */}
+            {/* Line 1: NATURE IS */}
             <span
-              className="font-creepster block"
+              className="block uppercase"
               style={{
-                fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif",
-                fontSize: "clamp(2.8rem, 6.5vw, 6rem)",
+                fontFamily: "var(--font-boogaloo), 'Boogaloo', cursive",
+                fontSize: "clamp(3rem, 7vw, 6.5rem)",
                 color: "#1A2800",
-                lineHeight: 1,
+                lineHeight: 1.05,
+                letterSpacing: "0.01em",
               }}
             >
               Nature is
             </span>
 
-            {/* Line 2 — DISGUSTING. massive + slime treatment */}
+            {/* Line 2: DISGUSTING. — giant, green, slime-backed */}
             <span className="relative block" style={{ lineHeight: 1 }}>
-              {/* Slime backing */}
               <img
                 src="/images/ui/Big%20slime%20title%20backing%20shape.png"
                 alt=""
@@ -104,36 +104,38 @@ export default function HeroSection() {
                 style={{
                   top: "50%",
                   left: "-3%",
-                  width: "106%",
+                  width: "108%",
                   transform: "translateY(-50%)",
-                  opacity: 0.65,
+                  opacity: 0.7,
                   mixBlendMode: "multiply",
                 }}
               />
               <span
-                className="font-creepster relative z-10 block"
+                className="relative z-10 block uppercase"
                 style={{
-                  fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif",
-                  fontSize: "clamp(4rem, 10.5vw, 10rem)",
+                  fontFamily: "var(--font-boogaloo), 'Boogaloo', cursive",
+                  fontSize: "clamp(4.2rem, 11vw, 11rem)",
                   color: "#3D7A08",
                   WebkitTextStroke: "3px #1A3300",
                   paintOrder: "stroke fill",
-                  lineHeight: 1,
-                  textShadow: "0 6px 0 rgba(26,51,0,0.35)",
+                  lineHeight: 0.95,
+                  textShadow: "0 6px 0 rgba(26,51,0,0.3), 0 2px 8px rgba(0,0,0,0.15)",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 Disgusting.
               </span>
             </span>
 
-            {/* Line 3 */}
+            {/* Line 3: AND WE LOVE IT. */}
             <span
-              className="font-creepster block"
+              className="block uppercase"
               style={{
-                fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif",
-                fontSize: "clamp(2rem, 4.8vw, 4.5rem)",
+                fontFamily: "var(--font-boogaloo), 'Boogaloo', cursive",
+                fontSize: "clamp(2.2rem, 5.2vw, 5rem)",
                 color: "#1A2800",
                 lineHeight: 1.05,
+                letterSpacing: "0.01em",
               }}
             >
               And we love it.
