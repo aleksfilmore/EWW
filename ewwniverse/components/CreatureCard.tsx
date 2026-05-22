@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import type { Creature, Rarity } from "@/lib/data";
 import { creatureImagePath, rarityColors } from "@/lib/data";
 
@@ -40,9 +43,19 @@ export default function CreatureCard({ creature, locked, showFact }: CreatureCar
   const hasFact = showFact && creature.grossFact && !creature.grossFact.startsWith("TODO");
 
   return (
-    <div
-      className="group relative flex flex-col rounded-2xl overflow-hidden border-2 transition-all hover:scale-[1.03] hover:shadow-2xl cursor-default select-none"
+    <motion.div
+      className="group relative flex flex-col rounded-2xl overflow-hidden border-2 cursor-default select-none"
       style={{ borderColor: accent, backgroundColor: cardBg }}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{
+        scale: 1.04,
+        boxShadow: `0 24px 48px rgba(0,0,0,0.6), 0 0 16px ${accent}40`,
+        transition: { type: "spring", stiffness: 320, damping: 18 },
+      }}
+      whileTap={{ scale: 0.97 }}
     >
       {/* Rarity badge — top left */}
       <div className="absolute top-2 left-2 z-20">
@@ -128,6 +141,6 @@ export default function CreatureCard({ creature, locked, showFact }: CreatureCar
           </p>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

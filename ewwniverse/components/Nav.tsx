@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const links = [
   { href: "/books", label: "The Books" },
@@ -19,18 +20,22 @@ export default function Nav() {
     <header className="sticky top-0 z-50 border-b border-[#5DB84A]/20" style={{ backgroundColor: "#080808" }}>
       <div className="max-w-6xl mx-auto px-4 h-18 flex items-center justify-between" style={{ height: "72px" }}>
 
-        {/* Logo — custom illustration, tilted for brand character */}
-        <Link href="/" className="flex items-center flex-shrink-0 hover:opacity-95 transition-opacity" style={{ overflow: "visible" }}>
-          <img
+        {/* Logo — custom illustration, tilted + spring jiggle on hover */}
+        <Link href="/" className="flex items-center flex-shrink-0" style={{ overflow: "visible" }}>
+          <motion.img
             src="/images/ui/EWWniverse.png"
             alt="EWW-niverse"
             className="w-auto object-contain"
             style={{
               mixBlendMode: "screen",
               height: "52px",
-              transform: "rotate(-5deg) translateY(2px)",
+              rotate: -5,
+              translateY: 2,
               transformOrigin: "left center",
             }}
+            whileHover={{ rotate: -9, scale: 1.07, translateY: 0 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 380, damping: 12 }}
           />
         </Link>
 
@@ -49,12 +54,18 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/app"
-            className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white text-sm font-bold px-5 py-2 rounded-full transition-colors uppercase tracking-wide"
+          <motion.div
+            whileHover={{ scale: 1.06, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 14 }}
           >
-            Get the App
-          </Link>
+            <Link
+              href="/app"
+              className="inline-block bg-[#5DB84A] hover:bg-[#3D8C2A] text-white text-sm font-bold px-5 py-2 rounded-full transition-colors uppercase tracking-wide"
+            >
+              Get the App
+            </Link>
+          </motion.div>
         </nav>
 
         {/* Mobile hamburger */}
