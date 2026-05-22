@@ -25,14 +25,16 @@ export default function Home() {
         />
         {/* Slime corner decorations */}
         <img src="/images/ui/Corner%20slime%20blob%20cluster.png" alt="" aria-hidden="true"
-          className="illustration absolute top-0 right-0 w-52 md:w-72 pointer-events-none" style={{ transform: "scaleX(-1)" }} />
+          className="illustration absolute top-0 right-0 w-64 md:w-96 pointer-events-none" style={{ transform: "scaleX(-1)" }} />
+        <img src="/images/ui/slime-drip-blob.png" alt="" aria-hidden="true"
+          className="illustration absolute top-0 left-0 w-32 md:w-44 pointer-events-none opacity-70 -rotate-12" />
         <img src="/images/ui/Slime%20splatter%20cluster.png" alt="" aria-hidden="true"
-          className="illustration absolute bottom-4 left-4 w-28 pointer-events-none opacity-60" />
+          className="illustration absolute bottom-4 left-4 w-32 pointer-events-none opacity-50" />
         {/* Bug scatter */}
         <img src="/images/ui/bug.png" alt="" aria-hidden="true"
           className="illustration absolute top-20 left-8 w-8 pointer-events-none opacity-30 rotate-12" />
-        <img src="/images/ui/fly.png" alt="" aria-hidden="true"
-          className="illustration absolute bottom-32 right-12 w-6 pointer-events-none opacity-25 -rotate-20" />
+        <img src="/images/ui/cartoon-fly.png" alt="" aria-hidden="true"
+          className="illustration-character absolute bottom-36 right-16 w-12 pointer-events-none opacity-80 -rotate-12" />
 
         <div className="relative max-w-6xl mx-auto px-4 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Text */}
@@ -90,38 +92,46 @@ export default function Home() {
           </div>
 
           {/* Dr. Icky + floating card */}
-          <div className="flex justify-center md:justify-end items-end relative gap-4">
+          <div className="flex justify-center md:justify-end items-end relative gap-2">
             <img
               src="/images/ui/Dr.%20Icky%20holding%20EWW-meter.png"
               alt="Dr. Icky holding the EWW-meter"
               className="illustration-character relative w-56 md:w-72 lg:w-80 object-contain flex-shrink-0"
             />
-            {/* Floating specimen card */}
+            {/* Floating specimen card — larger, more prominent */}
             <div
-              className="flex-shrink-0 w-36 rounded-2xl overflow-hidden shadow-2xl mb-10 rotate-3"
-              style={{ border: "2px solid #E53535", backgroundColor: "#2A0A0A" }}
+              className="flex-shrink-0 w-44 md:w-52 rounded-2xl overflow-hidden shadow-2xl mb-8 rotate-3"
+              style={{ border: "3px solid #E53535", backgroundColor: "#2A0A0A" }}
             >
-              <div className="relative bg-[#EDE5CE] h-32 flex items-center justify-center overflow-hidden p-2"
+              <div className="relative flex items-center justify-center overflow-hidden"
                 style={{
+                  height: 180,
                   backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
                   backgroundSize: "cover",
                   backgroundBlendMode: "multiply",
+                  backgroundColor: "#EDE5CE",
                 }}>
-                <span className="absolute top-1 left-1 text-[8px] font-black uppercase tracking-wide bg-[#6B3FD4] text-white px-1.5 py-0.5 rounded-full z-10">
+                <span className="absolute top-2 left-2 text-[9px] font-black uppercase tracking-wide bg-[#6B3FD4] text-white px-2 py-0.5 rounded-full z-10">
                   EPIC
                 </span>
-                <span className="absolute top-1 right-1 text-[8px] font-black uppercase tracking-wide bg-[#E53535] text-white px-1.5 py-0.5 rounded-full z-10">
+                <span className="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wide bg-[#E53535] text-white px-2 py-0.5 rounded-full z-10">
                   EWW 100
                 </span>
                 <img src={creatureImagePath(heroSpecimen.name)} alt={heroSpecimen.name}
-                  className="illustration w-full h-full object-contain relative z-0" />
+                  className="illustration w-full h-full object-contain relative z-0 scale-110" />
               </div>
-              <div className="p-2">
-                <p className="font-creepster text-[#F7F2E4] text-xs leading-snug"
+              <div className="p-3">
+                <p className="font-creepster text-[#F7F2E4] text-sm leading-snug"
                   style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>
                   {heroSpecimen.name}
                 </p>
-                <p className="text-[8px] text-[#E53535] font-bold uppercase tracking-wider mt-0.5">Specimen #001</p>
+                <p className="text-[9px] text-[#E53535] font-bold uppercase tracking-wider mt-1">Specimen #001</p>
+                {/* Dot stats */}
+                <div className="flex gap-1 mt-2">
+                  {[1,2,3,4,5].map((i) => (
+                    <span key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: "#E53535" }} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -163,7 +173,9 @@ export default function Home() {
       </section>
 
       {/* ── STATS STRIPE ──────────────────────────────────────────────── */}
-      <section className="bg-[#0D2007] py-8 border-b border-[#1A3D0E]">
+      <section className="bg-[#0D2007] py-8 border-b border-[#1A3D0E] relative overflow-hidden">
+        <img src="/images/ui/slime-blob-face.png" alt="" aria-hidden="true"
+          className="illustration absolute right-4 top-1/2 -translate-y-1/2 w-16 opacity-20 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:divide-x md:divide-[#1A3D0E]">
             {[
@@ -332,20 +344,23 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EWW meters + Dr. Icky */}
-          <div className="flex justify-center md:justify-end items-end gap-6">
-            <div className="flex flex-col gap-3">
-              {[60, 80, 100].map((pct) => (
-                <img key={pct}
-                  src={`/images/ui/EWW-meter%20${pct}%25.png`}
-                  alt={`EWW-meter ${pct}%`}
-                  className="illustration w-32 object-contain"
-                  style={{ mixBlendMode: "normal" }} />
-              ))}
+          {/* Phone mockups — real app screenshots */}
+          <div className="relative flex items-end justify-center md:justify-end gap-0 mt-8 md:mt-0">
+            {/* Back-left phone */}
+            <div className="flex-shrink-0 relative z-10" style={{ transform: "rotate(-7deg) translateY(20px) translateX(16px)" }}>
+              <img src="/images/ui/APP2.png" alt="EWW-niverse specimen files screen"
+                className="w-36 md:w-44 object-contain drop-shadow-2xl" />
             </div>
-            <img src="/images/dr-icky/Dr.%20Icky%20shocked%20by%20gross%20goo.png"
-              alt="Dr. Icky reacting"
-              className="illustration-character w-40 md:w-48 object-contain self-end" />
+            {/* Center phone — largest, front */}
+            <div className="flex-shrink-0 relative z-20">
+              <img src="/images/ui/APP3.png" alt="EWW-niverse home screen"
+                className="w-44 md:w-56 object-contain drop-shadow-2xl" />
+            </div>
+            {/* Back-right phone */}
+            <div className="flex-shrink-0 relative z-10" style={{ transform: "rotate(7deg) translateY(20px) translateX(-16px)" }}>
+              <img src="/images/ui/APP6.png" alt="EWW-niverse lab mission screen"
+                className="w-36 md:w-44 object-contain drop-shadow-2xl" />
+            </div>
           </div>
         </div>
       </section>
@@ -385,24 +400,26 @@ export default function Home() {
             </div>
 
             {/* Kit components visual */}
-            <div className="flex items-end justify-center md:justify-end gap-4">
+            <div className="relative flex items-end justify-center md:justify-end gap-5">
+              {/* Decorative slime drip behind */}
+              <img src="/images/ui/slime-drip-blob.png" alt="" aria-hidden="true"
+                className="illustration absolute -top-8 left-1/2 w-20 pointer-events-none opacity-40 -translate-x-1/2" />
               {[
-                { img: "/images/ui/Access%20Granted%20%20Recruit%20File.png", label: "Recruit Badge" },
-                { img: "/images/ui/Lab%20Safety%20Oath.png", label: "Printable Activity" },
-                { img: "/images/ui/Round%20EWW%20gauge.png", label: "EWW-Meter Tracker" },
-              ].map((k, i) => (
+                { img: "/images/ui/lab-goggles.png",                label: "Lab Goggles",       size: 80 },
+                { img: "/images/ui/Access%20Granted%20%20Recruit%20File.png", label: "Recruit File",  size: 96 },
+                { img: "/images/ui/slime-pencil.png",               label: "Slime Pencil",      size: 80 },
+              ].map((k) => (
                 <div key={k.label} className="flex flex-col items-center gap-2">
                   <div
                     className="rounded-xl border-2 border-[#C8B89A] bg-[#EDE5CE] overflow-hidden flex items-center justify-center p-3"
-                    style={{ width: i === 1 ? "96px" : "80px", height: i === 1 ? "96px" : "80px" }}
+                    style={{ width: k.size, height: k.size }}
                   >
-                    <img src={k.img} alt={k.label}
-                      className="illustration w-full h-full object-contain" />
+                    <img src={k.img} alt={k.label} className="illustration w-full h-full object-contain" />
                   </div>
                   <span className="text-[9px] font-bold uppercase tracking-widest text-[#7A6652] text-center">{k.label}</span>
                 </div>
               ))}
-              <div className="flex flex-col items-center justify-center self-center ml-2">
+              <div className="flex flex-col items-center justify-center self-end ml-2">
                 <img src="/images/dr-icky/Dr.%20Icky%20giving%20thumbs%20up.png"
                   alt="Dr. Icky approves"
                   className="illustration-character w-24 object-contain" />
@@ -494,9 +511,14 @@ export default function Home() {
           className="illustration absolute left-0 top-0 h-full opacity-10 pointer-events-none"
           style={{ objectFit: "cover" }} />
         <div className="relative max-w-2xl mx-auto px-4 text-center">
-          <img src="/images/dr-icky/Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png"
-            alt="Dr. Icky has an announcement"
-            className="illustration-character w-24 mx-auto mb-4 object-contain" />
+          {/* Dr. Icky inside slime circle frame */}
+          <div className="relative w-28 mx-auto mb-4">
+            <img src="/images/ui/slime-circle-frame.png" alt="" aria-hidden="true"
+              className="illustration-character w-28 h-28 object-contain absolute inset-0" />
+            <img src="/images/dr-icky/Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png"
+              alt="Dr. Icky has an announcement"
+              className="illustration-character w-20 h-20 object-contain mx-auto relative pt-2" />
+          </div>
           <h2
             className="font-creepster text-3xl text-[#1A3D0E] mb-3"
             style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
