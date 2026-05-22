@@ -1,0 +1,641 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.canvas { padding: 1.5rem 0; font-family: var(--font-sans); }
+.section { margin-bottom: 2rem; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-header i { font-size: 16px; color: var(--color-text-secondary); }
+.section-title { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.1rem; }
+.card-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin-bottom: 6px; }
+.card-value { font-size: 15px; font-weight: 500; color: var(--color-text-primary); line-height: 1.4; }
+.card-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.6; }
+.tag { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px; margin: 2px 2px 2px 0; font-weight: 500; }
+.tag-green { background: #EAF3DE; color: #3B6D11; }
+.tag-amber { background: #FAEEDA; color: #854F0B; }
+.tag-blue { background: #E6F1FB; color: #185FA5; }
+.tag-gray { background: #F1EFE8; color: #5F5E5A; }
+.tag-teal { background: #E1F5EE; color: #0F6E56; }
+.tag-purple { background: #EEEDFE; color: #534AB7; }
+.tag-coral { background: #FAECE7; color: #993C1D; }
+.tag-red { background: #FCEBEB; color: #A32D2D; }
+.full-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+.full-card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.full-card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.schema-row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.schema-row:last-child { border-bottom: none; }
+.schema-key { font-size: 12px; font-family: var(--font-mono); color: var(--color-text-secondary); min-width: 160px; }
+.schema-val { font-size: 12px; color: var(--color-text-primary); line-height: 1.5; }
+.schema-note { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+.phase-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.phase-num { font-size: 11px; font-weight: 500; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-background-secondary); color: var(--color-text-secondary); }
+.phase-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.phase-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+.status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.status-row:last-child { border-bottom: none; }
+.status-label { font-size: 13px; color: var(--color-text-primary); max-width: 82%; line-height: 1.4; }
+.status-badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; flex-shrink: 0; margin-left: 8px; }
+.badge-decided { background: #EAF3DE; color: #3B6D11; }
+.badge-open { background: #FAEEDA; color: #854F0B; }
+.promise-block { background: var(--color-background-secondary); border-left: 3px solid #534AB7; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 1rem 1.25rem; margin-bottom: 10px; }
+.promise-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #534AB7; margin-bottom: 6px; }
+.promise-text { font-size: 15px; font-weight: 500; color: var(--color-text-primary); line-height: 1.5; }
+.mono-block { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-secondary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; line-height: 1.8; }
+.deferred-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; color: var(--color-text-secondary); }
+.deferred-row:last-child { border-bottom: none; }
+.deferred-row i { font-size: 14px; color: var(--color-text-tertiary); }
+.img-table, .econ-table, .sound-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.img-table th, .econ-table th, .sound-table th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-tertiary); text-align: left; padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.img-table td, .econ-table td { font-size: 13px; color: var(--color-text-primary); padding: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; }
+.img-table td.note, .econ-table td.muted { color: var(--color-text-secondary); font-size: 12px; }
+.img-table tr:last-child td, .econ-table tr:last-child td { border-bottom: none; }
+.sound-table td { font-size: 12px; color: var(--color-text-primary); padding: 8px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; line-height: 1.5; }
+.sound-table tr:last-child td { border-bottom: none; }
+.sound-table td.id { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-tertiary); white-space: nowrap; width: 90px; }
+.sound-table td.dur { font-size: 11px; color: var(--color-text-secondary); white-space: nowrap; width: 60px; }
+.sound-table td.type { width: 60px; }
+.sound-table td.notes { color: var(--color-text-secondary); font-size: 11px; }
+.sound-sub { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; }
+.meter-row { display: flex; gap: 10px; margin-top: 8px; }
+.meter-tile { flex: 1; border-radius: var(--border-radius-md); padding: 10px 12px; text-align: center; }
+.meter-pct { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+.meter-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
+.meter-sub { font-size: 11px; }
+.meter-amber { background: #FAEEDA; } .meter-amber .meter-pct, .meter-amber .meter-label, .meter-amber .meter-sub { color: #854F0B; }
+.meter-coral { background: #FAECE7; } .meter-coral .meter-pct, .meter-coral .meter-label, .meter-coral .meter-sub { color: #993C1D; }
+.meter-red { background: #FCEBEB; } .meter-red .meter-pct, .meter-red .meter-label, .meter-red .meter-sub { color: #A32D2D; }
+.info-block { background: #E6F1FB; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #185FA5; line-height: 1.6; }
+.caution-block { background: #FAEEDA; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #854F0B; line-height: 1.6; }
+.swatch-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.swatch { border-radius: var(--border-radius-md); padding: 10px 12px; min-width: 110px; flex: 1; }
+.swatch-name { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+.swatch-hex { font-size: 11px; font-family: var(--font-mono); }
+.sw-bg { background: #0E1210; } .sw-bg .swatch-name, .sw-bg .swatch-hex { color: #5DB84A; }
+.sw-surface { background: #1A1F1C; } .sw-surface .swatch-name, .sw-surface .swatch-hex { color: #6BAF58; }
+.sw-card { background: #222924; } .sw-card .swatch-name, .sw-card .swatch-hex { color: #7DC268; }
+.sw-green { background: #3D8C2A; } .sw-green .swatch-name { color: #C4F0A8; } .sw-green .swatch-hex { color: #9EDF7E; }
+.sw-green-bright { background: #5DB84A; } .sw-green-bright .swatch-name { color: #0E1210; } .sw-green-bright .swatch-hex { color: #183810; }
+.sw-amber { background: #D48B1A; } .sw-amber .swatch-name { color: #FEF0D2; } .sw-amber .swatch-hex { color: #F5D898; }
+.sw-text { background: #E6E0CC; border: 0.5px solid var(--color-border-tertiary); } .sw-text .swatch-name { color: #2A2A1E; } .sw-text .swatch-hex { color: #4A4A38; }
+.sw-muted { background: #8A9E86; } .sw-muted .swatch-name { color: #0E1210; } .sw-muted .swatch-hex { color: #1C2E1A; }
+.stage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 10px; }
+.stage-card { border-radius: var(--border-radius-md); padding: 10px 12px; border: 0.5px solid var(--color-border-tertiary); }
+.stage-num { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin-bottom: 4px; }
+.stage-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.stage-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.screen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px; }
+.screen-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 12px 14px; border: 0.5px solid var(--color-border-tertiary); }
+.screen-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.screen-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.copy-row { padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; gap: 12px; align-items: flex-start; }
+.copy-row:last-child { border-bottom: none; }
+.copy-before { font-size: 12px; color: var(--color-text-tertiary); min-width: 42%; font-family: var(--font-mono); text-decoration: line-through; }
+.copy-after { font-size: 12px; color: var(--color-text-primary); font-family: var(--font-mono); }
+.anim-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.anim-row:last-child { border-bottom: none; }
+.anim-trigger { font-size: 12px; font-weight: 500; color: var(--color-text-primary); min-width: 44%; }
+.anim-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.sound-category { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); padding: 10px 8px 6px; background: var(--color-background-secondary); }
+</style>
+
+<div class="canvas">
+<h2 class="sr-only">EWW-niverse app planning canvas</h2>
+
+<!-- DESIGN -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-palette" aria-hidden="true"></i><span class="section-title">Design language</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Concept: the inside of the lab</div>
+    <div class="full-card-body">The books are the entrance — warm parchment, slime drips, colorful creatures. The app is what's behind the door. Darker, more atmospheric, lab equipment aesthetic. Same brand DNA but different register. Opening the app should feel like being granted access to something not meant for everyone.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Typography</div>
+    <div class="full-card-body">Display / headings: Cantora One (Google Fonts) — already used in the books. Continuity with the physical product is a brand asset. Body / all other text: Lexend Deca (Google Fonts) — clean, highly legible, designed for reading comfort. Kids are reading actual scientific content; legibility is non-negotiable. Both fonts load from Google Fonts at zero cost.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Color palette</div>
+    <div class="swatch-row">
+      <div class="swatch sw-bg"><div class="swatch-name">Background</div><div class="swatch-hex">#0E1210</div></div>
+      <div class="swatch sw-surface"><div class="swatch-name">Surface</div><div class="swatch-hex">#1A1F1C</div></div>
+      <div class="swatch sw-card"><div class="swatch-name">Card</div><div class="swatch-hex">#222924</div></div>
+      <div class="swatch sw-green"><div class="swatch-name">Green mid</div><div class="swatch-hex">#3D8C2A</div></div>
+      <div class="swatch sw-green-bright"><div class="swatch-name">Slime green</div><div class="swatch-hex">#5DB84A</div></div>
+      <div class="swatch sw-amber"><div class="swatch-name">Warning amber</div><div class="swatch-hex">#D48B1A</div></div>
+      <div class="swatch sw-text"><div class="swatch-name">Text primary</div><div class="swatch-hex">#E6E0CC</div></div>
+      <div class="swatch sw-muted"><div class="swatch-name">Text muted</div><div class="swatch-hex">#8A9E86</div></div>
+    </div>
+    <div class="full-card-body" style="margin-top:12px;">Near-black with faint green tint — biological, not sterile. Slime green is the single accent. Amber for EWW-meter 60% tier and warnings only. Text primary is warm off-white, echoing parchment. No white backgrounds anywhere in the app.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">UI metaphor — specimen collection</div>
+    <div class="full-card-body">Cards are specimen trays. The creature grid is a collection cabinet. Locked creatures: dark silhouettes labeled UNCLASSIFIED. EWW-meter arc looks like a measuring gauge. Navigation tabs feel like instrument panel switches. Buttons are specimen labels — rectangular, slightly rough-edged, not rounded pills. Empty states: "No specimens classified yet." Loading: "Cross-referencing specimen database..."</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Stage-based interface evolution</div>
+    <div class="stage-grid">
+      <div class="stage-card"><div class="stage-num">Stage 1</div><div class="stage-name">Kinda Curious</div><div class="stage-desc">Clean dark interface, minimal atmospheric detail.</div></div>
+      <div class="stage-card"><div class="stage-num">Stage 2</div><div class="stage-name">Properly Revolted</div><div class="stage-desc">Faint green haze at screen edges. Slime drips on headers.</div></div>
+      <div class="stage-card"><div class="stage-num">Stage 3</div><div class="stage-name">Super Slimy</div><div class="stage-desc">More surface texture. Specimen jars in background UI elements.</div></div>
+      <div class="stage-card"><div class="stage-num">Stage 4</div><div class="stage-name">Biologically Alarmed</div><div class="stage-desc">Ambient slow animations. Darker overall. Lab feels active.</div></div>
+      <div class="stage-card"><div class="stage-num">Stage 5</div><div class="stage-name">Full Dr. Icky</div><div class="stage-desc">Maximum atmosphere. Full lab aesthetic.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREENS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-layout-2" aria-hidden="true"></i><span class="section-title">Key screens</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Navigation</div>
+    <div class="full-card-body">Three bottom tabs: EWW-niverse · The Lab · HUD (Recruit File). Icons are lab equipment symbols. Active state: slime green. Inactive: muted green-grey. No floating buttons, no hamburger menus.</div>
+  </div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="screen-name">Onboarding</div><div class="screen-desc">Black screen, slow green monospace text: "TRANSMISSION RECEIVED." Brand mark fades in. Parent flow: "Guardian Clearance Required." Child profile: "Initialize Recruit Profile."</div></div>
+    <div class="screen-card"><div class="screen-name">EWW-niverse grid</div><div class="screen-desc">Dark collection cabinet. Unlocked cards show illustration. Locked: dark silhouette + UNCLASSIFIED. TOTAL BARF creatures have faint red edge glow.</div></div>
+    <div class="screen-card"><div class="screen-name">Creature detail</div><div class="screen-desc">Illustration top half. EWW-meter arc animates on entry. Gross fact in Lexend Deca. Bonus fact: redacted black bars until quiz completed.</div></div>
+    <div class="screen-card"><div class="screen-name">The Lab</div><div class="screen-desc">Quiz selection as mission briefing panel. Options are specimen trays to tap. Correct: green flash + sound. Wrong: red pulse + "Incorrect. Recalibrate."</div></div>
+    <div class="screen-card"><div class="screen-name">HUD / Recruit File</div><div class="screen-desc">Classified dossier aesthetic. Stage arc at top. Stats: creatures classified, quiz accuracy, current stage.</div></div>
+    <div class="screen-card"><div class="screen-name">Book selector</div><div class="screen-desc">Specimen folders on a shelf. Locked books sealed with lock icon + "CLASSIFIED." Bundle code entry styled as security terminal keypad.</div></div>
+  </div>
+</div>
+
+<!-- ANIMATIONS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-player-play" aria-hidden="true"></i><span class="section-title">Interactions and animation</span></div>
+  <div class="full-card">
+    <div class="anim-row"><span class="anim-trigger">Creature unlock</span><span class="anim-desc">Specimen jar fills with green liquid, cracks, creature card slides into grid. Lottie. Paired with sfx_unlock.</span></div>
+    <div class="anim-row"><span class="anim-trigger">EWW-meter fill</span><span class="anim-desc">Arc fills slowly, viscous not snappy. 60% reluctant, 80% inevitable, 100% overshoots then settles. Lottie. Paired with sfx_meter_fill variant.</span></div>
+    <div class="anim-row"><span class="anim-trigger">Contamination Event</span><span class="anim-desc">Screen ripple, green inversion, text glitch 1s, bonus fact declassifies. Paired with sfx_contamination (multi-phase, see sound section).</span></div>
+    <div class="anim-row"><span class="anim-trigger">Stage transition</span><span class="anim-desc">Full-screen takeover. "CLEARANCE LEVEL UPGRADED." Interface darkens. Lottie badge reveal. Paired with sfx_stage_up.</span></div>
+    <div class="anim-row"><span class="anim-trigger">Correct answer</span><span class="anim-desc">Card flashes slime green. EWW-meter pulses once. Paired with sfx_correct.</span></div>
+    <div class="anim-row"><span class="anim-trigger">Wrong answer</span><span class="anim-desc">Card pulses deep red. "Incorrect. Recalibrate." Paired with sfx_wrong (or silence — see sound section).</span></div>
+    <div class="anim-row"><span class="anim-trigger">Bonus fact reveal</span><span class="anim-desc">Redacted bars slide left-to-right like a document declassifying. Paired with sfx_declassify.</span></div>
+    <div class="anim-row"><span class="anim-trigger">App launch</span><span class="anim-desc">Ambient hum fades in during splash. Brand mark appears. Paired with amb_launch.</span></div>
+  </div>
+</div>
+
+<!-- SOUND DESIGN — NEW SECTION -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-volume" aria-hidden="true"></i><span class="section-title">Sound design inventory</span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">Sonic palette — apply to every sound</div>
+    <div class="full-card-body">Low frequencies dominant (80–300Hz for impact sounds). Wet and biological textures: drips, viscous pours, squelches, organic pressure. Lab equipment reference: relays, heavy switches, pressure gauges. Avoid entirely: major chords, rising pitch rewards, cheerful dings, cartoon wet sounds (too comedic), pure digital beeps. Format for all one-shot files: mono or stereo .mp3 at 44.1kHz, normalised to -6dBFS peak. Loop files: seamless with 2-second crossfade tail. All files named per the ID column below.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Ambient loops</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">amb_home</td>
+          <td>Home / EWW-niverse loop</td>
+          <td class="dur">45–60s loop</td>
+          <td class="notes">Very low background hum (40–60Hz), barely audible. One slow distant drip every 8–12 seconds at randomised intervals. Faint wet bubbling in far background. Volume should sit below conscious awareness — felt more than heard. Seamless loop. This plays while the kid browses the creature grid.</td>
+        </tr>
+        <tr>
+          <td class="id">amb_lab</td>
+          <td>The Lab / quiz loop</td>
+          <td class="dur">30–45s loop</td>
+          <td class="notes">Slightly higher frequency than amb_home — more alert, more focused. A faint slow ticking or metronomic pulse underneath (think lab timer, not clock). Suggests precision. The shift from amb_home to amb_lab should be noticeable but not jarring — crossfade over 1 second when tab switches.</td>
+        </tr>
+        <tr>
+          <td class="id">amb_launch</td>
+          <td>App launch swell</td>
+          <td class="dur">3–4s, plays once</td>
+          <td class="notes">Silence, then a low hum rises from nothing to a steady state over 2 seconds, like electrical equipment powering up. Not a musical note — a functional sound. Fades smoothly into amb_home after the splash screen clears.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Navigation</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_tab</td>
+          <td>Tab switch</td>
+          <td class="dur">0.08s</td>
+          <td class="notes">A single heavy relay click or rotary switch engagement. Mechanical, dry, no reverb. Think industrial instrument panel, not phone UI. Very short. Should register as physical without being distracting.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_scroll</td>
+          <td>Grid scroll</td>
+          <td class="dur">Continuous</td>
+          <td class="notes">Optional. A faint slow ticking as cards pass — like specimen trays sliding on a rack. Very low volume. Can be omitted if it feels distracting in testing. Decide after first prototype playtest.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Creature interactions</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_card_tap</td>
+          <td>Creature card tap</td>
+          <td class="dur">0.15s</td>
+          <td class="notes">Soft wet tap — like something shifting inside a sealed container. Low-mid frequency thud with a brief damp tail. Not alarming, not satisfying. Just present. The difference between tapping a living thing and tapping glass.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_locked</td>
+          <td>Locked creature tap</td>
+          <td class="dur">0.3s</td>
+          <td class="notes">A dull sealed thud — like pressing on a container that won't open. Slightly lower and duller than sfx_card_tap. Add a very brief low buzz or resonance tail (0.1s) to suggest something is inside but contained. Final-feeling.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_unlock</td>
+          <td>Creature unlock sequence</td>
+          <td class="dur">2.5–3s</td>
+          <td class="notes">Three-phase sequence synced to the Lottie jar animation. Phase 1 (0–0.5s): dry glass cracking — a sharp crackling with no reverb, like a specimen jar under pressure. Phase 2 (0.5–1.5s): wet liquid release — a rushing viscous pour or pressurised hiss, biological not clean. Phase 3 (1.5–2.5s): a final wet settling thud as the creature card slots into the grid. This is the primary reward sound — it needs to feel genuinely satisfying.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_detail_open</td>
+          <td>Creature detail screen open</td>
+          <td class="dur">0.4s</td>
+          <td class="notes">A slow, heavy drawer or tray sliding open — lab specimen drawer being pulled out. Low frequency slide with a soft stop at the end. This plays as the detail screen animates in.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_declassify</td>
+          <td>Bonus fact reveal</td>
+          <td class="dur">0.8–1s</td>
+          <td class="notes">The sound of a classified document being unsealed — a dry paper slide (the redacted bars moving) followed by a brief low electronic confirmation tone as the text appears. The paper slide carries most of the character. The tone is very short, one note, not musical.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">EWW-meter</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_meter_60</td>
+          <td>Kinda Revolting fill</td>
+          <td class="dur">1.2s</td>
+          <td class="notes">A slow viscous pour — like thick liquid rising in a tube — that stops abruptly at 60% with a small squelch. Should feel reluctant, like it doesn't quite want to move. The squelch at the end is the tier's character.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_meter_80</td>
+          <td>Super Slimy fill</td>
+          <td class="dur">1.5s</td>
+          <td class="notes">Similar pour but more fluid and inevitable. Stops at 80% with a wet splat rather than a squelch — slightly more impact. A hint of pressure in the sound, like the container is fuller.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_meter_100</td>
+          <td>Total Barf fill</td>
+          <td class="dur">2s</td>
+          <td class="notes">Full fill to 100% with a brief overpressure moment — the liquid rushes in, hits the top, there is a half-second of overflow or gurgle before settling. The overshoot-and-settle mirrors the Lottie arc animation. This should be the most dramatic of the three meter sounds.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_meter_pulse</td>
+          <td>Meter pulse (correct answer)</td>
+          <td class="dur">0.3s</td>
+          <td class="notes">A very brief version of the fill sound — just the start of sfx_meter_60 cut at 0.3s. Used on the meter arc pulse during a correct quiz answer. Should feel like a gauge reacting to a reading.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Quiz / The Lab</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_question</td>
+          <td>Quiz question appears</td>
+          <td class="dur">0.25s</td>
+          <td class="notes">A brief data-transmission sound — like a classified file being decrypted. Short burst of digital texture followed by a clean click as the question card settles. Not musical, functional.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_answer_tap</td>
+          <td>Answer option tap</td>
+          <td class="dur">0.1s</td>
+          <td class="notes">A dry mechanical click — like placing a specimen tray into a rack slot. Heavier and more deliberate than a standard UI tap. No reverb. The kid should feel they are selecting something physical.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_correct</td>
+          <td>Correct answer</td>
+          <td class="dur">0.4s</td>
+          <td class="notes">A low satisfying thud — 150–200Hz dominant. Think a heavy rubber stamp landing on paper, or a specimen container being sealed correctly. The pitch is low enough that it registers as authority rather than celebration. No high-frequency components, no musical character. Followed by sfx_meter_pulse.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_wrong</td>
+          <td>Wrong answer</td>
+          <td class="dur">0.2s or silence</td>
+          <td class="notes">Two options — decide in testing. Option A: a very brief low-frequency denial buzz (80–100Hz, 0.2s) like a lock refusing to turn. Option B: pure silence — the visual red pulse does all the work. Silence is more unsettling and more consistent with the tone. Recommended starting point: silence. Add sfx_wrong only if playtesting shows kids need the audio feedback.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_contamination</td>
+          <td>Contamination Event (3-streak)</td>
+          <td class="dur">3.5–4s total</td>
+          <td class="notes">The most complex and important sound in the app — five phases. Phase 1 (0–0.3s): abrupt radio/signal interference burst, like a transmission cutting out. Phase 2 (0.3–0.8s): a low subsonic rumble building, the feeling of something wrong spreading. Phase 3 (0.8–2s): a wet biological cascade — dripping turning to pouring, organic and uncontrolled. Phase 4 (2–2.5s): sudden silence. Phase 5 (2.5–3.5s): a single low electronic tone as the bonus fact appears — one note, measured, like a result being confirmed. Each phase should be distinct. The silence in Phase 4 is as important as the sounds around it.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_quiz_complete</td>
+          <td>Lab session complete</td>
+          <td class="dur">1.5s</td>
+          <td class="notes">The sound of a lab instrument completing its cycle — a measured sequence of two low tones (not a fanfare, not ascending — equal pitch or slightly descending) followed by a mechanical click of completion. Clinical and final. "Experiment concluded" not "You won."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Progression events</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_stage_up</td>
+          <td>Stage transition (level up)</td>
+          <td class="dur">3s</td>
+          <td class="notes">A full-screen event deserves a substantial sound. Three phases. Phase 1 (0–1s): a low building pressure hum, like a system under increasing load. Phase 2 (1–1.5s): a single heavy mechanical lock or vault-click — the threshold moment. Phase 3 (1.5–3s): a brief ambient wash as the new darker stage aesthetic settles in, fading into the updated ambient loop. Should feel like a door opening deeper into the lab.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Onboarding and access</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_transmission</td>
+          <td>Onboarding text appearance</td>
+          <td class="dur">Continuous while text types</td>
+          <td class="notes">A slow data-feed typewriter texture — not the Hollywood typewriter clatter. More like intermittent data bursts, each burst 0.05–0.1s, with irregular gaps between them. Plays under the green monospace text appearing on the black screen. Should feel like receiving a classified transmission, not typing.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_access_granted</td>
+          <td>Access Granted</td>
+          <td class="dur">0.8s</td>
+          <td class="notes">A clean biometric-style lock release — a brief scan tone (0.2s, low pitch) followed by a satisfying mechanical unlatch (0.3s) and a short resonance tail (0.3s). Should feel earned and slightly ceremonial without being celebratory. Used at onboarding completion and at Full Lab Pass purchase.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Unlock and payment</div>
+    <table class="sound-table">
+      <thead><tr><th style="width:110px;">ID</th><th>Name</th><th style="width:55px;">Duration</th><th>Character + production notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="id">sfx_pass_unlock</td>
+          <td>Full Lab Pass purchased</td>
+          <td class="dur">2s</td>
+          <td class="notes">More substantial than sfx_access_granted — this is the biggest unlock in the app. A sealed specimen collection being opened for the first time: a heavy seal breaking (0.3s), a rush of pressurised air or liquid (0.5s), then a cascade of short unlock clicks as multiple books become available (0.7s), settling into a held low resonance (0.5s). The sequence should feel like a vault opening, not a purchase completing.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_code_accept</td>
+          <td>Bundle code accepted</td>
+          <td class="dur">1s</td>
+          <td class="notes">A brief scan-and-verify sequence — a short processing texture (0.3s) then a version of sfx_access_granted scaled down (0.7s). Confirms one book unlocking. Less dramatic than sfx_pass_unlock.</td>
+        </tr>
+        <tr>
+          <td class="id">sfx_code_reject</td>
+          <td>Bundle code rejected</td>
+          <td class="dur">0.3s</td>
+          <td class="notes">A clean definitive denial — like a key failing to turn in a lock. A short low-frequency clunk with no resonance tail. Brief, final, not harsh. No buzz, no alarm quality. The lock simply did not open.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Complete file list (22 sound assets)</div>
+    <div class="mono-block">
+amb_home.mp3 · amb_lab.mp3 · amb_launch.mp3<br>
+sfx_tab.mp3 · sfx_scroll.mp3 (optional)<br>
+sfx_card_tap.mp3 · sfx_locked.mp3 · sfx_unlock.mp3 · sfx_detail_open.mp3 · sfx_declassify.mp3<br>
+sfx_meter_60.mp3 · sfx_meter_80.mp3 · sfx_meter_100.mp3 · sfx_meter_pulse.mp3<br>
+sfx_question.mp3 · sfx_answer_tap.mp3 · sfx_correct.mp3 · sfx_wrong.mp3 (optional)<br>
+sfx_contamination.mp3 · sfx_quiz_complete.mp3<br>
+sfx_stage_up.mp3<br>
+sfx_transmission.mp3 · sfx_access_granted.mp3<br>
+sfx_pass_unlock.mp3 · sfx_code_accept.mp3 · sfx_code_reject.mp3
+    </div>
+  </div>
+</div>
+
+<!-- COPY CONVENTIONS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-writing" aria-hidden="true"></i><span class="section-title">Copy conventions</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Replacements</div>
+    <div style="margin-top:8px;">
+      <div class="copy-row"><span class="copy-before">Welcome!</span><span class="copy-after">Access Granted.</span></div>
+      <div class="copy-row"><span class="copy-before">Great job!</span><span class="copy-after">Specimen classified.</span></div>
+      <div class="copy-row"><span class="copy-before">Try again!</span><span class="copy-after">Incorrect. Recalibrate.</span></div>
+      <div class="copy-row"><span class="copy-before">Nothing here yet</span><span class="copy-after">No specimens classified in this section.</span></div>
+      <div class="copy-row"><span class="copy-before">Loading...</span><span class="copy-after">Cross-referencing specimen database...</span></div>
+      <div class="copy-row"><span class="copy-before">Unlock premium</span><span class="copy-after">Request Full Lab Pass.</span></div>
+      <div class="copy-row"><span class="copy-before">Create account</span><span class="copy-after">Initialize Recruit Profile.</span></div>
+      <div class="copy-row"><span class="copy-before">Parent sign-up</span><span class="copy-after">Guardian Clearance Required.</span></div>
+      <div class="copy-row"><span class="copy-before">Enter code</span><span class="copy-after">Enter Access Code.</span></div>
+      <div class="copy-row"><span class="copy-before">You've completed the quiz!</span><span class="copy-after">Lab session complete. [X] specimens verified.</span></div>
+      <div class="copy-row"><span class="copy-before">Locked content</span><span class="copy-after">CLASSIFIED — Full Lab Pass required.</span></div>
+      <div class="copy-row"><span class="copy-before">Profile</span><span class="copy-after">Recruit File.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- POSITIONING -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-flag" aria-hidden="true"></i><span class="section-title">Positioning</span></div>
+  <div class="promise-block">
+    <div class="promise-label">External promise</div>
+    <div class="promise-text">For kids who like facts too weird for normal science apps.</div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Audience</div><div class="card-value">Ages 9–12</div><div class="card-sub">The weird ones. Underserved by every competitor.</div></div>
+    <div class="card"><div class="card-label">v1 launch book</div><div class="card-value">Creepy Tiny World</div><div class="card-sub">Widest EWW-meter spread. "Lives in your mattress and on your face" is the stronger hook.</div></div>
+  </div>
+</div>
+
+<!-- EWW-METER -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-gauge" aria-hidden="true"></i><span class="section-title">EWW-meter</span></div>
+  <div class="full-card">
+    <div class="full-card-title">3 fixed canonical tiers</div>
+    <div class="meter-row">
+      <div class="meter-tile meter-amber"><div class="meter-pct">60%</div><div class="meter-label">Kinda Revolting</div><div class="meter-sub">Eww. That's unpleasant.</div></div>
+      <div class="meter-tile meter-coral"><div class="meter-pct">80%</div><div class="meter-label">Super Slimy</div><div class="meter-sub">That's... disgusting.</div></div>
+      <div class="meter-tile meter-red"><div class="meter-pct">100%</div><div class="meter-label">Total Barf!</div><div class="meter-sub">No thank you!</div></div>
+    </div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">User progression stages</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+      <span class="tag tag-gray">1 — Kinda Curious</span><span class="tag tag-amber">2 — Properly Revolted</span><span class="tag tag-coral">3 — Super Slimy</span><span class="tag tag-red">4 — Biologically Alarmed</span><span class="tag tag-purple">5 — Full Dr. Icky</span>
+    </div>
+  </div>
+</div>
+
+<!-- MONETIZATION -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-coin" aria-hidden="true"></i><span class="section-title">Monetization</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Unit economics</div>
+    <table class="econ-table">
+      <thead><tr><th>Price</th><th>Store cut (15%)</th><th>Net per sale</th></tr></thead>
+      <tbody>
+        <tr><td>€3.99 <span class="tag tag-blue">launch</span></td><td class="muted">~€0.60</td><td>~€3.39</td></tr>
+        <tr><td>€4.99 <span class="tag tag-gray">post-review raise</span></td><td class="muted">~€0.75</td><td>~€4.24</td></tr>
+      </tbody>
+    </table>
+    <div class="info-block" style="margin-top:8px;">Enroll in Apple Small Business Program before reactivating account. RevenueCat, Firebase, Cloudinary, Expo all free tier through early traction.</div>
+  </div>
+  <div class="full-card" style="border:2px solid var(--color-border-info);">
+    <div class="full-card-title">Full Lab Pass <span class="tag tag-blue">decided</span></div>
+    <div class="full-card-body">Launch €3.99. Raise to €4.99 permanently after 50+ reviews and 4.2+ rating. Paid ads deferred until unit economics support them.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Book bundle code</div>
+    <div class="full-card-body">One shared code per book title, print only. Unlocks that book's content. Six books = six codes.</div>
+    <div class="caution-block">Shared codes will circulate online. Each code is one book only — bounded exposure, acceptable tradeoff.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Free tier</div>
+    <div class="full-card-body">Creepy Tiny World (75 creatures). Gross Fact → Name quiz only. EWW-meter stages 1–2. No ads.</div>
+  </div>
+</div>
+
+<!-- CONTENT LIBRARY -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-books" aria-hidden="true"></i><span class="section-title">Content library</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Image treatment by book</div>
+    <table class="img-table">
+      <thead><tr><th>Book</th><th>Type</th><th>Card treatment</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tag-gray">Creepy Creatures</span><br><span class="tag tag-gray" style="margin-top:4px;display:inline-block;">Creepy Skeletons</span></td><td>Transparent PNG</td><td class="note">App supplies dark lab background. Slightly different colour temperature between the two.</td></tr>
+        <tr><td><span class="tag tag-green">Creepy Earth</span><br><span class="tag tag-green" style="margin-top:4px;display:inline-block;">Creepy Dinosaurs</span><br><span class="tag tag-green" style="margin-top:4px;display:inline-block;">Creepy Deep Sea</span><br><span class="tag tag-green" style="margin-top:4px;display:inline-block;">Creepy Tiny World</span></td><td>Habitat JPG</td><td class="note">Image used as-is.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Creature record schema</div>
+    <div style="margin-top:8px;">
+      <div class="schema-row"><span class="schema-key">creature_name</span><span class="schema-val">string</span></div>
+      <div class="schema-row"><span class="schema-key">gross_fact</span><span class="schema-val">string — one paragraph</span></div>
+      <div class="schema-row"><span class="schema-key">eww_meter</span><span class="schema-val">enum: kinda_revolting (60%) · super_slimy (80%) · total_barf (100%)</span></div>
+      <div class="schema-row"><span class="schema-key">book_ids[]</span><span class="schema-val">array — handles cross-book duplicates</span></div>
+      <div class="schema-row"><span class="schema-key">habitat_tags[]</span><span class="schema-val">skin · water · soil · household · outdoor · body</span></div>
+      <div class="schema-row"><span class="schema-key">image_id</span><span class="schema-val">string — render method inherited from book record</span></div>
+      <div class="schema-row"><span class="schema-key">component_tags[]</span><span class="schema-val">locomotion · feeding · defense — deferred, for Creature Builder</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP SECTIONS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-device-mobile" aria-hidden="true"></i><span class="section-title">App sections (v1)</span></div>
+  <div class="full-card">
+    <div class="full-card-title">EWW-niverse <span class="tag tag-green">core</span></div>
+    <div class="full-card-body">450 entries by book. Cards: illustration, gross fact, animated arc, habitat, locked bonus fact. Grid fills progressively. Locked entries show as dark silhouettes — UNCLASSIFIED.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">The Lab — quiz engine <span class="tag tag-green">core</span></div>
+    <div class="full-card-body">Gross Fact → Name (free). EWW-meter ranking + Specimen Match (Full Lab Pass). Contamination Event on 3-streak. Wrong answers: "Incorrect. Recalibrate." No encouragement copy.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">COPPA auth flow</div>
+    <div class="full-card-body">Parent gate at account creation. Kid explores free tier first. Parent email required at paywall or progress save. No DOB collected, no PII on child record.</div>
+  </div>
+</div>
+
+<!-- DEFERRED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-clock-pause" aria-hidden="true"></i><span class="section-title">Deferred</span></div>
+  <div class="full-card">
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Creature Builder — component_tags + retention data needed</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Field Missions — add when engagement loop needs reinforcement</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Weekly creature drops — after retention metrics justify the pipeline</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Paid advertising — after conversion data supports unit economics</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Lab Notebook module — tied to physical book publication</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Subscription model — when LTV justifies recurring charge</div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-stack" aria-hidden="true"></i><span class="section-title">Tech stack</span></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Frontend</div><div class="card-value">React Native + Expo</div><div class="card-sub">iOS + Android. OTA content updates.</div></div>
+    <div class="card"><div class="card-label">Database + auth</div><div class="card-value">Firebase</div><div class="card-sub">Firestore + Firebase Auth. COPPA-compliant.</div></div>
+    <div class="card"><div class="card-label">Images</div><div class="card-value">Cloudinary</div><div class="card-sub">Presets per context. Render logic per book, not per creature.</div></div>
+    <div class="card"><div class="card-label">Payments</div><div class="card-value">RevenueCat</div><div class="card-sub">One-time purchase + future subscription. Free until $2,500 MRR.</div></div>
+    <div class="card"><div class="card-label">Animation</div><div class="card-value">Lottie</div><div class="card-sub">EWW-meter arc, unlock sequence, stage transitions, Contamination Event.</div></div>
+    <div class="card"><div class="card-label">Analytics</div><div class="card-value">Firebase Analytics</div></div>
+    <div class="card"><div class="card-label">Push</div><div class="card-value">Expo Notifications</div><div class="card-sub">Backed by Firebase Cloud Messaging.</div></div>
+  </div>
+</div>
+
+<!-- ASSET PIPELINE -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-database" aria-hidden="true"></i><span class="section-title">Asset pipeline — first task before coding</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Naming conventions</div>
+    <div class="mono-block">
+      Images:<br>
+      {book-slug}_{creature-slug}.png  ← transparent (creepy-creatures, skeletons)<br>
+      {book-slug}_{creature-slug}.jpg  ← habitat (earth, dinosaurs, deep-sea, tiny-world)<br><br>
+      Sounds:<br>
+      amb_{name}.mp3  ← ambient loops<br>
+      sfx_{name}.mp3  ← one-shot effects<br><br>
+      Cloudinary: /eww-niverse/creatures/{book-slug}/ · /eww-niverse/ui/ · /eww-niverse/audio/
+    </div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Master spreadsheet</div>
+    <div class="full-card-body">One row per creature. Columns: name · book · gross_fact · eww_meter (60/80/100) · habitat_tags · image_filename · cross_book_duplicate. Start with Creepy Tiny World. 2–3 days total across 450 entries.</div>
+  </div>
+</div>
+
+<!-- BUILD ORDER -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="section-title">Build order</span></div>
+  <div class="phase-row"><div class="phase-num">1</div><div class="phase-content"><div class="phase-title">Launch (v1) — Creepy Tiny World</div><div class="phase-body">75 creatures. Gross Fact → Name quiz. EWW-meter arcs stages 1–3. Full Lab Pass €3.99 + bundle code flow. COPPA auth. Custom sound design (22 assets). Full design language.</div></div></div>
+  <div class="phase-row"><div class="phase-num">2</div><div class="phase-content"><div class="phase-title">Price raise + content expansion</div><div class="phase-body">€4.99 after 50+ reviews / 4.2+. Books 2 and 3. EWW-meter ranking + Specimen Match. All 5 stages.</div></div></div>
+  <div class="phase-row"><div class="phase-num">3</div><div class="phase-content"><div class="phase-title">Full library</div><div class="phase-body">Remaining 3 books. Field Missions if needed. Creature Builder if ready.</div></div></div>
+  <div class="phase-row"><div class="phase-num">4</div><div class="phase-content"><div class="phase-title">Lab Notebook module</div><div class="phase-body">Second tab on book publication. Mission log, HUD stats, Lab Rank, badges.</div></div></div>
+</div>
+
+<!-- DECISIONS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-alert-circle" aria-hidden="true"></i><span class="section-title">Decisions tracker</span></div>
+  <div class="full-card">
+    <div class="status-row"><span class="status-label">Fonts: Cantora One (display) + Lexend Deca (body)</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Sound inventory: 22 assets defined (3 ambients, 19 one-shots, 2 optional)</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">sfx_wrong: start with silence, add sound only if playtesting shows kids need audio feedback</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">sfx_scroll: optional, decide after first prototype playtest</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Design language: "inside the lab" — dark specimen aesthetic, recruit tone</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Color palette: #0E1210 background, #5DB84A slime green accent, #E6E0CC text</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">No white backgrounds anywhere in the app</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">v1 launch book: Creepy Tiny World</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Full Lab Pass: €3.99 launch → €4.99 after 50+ reviews + 4.2+ rating</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Store commission 15% both stores. Enroll Apple Small Business Program first.</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">COPPA auth: parent gate at account creation, not install</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">App store accounts: Google Play active, Apple to be reactivated</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">EWW-meter: 3 tiers (60/80/100), viscous arc animation, 3 meter sound variants</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Book bundle: one shared code per book, print only, one-book unlock per code</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Image type at book level — Creatures + Skeletons PNG, other 4 JPG</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">No ads, no subscription at launch</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Creature Builder, Field Missions, weekly drops all deferred</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Lab Notebook module deferred to v2</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Firestore schema and asset naming convention decided</span><span class="status-badge badge-decided">decided</span></div>
+  </div>
+</div>
+
+</div>

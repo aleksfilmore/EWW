@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Oobleck punch test experiment diagram">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="8" dy="9" stdDeviation="0" flood-color="#1A1A12" flood-opacity=".22"/>
+    </filter>
+    <pattern id="specks" width="38" height="38" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="11" r="2" fill="#5DB84A" opacity=".32"/>
+      <circle cx="28" cy="26" r="1.8" fill="#D48B1A" opacity=".32"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="700" fill="#F4EBD2"/>
+  <rect x="52" y="64" width="796" height="560" rx="24" fill="url(#specks)" stroke="#1A1A12" stroke-width="12" filter="url(#shadow)"/>
+  <ellipse cx="458" cy="505" rx="300" ry="48" fill="#1A1A12" opacity=".16"/>
+  <path d="M218 374c42-106 457-112 506 2 34 78-63 175-248 181-189 6-292-97-258-183z" fill="#D48B1A" stroke="#1A1A12" stroke-width="14"/>
+  <path d="M269 357c32-64 366-72 410-2 25 40-44 105-202 111-154 6-233-64-208-109z" fill="#5DB84A" stroke="#1A1A12" stroke-width="10"/>
+  <path d="M324 365c31 28 80 19 105 53 22 30-8 62-59 51-61-13-99-72-46-104z" fill="#7B3FA1" opacity=".9" stroke="#1A1A12" stroke-width="8"/>
+  <path d="M487 328c43 1 89 27 76 63-12 34-78 49-121 14-43-35-8-79 45-77z" fill="#DDF1C8" stroke="#1A1A12" stroke-width="8"/>
+  <path d="M600 313c30-9 62 4 67 31 6 30-31 58-68 45-37-12-39-63 1-76z" fill="#FFE5B8" stroke="#1A1A12" stroke-width="7"/>
+  <path d="M358 211c-2-39 36-69 79-61 37 7 63 38 58 72l-18 130c-5 34-104 28-107-7z" fill="#F4EBD2" stroke="#1A1A12" stroke-width="12"/>
+  <path d="M398 75c81 20 154 60 168 125 10 47-5 90-40 115-31 23-91 14-132-29-26-27-39-63-40-104-1-45 12-87 44-107z" fill="#F2C4A7" stroke="#1A1A12" stroke-width="12"/>
+  <path d="M408 92c42 14 78 36 103 67" fill="none" stroke="#A86D4B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M360 305c-29 14-51 39-54 68" fill="none" stroke="#1A1A12" stroke-width="10" stroke-linecap="round"/>
+  <path d="M555 313c33 11 53 36 60 70" fill="none" stroke="#1A1A12" stroke-width="10" stroke-linecap="round"/>
+  <path d="M204 469c-61 0-99-43-78-92 17-39 72-48 114-19" fill="#FFF8DF" stroke="#1A1A12" stroke-width="10"/>
+  <path d="M139 369l83 91" stroke="#1A1A12" stroke-width="7" stroke-linecap="round"/>
+  <path d="M650 132h116l32 190H622z" fill="#D9EEF7" stroke="#1A1A12" stroke-width="10"/>
+  <path d="M659 108h94" stroke="#1A1A12" stroke-width="14" stroke-linecap="round"/>
+  <path d="M644 250c33-19 68-19 106 0" fill="none" stroke="#2166A5" stroke-width="8"/>
+  <circle cx="686" cy="215" r="9" fill="#5DB84A" stroke="#1A1A12" stroke-width="4"/>
+  <circle cx="727" cy="236" r="7" fill="#5DB84A" stroke="#1A1A12" stroke-width="4"/>
+  <path d="M180 195l92-28 78 222-92 27z" fill="#FFF8DF" stroke="#1A1A12" stroke-width="9"/>
+  <path d="M193 216l82-25" stroke="#D48B1A" stroke-width="8"/>
+  <path d="M210 255l72-22M222 292l72-22M235 329l72-22" stroke="#5DB84A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M612 464c26-31 70-27 86 5 20 41-34 82-75 60-23-12-30-42-11-65z" fill="#F15A3B" stroke="#1A1A12" stroke-width="8"/>
+  <path d="M668 452l54-74M705 446l62-32" stroke="#5DB84A" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="732" cy="381" r="13" fill="#5DB84A" stroke="#1A1A12" stroke-width="5"/>
+</svg>
