@@ -1,0 +1,504 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.canvas { padding: 1.5rem 0; font-family: var(--font-sans); }
+.section { margin-bottom: 2rem; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-header i { font-size: 16px; color: var(--color-text-secondary); }
+.section-title { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.1rem; }
+.card-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin-bottom: 6px; }
+.card-value { font-size: 15px; font-weight: 500; color: var(--color-text-primary); line-height: 1.4; }
+.card-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.6; }
+.tag { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px; margin: 2px 2px 2px 0; font-weight: 500; }
+.tag-green { background: #EAF3DE; color: #3B6D11; }
+.tag-amber { background: #FAEEDA; color: #854F0B; }
+.tag-blue { background: #E6F1FB; color: #185FA5; }
+.tag-gray { background: #F1EFE8; color: #5F5E5A; }
+.tag-teal { background: #E1F5EE; color: #0F6E56; }
+.tag-purple { background: #EEEDFE; color: #534AB7; }
+.tag-coral { background: #FAECE7; color: #993C1D; }
+.tag-red { background: #FCEBEB; color: #A32D2D; }
+.tag-new { background: #FAECE7; color: #993C1D; font-weight: 600; }
+.tag-changed { background: #FAEEDA; color: #854F0B; font-weight: 600; }
+.full-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+.full-card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.full-card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.schema-row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.schema-row:last-child { border-bottom: none; }
+.schema-key { font-size: 12px; font-family: var(--font-mono); color: var(--color-text-secondary); min-width: 160px; }
+.schema-val { font-size: 12px; color: var(--color-text-primary); line-height: 1.5; }
+.phase-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.phase-num { font-size: 11px; font-weight: 500; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-background-secondary); color: var(--color-text-secondary); }
+.phase-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.phase-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+.status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.status-row:last-child { border-bottom: none; }
+.status-label { font-size: 13px; color: var(--color-text-primary); max-width: 80%; line-height: 1.4; }
+.status-badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; flex-shrink: 0; margin-left: 8px; }
+.badge-decided { background: #EAF3DE; color: #3B6D11; }
+.badge-open { background: #FAEEDA; color: #854F0B; }
+.badge-new { background: #FAECE7; color: #993C1D; }
+.mono-block { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-secondary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; line-height: 1.8; }
+.deferred-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; color: var(--color-text-secondary); }
+.deferred-row:last-child { border-bottom: none; }
+.deferred-row i { font-size: 14px; color: var(--color-text-tertiary); }
+.info-block { background: #E6F1FB; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #185FA5; line-height: 1.6; }
+.caution-block { background: #FAEEDA; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #854F0B; line-height: 1.6; }
+.ecosystem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px; }
+.eco-node { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; background: var(--color-background-primary); position: relative; }
+.eco-node.center { background: var(--color-background-secondary); border: 2px solid #3D8C2A; }
+.eco-status { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+.eco-status-live { background: #EAF3DE; color: #3B6D11; }
+.eco-status-build { background: #FAEEDA; color: #854F0B; }
+.eco-status-future { background: #F1EFE8; color: #5F5E5A; }
+.eco-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.eco-domain { font-size: 11px; font-family: var(--font-mono); color: var(--color-text-tertiary); margin-bottom: 6px; }
+.eco-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-top: 8px; }
+.asset-cat { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; border: 0.5px solid var(--color-border-tertiary); }
+.asset-cat-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.asset-cat-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+.asset-cat-count { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-top: 4px; }
+.surface-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.surface-table th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-tertiary); text-align: left; padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.surface-table td { font-size: 12px; padding: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; color: var(--color-text-primary); line-height: 1.5; }
+.surface-table tr:last-child td { border-bottom: none; }
+.surface-table td.muted { color: var(--color-text-secondary); }
+.page-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px; }
+.page-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 12px 14px; border: 0.5px solid var(--color-border-tertiary); }
+.page-route { font-size: 11px; font-family: var(--font-mono); color: var(--color-text-tertiary); margin-bottom: 4px; }
+.page-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.page-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.promise-block { background: var(--color-background-secondary); border-left: 3px solid #534AB7; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 1rem 1.25rem; margin-bottom: 10px; }
+.promise-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #534AB7; margin-bottom: 6px; }
+.promise-text { font-size: 15px; font-weight: 500; color: var(--color-text-primary); line-height: 1.5; }
+.meter-row { display: flex; gap: 10px; margin-top: 8px; }
+.meter-tile { flex: 1; border-radius: var(--border-radius-md); padding: 10px 12px; text-align: center; }
+.meter-pct { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+.meter-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
+.meter-sub { font-size: 11px; }
+.meter-amber { background: #FAEEDA; } .meter-amber .meter-pct, .meter-amber .meter-label, .meter-amber .meter-sub { color: #854F0B; }
+.meter-coral { background: #FAECE7; } .meter-coral .meter-pct, .meter-coral .meter-label, .meter-coral .meter-sub { color: #993C1D; }
+.meter-red { background: #FCEBEB; } .meter-red .meter-pct, .meter-red .meter-label, .meter-red .meter-sub { color: #A32D2D; }
+@media (max-width: 600px) { .meter-row { flex-direction: column; } }
+</style>
+
+<div class="canvas">
+<h2 class="sr-only">EWW-niverse brand and product canvas</h2>
+
+<!-- BRAND ECOSYSTEM — NEW -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-vector-bezier" aria-hidden="true"></i><span class="section-title">Brand ecosystem <span class="tag tag-new">new</span></span></div>
+  <div class="promise-block">
+    <div class="promise-label">The universe</div>
+    <div class="promise-text">Dr. Icky's EWW-niverse. One brand, multiple surfaces — books, website, app, video, content. Each surface reinforces the others. Books drive app installs. Website hosts the community. App owns daily engagement. Video drives discovery.</div>
+  </div>
+  <div class="ecosystem-grid">
+    <div class="eco-node">
+      <div class="eco-status eco-status-live">Live</div>
+      <div class="eco-name">Books (6 published)</div>
+      <div class="eco-desc">Creatures, Earth, Dinosaurs, Deep Sea, Skeletons, Tiny World. 450 entries total. Lab Notebook is in development as the 7th title.</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-status eco-status-build">Build first</div>
+      <div class="eco-name">Website</div>
+      <div class="eco-domain">ewwniverse.com</div>
+      <div class="eco-desc">Brand hub, book catalogue, app landing page, content engine. Ships before the app. Establishes brand presence and gives book QR codes somewhere to point to.</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-status eco-status-build">Build second</div>
+      <div class="eco-name">App (EWW-niverse)</div>
+      <div class="eco-domain">iOS + Android</div>
+      <div class="eco-desc">Daily engagement loop. Free tier + Full Lab Pass. Launches into existing brand audience.</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-status eco-status-future">Future</div>
+      <div class="eco-name">YouTube channel</div>
+      <div class="eco-desc">Discovery surface. Short-form weird science clips. Dr. Icky character voice. Drives traffic to website and app.</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-status eco-status-future">Future</div>
+      <div class="eco-name">Specimen Files (blog)</div>
+      <div class="eco-desc">Content layer inside the website. Weekly creature features, Dr. Icky's field reports, weird real-world science news. SEO surface — "weird facts for kids" is searchable territory.</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-status eco-status-future">Future</div>
+      <div class="eco-name">Lab Notebook</div>
+      <div class="eco-domain">dricky.com</div>
+      <div class="eco-desc">7th book publication. dricky.com becomes the dedicated landing page for the experiment-based product line. App gets a second tab when this ships.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOMAIN STRATEGY -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-world" aria-hidden="true"></i><span class="section-title">Domain strategy <span class="tag tag-new">new</span></span></div>
+  <div class="card-grid">
+    <div class="card" style="border: 2px solid var(--color-border-info);">
+      <div class="card-label">Primary <span class="tag tag-blue" style="margin-left:6px;">decided</span></div>
+      <div class="card-value">ewwniverse.com</div>
+      <div class="card-sub">Brand hub. Matches the app name, the book series name, the universe. Hosts the website, links to all other surfaces.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary</div>
+      <div class="card-value">dricky.com</div>
+      <div class="card-sub">Redirects to ewwniverse.com at launch. Repurposed as the dedicated Lab Notebook landing page when that book publishes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WEBSITE PLAN — NEW -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-browser" aria-hidden="true"></i><span class="section-title">Website plan <span class="tag tag-new">new</span></span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">Purpose</div>
+    <div class="full-card-body">Four jobs. One: brand presence and credibility for parents researching the books or app. Two: book catalogue with affiliate links to Amazon and other retailers (revenue stream independent of the app). Three: app landing page with download links and feature explanations. Four: content engine via the Specimen Files blog area, building SEO traffic in the "weird facts for kids" space and giving the brand a publishing rhythm beyond book launches.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Aesthetic — warm parchment, book-aligned</div>
+    <div class="full-card-body">The website lives in the visual language of the books. Cream parchment backgrounds, slime green accents, Cantora One headings, Lexend Deca body. Dr. Icky character illustrations used generously throughout. This is the public face of the brand — the same face the books wear on bookstore shelves. The dark lab aesthetic is reserved exclusively for the app.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Page structure</div>
+    <div class="page-list">
+      <div class="page-card">
+        <div class="page-route">/</div>
+        <div class="page-name">Home</div>
+        <div class="page-desc">Hero: Dr. Icky and the universe pitch. Below: featured creature, latest book, app CTA, latest Specimen File.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/books</div>
+        <div class="page-name">The Books</div>
+        <div class="page-desc">All 6 published titles with covers, descriptions, sample spreads, retailer links. Lab Notebook waitlist signup.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/app</div>
+        <div class="page-name">The App</div>
+        <div class="page-desc">App landing page. Screenshots, feature highlights, Free + Full Lab Pass explanation, App Store + Google Play badges.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/specimen-files</div>
+        <div class="page-name">Specimen Files</div>
+        <div class="page-desc">Blog. Weekly creature features, field reports, weird science news in the Dr. Icky voice. Searchable, taggable by habitat.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/dr-icky</div>
+        <div class="page-name">About Dr. Icky</div>
+        <div class="page-desc">Character lore. Origin of the EWW-niverse. Lets parents see what the brand stands for.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/for-parents</div>
+        <div class="page-name">For Parents</div>
+        <div class="page-desc">COPPA info, FAQ, age appropriateness, contact. Builds trust for the audience controlling the wallet.</div>
+      </div>
+      <div class="page-card">
+        <div class="page-route">/redeem</div>
+        <div class="page-name">Code Redemption</div>
+        <div class="page-desc">Bundle code entry page. Mirror of the in-app redemption flow for kids who got the book before installing the app.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Specimen Files content strategy</div>
+    <div class="full-card-body">Weekly publishing rhythm. Three content formats. (1) Specimen of the Week — a deep dive on one creature in Dr. Icky's voice, more detail than the book entry, written for kids who want to know more. (2) Field Reports — short essays from Dr. Icky about weird places, weird discoveries, recent real-world science news adapted for the audience. (3) Reader Submissions — moderated, parent-verified questions from kids answered in character. The blog is also the natural surface for occasional brand moments like new book announcements and app updates.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Website tech</div>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Framework</div><div class="card-value">Next.js</div><div class="card-sub">SEO performance, fast pages, MDX support for blog content, ecosystem maturity.</div></div>
+      <div class="card"><div class="card-label">Hosting</div><div class="card-value">Vercel</div><div class="card-sub">Zero-config Next.js deployment, free tier covers initial traffic, fast global edge.</div></div>
+      <div class="card"><div class="card-label">CMS</div><div class="card-value">MDX + Notion</div><div class="card-sub">Blog posts authored in Notion (already part of your workflow), synced to MDX for the site.</div></div>
+      <div class="card"><div class="card-label">Images</div><div class="card-value">Cloudinary</div><div class="card-sub">Shared with the app. One asset library, two consumers.</div></div>
+      <div class="card"><div class="card-label">Email capture</div><div class="card-value">MailerLite</div><div class="card-sub">Already connected in your stack. Newsletter signup for parents.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VISUAL ASSET LIBRARY — NEW -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-photo" aria-hidden="true"></i><span class="section-title">Visual asset library <span class="tag tag-new">new</span></span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">What you already have</div>
+    <div class="full-card-body">A substantial existing library of transparent-PNG illustrations covering Dr. Icky character poses, UI elements, lab equipment, badges, paper textures, hazard symbols, slime and goo elements, specimen plates, sticky notes, and background variants. This eliminates most custom UI illustration work for both the app and the website. The job becomes curation and naming, not creation.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Asset categories</div>
+    <div class="asset-grid">
+      <div class="asset-cat">
+        <div class="asset-cat-name">Dr. Icky character poses</div>
+        <div class="asset-cat-desc">Approving, warning, holding clipboard, pointing, shocked, surrounded by flies, magnifying glass, peeking from behind, etc.</div>
+        <div class="asset-cat-count">~25+ poses</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Lab equipment</div>
+        <div class="asset-cat-desc">Petri dish, microscope, beaker, ring stains, filter stack, sediment trap, evidence tape, hazard triangle, biological alarm.</div>
+        <div class="asset-cat-count">~15+ elements</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Badges and stickers</div>
+        <div class="asset-cat-desc">Approved by Dr. Icky, Adult Assist Required, Bathroom Mirror Test, Do Not Squeeze, Do Not Stir, Do Not Lick, Safety Goggles, Hazard.</div>
+        <div class="asset-cat-count">~20+ badges</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Paper textures + frames</div>
+        <div class="asset-cat-desc">Parchment, clipboard, sticky note, dossier folder, blank specimen tag, crumpled note, checklist box, certificate.</div>
+        <div class="asset-cat-count">~15+ surfaces</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Slime and goo</div>
+        <div class="asset-cat-desc">Drips, splatters, blob clusters, green goo, slime borders, ooze, splash.</div>
+        <div class="asset-cat-count">~12+ variants</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Backgrounds + textures</div>
+        <div class="asset-cat-desc">Dark lab green chalkboard panel, fog test, parchment paper texture, graph paper, green risk sticker, microplastic spill.</div>
+        <div class="asset-cat-count">~10+ backgrounds</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Specimen elements</div>
+        <div class="asset-cat-desc">Specimen plates, evidence stamps, classified case files, mystery autopsy elements, recalibrate stamps.</div>
+        <div class="asset-cat-count">~12+ elements</div>
+      </div>
+      <div class="asset-cat">
+        <div class="asset-cat-name">Creepy Creatures (book 1)</div>
+        <div class="asset-cat-desc">75 transparent PNG creature illustrations, named by creature.</div>
+        <div class="asset-cat-count">75 illustrations</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Surface allocation</div>
+    <table class="surface-table">
+      <thead><tr><th style="width:25%;">Surface</th><th style="width:25%;">Aesthetic</th><th>Asset usage</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Books</td>
+          <td class="muted">Warm parchment (published)</td>
+          <td class="muted">Source material. Locked. Already published — do not modify.</td>
+        </tr>
+        <tr>
+          <td>Website</td>
+          <td class="muted">Warm parchment (book-aligned)</td>
+          <td class="muted">Heavy use of Dr. Icky character poses, paper textures as backgrounds, badges as decorative + functional elements throughout. Character-led, playful, abundant.</td>
+        </tr>
+        <tr>
+          <td>App</td>
+          <td class="muted">Dark lab (behind-the-scenes)</td>
+          <td class="muted">Selective use. Lab equipment elements work natively on dark. Dr. Icky character used at key moments (onboarding, stage transitions, empty states, HUD avatar). Paper textures used sparingly — only where the parchment treatment serves the moment.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Cloudinary folder structure</div>
+    <div class="mono-block">
+      /eww-niverse/<br>
+      &nbsp;&nbsp;/creatures/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/creepy-creatures/ ← 75 entries, ready<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/skeletons/ · /tiny-world/ · /earth/ · /dinosaurs/ · /deep-sea/<br>
+      &nbsp;&nbsp;/dr-icky/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/poses/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/elements/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lab/ · /badges/ · /textures/ · /slime/ · /specimen/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/backgrounds/<br>
+      &nbsp;&nbsp;/ui/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;/app/ · /web/<br>
+      &nbsp;&nbsp;/audio/ ← sound assets per the sound design inventory
+    </div>
+  </div>
+</div>
+
+<!-- V1 LAUNCH BOOK CHANGE -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-arrow-swap" aria-hidden="true"></i><span class="section-title">V1 launch book <span class="tag tag-changed">changed</span></span></div>
+  <div class="full-card" style="border: 2px solid var(--color-border-info);">
+    <div class="full-card-title">Switched: Creepy Creatures (was Creepy Tiny World)</div>
+    <div class="full-card-body">Three reasons. One: Creepy Creatures is the franchise flagship — the iconic spider on the EWW-niverse cover comes from this book. Two: broader mass appeal at launch — spiders, snakes, and visible insects have wider recognition than microscopic creatures, which matters when you need maximum word-of-mouth in the first months. Three: practical readiness — the 75 entries and matching illustrations are already organized for this book. Tiny World moves to v2 or v3 as a content drop.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Dataset status</div>
+    <div style="margin-top: 8px;">
+      <div class="schema-row"><span class="schema-key">Excel file</span><span class="schema-val">eww_niverse_creepy_creatures_75.xls — 75 rows, 3 columns (name, weird fact ≤200 chars, eww-meter 60/80/100)</span></div>
+      <div class="schema-row"><span class="schema-key">Creature illustrations</span><span class="schema-val">75 transparent PNGs in /creepy creatures/ folder, named by creature</span></div>
+      <div class="schema-row"><span class="schema-key">Remaining work</span><span class="schema-val">Add habitat_tags column · cross-book duplicate flag · rename images to {book-slug}_{creature-slug}.png convention · upload to Cloudinary</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUILD ORDER — UPDATED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="section-title">Build order <span class="tag tag-changed">updated</span></span></div>
+  <div class="phase-row"><div class="phase-num">1</div><div class="phase-content"><div class="phase-title">Asset organization (week 1–2)</div><div class="phase-body">Finalize Creepy Creatures master spreadsheet (add habitat tags + cross-book flag). Rename and upload 75 creature images to Cloudinary. Catalogue and upload the Dr. Icky illustration library to its folder structure. Output: every asset addressable by URL, every creature entry queryable.</div></div></div>
+  <div class="phase-row"><div class="phase-num">2</div><div class="phase-content"><div class="phase-title">Website v1 (weeks 2–5)</div><div class="phase-body">Next.js on Vercel. Home, Books, App, About Dr. Icky, For Parents, Redeem. Specimen Files structure in place but seeded with 2–3 starter posts. Email capture connected to MailerLite. Books linked to retailers. App page initially shows "coming soon" with email signup.</div></div></div>
+  <div class="phase-row"><div class="phase-num">3</div><div class="phase-content"><div class="phase-title">App v1 — Creepy Creatures (weeks 5–14)</div><div class="phase-body">75 creatures. Gross Fact → Name quiz. EWW-meter arcs stages 1–3. Full Lab Pass €3.99 + bundle code flow. COPPA auth (parent gate at account creation). Custom sound design (22 assets). Full design language. App page on website updates to live with App Store + Google Play links.</div></div></div>
+  <div class="phase-row"><div class="phase-num">4</div><div class="phase-content"><div class="phase-title">Content expansion + price raise (post-launch)</div><div class="phase-body">€4.99 after 50+ reviews / 4.2+ rating. Weekly Specimen Files publishing rhythm established. Books 2 and 3 added to app (Tiny World + one other). EWW-meter ranking + Specimen Match quiz types. All 5 progression stages active.</div></div></div>
+  <div class="phase-row"><div class="phase-num">5</div><div class="phase-content"><div class="phase-title">Full library</div><div class="phase-body">Remaining 3 books in the app. YouTube channel launched as discovery surface. Field Missions if engagement loop needs reinforcement. Creature Builder if component_tags complete.</div></div></div>
+  <div class="phase-row"><div class="phase-num">6</div><div class="phase-content"><div class="phase-title">Lab Notebook</div><div class="phase-body">7th book published. dricky.com activated as dedicated landing page. App gets second tab. Subscription model revisit if content volume now justifies recurring charge.</div></div></div>
+</div>
+
+<!-- DESIGN LANGUAGE (CONDENSED) -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-palette" aria-hidden="true"></i><span class="section-title">Design language</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Two surfaces, one universe</div>
+    <div class="full-card-body">Website + books: warm parchment, character-led, abundant Dr. Icky presence. App: dark lab, selective character use, atmospheric. Same illustration library, different background treatments.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Typography (both surfaces)</div>
+    <div class="full-card-body">Cantora One for display and headings — already used in the books. Lexend Deca for body. Both Google Fonts, zero licensing cost.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">App palette (dark lab)</div>
+    <div class="full-card-body">Background #0E1210 · Surface #1A1F1C · Card #222924 · Slime green #5DB84A · Warning amber #D48B1A · Text primary #E6E0CC · Text muted #8A9E86. No white backgrounds anywhere.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Website palette (warm parchment)</div>
+    <div class="full-card-body">Cream parchment background, slime green accent (#5DB84A consistent with app), warm brown body text, dark green headers. Pull from the books' published colour treatment.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">App stage evolution</div>
+    <div class="full-card-body">Five interface stages tied to EWW-meter user progression: Kinda Curious (clean dark), Properly Revolted (green haze at edges), Super Slimy (specimen jar background elements), Biologically Alarmed (ambient slow animations), Full Dr. Icky (maximum lab atmosphere).</div>
+  </div>
+</div>
+
+<!-- POSITIONING -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-flag" aria-hidden="true"></i><span class="section-title">Positioning</span></div>
+  <div class="promise-block">
+    <div class="promise-label">External promise</div>
+    <div class="promise-text">For kids who like facts too weird for normal science apps.</div>
+  </div>
+</div>
+
+<!-- EWW-METER -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-gauge" aria-hidden="true"></i><span class="section-title">EWW-meter</span></div>
+  <div class="full-card">
+    <div class="meter-row">
+      <div class="meter-tile meter-amber"><div class="meter-pct">60%</div><div class="meter-label">Kinda Revolting</div><div class="meter-sub">Eww. That's unpleasant.</div></div>
+      <div class="meter-tile meter-coral"><div class="meter-pct">80%</div><div class="meter-label">Super Slimy</div><div class="meter-sub">That's... disgusting.</div></div>
+      <div class="meter-tile meter-red"><div class="meter-pct">100%</div><div class="meter-label">Total Barf!</div><div class="meter-sub">No thank you!</div></div>
+    </div>
+    <div class="full-card-body" style="margin-top: 10px;">Three fixed canonical tiers. App renders as animated arc filling to exact value, viscous not snappy. User progression stages (separate system): Kinda Curious → Properly Revolted → Super Slimy → Biologically Alarmed → Full Dr. Icky.</div>
+  </div>
+</div>
+
+<!-- MONETIZATION -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-coin" aria-hidden="true"></i><span class="section-title">Monetization</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Full Lab Pass — one-time unlock</div>
+    <div class="full-card-body">Launch €3.99, raise to €4.99 permanently after 50+ reviews and 4.2+ rating. Store cut 15% on both Apple and Google at this scale (enroll Apple Small Business Program). Bundle codes printed in print books — one code per book title, unlocks that book's content. Free tier: Creepy Creatures (75 creatures), Gross Fact → Name quiz only, EWW-meter stages 1–2, no ads.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Website revenue (independent of app)</div>
+    <div class="full-card-body">Book affiliate links on /books route — Amazon Associates + other retailer programs. Modest but real revenue stream that compounds with the brand. Specimen Files traffic eventually monetizable via newsletter sponsorships once subscriber base supports it.</div>
+  </div>
+</div>
+
+<!-- CONTENT LIBRARY -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-books" aria-hidden="true"></i><span class="section-title">Content library</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Image treatment by book</div>
+    <div class="full-card-body"><strong>Transparent PNG (app supplies background):</strong> Creepy Creatures, Creepy Skeletons. <strong>Habitat JPG (used as-is):</strong> Creepy Earth, Creepy Dinosaurs, Creepy Deep Sea, Creepy Tiny World.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">Creature record schema</div>
+    <div style="margin-top: 8px;">
+      <div class="schema-row"><span class="schema-key">creature_name</span><span class="schema-val">string</span></div>
+      <div class="schema-row"><span class="schema-key">gross_fact</span><span class="schema-val">string, max 200 chars per Excel source</span></div>
+      <div class="schema-row"><span class="schema-key">eww_meter</span><span class="schema-val">enum: 60 · 80 · 100</span></div>
+      <div class="schema-row"><span class="schema-key">book_ids[]</span><span class="schema-val">array — handles cross-book duplicates</span></div>
+      <div class="schema-row"><span class="schema-key">habitat_tags[]</span><span class="schema-val">skin · water · soil · household · outdoor · body</span></div>
+      <div class="schema-row"><span class="schema-key">image_id</span><span class="schema-val">string — render method inherited from book record</span></div>
+      <div class="schema-row"><span class="schema-key">component_tags[]</span><span class="schema-val">locomotion · feeding · defense — deferred, for Creature Builder</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP SECTIONS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-device-mobile" aria-hidden="true"></i><span class="section-title">App sections (v1)</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Three tabs</div>
+    <div class="full-card-body"><strong>EWW-niverse:</strong> creature grid, specimen cabinet aesthetic, locked cards shown as UNCLASSIFIED silhouettes. <strong>The Lab:</strong> quiz engine, Gross Fact → Name quiz only in free tier, EWW-meter ranking + Specimen Match unlocked by Full Lab Pass. Contamination Event on 3-in-a-row streak. <strong>HUD / Recruit File:</strong> stage progression, stats, classified dossier aesthetic.</div>
+  </div>
+  <div class="full-card">
+    <div class="full-card-title">COPPA auth</div>
+    <div class="full-card-body">Parent gate at account creation, not install. Kid explores free tier first. Parent email required when saving progress or hitting paywall. No DOB collected, no PII on child record.</div>
+  </div>
+</div>
+
+<!-- DEFERRED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-clock-pause" aria-hidden="true"></i><span class="section-title">Deferred</span></div>
+  <div class="full-card">
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Creature Builder — needs component_tags + retention data</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Field Missions — add when engagement loop needs reinforcement</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Weekly creature drops — after retention metrics justify the pipeline</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Paid advertising — after conversion data supports unit economics</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Lab Notebook module — tied to physical book publication</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>Subscription model — when LTV justifies recurring charge</div>
+    <div class="deferred-row"><i class="ti ti-lock" aria-hidden="true"></i>YouTube channel — after website + app are established</div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-stack" aria-hidden="true"></i><span class="section-title">Tech stack</span></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Website framework <span class="tag tag-new" style="margin-left:4px;">new</span></div><div class="card-value">Next.js + Vercel</div><div class="card-sub">SEO-optimized, fast, free hosting tier.</div></div>
+    <div class="card"><div class="card-label">App framework</div><div class="card-value">React Native + Expo</div><div class="card-sub">iOS + Android. OTA content updates.</div></div>
+    <div class="card"><div class="card-label">Database + auth</div><div class="card-value">Firebase</div><div class="card-sub">Firestore + Firebase Auth. COPPA-compliant. Shared between app and website where needed.</div></div>
+    <div class="card"><div class="card-label">Image delivery</div><div class="card-value">Cloudinary</div><div class="card-sub">Shared across app, website, blog. One library, multiple consumers.</div></div>
+    <div class="card"><div class="card-label">Payments</div><div class="card-value">RevenueCat</div><div class="card-sub">In-app purchases. Free until $2,500 MRR.</div></div>
+    <div class="card"><div class="card-label">Animation</div><div class="card-value">Lottie</div><div class="card-sub">App only. EWW-meter, unlocks, transitions, Contamination Event.</div></div>
+    <div class="card"><div class="card-label">Content CMS <span class="tag tag-new" style="margin-left:4px;">new</span></div><div class="card-value">Notion → MDX</div><div class="card-sub">Author blog in Notion, sync to MDX for the website.</div></div>
+    <div class="card"><div class="card-label">Email <span class="tag tag-new" style="margin-left:4px;">new</span></div><div class="card-value">MailerLite</div><div class="card-sub">Newsletter capture on website, parent communications.</div></div>
+    <div class="card"><div class="card-label">Analytics</div><div class="card-value">Firebase + Vercel Analytics</div><div class="card-sub">App + website behavior data.</div></div>
+  </div>
+</div>
+
+<!-- DECISIONS TRACKER -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-alert-circle" aria-hidden="true"></i><span class="section-title">Decisions tracker</span></div>
+  <div class="full-card">
+    <div class="status-row"><span class="status-label">Primary domain: ewwniverse.com</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Secondary domain: dricky.com — redirects to primary, becomes Lab Notebook landing page later</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Website ships before app — establishes brand presence first</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Website tech: Next.js + Vercel + Cloudinary + MailerLite + Notion→MDX for blog</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Website aesthetic: warm parchment, book-aligned (separate from app's dark lab)</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">V1 launch book: Creepy Creatures (changed from Tiny World)</span><span class="status-badge badge-new">changed</span></div>
+    <div class="status-row"><span class="status-label">Illustration library catalogued — Dr. Icky poses + lab elements + badges + textures + slime + backgrounds + specimens</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Cloudinary folder structure expanded for shared brand asset library</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Build sequence: assets → website → app → expansion</span><span class="status-badge badge-new">new</span></div>
+    <div class="status-row"><span class="status-label">Fonts: Cantora One (display) + Lexend Deca (body) for both app and website</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Sound inventory: 22 assets defined</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Design language: app is dark lab, website is warm parchment</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">App color palette: #0E1210 background, #5DB84A slime green accent, #E6E0CC text</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Full Lab Pass: €3.99 launch → €4.99 after 50+ reviews + 4.2+ rating</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Store commission 15% both stores. Enroll Apple Small Business Program first.</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">COPPA auth: parent gate at account creation, not install</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">EWW-meter: 3 tiers (60/80/100), viscous arc animation, 3 meter sound variants</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Book bundle: one shared code per book, print only, one-book unlock per code</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Image type at book level — Creatures + Skeletons PNG, other 4 JPG</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">No ads, no subscription at launch</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Creature Builder, Field Missions, weekly drops, YouTube all deferred</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Lab Notebook module deferred to v2</span><span class="status-badge badge-decided">decided</span></div>
+    <div class="status-row"><span class="status-label">Firestore schema and asset naming conventions decided</span><span class="status-badge badge-decided">decided</span></div>
+  </div>
+</div>
+
+</div>
