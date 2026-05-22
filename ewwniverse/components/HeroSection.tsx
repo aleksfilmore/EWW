@@ -37,7 +37,7 @@ export default function HeroSection() {
         {/* ── RESPONSIVE LAYOUT ───────────────────────────────────── */}
         {/* Mobile: single column stack | Desktop: 44/56 grid         */}
         <div
-          className="grid grid-cols-1 md:grid-cols-[44%_56%]"
+          className="grid grid-cols-1 md:grid-cols-[38%_62%]"
           style={{ minHeight: "86vh" }}
         >
 
@@ -45,8 +45,8 @@ export default function HeroSection() {
           <div
             className="flex items-center py-14 md:py-20 relative z-10 order-1"
             style={{
-              paddingLeft: "clamp(1.75rem,5vw,6rem)",
-              paddingRight: "clamp(0.75rem,1.5vw,1.5rem)",
+              paddingLeft: "clamp(3.5rem,10vw,10rem)",
+              paddingRight: "1rem",
             }}
           >
             <motion.div
@@ -167,7 +167,8 @@ export default function HeroSection() {
             className="relative flex items-end justify-start order-2"
             style={{
               paddingTop: 44,
-              minHeight: "56vw",  /* mobile fallback height */
+              minHeight: "56vw",
+              marginLeft: "-2%",   /* bridge remaining gap between text and Dr. Icky */
             }}
           >
             {/* Only show decorative elements on desktop */}
