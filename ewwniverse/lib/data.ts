@@ -117,7 +117,7 @@ export const books: Book[] = [
     title: "Creepy Creatures",
     description: "75 of nature's most revolting animals. Spiders, parasites, venomous insects, and things that should not exist.",
     coverFile: "Creepy Creatures book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0FGDKTNGX",
     imageType: "png",
   },
   {
@@ -125,7 +125,7 @@ export const books: Book[] = [
     title: "Creepy Earth",
     description: "The planet is weirder than you think. Boiling lakes, carnivorous plants, and rocks that move by themselves.",
     coverFile: "Creepy Earth book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0G4RGJ4Q7",
     imageType: "jpg",
   },
   {
@@ -133,7 +133,7 @@ export const books: Book[] = [
     title: "Creepy Dinosaurs",
     description: "Not the dinosaurs from the movies. The actual disgusting, terrifying, stranger-than-fiction ones.",
     coverFile: "Creepy Dinosaurs book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0FKY1K94X",
     imageType: "jpg",
   },
   {
@@ -141,7 +141,7 @@ export const books: Book[] = [
     title: "Creepy Deep Sea",
     description: "95% of the ocean is unexplored. The 5% we have seen is already more than enough.",
     coverFile: "Creepy Deep Sea book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0GYLW9TPD",
     imageType: "jpg",
   },
   {
@@ -149,7 +149,7 @@ export const books: Book[] = [
     title: "Creepy Skeletons",
     description: "Bones, exoskeletons, and the strange architecture of things that were once alive.",
     coverFile: "Creepy Skeletons book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0GXHNSWFC",
     imageType: "png",
   },
   {
@@ -157,7 +157,7 @@ export const books: Book[] = [
     title: "Creepy Tiny World",
     description: "The microscopic universe on your skin, in your water, and in the air you're breathing right now.",
     coverFile: "Creepy Tiny World book cover.png",
-    amazonUrl: "https://amazon.com",
+    amazonUrl: "https://www.amazon.com/dp/B0H25MRM53",
     imageType: "jpg",
   },
 ];
