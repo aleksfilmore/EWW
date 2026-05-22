@@ -39,7 +39,7 @@ export default function DrIckyPage() {
   return (
     <>
       {/* ── CLASSIFIED HEADER ─────────────────────────────────── */}
-      <section className="relative overflow-hidden py-16" style={{ background: "#1A3D0E" }}>
+      <section className="dark-section relative overflow-hidden py-16" style={{ background: "#1A3D0E" }}>
         {/* Lab tile background */}
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
@@ -65,7 +65,7 @@ export default function DrIckyPage() {
               <img
                 src="/images/ui/Classified%20stamp.png"
                 alt="Classified"
-                className="w-16 h-16 object-contain opacity-90"
+                className="illustration w-16 h-16 object-contain opacity-90"
               />
               <span className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A]">
                 Personnel file — level 3 clearance
@@ -105,7 +105,7 @@ export default function DrIckyPage() {
             <img
               src="/images/ui/Dr.%20Icky%20holding%20magnifying%20glass.png"
               alt="Dr. Icky"
-              className="relative w-56 md:w-72 object-contain"
+              className="illustration relative w-56 md:w-72 object-contain"
             />
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function DrIckyPage() {
                   <img
                     src={`/images/ui/${c.image}`}
                     alt={c.imageAlt}
-                    className="w-40 h-40 object-contain"
+                    className="illustration w-40 h-40 object-contain"
                   />
                 </div>
 

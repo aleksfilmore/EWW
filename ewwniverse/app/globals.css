@@ -64,14 +64,15 @@ body {
   color: #fff;
 }
 
-/* Transparent PNG illustrations on parchment backgrounds.
-   mix-blend-mode: multiply makes white pixels take on the background
-   color, eliminating any visible white/grey box around the image. */
+/* All character/UI illustrations blend with parchment backgrounds.
+   multiply: white pixels become the background color.
+   This eliminates visible white/grey boxes around transparent PNGs. */
 .illustration {
   mix-blend-mode: multiply;
+  background: transparent;
 }
 
-/* Illustrations on dark/green backgrounds need isolation instead */
-.illustration-dark {
-  isolation: isolate;
+/* Sections with dark backgrounds opt-out — multiply on dark = near-black */
+.dark-section .illustration {
+  mix-blend-mode: normal;
 }

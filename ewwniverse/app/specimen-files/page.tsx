@@ -48,7 +48,7 @@ export default function SpecimenFilesPage() {
             <img
               src="/images/dr-icky/Dr.%20Icky%20carrying%20evidence%20folder.png"
               alt="Dr. Icky carrying field notes"
-              className="w-40 md:w-48 object-contain"
+              className="illustration w-40 md:w-48 object-contain"
             />
           </div>
         </div>

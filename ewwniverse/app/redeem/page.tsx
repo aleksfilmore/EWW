@@ -15,7 +15,7 @@ export default function RedeemPage() {
             <img
               src="/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png"
               alt="Dr. Icky stamp"
-              className="w-16 mx-auto mb-5 object-contain"
+              className="illustration w-16 mx-auto mb-5 object-contain"
             />
             <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
               Book bundle

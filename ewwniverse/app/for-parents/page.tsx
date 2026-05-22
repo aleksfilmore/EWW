@@ -61,7 +61,7 @@ export default function ForParentsPage() {
             <img
               src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
               alt="Dr. Icky with documentation"
-              className="w-40 md:w-48 object-contain"
+              className="illustration w-40 md:w-48 object-contain"
             />
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function ForParentsPage() {
               { icon: "/images/ui/Green%20Risk%20sticker.png", title: "COPPA compliant", desc: "Verifiable parental consent before any account creation. No date of birth collected. No tracking." },
             ].map((item) => (
               <div key={item.title} className="flex flex-col gap-3 rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-5">
-                <img src={item.icon} alt="" aria-hidden="true" className="w-12 h-12 object-contain" />
+                <img src={item.icon} alt="" aria-hidden="true" className="illustration w-12 h-12 object-contain" />
                 <h3
                   className="text-base text-[#1A3D0E]"
                   style={{ fontFamily: '"Cantora One", Georgia, serif' }}

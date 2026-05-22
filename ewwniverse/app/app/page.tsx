@@ -64,7 +64,7 @@ export default function AppPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#1A3D0E] min-h-[70vh] flex items-center relative overflow-hidden">
+      <section className="dark-section bg-[#1A3D0E] min-h-[70vh] flex items-center relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -99,7 +99,7 @@ export default function AppPage() {
               <img
                 src="/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png"
                 alt="Approved by Dr. Icky"
-                className="w-14 h-14 object-contain opacity-90"
+                className="illustration w-14 h-14 object-contain opacity-90"
               />
               <p className="text-xs text-[#8A9E86]">
                 No subscription. No ads. One-time unlock.
@@ -115,14 +115,14 @@ export default function AppPage() {
                   key={pct}
                   src={`/images/ui/EWW-meter%20${pct}%25.png`}
                   alt={`EWW-meter ${pct}%`}
-                  className="w-28 object-contain"
+                  className="illustration w-28 object-contain"
                 />
               ))}
             </div>
             <img
               src="/images/dr-icky/Dr.%20Icky%20shocked%20by%20gross%20goo.png"
               alt="Dr. Icky reacting to something revolting"
-              className="w-44 md:w-52 object-contain"
+              className="illustration w-44 md:w-52 object-contain"
             />
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function AppPage() {
                   src={f.icon}
                   alt=""
                   aria-hidden="true"
-                  className="w-12 h-12 object-contain"
+                  className="illustration w-12 h-12 object-contain"
                 />
                 <h3
                   className="text-base text-[#1A3D0E]"
