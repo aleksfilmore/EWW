@@ -27,7 +27,7 @@ export default function Nav() {
             src="/images/ui/slime%20splat.png"
             alt=""
             aria-hidden="true"
-            className="w-8 h-8 object-contain"
+            className="w-8 h-8 object-contain illustration"
           />
           <span
             className="text-[#1A3D0E] text-xl leading-none"

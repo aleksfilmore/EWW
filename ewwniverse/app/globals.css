@@ -51,10 +51,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-display);
-  color: #1A3D0E;
-  line-height: 1.15;
+@layer base {
+  h1, h2, h3, h4, h5 {
+    font-family: "Cantora One", Georgia, serif;
+    color: #1A3D0E;
+    line-height: 1.15;
+  }
 }
 
 ::selection {
@@ -62,4 +64,14 @@ h1, h2, h3, h4, h5 {
   color: #fff;
 }
 
-/* Remove default dark mode override — warm parchment only */
+/* Transparent PNG illustrations on parchment backgrounds.
+   mix-blend-mode: multiply makes white pixels take on the background
+   color, eliminating any visible white/grey box around the image. */
+.illustration {
+  mix-blend-mode: multiply;
+}
+
+/* Illustrations on dark/green backgrounds need isolation instead */
+.illustration-dark {
+  isolation: isolate;
+}

@@ -129,14 +129,6 @@ export default function BooksPage() {
                       >
                         Buy on Amazon
                       </a>
-                      <a
-                        href={book.amazonUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="border border-[#C8B89A] hover:border-[#5DB84A] text-[#3D2B1F] font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
-                      >
-                        Other retailers
-                      </a>
                     </div>
                   </div>
                 </div>

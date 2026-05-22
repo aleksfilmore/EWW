@@ -40,7 +40,7 @@ export default function BookCard({ book, featured }: BookCardProps) {
           rel="noopener noreferrer"
           className="inline-block bg-[#5DB84A] hover:bg-[#3D8C2A] text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors text-center"
         >
-          Get the Book
+          Buy on Amazon
         </a>
       </div>
     </div>

@@ -19,7 +19,7 @@ export default function CreatureCard({ creature, locked }: CreatureCardProps) {
           <img
             src={creatureImagePath(creature.name)}
             alt={creature.name}
-            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 illustration"
             loading="lazy"
           />
         )}
