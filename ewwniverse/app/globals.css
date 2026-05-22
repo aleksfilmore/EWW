@@ -64,18 +64,21 @@ body {
   color: #fff;
 }
 
-/* All character/UI illustrations.
-   mix-blend-mode: multiply removes white PNG backgrounds by blending
-   white pixels with the background colour (white × bg = bg).
-   No CSS background is set so transparent PNG areas show straight through
-   to whatever is rendered behind the element — including texture overlays —
-   which eliminates the visible rectangular box artefact. */
+/* UI/decorative illustrations that still have white PNG backgrounds.
+   multiply: white × background = background, cleanly removing the white. */
 .illustration {
   mix-blend-mode: multiply;
 }
 
-/* Dark sections: normal blend so illustrations render at full opacity
-   without darkening against the dark green surface. */
-.dark-section .illustration {
+/* Character illustrations with truly transparent PNG backgrounds.
+   multiply is wrong here — it would darken the illustration's own colours
+   (white lab coat → parchment, etc.). Normal blend = correct rendering. */
+.illustration-character {
+  mix-blend-mode: normal;
+}
+
+/* Dark sections: reset both so nothing ghosts onto dark green. */
+.dark-section .illustration,
+.dark-section .illustration-character {
   mix-blend-mode: normal;
 }

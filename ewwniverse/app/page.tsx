@@ -76,7 +76,7 @@ export default function Home() {
             <img
               src="/images/ui/Dr.%20Icky%20holding%20EWW-meter.png"
               alt="Dr. Icky holding the EWW-meter"
-              className="illustration relative w-56 md:w-72 lg:w-80 object-contain flex-shrink-0"
+              className="illustration-character relative w-56 md:w-72 lg:w-80 object-contain flex-shrink-0"
             />
             {/* Floating specimen card */}
             <div className="flex-shrink-0 w-40 rounded-xl border-2 border-[#5DB84A] bg-[#FDFAF3] overflow-hidden shadow-lg mb-8 rotate-2">
@@ -210,8 +210,8 @@ export default function Home() {
               <img src="/images/ui/EWW-meter%2080%25.png" alt="EWW-meter 80%" className="illustration w-32 object-contain" />
               <img src="/images/ui/EWW-meter%20100%25.png" alt="EWW-meter 100%" className="illustration w-32 object-contain" />
             </div>
-            <img src="/images/ui/Dr.%20Icky%20holding%20specimen%20jar.png" alt="Dr. Icky with a specimen"
-              className="illustration w-40 md:w-48 object-contain self-end" />
+            <img src="/images/dr-icky/Dr.%20Icky%20holding%20specimen%20jar.png" alt="Dr. Icky with a specimen"
+              className="illustration-character w-40 md:w-48 object-contain self-end" />
           </div>
         </div>
       </section>
@@ -258,8 +258,8 @@ export default function Home() {
           className="illustration absolute left-0 top-0 h-full opacity-10 pointer-events-none"
           style={{ objectFit: "cover" }} />
         <div className="relative max-w-2xl mx-auto px-4 text-center">
-          <img src="/images/ui/Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png" alt="Dr. Icky has an announcement"
-            className="illustration w-24 mx-auto mb-4 object-contain" />
+          <img src="/images/dr-icky/Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png" alt="Dr. Icky has an announcement"
+            className="illustration-character w-24 mx-auto mb-4 object-contain" />
           <h2 className="text-2xl text-[#1A3D0E] mb-3">Stay classified</h2>
           <p className="text-sm text-[#7A6652] mb-6 leading-relaxed">
             New specimen files, book news, and app launch updates. No spam. Dr. Icky does not tolerate spam.

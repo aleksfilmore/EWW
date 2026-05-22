@@ -103,9 +103,9 @@ export default function DrIckyPage() {
               className="absolute inset-0 w-full h-full object-contain opacity-10 pointer-events-none"
             />
             <img
-              src="/images/ui/Dr.%20Icky%20holding%20magnifying%20glass.png"
+              src="/images/dr-icky/Dr.%20Icky%20holding%20magnifying%20glass.png"
               alt="Dr. Icky"
-              className="illustration relative w-56 md:w-72 object-contain"
+              className="illustration-character relative w-56 md:w-72 object-contain"
             />
           </div>
         </div>
@@ -148,9 +148,9 @@ export default function DrIckyPage() {
                 {/* Illustration */}
                 <div className="sm:w-56 flex-shrink-0 flex items-end justify-center pt-6 px-4" style={{ background: c.bg }}>
                   <img
-                    src={`/images/ui/${c.image}`}
+                    src={`/images/dr-icky/${c.image}`}
                     alt={c.imageAlt}
-                    className="illustration w-40 h-40 object-contain"
+                    className="illustration-character w-40 h-40 object-contain"
                   />
                 </div>
 

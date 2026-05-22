@@ -142,7 +142,7 @@ export default function BooksPage() {
           <img
             src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
             alt="Dr. Icky with a clipboard"
-            className="illustration w-28 object-contain"
+            className="illustration-character w-28 object-contain"
           />
           <div className="flex flex-col gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#854F0B]">

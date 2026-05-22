@@ -44,7 +44,7 @@ export default function Footer() {
             <img
               src="/images/dr-icky/Dr.%20Icky%20giving%20thumbs%20up.png"
               alt="Dr. Icky gives his approval"
-              className="illustration w-28 object-contain"
+              className="illustration-character w-28 object-contain"
             />
             <Link
               href="/for-parents"

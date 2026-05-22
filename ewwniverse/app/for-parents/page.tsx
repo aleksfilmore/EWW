@@ -61,7 +61,7 @@ export default function ForParentsPage() {
             <img
               src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
               alt="Dr. Icky with documentation"
-              className="illustration w-40 md:w-48 object-contain"
+              className="illustration-character w-40 md:w-48 object-contain"
             />
           </div>
         </div>

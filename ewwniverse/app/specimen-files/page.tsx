@@ -46,9 +46,9 @@ export default function SpecimenFilesPage() {
           </div>
           <div className="flex justify-end">
             <img
-              src="/images/dr-icky/Dr.%20Icky%20carrying%20evidence%20folder.png"
-              alt="Dr. Icky carrying field notes"
-              className="illustration w-40 md:w-48 object-contain"
+              src="/images/dr-icky/Dr.%20Icky%20peeking%20from%20behind%20a%20panel.png"
+              alt="Dr. Icky investigating"
+              className="illustration-character w-40 md:w-48 object-contain"
             />
           </div>
         </div>

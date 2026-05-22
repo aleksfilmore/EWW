@@ -122,7 +122,7 @@ export default function AppPage() {
             <img
               src="/images/dr-icky/Dr.%20Icky%20shocked%20by%20gross%20goo.png"
               alt="Dr. Icky reacting to something revolting"
-              className="illustration w-44 md:w-52 object-contain"
+              className="illustration-character w-44 md:w-52 object-contain"
             />
           </div>
         </div>
