@@ -1,68 +1,113 @@
 import Link from "next/link";
 
+const footerLinks = [
+  { href: "/books",          label: "The Books" },
+  { href: "/specimen-files", label: "Specimen Files" },
+  { href: "/app",            label: "The App" },
+  { href: "/dr-icky",        label: "About Dr. Icky" },
+  { href: "/for-parents",    label: "For Parents & Educators" },
+  { href: "/redeem",         label: "Redeem a Code" },
+];
+
+const legalLinks = [
+  { href: "/privacy", label: "Privacy" },
+  { href: "/cookies", label: "Cookies" },
+  { href: "/coppa",   label: "COPPA" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-[#EDE5CE] border-t border-[#C8B89A] mt-0">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+    <footer style={{ backgroundColor: "#080808" }} className="relative overflow-hidden border-t border-[#5DB84A]/15">
+
+      {/* Bug trail top decoration */}
+      <div className="w-full overflow-hidden h-12 relative">
+        <img
+          src="/images/ui/Bug%20trail%20dotted%20path.png"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover opacity-30"
+          style={{ mixBlendMode: "screen" }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
 
-          {/* Brand col */}
-          <div className="flex flex-col gap-3">
-            <span
-              className="text-[#1A3D0E] text-2xl"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
-            >
-              EWW-niverse
-            </span>
-            <p className="text-sm text-[#7A6652] leading-relaxed max-w-xs">
-              Dr. Icky&apos;s collection of the grossest, weirdest, most revolting facts in the known universe. For kids who like facts too weird for normal science apps.
+          {/* Brand column */}
+          <div className="flex flex-col gap-4">
+            {/* Custom logo */}
+            <Link href="/">
+              <img
+                src="/images/ui/EWWniverse.png"
+                alt="EWW-niverse"
+                className="h-12 w-auto object-contain"
+                style={{ mixBlendMode: "screen" }}
+              />
+            </Link>
+            <p className="text-sm text-white/40 leading-relaxed max-w-xs">
+              Dr. Icky&apos;s collection of the grossest, weirdest, most revolting facts in the known universe.
+              For kids who like facts too weird for normal science apps.
             </p>
+            {/* EWW gross beaker decoration */}
+            <img
+              src="/images/ui/EWW%20gross.png"
+              alt=""
+              aria-hidden="true"
+              className="w-16 object-contain mt-1"
+              style={{ mixBlendMode: "screen" }}
+            />
           </div>
 
-          {/* Links col */}
+          {/* Links column */}
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#7A6652] mb-2">Explore</span>
-            {[
-              { href: "/books", label: "The Books" },
-              { href: "/app", label: "The App" },
-              { href: "/specimen-files", label: "Specimen Files" },
-              { href: "/dr-icky", label: "About Dr. Icky" },
-              { href: "/redeem", label: "Redeem a Code" },
-            ].map((l) => (
+            <span
+              className="text-xs font-bold uppercase tracking-widest mb-3"
+              style={{ color: "#5DB84A", fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+            >
+              Explore
+            </span>
+            {footerLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-sm text-[#3D2B1F] hover:text-[#5DB84A] transition-colors w-fit"
+                className="text-sm text-white/50 hover:text-[#5DB84A] transition-colors w-fit"
               >
                 {l.label}
               </Link>
             ))}
           </div>
 
-          {/* Dr. Icky image + parents link */}
-          <div className="flex flex-col gap-4">
+          {/* Dr. Icky column */}
+          <div className="flex flex-col items-start md:items-end gap-4">
             <img
-              src="/images/dr-icky/Dr.%20Icky%20giving%20thumbs%20up.png"
-              alt="Dr. Icky gives his approval"
-              className="illustration-character w-28 object-contain"
+              src="/images/ui/EWWniverse%20Dr%20Icky.png"
+              alt="Dr. Icky — EWW-niverse"
+              className="w-36 md:w-44 object-contain"
+              style={{ mixBlendMode: "screen" }}
             />
-            <Link
-              href="/for-parents"
-              className="text-sm text-[#7A6652] hover:text-[#5DB84A] transition-colors underline underline-offset-2"
-            >
-              For Parents &amp; Educators
-            </Link>
+            <div className="flex flex-col gap-2 md:items-end">
+              <span className="text-xs text-white/30 uppercase tracking-widest">Approved by Dr. Icky</span>
+              <img
+                src="/images/ui/Dr.%20Icky%20Approved%20badge.png"
+                alt="Approved by Dr. Icky"
+                className="w-16 object-contain"
+                style={{ mixBlendMode: "screen" }}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-[#C8B89A] mt-10 pt-6 flex flex-col sm:flex-row gap-2 items-center justify-between">
-          <p className="text-xs text-[#7A6652]">
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
+          <p className="text-xs text-white/25">
             &copy; {new Date().getFullYear()} EWW-niverse. All rights reserved.
           </p>
-          <div className="flex gap-4 text-xs text-[#7A6652]">
-            <Link href="/privacy" className="hover:text-[#5DB84A] transition-colors">Privacy</Link>
-            <Link href="/cookies" className="hover:text-[#5DB84A] transition-colors">Cookies</Link>
-            <Link href="/coppa" className="hover:text-[#5DB84A] transition-colors">COPPA</Link>
+          <div className="flex gap-5 text-xs text-white/30">
+            {legalLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="hover:text-[#5DB84A] transition-colors">
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

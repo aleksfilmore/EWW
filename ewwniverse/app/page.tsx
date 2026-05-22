@@ -16,121 +16,153 @@ const categoryLabels: Record<string, string> = {
 export default function Home() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#F0EAD6] min-h-[90vh] flex items-center">
-        {/* Notebook paper texture */}
-        <div
-          className="absolute inset-0 opacity-40 pointer-events-none"
-          style={{ backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)", backgroundSize: "cover" }}
-        />
-        {/* Slime corner decorations */}
+      {/* ── HERO — fully custom dark lab ─────────────────────────────── */}
+      <section className="relative overflow-hidden flex items-center" style={{ backgroundColor: "#050A02", minHeight: "92vh" }}>
+
+        {/* Background: gross science lab illustration — very faint */}
+        <div className="absolute inset-0 pointer-events-none hidden md:block" style={{ opacity: 0.04 }}>
+          <img src="/images/ui/Illustration%20gross%20science%202.png" alt=""
+            className="w-full h-full object-cover object-center" />
+        </div>
+
+        {/* Slime drip top */}
+        <img src="/images/ui/Slime%20drip%20top%20border%2C%20full%20width.png" alt="" aria-hidden="true"
+          className="absolute top-0 left-0 w-full pointer-events-none"
+          style={{ height: 32, objectFit: "cover", mixBlendMode: "screen", opacity: 0.6 }} />
+
+        {/* Corner + scatter decorations */}
         <img src="/images/ui/Corner%20slime%20blob%20cluster.png" alt="" aria-hidden="true"
-          className="illustration absolute top-0 right-0 w-64 md:w-96 pointer-events-none" style={{ transform: "scaleX(-1)" }} />
+          className="absolute top-0 right-0 w-56 md:w-72 pointer-events-none"
+          style={{ transform: "scaleX(-1)", mixBlendMode: "screen", opacity: 0.5 }} />
         <img src="/images/ui/slime-drip-blob.png" alt="" aria-hidden="true"
-          className="illustration absolute top-0 left-0 w-32 md:w-44 pointer-events-none opacity-70 -rotate-12" />
-        <img src="/images/ui/Slime%20splatter%20cluster.png" alt="" aria-hidden="true"
-          className="illustration absolute bottom-4 left-4 w-32 pointer-events-none opacity-50" />
-        {/* Bug scatter */}
-        <img src="/images/ui/bug.png" alt="" aria-hidden="true"
-          className="illustration absolute top-20 left-8 w-8 pointer-events-none opacity-30 rotate-12" />
+          className="absolute top-4 left-4 md:left-8 w-24 md:w-32 pointer-events-none"
+          style={{ mixBlendMode: "screen", opacity: 0.5, transform: "rotate(-12deg)" }} />
         <img src="/images/ui/cartoon-fly.png" alt="" aria-hidden="true"
-          className="illustration-character absolute bottom-36 right-16 w-12 pointer-events-none opacity-80 -rotate-12" />
+          className="illustration-character absolute top-20 right-8 w-10 pointer-events-none"
+          style={{ opacity: 0.7, transform: "rotate(-15deg)" }} />
+        <img src="/images/ui/bug.png" alt="" aria-hidden="true"
+          className="absolute bottom-24 left-6 w-7 pointer-events-none"
+          style={{ mixBlendMode: "screen", opacity: 0.35, transform: "rotate(20deg)" }} />
 
-        <div className="relative max-w-6xl mx-auto px-4 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Text */}
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#5DB84A]">☣ Dr. Icky&apos;s Laboratory</span>
-            </div>
+        <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-24 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-            {/* Hero headline — Creepster + outlined */}
-            <h1
-              className="font-creepster leading-[1.0] text-[#1A3D0E]"
-              style={{
-                fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif",
-                fontSize: "clamp(3rem, 8vw, 5.5rem)",
-              }}
-            >
-              Nature is<br />
-              <span
-                style={{
-                  color: "#5DB84A",
-                  WebkitTextStroke: "2px #1A3D0E",
-                  paintOrder: "stroke fill",
-                }}
-              >
-                Disgusting.
+            {/* ── LEFT: headline + CTAs ──────────────────────── */}
+            <div className="flex flex-col gap-7 relative z-10">
+
+              {/* Lab label */}
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#5DB84A" }}>
+                ☣ Dr. Icky&apos;s Laboratory
               </span>
-              <br />
-              <span className="text-[#1A3D0E]">And we love it.</span>
-            </h1>
 
-            <p className="text-base text-[#7A6652] leading-relaxed max-w-md">
-              Gross science books, weird facts, creepy creatures, and slime-soaked missions for curious kids.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link href="/app"
-                className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm uppercase tracking-wide">
-                Get the Free Lab Kit
-              </Link>
-              <Link href="/books"
-                className="bg-[#6B3FD4] hover:bg-[#4E2EA8] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm uppercase tracking-wide">
-                Explore the Books
-              </Link>
-            </div>
-
-            {/* Trust stamps */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <img src="/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png" alt="Approved by Dr. Icky"
-                className="illustration h-10 w-auto object-contain opacity-80" />
-              <img src="/images/ui/Do%20Not%20Lick%20stamp.png" alt="Do not lick"
-                className="illustration h-10 w-auto object-contain opacity-80" />
-              <img src="/images/ui/Junior%20Grossologist%20badge.png" alt="Junior Grossologist badge"
-                className="illustration h-10 w-auto object-contain opacity-80" />
-            </div>
-          </div>
-
-          {/* Dr. Icky + floating card */}
-          <div className="flex justify-center md:justify-end items-end relative gap-2">
-            <img
-              src="/images/ui/Dr.%20Icky%20holding%20EWW-meter.png"
-              alt="Dr. Icky holding the EWW-meter"
-              className="illustration-character relative w-56 md:w-72 lg:w-80 object-contain flex-shrink-0"
-            />
-            {/* Floating specimen card — larger, more prominent */}
-            <div
-              className="flex-shrink-0 w-44 md:w-52 rounded-2xl overflow-hidden shadow-2xl mb-8 rotate-3"
-              style={{ border: "3px solid #E53535", backgroundColor: "#2A0A0A" }}
-            >
-              <div className="relative flex items-center justify-center overflow-hidden"
-                style={{
-                  height: 180,
-                  backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
-                  backgroundSize: "cover",
-                  backgroundBlendMode: "multiply",
-                  backgroundColor: "#EDE5CE",
-                }}>
-                <span className="absolute top-2 left-2 text-[9px] font-black uppercase tracking-wide bg-[#6B3FD4] text-white px-2 py-0.5 rounded-full z-10">
-                  EPIC
-                </span>
-                <span className="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wide bg-[#E53535] text-white px-2 py-0.5 rounded-full z-10">
-                  EWW 100
-                </span>
-                <img src={creatureImagePath(heroSpecimen.name)} alt={heroSpecimen.name}
-                  className="illustration w-full h-full object-contain relative z-0 scale-110" />
+              {/* Headline with slime backing */}
+              <div className="relative">
+                <img
+                  src="/images/ui/Big%20slime%20title%20backing%20shape.png"
+                  alt="" aria-hidden="true"
+                  className="absolute pointer-events-none select-none"
+                  style={{
+                    top: "50%", left: "-5%",
+                    width: "110%", transform: "translateY(-50%)",
+                    opacity: 0.35, mixBlendMode: "screen",
+                  }}
+                />
+                <h1
+                  className="font-creepster leading-[0.95] relative z-10"
+                  style={{
+                    fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif",
+                    fontSize: "clamp(3.2rem, 9vw, 6rem)",
+                    color: "#F7F2E4",
+                  }}
+                >
+                  Nature is<br />
+                  <span style={{
+                    color: "#6ED44F",
+                    WebkitTextStroke: "1.5px #3D8C2A",
+                    paintOrder: "stroke fill",
+                  }}>
+                    Disgusting.
+                  </span>
+                  <br />
+                  <span style={{ color: "#F7F2E4" }}>And we love it.</span>
+                </h1>
               </div>
-              <div className="p-3">
-                <p className="font-creepster text-[#F7F2E4] text-sm leading-snug"
-                  style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>
-                  {heroSpecimen.name}
-                </p>
-                <p className="text-[9px] text-[#E53535] font-bold uppercase tracking-wider mt-1">Specimen #001</p>
-                {/* Dot stats */}
-                <div className="flex gap-1 mt-2">
-                  {[1,2,3,4,5].map((i) => (
-                    <span key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: "#E53535" }} />
-                  ))}
+
+              <p className="text-sm md:text-base leading-relaxed max-w-md" style={{ color: "rgba(247,242,228,0.55)" }}>
+                Gross science books, weird facts, creepy creatures, and slime-soaked missions for curious kids.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/app"
+                  className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm uppercase tracking-wide shadow-lg">
+                  Get the Free Lab Kit
+                </Link>
+                <Link href="/books"
+                  className="bg-[#6B3FD4] hover:bg-[#4E2EA8] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm uppercase tracking-wide shadow-lg">
+                  Explore the Books
+                </Link>
+              </div>
+
+              {/* Stamp badges — screen blend on dark bg */}
+              <div className="flex flex-wrap items-center gap-3">
+                <img src="/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png" alt="Approved by Dr. Icky"
+                  className="h-11 w-auto object-contain" style={{ mixBlendMode: "screen" }} />
+                <img src="/images/ui/Do%20Not%20Lick%20stamp.png" alt="Do not lick"
+                  className="h-11 w-auto object-contain" style={{ mixBlendMode: "screen" }} />
+                <img src="/images/ui/Junior%20Grossologist%20badge.png" alt="Junior Grossologist"
+                  className="h-11 w-auto object-contain" style={{ mixBlendMode: "screen" }} />
+              </div>
+            </div>
+
+            {/* ── RIGHT: custom illustrations ──────────────────── */}
+            <div className="relative flex justify-center md:justify-end" style={{ minHeight: 480 }}>
+
+              {/* EWWmeter — top, floating */}
+              <img
+                src="/images/ui/EWWmeter.png"
+                alt="The EWW-meter"
+                className="absolute top-0 right-0 md:right-4 w-44 md:w-52 object-contain z-10"
+                style={{ mixBlendMode: "screen" }}
+              />
+
+              {/* EWWniverse Dr Icky — main character, bottom-center */}
+              <img
+                src="/images/ui/EWWniverse%20Dr%20Icky.png"
+                alt="Dr. Icky — EWW-niverse"
+                className="absolute bottom-0 left-1/2 md:left-8 w-60 md:w-72 lg:w-80 object-contain z-20"
+                style={{ mixBlendMode: "screen", transform: "translateX(-50%) md:translateX(0)" }}
+              />
+
+              {/* Creature specimen card — front right */}
+              <div
+                className="absolute bottom-8 right-0 w-36 md:w-44 rounded-2xl overflow-hidden z-30"
+                style={{ border: "2.5px solid #E53535", backgroundColor: "#2A0A0A", transform: "rotate(4deg)", boxShadow: "0 20px 40px rgba(0,0,0,0.8)" }}
+              >
+                <div className="relative flex items-center justify-center overflow-hidden"
+                  style={{
+                    height: 144,
+                    backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
+                    backgroundSize: "cover",
+                    backgroundBlendMode: "multiply",
+                    backgroundColor: "#EDE5CE",
+                  }}>
+                  <span className="absolute top-1.5 left-1.5 text-[8px] font-black uppercase tracking-wide bg-[#6B3FD4] text-white px-1.5 py-0.5 rounded-full z-10">EPIC</span>
+                  <span className="absolute top-1.5 right-1.5 text-[8px] font-black uppercase tracking-wide bg-[#E53535] text-white px-1.5 py-0.5 rounded-full z-10">EWW 100</span>
+                  <img src={creatureImagePath(heroSpecimen.name)} alt={heroSpecimen.name}
+                    className="illustration w-full h-full object-contain relative z-0 scale-105" />
+                </div>
+                <div className="p-2.5">
+                  <p className="font-creepster text-[#F7F2E4] text-xs leading-snug"
+                    style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>
+                    {heroSpecimen.name}
+                  </p>
+                  <p className="text-[8px] text-[#E53535] font-bold uppercase tracking-wider mt-0.5">Specimen #001</p>
+                  <div className="flex gap-0.5 mt-1.5">
+                    {[1,2,3,4,5].map((i) => (
+                      <span key={i} className="w-2 h-2 rounded-full" style={{ backgroundColor: "#E53535" }} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,9 +170,9 @@ export default function Home() {
         </div>
 
         {/* Slime drip bottom */}
-        <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
           <img src="/images/ui/Slime%20drip%20bottom%20border.png" alt=""
-            className="w-full block" style={{ maxHeight: 48, objectFit: "cover", objectPosition: "bottom" }} />
+            className="w-full block" style={{ maxHeight: 52, objectFit: "cover", objectPosition: "bottom", mixBlendMode: "screen" }} />
         </div>
       </section>
 
