@@ -83,53 +83,22 @@ export default function HeroSection() {
                   Nature is
                 </div>
 
-                {/* DISGUSTING. — CSS slime blob, no image */}
-                <div className="relative inline-block" style={{ margin: "0.04em 0" }}>
-                  {/* Blob shape behind text — pure CSS */}
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      inset: "-12% -4% -18% -3%",
-                      backgroundColor: "#8ADE3A",
-                      borderRadius: "48% 52% 58% 42% / 46% 54% 46% 54%",
-                      filter: "drop-shadow(0 5px 0 #4A8A0C)",
-                      zIndex: 0,
-                    }}
-                  />
-                  {/* Drip drops below */}
-                  {[
-                    { left: "12%", width: 18, height: 28, br: "0 0 50% 50%" },
-                    { left: "34%", width: 14, height: 20, br: "0 0 50% 50%" },
-                    { left: "58%", width: 22, height: 34, br: "0 0 50% 50%" },
-                    { left: "78%", width: 12, height: 18, br: "0 0 50% 50%" },
-                  ].map((d, i) => (
-                    <div
-                      key={i}
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        bottom: `calc(-18% - ${d.height}px)`,
-                        left: d.left,
-                        width: d.width,
-                        height: d.height,
-                        backgroundColor: "#8ADE3A",
-                        borderRadius: d.br,
-                        filter: "drop-shadow(0 3px 0 #4A8A0C)",
-                        zIndex: 0,
-                      }}
-                    />
-                  ))}
-                  <div className="relative z-10 uppercase" style={{
-                    fontFamily: "var(--font-boogaloo),cursive",
-                    fontSize: "clamp(3.4rem,7.5vw,8rem)",
-                    color: "#2D5A00",
-                    WebkitTextStroke: "3px #1A3300",
-                    paintOrder: "stroke fill",
-                    lineHeight: 1,
-                  }}>
-                    Disgusting.
-                  </div>
+                {/* DISGUSTING. — text styling only, no blob shape */}
+                <div className="uppercase" style={{
+                  fontFamily: "var(--font-boogaloo),cursive",
+                  fontSize: "clamp(3.4rem,7.5vw,8rem)",
+                  color: "#5DB80A",
+                  WebkitTextStroke: "3.5px #1A3300",
+                  paintOrder: "stroke fill",
+                  lineHeight: 1,
+                  textShadow: [
+                    "0 4px 0 #1A3300",
+                    "0 8px 16px rgba(26,51,0,0.25)",
+                  ].join(","),
+                  margin: "0.04em 0",
+                  display: "block",
+                }}>
+                  Disgusting.
                 </div>
 
                 <div className="uppercase" style={{
@@ -200,12 +169,12 @@ export default function HeroSection() {
             className="hidden md:flex items-end justify-center relative"
             style={{ paddingTop: 44 }}
           >
-            {/* Speech bubble */}
+            {/* Speech bubble — inset from right so it never clips */}
             <motion.div
               className="absolute z-30"
-              style={{ top: "7%", right: "5%" }}
+              style={{ top: "8%", right: "12%" }}
               initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-              animate={{ opacity: 1, scale: 1, rotate: 4 }}
+              animate={{ opacity: 1, scale: 1, rotate: 3 }}
               transition={{ delay: 1.1, type: "spring", stiffness: 240, damping: 16 }}
             >
               <div
@@ -214,7 +183,7 @@ export default function HeroSection() {
                   backgroundColor: "#FFFFE8",
                   border: "3px solid #3D7A08",
                   boxShadow: "3px 3px 0 #1A3300",
-                  maxWidth: 158,
+                  maxWidth: 152,
                 }}
               >
                 <p className="text-[11px] font-bold text-[#1A2800] leading-snug">
