@@ -18,7 +18,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#5DB84A]/20" style={{ backgroundColor: "#080808" }}>
-      <div className="max-w-6xl mx-auto px-4 h-18 flex items-center justify-between" style={{ height: "72px" }}>
+      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between" style={{ height: "88px" }}>
 
         {/* Logo — custom illustration, tilted + spring jiggle on hover */}
         <Link href="/" className="flex items-center flex-shrink-0" style={{ overflow: "visible" }}>
@@ -28,7 +28,7 @@ export default function Nav() {
             className="w-auto object-contain"
             style={{
               mixBlendMode: "screen",
-              height: "52px",
+              height: "72px",
               rotate: -5,
               translateY: 2,
               transformOrigin: "left center",
