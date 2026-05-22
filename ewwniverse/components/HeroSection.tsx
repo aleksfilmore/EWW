@@ -29,12 +29,10 @@ export default function HeroSection() {
           minHeight: "86vh",
         }}
       >
-        {/* Slime drip — top only, no side borders */}
-        <img
-          src="/images/ui/Slime%20drip%20top%20border%2C%20full%20width.png"
-          alt="" aria-hidden="true"
-          className="absolute top-0 left-0 w-full pointer-events-none z-20"
-          style={{ height: 44, objectFit: "cover" }}
+        {/* CSS top edge — thick green notebook spine line */}
+        <div
+          className="absolute top-0 left-0 w-full z-20 pointer-events-none"
+          style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }}
         />
 
         {/* ── 50/50 grid ──────────────────────────────────────────── */}
@@ -85,25 +83,50 @@ export default function HeroSection() {
                   Nature is
                 </div>
 
-                <div className="relative" style={{ lineHeight: 1, margin: "0.06em 0" }}>
-                  <img
-                    src="/images/ui/Big%20slime%20title%20backing%20shape.png"
-                    alt="" aria-hidden="true"
-                    className="absolute pointer-events-none select-none"
+                {/* DISGUSTING. — CSS slime blob, no image */}
+                <div className="relative inline-block" style={{ margin: "0.04em 0" }}>
+                  {/* Blob shape behind text — pure CSS */}
+                  <div
+                    aria-hidden="true"
                     style={{
-                      top: "50%", left: "-3%", width: "108%",
-                      transform: "translateY(-50%)",
-                      opacity: 0.78, mixBlendMode: "multiply",
+                      position: "absolute",
+                      inset: "-12% -4% -18% -3%",
+                      backgroundColor: "#8ADE3A",
+                      borderRadius: "48% 52% 58% 42% / 46% 54% 46% 54%",
+                      filter: "drop-shadow(0 5px 0 #4A8A0C)",
+                      zIndex: 0,
                     }}
                   />
+                  {/* Drip drops below */}
+                  {[
+                    { left: "12%", width: 18, height: 28, br: "0 0 50% 50%" },
+                    { left: "34%", width: 14, height: 20, br: "0 0 50% 50%" },
+                    { left: "58%", width: 22, height: 34, br: "0 0 50% 50%" },
+                    { left: "78%", width: 12, height: 18, br: "0 0 50% 50%" },
+                  ].map((d, i) => (
+                    <div
+                      key={i}
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        bottom: `calc(-18% - ${d.height}px)`,
+                        left: d.left,
+                        width: d.width,
+                        height: d.height,
+                        backgroundColor: "#8ADE3A",
+                        borderRadius: d.br,
+                        filter: "drop-shadow(0 3px 0 #4A8A0C)",
+                        zIndex: 0,
+                      }}
+                    />
+                  ))}
                   <div className="relative z-10 uppercase" style={{
                     fontFamily: "var(--font-boogaloo),cursive",
                     fontSize: "clamp(3.4rem,7.5vw,8rem)",
-                    color: "#3D7A08",
+                    color: "#2D5A00",
                     WebkitTextStroke: "3px #1A3300",
                     paintOrder: "stroke fill",
                     lineHeight: 1,
-                    textShadow: "0 5px 0 rgba(26,51,0,0.22)",
                   }}>
                     Disgusting.
                   </div>
@@ -245,12 +268,11 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Slime drip — bottom */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20" aria-hidden="true">
-          <img src="/images/ui/Slime%20drip%20bottom%20border.png" alt=""
-            className="w-full block"
-            style={{ maxHeight: 52, objectFit: "cover", objectPosition: "bottom" }} />
-        </div>
+        {/* CSS bottom edge — matches top spine line */}
+        <div
+          className="absolute bottom-0 left-0 w-full z-20 pointer-events-none"
+          style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }}
+        />
       </section>
     </div>
   );
