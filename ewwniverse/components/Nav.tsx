@@ -17,15 +17,20 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#5DB84A]/20" style={{ backgroundColor: "#080808" }}>
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 h-18 flex items-center justify-between" style={{ height: "72px" }}>
 
-        {/* Logo — custom illustration */}
-        <Link href="/" className="flex items-center hover:opacity-90 transition-opacity flex-shrink-0">
+        {/* Logo — custom illustration, tilted for brand character */}
+        <Link href="/" className="flex items-center flex-shrink-0 hover:opacity-95 transition-opacity" style={{ overflow: "visible" }}>
           <img
             src="/images/ui/EWWniverse.png"
             alt="EWW-niverse"
-            className="h-10 w-auto object-contain"
-            style={{ mixBlendMode: "screen" }}
+            className="w-auto object-contain"
+            style={{
+              mixBlendMode: "screen",
+              height: "52px",
+              transform: "rotate(-5deg) translateY(2px)",
+              transformOrigin: "left center",
+            }}
           />
         </Link>
 
