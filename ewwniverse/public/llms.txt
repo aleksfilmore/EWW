@@ -1,0 +1,67 @@
+# EWW-niverse
+
+> Dr. Icky's collection of the grossest, weirdest, most revolting facts in the known universe. Gross science books, a companion app, and field reports — for kids who like facts too weird for normal science.
+
+## What is EWW-niverse?
+
+EWW-niverse is a children's science brand built around 75 of nature's most revolting creatures, phenomena, and organisms. Every entry is scientifically accurate, rated on the EWW-meter (60 = Kinda Revolting, 80 = Super Slimy, 100 = Total Barf), and approved by Dr. Icky — the brand's fictional mad scientist character.
+
+Target audience: children aged 7 and up. The content is appropriately gross, never harmful, always factual.
+
+## Books
+
+Six published books in the Creepy Creatures series:
+
+- **Creepy Creatures** — 75 revolting animals. The flagship book. #1 in Gay Fiction and Gay Humor on Kindle at launch.
+- **Creepy Earth** — geological and environmental phenomena
+- **Creepy Dinosaurs** — the real, stranger dinosaurs
+- **Creepy Deep Sea** — deep ocean organisms and phenomena
+- **Creepy Skeletons** — skeletal biology and exoskeletons
+- **Creepy Tiny World** — microorganisms and microscale biology
+
+All books: ages 7+, available on Amazon.
+
+## The App (coming soon)
+
+iOS and Android app featuring:
+- All 75 creatures from Creepy Creatures
+- The EWW-meter (animated viscous arc)
+- A quiz mode — identify a creature from its grossest fact
+- Daily engagement loop for kids
+
+## Specimen Files
+
+A blog of field reports, specimen-of-the-week features, and reader submissions. Current posts:
+- "The Fungus That Turns Ants Into Zombies" (Ophiocordyceps unilateralis)
+- "Field Report: A Creature That Replaces Your Tongue" (Cymothoa exigua)
+- "Why the Hagfish Is the Grossest Fish That Is Not Actually a Fish"
+
+## Dr. Icky
+
+Dr. Icky is the brand's fictional character — a cheerful, slightly unhinged mad scientist who catalogues the most revolting specimens he can find. He rates everything on the EWW-meter. He has orange hair and a green-splattered lab coat.
+
+## Website structure
+
+- `/` — home page with hero, featured creatures (EWW 100 tier), books preview, app CTA, specimen files preview, email signup
+- `/books` — all 6 books with descriptions and Amazon purchase links
+- `/app` — app coming soon page with feature preview and notification signup
+- `/specimen-files` — blog index
+- `/specimen-files/[slug]` — individual field reports
+- `/dr-icky` — about Dr. Icky and the brand
+- `/for-parents` — COPPA compliance, content overview, contact information for parents and educators
+- `/redeem` — book code redemption (for bundled app access codes)
+- `/privacy` — privacy policy
+- `/cookies` — cookie policy
+- `/coppa` — COPPA compliance notice
+
+## Technical
+
+- Built with Next.js (App Router), TypeScript, Tailwind CSS v4
+- Hosted on Vercel at ewwniverse.com and dricky.com
+- Email capture via MailerLite
+- All pages are statically generated
+
+## Contact
+
+For press, licensing, or educational inquiries: contact via the website.
+For parent/guardian data requests: see /for-parents or /coppa.

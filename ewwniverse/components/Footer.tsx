@@ -60,8 +60,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} EWW-niverse. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs text-[#7A6652]">
-            <Link href="/for-parents" className="hover:text-[#5DB84A] transition-colors">Privacy</Link>
-            <Link href="/for-parents" className="hover:text-[#5DB84A] transition-colors">COPPA</Link>
+            <Link href="/privacy" className="hover:text-[#5DB84A] transition-colors">Privacy</Link>
+            <Link href="/cookies" className="hover:text-[#5DB84A] transition-colors">Cookies</Link>
+            <Link href="/coppa" className="hover:text-[#5DB84A] transition-colors">COPPA</Link>
           </div>
         </div>
       </div>
