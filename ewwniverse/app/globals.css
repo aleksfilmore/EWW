@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Cantora One";
+  src: url("/fonts/CantoraOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend Deca";
+  src: url("/fonts/LexendDeca-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-display: "Cantora One", Georgia, serif;
+  --font-body: "Lexend Deca", system-ui, sans-serif;
+
+  --color-parchment: #F7F2E4;
+  --color-parchment-light: #FDFAF3;
+  --color-parchment-dark: #EDE5CE;
+  --color-slime: #5DB84A;
+  --color-slime-dark: #3D8C2A;
+  --color-slime-light: #8DD67A;
+  --color-forest: #1A3D0E;
+  --color-bark: #3D2B1F;
+  --color-bark-light: #7A6652;
+  --color-amber: #D48B1A;
+  --color-amber-light: #FAEEDA;
+  --color-red: #A32D2D;
+  --color-tan: #C8B89A;
+  --color-tan-light: #DDD0B4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F7F2E4;
+  color: #3D2B1F;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: #1A3D0E;
+  line-height: 1.15;
+}
+
+::selection {
+  background: #5DB84A;
+  color: #fff;
+}
+
+/* Remove default dark mode override — warm parchment only */
