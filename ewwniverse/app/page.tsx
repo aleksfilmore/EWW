@@ -6,6 +6,9 @@ import EmailSignupForm from "@/components/EmailSignupForm";
 
 const featuredCreatures = creatures.filter((c) => c.ewwMeter === 100).slice(0, 8);
 
+// Pick a hero specimen — Tongue-Eating Louse is peak EWW-niverse
+const heroSpecimen = creatures.find((c) => c.name === "Tongue-Eating Louse") ?? creatures[0];
+
 const categoryLabels: Record<string, string> = {
   "specimen-of-the-week": "Specimen of the Week",
   "field-report": "Field Report",
@@ -38,12 +41,14 @@ export default function Home() {
               <span className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A]">Dr. Icky&apos;s Laboratory</span>
             </div>
 
+            {/* ① New punchy headline */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#1A3D0E] leading-[1.05]">
-              The<br />EWW-niverse
+              Nature is<br />disgusting.<br />
+              <span className="text-[#5DB84A] italic">And we love it.</span>
             </h1>
 
             <p className="text-lg text-[#7A6652] leading-relaxed max-w-md">
-              For kids who like facts too weird for normal science apps. 75 creatures. Every one of them disgusting. Scientifically accurate. Approved by Dr. Icky.
+              75 creatures. Every one of them revolting. Every fact scientifically accurate. Catalogued, rated, and approved by Dr. Icky.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -55,29 +60,43 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Stats strip */}
-            <div className="flex items-center gap-4 pt-2">
-              {[{ n: "6", label: "Books published" }, { n: "450", label: "Revolting entries" }, { n: "75", label: "App creatures" }].map((s, i) => (
-                <div key={s.label} className="flex items-center gap-4">
-                  {i > 0 && <div className="w-px h-10 bg-[#C8B89A]" />}
-                  <div className="flex flex-col">
-                    <span className="text-2xl font-bold text-[#1A3D0E]" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>{s.n}</span>
-                    <span className="text-xs text-[#7A6652] uppercase tracking-wider">{s.label}</span>
-                  </div>
-                </div>
-              ))}
+            {/* Trust badges */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <img src="/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png" alt="Approved by Dr. Icky"
+                className="illustration h-10 w-auto object-contain opacity-80" />
+              <img src="/images/ui/Do%20Not%20Lick%20stamp.png" alt="Do not lick"
+                className="illustration h-10 w-auto object-contain opacity-80" />
+              <img src="/images/ui/Classified%20stamp.png" alt="Classified"
+                className="illustration h-10 w-auto object-contain opacity-80" />
             </div>
           </div>
 
-          {/* Dr. Icky holding EWW-meter */}
-          <div className="flex justify-center md:justify-end items-end relative">
-            <img src="/images/ui/Torn%20parchment%20rectangle.png" alt="" aria-hidden="true"
-              className="illustration absolute bottom-0 right-4 w-48 opacity-50 pointer-events-none" />
+          {/* ② Dr. Icky + floating specimen card */}
+          <div className="flex justify-center md:justify-end items-end relative gap-4">
             <img
               src="/images/ui/Dr.%20Icky%20holding%20EWW-meter.png"
               alt="Dr. Icky holding the EWW-meter"
-              className="illustration relative w-72 md:w-96 lg:w-[420px] object-contain"
+              className="illustration relative w-56 md:w-72 lg:w-80 object-contain flex-shrink-0"
             />
+            {/* Floating specimen card */}
+            <div className="flex-shrink-0 w-40 rounded-xl border-2 border-[#5DB84A] bg-[#FDFAF3] overflow-hidden shadow-lg mb-8 rotate-2">
+              <div className="bg-[#EDE5CE] aspect-square flex items-center justify-center p-3 relative">
+                <span className="absolute top-2 left-2 text-[9px] font-bold uppercase tracking-wider bg-[#A32D2D] text-white px-1.5 py-0.5 rounded">
+                  EWW 100
+                </span>
+                <img
+                  src={`/images/creatures/${encodeURIComponent(heroSpecimen.name)}.png`}
+                  alt={heroSpecimen.name}
+                  className="illustration w-full h-full object-contain"
+                />
+              </div>
+              <div className="p-2.5">
+                <p className="text-[#1A3D0E] text-xs font-semibold leading-snug" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>
+                  {heroSpecimen.name}
+                </p>
+                <p className="text-[10px] text-[#5DB84A] font-semibold uppercase tracking-wider mt-1">Specimen #001</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -88,27 +107,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED CREATURES ───────────────────────────────────── */}
-      <section className="bg-[#FDFAF3] py-16">
+      {/* ③ STATS STRIPE — standalone dark band */}
+      <section className="dark-section bg-[#1A3D0E] py-8 border-y border-[#2D5A1E]">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#A32D2D] mb-1">⚠ Total Barf tier</p>
-              <h2 className="text-3xl text-[#1A3D0E]">The Most Revolting</h2>
-            </div>
-            <Link href="/books" className="text-sm font-semibold text-[#5DB84A] hover:text-[#3D8C2A] transition-colors hidden sm:block">
-              View all 75 &rarr;
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {featuredCreatures.map((c) => (
-              <CreatureCard key={c.name} creature={c} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-[#2D5A1E]">
+            {[
+              { n: "6", label: "Books published" },
+              { n: "75", label: "Revolting creatures" },
+              { n: "450", label: "Gross-out facts" },
+              { n: "01", label: "Mad scientist" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center text-center md:px-6">
+                <span className="text-4xl font-bold text-[#5DB84A]" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>{s.n}</span>
+                <span className="text-xs text-[#8A9E86] uppercase tracking-widest mt-1">{s.label}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── BOOKS ────────────────────────────────────────────────── */}
+      {/* ④ THE LAB FILES (was "The Most Revolting") ─────────────── */}
+      <section className="bg-[#FDFAF3] py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#A32D2D] mb-1">Total Barf tier — EWW 100</p>
+              <h2 className="text-3xl text-[#1A3D0E]">The Lab Files</h2>
+            </div>
+            {/* Big green "75" badge, Lovable-style */}
+            <div className="flex items-center gap-4">
+              <div className="hidden sm:flex flex-col items-end">
+                <span className="text-5xl font-bold text-[#5DB84A] leading-none" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>75</span>
+                <span className="text-[10px] uppercase tracking-widest text-[#7A6652]">specimens catalogued</span>
+              </div>
+              <Link href="/books" className="text-sm font-semibold text-[#5DB84A] hover:text-[#3D8C2A] transition-colors hidden sm:block">
+                View all &rarr;
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {featuredCreatures.map((c) => (
+              <CreatureCard key={c.name} creature={c} showFact />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ⑥ BOOKS — "Field guides to biological chaos." ───────────── */}
       <section className="py-16 relative overflow-hidden" style={{ backgroundColor: "#F0EAD6" }}>
         <div className="absolute inset-0 opacity-20 pointer-events-none"
           style={{ backgroundImage: "url(/images/ui/Parchment%20paper%20texture.png)", backgroundSize: "cover" }} />
@@ -118,8 +163,10 @@ export default function Home() {
         <div className="relative max-w-6xl mx-auto px-4 pt-6">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-1">The collection</p>
-              <h2 className="text-3xl text-[#1A3D0E]">The Books</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">The collection</p>
+              <h2 className="text-3xl md:text-4xl text-[#1A3D0E] leading-tight">
+                Field guides to<br />biological chaos.
+              </h2>
             </div>
             <Link href="/books" className="text-sm font-semibold text-[#5DB84A] hover:text-[#3D8C2A] transition-colors hidden sm:block">
               See all 6 &rarr;

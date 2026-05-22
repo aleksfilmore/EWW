@@ -65,14 +65,21 @@ body {
 }
 
 /* All character/UI illustrations blend with parchment backgrounds.
-   multiply: white pixels become the background color.
-   This eliminates visible white/grey boxes around transparent PNGs. */
+   background: white gives the img element a compositable white layer.
+   mix-blend-mode: multiply then makes that white layer invisible against
+   any light background (white × parchment = parchment), cleanly removing
+   both white PNG backgrounds AND stray transparent-pixel edge artifacts. */
 .illustration {
   mix-blend-mode: multiply;
-  background: transparent;
+  background: white;
+  /* Prevent the browser from allocating a separate compositing layer
+     that would break the blend against the page background */
+  isolation: auto;
 }
 
-/* Sections with dark backgrounds opt-out — multiply on dark = near-black */
+/* Dark sections: reset blend and background so white doesn't ghost
+   onto the dark green surface. Images render at full opacity, normally. */
 .dark-section .illustration {
   mix-blend-mode: normal;
+  background: transparent;
 }
