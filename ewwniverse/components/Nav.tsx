@@ -16,22 +16,23 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-[#F7F2E4]/95 backdrop-blur-sm border-b border-[#C8B89A]">
+    <header className="sticky top-0 z-50 bg-[#1A3D0E] border-b-2 border-[#5DB84A]/30">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 hover:opacity-90 transition-opacity"
         >
           <img
             src="/images/ui/slime%20splat.png"
             alt=""
             aria-hidden="true"
-            className="w-8 h-8 object-contain illustration"
+            className="w-8 h-8 object-contain"
+            style={{ mixBlendMode: "normal" }}
           />
           <span
-            className="text-[#1A3D0E] text-xl leading-none"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+            className="text-[#F7F2E4] text-xl leading-none font-creepster"
+            style={{ fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif" }}
           >
             EWW-niverse
           </span>
@@ -46,7 +47,7 @@ export default function Nav() {
               className={`text-sm font-medium transition-colors ${
                 pathname === l.href
                   ? "text-[#5DB84A]"
-                  : "text-[#3D2B1F] hover:text-[#5DB84A]"
+                  : "text-[#8A9E86] hover:text-[#F7F2E4]"
               }`}
             >
               {l.label}
@@ -66,20 +67,20 @@ export default function Nav() {
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-5 h-0.5 bg-[#1A3D0E] transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-[#1A3D0E] transition-opacity ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-[#1A3D0E] transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-[#F7F2E4] transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-[#F7F2E4] transition-opacity ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-[#F7F2E4] transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-[#C8B89A] bg-[#F7F2E4] px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-[#5DB84A]/30 bg-[#0D2007] px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-[#3D2B1F] hover:text-[#5DB84A] transition-colors"
+              className="text-sm font-medium text-[#8A9E86] hover:text-[#F7F2E4] transition-colors"
               onClick={() => setOpen(false)}
             >
               {l.label}

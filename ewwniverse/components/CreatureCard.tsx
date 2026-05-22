@@ -1,57 +1,129 @@
-import type { Creature } from "@/lib/data";
-import { creatureImagePath } from "@/lib/data";
-import EwwMeterBadge from "./EwwMeter";
+import type { Creature, Rarity } from "@/lib/data";
+import { creatureImagePath, rarityColors } from "@/lib/data";
 
-// EWW tier label + colour
-function ewwTierLabel(value: number): { label: string; bg: string; text: string } {
-  if (value === 100) return { label: "Total Barf", bg: "#A32D2D", text: "#fff" };
-  if (value === 80)  return { label: "Super Slimy", bg: "#854F0B", text: "#fff" };
-  return               { label: "Kinda Revolting", bg: "#3D8C2A", text: "#fff" };
+function DotRow({ value, max = 5, color }: { value: number; max?: number; color: string }) {
+  return (
+    <div className="flex gap-1">
+      {Array.from({ length: max }).map((_, i) => (
+        <span
+          key={i}
+          className="w-2.5 h-2.5 rounded-full border border-[#C8B89A] flex-shrink-0"
+          style={{ backgroundColor: i < value ? color : "transparent" }}
+        />
+      ))}
+    </div>
+  );
 }
+
+const ewwBg: Record<number, string> = {
+  100: "#2A0A0A",
+  80:  "#1A1206",
+  60:  "#0D2007",
+};
+
+const ewwAccent: Record<number, string> = {
+  100: "#E53535",
+  80:  "#D48B1A",
+  60:  "#5DB84A",
+};
 
 interface CreatureCardProps {
   creature: Creature;
   locked?: boolean;
-  /** Show the gross fact snippet below the name */
   showFact?: boolean;
 }
 
 export default function CreatureCard({ creature, locked, showFact }: CreatureCardProps) {
-  const tier = ewwTierLabel(creature.ewwMeter);
+  const rCol = rarityColors[creature.rarity as Rarity];
+  const accent = ewwAccent[creature.ewwMeter] ?? "#5DB84A";
+  const cardBg = ewwBg[creature.ewwMeter] ?? "#0D2007";
   const hasFact = showFact && creature.grossFact && !creature.grossFact.startsWith("TODO");
 
   return (
-    <div className="group flex flex-col rounded-xl border border-[#C8B89A] bg-[#FDFAF3] overflow-hidden transition-shadow hover:shadow-md">
-      <div className="relative bg-[#EDE5CE] aspect-square flex items-center justify-center overflow-hidden p-4">
-        {/* EWW tier badge — top left */}
-        {!locked && (
-          <span
-            className="absolute top-2 left-2 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded z-10"
-            style={{ backgroundColor: tier.bg, color: tier.text }}
-          >
-            {tier.label}
-          </span>
-        )}
+    <div
+      className="group relative flex flex-col rounded-2xl overflow-hidden border-2 transition-all hover:scale-[1.03] hover:shadow-2xl cursor-default select-none"
+      style={{ borderColor: accent, backgroundColor: cardBg }}
+    >
+      {/* Rarity badge — top left */}
+      <div className="absolute top-2 left-2 z-20">
+        <span
+          className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
+          style={{ backgroundColor: rCol.bg, color: rCol.text }}
+        >
+          {creature.rarity}
+        </span>
+      </div>
+
+      {/* EWW tier — top right */}
+      <div className="absolute top-2 right-2 z-20">
+        <span
+          className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
+          style={{ backgroundColor: accent, color: "#fff" }}
+        >
+          EWW {creature.ewwMeter}
+        </span>
+      </div>
+
+      {/* Creature image panel */}
+      <div
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          height: "160px",
+          backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
+          backgroundSize: "cover",
+          backgroundBlendMode: "multiply",
+          backgroundColor: "#EDE5CE",
+        }}
+      >
         {locked ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#EDE5CE]">
-            <span className="text-[#7A6652] text-xs font-semibold uppercase tracking-wider">Unclassified</span>
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <img
+              src="/images/ui/Variable%20Locked%20sticker.png"
+              alt="Locked"
+              className="illustration w-10 object-contain"
+            />
+            <span className="text-xs text-[#7A6652] font-semibold uppercase tracking-wider">Locked</span>
           </div>
         ) : (
           <img
             src={creatureImagePath(creature.name)}
             alt={creature.name}
-            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 illustration"
+            className="relative z-10 illustration h-36 w-full object-contain group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
         )}
       </div>
-      <div className="p-3 flex flex-col gap-1.5">
-        <p className="text-[#1A3D0E] text-sm font-semibold leading-snug" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>
+
+      {/* Card body */}
+      <div className="flex flex-col gap-2 p-3 flex-1">
+        <p
+          className="font-creepster text-base leading-tight"
+          style={{ color: "#F7F2E4", fontFamily: "var(--font-creepster), 'Cantora One', Georgia, serif" }}
+        >
           {creature.name}
         </p>
-        <EwwMeterBadge value={creature.ewwMeter} size="sm" />
+
+        {/* Stats rows */}
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center justify-between">
+            <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#8A9E86" }}>
+              EWW Factor
+            </span>
+            <DotRow value={creature.ewwFactor} color={accent} />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#8A9E86" }}>
+              Yuck Level
+            </span>
+            <DotRow value={creature.yuckLevel} color="#6B3FD4" />
+          </div>
+        </div>
+
         {hasFact && (
-          <p className="text-[11px] text-[#7A6652] leading-relaxed line-clamp-2 mt-0.5">
+          <p
+            className="text-[10px] leading-relaxed mt-1 line-clamp-2"
+            style={{ color: "#8A9E86" }}
+          >
             {creature.grossFact}
           </p>
         )}

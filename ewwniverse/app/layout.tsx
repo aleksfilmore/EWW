@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Creepster } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const creepster = Creepster({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-creepster",
+  display: "swap",
+});
 
 const BASE_URL = "https://ewwniverse.com";
 
@@ -65,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={creepster.variable}>
       <body>
         {/* Google Analytics */}
         <Script
