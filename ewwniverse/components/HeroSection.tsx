@@ -25,31 +25,28 @@ export default function HeroSection() {
           ].join(","),
           transform: "rotate(-1.5deg)",
           transformOrigin: "center center",
-          margin: "0 -4%",          /* bleed past viewport so rotation gap is dark bg, not white */
-          minHeight: "86vh",
+          margin: "0 -4%",
         }}
       >
-        {/* CSS top edge — thick green notebook spine line */}
+        {/* CSS top edge */}
         <div
           className="absolute top-0 left-0 w-full z-20 pointer-events-none"
           style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }}
         />
 
-        {/* ── 50/50 grid ──────────────────────────────────────────── */}
+        {/* ── RESPONSIVE LAYOUT ───────────────────────────────────── */}
+        {/* Mobile: single column stack | Desktop: 44/56 grid         */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            minHeight: "86vh",
-          }}
+          className="grid grid-cols-1 md:grid-cols-[44%_56%]"
+          style={{ minHeight: "86vh" }}
         >
 
-          {/* ── LEFT ───────────────────────────────────────────────── */}
+          {/* ── LEFT: text ─────────────────────────────────────────── */}
           <div
-            className="flex items-center py-20 relative z-10"
+            className="flex items-center py-14 md:py-20 relative z-10 order-1"
             style={{
-              paddingLeft: "clamp(2.5rem,6vw,7rem)",
-              paddingRight: "1rem",
+              paddingLeft: "clamp(1.75rem,5vw,6rem)",
+              paddingRight: "clamp(0.75rem,1.5vw,1.5rem)",
             }}
           >
             <motion.div
@@ -64,7 +61,7 @@ export default function HeroSection() {
               {/* Bug */}
               <motion.img
                 src="/images/ui/bug.png" alt="" aria-hidden="true"
-                className="w-12 h-12 object-contain"
+                className="w-10 h-10 md:w-12 md:h-12 object-contain"
                 style={{ mixBlendMode: "multiply" }}
                 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
                 animate={{ rotate: [0, 10, -5, 0] }}
@@ -77,18 +74,17 @@ export default function HeroSection() {
               >
                 <div className="uppercase" style={{
                   fontFamily: "var(--font-boogaloo),cursive",
-                  fontSize: "clamp(2.4rem,4.8vw,5rem)",
+                  fontSize: "clamp(1.9rem,4.2vw,5rem)",
                   color: "#111800", lineHeight: 1.05,
                 }}>
                   Nature is
                 </div>
 
-                {/* DISGUSTING. — text styling only, no blob shape */}
                 <div className="uppercase" style={{
                   fontFamily: "var(--font-boogaloo),cursive",
-                  fontSize: "clamp(3.4rem,7.5vw,8rem)",
+                  fontSize: "clamp(3rem,7vw,8rem)",
                   color: "#5DB80A",
-                  WebkitTextStroke: "3.5px #1A3300",
+                  WebkitTextStroke: "3px #1A3300",
                   paintOrder: "stroke fill",
                   lineHeight: 1,
                   textShadow: [
@@ -103,7 +99,7 @@ export default function HeroSection() {
 
                 <div className="uppercase" style={{
                   fontFamily: "var(--font-boogaloo),cursive",
-                  fontSize: "clamp(1.7rem,3.6vw,3.8rem)",
+                  fontSize: "clamp(1.35rem,3.2vw,3.8rem)",
                   color: "#111800", lineHeight: 1.1,
                 }}>
                   And we love it.
@@ -113,7 +109,7 @@ export default function HeroSection() {
               {/* Subtitle */}
               <motion.p
                 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-                style={{ color: "#5A5040", maxWidth: 320, fontSize: "0.95rem", lineHeight: 1.65 }}
+                style={{ color: "#5A5040", maxWidth: 300, fontSize: "clamp(0.82rem,1.4vw,0.95rem)", lineHeight: 1.65 }}
               >
                 Gross science books, weird facts, creepy creatures, and slime-soaked missions for curious kids.
               </motion.p>
@@ -132,10 +128,10 @@ export default function HeroSection() {
                     transition={{ type: "spring", stiffness: 380, damping: 14 }}
                   >
                     <Link href={b.href}
-                      className="inline-flex items-center gap-2 text-white uppercase rounded-full border-4 px-6 py-3"
+                      className="inline-flex items-center gap-2 text-white uppercase rounded-full border-4 px-5 py-2.5 md:px-6 md:py-3"
                       style={{
                         fontFamily: "var(--font-creepster),serif",
-                        fontSize: "0.95rem",
+                        fontSize: "clamp(0.78rem,1.2vw,0.95rem)",
                         letterSpacing: "0.05em",
                         backgroundColor: b.bg,
                         borderColor: b.border,
@@ -155,7 +151,7 @@ export default function HeroSection() {
               {/* Petri dish */}
               <motion.img
                 src="/images/ui/petri%20dish.png" alt="" aria-hidden="true"
-                className="w-12 h-12 object-contain"
+                className="w-10 h-10 md:w-12 md:h-12 object-contain"
                 style={{ mixBlendMode: "multiply" }}
                 variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
                 animate={{ rotate: [-4, 4, -4], y: [0, -4, 0] }}
@@ -164,15 +160,21 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Dr. Icky ────────────────────────────────────── */}
+          {/* ── RIGHT: Dr. Icky ─────────────────────────────────────── */}
+          {/* On mobile: 56vw tall panel below text                      */}
+          {/* On desktop: flex items-end, fills grid cell height          */}
           <div
-            className="hidden md:flex items-end justify-center relative"
-            style={{ paddingTop: 44 }}
+            className="relative flex items-end justify-start order-2"
+            style={{
+              paddingTop: 44,
+              minHeight: "56vw",  /* mobile fallback height */
+            }}
           >
-            {/* Speech bubble — inset from right so it never clips */}
+            {/* Only show decorative elements on desktop */}
+            {/* Speech bubble */}
             <motion.div
-              className="absolute z-30"
-              style={{ top: "8%", right: "12%" }}
+              className="absolute z-30 hidden md:block"
+              style={{ top: "8%", right: "14%" }}
               initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
               animate={{ opacity: 1, scale: 1, rotate: 3 }}
               transition={{ delay: 1.1, type: "spring", stiffness: 240, damping: 16 }}
@@ -200,11 +202,11 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Magnifying glass — only decorative prop we keep */}
+            {/* Magnifying glass */}
             <motion.img
               src="/images/ui/magnifying%20glass.png" alt="" aria-hidden="true"
-              className="absolute object-contain z-20"
-              style={{ right: "2%", bottom: "18%", width: 100, mixBlendMode: "multiply" }}
+              className="absolute object-contain z-20 hidden md:block"
+              style={{ right: "2%", bottom: "18%", width: 90, mixBlendMode: "multiply" }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 0.85, x: 0, rotate: [0, -8, 0] }}
               transition={{
@@ -214,12 +216,13 @@ export default function HeroSection() {
               }}
             />
 
-            {/* Dr. Icky */}
+            {/* Dr. Icky — visible on all breakpoints */}
             <motion.img
               src="/images/ui/Dr.%20Icky%20celebrating%20a%20result.png"
               alt="Dr. Icky — your guide to the EWW-niverse"
+              className="relative z-10"
               style={{
-                height: "88%",
+                height: "100%",
                 width: "auto",
                 maxWidth: "none",
                 objectFit: "contain",
@@ -237,7 +240,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* CSS bottom edge — matches top spine line */}
+        {/* CSS bottom edge */}
         <div
           className="absolute bottom-0 left-0 w-full z-20 pointer-events-none"
           style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }}

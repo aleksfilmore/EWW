@@ -55,14 +55,15 @@ export default function Nav() {
                 className="relative group flex flex-col items-center"
               >
                 <span
-                  className="text-base font-extrabold tracking-wide transition-colors duration-150"
+                  className="text-sm font-normal transition-colors duration-150"
                   style={{
-                    color: active ? "#6ED44F" : "#FFFFFF",
-                    fontFamily: "var(--font-creepster), 'Cantora One', serif",
-                    fontSize: "1.05rem",
+                    color: active ? "#6ED44F" : "#D8D8D8",
+                    fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+                    fontSize: "0.9rem",
+                    letterSpacing: "0.02em",
                     textShadow: active
-                      ? "0 0 12px rgba(110,212,79,0.5)"
-                      : "0 1px 4px rgba(0,0,0,0.8)",
+                      ? "0 0 10px rgba(110,212,79,0.4)"
+                      : "none",
                   }}
                 >
                   {l.label}
@@ -136,8 +137,8 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-lg font-extrabold text-white hover:text-[#6ED44F] transition-colors"
-                style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+                className="text-base font-normal text-[#D8D8D8] hover:text-[#6ED44F] transition-colors"
+                style={{ fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif", letterSpacing: "0.02em" }}
                 onClick={() => setOpen(false)}
               >
                 {l.label}
