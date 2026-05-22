@@ -64,22 +64,18 @@ body {
   color: #fff;
 }
 
-/* All character/UI illustrations blend with parchment backgrounds.
-   background: white gives the img element a compositable white layer.
-   mix-blend-mode: multiply then makes that white layer invisible against
-   any light background (white × parchment = parchment), cleanly removing
-   both white PNG backgrounds AND stray transparent-pixel edge artifacts. */
+/* All character/UI illustrations.
+   mix-blend-mode: multiply removes white PNG backgrounds by blending
+   white pixels with the background colour (white × bg = bg).
+   No CSS background is set so transparent PNG areas show straight through
+   to whatever is rendered behind the element — including texture overlays —
+   which eliminates the visible rectangular box artefact. */
 .illustration {
   mix-blend-mode: multiply;
-  background: white;
-  /* Prevent the browser from allocating a separate compositing layer
-     that would break the blend against the page background */
-  isolation: auto;
 }
 
-/* Dark sections: reset blend and background so white doesn't ghost
-   onto the dark green surface. Images render at full opacity, normally. */
+/* Dark sections: normal blend so illustrations render at full opacity
+   without darkening against the dark green surface. */
 .dark-section .illustration {
   mix-blend-mode: normal;
-  background: transparent;
 }

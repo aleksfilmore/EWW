@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { books, creatures, bookCoverPath } from "@/lib/data";
+import { books, bookCoverPath } from "@/lib/data";
 import EmailSignupForm from "@/components/EmailSignupForm";
-import CreatureCard from "@/components/CreatureCard";
-import EwwMeterBadge from "@/components/EwwMeter";
 
 export const metadata: Metadata = {
   title: "The Books",
@@ -134,36 +132,6 @@ export default function BooksPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Creature browser — Creepy Creatures spotlight */}
-      <section className="bg-[#F7F2E4] py-14 border-t border-[#C8B89A]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-1">
-                Creepy Creatures — all 75
-              </p>
-              <h2
-                className="text-2xl text-[#1A3D0E]"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
-              >
-                The Full Specimen Cabinet
-              </h2>
-            </div>
-            <div className="hidden sm:flex gap-2">
-              {([60, 80, 100] as const).map((m) => (
-                <EwwMeterBadge key={m} value={m} size="sm" />
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {creatures.map((c) => (
-              <CreatureCard key={c.name} creature={c} />
-            ))}
           </div>
         </div>
       </section>
