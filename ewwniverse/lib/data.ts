@@ -22,6 +22,7 @@ export interface SpecimenPost {
   excerpt: string;
   category: "specimen-of-the-week" | "field-report" | "reader-submission";
   readTime: number;
+  creatureName: string; // matches filename in /images/creatures/
 }
 
 export function creatureImagePath(name: string): string {
@@ -170,6 +171,7 @@ export const specimenPosts: SpecimenPost[] = [
     excerpt: "Ophiocordyceps unilateralis doesn't just kill ants. It hijacks their brains first, walks them to a specific leaf at a specific height, and then — and only then — detonates.",
     category: "specimen-of-the-week",
     readTime: 4,
+    creatureName: "Zombie Ant Fungus",
   },
   {
     slug: "tongue-eating-louse",
@@ -178,6 +180,7 @@ export const specimenPosts: SpecimenPost[] = [
     excerpt: "Dr. Icky files a report from the Gulf of California. The Cymothoa exigua enters through the gills, severs the tongue, and installs itself as a replacement. The fish keeps eating. It pays rent in blood.",
     category: "field-report",
     readTime: 3,
+    creatureName: "Tongue-Eating Louse",
   },
   {
     slug: "hagfish-slime",
@@ -186,6 +189,7 @@ export const specimenPosts: SpecimenPost[] = [
     excerpt: "In 0.4 seconds, one hagfish produces enough slime to fill a bucket. Scientists have measured this. Some of them regret it.",
     category: "specimen-of-the-week",
     readTime: 5,
+    creatureName: "Hagfish",
   },
 ];
 

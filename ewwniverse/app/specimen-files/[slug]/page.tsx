@@ -1,358 +1,363 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { specimenPosts, ewwMeterLabels } from "@/lib/data";
+import { specimenPosts, ewwMeterLabels, creatureImagePath } from "@/lib/data";
+import GrossReveal from "@/components/GrossReveal";
 
 /* ─── Article content ──────────────────────────────────────────────── */
 
+interface QuickStat {
+  label: string;
+  value: string;
+}
+
 interface Section {
   heading: string;
+  icon: string; // emoji — keeps it light, no extra assets needed
   body: React.ReactNode;
+  callout?: {
+    type: "science" | "danger" | "weird";
+    text: string;
+  };
 }
 
 interface ArticleData {
   slug: string;
   creatureName: string;
-  creatureImage: string;
   ewwMeter: 60 | 80 | 100;
   seoDescription: string;
   seoKeywords: string;
+  classification: string; // Latin name
+  quickStats: QuickStat[];
   intro: React.ReactNode;
   sections: Section[];
-  drIckyNote: string;
   grossFactHighlight: string;
+  drIckyVerdict: string;
 }
 
 const articles: Record<string, ArticleData> = {
   "zombie-ant-fungus": {
     slug: "zombie-ant-fungus",
     creatureName: "Zombie Ant Fungus",
-    creatureImage: "/images/creatures/Zombie%20Ant%20Fungus.png",
     ewwMeter: 100,
     seoDescription:
-      "The Ophiocordyceps unilateralis fungus hijacks carpenter ants, controls their brains, and forces them to die in the exact spot the fungus needs to reproduce. Learn the full gross science behind zombie ants.",
+      "The Ophiocordyceps unilateralis fungus hijacks carpenter ants, controls their brains, and forces them to die in the exact spot the fungus needs to reproduce. Full gross science for kids.",
     seoKeywords:
       "zombie ant fungus, Ophiocordyceps unilateralis, zombie ants, mind-controlling fungi, parasitic fungus, weird animals for kids",
+    classification: "Ophiocordyceps unilateralis",
+    quickStats: [
+      { label: "Type", value: "Parasitic Fungus" },
+      { label: "Target", value: "Carpenter ants" },
+      { label: "Location", value: "Tropical forests worldwide" },
+      { label: "On Earth for", value: "48 million years" },
+    ],
     intro: (
       <>
         <p>
-          Ophiocordyceps unilateralis does not simply kill carpenter ants. It takes over their bodies
-          first, walks them to a precise location, forces a death grip onto a leaf vein, and then
-          — only then — kills the ant and erupts from its head to spread its spores.
+          Most parasites just eat their hosts or hitch a ride on them. This one is different.
+          Ophiocordyceps unilateralis takes over an ant&apos;s entire body, walks it to a
+          specific location chosen by the fungus, forces it to bite down on a leaf and lock
+          its jaw permanently — and only then does it kill the ant and explode out of its head.
         </p>
         <p>
-          The entire process is timed, targeted, and terrifyingly specific. This is not random
-          infection. This is a parasite running a program.
+          It is, by any reasonable measure, one of the most alarming things in nature.
         </p>
       </>
     ),
     sections: [
       {
-        heading: "How the infection begins",
+        heading: "How it gets inside",
+        icon: "🕳️",
         body: (
           <>
             <p>
-              Carpenter ants pick up fungal spores from the forest floor. The spores stick to the
-              ant&apos;s exoskeleton and drill through it using enzymes. Once inside, the fungus
-              begins to spread through the ant&apos;s body cavity, consuming soft tissue and
-              multiplying.
+              Fungal spores sit on the forest floor waiting for an ant to walk over them.
+              When one does, the spores stick to the ant&apos;s exoskeleton and drill through
+              it using enzymes — like tiny biological drills. Once inside, the fungus starts
+              spreading through the ant&apos;s body.
             </p>
             <p>
-              The fungus does not immediately attack the brain. Instead, it wraps around and between
-              muscle fibers throughout the ant&apos;s body, releasing chemicals that gradually hijack
-              the ant&apos;s motor control. The ant appears healthy. It keeps working. The colony does
-              not know anything is wrong.
+              The ant has no idea. It keeps working. The colony has no idea either. Everything
+              looks completely normal. For a while.
             </p>
           </>
         ),
+        callout: {
+          type: "weird",
+          text: "The fungus spreads through muscle fibers, not through the brain. It controls the ant's body while leaving the brain intact.",
+        },
       },
       {
-        heading: "The program kicks in",
+        heading: "The takeover",
+        icon: "🧠",
         body: (
           <>
             <p>
-              About four to ten days after infection, the ant&apos;s behavior changes. It leaves its
-              normal foraging path, begins moving erratically, and loses coordination. Then it climbs.
+              After 4 to 10 days, the ant starts acting strange. It leaves its normal path.
+              It stumbles. Then, it climbs.
             </p>
             <p>
-              The fungus guides the ant to a very specific target. Studies have found that infected
-              ants consistently end up on the north side of plants, around 25 centimeters above the
-              forest floor — precisely where temperature and humidity are optimal for fungal growth.
-              The ants do not choose this location. The fungus does.
+              The fungus guides the infected ant to a precise spot: 25 centimetres above the
+              forest floor, on the north side of a plant, where temperature and humidity are
+              exactly right for the fungus to grow. The ant doesn&apos;t choose this location.
+              The fungus does.
             </p>
             <p>
-              At solar noon — the point of maximum sunlight — the infected ant bites down on a leaf
-              vein with a force strong enough to lock its mandibles. The ant cannot let go. Muscle
-              fibers in its jaw are destroyed by the fungus to keep the grip permanent. The ant dies
-              locked in place, and the fungus finishes its work.
+              At solar noon — the moment of maximum sunlight — the ant bites down on a leaf
+              vein and locks its jaw. The fungus destroys the jaw muscles to make the grip
+              permanent. The ant cannot let go. Then it dies.
             </p>
           </>
         ),
+        callout: {
+          type: "danger",
+          text: "25cm above the floor. North side. Solar noon. The fungus programmes the exact location, height, and time of death.",
+        },
       },
       {
         heading: "The eruption",
+        icon: "💥",
         body: (
           <>
             <p>
-              Over the following days, a stalk grows out of the back of the dead ant&apos;s head.
-              This stalk carries a capsule packed with spores. When the capsule ruptures, it
-              releases spores that rain down onto the forest floor below, ready to infect the next
-              ant that walks across them.
+              A stalk grows out of the dead ant&apos;s head over the following days. At the
+              tip of the stalk is a capsule packed with spores. When the capsule bursts, spores
+              rain down onto the forest floor below.
             </p>
             <p>
-              Healthy ants in the colony recognize infected individuals and carry them far from
-              the nest before the eruption happens. This behavior has been observed enough times
-              that scientists believe the ants can detect the early chemical signals of infection.
-              The colony has evolved a response. The fungus has continued anyway, for at least
-              48 million years — fossil evidence of the distinctive bite marks on leaves was found
-              in specimens that old.
+              Where they wait for the next ant.
             </p>
           </>
         ),
+        callout: {
+          type: "science",
+          text: "Fossil evidence of the exact same bite-mark pattern has been found in leaves 48 million years old. This fungus was doing this before most mammals existed.",
+        },
       },
       {
         heading: "The brain question",
+        icon: "🔬",
         body: (
           <>
             <p>
-              For years, this fungus was described as &ldquo;mind-controlling.&rdquo; The accurate
-              version is stranger. Research from Penn State published in 2017 found that the fungus
-              does not actually invade the ant&apos;s brain cells at all. It surrounds them,
-              infiltrates the rest of the body, and controls behavior through chemical signals
-              that bypass the brain entirely.
+              For years, scientists called this &ldquo;mind control.&rdquo; The 2017 version
+              of the truth is weirder. The fungus doesn&apos;t actually enter the ant&apos;s
+              brain at all.
             </p>
             <p>
-              The ant&apos;s brain remains structurally intact. Its body is being operated by
-              something else. The distinction matters because it means the ant is not being
-              &ldquo;controlled&rdquo; — its muscles are being directly manipulated while its
-              brain watches, unable to override.
+              It surrounds the brain cells without going in. It takes over the muscles directly,
+              through chemical signals that bypass the brain. The ant&apos;s brain is structurally
+              intact the whole time. Its body just isn&apos;t listening to it anymore.
             </p>
           </>
         ),
       },
     ],
     grossFactHighlight:
-      "The fungus locks the ant's jaw so hard that muscle fibers are destroyed in the process. The grip cannot be released. Not even by the ant.",
-    drIckyNote:
-      "Forty-eight million years. The fossil record shows leaf bite marks matching the zombie-ant signature going back that far. Whatever lived back then was already doing this.",
+      "The fungus destroys the ant's jaw muscles to lock the bite permanently. The grip physically cannot be released. Not by the ant. Not by anyone.",
+    drIckyVerdict:
+      "Forty-eight million years. Whatever lived in those ancient tropical forests was already being zombified by this exact fungus. It was old before the dinosaurs went extinct. Think about that.",
   },
 
   "tongue-eating-louse": {
     slug: "tongue-eating-louse",
     creatureName: "Tongue-Eating Louse",
-    creatureImage: "/images/creatures/Tongue-Eating%20Louse.png",
     ewwMeter: 100,
     seoDescription:
-      "Cymothoa exigua enters through a fish's gills, severs its tongue, and replaces it — living inside the fish's mouth for years. Full gross science breakdown for curious kids.",
+      "Cymothoa exigua enters through a fish's gills, severs its tongue, and replaces it with its own body. The fish keeps eating. The louse takes a cut. Full gross science for kids.",
     seoKeywords:
       "tongue-eating louse, Cymothoa exigua, parasitic isopod, fish parasite, gross animals for kids, weird ocean creatures",
+    classification: "Cymothoa exigua",
+    quickStats: [
+      { label: "Type", value: "Parasitic isopod" },
+      { label: "Target", value: "Snappers, other fish" },
+      { label: "Location", value: "Gulf of California, Pacific" },
+      { label: "Size (female)", value: "Up to 3cm" },
+    ],
     intro: (
       <>
         <p>
-          Cymothoa exigua enters through a fish&apos;s gills as a juvenile. It severs the fish&apos;s
-          tongue using its front claws, attaches itself to the tongue stub, and from that point
-          forward functions as the fish&apos;s tongue. The fish keeps eating. The louse takes a cut
-          of every meal.
+          Cymothoa exigua is the only known parasite in all of recorded biology that replaces
+          a host organ with its own body and then performs that organ&apos;s function.
         </p>
         <p>
-          This is the only known case in nature of a parasite functionally replacing a host organ.
+          It enters through the gills. It severs the tongue. It installs itself where the tongue
+          used to be. The fish keeps eating. The louse takes a cut of every meal.
         </p>
       </>
     ),
     sections: [
       {
-        heading: "Entry and transformation",
+        heading: "Enters through the gills",
+        icon: "🐟",
         body: (
           <>
             <p>
-              Cymothoa exigua starts life as a male. Juvenile males enter fish through the gills
-              and make their way to the mouth. If they find a female already present, they stay
-              male and attach to the gills nearby. If no female is present, the male transforms
-              into a female — the process takes a few weeks and is irreversible.
+              Juvenile Cymothoa exigua are male. They enter a fish through the gills as tiny,
+              swimming larvae. Once inside, they make their way to the mouth.
             </p>
             <p>
-              This sex change is driven by the absence of a female, not by any instruction from
-              the host. The louse reads the environment and adapts. The fish has no say in any
-              of this.
+              If there is already a female inside, the male stays male and attaches to the
+              gills nearby. If there is no female, the male transforms into a female. The process
+              takes a few weeks. It is permanent.
             </p>
           </>
         ),
+        callout: {
+          type: "weird",
+          text: "The louse changes sex based on whether a female is already present. It reads the situation and adapts.",
+        },
       },
       {
         heading: "The severing",
+        icon: "✂️",
         body: (
           <>
             <p>
-              Once the female is established in the fish&apos;s mouth, she uses her front claws
-              to grip the tongue and restrict the blood supply. Over time, the tongue atrophies
-              and detaches. The louse then attaches directly to the muscles at the tongue&apos;s
-              base using her rear legs.
+              Once the female is established in the mouth, she uses her front claws to grip
+              the tongue and cut off its blood supply. Over time, the tongue shrinks and falls
+              off. The louse then attaches directly to the tongue muscles using her back legs.
             </p>
             <p>
-              She is now the tongue. The fish uses her exactly as it would use its original tongue
-              — to hold food, manipulate prey, swallow. The louse moves with the fish&apos;s mouth
-              muscles. From the outside, the fish appears to function normally.
+              She is now the tongue. The fish uses her to hold food and swallow, exactly as
+              it used its original tongue. She moves when the fish&apos;s mouth muscles move.
             </p>
           </>
         ),
+        callout: {
+          type: "danger",
+          text: "This is the only case in nature of a parasite replacing a host organ and performing that organ's job.",
+        },
       },
       {
-        heading: "What the louse eats",
+        heading: "The arrangement",
+        icon: "🍽️",
         body: (
           <>
             <p>
               The louse feeds on the fish&apos;s blood and mucus. Some research suggests she
-              also takes a share of food that passes through the mouth, though this is harder
-              to measure precisely. The fish&apos;s growth rate is somewhat reduced, and the
-              louse adds significant weight to the host — but the fish survives, sometimes for
-              years, hosting this arrangement.
+              also takes a portion of whatever food passes through the mouth. The fish survives —
+              sometimes for years — with this arrangement running.
             </p>
             <p>
-              The female can live inside the fish for most of her adult life. When she reproduces,
-              the larvae are released into the water. Some of them will find gills of their own.
+              When the female reproduces, her larvae are released into the water. Some of those
+              larvae will find gills of their own.
             </p>
           </>
         ),
-      },
-      {
-        heading: "Known hosts and range",
-        body: (
-          <>
-            <p>
-              Cymothoa exigua has been documented in at least eight species of fish, most commonly
-              in the Gulf of California and the Pacific coast of Mexico. The rose snapper is among
-              the most frequently affected. It has also been found in fish along European coastlines,
-              and one case was reported in a fish purchased from a UK supermarket in 2005.
-            </p>
-            <p>
-              It is harmless to humans. It cannot attach to a human tongue, cannot survive outside
-              a fish host, and poses no health risk beyond, by most accounts, being deeply unsettling
-              to find in your dinner.
-            </p>
-          </>
-        ),
+        callout: {
+          type: "science",
+          text: "Cymothoa exigua has been found in at least 8 species of fish. One was found inside a fish bought at a UK supermarket in 2005.",
+        },
       },
     ],
     grossFactHighlight:
-      "The louse attaches at the base of the severed tongue stub using her rear legs. She moves when the fish&apos;s mouth muscles move. She is the tongue.",
-    drIckyNote:
-      "This is the only known parasite in recorded biology that replaces a host organ with its own body and performs that organ's function. One case. Documented. Verified.",
+      "The louse attaches at the base of the severed tongue stub using her back legs. She moves when the fish moves its mouth. She IS the tongue.",
+    drIckyVerdict:
+      "One confirmed case of a parasite replacing an organ and performing its job. One. Documented. In the scientific record. The fish just keeps eating. It doesn't know. It cannot know.",
   },
 
   "hagfish-slime": {
     slug: "hagfish-slime",
     creatureName: "Hagfish",
-    creatureImage: "/images/creatures/Hagfish.png",
     ewwMeter: 100,
     seoDescription:
-      "The hagfish is not a fish. It has no jaw, no vertebrae, and no eyes that work. When threatened, it releases enough slime to fill a bucket in under half a second. Here is how it works.",
+      "The hagfish is not a fish. It's 300 million years old, has no jaw, and can fill a bucket with slime in under half a second. Here's the full gross science breakdown for kids.",
     seoKeywords:
-      "hagfish, hagfish slime, gross fish facts, weird deep sea creatures, Myxini, gross science for kids, ocean animals",
+      "hagfish, hagfish slime, weird deep sea creatures, Myxini, gross science for kids, ocean animals facts",
+    classification: "Myxini (class)",
+    quickStats: [
+      { label: "Type", value: "Not actually a fish" },
+      { label: "Location", value: "Deep sea, worldwide" },
+      { label: "On Earth for", value: "300 million years" },
+      { label: "Slime output", value: "20 litres from a small blob" },
+    ],
     intro: (
       <>
         <p>
-          The hagfish is approximately 300 million years old as a lineage. It has no jaw, no
-          vertebral column, and eyes that cannot form images. When a predator attacks, it releases
-          a slime so dense and so fast that a large shark has been documented abandoning the attack
-          to prevent its own gills from clogging.
+          The hagfish is 300 million years old. It has no jaw, no vertebral column, no eyes
+          that form images, and no stomach. When a predator attacks it, it releases a dense,
+          expanding slime that can clog a shark&apos;s gills in under half a second.
         </p>
         <p>
-          Scientists have measured this. One hagfish, in under half a second, can produce enough
-          slime to fill a standard bucket. Some of them have regretted measuring it.
+          Scientists have measured the slime volume. Some of them regret it.
         </p>
       </>
     ),
     sections: [
       {
-        heading: "What the hagfish actually is",
+        heading: "Not a fish",
+        icon: "❓",
         body: (
           <>
             <p>
-              Hagfish are not fish in the biological sense. They belong to the class Myxini —
-              jawless, scaleless, without paired fins, and without a true vertebral column.
-              They are more accurately described as very old, very strange, soft-bodied chordates
-              that have remained essentially unchanged since the Carboniferous period.
+              Hagfish belong to the class Myxini. They have no jaw, no paired fins, no true
+              spine, and no scales. Calling them a fish is roughly like calling a jellyfish
+              a fish — technically wrong, just confusing.
             </p>
             <p>
-              They have four hearts. They have no stomach — food passes from a simple mouth directly
-              through a straight gut. They can survive without eating for months by absorbing
-              nutrients directly through their skin, which is highly permeable and picks up
-              dissolved organics from whatever they are buried in.
+              They have four hearts. No stomach — food goes from mouth to gut with nothing in
+              between. And they can absorb nutrients directly through their skin, which means
+              they are, in a measurable sense, eating whatever water they are submerged in.
             </p>
           </>
         ),
+        callout: {
+          type: "weird",
+          text: "The hagfish lineage has remained essentially unchanged since the Carboniferous period — before dinosaurs, before most things that currently exist.",
+        },
       },
       {
         heading: "The slime",
+        icon: "🟢",
         body: (
           <>
             <p>
-              Hagfish slime is produced in glands that run along both sides of the body. When
-              stressed, the hagfish releases small packages of coiled protein threads and mucin
-              proteins simultaneously. On contact with seawater, the threads uncoil almost
-              instantly — some measure up to 15 centimeters long — and the mucins swell to bind
-              everything together into a gel.
+              Glands running along both sides of the hagfish&apos;s body contain coiled protein
+              threads and mucin proteins in a compact, compressed state. When released into
+              seawater, the threads uncoil — up to 15 centimetres each — and the mucins swell
+              to bind everything into a gel.
             </p>
             <p>
-              The resulting material is not mucus in the conventional sense. It is a fiber-reinforced
-              hydrogel — the threads give it structural integrity that ordinary mucus does not have.
-              Scientists at the University of Guelph have studied the material seriously as a model
-              for sustainable fiber production, because the protein threads have tensile properties
-              comparable to spider silk.
-            </p>
-            <p>
-              A hagfish can produce the equivalent of 20 liters of slime from a small initial volume
-              of expelled material. The expansion ratio is roughly 10,000 to 1.
+              The expansion ratio is roughly 10,000 to 1. A small initial volume becomes
+              approximately 20 litres of slime. It takes under half a second. Sharks have been
+              filmed abandoning attacks because the slime clogged their gills before they
+              could bite.
             </p>
           </>
         ),
+        callout: {
+          type: "science",
+          text: "The slime threads have been compared to spider silk in terms of tensile strength. Scientists at University of Guelph are studying them for sustainable fibre production.",
+        },
       },
       {
-        heading: "How the hagfish removes the slime from itself",
+        heading: "How it removes the slime from itself",
+        icon: "🪢",
         body: (
           <>
             <p>
-              After producing slime, the hagfish is covered in it. To remove it, the hagfish ties
-              itself into a knot — literally — and slides the knot along its body from head to tail,
-              scraping the slime off. The knot-tying takes approximately one second. The process is
-              efficient, repeatable, and has been filmed in detail.
+              After producing slime, the hagfish is covered in it. To clean itself, it ties
+              its own body into a knot — literally — and slides the knot from head to tail,
+              scraping the slime off. This takes approximately one second.
             </p>
             <p>
-              Hagfish use the same knotting behavior to gain leverage when feeding inside a carcass.
-              They enter a dead whale or large fish, bite off a piece of tissue, then brace themselves
-              against the carcass interior using a body knot to pull the piece free. They can feed
-              from the inside of a carcass for days.
+              It uses the same knot to feed. When eating inside a dead whale carcass, it braces
+              itself against the inside walls using a body knot, bites a piece of tissue,
+              then pulls the piece free by straightening the knot.
             </p>
           </>
         ),
-      },
-      {
-        heading: "Surviving without food",
-        body: (
-          <>
-            <p>
-              In laboratory conditions, hagfish have survived for over 30 weeks without food.
-              During this time they continue to produce slime when disturbed, continue to maintain
-              normal behavior, and show no measurable physical decline until very late in the
-              starvation period.
-            </p>
-            <p>
-              This is partly explained by their extremely low metabolic rate and partly by the
-              nutrient absorption through their skin. They are, in some measurable sense, eating
-              the water around them — pulling dissolved organic molecules directly into their bodies.
-            </p>
-            <p>
-              Deep sea conditions mean food is unpredictable and rare. The hagfish evolved to treat
-              meals as events, not routines.
-            </p>
-          </>
-        ),
+        callout: {
+          type: "danger",
+          text: "A hagfish can survive for over 30 weeks without food — partly because it absorbs nutrients directly through its skin from the water around it.",
+        },
       },
     ],
     grossFactHighlight:
-      "A hagfish can expand a small volume of expelled material into 20 liters of fiber-reinforced gel in under half a second. The threads inside are compared to spider silk.",
-    drIckyNote:
-      "300 million years without significant change. Before dinosaurs. Before mammals. Before most things that currently exist. The hagfish was already doing exactly this.",
+      "A small amount of expelled material expands 10,000 times into 20 litres of fibre-reinforced slime gel in under half a second. The threads inside are structurally similar to spider silk.",
+    drIckyVerdict:
+      "300 million years. Before the first dinosaur. Before the first mammal. Before most things currently on this planet. The hagfish was already doing this. It did not need to evolve further. It was already perfect.",
   },
 };
 
@@ -360,24 +365,42 @@ const articles: Record<string, ArticleData> = {
 
 function getCategoryLabel(category: string): string {
   switch (category) {
-    case "specimen-of-the-week":
-      return "Specimen of the Week";
-    case "field-report":
-      return "Field Report";
-    case "reader-submission":
-      return "Reader Submission";
-    default:
-      return category;
+    case "specimen-of-the-week": return "Specimen of the Week";
+    case "field-report": return "Field Report";
+    case "reader-submission": return "Reader Submission";
+    default: return category;
   }
 }
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
+    day: "numeric", month: "long", year: "numeric",
   });
 }
+
+const calloutStyles = {
+  science: {
+    border: "#185FA5",
+    bg: "#EEF4FB",
+    labelColor: "#185FA5",
+    label: "Science bit",
+    icon: "🔬",
+  },
+  danger: {
+    border: "#A32D2D",
+    bg: "#FCEBEB",
+    labelColor: "#A32D2D",
+    label: "Danger",
+    icon: "⚠️",
+  },
+  weird: {
+    border: "#854F0B",
+    bg: "#FAEEDA",
+    labelColor: "#854F0B",
+    label: "Weird detail",
+    icon: "🤨",
+  },
+};
 
 /* ─── Static params ────────────────────────────────────────────────── */
 
@@ -406,11 +429,9 @@ export async function generateMetadata({
       description: article.seoDescription,
       type: "article",
       publishedTime: post.date,
-      images: [{ url: article.creatureImage }],
+      images: [{ url: creatureImagePath(article.creatureName) }],
     },
-    alternates: {
-      canonical: `/specimen-files/${slug}`,
-    },
+    alternates: { canonical: `/specimen-files/${slug}` },
   };
 }
 
@@ -424,12 +445,10 @@ export default async function SpecimenPostPage({
   const { slug } = await params;
   const post = specimenPosts.find((p) => p.slug === slug);
   const article = articles[slug];
-
   if (!post || !article) notFound();
 
   const ewwConfig = ewwMeterLabels[article.ewwMeter];
 
-  // Article JSON-LD schema
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -437,12 +456,8 @@ export default async function SpecimenPostPage({
     description: article.seoDescription,
     datePublished: post.date,
     author: { "@type": "Person", name: "Dr. Icky" },
-    publisher: {
-      "@type": "Organization",
-      name: "EWW-niverse",
-      url: "https://ewwniverse.com",
-    },
-    image: `https://ewwniverse.com${article.creatureImage}`,
+    publisher: { "@type": "Organization", name: "EWW-niverse", url: "https://ewwniverse.com" },
+    image: `https://ewwniverse.com${creatureImagePath(article.creatureName)}`,
     mainEntityOfPage: `https://ewwniverse.com/specimen-files/${slug}`,
   };
 
@@ -453,43 +468,54 @@ export default async function SpecimenPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="bg-[#F7F2E4] border-b border-[#C8B89A] py-14">
-        <div className="max-w-4xl mx-auto px-4">
+      {/* ── CLASSIFIED HEADER ──────────────────────────────────────── */}
+      <section className="dark-section bg-[#1A3D0E] relative overflow-hidden py-16">
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: "url(/images/ui/slime%20splat.png)",
+            backgroundSize: "140px",
+            backgroundRepeat: "repeat",
+          }}
+        />
+        <div className="relative max-w-5xl mx-auto px-4">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-[#7A6652] mb-6">
-            <Link href="/specimen-files" className="hover:text-[#5DB84A] transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-[#5DB84A] mb-6">
+            <Link href="/specimen-files" className="hover:text-white transition-colors">
               Specimen Files
             </Link>
-            <span>/</span>
-            <span className="text-[#3D2B1F] truncate max-w-[200px]">{post.title}</span>
+            <span className="text-[#5DB84A]">/</span>
+            <span className="text-[#8A9E86] truncate">{post.title}</span>
           </nav>
 
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            {/* Text */}
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-white bg-[#1A3D0E] px-2.5 py-0.5 rounded-full">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
+            <div>
+              {/* Classification tags */}
+              <div className="flex flex-wrap items-center gap-2 mb-5">
+                <span className="text-[10px] font-bold uppercase tracking-widest bg-[#5DB84A] text-white px-3 py-1 rounded-full">
                   {getCategoryLabel(post.category)}
                 </span>
                 <span
-                  className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                  className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
                   style={{ color: ewwConfig.color, backgroundColor: ewwConfig.bg }}
                 >
                   EWW {article.ewwMeter} — {ewwConfig.label}
                 </span>
+                <span className="text-[10px] font-mono text-[#5DB84A] bg-[#0D2007] px-3 py-1 rounded-full">
+                  {article.classification}
+                </span>
               </div>
 
               <h1
-                className="text-3xl md:text-4xl text-[#1A3D0E] mb-4 leading-tight"
+                className="text-3xl md:text-5xl text-[#F7F2E4] leading-tight mb-4"
                 style={{ fontFamily: '"Cantora One", Georgia, serif' }}
               >
                 {post.title}
               </h1>
 
-              <p className="text-[#7A6652] text-sm leading-relaxed mb-6 max-w-xl">{post.excerpt}</p>
+              <p className="text-[#8A9E86] leading-relaxed max-w-lg mb-6">{post.excerpt}</p>
 
-              <div className="flex items-center gap-4 text-xs text-[#7A6652]">
+              <div className="flex items-center gap-3 text-xs text-[#5DB84A]">
                 <span>By Dr. Icky</span>
                 <span>·</span>
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -498,110 +524,296 @@ export default async function SpecimenPostPage({
               </div>
             </div>
 
-            {/* Creature image */}
-            <div className="flex-shrink-0 w-48 md:w-56">
-              <div className="rounded-2xl border border-[#C8B89A] bg-[#EDE5CE] overflow-hidden aspect-square flex items-center justify-center p-4">
+            {/* EWW meter + creature image */}
+            <div className="flex flex-col items-center gap-4">
+              <img
+                src={`/images/ui/EWW-meter%20${article.ewwMeter}%25.png`}
+                alt={`EWW meter ${article.ewwMeter}%`}
+                className="illustration w-28 object-contain"
+                style={{ mixBlendMode: "normal" }}
+              />
+              {article.ewwMeter === 100 && (
                 <img
-                  src={article.creatureImage}
+                  src="/images/ui/Total%20Barf%20sticker.png"
+                  alt="Total Barf!"
+                  className="illustration w-20 object-contain"
+                  style={{ mixBlendMode: "normal" }}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Slime drip */}
+      <div className="relative h-10 bg-[#F7F2E4] overflow-hidden">
+        <img
+          src="/images/ui/Slime%20drip%20top%20border%2C%20full%20width.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-0 left-0 w-full illustration"
+          style={{ height: "40px", objectFit: "cover", objectPosition: "top", mixBlendMode: "multiply" }}
+        />
+      </div>
+
+      {/* ── SPECIMEN VISUAL ────────────────────────────────────────── */}
+      <section
+        className="bg-[#F7F2E4] py-10 relative"
+        style={{
+          backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
+          backgroundSize: "cover",
+          backgroundBlendMode: "multiply",
+        }}
+      >
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-8 items-start">
+            {/* Quick stats */}
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/images/ui/Classified%20stamp.png"
+                  alt="Classified"
+                  className="illustration w-10 h-10 object-contain"
+                />
+                <h2
+                  className="text-lg text-[#1A3D0E]"
+                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+                >
+                  Specimen Classification
+                </h2>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {article.quickStats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-xl border border-[#C8B89A] bg-[#FDFAF3] p-3"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#7A6652] mb-0.5">
+                      {stat.label}
+                    </p>
+                    <p
+                      className="text-sm text-[#1A3D0E] font-semibold"
+                      style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+                    >
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Intro text */}
+              <div className="prose-eww mt-4">{article.intro}</div>
+            </div>
+
+            {/* Creature image — big */}
+            <div className="flex flex-col items-center gap-3">
+              <div className="rounded-2xl border-2 border-[#C8B89A] bg-[#EDE5CE] overflow-hidden p-6 w-full aspect-square flex items-center justify-center relative">
+                <div
+                  className="absolute inset-0 opacity-30"
+                  style={{
+                    backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
+                    backgroundSize: "cover",
+                  }}
+                />
+                <img
+                  src={creatureImagePath(article.creatureName)}
                   alt={article.creatureName}
-                  className="w-full h-full object-contain illustration"
+                  className="relative z-10 illustration w-full h-full object-contain"
                 />
               </div>
-              <p className="text-center text-xs text-[#7A6652] mt-2 italic">{article.creatureName}</p>
+              <p className="text-xs text-center text-[#7A6652] italic">{article.creatureName}</p>
+              <img
+                src="/images/ui/Do%20Not%20Lick%20stamp.png"
+                alt="Do not lick"
+                className="illustration w-16 object-contain"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Article body */}
-      <section className="bg-[#FDFAF3] py-14">
-        <div className="max-w-2xl mx-auto px-4">
-          {/* Intro */}
-          <div className="prose-eww mb-10">{article.intro}</div>
+      {/* Hazard tape divider */}
+      <div className="w-full overflow-hidden h-8 relative">
+        <img
+          src="/images/ui/Hazard%20tape%20strip%2C%20text-free.png"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover illustration"
+          style={{ mixBlendMode: "multiply" }}
+        />
+      </div>
 
-          {/* Gross fact highlight */}
-          <div
-            className="rounded-xl border-l-4 border-[#A32D2D] bg-[#FCEBEB] px-5 py-4 mb-10"
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#A32D2D] mb-1">
-              Gross Fact
-            </p>
-            <p className="text-sm text-[#3D2B1F] leading-relaxed">{article.grossFactHighlight}</p>
-          </div>
+      {/* ── ARTICLE BODY ───────────────────────────────────────────── */}
+      <section className="bg-[#FDFAF3] py-14">
+        <div className="max-w-3xl mx-auto px-4">
+
+          {/* Gross fact reveal — interactive */}
+          <GrossReveal fact={article.grossFactHighlight} />
 
           {/* Sections */}
-          {article.sections.map((section) => (
-            <div key={section.heading} className="mb-10">
-              <h2
-                className="text-xl text-[#1A3D0E] mb-4"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
-              >
-                {section.heading}
-              </h2>
-              <div className="prose-eww">{section.body}</div>
+          {article.sections.map((section, i) => (
+            <div key={section.heading} className="mb-12">
+              {/* Section heading */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full bg-[#1A3D0E] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                  {i + 1}
+                </div>
+                <span className="text-xl mr-1" aria-hidden="true">{section.icon}</span>
+                <h2
+                  className="text-xl text-[#1A3D0E]"
+                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+                >
+                  {section.heading}
+                </h2>
+              </div>
+
+              {/* Body */}
+              <div className="prose-eww mb-5">{section.body}</div>
+
+              {/* Callout box */}
+              {section.callout && (() => {
+                const style = calloutStyles[section.callout.type];
+                return (
+                  <div
+                    className="rounded-xl border-l-4 p-4 flex gap-3 items-start"
+                    style={{ borderColor: style.border, backgroundColor: style.bg }}
+                  >
+                    <span className="text-base flex-shrink-0 mt-0.5" aria-hidden="true">
+                      {style.icon}
+                    </span>
+                    <div>
+                      <p
+                        className="text-[10px] font-bold uppercase tracking-widest mb-1"
+                        style={{ color: style.labelColor }}
+                      >
+                        {style.label}
+                      </p>
+                      <p className="text-sm text-[#3D2B1F] leading-relaxed">
+                        {section.callout.text}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Thin slime divider between sections (not after last) */}
+              {i < article.sections.length - 1 && (
+                <div className="mt-10 w-full overflow-hidden h-4">
+                  <img
+                    src="/images/ui/Thin%20slime%20divider%20line.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full h-full object-cover illustration"
+                    style={{ mixBlendMode: "multiply" }}
+                  />
+                </div>
+              )}
             </div>
           ))}
+        </div>
+      </section>
 
-          {/* Dr. Icky note */}
-          <div className="rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-5 flex gap-4 items-start mt-12">
-            <img
-              src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
-              alt="Dr. Icky"
-              className="illustration-character w-14 flex-shrink-0 object-contain"
-            />
+      {/* Evidence tape divider */}
+      <div className="w-full overflow-hidden h-8 relative">
+        <img
+          src="/images/ui/Evidence%20tape%20strip%2C%20text-free.png"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover illustration"
+          style={{ mixBlendMode: "multiply" }}
+        />
+      </div>
+
+      {/* ── DR. ICKY'S VERDICT ─────────────────────────────────────── */}
+      <section className="dark-section bg-[#1A3D0E] py-14 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: "url(/images/ui/slime%20splat.png)",
+            backgroundSize: "120px",
+            backgroundRepeat: "repeat",
+          }}
+        />
+        <div className="relative max-w-3xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-6 items-start">
+            <div className="flex-shrink-0 flex flex-col items-center gap-3">
+              <img
+                src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
+                alt="Dr. Icky"
+                className="illustration-character w-28 object-contain"
+              />
+              <img
+                src="/images/ui/Dr.%20Icky%20Approved%20badge.png"
+                alt="Dr. Icky Approved"
+                className="illustration w-16 object-contain"
+                style={{ mixBlendMode: "normal" }}
+              />
+            </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-1">
-                Dr. Icky&apos;s Note
+              <p className="text-xs font-bold uppercase tracking-widest text-[#5DB84A] mb-3">
+                Dr. Icky&apos;s Verdict
               </p>
-              <p className="text-sm text-[#3D2B1F] leading-relaxed">{article.drIckyNote}</p>
+              <p
+                className="text-xl text-[#F7F2E4] leading-relaxed"
+                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+              >
+                &ldquo;{article.drIckyVerdict}&rdquo;
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA — Books + App */}
+      {/* ── CTA ────────────────────────────────────────────────────── */}
       <section className="bg-[#EDE5CE] py-12 border-t border-[#C8B89A]">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
-            There are 74 more
-          </p>
-          <h3
-            className="text-2xl text-[#1A3D0E] mb-4"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
-          >
-            The full Creepy Creatures catalog
-          </h3>
-          <p className="text-sm text-[#7A6652] max-w-lg leading-relaxed mb-6">
-            75 creatures. Every fact verified. Zombie ants, tongue-eating parasites, slime machines,
-            and things that should not biologically be allowed to exist. Available in print and as
-            an app.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/books"
-              className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
-            >
-              See the books
-            </Link>
-            <Link
-              href="/app"
-              className="border border-[#C8B89A] hover:border-[#5DB84A] text-[#3D2B1F] font-semibold px-5 py-2.5 rounded-full text-sm transition-colors bg-[#F7F2E4]"
-            >
-              The app
-            </Link>
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
+                There are 74 more
+              </p>
+              <h3
+                className="text-2xl text-[#1A3D0E] mb-3"
+                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+              >
+                The full Creepy Creatures catalog
+              </h3>
+              <p className="text-sm text-[#7A6652] max-w-md leading-relaxed">
+                75 creatures. Every fact verified and revolting. In print and as an app.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 flex-shrink-0">
+              <Link
+                href="/books"
+                className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors text-center"
+              >
+                See the books
+              </Link>
+              <Link
+                href="/app"
+                className="border border-[#C8B89A] hover:border-[#5DB84A] text-[#3D2B1F] font-semibold px-6 py-3 rounded-full text-sm transition-colors bg-[#F7F2E4] text-center"
+              >
+                The app
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Back to specimen files */}
+      {/* Back link */}
       <section className="bg-[#F7F2E4] py-8 border-t border-[#C8B89A]">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
           <Link
             href="/specimen-files"
             className="text-sm text-[#7A6652] hover:text-[#5DB84A] transition-colors flex items-center gap-1.5"
           >
             <span aria-hidden="true">&#8592;</span> All Specimen Files
           </Link>
+          <img
+            src="/images/ui/Junior%20Grossologist%20badge.png"
+            alt="Junior Grossologist"
+            className="illustration w-12 object-contain"
+          />
         </div>
       </section>
     </>
