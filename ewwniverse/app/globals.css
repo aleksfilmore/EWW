@@ -82,3 +82,15 @@ body {
 .dark-section .illustration-character {
   mix-blend-mode: normal;
 }
+
+/* Article body prose styles for specimen posts */
+.prose-eww p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #3D2B1F;
+  margin-bottom: 1rem;
+}
+
+.prose-eww p:last-child {
+  margin-bottom: 0;
+}

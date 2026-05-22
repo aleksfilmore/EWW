@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "For Parents",
@@ -138,23 +139,18 @@ export default function ForParentsPage() {
             ))}
           </div>
 
-          {/* Contact */}
-          <div className="mt-8 rounded-xl border border-[#C8B89A] bg-[#EDE5CE] p-6 text-center">
+          {/* Contact form */}
+          <div className="mt-8 rounded-xl border border-[#C8B89A] bg-[#EDE5CE] p-6">
             <h3
-              className="text-lg text-[#1A3D0E] mb-2"
+              className="text-lg text-[#1A3D0E] mb-1"
               style={{ fontFamily: '"Cantora One", Georgia, serif' }}
             >
               Still have questions?
             </h3>
-            <p className="text-sm text-[#7A6652] mb-4">
-              Dr. Icky&apos;s lab is open to parent inquiries.
+            <p className="text-sm text-[#7A6652] mb-6">
+              Dr. Icky&apos;s lab is open to parent inquiries. Fill in the form and you will receive a reply at the email you provide.
             </p>
-            <a
-              href="mailto:hello@ewwniverse.com"
-              className="inline-block bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
-            >
-              Contact us
-            </a>
+            <ContactForm />
           </div>
         </div>
       </section>
