@@ -189,13 +189,13 @@ export default function HeroSection() {
                   maxWidth: 152,
                 }}
               >
-                <p className="text-[11px] font-bold text-[#1A2800] leading-snug">
+                <p className="text-xs font-bold text-[#1A2800] leading-snug">
                   Hi! I&apos;m{" "}
-                  <span style={{ fontFamily: "var(--font-boogaloo),cursive", color: "#3D7A08", fontSize: "1rem" }}>
+                  <span style={{ fontFamily: "var(--font-boogaloo),cursive", color: "#3D7A08", fontSize: "1.15rem" }}>
                     DR. ICKY
                   </span>
                 </p>
-                <p className="text-[10px] text-[#5A5040] mt-0.5 leading-snug">
+                <p className="text-[11px] text-[#5A5040] mt-0.5 leading-snug">
                   Your guide to the EWW-niverse!
                 </p>
                 <div className="absolute" style={{ bottom: -15, left: 20, width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "15px solid #3D7A08" }} />

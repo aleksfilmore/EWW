@@ -48,14 +48,6 @@ export default function Footer() {
               Dr. Icky&apos;s collection of the grossest, weirdest, most revolting facts in the known universe.
               For kids who like facts too weird for normal science apps.
             </p>
-            {/* EWW gross beaker decoration */}
-            <img
-              src="/images/ui/EWW%20gross.png"
-              alt=""
-              aria-hidden="true"
-              className="w-16 object-contain mt-1"
-              style={{ mixBlendMode: "screen" }}
-            />
           </div>
 
           {/* Links column */}

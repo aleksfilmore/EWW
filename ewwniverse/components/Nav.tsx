@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { href: "/books",          label: "Books" },
-  { href: "/specimen-files", label: "Specimens" },
-  { href: "/dr-icky",        label: "Dr. Icky" },
-  { href: "/app",            label: "App" },
+  { href: "/books",          label: "Books",     idleColor: "#5DB84A" },
+  { href: "/specimen-files", label: "Specimens", idleColor: "#D48B1A" },
+  { href: "/dr-icky",        label: "Dr. Icky",  idleColor: "#A78BFA" },
+  { href: "/app",            label: "App",       idleColor: "#E86C5D" },
 ];
 
 export default function Nav() {
@@ -55,15 +55,15 @@ export default function Nav() {
                 className="relative group flex flex-col items-center"
               >
                 <span
-                  className="text-sm font-normal transition-colors duration-150"
+                  className="transition-colors duration-150"
                   style={{
-                    color: active ? "#6ED44F" : "#D8D8D8",
-                    fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
-                    fontSize: "0.9rem",
+                    color: active ? "#6ED44F" : l.idleColor,
+                    fontFamily: "var(--font-boogaloo), cursive",
+                    fontSize: "1.05rem",
                     letterSpacing: "0.02em",
                     textShadow: active
-                      ? "0 0 10px rgba(110,212,79,0.4)"
-                      : "none",
+                      ? `0 0 12px ${l.idleColor}80`
+                      : `0 0 8px ${l.idleColor}40`,
                   }}
                 >
                   {l.label}
@@ -137,8 +137,8 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-base font-normal text-[#D8D8D8] hover:text-[#6ED44F] transition-colors"
-                style={{ fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif", letterSpacing: "0.02em" }}
+                className="text-xl transition-colors"
+                style={{ fontFamily: "var(--font-boogaloo), cursive", color: l.idleColor, letterSpacing: "0.02em" }}
                 onClick={() => setOpen(false)}
               >
                 {l.label}

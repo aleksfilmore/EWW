@@ -47,9 +47,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   background-color: #F7F2E4;
   color: #3D2B1F;
   font-family: var(--font-body);

@@ -38,7 +38,7 @@ export default function Home() {
                     style={{ color: p.color, fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>
                     {p.label}
                   </p>
-                  <p className="text-xs text-[#8A9E86] leading-relaxed">{p.desc}</p>
+                  <p className="text-sm text-[#8A9E86] leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -53,10 +53,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:divide-x md:divide-[#1A3D0E]">
             {[
-              { n: "6", label: "Books published" },
-              { n: "75", label: "Revolting creatures" },
-              { n: "450", label: "Gross-out facts" },
-              { n: "01", label: "Mad scientist" },
+              { n: "6",   label: "Books published",   sub: "" },
+              { n: "450", label: "Creatures total",   sub: "75 live in v1" },
+              { n: "450+",label: "Gross-out facts",   sub: "" },
+              { n: "01",  label: "Mad scientist",     sub: "" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center text-center md:px-6">
                 <span
@@ -66,6 +66,7 @@ export default function Home() {
                   {s.n}
                 </span>
                 <span className="text-xs text-[#8A9E86] uppercase tracking-widest mt-1">{s.label}</span>
+                {s.sub && <span className="text-[10px] text-[#5DB84A]/60 tracking-wider mt-0.5">{s.sub}</span>}
               </div>
             ))}
           </div>
@@ -192,7 +193,7 @@ export default function Home() {
                 Brewing
               </span>
             </h2>
-            <p className="text-[#A78BFA] leading-relaxed text-sm">
+            <p className="text-[#A78BFA] leading-relaxed text-base">
               Games, missions, creature hunts, EWW-meter tracking, and badges that make bragging rights official.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -204,15 +205,15 @@ export default function Home() {
             {/* App badges */}
             <div className="flex gap-3 mt-2">
               {[
-                { img: "/images/ui/Mission%20Complete%20sticker.png", label: "Mission Complete" },
-                { img: "/images/ui/Badge%20Unlocked%20sticker.png", label: "Badge Unlocked" },
-                { img: "/images/ui/Junior%20Grossologist%20badge.png", label: "Junior Grossologist" },
+                { img: "/images/ui/Mission%20Complete%20sticker.png",       label: "Mission Complete" },
+                { img: "/images/ui/Badge%20Unlocked%20sticker.png",          label: "Badge Unlocked" },
+                { img: "/images/ui/Total%20Barf%20Certified%20badge.png",    label: "Total Barf Certified" },
               ].map((b) => (
                 <div key={b.label} className="flex flex-col items-center gap-1">
                   <img src={b.img} alt={b.label}
                     className="illustration w-14 h-14 object-contain"
                     style={{ mixBlendMode: "normal" }} />
-                  <span className="text-[8px] text-[#A78BFA] uppercase tracking-widest text-center leading-tight">{b.label}</span>
+                  <span className="text-[10px] text-[#A78BFA] uppercase tracking-widest text-center leading-tight">{b.label}</span>
                 </div>
               ))}
             </div>
