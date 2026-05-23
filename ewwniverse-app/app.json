@@ -7,7 +7,6 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "scheme": "ewwniverse",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.ewwniverse.app"
@@ -43,7 +42,8 @@
         }
       ],
       "expo-splash-screen",
-      "@react-native-firebase/app"
+      "@react-native-firebase/app",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true
