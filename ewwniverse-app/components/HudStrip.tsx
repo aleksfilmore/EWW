@@ -10,6 +10,8 @@ interface Props {
   scanNextRefresh: number;  // unix timestamp ms
   streakDays: number;
   onRefreshCheck: () => void;
+  /** false = on parchment card (dark text). Default true = on dark bg (light text) */
+  dark?: boolean;
 }
 
 function formatCountdown(ms: number): string {
@@ -19,7 +21,7 @@ function formatCountdown(ms: number): string {
   return `${h}h ${m}m`;
 }
 
-export function HudStrip({ scanBalance, scanNextRefresh, streakDays, onRefreshCheck }: Props) {
+export function HudStrip({ scanBalance, scanNextRefresh, streakDays, onRefreshCheck, dark = true }: Props) {
   const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
@@ -32,32 +34,36 @@ export function HudStrip({ scanBalance, scanNextRefresh, streakDays, onRefreshCh
 
   const msUntilRefresh = scanNextRefresh - now;
 
+  const valueColor = dark ? Colors.text.primary : Colors.text.onParchment;
+  const labelColor = dark ? Colors.text.muted : Colors.text.onParchmentMuted;
+  const dividerColor = dark ? Colors.border.subtle : `${Colors.eww.tan}80`;
+
   return (
-    <View style={styles.strip}>
+    <View style={[styles.strip, dark ? styles.stripDark : styles.stripLight]}>
       {/* Scan balance */}
       <View style={styles.cell}>
-        <Text style={styles.value}>{scanBalance}</Text>
-        <Text style={styles.label}>Scans</Text>
+        <Text style={[styles.value, { color: valueColor }]}>{scanBalance}</Text>
+        <Text style={[styles.label, { color: labelColor }]}>Scans</Text>
       </View>
 
-      <View style={styles.divider} />
+      <View style={[styles.divider, { backgroundColor: dividerColor }]} />
 
       {/* Next scan timer */}
       <View style={styles.cell}>
-        <Text style={[styles.value, msUntilRefresh <= 0 && { color: Colors.eww.green }]}>
+        <Text style={[styles.value, { color: msUntilRefresh <= 0 ? Colors.eww.green : valueColor }]}>
           {formatCountdown(msUntilRefresh)}
         </Text>
-        <Text style={styles.label}>Next scan</Text>
+        <Text style={[styles.label, { color: labelColor }]}>Next scan</Text>
       </View>
 
-      <View style={styles.divider} />
+      <View style={[styles.divider, { backgroundColor: dividerColor }]} />
 
       {/* Streak */}
       <View style={styles.cell}>
         <Text style={[styles.value, { color: Colors.eww.amber }]}>
           {streakDays}🔥
         </Text>
-        <Text style={styles.label}>Day streak</Text>
+        <Text style={[styles.label, { color: labelColor }]}>Day streak</Text>
       </View>
     </View>
   );
@@ -66,11 +72,16 @@ export function HudStrip({ scanBalance, scanNextRefresh, streakDays, onRefreshCh
 const styles = StyleSheet.create({
   strip: {
     flexDirection: 'row',
+    borderRadius: Radius.md,
+    overflow: 'hidden',
+  },
+  stripDark: {
     backgroundColor: Colors.bg.card,
-    borderRadius: Radius.lg,
     borderWidth: 1,
     borderColor: Colors.border.DEFAULT,
-    overflow: 'hidden',
+  },
+  stripLight: {
+    backgroundColor: 'transparent',
   },
   cell: {
     flex: 1,
@@ -81,18 +92,15 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 18,
     fontWeight: '800',
-    color: Colors.text.primary,
   },
   label: {
     fontSize: 10,
-    color: Colors.text.muted,
     marginTop: 2,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   divider: {
     width: 1,
-    backgroundColor: Colors.border.subtle,
     marginVertical: Spacing.xs,
   },
 });

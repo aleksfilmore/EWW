@@ -1,33 +1,20 @@
 import { Tabs } from 'expo-router';
-import { View } from 'react-native';
-import { Colors } from '@/constants/design';
+import { Text, StyleSheet } from 'react-native';
+import { Colors, FontFamily } from '@/constants/design';
 
-// Simple tab icon placeholder — will use custom SVG icons later
-function TabIcon({
-  focused,
-  emoji,
-}: {
-  focused: boolean;
-  emoji: string;
-}) {
+// SVG-style tab icons using Unicode characters that render well on Android
+const TAB_ICONS: Record<string, { active: string; inactive: string }> = {
+  index:          { active: '🏠', inactive: '🏠' },
+  collection:     { active: '🔬', inactive: '🔬' },
+  'recruit-file': { active: '🏆', inactive: '🏆' },
+};
+
+function TabIcon({ name, focused }: { name: string; focused: boolean }) {
+  const icon = TAB_ICONS[name] ?? { active: '●', inactive: '○' };
   return (
-    <View
-      style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        opacity: focused ? 1 : 0.45,
-      }}
-    >
-      {/* Using text emoji temporarily; swap for custom SVG icons */}
-      <View
-        style={{
-          backgroundColor: focused ? `${Colors.eww.green}22` : 'transparent',
-          borderRadius: 10,
-          paddingHorizontal: 12,
-          paddingVertical: 4,
-        }}
-      />
-    </View>
+    <Text style={[styles.icon, { opacity: focused ? 1 : 0.4 }]}>
+      {focused ? icon.active : icon.inactive}
+    </Text>
   );
 }
 
@@ -36,49 +23,59 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: Colors.bg.surface,
-          borderTopColor: Colors.border.DEFAULT,
-          borderTopWidth: 1,
-          height: 60,
-          paddingBottom: 8,
-        },
+        tabBarStyle: styles.bar,
         tabBarActiveTintColor: Colors.eww.green,
-        tabBarInactiveTintColor: Colors.text.disabled,
-        tabBarLabelStyle: {
-          fontSize: 11,
-          fontWeight: '500',
-          letterSpacing: 0.3,
-        },
+        tabBarInactiveTintColor: 'rgba(255,255,255,0.38)',
+        tabBarLabelStyle: styles.label,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Lab HQ',
+          title: 'HOME',
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} emoji="🧪" />
+            <TabIcon name="index" focused={focused} />
           ),
         }}
       />
       <Tabs.Screen
         name="collection"
         options={{
-          title: 'Collection',
+          title: 'EXPLORE',
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} emoji="🔬" />
+            <TabIcon name="collection" focused={focused} />
           ),
         }}
       />
       <Tabs.Screen
         name="recruit-file"
         options={{
-          title: 'Recruit File',
+          title: 'REWARDS',
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} emoji="📋" />
+            <TabIcon name="recruit-file" focused={focused} />
           ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  bar: {
+    backgroundColor: '#0A0618',  // slightly darker than bg for contrast
+    borderTopColor: `${Colors.eww.green}25`,
+    borderTopWidth: 1.5,
+    height: 64,
+    paddingBottom: 10,
+    paddingTop: 4,
+  },
+  icon: {
+    fontSize: 20,
+    marginBottom: -2,
+  },
+  label: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 10,
+    letterSpacing: 1.2,
+  },
+});

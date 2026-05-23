@@ -2,10 +2,12 @@ import '../global.css';
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
+import { Boogaloo_400Regular } from '@expo-google-fonts/boogaloo';
+import { Creepster_400Regular } from '@expo-google-fonts/creepster';
 import { Colors } from '@/constants/design';
 import { useUserStore } from '@/store/userStore';
 import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
@@ -24,6 +26,7 @@ const queryClient = new QueryClient({
 
 function AppBootstrap() {
   const { isHydrated, initUser } = useUserStore();
+  const [fontsLoaded] = useFonts({ Boogaloo_400Regular, Creepster_400Regular });
 
   useEffect(() => {
     // Anonymous Firebase auth — creates a persistent UID on first launch
@@ -42,10 +45,10 @@ function AppBootstrap() {
   }, [initUser]);
 
   useEffect(() => {
-    if (isHydrated) {
+    if (isHydrated && fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [isHydrated]);
+  }, [isHydrated, fontsLoaded]);
 
   return null;
 }

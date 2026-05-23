@@ -12,7 +12,7 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import { EwwMeter } from '@/types/creature';
-import { ewwMeterColor, Colors } from '@/constants/design';
+import { ewwMeterColor, Colors, FontFamily } from '@/constants/design';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
@@ -78,12 +78,13 @@ export function EwwMeterArc({ value, size = 140, animated = true }: Props) {
   const sublabel = value === 100 ? 'MAX EWW' : value === 80 ? 'GROSS' : 'KINDA EWW';
 
   return (
+    <View style={styles.wrapper}>
     <View style={[styles.container, { width: size, height: size }]}>
       <Svg width={size} height={size}>
-        {/* Background track */}
+        {/* Background track — dark tan on parchment */}
         <Path
           d={bgPath}
-          stroke={Colors.bg.elevated}
+          stroke={`${Colors.eww.tan}80`}
           strokeWidth={strokeW}
           fill="none"
           strokeLinecap="round"
@@ -105,10 +106,14 @@ export function EwwMeterArc({ value, size = 140, animated = true }: Props) {
         <Text style={styles.sublabel}>{sublabel}</Text>
       </View>
     </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignItems: 'center',
+  },
   container: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -119,13 +124,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   value: {
-    fontSize: 24,
-    fontWeight: '900',
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 26,
+    fontWeight: '700',
   },
   sublabel: {
     fontSize: 9,
     fontWeight: '600',
-    color: Colors.text.muted,
+    color: Colors.eww.barkLight,
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginTop: 2,

@@ -1,6 +1,8 @@
 /**
- * Lab HQ — home tab.
- * Shows: scan button, scan balance, daily specimen, streak, active missions.
+ * HOME — Lab HQ
+ *
+ * Dark lab background. Parchment cards for content panels.
+ * Branded header via AppHeader.
  */
 import {
   View,
@@ -11,95 +13,127 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Colors, Spacing, Radius } from '@/constants/design';
+import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { useUserStore } from '@/store/userStore';
-import { STAGE_LABELS, SCAN_REFRESH_MS } from '@/constants/game';
-import { ScanButton } from '@/components/ScanButton';
+import { STAGE_LABELS } from '@/constants/game';
+import { AppHeader } from '@/components/AppHeader';
+import { ParchmentCard } from '@/components/ParchmentCard';
+import { SectionLabel } from '@/components/SectionLabel';
 import { EwwMeterArc } from '@/components/EwwMeterArc';
-import { DailySpecimenCard } from '@/components/DailySpecimenCard';
 import { HudStrip } from '@/components/HudStrip';
+import { DailySpecimenCard } from '@/components/DailySpecimenCard';
 
-export default function LabHQ() {
+export default function Home() {
   const profile = useUserStore((s) => s.profile);
   const refreshScanIfDue = useUserStore((s) => s.refreshScanIfDue);
 
   if (!profile) return null;
 
   const stageLabel = STAGE_LABELS[profile.eww_stage];
+  // Derive a single eww score (0–100) from progress
+  const totalCreatures = 75 + 80 + 79; // all books
+  const ewwScore = Math.min(
+    100,
+    Math.round(
+      (profile.classified_count / Math.max(totalCreatures, 1)) * 60 +
+        (profile.mastered_count / Math.max(totalCreatures, 1)) * 40
+    )
+  );
+  // Snap to nearest EWW-meter tier: 60 / 80 / 100
+  const ewwMeterValue: 60 | 80 | 100 =
+    ewwScore >= 80 ? 100 : ewwScore >= 40 ? 80 : 60;
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
+      <AppHeader />
+
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>DR. ICKY'S LAB</Text>
-            <Text style={styles.stage}>{stageLabel}</Text>
+        {/* Stage tag + codename */}
+        <View style={styles.stageRow}>
+          <View style={styles.stageBadge}>
+            <Text style={styles.stageText}>{stageLabel.toUpperCase()}</Text>
           </View>
           <TouchableOpacity
             style={styles.codenameTag}
             onPress={() => router.push('/(tabs)/recruit-file')}
           >
-            <Text style={styles.codename}>{profile.codename}</Text>
+            <Text style={styles.codenameText}>{profile.codename}</Text>
           </TouchableOpacity>
         </View>
 
-        {/* HUD strip — scans + streak */}
-        <HudStrip
-          scanBalance={profile.scan_balance}
-          scanNextRefresh={profile.scan_next_refresh}
-          streakDays={profile.streak_days}
-          onRefreshCheck={refreshScanIfDue}
-        />
+        {/* EWW-METER card */}
+        <ParchmentCard style={styles.card}>
+          <SectionLabel label="EWW-METER" />
+          <EwwMeterArc value={ewwMeterValue} size={200} />
+        </ParchmentCard>
 
-        {/* Scan button — the main CTA */}
-        <ScanButton
-          scanBalance={profile.scan_balance}
-          onPress={() => router.push('/creature/scan')}
-        />
+        {/* HUD strip on dark bg */}
+        <ParchmentCard style={styles.card} accentColor={Colors.eww.amber}>
+          <SectionLabel label="LAB STATUS" variant="parchment" />
+          <HudStrip
+            scanBalance={profile.scan_balance}
+            scanNextRefresh={profile.scan_next_refresh}
+            streakDays={profile.streak_days}
+            onRefreshCheck={refreshScanIfDue}
+            dark={false}
+          />
+        </ParchmentCard>
 
-        {/* Daily Specimen */}
+        {/* Daily specimen */}
         <DailySpecimenCard
           lastClaimed={profile.daily_specimen_last_claimed}
           isPaid={profile.is_paid}
         />
 
-        {/* Progress summary */}
-        <View style={styles.progressRow}>
-          <StatChip
+        {/* Stats row */}
+        <View style={styles.statsRow}>
+          <StatCard
             value={profile.classified_count}
             label="Classified"
             color={Colors.eww.green}
+            accent={Colors.eww.greenDark}
           />
-          <StatChip
+          <StatCard
             value={profile.mastered_count}
             label="Mastered"
-            color={Colors.eww.gold}
+            color={Colors.eww.amber}
+            accent='#A06010'
           />
-          <StatChip
+          <StatCard
             value={profile.contamination_count}
             label="Events"
-            color={Colors.eww.coral}
+            color={Colors.eww.purple}
+            accent={Colors.eww.purpleDark}
           />
         </View>
 
+        {/* Mission CTA */}
+        <TouchableOpacity
+          style={styles.missionBtn}
+          onPress={() => router.push('/quiz')}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.missionLabel}>READY FOR ACTION?</Text>
+          <Text style={styles.missionCta}>START LAB QUIZ  ›</Text>
+        </TouchableOpacity>
+
         {/* Quick actions */}
-        <View style={styles.quickActions}>
-          <QuickAction
-            label="Lab Quiz"
-            sub="Earn scans + classify"
-            onPress={() => router.push('/quiz')}
-            accent={Colors.eww.green}
-          />
-          <QuickAction
-            label="Collection"
+        <View style={styles.quickRow}>
+          <QuickCard
+            label="Specimen Files"
             sub={`${profile.classified_count} / 75 Creatures`}
+            accentColor={Colors.eww.amber}
             onPress={() => router.push('/(tabs)/collection')}
-            accent={Colors.eww.amber}
+          />
+          <QuickCard
+            label="Rewards"
+            sub={`Stage ${profile.eww_stage} — ${stageLabel}`}
+            accentColor={Colors.eww.purple}
+            onPress={() => router.push('/(tabs)/recruit-file')}
           />
         </View>
       </ScrollView>
@@ -107,130 +141,176 @@ export default function LabHQ() {
   );
 }
 
-function StatChip({
+// ── Sub-components ────────────────────────────────────────────────────────────
+
+function StatCard({
   value,
   label,
   color,
+  accent,
 }: {
   value: number;
   label: string;
   color: string;
+  accent: string;
 }) {
   return (
-    <View style={[styles.statChip, { borderColor: `${color}33` }]}>
-      <Text style={[styles.statValue, { color }]}>{value}</Text>
+    <ParchmentCard style={styles.statCard} accentColor={color}>
+      <Text style={[styles.statValue, { color: accent }]}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
-    </View>
+    </ParchmentCard>
   );
 }
 
-function QuickAction({
+function QuickCard({
   label,
   sub,
+  accentColor,
   onPress,
-  accent,
 }: {
   label: string;
   sub: string;
+  accentColor: string;
   onPress: () => void;
-  accent: string;
 }) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.qaCard, { borderColor: `${accent}33` }]}
-      activeOpacity={0.75}
+      activeOpacity={0.8}
+      style={styles.quickCardWrapper}
     >
-      <Text style={[styles.qaLabel, { color: accent }]}>{label}</Text>
-      <Text style={styles.qaSub}>{sub}</Text>
+      <ParchmentCard style={styles.quickCard} accentColor={accentColor}>
+        <Text style={[styles.quickLabel, { color: accentColor === Colors.eww.amber ? '#8C5C00' : Colors.eww.purpleDark }]}>
+          {label}
+        </Text>
+        <Text style={styles.quickSub}>{sub}</Text>
+      </ParchmentCard>
     </TouchableOpacity>
   );
 }
 
+// ── Styles ────────────────────────────────────────────────────────────────────
+
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: Colors.bg.DEFAULT },
   scroll: { flex: 1 },
-  content: { paddingHorizontal: Spacing.md, paddingBottom: Spacing.xl },
+  content: {
+    paddingHorizontal: Spacing.md,
+    paddingBottom: Spacing.xxl,
+    paddingTop: Spacing.sm,
+    gap: 12,
+  },
 
-  header: {
+  stageRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    paddingTop: Spacing.md,
-    paddingBottom: Spacing.sm,
+    alignItems: 'center',
+    marginBottom: 2,
   },
-  greeting: {
-    fontSize: 11,
-    fontWeight: '600',
-    letterSpacing: 2,
-    color: Colors.eww.green,
-    textTransform: 'uppercase',
+  stageBadge: {
+    backgroundColor: `${Colors.eww.forest}CC`,
+    borderRadius: Radius.full,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderColor: Colors.eww.greenDark,
   },
-  stage: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: Colors.text.primary,
-    marginTop: 2,
+  stageText: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 12,
+    color: Colors.eww.greenLight,
+    letterSpacing: 1,
   },
   codenameTag: {
     backgroundColor: Colors.bg.card,
     borderRadius: Radius.full,
     paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingVertical: 5,
     borderWidth: 1,
     borderColor: Colors.border.DEFAULT,
   },
-  codename: {
-    fontSize: 12,
+  codenameText: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 13,
     color: Colors.eww.green,
-    fontWeight: '600',
     letterSpacing: 0.5,
   },
 
-  progressRow: {
-    flexDirection: 'row',
-    gap: Spacing.sm,
-    marginTop: Spacing.md,
+  card: {
+    // gap handled by ScrollView contentContainerStyle gap
   },
-  statChip: {
+
+  statsRow: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  statCard: {
     flex: 1,
-    backgroundColor: Colors.bg.card,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    paddingVertical: Spacing.sm,
     alignItems: 'center',
+    padding: 12,
   },
   statValue: {
-    fontSize: 24,
-    fontWeight: '800',
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 28,
+    fontWeight: '700',
+    lineHeight: 30,
   },
   statLabel: {
-    fontSize: 10,
-    color: Colors.text.muted,
-    marginTop: 2,
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 11,
+    color: Colors.eww.barkLight,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
+    marginTop: 2,
   },
 
-  quickActions: {
-    flexDirection: 'row',
-    gap: Spacing.sm,
-    marginTop: Spacing.md,
-  },
-  qaCard: {
-    flex: 1,
-    backgroundColor: Colors.bg.card,
+  missionBtn: {
+    backgroundColor: Colors.eww.amber,
     borderRadius: Radius.lg,
-    borderWidth: 1,
-    padding: Spacing.md,
+    borderWidth: 3,
+    borderColor: '#A06010',
+    paddingVertical: 14,
+    paddingHorizontal: Spacing.md,
+    alignItems: 'center',
+    shadowColor: '#A06010',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.45,
+    shadowRadius: 6,
+    elevation: 6,
   },
-  qaLabel: {
+  missionLabel: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 11,
+    color: '#5C3200',
+    letterSpacing: 2,
+    marginBottom: 2,
+  },
+  missionCta: {
+    fontFamily: FontFamily.creepster,
+    fontSize: 24,
+    color: '#2A1600',
+    letterSpacing: 1,
+  },
+
+  quickRow: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  quickCardWrapper: {
+    flex: 1,
+  },
+  quickCard: {
+    padding: 14,
+  },
+  quickLabel: {
+    fontFamily: FontFamily.boogaloo,
     fontSize: 16,
     fontWeight: '700',
   },
-  qaSub: {
+  quickSub: {
+    fontFamily: FontFamily.boogaloo,
     fontSize: 12,
-    color: Colors.text.muted,
-    marginTop: 4,
+    color: Colors.eww.barkLight,
+    marginTop: 3,
   },
 });
