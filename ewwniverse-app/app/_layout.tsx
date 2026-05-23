@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import * as SplashScreen from 'expo-splash-screen';
 import { Colors } from '@/constants/design';
 import { useUserStore } from '@/store/userStore';
+import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
 
 // Keep splash visible until we're ready
 SplashScreen.preventAutoHideAsync();
@@ -25,9 +26,19 @@ function AppBootstrap() {
   const { isHydrated, initUser } = useUserStore();
 
   useEffect(() => {
-    // Initialize with anonymous user until Firebase is set up
-    // TODO: replace with Firebase Auth anonymous sign-in
-    initUser('local-anon-user');
+    // Anonymous Firebase auth — creates a persistent UID on first launch
+    const unsubscribe = onAuthStateChanged((user) => {
+      if (user) {
+        initUser(user.uid);
+      } else {
+        // No user yet — sign in anonymously
+        signInAnonymously().catch(() => {
+          // Fallback for offline / no-config state (dev only)
+          initUser('local-anon-dev');
+        });
+      }
+    });
+    return unsubscribe;
   }, [initUser]);
 
   useEffect(() => {
