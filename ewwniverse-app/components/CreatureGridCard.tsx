@@ -7,6 +7,7 @@ import { Creature, ClassifiedState } from '@/types/creature';
 import { Colors, Radius } from '@/constants/design';
 import { ewwMeterColor } from '@/constants/design';
 import { EwwMeter } from '@/types/creature';
+import { CREATURE_IMAGES } from '@/assets/creatures/index';
 
 interface Props {
   creature: Creature;
@@ -44,8 +45,19 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
         />
       ) : (
         <View style={styles.imageArea}>
-          {/* Placeholder — swap for actual image when assets are linked */}
-          <Text style={styles.placeholderEmoji}>🦠</Text>
+          {CREATURE_IMAGES[creature.id] ? (
+            <Image
+              source={CREATURE_IMAGES[creature.id]}
+              style={[
+                styles.creatureImage,
+                { width: size - 16, height: size - 16 },
+                state === 'mastered' && styles.masteredGlow,
+              ]}
+              resizeMode="contain"
+            />
+          ) : (
+            <Text style={styles.placeholderEmoji}>🦠</Text>
+          )}
         </View>
       )}
 
@@ -89,6 +101,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  creatureImage: {
+    borderRadius: 6,
+  },
+  masteredGlow: {
+    // Subtle tint to indicate mastery — gold border on card handles the main signal
+    opacity: 0.95,
   },
   placeholderEmoji: { fontSize: 32 },
   title: {

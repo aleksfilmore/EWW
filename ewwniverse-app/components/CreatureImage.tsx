@@ -14,6 +14,7 @@ import { Creature, ClassifiedState } from '@/types/creature';
 import { Colors, Radius } from '@/constants/design';
 import { ewwMeterColor } from '@/constants/design';
 import { EwwMeter } from '@/types/creature';
+import { CREATURE_IMAGES } from '@/assets/creatures/index';
 
 interface Props {
   creature: Creature;
@@ -31,13 +32,8 @@ interface Props {
  */
 function getImageSource(creature: Creature, state: ClassifiedState) {
   if (state === 'locked') return null;
-
-  // For Cloudinary (dinos, earth, and eventually all books):
-  // return { uri: `https://res.cloudinary.com/ewwniverse/image/upload/...` };
-
-  // Local asset placeholder — will be replaced per-creature once assets are linked
-  // In a real build, this would be a lookup table of require() calls
-  return null; // placeholder until asset bundling is wired
+  // Bundled assets for Creepy Creatures; other books will use Cloudinary URLs
+  return CREATURE_IMAGES[creature.id] ?? null;
 }
 
 export function CreatureImage({ creature, state, size = 200 }: Props) {
