@@ -1,0 +1,34 @@
+# EAS Build ignore — root level
+# EAS archives from the git root. Exclude everything that isn't the app source.
+
+# Website (Next.js) — not needed for the mobile app build
+ewwniverse/
+
+# Raw asset folders — images will be served from Cloudinary, not bundled
+creepy creatures/
+creepy dinosaurs/
+creepy earth/
+special unlocks/
+sounds/
+images/
+fonts/
+
+# Spec and design documents
+*.html
+
+# node_modules everywhere
+node_modules/
+**/node_modules/
+
+# Expo cache
+.expo/
+**/.expo/
+
+# Next.js build output
+ewwniverse/.next/
+ewwniverse/out/
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,51 @@
+# Root gitignore for the EWW monorepo
+
+# Dependencies — never commit node_modules
+node_modules/
+**/node_modules/
+
+# Expo
+.expo/
+**/.expo/
+expo-env.d.ts
+
+# Next.js
+ewwniverse/.next/
+ewwniverse/out/
+ewwniverse/.swc/
+
+# EAS native build output
+ewwniverse-app/android/
+ewwniverse-app/ios/
+
+# Build artifacts
+dist/
+build/
+web-build/
+*.tsbuildinfo
+
+# Environment secrets — never commit
+.env
+.env.local
+.env*.local
+google-services.json
+GoogleService-Info.plist
+play-store-key.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Keys and certs
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
