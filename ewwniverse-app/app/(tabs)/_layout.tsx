@@ -1,20 +1,23 @@
 import { Tabs } from 'expo-router';
-import { Text, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Colors, FontFamily } from '@/constants/design';
 
-// SVG-style tab icons using Unicode characters that render well on Android
-const TAB_ICONS: Record<string, { active: string; inactive: string }> = {
-  index:          { active: '🏠', inactive: '🏠' },
-  collection:     { active: '🔬', inactive: '🔬' },
-  'recruit-file': { active: '🏆', inactive: '🏆' },
-};
+const TAB_IMAGES = {
+  index:          require('../../assets/tab-home.png'),
+  collection:     require('../../assets/tab-explore.png'),
+  'recruit-file': require('../../assets/tab-rewards.png'),
+} as const;
 
-function TabIcon({ name, focused }: { name: string; focused: boolean }) {
-  const icon = TAB_ICONS[name] ?? { active: '●', inactive: '○' };
+function TabIcon({ name, focused }: { name: keyof typeof TAB_IMAGES; focused: boolean }) {
   return (
-    <Text style={[styles.icon, { opacity: focused ? 1 : 0.4 }]}>
-      {focused ? icon.active : icon.inactive}
-    </Text>
+    <Image
+      source={TAB_IMAGES[name]}
+      style={[
+        styles.icon,
+        { tintColor: focused ? Colors.eww.green : 'rgba(255,255,255,0.38)' },
+      ]}
+      resizeMode="contain"
+    />
   );
 }
 
@@ -70,7 +73,8 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
   icon: {
-    fontSize: 20,
+    width: 26,
+    height: 26,
     marginBottom: -2,
   },
   label: {

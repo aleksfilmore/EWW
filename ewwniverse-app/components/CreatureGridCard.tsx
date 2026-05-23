@@ -2,7 +2,7 @@
  * CreatureGridCard — compact card for the collection grid.
  */
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Creature, ClassifiedState } from '@/types/creature';
 import { Colors, Radius } from '@/constants/design';
 import { ewwMeterColor } from '@/constants/design';
@@ -30,14 +30,18 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
         state === 'mastered' && { borderColor: Colors.eww.gold },
       ]}
     >
-      {/* EWW-meter dot */}
-      <View style={[styles.ewwDot, { backgroundColor: ewwColor }]} />
+      {/* EWW-meter dot — hidden when locked */}
+      {state !== 'locked' && (
+        <View style={[styles.ewwDot, { backgroundColor: ewwColor }]} />
+      )}
 
       {/* State indicator */}
       {state === 'locked' ? (
-        <View style={styles.lockedOverlay}>
-          <Text style={styles.lockIcon}>🔒</Text>
-        </View>
+        <Image
+          source={require('../assets/locked-creature.png')}
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
+        />
       ) : (
         <View style={styles.imageArea}>
           {/* Placeholder — swap for actual image when assets are linked */}
@@ -81,11 +85,6 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
   },
-  lockedOverlay: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  lockIcon: { fontSize: 28, opacity: 0.3 },
   imageArea: {
     flex: 1,
     alignItems: 'center',

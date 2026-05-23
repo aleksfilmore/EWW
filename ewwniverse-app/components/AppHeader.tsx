@@ -9,51 +9,10 @@
  * -NIVERSE in Boogaloo white/light.
  * Points badge in purple, right-aligned.
  */
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Svg, Path, Ellipse, Rect } from 'react-native-svg';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Colors, FontFamily, Spacing } from '@/constants/design';
 import { useUserStore } from '@/store/userStore';
 
-// Simple organic slime drip — 10 teardrop blobs hanging from a green bar
-function SlimeDrip({ width = 400 }: { width?: number }) {
-  const drips = [
-    { cx: 28,  h: 18, rx: 7  },
-    { cx: 70,  h: 12, rx: 5  },
-    { cx: 110, h: 22, rx: 8  },
-    { cx: 155, h: 14, rx: 6  },
-    { cx: 195, h: 20, rx: 9  },
-    { cx: 240, h: 10, rx: 5  },
-    { cx: 280, h: 24, rx: 7  },
-    { cx: 318, h: 16, rx: 6  },
-    { cx: 355, h: 20, rx: 8  },
-    { cx: 388, h: 12, rx: 5  },
-  ];
-  const barH = 5;
-  const viewH = barH + 26;
-
-  return (
-    <Svg
-      width="100%"
-      height={viewH}
-      viewBox={`0 0 ${width} ${viewH}`}
-      preserveAspectRatio="xMidYMid slice"
-    >
-      {/* Solid green bar */}
-      <Rect x={0} y={0} width={width} height={barH} fill={Colors.eww.green} />
-      {/* Drip blobs */}
-      {drips.map((d, i) => (
-        <Ellipse
-          key={i}
-          cx={d.cx}
-          cy={barH + d.h / 2 - 2}
-          rx={d.rx}
-          ry={d.h / 2}
-          fill={Colors.eww.green}
-        />
-      ))}
-    </Svg>
-  );
-}
 
 export function AppHeader() {
   const profile = useUserStore((s) => s.profile);
@@ -84,7 +43,11 @@ export function AppHeader() {
       </View>
 
       {/* Slime drip */}
-      <SlimeDrip />
+      <Image
+        source={require('../assets/slime-drip.png')}
+        style={styles.slimeDrip}
+        resizeMode="stretch"
+      />
     </View>
   );
 }
@@ -152,5 +115,9 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '600',
     letterSpacing: 0.5,
+  },
+  slimeDrip: {
+    width: '100%',
+    height: 40,
   },
 });
