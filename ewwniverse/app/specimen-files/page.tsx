@@ -32,7 +32,7 @@ export default function SpecimenFilesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#1A3D0E] dark-section relative overflow-hidden py-16">
+      <section className="dark-section relative overflow-hidden py-16" style={{ backgroundColor: "#080808" }}>
         {/* Slime drip top */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
@@ -57,8 +57,8 @@ export default function SpecimenFilesPage() {
                 </span>
               </div>
               <h1
-                className="text-4xl md:text-5xl text-[#F7F2E4] mb-4 leading-tight"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+                className="text-5xl md:text-6xl mb-4 leading-tight"
+                style={{ color: "#F4EED8" }}
               >
                 Specimen Files
               </h1>
@@ -134,7 +134,6 @@ export default function SpecimenFilesPage() {
                   <div className="flex flex-col gap-3 p-5 flex-1">
                     <h2
                       className="text-lg text-[#1A3D0E] group-hover:text-[#5DB84A] transition-colors leading-snug"
-                      style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                     >
                       {post.title}
                     </h2>
@@ -179,7 +178,6 @@ export default function SpecimenFilesPage() {
               />
               <p
                 className="text-base text-[#1A3D0E] text-center"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
               >
                 Next specimen incoming
               </p>
@@ -208,7 +206,6 @@ export default function SpecimenFilesPage() {
           />
           <h2
             className="text-xl text-[#1A3D0E] mb-3"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
           >
             Get specimen files by email
           </h2>

@@ -44,14 +44,22 @@ export default function BooksPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#F7F2E4] border-b border-[#C8B89A] py-14">
-        <div className="max-w-6xl mx-auto px-4">
+      <section
+        style={{
+          backgroundColor: "#F4EED8",
+          backgroundImage: [
+            "repeating-linear-gradient(transparent 0px,transparent 31px,rgba(150,170,130,0.28) 31px,rgba(150,170,130,0.28) 32px)",
+            "linear-gradient(90deg,transparent 88px,rgba(210,100,100,0.15) 88px,rgba(210,100,100,0.15) 90px,transparent 90px)",
+          ].join(","),
+        }}
+      >
+        <div style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }} className="w-full" />
+        <div className="max-w-6xl mx-auto px-4 py-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
             The collection
           </p>
           <h1
-            className="text-4xl md:text-5xl text-[#1A3D0E] mb-4"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+            className="text-5xl md:text-6xl text-[#1A3D0E] mb-4"
           >
             The Books
           </h1>
@@ -103,7 +111,6 @@ export default function BooksPage() {
 
                     <h2
                       className="text-2xl text-[#1A3D0E]"
-                      style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                     >
                       {book.title}
                     </h2>
@@ -150,7 +157,6 @@ export default function BooksPage() {
             </span>
             <h3
               className="text-xl text-[#1A3D0E]"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
             >
               Lab Notebook — Book 7
             </h3>

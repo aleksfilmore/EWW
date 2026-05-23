@@ -42,15 +42,23 @@ export default function ForParentsPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#F7F2E4] border-b border-[#C8B89A] py-14">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <section
+        style={{
+          backgroundColor: "#F4EED8",
+          backgroundImage: [
+            "repeating-linear-gradient(transparent 0px,transparent 31px,rgba(150,170,130,0.28) 31px,rgba(150,170,130,0.28) 32px)",
+            "linear-gradient(90deg,transparent 88px,rgba(210,100,100,0.15) 88px,rgba(210,100,100,0.15) 90px,transparent 90px)",
+          ].join(","),
+        }}
+      >
+        <div style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }} className="w-full" />
+        <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
               Transparency
             </p>
             <h1
-              className="text-4xl md:text-5xl text-[#1A3D0E] mb-4"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+              className="text-5xl md:text-6xl text-[#1A3D0E] mb-4"
             >
               For Parents
             </h1>
@@ -81,7 +89,6 @@ export default function ForParentsPage() {
                 <img src={item.icon} alt="" aria-hidden="true" className="illustration w-12 h-12 object-contain" />
                 <h3
                   className="text-base text-[#1A3D0E]"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   {item.title}
                 </h3>
@@ -94,7 +101,6 @@ export default function ForParentsPage() {
           <div className="rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-6 mb-6">
             <h2
               className="text-xl text-[#1A3D0E] mb-3"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
             >
               Age appropriateness
             </h2>
@@ -121,7 +127,6 @@ export default function ForParentsPage() {
           {/* FAQ */}
           <h2
             className="text-2xl text-[#1A3D0E] mb-5"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
           >
             Frequently asked questions
           </h2>
@@ -130,7 +135,6 @@ export default function ForParentsPage() {
               <div key={faq.q} className="rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-5">
                 <h3
                   className="text-sm font-semibold text-[#1A3D0E] mb-2"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   {faq.q}
                 </h3>
@@ -143,7 +147,6 @@ export default function ForParentsPage() {
           <div className="mt-8 rounded-xl border border-[#C8B89A] bg-[#EDE5CE] p-6">
             <h3
               className="text-lg text-[#1A3D0E] mb-1"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
             >
               Still have questions?
             </h3>

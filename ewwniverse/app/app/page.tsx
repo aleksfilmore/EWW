@@ -64,7 +64,7 @@ export default function AppPage() {
   return (
     <>
       {/* Header */}
-      <section className="dark-section bg-[#1A3D0E] min-h-[70vh] flex items-center relative overflow-hidden">
+      <section className="dark-section min-h-[70vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#080808" }}>
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -79,8 +79,8 @@ export default function AppPage() {
               Coming soon — iOS &amp; Android
             </p>
             <h1
-              className="text-4xl md:text-5xl text-[#F7F2E4] leading-[1.1]"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+              className="text-5xl md:text-6xl leading-[1.1]"
+              style={{ color: "#F4EED8" }}
             >
               The EWW-niverse App
             </h1>
@@ -133,7 +133,6 @@ export default function AppPage() {
         <div className="max-w-6xl mx-auto px-4">
           <h2
             className="text-3xl text-[#1A3D0E] mb-10 text-center"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
           >
             What&apos;s inside the lab
           </h2>
@@ -151,7 +150,6 @@ export default function AppPage() {
                 />
                 <h3
                   className="text-base text-[#1A3D0E]"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   {f.title}
                 </h3>
@@ -171,7 +169,6 @@ export default function AppPage() {
             </p>
             <h2
               className="text-3xl text-[#1A3D0E]"
-              style={{ fontFamily: '"Cantora One", Georgia, serif' }}
             >
               Five stages of the lab
             </h2>
@@ -193,7 +190,6 @@ export default function AppPage() {
                 </div>
                 <p
                   className="text-sm font-medium text-[#1A3D0E]"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   {s.name}
                 </p>
@@ -209,7 +205,6 @@ export default function AppPage() {
         <div className="max-w-4xl mx-auto px-4">
           <h2
             className="text-3xl text-[#1A3D0E] text-center mb-10"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
           >
             Simple pricing
           </h2>
@@ -233,7 +228,6 @@ export default function AppPage() {
                   </p>
                   <p
                     className={`text-4xl ${tier.primary ? "text-[#F7F2E4]" : "text-[#1A3D0E]"}`}
-                    style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                   >
                     {tier.price}
                   </p>
@@ -275,7 +269,6 @@ export default function AppPage() {
         <div className="max-w-xl mx-auto px-4 text-center">
           <h2
             className="text-2xl text-[#1A3D0E] mb-3"
-            style={{ fontFamily: '"Cantora One", Georgia, serif' }}
           >
             Get notified at launch
           </h2>

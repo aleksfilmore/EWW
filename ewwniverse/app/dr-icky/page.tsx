@@ -39,7 +39,7 @@ export default function DrIckyPage() {
   return (
     <>
       {/* ── CLASSIFIED HEADER ─────────────────────────────────── */}
-      <section className="dark-section relative overflow-hidden py-16" style={{ background: "#1A3D0E" }}>
+      <section className="dark-section relative overflow-hidden py-16" style={{ background: "#080808" }}>
         {/* Lab tile background */}
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
@@ -72,7 +72,7 @@ export default function DrIckyPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl text-[#F7F2E4]">
+            <h1 className="text-5xl md:text-6xl" style={{ color: "#F4EED8" }}>
               Dr. Icky
             </h1>
 
@@ -88,7 +88,7 @@ export default function DrIckyPage() {
                 { n: "∞", label: "Disgust threshold" },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col">
-                  <span className="text-2xl font-bold text-[#5DB84A]" style={{ fontFamily: '"Cantora One", Georgia, serif' }}>{s.n}</span>
+                  <span className="text-2xl font-bold text-[#5DB84A]">{s.n}</span>
                   <span className="text-[10px] uppercase tracking-wider text-[#8A9E86]">{s.label}</span>
                 </div>
               ))}

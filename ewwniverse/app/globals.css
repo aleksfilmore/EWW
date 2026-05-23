@@ -58,10 +58,14 @@ body {
 
 @layer base {
   h1, h2, h3, h4, h5 {
-    font-family: "Cantora One", Georgia, serif;
+    font-family: var(--font-boogaloo), cursive;
     color: #1A3D0E;
     line-height: 1.15;
   }
+}
+
+.font-boogaloo {
+  font-family: var(--font-boogaloo), cursive;
 }
 
 ::selection {

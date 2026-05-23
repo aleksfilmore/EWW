@@ -469,7 +469,7 @@ export default async function SpecimenPostPage({
       />
 
       {/* ── CLASSIFIED HEADER ──────────────────────────────────────── */}
-      <section className="dark-section bg-[#1A3D0E] relative overflow-hidden py-16">
+      <section className="dark-section relative overflow-hidden py-16" style={{ backgroundColor: "#080808" }}>
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -507,8 +507,8 @@ export default async function SpecimenPostPage({
               </div>
 
               <h1
-                className="text-3xl md:text-5xl text-[#F7F2E4] leading-tight mb-4"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
+                className="text-4xl md:text-6xl leading-tight mb-4"
+                style={{ color: "#F4EED8" }}
               >
                 {post.title}
               </h1>
@@ -577,7 +577,6 @@ export default async function SpecimenPostPage({
                 />
                 <h2
                   className="text-lg text-[#1A3D0E]"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   Specimen Classification
                 </h2>
@@ -593,7 +592,6 @@ export default async function SpecimenPostPage({
                     </p>
                     <p
                       className="text-sm text-[#1A3D0E] font-semibold"
-                      style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                     >
                       {stat.value}
                     </p>
@@ -661,7 +659,6 @@ export default async function SpecimenPostPage({
                 <span className="text-xl mr-1" aria-hidden="true">{section.icon}</span>
                 <h2
                   className="text-xl text-[#1A3D0E]"
-                  style={{ fontFamily: '"Cantora One", Georgia, serif' }}
                 >
                   {section.heading}
                 </h2>
@@ -755,7 +752,6 @@ export default async function SpecimenPostPage({
               </p>
               <p
                 className="text-xl text-[#F7F2E4] leading-relaxed"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
               >
                 &ldquo;{article.drIckyVerdict}&rdquo;
               </p>
@@ -774,7 +770,6 @@ export default async function SpecimenPostPage({
               </p>
               <h3
                 className="text-2xl text-[#1A3D0E] mb-3"
-                style={{ fontFamily: '"Cantora One", Georgia, serif' }}
               >
                 The full Creepy Creatures catalog
               </h3>
