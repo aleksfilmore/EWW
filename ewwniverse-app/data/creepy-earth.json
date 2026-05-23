@@ -1,0 +1,634 @@
+[
+  {
+    "id": "creepy-earth-blood-falls",
+    "title": "Blood Falls",
+    "gross_fact": "Its red color comes from iron-rich brine hidden under Taylor Glacier; when the salty water hits oxygen, it rusts, staining the ice like Earth is leaking old metal blood.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-brain-eating-amoeba",
+    "title": "Brain-Eating Amoeba",
+    "gross_fact": "Naegleria fowleri infects through the nose, then travels along smell nerves toward the brain; warm lakes, hot springs, and poorly treated water are its danger zones.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-poop-transplants",
+    "title": "Poop Transplants",
+    "gross_fact": "A fecal microbiota transplant moves helpful gut bacteria from healthy stool into a sick intestine, rebuilding the microbial crowd after dangerous bacteria take over.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-the-acid-clouds-of-java",
+    "title": "The Acid Clouds of Java",
+    "gross_fact": "Kawah Ijen releases sulfur gases that burn blue at night and can become sulfuric acid droplets; miners carry heavy yellow sulfur while breathing corrosive fog.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-the-fatberg-of-london",
+    "title": "The Fatberg of London",
+    "gross_fact": "Fatbergs form when cooking grease hardens around wipes, diapers, and trash; London’s monster chunk weighed about as much as 11 double-decker buses.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-the-composting-human",
+    "title": "The Composting Human",
+    "gross_fact": "Human composting uses heat, microbes, wood chips, and oxygen to break a body into soil over weeks, turning a corpse into nutrient-rich earth.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-quicksand-pits",
+    "title": "Quicksand Pits",
+    "gross_fact": "Quicksand is sand mixed with water so loosely packed that it acts like soup; the scary part is getting pinned while tides, cold, or exhaustion move in.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-belly-button-biodome",
+    "title": "Belly Button Biodome",
+    "gross_fact": "Belly buttons trap sweat, skin flakes, lint, and oils, creating tiny habitats where rare bacteria can survive like weird cave creatures in a personal skin crater.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-zombie-fungus",
+    "title": "Zombie Fungus",
+    "gross_fact": "Ophiocordyceps infects ants, steers them to a perfect leaf height, locks their jaws in place, then grows a spore stalk from the body after death.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-lake-natrons-statue-victims",
+    "title": "Lake Natron’s Statue Victims",
+    "gross_fact": "Lake Natron is loaded with alkaline salts that can dry and preserve dead birds and bats, leaving them stiff, crusted, and statue-like around the shoreline.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-island-of-garbage",
+    "title": "Island of Garbage",
+    "gross_fact": "The Great Pacific Garbage Patch is mostly tiny plastic fragments mixed through the water, so animals can swallow pollution even when the ocean looks almost normal.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-edible-insect-burgers",
+    "title": "Edible Insect Burgers",
+    "gross_fact": "Mealworm burgers use larvae packed with protein and fat; once dried and ground, the insects become a nutty powder that can hide inside patties and snacks.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-the-pee-pool-problem",
+    "title": "The Pee Pool Problem",
+    "gross_fact": "When urine mixes with chlorine, it creates chloramines, the chemicals behind that sharp pool smell and burning eyes after too many swimmers treat the pool like a toilet.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-flesh-melting-lake",
+    "title": "Flesh-Melting Lake",
+    "gross_fact": "Lake Nyos released a huge carbon dioxide cloud in 1986; the gas hugged the ground, pushed away oxygen, and silently suffocated people and animals nearby.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-buried-in-sludge",
+    "title": "Buried in Sludge",
+    "gross_fact": "Hungary’s red sludge spill carried caustic waste from aluminum production; the alkaline goo burned skin, stained towns red, and poisoned waterways.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-snot-bubbles",
+    "title": "Snot Bubbles",
+    "gross_fact": "Foam-nest frogs whip mucus and air into protective bubbles, keeping eggs moist above puddles until rain softens the nest and tadpoles drop into water.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-rusty-rain",
+    "title": "Rusty Rain",
+    "gross_fact": "Red rain can happen when winds lift reddish dust or algae spores into clouds; the droplets fall stained, making streets look splattered with diluted rust.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-shower-mold-explosion",
+    "title": "Shower Mold Explosion",
+    "gross_fact": "Hidden bathroom mold feeds on damp drywall and soap scum; breaking a wall can release a dust-cloud of spores ready to invade noses, lungs, and carpets.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-the-toothpaste-sandwich",
+    "title": "The Toothpaste Sandwich",
+    "gross_fact": "Factory contamination can happen when cleaning chemicals, broken machine parts, or pests enter food lines; one bad batch can spread gross surprises to thousands of packages.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-exploding-graveyards",
+    "title": "Exploding Graveyards",
+    "gross_fact": "Bodies release gases as bacteria break tissues down; sealed coffins can swell, leak, or burst unless old crypts have vents for the pressure and stink.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-toxic-foam-flood",
+    "title": "Toxic Foam Flood",
+    "gross_fact": "Industrial waste and sewage can make rivers foam into giant chemical bubbles; the froth may look playful, but it can carry detergents, heavy metals, and germs.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-eye-eating-parasite",
+    "title": "Eye-Eating Parasite",
+    "gross_fact": "Acanthamoeba can stick to dirty contact lenses, scrape into the cornea, and cause a painful infection that may scar the eye or threaten vision.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-sludge-filled-basements",
+    "title": "Sludge-Filled Basements",
+    "gross_fact": "Floodwater mixed with sewage can bring bacteria, parasites, fuel, and chemicals indoors; porous floors, walls, and furniture often have to be ripped out.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-sewer-gas-explosions",
+    "title": "Sewer Gas Explosions",
+    "gross_fact": "Methane and hydrogen sulfide can build up in sewers; one spark from wiring, tools, or lightning can blast manhole covers into the street.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-vomit-comet",
+    "title": "Vomit Comet",
+    "gross_fact": "Zero-gravity planes create weightlessness by diving in parabolic arcs; your inner ear gets confused, your stomach disagrees, and the cabin earns its nickname.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-bubble-boils",
+    "title": "Bubble Boils",
+    "gross_fact": "Mud pots bubble when steam and volcanic gases push through wet clay; some are acidic enough to destroy skin, shoes, and anything foolishly poked in.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-rat-king",
+    "title": "Rat King",
+    "gross_fact": "A rat king forms when tails become glued by sap, filth, or ice, trapping multiple rats in one squealing knot that cannot escape normally.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-skin-peeling-lake",
+    "title": "Skin-Peeling Lake",
+    "gross_fact": "Lake Karachay became dangerously radioactive after nuclear waste dumping; radiation could deliver a lethal dose quickly and contaminate dust, water, and nearby soil.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-the-leech-pool",
+    "title": "The Leech Pool",
+    "gross_fact": "Leeches use tiny teeth or suckers and release anticoagulants so blood keeps flowing; many bites stay unnoticed until the leech drops off swollen.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-corpse-blooms",
+    "title": "Corpse Blooms",
+    "gross_fact": "The corpse flower heats itself while blooming, pushing out a rotting-meat smell that tricks carrion beetles and flies into visiting for pollination.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-the-chernobyl-forest",
+    "title": "The Chernobyl Forest",
+    "gross_fact": "Radiation killed pine trees near Chernobyl and stained them reddish brown; contaminated soil, leaves, and animal bodies still cycle radioactive particles.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-black-mayonnaise",
+    "title": "Black Mayonnaise",
+    "gross_fact": "Newtown Creek’s sludge is a sticky mix of oil, sewage, chemicals, and decomposed waste that settles on the bottom like toxic black pudding.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-brain-boil",
+    "title": "Brain Boil",
+    "gross_fact": "Heatstroke can push body temperature above 40°C, damaging brain cells, swelling tissues, and confusing the body until organs begin shutting down.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-toxic-tumbleweeds",
+    "title": "Toxic Tumbleweeds",
+    "gross_fact": "Tumbleweeds roll across contaminated land, collect dust, pesticides, and metals, then pile against homes and fences like scratchy chemical tumble-monsters.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-bubblegut-bacteria",
+    "title": "Bubblegut Bacteria",
+    "gross_fact": "Botulism bacteria can grow in low-oxygen canned food and release gas that bulges lids; the toxin attacks nerves and can paralyze breathing muscles.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-rust-blood",
+    "title": "Rust Blood",
+    "gross_fact": "Old iron pipes can release reddish-brown water when corrosion flakes loose; the metallic liquid stains sinks, laundry, hair, and anything it drips across.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-spontaneous-showers",
+    "title": "Spontaneous Showers",
+    "gross_fact": "Fish rain may happen when storms or waterspouts lift small fish from rivers or ponds, then drop them inland as a slippery surprise.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-vomit-tunnel",
+    "title": "Vomit Tunnel",
+    "gross_fact": "Public vomit cleanups need biohazard handling because stomach contents can carry germs; one chain reaction in a crowded space can shut down the whole area.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-the-boiling-river",
+    "title": "The Boiling River",
+    "gross_fact": "Peru’s Shanay-Timpishka river is heated by geothermal water rising through cracks; parts are hot enough to injure skin and kill small animals.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-bacterial-brick-walls",
+    "title": "Bacterial Brick Walls",
+    "gross_fact": "Bio-bricks can use microbes to grow minerals that bind sand; the living process may smell earthy, sour, or sweaty while the material hardens.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-bubble-wrap-earthquakes",
+    "title": "Bubble Wrap Earthquakes",
+    "gross_fact": "Gas trapped underground can suddenly shift or escape during quakes, making the ground rumble, hiss, or bubble through mud and water.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-the-sizzling-sidewalk",
+    "title": "The Sizzling Sidewalk",
+    "gross_fact": "Dark asphalt absorbs heat and can reach skin-burning temperatures; in extreme summer weather it can soften shoes, scorch paws, and cook fallen insects.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-dirty-snow",
+    "title": "Dirty Snow",
+    "gross_fact": "Snowflakes collect soot, exhaust particles, and coal dust as they fall, turning bright snow into gray slush packed with pollution.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-flesheating-mudslides",
+    "title": "Flesheating Mudslides",
+    "gross_fact": "Mining waste mud can carry acids and heavy metals; when dams fail, the toxic sludge smothers towns, burns skin, and poisons rivers.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-trash-avalanche",
+    "title": "Trash Avalanche",
+    "gross_fact": "Landfill slopes can collapse after rain, gas buildup, or unstable dumping, sending tons of rotting waste downhill like a landslide made of garbage.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-alien-slime-rain",
+    "title": "Alien Slime Rain",
+    "gross_fact": "The Oakville blobs were reported as gelatinous clumps that fell during rain; tests and explanations remain disputed, which makes the mystery extra squishy.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-oil-boils",
+    "title": "Oil Boils",
+    "gross_fact": "Crude oil can seep or erupt after drilling accidents, carrying heat, fumes, and flammable gases; once burning, oil fires can resist normal firefighting.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-the-slime-coast",
+    "title": "The Slime Coast",
+    "gross_fact": "Green tides happen when algae grow explosively, forming mats that block sunlight, suffocate sea life, and rot into a rotten-egg beach smell.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-burnt-toast-fog",
+    "title": "Burnt Toast Fog",
+    "gross_fact": "Smog contains tiny particles and gases from traffic, fires, and factories; the particles can slip deep into lungs and make the air smell scorched.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-sewage-tsunami",
+    "title": "Sewage Tsunami",
+    "gross_fact": "A burst sewer main can release a fast-moving wave of raw waste, carrying feces, wipes, bacteria, and rotten gas through streets and homes.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-foaming-gut-lakes",
+    "title": "Foaming Gut Lakes",
+    "gross_fact": "Manure runoff feeds bacteria and algae, trapping gases that make lagoons foam; methane pockets can ignite or burst when the crust breaks.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-grease-trap-geyser",
+    "title": "Grease Trap Geyser",
+    "gross_fact": "Grease traps collect fats, food bits, and bacteria; when clogged, pressure can push rancid sludge back up like a fountain of fryer sewage.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-flesh-rotting-fungi",
+    "title": "Flesh-Rotting Fungi",
+    "gross_fact": "Black mold thrives on wet building materials and can release irritating spores and toxins; severe dampness can make walls smell rotten and unsafe.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-pimpled-planet-surface",
+    "title": "Pimpled Planet Surface",
+    "gross_fact": "Geothermal mud pots form when acidic water breaks rock into clay; steam bubbles pop through the sludge like the planet has infected pores.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-hot-garbage-rain",
+    "title": "Hot Garbage Rain",
+    "gross_fact": "Landfill fires can lift ash, melted plastic flakes, and burned trash into the air; wind can drop the dirty particles across nearby roofs and yards.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-rotting-tap-water",
+    "title": "Rotting Tap Water",
+    "gross_fact": "Stagnant pipes can grow biofilm, a slimy layer of bacteria that gives water a rotten smell and can loosen chunks when taps run again.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-the-bubbly-battlefield",
+    "title": "The Bubbly Battlefield",
+    "gross_fact": "Trenches collected mud, waste, corpses, lice, and stagnant water; soldiers standing in it for days developed swollen feet that could turn gangrenous.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-kitchen-sponge-swamp",
+    "title": "Kitchen Sponge Swamp",
+    "gross_fact": "A damp sponge traps food scraps and warmth, letting bacteria multiply in tiny tunnels; cleaning it can leave the toughest microbes behind.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-concrete-pus",
+    "title": "Concrete Pus",
+    "gross_fact": "Calcium-rich water can leak through old concrete, leaving yellow or white mineral slime called efflorescence that looks like a wall infection.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-the-boneyard-flood",
+    "title": "The Boneyard Flood",
+    "gross_fact": "Floodwater can lift buried coffins when the ground saturates, sending sealed caskets floating through streets, trees, and drainage ditches.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-mummy-mushrooms",
+    "title": "Mummy Mushrooms",
+    "gross_fact": "Crypt fungi grow where humidity meets wood, cloth, and human remains; some feed on the materials around bodies and creep over bones or wrappings.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-ball-lightning-bloopers",
+    "title": "Ball Lightning Bloopers",
+    "gross_fact": "Ball lightning reports describe glowing electric spheres that float, hiss, burn holes, and vanish suddenly, sometimes leaving a sulfur smell.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-acid-rain-hair-day",
+    "title": "Acid Rain Hair Day",
+    "gross_fact": "Acid rain forms when pollution gases mix with water in clouds; repeated exposure can irritate skin, damage hair, and eat into stone and metal.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-the-sludge-volcano",
+    "title": "The Sludge Volcano",
+    "gross_fact": "The Lusi mud volcano in Indonesia has poured hot mud for years, swallowing homes, roads, and fields under a spreading gray-brown swamp.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-the-crusty-carpet",
+    "title": "The Crusty Carpet",
+    "gross_fact": "Old carpets collect skin flakes, mites, mold spores, spilled liquids, and dust; with enough dampness, they can stiffen, stink, and sprout fungi.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-radioactive-wolf-puke",
+    "title": "Radioactive Wolf Puke",
+    "gross_fact": "Animals in the Chernobyl zone can move radioactive particles through fur, scat, saliva, and prey, spreading contamination as they roam.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-flesh-eating-street-bacteria",
+    "title": "Flesh-Eating Street Bacteria",
+    "gross_fact": "Dangerous bacteria can enter through cuts, especially in dirty water or contaminated surfaces; necrotizing infections destroy tissue fast and need emergency treatment.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-earthquake-toilet-floods",
+    "title": "Earthquake Toilet Floods",
+    "gross_fact": "Quakes can crack sewer lines and force wastewater backward; toilets may gurgle, overflow, or shoot up filthy water as pressure shifts underground.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-cemetery-sinkholes",
+    "title": "Cemetery Sinkholes",
+    "gross_fact": "Waterlogged soil and rotting coffin wood can make graves collapse, creating sunken holes where caskets tilt and old bones move toward the surface.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-tapeworm-towns",
+    "title": "Tapeworm Towns",
+    "gross_fact": "Tapeworm eggs in contaminated food or water can hatch into larvae that travel through the body; in the brain, they can trigger seizures.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Microbes"
+  },
+  {
+    "id": "creepy-earth-sewer-ratsplosion",
+    "title": "Sewer Ratsplosion",
+    "gross_fact": "Rats navigate pipes, chew through weak spots, and follow air pockets upward; blocked sewers can push them into toilets during nasty pressure surges.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Human"
+  },
+  {
+    "id": "creepy-earth-the-skin-loss-slide",
+    "title": "The Skin-Loss Slide",
+    "gross_fact": "Highly acidic or alkaline lakes can chemically burn skin and eyes; a quick touch can cause pain, peeling, and deep tissue damage.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-underground-scream-pipes",
+    "title": "Underground Scream Pipes",
+    "gross_fact": "Air rushing through drains, vents, and sewer pipes can vibrate like an instrument, turning hidden tunnels into moaning, shrieking sound traps.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-maggot-vents",
+    "title": "Maggot Vents",
+    "gross_fact": "Fly larvae hatch in warm garbage shafts and crawl toward air currents; in heatwaves, they can spill from vents like living rice.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-exploding-whale-cleanup",
+    "title": "Exploding Whale Cleanup",
+    "gross_fact": "When a dead whale rots, gases build inside its body; cutting or moving it too soon can blast blood, oil, and guts across the beach like a prehistoric stink bomb.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Disaster"
+  },
+  {
+    "id": "creepy-earth-rotting-desert-fish-pits",
+    "title": "Rotting Desert Fish Pits",
+    "gross_fact": "When desert water dries up, fish can be stranded in shallow pits, leaving scales, bones, and oily stink baked into cracked mud under the hot sun.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  },
+  {
+    "id": "creepy-earth-stomach-eating-sea-foam",
+    "title": "Stomach-Eating Sea Foam",
+    "gross_fact": "Some sea foam forms from algae, bacteria, and decaying organic gunk; swallowing it can irritate the stomach and turn a beach day into a bubbling biohazard.",
+    "eww_meter": 80,
+    "book": "creepy-earth",
+    "realm": "Chemical"
+  },
+  {
+    "id": "creepy-earth-the-wormfall-phenomenon",
+    "title": "The Wormfall Phenomenon",
+    "gross_fact": "After heavy rain, flooded soil can push worms onto roads, roofs, and sidewalks all at once, making it look like the sky coughed up wet noodles.",
+    "eww_meter": 60,
+    "book": "creepy-earth",
+    "realm": "Weird Science"
+  },
+  {
+    "id": "creepy-earth-tongue-leech-springs",
+    "title": "Tongue-Leech Springs",
+    "gross_fact": "In untreated freshwater, tiny leeches can slip into mouths or noses, attach to soft tissue, and feed quietly before the victim realizes what is happening.",
+    "eww_meter": 100,
+    "book": "creepy-earth",
+    "realm": "Nature"
+  }
+]

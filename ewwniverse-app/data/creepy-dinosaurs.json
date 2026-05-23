@@ -1,0 +1,642 @@
+[
+  {
+    "id": "creepy-dinosaurs-t-rex",
+    "title": "T. rex",
+    "gross_fact": "Some T. rex skulls show deep bone damage linked to infections similar to those seen in modern birds, which could eat into the face and leave swollen, hole-like wounds while the animal was still alive.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-tarbosaurus",
+    "title": "Tarbosaurus",
+    "gross_fact": "Tarbosaurus had a bone-crushing bite strong enough to snap and strip skeletons, meaning it could break through tough bodies and leave behind cracked bones like leftovers from a brutal prehistoric meal.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-albertosaurus",
+    "title": "Albertosaurus",
+    "gross_fact": "Fossils of Albertosaurus are often found in groups, suggesting they may have moved together, turning the landscape into a silent pack of predators following scents, tracks, and weakness across long distances.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-giganotosaurus",
+    "title": "Giganotosaurus",
+    "gross_fact": "Its long, serrated teeth worked like knives, slicing through flesh instead of crushing, meaning a single bite could leave deep cuts rather than clean breaks, like a walking set of sharp blades.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-allosaurus",
+    "title": "Allosaurus",
+    "gross_fact": "Allosaurus constantly replaced its teeth, so even if it lost some while feeding, new ones were already growing in behind, turning its mouth into a never-ending supply of sharp, disposable weapons.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-ceratosaurus",
+    "title": "Ceratosaurus",
+    "gross_fact": "The horn on its nose may have been used for pushing and fighting, turning its face into a battering tool that could shove rivals or prey with surprising force.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-carnotaurus",
+    "title": "Carnotaurus",
+    "gross_fact": "Carnotaurus had extremely tiny arms that were almost useless, but its powerful neck and fast bite made up for it, turning its head into the main weapon in a body built for speed and impact.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-majungasaurus",
+    "title": "Majungasaurus",
+    "gross_fact": "Some Majungasaurus bones have clear bite marks from other Majungasaurus, suggesting it sometimes fed on its own kind, leaving behind a fossil record of prehistoric cannibal behavior.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-dilophosaurus",
+    "title": "Dilophosaurus",
+    "gross_fact": "Its double crest made its head look larger and more dramatic, possibly helping it scare rivals or attract attention, turning its face into a strange display structure as much as a hunting tool.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-spinosaurus",
+    "title": "Spinosaurus",
+    "gross_fact": "Spinosaurus spent much of its time in water and had jaws shaped like a crocodile’s, packed with conical teeth designed to grip slippery prey and keep it from escaping.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fish Hunters"
+  },
+  {
+    "id": "creepy-dinosaurs-baryonyx",
+    "title": "Baryonyx",
+    "gross_fact": "Baryonyx had a huge curved claw on its hand that worked like a hook, allowing it to snag fish or slash at prey with a single, precise movement.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fish Hunters"
+  },
+  {
+    "id": "creepy-dinosaurs-suchomimus",
+    "title": "Suchomimus",
+    "gross_fact": "Its long, narrow snout and tightly packed teeth were perfect for gripping prey, meaning once something was caught, it had very little chance of slipping free.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fish Hunters"
+  },
+  {
+    "id": "creepy-dinosaurs-irritator",
+    "title": "Irritator",
+    "gross_fact": "The only known skull of Irritator was altered before scientists studied it, making its discovery feel like a puzzle, where even the fossil itself carries signs of human interference.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fish Hunters"
+  },
+  {
+    "id": "creepy-dinosaurs-deinonychus",
+    "title": "Deinonychus",
+    "gross_fact": "Deinonychus had a large, curved claw on each foot that could slash or pin prey, acting like a hooked blade attached directly to its body.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-velociraptor",
+    "title": "Velociraptor",
+    "gross_fact": "Covered in feathers, Velociraptor likely looked less like a reptile and more like a sharp-clawed bird, combining soft textures with deadly tools in a way that feels strangely familiar and unsettling.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-utahraptor",
+    "title": "Utahraptor",
+    "gross_fact": "Utahraptor was much larger than other raptors, with massive claws strong enough to latch onto prey and hold it down, turning its attack into a controlled, gripping struggle.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-microraptor",
+    "title": "Microraptor",
+    "gross_fact": "Microraptor had four wings, with feathers on both its arms and legs, creating a strange gliding shape that looked more like a living trap than a normal animal.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-archaeopteryx",
+    "title": "Archaeopteryx",
+    "gross_fact": "Archaeopteryx combines dinosaur features like teeth and claws with bird-like feathers, making it a real-life example of a creature caught between two worlds.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-ankylosaurus",
+    "title": "Ankylosaurus",
+    "gross_fact": "Ankylosaurus had a heavy tail club that could swing with enough force to break bones, turning its back half into a weapon capable of crushing anything that came too close.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Armored & Spiked"
+  },
+  {
+    "id": "creepy-dinosaurs-euoplocephalus",
+    "title": "Euoplocephalus",
+    "gross_fact": "Covered in thick armor plates, Euoplocephalus had skin reinforced with bone, creating a natural shield that made biting into it extremely difficult.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Armored & Spiked"
+  },
+  {
+    "id": "creepy-dinosaurs-borealopelta",
+    "title": "Borealopelta",
+    "gross_fact": "One Borealopelta fossil is so well preserved that its armor and body shape remain intact, making it look like a real animal frozen in stone, as if it simply lay down and never got back up.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Armored & Spiked"
+  },
+  {
+    "id": "creepy-dinosaurs-stegosaurus",
+    "title": "Stegosaurus",
+    "gross_fact": "Stegosaurus had large plates along its back that may have been filled with blood vessels, possibly helping regulate heat or create color displays that made it look even stranger.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Armored & Spiked"
+  },
+  {
+    "id": "creepy-dinosaurs-kentrosaurus",
+    "title": "Kentrosaurus",
+    "gross_fact": "Kentrosaurus carried sharp spikes across its back and tail, meaning even standing near it could be dangerous, like walking too close to a living wall of spears.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Armored & Spiked"
+  },
+  {
+    "id": "creepy-dinosaurs-triceratops",
+    "title": "Triceratops",
+    "gross_fact": "Fossil skulls of Triceratops often show injuries and healed wounds, suggesting they used their horns in real fights that left lasting marks on their bodies.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-styracosaurus",
+    "title": "Styracosaurus",
+    "gross_fact": "Its frill was lined with long spikes that formed a crown of sharp points, making its head look more like a trap than a simple body part.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-pachyrhinosaurus",
+    "title": "Pachyrhinosaurus",
+    "gross_fact": "Instead of long horns, Pachyrhinosaurus had a thick, bony mass on its nose, which may have been used to push, ram, or press against others in close combat.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-protoceratops",
+    "title": "Protoceratops",
+    "gross_fact": "Some Protoceratops fossils are preserved in dramatic positions, as if caught in a sudden event, giving the feeling of a moment frozen in time.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-psittacosaurus",
+    "title": "Psittacosaurus",
+    "gross_fact": "Psittacosaurus had long bristle-like structures on its tail, creating a strange mix of scales and stiff fibers that made its body look partly armored, partly hairy.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-parasaurolophus",
+    "title": "Parasaurolophus",
+    "gross_fact": "Its long, hollow crest may have worked like a sound chamber, allowing it to produce deep, echoing calls that could travel far across its environment.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-corythosaurus",
+    "title": "Corythosaurus",
+    "gross_fact": "The helmet-shaped crest on Corythosaurus likely amplified sound, turning its head into a natural instrument capable of producing strange, resonant noises.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-edmontosaurus",
+    "title": "Edmontosaurus",
+    "gross_fact": "Some Edmontosaurus fossils preserve detailed skin impressions, revealing a thick, pebbly texture that shows dinosaurs were far from smooth or simple-looking.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-iguanodon",
+    "title": "Iguanodon",
+    "gross_fact": "Iguanodon had a sharp thumb spike that could be used as a weapon, turning an otherwise plant-eating dinosaur into something with a built-in stabbing tool.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-ouranosaurus",
+    "title": "Ouranosaurus",
+    "gross_fact": "Its tall back sail gave it a strange silhouette, like a land animal carrying a vertical ridge that made it look larger and more unusual than its body alone.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-gallimimus",
+    "title": "Gallimimus",
+    "gross_fact": "Gallimimus had large eyes and long legs built for speed, allowing it to react quickly and disappear across open ground before danger could reach it.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-oviraptor",
+    "title": "Oviraptor",
+    "gross_fact": "Fossils show Oviraptor positioned over nests, suggesting it may have protected its eggs, sitting quietly while ready to defend them with claws and beak.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-anzu",
+    "title": "Anzu",
+    "gross_fact": "Anzu was a tall, feathered dinosaur with a beak and long limbs, giving it a bird-like appearance that feels familiar at first and unsettling once you notice its size.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-gigantoraptor",
+    "title": "Gigantoraptor",
+    "gross_fact": "Gigantoraptor combined a bird-like body with enormous size, and its eggs were large enough to feel more like stone objects than fragile shells.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-therizinosaurus",
+    "title": "Therizinosaurus",
+    "gross_fact": "Therizinosaurus had extremely long claws on its hands, so large and curved that they looked more like tools than body parts.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-deinocheirus",
+    "title": "Deinocheirus",
+    "gross_fact": "Deinocheirus had a mix of features including a broad snout, long arms, and a hump on its back, creating a shape that feels assembled from mismatched parts.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Crested & Beaked"
+  },
+  {
+    "id": "creepy-dinosaurs-compsognathus",
+    "title": "Compsognathus",
+    "gross_fact": "Compsognathus was small and quick, with sharp teeth that made it an efficient hunter despite its size, like a tiny predator moving silently through its surroundings.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-sinosauropteryx",
+    "title": "Sinosauropteryx",
+    "gross_fact": "Sinosauropteryx had a covering of simple feathers, giving it a fuzzy appearance that makes it look closer to a mammal than a reptile.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-yi-qi",
+    "title": "Yi qi",
+    "gross_fact": "Yi qi had unusual wing membranes stretched between elongated fingers, making it look less like a typical dinosaur and more like something experimenting with flight.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-kulindadromeus",
+    "title": "Kulindadromeus",
+    "gross_fact": "Kulindadromeus showed both scales and feather-like structures, proving some dinosaurs had mixed body coverings that do not match simple categories.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Raptors & Early Birds"
+  },
+  {
+    "id": "creepy-dinosaurs-pachycephalosaurus",
+    "title": "Pachycephalosaurus",
+    "gross_fact": "Its thick, rounded skull dome may have been used for head-butting, meaning its head could absorb repeated impacts during confrontations.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-stygimoloch",
+    "title": "Stygimoloch",
+    "gross_fact": "Stygimoloch had a skull covered in spikes and bumps, giving its head a rough, uneven surface that looked more like a weapon than a face.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Horned & Headbutters"
+  },
+  {
+    "id": "creepy-dinosaurs-diplodocus",
+    "title": "Diplodocus",
+    "gross_fact": "Diplodocus had a long, whip-like tail that could move quickly, potentially creating a sharp cracking motion through the air.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-apatosaurus",
+    "title": "Apatosaurus",
+    "gross_fact": "Each step of Apatosaurus could press deeply into the ground, leaving behind massive footprints that changed the surface of the landscape.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-brachiosaurus",
+    "title": "Brachiosaurus",
+    "gross_fact": "Brachiosaurus reached high into the trees with its long neck, feeding far above other animals and giving it a towering presence in its environment.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-giraffatitan",
+    "title": "Giraffatitan",
+    "gross_fact": "Giraffatitan stood extremely tall, with a body built to support its height, making it one of the most physically imposing dinosaurs known.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-mamenchisaurus",
+    "title": "Mamenchisaurus",
+    "gross_fact": "Mamenchisaurus had an extremely long neck, making its body appear stretched out in a way that feels unusual even among large dinosaurs.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-argentinosaurus",
+    "title": "Argentinosaurus",
+    "gross_fact": "Argentinosaurus reached enormous sizes, with limbs so large they resembled pillars supporting a moving structure rather than a typical animal body.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-patagotitan",
+    "title": "Patagotitan",
+    "gross_fact": "Patagotitan was so large that its movement likely affected the ground beneath it, with each step carrying significant weight across the terrain.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-saltasaurus",
+    "title": "Saltasaurus",
+    "gross_fact": "Saltasaurus had small bony plates embedded in its skin, adding a layer of protection that made even a long-necked dinosaur harder to attack.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-shunosaurus",
+    "title": "Shunosaurus",
+    "gross_fact": "Shunosaurus had a tail club similar to armored dinosaurs, meaning even a plant-eater could swing a solid weapon behind it.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-amargasaurus",
+    "title": "Amargasaurus",
+    "gross_fact": "Amargasaurus had tall spines along its neck that formed a striking outline, making its shape stand out sharply against its surroundings.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-nigersaurus",
+    "title": "Nigersaurus",
+    "gross_fact": "Nigersaurus had hundreds of teeth arranged in rows, constantly replacing them, creating a mouth that functioned like a continuous cutting surface.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-dreadnoughtus",
+    "title": "Dreadnoughtus",
+    "gross_fact": "Dreadnoughtus was built on a massive scale, with a body so large that it likely had few natural threats once fully grown.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-plateosaurus",
+    "title": "Plateosaurus",
+    "gross_fact": "Many Plateosaurus fossils are found together in positions that suggest they became trapped in mud, unable to escape once they stepped into soft ground.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Giant Plant-Eaters"
+  },
+  {
+    "id": "creepy-dinosaurs-coelophysis",
+    "title": "Coelophysis",
+    "gross_fact": "Some Coelophysis fossils have been interpreted as showing remains of smaller individuals inside them, suggesting they may have fed on their own species.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Predator Giants"
+  },
+  {
+    "id": "creepy-dinosaurs-tooth-conveyor",
+    "title": "Tooth Conveyor",
+    "gross_fact": "Dinosaurs constantly replaced their teeth, with new ones forming beneath and behind old ones, creating a system where sharp teeth were always ready.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-bite-scars",
+    "title": "Bite Scars",
+    "gross_fact": "Fossil bones often show bite marks that later healed, proving dinosaurs survived attacks and carried those marks for the rest of their lives.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-poop-fossil",
+    "title": "Poop Fossil",
+    "gross_fact": "Dinosaur droppings fossilized into coprolites, and some contain bits of bone or scales, preserving what they ate in surprising detail.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-vomit-rock",
+    "title": "Vomit Rock",
+    "gross_fact": "Regurgitated material could fossilize, leaving behind compact piles of partially digested remains that act like snapshots of a meal gone wrong.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-stone-stomachs",
+    "title": "Stone Stomachs",
+    "gross_fact": "Some dinosaurs swallowed stones that stayed inside their bodies, helping grind food as it moved through the digestive system.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-egg-pores",
+    "title": "Egg Pores",
+    "gross_fact": "Dinosaur eggshells had tiny pores that allowed gases to pass through, helping developing embryos breathe while still protected inside.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-nest-cities",
+    "title": "Nest Cities",
+    "gross_fact": "Some nesting sites held large numbers of eggs and individuals, creating dense areas where many dinosaurs gathered at once.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-amber-tick",
+    "title": "Amber Tick",
+    "gross_fact": "Ticks preserved in amber show that dinosaurs likely dealt with parasites, just like modern animals, carrying tiny hitchhikers on their bodies.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-feather-fuzz",
+    "title": "Feather Fuzz",
+    "gross_fact": "Many dinosaurs had feathers or fuzzy coverings, meaning their appearance could be softer and more complex than the classic scaly image.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-uv-patterns",
+    "title": "UV Patterns",
+    "gross_fact": "If dinosaurs could see ultraviolet light, their bodies may have had patterns invisible to human eyes, used for signaling or display.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-air-sacs",
+    "title": "Air Sacs",
+    "gross_fact": "Bird-like air sacs may have filled parts of dinosaur bodies, creating a system that extended beyond simple lungs and affected how they breathed.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-hollow-bones",
+    "title": "Hollow Bones",
+    "gross_fact": "Some dinosaur bones were hollow inside with internal structures, making them strong while reducing weight.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-trackway-chase",
+    "title": "Trackway Chase",
+    "gross_fact": "Sets of footprints found together can show movement patterns, sometimes suggesting one animal followed or moved quickly behind another.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-mud-trap",
+    "title": "Mud Trap",
+    "gross_fact": "Fossil trackways sometimes show slipping and dragging marks, suggesting animals struggled in soft ground before escaping or becoming stuck.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-bonebed-hill",
+    "title": "Bonebed Hill",
+    "gross_fact": "Some fossil sites contain many individuals together, forming bonebeds that preserve entire groups in one location.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-ash-blanket",
+    "title": "Ash Blanket",
+    "gross_fact": "Volcanic ash can cover large areas quickly, preserving animals and plants beneath layers that harden into rock over time.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Prehistoric Disasters"
+  },
+  {
+    "id": "creepy-dinosaurs-flood-pile",
+    "title": "Flood Pile",
+    "gross_fact": "Water movement can carry and gather bones into concentrated areas, forming deposits that mix remains from different individuals.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Prehistoric Disasters"
+  },
+  {
+    "id": "creepy-dinosaurs-dino-burrows",
+    "title": "Dino Burrows",
+    "gross_fact": "Some dinosaurs likely created underground burrows, using them as shelter or nesting spaces hidden below the surface.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-egg-guardians",
+    "title": "Egg Guardians",
+    "gross_fact": "Fossil evidence suggests some dinosaurs remained with their eggs, guarding them and possibly providing warmth or protection until they hatched.",
+    "eww_meter": 60,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-dino-breath",
+    "title": "Dino Breath",
+    "gross_fact": "Meat-eating dinosaurs likely had strong odors from food trapped between teeth and natural bacteria in their mouths.",
+    "eww_meter": 80,
+    "book": "creepy-dinosaurs",
+    "realm": "Fossil Evidence"
+  },
+  {
+    "id": "creepy-dinosaurs-extinction-night",
+    "title": "Extinction Night",
+    "gross_fact": "A global disaster ended the age of dinosaurs, changing the planet rapidly and affecting life on a massive scale.",
+    "eww_meter": 100,
+    "book": "creepy-dinosaurs",
+    "realm": "Prehistoric Disasters"
+  }
+]

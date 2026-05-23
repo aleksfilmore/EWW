@@ -1,0 +1,527 @@
+[
+  {
+    "id": "creepy-creatures-africanized-honeybee",
+    "title": "Africanized Honeybee",
+    "gross_fact": "When a hive feels threatened, hundreds can chase an intruder for a long distance, stinging in waves until the danger is gone.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-asian-giant-hornet",
+    "title": "Asian Giant Hornet",
+    "gross_fact": "Its jaws can snip honeybees apart, and a small squad can wipe out a hive before carrying larvae home as food.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-assassin-bug",
+    "title": "Assassin Bug",
+    "gross_fact": "It stabs prey with a sharp beak, injects digestive fluid, then drinks the liquefied insides like a bug smoothie.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-australian-funnel-web-spider",
+    "title": "Australian Funnel Web Spider",
+    "gross_fact": "Its fangs can punch through soft shoes, and its venom attacks nerves fast, making it one of Australia’s most feared spiders.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-aye-aye",
+    "title": "Aye-Aye",
+    "gross_fact": "It taps trees with a long bony finger, hears hollow tunnels, then hooks out grubs like snacks from a wooden vending machine.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-bat-eating-centipede",
+    "title": "Bat-Eating Centipede",
+    "gross_fact": "This giant centipede climbs cave ceilings, grabs bats from above, and hangs there while feeding on them.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-black-dragonfish",
+    "title": "Black Dragonfish",
+    "gross_fact": "Females have needle teeth and their own red light, letting them glow-hunt in deep water where many prey cannot see red.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-black-swallower",
+    "title": "Black Swallower",
+    "gross_fact": "It can gulp down fish bigger than itself, stretching its stomach like a living balloon in the dark sea.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-blue-dragon-sea-slug",
+    "title": "Blue Dragon Sea Slug",
+    "gross_fact": "It steals stinging cells from venomous jellyfish and stores them in its own body for defense.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-blue-ringed-octopus",
+    "title": "Blue-Ringed Octopus",
+    "gross_fact": "Tiny and beautiful, it flashes blue rings when alarmed and carries venom strong enough to paralyze prey in minutes.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-bombardier-beetle",
+    "title": "Bombardier Beetle",
+    "gross_fact": "When attacked, it blasts a boiling chemical spray from its rear with a popping sound.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-botfly-larva",
+    "title": "Botfly Larva",
+    "gross_fact": "Some botfly larvae grow under mammal skin, breathing through a tiny hole until they are ready to crawl out.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-brain-worm",
+    "title": "Brain Worm",
+    "gross_fact": "The brain worm can wander through an animal’s nervous system, confusing movement and causing strange behavior.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-bristle-worm",
+    "title": "Bristle Worm",
+    "gross_fact": "Its body is covered in tiny brittle hairs that can snap into skin and sting like fiberglass splinters.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-bullet-ant",
+    "title": "Bullet ant",
+    "gross_fact": "Its sting is famous for pain so intense people compare it to being shot by a bullet.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-candiru-fish",
+    "title": "Candiru Fish",
+    "gross_fact": "This tiny Amazon catfish is surrounded by scary legends because it can follow chemical traces in water to find hosts.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-cassowary",
+    "title": "Cassowary",
+    "gross_fact": "This huge bird has a dagger-like claw on each foot and can kick hard enough to seriously injure a predator.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-cone-snail",
+    "title": "Cone Snail",
+    "gross_fact": "It fires a tiny venom harpoon into prey, and some species carry venom powerful enough to stop a fish almost instantly.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-deathstalker-scorpion",
+    "title": "Deathstalker Scorpion",
+    "gross_fact": "Its sting packs a dangerous nerve toxin, and its glowing body looks extra creepy under ultraviolet light.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-deep-sea-lizardfish",
+    "title": "Deep Sea Lizardfish",
+    "gross_fact": "It waits on the seafloor with huge jaws and needle teeth, snapping up prey in the black deep sea.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-electric-eel",
+    "title": "Electric Eel",
+    "gross_fact": "It can release powerful electric shocks to stun fish, scare predators, and sense the muddy water around it.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-eyeless-spider",
+    "title": "Eyeless Spider",
+    "gross_fact": "This cave spider lost its eyes over time, hunting in total darkness by touch and vibration.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-flesh-fly",
+    "title": "Flesh Fly",
+    "gross_fact": "Some flesh flies give birth to live maggots instead of laying eggs, so the larvae can start feeding immediately.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-flying-snake",
+    "title": "Flying Snake",
+    "gross_fact": "It flattens its body into a ribbon shape and glides between trees, steering through the air without wings.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-gharial",
+    "title": "Gharial",
+    "gross_fact": "Its long narrow jaws are lined with many sharp teeth, perfect for snapping fish from fast rivers.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-giant-isopod",
+    "title": "Giant Isopod",
+    "gross_fact": "This deep-sea cousin of a woodlouse can curl up like armor and survive long stretches with almost no food.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-goblin-shark",
+    "title": "Goblin Shark",
+    "gross_fact": "Its jaws shoot forward from its face to snatch prey, making it look like the shark has a spring-loaded mouth.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-goliath-birdeater",
+    "title": "Goliath Birdeater",
+    "gross_fact": "This huge tarantula can rub hairs from its body that irritate skin and eyes, then hide while attackers itch.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-goliath-tigerfish",
+    "title": "Goliath Tigerfish",
+    "gross_fact": "Its giant teeth lock together like knives, and it can rip into fish in fast African rivers.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-guinea-worm",
+    "title": "Guinea Worm",
+    "gross_fact": "This parasite grows inside the body, then slowly emerges through the skin, sometimes over several painful days.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-hag-moth-caterpillar",
+    "title": "Hag Moth Caterpillar",
+    "gross_fact": "Its fuzzy arms hide venomous spines that can cause a painful sting if touched.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-hagfish",
+    "title": "Hagfish",
+    "gross_fact": "When grabbed, it floods the attacker with slime that can clog gills and turn water into goo.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-hammerhead-worm",
+    "title": "Hammerhead Worm",
+    "gross_fact": "If cut into pieces, some hammerhead worms can regrow into more worms, making them creepy garden survivors.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-harlequin-toad",
+    "title": "Harlequin Toad",
+    "gross_fact": "Many harlequin toads have skin toxins and bright warning colors that say: eating me is a terrible idea.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-hooded-pitohui",
+    "title": "Hooded Pitohui",
+    "gross_fact": "This bird carries poison in its skin and feathers, likely borrowed from toxic beetles it eats.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-horse-botfly",
+    "title": "Horse Botfly",
+    "gross_fact": "Its eggs hatch after being licked by a horse, and the larvae live inside the horse’s stomach before leaving in dung.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-horsehair-worm",
+    "title": "Horsehair Worm",
+    "gross_fact": "This parasite grows inside insects, then can drive them toward water so the worm can escape and breed.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-hypnotic-stargazer-worm",
+    "title": "Hypnotic Stargazer Worm",
+    "gross_fact": "It hides in sand with only its head exposed, waiting to grab small sea creatures that drift too close.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-immortal-jellyfish",
+    "title": "Immortal Jellyfish",
+    "gross_fact": "When badly stressed, it can reverse into an earlier life stage, almost like hitting a jellyfish reset button.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-inland-taipan",
+    "title": "Inland Taipan",
+    "gross_fact": "Often called the most venomous snake, it carries venom adapted to quickly overpower small mammals.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-japanese-spider-crab",
+    "title": "Japanese Spider Crab",
+    "gross_fact": "Its legs can span wider than a tall adult, making it look like a giant walking sea skeleton.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-kissing-bug",
+    "title": "Kissing Bug",
+    "gross_fact": "It feeds on blood near the face while animals sleep, and some carry a parasite that can cause Chagas disease.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-komodo-dragon",
+    "title": "Komodo Dragon",
+    "gross_fact": "Its bite can tear flesh, and its saliva contains bacteria and venom-like compounds that help weaken prey.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-lamprey",
+    "title": "Lamprey",
+    "gross_fact": "It clamps onto fish with a round toothy mouth, rasping a hole and feeding on blood and body fluids.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-maggot-of-the-flesh-fly",
+    "title": "Maggot of the Flesh Fly",
+    "gross_fact": "These larvae can appear in decaying meat or wounds and start feeding fast because some flesh flies birth them alive.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-mouth-brooding-fish",
+    "title": "Mouth Brooding Fish",
+    "gross_fact": "Some parents protect eggs or babies inside their mouths, going without normal feeding while the young hide there.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-musk-ox-parasite-fly",
+    "title": "Musk Ox Parasite Fly",
+    "gross_fact": "Its larvae live inside musk oxen as internal parasites, feeding safely while the host carries them around.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-nose-horned-viper",
+    "title": "Nose-Horned Viper",
+    "gross_fact": "This viper has a small horn on its snout and venom used to subdue prey before swallowing it whole.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-parasitic-barnacle",
+    "title": "Parasitic Barnacle",
+    "gross_fact": "Some parasitic barnacles invade crabs and can control their bodies, making them care for barnacle young.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-peacock-mantis-shrimp",
+    "title": "Peacock Mantis Shrimp",
+    "gross_fact": "It punches with a club so fast the water flashes with tiny shock bubbles that can crack shells.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-pistol-shrimp",
+    "title": "Pistol Shrimp",
+    "gross_fact": "It snaps one claw so fast it creates a shockwave bubble loud enough to stun prey.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-poison-dart-frog",
+    "title": "Poison Dart Frog",
+    "gross_fact": "Some species carry skin toxins so strong that predators learn to avoid their bright warning colors.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-rat-tailed-maggot",
+    "title": "Rat-Tailed Maggot",
+    "gross_fact": "It breathes through a long tube like a snorkel while wriggling in dirty, low-oxygen water.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-red-paper-wasp",
+    "title": "Red Paper Wasp",
+    "gross_fact": "It builds papery nests from chewed wood and can deliver repeated stings when the colony is disturbed.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-saddleback-caterpillar",
+    "title": "Saddleback Caterpillar",
+    "gross_fact": "Its cute green saddle hides venomous spines that can sting with sharp burning pain.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-scaly-foot-snail",
+    "title": "Scaly-Foot Snail",
+    "gross_fact": "This deep-sea snail grows iron-rich scales on its foot, like a tiny armored knight near volcanic vents.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-sea-cucumber",
+    "title": "Sea Cucumber",
+    "gross_fact": "When threatened, some sea cucumbers shoot sticky guts or toxic threads from their bodies to distract attackers.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-sea-devil-anglerfish",
+    "title": "Sea Devil Anglerfish",
+    "gross_fact": "The tiny male can fuse to the huge female, sharing her bloodstream while she keeps his body attached.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-sea-spider",
+    "title": "Sea Spider",
+    "gross_fact": "Some sea spiders are so thin their organs extend into their legs because there is little room in the body.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-spiny-oak-slug-caterpillar",
+    "title": "Spiny Oak Slug Caterpillar",
+    "gross_fact": "Its bright spines can inject irritating venom, turning a curious touch into instant regret.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-stargazer-fish",
+    "title": "Stargazer Fish",
+    "gross_fact": "It hides buried in sand with eyes on top, then lunges upward to grab prey passing overhead.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-stink-bug",
+    "title": "Stink Bug",
+    "gross_fact": "When bothered, it releases a foul-smelling chemical cloud that makes predators spit it out.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-stonefish",
+    "title": "STONEFISH",
+    "gross_fact": "It looks like a rock, but its back spines can inject extremely painful venom if stepped on.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-surinam-toad",
+    "title": "Surinam Toad",
+    "gross_fact": "Babies grow in pockets on the mother’s back, then pop out as tiny toads from her skin.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-terrible-claw-lobster",
+    "title": "Terrible Claw Lobster",
+    "gross_fact": "Its long spiny claws look oversized for its body, built for grabbing prey in the deep sea.",
+    "eww_meter": 60,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-tiger-leech",
+    "title": "Tiger Leech",
+    "gross_fact": "It slices skin with tiny jaws and drinks blood while its saliva helps keep the wound flowing.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-tongue-worm",
+    "title": "Tongue Worm",
+    "gross_fact": "This parasite can live in the airways of reptiles and mammals, using hooks to hold on inside the host.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-tongue-eating-louse",
+    "title": "Tongue-Eating Louse",
+    "gross_fact": "It attaches to a fish’s tongue, destroys it, then sits in its place and feeds on blood and mucus.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-tsetse-fly",
+    "title": "Tsetse Fly",
+    "gross_fact": "Its bite can spread sleeping sickness parasites, which move through the blood and can affect the brain.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-vampire-bat",
+    "title": "Vampire Bat",
+    "gross_fact": "It makes a tiny cut, laps blood, and uses saliva chemicals that keep the wound from clotting quickly.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-vampire-fish-payara",
+    "title": "Vampire Fish (Payara)",
+    "gross_fact": "Its lower fangs can grow so long they fit into special holes in the upper jaw when the mouth closes.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-velvet-worm",
+    "title": "Velvet Worm",
+    "gross_fact": "It fires sticky slime from nozzles on its head, trapping prey before biting into it.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-zombie-ant-fungus",
+    "title": "Zombie Ant Fungus",
+    "gross_fact": "This fungus takes over an ant’s behavior, makes it climb, bite down, and die where spores can spread.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-zombie-snail",
+    "title": "Zombie Snail",
+    "gross_fact": "A parasite makes the snail’s eyestalks pulse like caterpillars, luring birds that continue the parasite’s life cycle.",
+    "eww_meter": 100,
+    "book": "creepy-creatures"
+  },
+  {
+    "id": "creepy-creatures-zombie-starfish",
+    "title": "Zombie Starfish",
+    "gross_fact": "Some starfish can lose an arm to danger, and the crawling piece may help distract predators while the body escapes.",
+    "eww_meter": 80,
+    "book": "creepy-creatures"
+  }
+]
