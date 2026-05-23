@@ -1,0 +1,593 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.canvas { padding: 1.5rem 0; font-family: var(--font-sans); }
+.section { margin-bottom: 2rem; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-header i { font-size: 16px; color: var(--color-text-secondary); }
+.section-title { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+.section-title.new::after { content: " · new"; color: #993C1D; font-weight: 600; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.1rem; }
+.card-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin-bottom: 6px; }
+.card-value { font-size: 15px; font-weight: 500; color: var(--color-text-primary); line-height: 1.4; }
+.card-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.6; }
+.tag { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px; margin: 2px 2px 2px 0; font-weight: 500; }
+.tag-green { background: #EAF3DE; color: #3B6D11; }
+.tag-amber { background: #FAEEDA; color: #854F0B; }
+.tag-blue { background: #E6F1FB; color: #185FA5; }
+.tag-gray { background: #F1EFE8; color: #5F5E5A; }
+.tag-purple { background: #EEEDFE; color: #534AB7; }
+.tag-coral { background: #FAECE7; color: #993C1D; }
+.tag-red { background: #FCEBEB; color: #A32D2D; }
+.tag-pri { background: #534AB7; color: #fff; font-weight: 600; }
+.full-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+.full-card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.full-card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.tier-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.tier-table th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-tertiary); text-align: left; padding: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.tier-table td { font-size: 12px; padding: 10px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; color: var(--color-text-primary); line-height: 1.5; }
+.tier-table tr:last-child td { border-bottom: none; }
+.tier-table td.feature { font-weight: 500; }
+.tier-table td.free { color: var(--color-text-secondary); }
+.tier-table td.paid { color: var(--color-text-primary); }
+.tier-table tr.section-row td { background: var(--color-background-secondary); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); padding: 6px 8px; }
+.check { color: #3B6D11; font-weight: 600; }
+.cross { color: #A32D2D; font-weight: 600; }
+.partial { color: #854F0B; font-weight: 600; }
+.stack-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.stack-table th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-tertiary); text-align: left; padding: 8px 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.stack-table td { font-size: 12px; padding: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; color: var(--color-text-primary); line-height: 1.5; }
+.stack-table tr:last-child td { border-bottom: none; }
+.stack-table td.name { font-weight: 500; white-space: nowrap; }
+.stack-table td.pkg { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-secondary); }
+.stack-table td.notes { font-size: 11px; color: var(--color-text-secondary); }
+.code-block { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-secondary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 8px; line-height: 1.7; white-space: pre; overflow-x: auto; }
+.schema-block { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-primary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 8px; line-height: 1.7; }
+.schema-key { color: #185FA5; }
+.schema-type { color: #993C1D; }
+.schema-comment { color: var(--color-text-tertiary); font-style: italic; }
+.loop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 8px; }
+.loop-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; }
+.loop-icon { font-size: 16px; color: #5DB84A; margin-bottom: 6px; }
+.loop-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.loop-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.mech-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; margin-bottom: 8px; }
+.mech-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+.mech-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+.flow-step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+.flow-num { font-size: 11px; font-weight: 500; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #534AB7; color: #fff; }
+.flow-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.flow-body { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.split-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.split-section h4 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); margin-bottom: 8px; }
+.split-item { font-size: 13px; color: var(--color-text-primary); padding: 5px 0; line-height: 1.5; }
+.split-item.in::before { content: "✓ "; color: #3B6D11; font-weight: 600; }
+.split-item.out::before { content: "✕ "; color: #A32D2D; font-weight: 600; }
+.phase-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.phase-num { font-size: 11px; font-weight: 500; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--color-background-secondary); color: var(--color-text-secondary); }
+.phase-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.phase-body { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+.stage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-top: 10px; }
+.stage-card { border-radius: var(--border-radius-md); padding: 10px 12px; border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
+.stage-num { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); margin-bottom: 4px; }
+.stage-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.stage-unlock { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+.alert-block { background: #FAEEDA; border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 8px; font-size: 12px; color: #854F0B; line-height: 1.6; }
+.info-block { background: #E6F1FB; border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 8px; font-size: 12px; color: #185FA5; line-height: 1.6; }
+.special-block { background: linear-gradient(to bottom, #EEEDFE 0%, #F4F0E8 100%); border-radius: var(--border-radius-md); border: 1px dashed #534AB7; padding: 12px 14px; margin-top: 8px; font-size: 12px; color: #534AB7; line-height: 1.6; }
+.success-block { background: #EAF3DE; border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 8px; font-size: 12px; color: #3B6D11; line-height: 1.6; }
+.sound-tier { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; margin-bottom: 8px; }
+.sound-tier-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.sound-tier-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.sound-tier-body { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+@media (max-width: 600px) { .split-list { grid-template-columns: 1fr; } }
+</style>
+
+<div class="canvas">
+<h2 class="sr-only">EWW-niverse App MVP Build Specification v2 — with Game Design layer</h2>
+
+<!-- MVP SCOPE — CLEARER TIERS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-target" aria-hidden="true"></i><span class="section-title">MVP scope (v1.0)</span></div>
+
+  <div class="full-card" style="border: 2px solid var(--color-border-info);">
+    <div class="full-card-title">3 books + Special Specimens pool</div>
+    <div class="full-card-body">Free tier: Creepy Creatures (75 entries) + a small subset of Special Specimens. Full Lab Pass: all 3 books (225 entries) + full Special Specimens pool. Books map to ewwniverse.com homepage trio. No bundle codes at launch — adds operational overhead without proven need. Defer code redemption to v1.1 if it makes sense after launch.</div>
+  </div>
+</div>
+
+<!-- TIERS — REWRITTEN -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-coin" aria-hidden="true"></i><span class="section-title">Free vs Full Lab Pass — locked tier definition</span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">Tier comparison</div>
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th style="width: 36%;">Feature</th>
+          <th style="width: 32%;">Free tier</th>
+          <th style="width: 32%;">Full Lab Pass <span class="tag tag-pri" style="margin-left: 4px;">€3.99 one-time</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-row"><td colspan="3">Content access</td></tr>
+        <tr>
+          <td class="feature">Books unlocked</td>
+          <td class="free">Creepy Creatures only (75)</td>
+          <td class="paid">All 3 books (225 total: Creatures + Dinosaurs + Earth)</td>
+        </tr>
+        <tr>
+          <td class="feature">Future books</td>
+          <td class="free"><span class="cross">✕</span> Not included</td>
+          <td class="paid"><span class="check">✓</span> Automatically added when shipped (Tiny World, Deep Sea, Skeletons)</td>
+        </tr>
+        <tr>
+          <td class="feature">Special Specimens</td>
+          <td class="free"><span class="partial">◐</span> Up to 5 unlockable (Common rarity only)</td>
+          <td class="paid"><span class="check">✓</span> All ~30 unlockable, including Epic exclusives</td>
+        </tr>
+
+        <tr class="section-row"><td colspan="3">Game mechanics</td></tr>
+        <tr>
+          <td class="feature">Scan capacity (collection currency)</td>
+          <td class="free">1 free scan per 12 hours</td>
+          <td class="paid">2 free scans per 12 hours</td>
+        </tr>
+        <tr>
+          <td class="feature">Scans earned per quiz session</td>
+          <td class="free">Up to 3</td>
+          <td class="paid">Up to 6</td>
+        </tr>
+        <tr>
+          <td class="feature">Gross Fact → Name quiz</td>
+          <td class="free"><span class="check">✓</span> Available</td>
+          <td class="paid"><span class="check">✓</span> Available</td>
+        </tr>
+        <tr>
+          <td class="feature">EWW-meter Ranking quiz</td>
+          <td class="free"><span class="cross">✕</span> Locked</td>
+          <td class="paid"><span class="check">✓</span> Unlocked</td>
+        </tr>
+        <tr>
+          <td class="feature">Specimen Match quiz</td>
+          <td class="free"><span class="cross">✕</span> Locked</td>
+          <td class="paid"><span class="check">✓</span> Unlocked</td>
+        </tr>
+        <tr>
+          <td class="feature">EWW-meter visible on all classified creatures</td>
+          <td class="free"><span class="check">✓</span> Always</td>
+          <td class="paid"><span class="check">✓</span> Always</td>
+        </tr>
+
+        <tr class="section-row"><td colspan="3">Progression</td></tr>
+        <tr>
+          <td class="feature">User stages</td>
+          <td class="free">Stages 1–2 only (Kinda Curious → Properly Revolted)</td>
+          <td class="paid">All 5 stages (through Full Dr. Icky)</td>
+        </tr>
+        <tr>
+          <td class="feature">Daily Specimen feature</td>
+          <td class="free"><span class="check">✓</span> From Creepy Creatures only</td>
+          <td class="paid"><span class="check">✓</span> Rotates across all unlocked books</td>
+        </tr>
+        <tr>
+          <td class="feature">Specimen Sets (sub-collections)</td>
+          <td class="free"><span class="partial">◐</span> Creepy Creatures sets only (~3 sets)</td>
+          <td class="paid"><span class="check">✓</span> All sets across all books (~12 sets)</td>
+        </tr>
+        <tr>
+          <td class="feature">Lab Missions (quests)</td>
+          <td class="free"><span class="partial">◐</span> Starter missions only (~5 active)</td>
+          <td class="paid"><span class="check">✓</span> Full mission roster + weekly rotation</td>
+        </tr>
+        <tr>
+          <td class="feature">Contamination Events</td>
+          <td class="free"><span class="check">✓</span> Triggerable, but rewards capped to Common Specimens</td>
+          <td class="paid"><span class="check">✓</span> Higher trigger probability + access to all rarities</td>
+        </tr>
+        <tr>
+          <td class="feature">Streak rewards</td>
+          <td class="free">7-day streak = 1 free scan bonus</td>
+          <td class="paid">7-day streak = 1 guaranteed Contaminated Specimen</td>
+        </tr>
+
+        <tr class="section-row"><td colspan="3">Polish + experience</td></tr>
+        <tr>
+          <td class="feature">Custom sound design</td>
+          <td class="free"><span class="check">✓</span> Full audio experience</td>
+          <td class="paid"><span class="check">✓</span> Full audio experience</td>
+        </tr>
+        <tr>
+          <td class="feature">Stage interface evolution</td>
+          <td class="free">Stages 1–2 visual treatments</td>
+          <td class="paid">All 5 stage treatments</td>
+        </tr>
+        <tr>
+          <td class="feature">Personal codename + Recruit File</td>
+          <td class="free">Default codename</td>
+          <td class="paid">Rank-prefixed codename ("Field Investigator [name]") at Stage 4+</td>
+        </tr>
+        <tr>
+          <td class="feature">Ads</td>
+          <td class="free"><span class="check">✓</span> None</td>
+          <td class="paid"><span class="check">✓</span> None</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info-block">The free tier is a fully complete experience built around one book, not a crippled demo. A kid can spend weeks in the free tier and feel satisfied. The Full Lab Pass triples the content, doubles the speed of progression, and opens app-exclusive Special Specimens. The upgrade feels like adding more to a working game, not unlocking the game itself.</div>
+  </div>
+</div>
+
+<!-- GAME DESIGN — NEW MAJOR SECTION -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i><span class="section-title new">Game design — core loops</span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">The two-loop architecture</div>
+    <div class="full-card-body">Every retention-positive game splits into a short cycle (immediate dopamine) and a long cycle (long-term motivation). EWW-niverse uses Discovery as the short loop and Mastery as the long loop. They feed each other, which is how a kid stays engaged for weeks instead of one session.</div>
+    <div class="loop-grid">
+      <div class="loop-card">
+        <div class="loop-icon"><i class="ti ti-eye-search" aria-hidden="true"></i></div>
+        <div class="loop-name">Discovery loop (short)</div>
+        <div class="loop-desc">Open app → use scan → reveal silhouette → creature classified → see basic fact + EWW-meter. ~30 seconds of dopamine per cycle. Triggered multiple times per session.</div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+        <div class="loop-name">Mastery loop (long)</div>
+        <div class="loop-desc">Play Lab quiz → earn scans + classify correctly on creatures already classified → bonus fact unlocks → progress to next EWW-stage → unlock new mechanics. Days to weeks of progression.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Scans — the in-game currency</div>
+    <div class="full-card-body">All creature unlocks cost scans. Scans are the throttle. Free tier earns ~7 scans per active day, Full Lab Pass earns ~14. This pacing means a kid can't binge through the entire library in one sitting and lose interest. Replenishment creates the return habit.</div>
+    <div class="schema-block"><span class="schema-comment">// Scan earning rules</span>
+free_scan_refresh: <span class="schema-type">12 hours</span>
+free_scan_amount_free: <span class="schema-type">1</span>
+free_scan_amount_paid: <span class="schema-type">2</span>
+
+quiz_session_reward_free:  <span class="schema-comment">// based on accuracy</span>
+  5/5 correct: <span class="schema-type">3 scans</span>
+  4/5 correct: <span class="schema-type">2 scans</span>
+  3/5 correct: <span class="schema-type">1 scan</span>
+  <3/5:        <span class="schema-type">0 scans</span>
+
+quiz_session_reward_paid:
+  5/5: <span class="schema-type">6 scans</span>  |  4/5: <span class="schema-type">4 scans</span>  |  3/5: <span class="schema-type">2 scans</span>
+
+streak_reward_free:  <span class="schema-type">+1 scan</span> on day 7
+streak_reward_paid:  <span class="schema-type">+1 Contaminated Specimen</span> on day 7
+specimen_set_completion: <span class="schema-type">+1 Contaminated Specimen</span></div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">The five gamification mechanics</div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-calendar-star" style="color: #5DB84A;" aria-hidden="true"></i>Daily Specimen</div>
+      <div class="mech-desc">One creature highlighted on the home screen each day. Classifying it within 24 hours = 2x scan reward. Drives daily opens without nagging notifications. Rotates server-side via Cloud Function on a 24-hour cron. Free tier: rotates Creepy Creatures only. Paid: rotates all unlocked books.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-grid-pattern" style="color: #5DB84A;" aria-hidden="true"></i>Specimen Sets (sub-collections)</div>
+      <div class="mech-desc">Themed sub-groups inside each book that the kid completes by classifying every member. Examples: "Parasites" (8 creatures), "Things With Too Many Legs" (12), "Skin Crawlers" (10), "Slime Producers" (6). Each completed set rewards one Contaminated Specimen + a Set badge. Free tier sees only Creepy Creatures sets. Adds discoverable medium-term goals.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-flag" style="color: #5DB84A;" aria-hidden="true"></i>Lab Missions (quests)</div>
+      <div class="mech-desc">Small in-game objectives, displayed on the HUD. "Classify 3 Epic creatures this week." "Achieve a 7-question streak." "Master 10 creatures." Each rewards scans, progression points, or Special Specimens. Weekly rotation in paid tier. Free tier gets a starter set of ~5 fixed missions to introduce the mechanic.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-flame" style="color: #5DB84A;" aria-hidden="true"></i>Streak meter</div>
+      <div class="mech-desc">Daily login streak. Shown on the HUD. 7-day milestone rewards a free scan (free tier) or guaranteed Contaminated Specimen (paid tier). Streak resets if a day is skipped — painful enough to bring kids back. No grace period in MVP, can add a single-day pardon later if it feels punishing in playtest.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-medal-2" style="color: #5DB84A;" aria-hidden="true"></i>Personal Records (HUD card)</div>
+      <div class="mech-desc">Visible bragging surface. Fastest quiz time, longest streak, total Contamination Events triggered, total Mastered count, current EWW-stage. Lives on the Recruit File tab. Updates in real time. This is what kids screenshot and show their friends.</div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Stage progression — what actually unlocks</div>
+    <div class="full-card-body">Each EWW-stage changes the game, not just the badge. Free tier caps at Stage 2. Paid unlocks all five.</div>
+    <div class="stage-grid">
+      <div class="stage-card">
+        <div class="stage-num">Stage 1</div>
+        <div class="stage-name">Kinda Curious</div>
+        <div class="stage-unlock">Default starting state. 1 scan per 12h. Quiz available.</div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num">Stage 2</div>
+        <div class="stage-name">Properly Revolted</div>
+        <div class="stage-unlock">Dr. Icky audio message. First Lab Mission unlocks. HUD theme upgrade.</div>
+      </div>
+      <div class="stage-card" style="opacity: 0.65; border-style: dashed;">
+        <div class="stage-num">Stage 3 <span class="tag tag-blue">paid</span></div>
+        <div class="stage-name">Super Slimy</div>
+        <div class="stage-unlock">Specimen Sets unlock. Scan capacity rises to 2 per 12h. EWW-meter Ranking quiz enabled.</div>
+      </div>
+      <div class="stage-card" style="opacity: 0.65; border-style: dashed;">
+        <div class="stage-num">Stage 4 <span class="tag tag-blue">paid</span></div>
+        <div class="stage-name">Biologically Alarmed</div>
+        <div class="stage-unlock">Contamination probability boost. Rank prefix on codename. Specimen Match quiz enabled.</div>
+      </div>
+      <div class="stage-card" style="opacity: 0.65; border-style: dashed;">
+        <div class="stage-num">Stage 5 <span class="tag tag-blue">paid</span></div>
+        <div class="stage-name">Full Dr. Icky</div>
+        <div class="stage-unlock">Personal field report letter from Dr. Icky. Signature badge. Maximum lab interface aesthetic.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Quiz mechanics — three types defined</div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-help-circle" style="color: #5DB84A;" aria-hidden="true"></i>Gross Fact → Name <span class="tag tag-gray">free + paid</span></div>
+      <div class="mech-desc">The starter quiz. Show the gross fact at the top. Three creature silhouettes below as options. Kid taps which creature the fact describes. Silhouettes show partial features as visual clues. Works for both classified and unclassified creatures — meaning quizzes drive discovery too.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-arrows-up-down" style="color: #5DB84A;" aria-hidden="true"></i>EWW-meter Ranking <span class="tag tag-blue">paid</span></div>
+      <div class="mech-desc">Three creature cards appear in a row. Kid drags them into order from least gross to most gross (60% → 80% → 100%). The arcs animate to reveal correctness. Drag interactions make this feel different from tap-to-answer.</div>
+    </div>
+
+    <div class="mech-card">
+      <div class="mech-name"><i class="ti ti-puzzle-2" style="color: #5DB84A;" aria-hidden="true"></i>Specimen Match <span class="tag tag-blue">paid</span></div>
+      <div class="mech-desc">A gross fact appears at the top. Three silhouettes below with subtle distinct features (leg shape, antenna count, body outline). Kid matches the fact to the silhouette. Timed, faster = more points. Rapid-fire format runs 8 questions per session for high tempo.</div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Contamination Event — the signature mechanic</div>
+    <div class="special-block">
+      <strong>Trigger:</strong> 3 correct quiz answers in a row without using a hint.<br>
+      <strong>Visual:</strong> Screen glitches green for 2 seconds. All silhouettes briefly flash visible. Audio cascade (sfx_contamination) plays.<br>
+      <strong>Reward:</strong> ONE random Contaminated Specimen unlocks automatically. Cannot be obtained any other way. Adds to the kid's collection with a unique green-glow border in the grid.<br>
+      <strong>Why it matters:</strong> Skill-based reward, scarcity, conversation surface ("I got a Contaminated Specimen today"). Free tier: only Common-rarity Contaminated unlocks. Paid: all rarities including Epic.
+    </div>
+  </div>
+</div>
+
+<!-- SPECIAL SPECIMENS — NEW SECTION -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-biohazard" aria-hidden="true"></i><span class="section-title new">Special Specimens — app-exclusive collection layer</span></div>
+
+  <div class="full-card" style="border: 2px dashed #534AB7;">
+    <div class="full-card-title">The 7th "book" that doesn't exist on paper</div>
+    <div class="full-card-body">A dedicated pool of ~30 creatures and weird phenomena that exist only in the app. These are not in any printed book. They're earned through gameplay mechanics — never purchased. This is what makes the app a real product beyond a digital version of the books. A kid who owns all 6 physical books still needs the app to collect Special Specimens.</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">How they're earned</div>
+    <table class="stack-table">
+      <thead><tr><th style="width: 30%;">Source</th><th>Specimens awarded</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Contamination Event</td><td class="notes">One random Contaminated Specimen per trigger. Most common source.</td></tr>
+        <tr><td class="name">Specimen Set completion</td><td class="notes">One specific Specimen per set completed. Each set rewards a thematically-linked specimen.</td></tr>
+        <tr><td class="name">Lab Mission completion</td><td class="notes">Sometimes a Specimen, sometimes scans. Varies by mission.</td></tr>
+        <tr><td class="name">7-day streak (paid only)</td><td class="notes">One guaranteed Contaminated Specimen.</td></tr>
+        <tr><td class="name">Stage 5 reward</td><td class="notes">A signature Specimen named after the kid's codename.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Tier of rarities</div>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Common</div><div class="card-value">~15 specimens</div><div class="card-sub">Available to both free and paid tiers. Free tier can unlock up to 5.</div></div>
+      <div class="card"><div class="card-label">Uncommon</div><div class="card-value">~8 specimens</div><div class="card-sub">Paid tier only. Earned through Specimen Sets + Lab Missions.</div></div>
+      <div class="card"><div class="card-label">Epic</div><div class="card-value">~7 specimens</div><div class="card-sub">Paid tier only. Stage 4+ unlocks, rare Contamination drops, Stage 5 reward.</div></div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Cloudinary folder for Special Specimens</div>
+    <div class="code-block">/eww-niverse/creatures/special/
+  /common/      ← 15 PNGs
+  /uncommon/    ← 8 PNGs
+  /epic/        ← 7 PNGs
+
+Filename convention:
+  special_{rarity}_{specimen-slug}.png
+  Example: special_epic_brain-puppet.png</div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">Firestore — special specimens schema</div>
+    <div class="schema-block">/special_specimens/{specimenId}
+  <span class="schema-key">id:</span> <span class="schema-type">string</span>
+  <span class="schema-key">name:</span> <span class="schema-type">string</span>
+  <span class="schema-key">gross_fact:</span> <span class="schema-type">string</span>     <span class="schema-comment">// ≤200 chars</span>
+  <span class="schema-key">bonus_fact:</span> <span class="schema-type">string</span>
+  <span class="schema-key">eww_meter:</span> <span class="schema-type">enum</span>        <span class="schema-comment">// 60 | 80 | 100</span>
+  <span class="schema-key">rarity:</span> <span class="schema-type">enum</span>           <span class="schema-comment">// common | uncommon | epic</span>
+  <span class="schema-key">image_id:</span> <span class="schema-type">string</span>
+  <span class="schema-key">unlock_source:</span> <span class="schema-type">enum</span>    <span class="schema-comment">// contamination | set | mission | streak | stage</span>
+  <span class="schema-key">unlock_metadata:</span> <span class="schema-type">object</span> <span class="schema-comment">// e.g. set_id, mission_id, stage_required</span>
+  <span class="schema-key">tier_required:</span> <span class="schema-type">enum</span>    <span class="schema-comment">// free | paid</span></div>
+  </div>
+</div>
+
+<!-- TECH STACK — CONDENSED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-stack" aria-hidden="true"></i><span class="section-title">Tech stack — locked dependencies</span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">Core layers (unchanged from v1 spec)</div>
+    <table class="stack-table">
+      <thead><tr><th style="width:18%;">Layer</th><th style="width:28%;">Package</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Framework</td><td class="pkg">expo@~54.0.0 + React Native 0.81</td><td class="notes">New Architecture enabled by default.</td></tr>
+        <tr><td class="name">Language</td><td class="pkg">TypeScript (strict)</td><td class="notes"></td></tr>
+        <tr><td class="name">Routing</td><td class="pkg">expo-router</td><td class="notes">File-based, 3-tab structure.</td></tr>
+        <tr><td class="name">Firebase</td><td class="pkg">@react-native-firebase/* (NOT the JS SDK)</td><td class="notes">Auth, Firestore, Functions, Analytics, Crashlytics.</td></tr>
+        <tr><td class="name">Styling</td><td class="pkg">nativewind@4</td><td class="notes">Tailwind tokens map to design system.</td></tr>
+        <tr><td class="name">Animation</td><td class="pkg">react-native-reanimated + lottie-react-native + react-native-svg</td><td class="notes">EWW-meter arc, Lottie for unlock sequences, glitch animations.</td></tr>
+        <tr><td class="name">Images</td><td class="pkg">expo-image + cloudinary-react-native</td><td class="notes">Cloudinary URLs with named transformations.</td></tr>
+        <tr><td class="name">Audio</td><td class="pkg">expo-audio (NOT expo-av)</td><td class="notes">expo-av deprecated in SDK 55.</td></tr>
+        <tr><td class="name">State</td><td class="pkg">zustand + @tanstack/react-query</td><td class="notes">Client state + Firestore caching.</td></tr>
+        <tr><td class="name">Forms</td><td class="pkg">react-hook-form + zod</td><td class="notes">Parent email signup, code redemption (when added).</td></tr>
+        <tr><td class="name">Payments</td><td class="pkg">react-native-purchases (RevenueCat)</td><td class="notes">One-time IAP. Free until $2,500 MTR.</td></tr>
+        <tr><td class="name">Build</td><td class="pkg">EAS Build + EAS Submit + EAS Update</td><td class="notes">$29/mo Production plan. OTA updates critical.</td></tr>
+      </tbody>
+    </table>
+    <div class="info-block">Start from the Obytes starter (github.com/obytes/react-native-template-obytes) — saves 20-30 hours of setup. Add @react-native-firebase/*, react-native-purchases, expo-audio on top.</div>
+  </div>
+</div>
+
+<!-- SOUND — UPDATED 3-TIER -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-volume" aria-hidden="true"></i><span class="section-title">Sound design — pragmatic 3-tier approach</span></div>
+
+  <div class="sound-tier">
+    <div class="sound-tier-head"><span class="sound-tier-name">Tier 1 — Sourced (free, commercial license)</span><span class="tag tag-green">~15 sounds</span></div>
+    <div class="sound-tier-body">Use for: ambient lab loops, navigation clicks, paper slides, mechanical clicks, water/liquid effects, general UI feedback. Sources: <strong>Mixkit</strong> (free for commercial use, no attribution), <strong>Pixabay Sound Effects</strong> (CC0 license), <strong>Zapsplat</strong> ($5/mo paid tier removes attribution). Total time investment: ~3 hours of browsing and downloading.</div>
+  </div>
+
+  <div class="sound-tier">
+    <div class="sound-tier-head"><span class="sound-tier-name">Tier 2 — AI-generated</span><span class="tag tag-amber">~4-5 sounds</span></div>
+    <div class="sound-tier-body">Use for: the three EWW-meter fill sounds (60%/80%/100%), quiz feedback sounds, declassify sound. Tool: <strong>ElevenLabs Sound Effects</strong> — text-to-SFX. Free tier gives enough credits for 10-15 short clips. Better output than producer.ai for short stylized SFX, accepts natural language prompts. Total time investment: ~2 hours including iteration.</div>
+  </div>
+
+  <div class="sound-tier">
+    <div class="sound-tier-head"><span class="sound-tier-name">Tier 3 — Custom production</span><span class="tag tag-purple">3 signature sounds</span></div>
+    <div class="sound-tier-body">Custom production reserved for: <strong>sfx_contamination</strong> (the Event sound, most important in the app), <strong>sfx_pass_unlock</strong> (the purchase moment), <strong>sfx_stage_up</strong> (progression). These three define the app sonically. Source the rest. Total time investment: one evening per sound, ~6 hours total.</div>
+  </div>
+
+  <div class="success-block">Total sound production time: ~11 hours instead of producing all 22 custom (~25-30 hours). The three signature sounds carry the brand character; the sourced and AI-generated sounds carry the functional load.</div>
+</div>
+
+<!-- AUTH / COPPA — CONDENSED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-shield-lock" aria-hidden="true"></i><span class="section-title">Auth + COPPA (unchanged)</span></div>
+  <div class="full-card">
+    <div class="full-card-title">Anonymous-first flow</div>
+    <div class="full-card-body">App creates anonymous Firebase Auth user on first launch. No PII. Kid plays the entire free tier without identification. Parent email gate appears only at paywall or cloud-save request. Email link sign-in (passwordless) satisfies COPPA's "verifiable parental consent" requirement. Anonymous-to-permanent account linking migrates all progress. Child profile uses codename only, no DOB, no real name. See v1 build spec canvas for full flow detail.</div>
+  </div>
+</div>
+
+<!-- FIRESTORE — DELTA -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-database" aria-hidden="true"></i><span class="section-title">Firestore — schema additions for game state</span></div>
+
+  <div class="full-card">
+    <div class="full-card-title">New user state fields</div>
+    <div class="schema-block">/users/{uid}
+  <span class="schema-comment">// Existing fields preserved (codename, eww_stage, etc.)</span>
+
+  <span class="schema-comment">// New game state fields</span>
+  <span class="schema-key">scan_balance:</span> <span class="schema-type">number</span>           <span class="schema-comment">// current scans available</span>
+  <span class="schema-key">scan_next_refresh:</span> <span class="schema-type">timestamp</span>    <span class="schema-comment">// when next free scan arrives</span>
+  <span class="schema-key">streak_days:</span> <span class="schema-type">number</span>            <span class="schema-comment">// current streak</span>
+  <span class="schema-key">streak_last_day:</span> <span class="schema-type">date</span>          <span class="schema-comment">// last login day (UTC)</span>
+  <span class="schema-key">contamination_count:</span> <span class="schema-type">number</span>    <span class="schema-comment">// lifetime triggers</span>
+  <span class="schema-key">mastered_count:</span> <span class="schema-type">number</span>         <span class="schema-comment">// creatures fully mastered</span>
+  <span class="schema-key">classified_count:</span> <span class="schema-type">number</span>       <span class="schema-comment">// creatures classified</span>
+  <span class="schema-key">fastest_quiz_seconds:</span> <span class="schema-type">number</span>   <span class="schema-comment">// personal record</span>
+  <span class="schema-key">daily_specimen_last_claimed:</span> <span class="schema-type">date</span></div>
+  </div>
+
+  <div class="full-card">
+    <div class="full-card-title">New subcollections</div>
+    <div class="schema-block">/users/{uid}/special_specimens/{specimenId}
+  <span class="schema-key">unlocked_at:</span> <span class="schema-type">timestamp</span>
+  <span class="schema-key">source:</span> <span class="schema-type">enum</span>            <span class="schema-comment">// how they got it</span>
+
+/users/{uid}/sets_progress/{setId}
+  <span class="schema-key">classified_in_set:</span> <span class="schema-type">number</span>
+  <span class="schema-key">total_in_set:</span> <span class="schema-type">number</span>
+  <span class="schema-key">completed_at:</span> <span class="schema-type">timestamp?</span>
+  <span class="schema-key">reward_claimed:</span> <span class="schema-type">boolean</span>
+
+/users/{uid}/missions/{missionId}
+  <span class="schema-key">started_at:</span> <span class="schema-type">timestamp</span>
+  <span class="schema-key">progress:</span> <span class="schema-type">number</span>          <span class="schema-comment">// e.g. 2 of 3</span>
+  <span class="schema-key">target:</span> <span class="schema-type">number</span>
+  <span class="schema-key">completed_at:</span> <span class="schema-type">timestamp?</span>
+  <span class="schema-key">reward_claimed:</span> <span class="schema-type">boolean</span>
+
+<span class="schema-comment">// Public read — server-managed</span>
+/specimen_sets/{setId}
+  <span class="schema-key">name:</span> <span class="schema-type">string</span>           <span class="schema-comment">// "Parasites"</span>
+  <span class="schema-key">creature_ids:</span> <span class="schema-type">array</span>
+  <span class="schema-key">reward_specimen_id:</span> <span class="schema-type">string</span>
+  <span class="schema-key">tier_required:</span> <span class="schema-type">enum</span>
+
+/mission_templates/{templateId}
+  <span class="schema-key">title:</span> <span class="schema-type">string</span>
+  <span class="schema-key">description:</span> <span class="schema-type">string</span>
+  <span class="schema-key">objective_type:</span> <span class="schema-type">enum</span>     <span class="schema-comment">// classify_count | streak | master_count</span>
+  <span class="schema-key">target:</span> <span class="schema-type">number</span>
+  <span class="schema-key">reward_type:</span> <span class="schema-type">enum</span>        <span class="schema-comment">// scans | specimen</span>
+  <span class="schema-key">reward_amount:</span> <span class="schema-type">number</span>
+  <span class="schema-key">tier_required:</span> <span class="schema-type">enum</span></div>
+  </div>
+</div>
+
+<!-- CLOUDINARY — UPDATED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-photo" aria-hidden="true"></i><span class="section-title">Cloudinary — updated folder structure</span></div>
+  <div class="full-card">
+    <div class="code-block">/eww-niverse/
+  /creatures/
+    /creepy-creatures/       ← 75 PNGs (transparent)
+    /creepy-dinosaurs/       ← 75 PNGs (habitat)
+    /creepy-earth/           ← 75 PNGs (habitat)
+    /special/                ← NEW — app-exclusive specimens
+      /common/               ← 15 PNGs
+      /uncommon/             ← 8 PNGs
+      /epic/                 ← 7 PNGs
+  /dr-icky/
+    /poses/                  ← 25+ character pose PNGs
+    /elements/               ← /lab/ /badges/ /textures/ /slime/ /specimen/
+    /backgrounds/
+  /ui/
+    /app/                    ← app-only assets (dark variants)
+    /web/                    ← website-only assets (parchment)
+  /lottie/                   ← .json animation files
+  /audio/                    ← if hosted (or bundle with app)</div>
+  </div>
+</div>
+
+<!-- BUILD SEQUENCE — UPDATED -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-list-numbers" aria-hidden="true"></i><span class="section-title">Build sequence (~14 weeks for MVP including game design)</span></div>
+
+  <div class="phase-row"><div class="phase-num">1</div><div><div class="phase-title">Week 1 — Foundation</div><div class="phase-body">Obytes starter, Firebase setup, EAS, Apple + Google developer accounts (Small Business Program first).</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">2</div><div><div class="phase-title">Weeks 2-3 — Content pipeline + Special Specimens design</div><div class="phase-body">Master spreadsheets for all 3 books with NEW facts. Design the ~30 Special Specimens (write fact, choose visual reference, decide unlock source). Upload all assets to Cloudinary. Firestore import script.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">3</div><div><div class="phase-title">Weeks 4-5 — Core navigation + EWW-niverse grid</div><div class="phase-body">expo-router tabs. Creature grid with locked/unlocked states. Creature detail with EWW-meter arc. Design tokens, fonts.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">4</div><div><div class="phase-title">Weeks 6-7 — Game mechanics layer</div><div class="phase-body">Scan economy + balance. Daily Specimen rotation. Specimen Sets logic. Lab Missions system. Streak meter. Personal Records HUD. Contamination Event trigger + reward grant. Cloud Functions for server-managed rotations.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">5</div><div><div class="phase-title">Weeks 8-9 — Quiz engine</div><div class="phase-body">All three quiz types. Streak counter. Bonus fact unlock. Quiz session writes. Contamination Event integration.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">6</div><div><div class="phase-title">Week 10 — Auth + COPPA</div><div class="phase-body">Anonymous flow, parent gate, email link sign-in, account linking, child profile setup.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">7</div><div><div class="phase-title">Weeks 11-12 — Payments + polish</div><div class="phase-body">RevenueCat. Paywall with the upgrade comparison. Restore Purchases. Sound integration (all 3 tiers). Stage progression rewards. Polish.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">8</div><div><div class="phase-title">Week 13 — QA + store assets</div><div class="phase-body">Multi-device testing. Screenshots. Store listings. COPPA disclosures. TestFlight + Internal Testing.</div></div></div>
+
+  <div class="phase-row"><div class="phase-num">9</div><div><div class="phase-title">Week 14 — Launch</div><div class="phase-body">Submit both stores. Monitor crashes. Coordinate website /app page.</div></div></div>
+</div>
+
+<!-- IMMEDIATE NEXT STEPS -->
+<div class="section">
+  <div class="section-header"><i class="ti ti-flag-3" aria-hidden="true"></i><span class="section-title">First 5 things to do (updated)</span></div>
+  <div class="full-card">
+    <div class="phase-row"><div class="phase-num">1</div><div><div class="phase-title">Apple Small Business Program enrollment</div><div class="phase-body">Apply at developer.apple.com. Locks in 15% commission.</div></div></div>
+    <div class="phase-row"><div class="phase-num">2</div><div><div class="phase-title">Design the Special Specimens list</div><div class="phase-body">Decide the ~30 specimens. For each: name, gross fact (≤200 chars), bonus fact, EWW-meter tier, rarity, unlock source (Contamination / Set / Mission / Streak / Stage 5). Source or generate the 30 illustrations. This is now a parallel workstream to the other 3 books.</div></div></div>
+    <div class="phase-row"><div class="phase-num">3</div><div><div class="phase-title">Write app-specific facts for Dinosaurs + Earth</div><div class="phase-body">150 new ≤200-char facts. Parallel to engineering work.</div></div></div>
+    <div class="phase-row"><div class="phase-num">4</div><div><div class="phase-title">Create Firebase projects + RevenueCat account</div><div class="phase-body">ewwniverse-dev and ewwniverse-prod. Configure Full Lab Pass product at €3.99 in App Store Connect + Google Play Console.</div></div></div>
+    <div class="phase-row"><div class="phase-num">5</div><div><div class="phase-title">Initialize repo from Obytes starter</div><div class="phase-body">git clone, configure, install dependencies, hello-world running on simulators.</div></div></div>
+  </div>
+</div>
+
+</div>
