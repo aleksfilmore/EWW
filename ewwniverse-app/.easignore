@@ -1,0 +1,30 @@
+# EAS Build ignore file
+# EAS reinstalls node_modules fresh on the build server — no need to upload them
+node_modules/
+
+# Expo local cache
+.expo/
+
+# Generated native directories (EAS generates these during build)
+android/
+ios/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# IDE
+.vscode/
+.idea/
+
+# Test output
+coverage/
