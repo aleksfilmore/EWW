@@ -1,49 +1,56 @@
-/** EWW-niverse design tokens — mirrors tailwind.config.js + website globals.css */
+/** EWW-niverse design tokens — updated to match dark-purple illustrated mockup */
 export const Colors = {
   bg: {
-    DEFAULT: '#0D0820',     // dark purple-black — the lab
-    surface: '#140E28',
-    card: '#1A1232',
-    elevated: '#1F1640',
-    parchment: '#F4EED8',       // aged paper — website: --color-parchment
-    parchmentDark: '#EDE5CE',   // website: --color-parchment-dark
-    parchmentLight: '#FDFAF3',  // website: --color-parchment-light
+    DEFAULT: '#12082A',     // deep purple-black — the lab
+    surface: '#1A0D35',
+    card: '#1E1040',
+    elevated: '#251550',
+    parchment: '#F4EED8',       // aged paper (onboarding / parchment cards only)
+    parchmentDark: '#EDE5CE',
+    parchmentLight: '#FDFAF3',
   },
   eww: {
-    green: '#5DB84A',      // website: --color-slime
-    greenLight: '#6ED44F', // website: --color-slime-light
-    greenDark: '#3D8C2A',  // website: --color-slime-dark
-    amber: '#D48B1A',      // website: --color-amber
+    green: '#7AE838',      // bright lime — primary action / slime
+    greenLight: '#9AFF50',
+    greenDark: '#4A9F20',
+    amber: '#FF8C00',      // streak / warnings
+    amberDark: '#C86800',
     coral: '#E86C5D',
-    purple: '#6B3FD4',     // website: --color-purple (updated to exact match)
-    purpleDark: '#4E2EA8', // website: --color-purple-dark
+    purple: '#8B3FFF',     // primary purple — borders, highlights
+    purpleDark: '#6B2FBF',
     purpleLight: '#EDE8FB',
+    purpleMid: '#5B1FBF',
     gold: '#F0C040',
-    forest: '#1A3D0E',     // website: --color-forest — dark green text on parchment
-    bark: '#3D2B1F',       // website: --color-bark — brown text on parchment
-    barkLight: '#7A6652',  // website: --color-bark-light
-    tan: '#C8B89A',        // website: --color-tan — parchment border
+    forest: '#1A3D0E',
+    bark: '#3D2B1F',
+    barkLight: '#7A6652',
+    tan: '#C8B89A',
   },
   text: {
     primary: '#FFFFFF',
-    secondary: 'rgba(255,255,255,0.65)',
-    muted: 'rgba(255,255,255,0.35)',
+    secondary: 'rgba(255,255,255,0.70)',
+    muted: 'rgba(255,255,255,0.40)',
     disabled: 'rgba(255,255,255,0.20)',
-    // on parchment cards
-    onParchment: '#1A3D0E',      // forest green — same as website h1-h5
-    onParchmentSub: '#3D2B1F',   // bark brown — same as website body
-    onParchmentMuted: '#7A6652', // bark light — same as website secondary
+    lime: '#7AE838',       // green text on dark bg
+    purple: '#B87AFF',     // purple text on dark bg
+    amber: '#FF8C00',
+    // on parchment cards (onboarding only)
+    onParchment: '#1A3D0E',
+    onParchmentSub: '#3D2B1F',
+    onParchmentMuted: '#7A6652',
   },
   border: {
-    DEFAULT: 'rgba(93,184,74,0.18)',
-    subtle: 'rgba(255,255,255,0.08)',
-    strong: 'rgba(93,184,74,0.40)',
-    parchment: '#C8B89A',  // tan — parchment card border
+    DEFAULT: 'rgba(139,63,255,0.30)',   // purple glow
+    subtle: 'rgba(139,63,255,0.15)',
+    strong: 'rgba(139,63,255,0.60)',
+    green: 'rgba(122,232,56,0.40)',
+    greenStrong: 'rgba(122,232,56,0.70)',
+    parchment: '#C8B89A',
   },
   ewwMeter: {
-    low: '#60D477',    // 60
-    mid: '#F0A030',    // 80
-    high: '#E83030',   // 100
+    low: '#7AE838',   // 60 — green
+    mid: '#FF8C00',   // 80 — amber
+    high: '#E83030',  // 100 — red
   },
 } as const;
 

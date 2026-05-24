@@ -1,12 +1,15 @@
 /**
- * CreatureGridCard — compact card for the collection grid.
+ * CreatureGridCard — jar-frame grid cell matching the mockup.
+ *
+ * locked     → locked jar frame (dark, lock on lid, "???" text)
+ * classified → classified jar frame with creature image inside
+ * mastered   → classified jar frame + gold star badge
  */
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Creature, ClassifiedState } from '@/types/creature';
-import { Colors, Radius } from '@/constants/design';
-import { ewwMeterColor } from '@/constants/design';
-import { EwwMeter } from '@/types/creature';
+import { Colors, Radius, FontFamily } from '@/constants/design';
+import { Assets } from '@/constants/assets';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 
 interface Props {
@@ -18,116 +21,98 @@ interface Props {
 
 export function CreatureGridCard({ creature, state, size, onPress }: Props) {
   const isClassified = state === 'classified' || state === 'mastered';
-  const ewwColor = ewwMeterColor(creature.eww_meter as EwwMeter);
+  const creatureImg  = CREATURE_IMAGES[creature.id];
 
   return (
     <TouchableOpacity
       onPress={onPress}
-      activeOpacity={0.7}
-      style={[
-        styles.card,
-        { width: size, height: size },
-        isClassified && { borderColor: `${ewwColor}55` },
-        state === 'mastered' && { borderColor: Colors.eww.gold },
-      ]}
+      activeOpacity={0.8}
+      style={[styles.cell, { width: size, height: size * 1.15 }]}
     >
-      {/* EWW-meter dot — hidden when locked */}
-      {state !== 'locked' && (
-        <View style={[styles.ewwDot, { backgroundColor: ewwColor }]} />
+      {/* Jar frame — fills the cell */}
+      <Image
+        source={isClassified ? Assets.jarClassified : Assets.jarLockedFrame}
+        style={styles.jarFrame}
+        resizeMode="contain"
+      />
+
+      {/* Creature image inside jar (classified / mastered only) */}
+      {isClassified && creatureImg && (
+        <Image
+          source={creatureImg}
+          style={[styles.creatureInJar, { width: size * 0.52, height: size * 0.52 }]}
+          resizeMode="contain"
+        />
       )}
 
-      {/* State indicator */}
-      {state === 'locked' ? (
-        <Image
-          source={require('../assets/locked-creature.png')}
-          style={StyleSheet.absoluteFillObject}
-          resizeMode="cover"
-        />
-      ) : (
-        <View style={styles.imageArea}>
-          {CREATURE_IMAGES[creature.id] ? (
-            <Image
-              source={CREATURE_IMAGES[creature.id]}
-              style={[
-                styles.creatureImage,
-                { width: size - 16, height: size - 16 },
-                state === 'mastered' && styles.masteredGlow,
-              ]}
-              resizeMode="contain"
-            />
-          ) : (
-            <Text style={styles.placeholderEmoji}>🦠</Text>
-          )}
+      {/* Mastered star badge */}
+      {state === 'mastered' && (
+        <View style={styles.starBadge}>
+          <Text style={styles.starText}>★</Text>
         </View>
       )}
 
-      {/* Title (only when classified) */}
+      {/* Creature name (classified only) */}
       {isClassified && (
-        <Text style={styles.title} numberOfLines={2}>
-          {creature.title}
+        <Text style={styles.name} numberOfLines={2}>
+          {creature.title.toUpperCase()}
         </Text>
       )}
 
-      {/* Mastered star */}
-      {state === 'mastered' && (
-        <View style={styles.masteredBadge}>
-          <Text style={styles.masteredText}>★</Text>
-        </View>
+      {/* Mystery label (locked) */}
+      {!isClassified && (
+        <Text style={styles.mystery}>???</Text>
       )}
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: Colors.bg.card,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.border.subtle,
-    overflow: 'hidden',
+  cell: {
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 6,
+    justifyContent: 'flex-start',
   },
-  ewwDot: {
-    position: 'absolute',
-    top: 6,
-    left: 6,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-  imageArea: {
+  jarFrame: {
+    width: '100%',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  creatureImage: {
-    borderRadius: 6,
-  },
-  masteredGlow: {
-    // Subtle tint to indicate mastery — gold border on card handles the main signal
-    opacity: 0.95,
-  },
-  placeholderEmoji: { fontSize: 32 },
-  title: {
-    fontSize: 9,
-    fontWeight: '600',
-    color: Colors.text.secondary,
-    textAlign: 'center',
-    lineHeight: 12,
-    marginTop: 4,
-  },
-  masteredBadge: {
+  creatureInJar: {
     position: 'absolute',
-    top: 4,
-    right: 4,
+    top: '18%',        // sits inside the jar body
+    alignSelf: 'center',
+  },
+  starBadge: {
+    position: 'absolute',
+    top: 2,
+    right: 2,
     backgroundColor: Colors.eww.gold,
-    borderRadius: 8,
-    width: 16,
-    height: 16,
+    borderRadius: 10,
+    width: 18,
+    height: 18,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  masteredText: { fontSize: 9, color: '#000', fontWeight: '900' },
+  starText: {
+    fontSize: 10,
+    color: '#000',
+    fontWeight: '900',
+  },
+  name: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 9,
+    color: Colors.text.primary,
+    textAlign: 'center',
+    lineHeight: 11,
+    letterSpacing: 0.3,
+    marginTop: 2,
+    paddingHorizontal: 2,
+  },
+  mystery: {
+    position: 'absolute',
+    bottom: '28%',
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 12,
+    color: Colors.text.muted,
+    letterSpacing: 2,
+  },
 });

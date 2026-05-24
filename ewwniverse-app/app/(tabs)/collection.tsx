@@ -1,7 +1,6 @@
 /**
  * EXPLORE — Specimen Files grid.
- * Shows all creatures in a 3-column parchment grid.
- * Book selector pills match the website's category pill style.
+ * Illustrated book tabs, jar-frame creature cards.
  */
 import {
   View,
@@ -10,11 +9,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
+import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { BOOKS } from '@/constants/game';
 import { creepyCreatures, creepyDinosaurs, creepyEarth } from '@/data/index';
@@ -23,8 +24,8 @@ import { CreatureGridCard } from '@/components/CreatureGridCard';
 import { AppHeader } from '@/components/AppHeader';
 
 const { width: SCREEN_W } = Dimensions.get('window');
-const CARD_GAP = 10;
-const COLS = 3;
+const CARD_GAP  = 8;
+const COLS      = 3;
 const CARD_SIZE = (SCREEN_W - Spacing.md * 2 - CARD_GAP * (COLS - 1)) / COLS;
 
 const BOOK_DATA: Record<Book, Creature[]> = {
@@ -33,18 +34,24 @@ const BOOK_DATA: Record<Book, Creature[]> = {
   'creepy-earth':     creepyEarth    as Creature[],
 };
 
+const BOOK_ICONS: Record<Book, ReturnType<typeof require>> = {
+  'creepy-creatures': Assets.tabCreatures,
+  'creepy-dinosaurs': Assets.tabDinosaurs,
+  'creepy-earth':     Assets.tabEarth,
+};
+
 export default function Explore() {
-  const profile = useUserStore((s) => s.profile);
+  const profile  = useUserStore((s) => s.profile);
   const creatures = useUserStore((s) => s.creatures);
   const [activeBook, setActiveBook] = useState<Book>('creepy-creatures');
 
   if (!profile) return null;
 
-  const isPaid = profile.is_paid;
+  const isPaid       = profile.is_paid;
   const bookCreatures = BOOK_DATA[activeBook];
   const total = bookCreatures.length;
   const found = bookCreatures.filter(
-    (c) => (creatures[c.id]?.state ?? 'locked') !== 'locked'
+    (c) => (creatures[c.id]?.state ?? 'locked') !== 'locked',
   ).length;
 
   return (
@@ -54,35 +61,43 @@ export default function Explore() {
       {/* Page title */}
       <View style={styles.titleBlock}>
         <Text style={styles.pageTitle}>SPECIMEN FILES</Text>
-        <Text style={styles.pageSub}>COLLECT  •  STUDY  •  DISCOVER</Text>
+        <Text style={styles.pageSub}>☣ EXPLORE · COLLECT · CLASSIFY ☣</Text>
       </View>
 
-      {/* Book selector pills */}
+      {/* Book selector — illustrated icons */}
       <View style={styles.bookTabs}>
         {BOOKS.map((b) => {
           const locked = b.tier === 'paid' && !isPaid;
           const active = activeBook === b.id;
+          const icon   = BOOK_ICONS[b.id as Book];
           return (
             <TouchableOpacity
               key={b.id}
               onPress={() => {
                 if (locked) { router.push('/paywall'); return; }
-                setActiveBook(b.id);
+                setActiveBook(b.id as Book);
               }}
               style={[
                 styles.bookTab,
                 active && styles.bookTabActive,
                 locked && styles.bookTabLocked,
               ]}
-              activeOpacity={0.7}
+              activeOpacity={0.75}
             >
+              {icon && (
+                <Image
+                  source={icon}
+                  style={styles.bookTabIcon}
+                  resizeMode="contain"
+                />
+              )}
               <Text
                 style={[
                   styles.bookTabLabel,
                   active && styles.bookTabLabelActive,
                   locked && styles.bookTabLabelLocked,
                 ]}
-                numberOfLines={1}
+                numberOfLines={2}
               >
                 {locked ? '🔒 ' : ''}{b.label}
               </Text>
@@ -91,21 +106,24 @@ export default function Explore() {
         })}
       </View>
 
-      {/* Progress summary pill */}
-      <View style={styles.progressPill}>
-        <Text style={styles.progressText}>
-          {found} / {total} discovered
-        </Text>
+      {/* Progress pill */}
+      <View style={styles.progressRow}>
+        <View style={styles.progressPill}>
+          <Text style={styles.progressText}>{found} / {total} CLASSIFIED</Text>
+        </View>
+        <View style={styles.scansPill}>
+          <Text style={styles.scansText}>{profile.scan_balance} SCANS</Text>
+        </View>
       </View>
 
-      {/* Grid */}
+      {/* Jar grid */}
       <FlatList
         data={bookCreatures}
         keyExtractor={(item) => item.id}
         numColumns={COLS}
         contentContainerStyle={styles.grid}
         columnWrapperStyle={{ gap: CARD_GAP }}
-        ItemSeparatorComponent={() => <View style={{ height: CARD_GAP }} />}
+        ItemSeparatorComponent={() => <View style={{ height: CARD_GAP + 4 }} />}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           const state = creatures[item.id]?.state ?? 'locked';
@@ -128,17 +146,17 @@ const styles = StyleSheet.create({
 
   titleBlock: {
     alignItems: 'center',
-    paddingTop: 14,
+    paddingTop: 10,
     paddingBottom: 8,
-    borderBottomWidth: 1.5,
-    borderBottomColor: `${Colors.eww.green}30`,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border.subtle,
     marginHorizontal: Spacing.md,
-    marginBottom: 10,
+    marginBottom: 8,
   },
   pageTitle: {
     fontFamily: FontFamily.creepster,
-    fontSize: 30,
-    color: Colors.bg.parchment,
+    fontSize: 28,
+    color: Colors.text.lime,
     letterSpacing: 2,
     textShadowColor: Colors.eww.greenDark,
     textShadowOffset: { width: 1, height: 2 },
@@ -146,63 +164,88 @@ const styles = StyleSheet.create({
   },
   pageSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 12,
-    color: Colors.eww.green,
-    letterSpacing: 3,
+    fontSize: 11,
+    color: Colors.text.purple,
+    letterSpacing: 2.5,
     marginTop: 2,
   },
 
+  // Book tabs
   bookTabs: {
     flexDirection: 'row',
     paddingHorizontal: Spacing.md,
-    gap: 7,
-    marginBottom: 8,
+    gap: 6,
+    marginBottom: 10,
   },
   bookTab: {
     flex: 1,
-    paddingVertical: 7,
+    paddingVertical: 8,
     paddingHorizontal: 4,
-    borderRadius: Radius.full,
+    borderRadius: Radius.md,
     borderWidth: 1.5,
     borderColor: Colors.border.subtle,
     backgroundColor: Colors.bg.card,
     alignItems: 'center',
+    gap: 4,
   },
   bookTabActive: {
-    borderColor: Colors.eww.green,
-    backgroundColor: `${Colors.eww.forest}CC`,
+    borderColor: Colors.eww.purple,
+    backgroundColor: `${Colors.eww.purple}22`,
   },
   bookTabLocked: {
-    opacity: 0.5,
+    opacity: 0.45,
+  },
+  bookTabIcon: {
+    width: 36,
+    height: 36,
   },
   bookTabLabel: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 10,
+    fontSize: 9,
     color: Colors.text.secondary,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
     textAlign: 'center',
   },
   bookTabLabelActive: {
-    color: Colors.eww.greenLight,
+    color: Colors.text.lime,
   },
   bookTabLabelLocked: {
     color: Colors.text.disabled,
   },
 
+  // Progress
+  progressRow: {
+    flexDirection: 'row',
+    paddingHorizontal: Spacing.md,
+    gap: 8,
+    marginBottom: 10,
+  },
   progressPill: {
-    alignSelf: 'center',
-    backgroundColor: `${Colors.eww.amber}22`,
+    backgroundColor: `${Colors.eww.green}20`,
     borderRadius: Radius.full,
     borderWidth: 1,
-    borderColor: `${Colors.eww.amber}50`,
-    paddingHorizontal: 14,
-    paddingVertical: 3,
-    marginBottom: 10,
+    borderColor: Colors.border.green,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
   },
   progressText: {
     fontFamily: FontFamily.boogaloo,
     fontSize: 12,
-    color: Colors.eww.amber,
+    color: Colors.text.lime,
+    letterSpacing: 0.5,
+  },
+  scansPill: {
+    backgroundColor: `${Colors.eww.purple}20`,
+    borderRadius: Radius.full,
+    borderWidth: 1,
+    borderColor: Colors.border.DEFAULT,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+  },
+  scansText: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 12,
+    color: Colors.text.purple,
     letterSpacing: 0.5,
   },
 

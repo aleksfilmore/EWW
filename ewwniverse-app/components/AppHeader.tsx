@@ -1,100 +1,88 @@
 /**
- * AppHeader — branded top bar for every tab screen.
+ * AppHeader — branded top bar.
  *
- * Parchment background so the logo sits naturally on a cream surface.
- * The slime drip below transitions parchment → dark lab background.
+ * Scans badge (left) | EWW-NIVERSE logo (centre) | Streak badge (right)
+ * Uses the illustrated assets from the mockup.
  */
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Colors, FontFamily, Spacing } from '@/constants/design';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { FontFamily } from '@/constants/design';
+import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 
 export function AppHeader() {
   const profile = useUserStore((s) => s.profile);
-  const points =
-    (profile?.classified_count ?? 0) * 10 +
-    (profile?.mastered_count ?? 0) * 25;
+  const scans  = profile?.scan_balance ?? 0;
+  const streak = profile?.streak_days  ?? 0;
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.bar}>
-        {/* Left: gear */}
-        <TouchableOpacity style={styles.iconBtn} activeOpacity={0.7}>
-          <Text style={styles.gearText}>⚙</Text>
-        </TouchableOpacity>
-
-        {/* Centre: logo illustration */}
-        <Image
-          source={require('../assets/logo-header.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-
-        {/* Right: points */}
-        <View style={styles.pointsBadge}>
-          <Text style={styles.pointsText}>✦ {points}</Text>
+      {/* Scans badge */}
+      <View style={styles.badge}>
+        <Image source={Assets.badgeScans} style={styles.badgeImg} resizeMode="contain" />
+        <View style={styles.badgeOverlay}>
+          <Text style={styles.badgeValue}>{scans}</Text>
+          <Text style={styles.badgeLabel}>SCANS</Text>
         </View>
       </View>
 
-      {/* Slime drip — transitions parchment bar into the dark lab */}
-      <Image
-        source={require('../assets/slime-drip.png')}
-        style={styles.slimeDrip}
-        resizeMode="stretch"
-      />
+      {/* Centre: full illustrated logo */}
+      <Image source={Assets.logoMain} style={styles.logo} resizeMode="contain" />
+
+      {/* Streak badge */}
+      <View style={styles.badge}>
+        <Image source={Assets.badgeStreak} style={styles.badgeImg} resizeMode="contain" />
+        <View style={styles.badgeOverlay}>
+          <Text style={styles.badgeValue}>{streak}</Text>
+          <Text style={styles.badgeLabel}>DAY STREAK</Text>
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: Colors.bg.parchment,
-  },
-  bar: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: Spacing.sm,
-    paddingTop: 4,
-    paddingBottom: 2,
-    backgroundColor: Colors.bg.parchment,
+    paddingHorizontal: 8,
+    paddingTop: 6,
+    paddingBottom: 4,
+    backgroundColor: 'transparent',
   },
-  iconBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: `${Colors.eww.forest}18`,
-    borderWidth: 1,
-    borderColor: `${Colors.eww.forest}30`,
+
+  // Illustrated badge frame + text overlay
+  badge: {
+    width: 80,
+    height: 64,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  gearText: {
-    fontSize: 18,
-    color: Colors.eww.bark,
+  badgeImg: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
   },
-  logo: {
-    flex: 1,
-    height: 72,
-    marginHorizontal: 4,
-  },
-  pointsBadge: {
-    backgroundColor: Colors.eww.purple,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderWidth: 1.5,
-    borderColor: Colors.eww.purpleDark,
-    minWidth: 60,
+  badgeOverlay: {
     alignItems: 'center',
   },
-  pointsText: {
+  badgeValue: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 14,
-    color: '#FFFFFF',
-    fontWeight: '600',
-    letterSpacing: 0.5,
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: '800',
+    lineHeight: 20,
   },
-  slimeDrip: {
-    width: '100%',
-    height: 40,
+  badgeLabel: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize: 9,
+    color: 'rgba(255,255,255,0.80)',
+    letterSpacing: 0.8,
+    lineHeight: 11,
+  },
+
+  // Centre logo
+  logo: {
+    flex: 1,
+    height: 80,
   },
 });
