@@ -7,7 +7,7 @@ import { Creature, ClassifiedState } from '@/types/creature';
 import { Colors, Radius } from '@/constants/design';
 import { ewwMeterColor } from '@/constants/design';
 import { EwwMeter } from '@/types/creature';
-import { CREATURE_IMAGES } from '@/assets/creatures/index';
+import { CREATURE_IMAGES } from '@/constants/creatureImages';
 
 interface Props {
   creature: Creature;

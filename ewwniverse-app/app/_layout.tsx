@@ -12,8 +12,8 @@ import { Creepster_400Regular } from '@expo-google-fonts/creepster';
 import { Colors } from '@/constants/design';
 import { useUserStore } from '@/store/userStore';
 import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
-
-export const ONBOARDING_KEY = '@eww/onboarding_dismissed';
+import { ONBOARDING_KEY } from '@/constants/storage';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 // Keep splash visible until we're ready
 SplashScreen.preventAutoHideAsync();
@@ -72,6 +72,7 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <StatusBar style="light" />
+        <ErrorBoundary>
         <AppBootstrap />
         <Stack
           screenOptions={{
@@ -86,6 +87,7 @@ export default function RootLayout() {
           <Stack.Screen name="paywall" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="onboarding" options={{ animation: 'fade' }} />
         </Stack>
+        </ErrorBoundary>
       </SafeAreaProvider>
     </QueryClientProvider>
   );

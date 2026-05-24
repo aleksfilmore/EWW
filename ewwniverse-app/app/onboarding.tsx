@@ -21,7 +21,7 @@ import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
-import { ONBOARDING_KEY } from './_layout';
+import { ONBOARDING_KEY } from '@/constants/storage';
 
 const { width: SW, height: SH } = Dimensions.get('window');
 
@@ -259,8 +259,8 @@ const styles = StyleSheet.create({
   },
   body: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: 19,
+    lineHeight: 27,
     color: Colors.eww.bark,
     letterSpacing: 0.2,
     flex: 1,
