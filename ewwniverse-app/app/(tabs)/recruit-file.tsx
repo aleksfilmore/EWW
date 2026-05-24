@@ -273,7 +273,7 @@ function SpecialSpecimensSection({ ownedIds }: { ownedIds: string[] }) {
                 <Text style={styles.specialJarIcon}>☣</Text>
               </View>
               <Text style={styles.specialName} numberOfLines={2}>
-                {s.name.toUpperCase()}
+                {s.title.toUpperCase()}
               </Text>
               <View style={[styles.specialMeter, { backgroundColor: `${ewwBadgeColor(s.eww_meter)}22`, borderColor: `${ewwBadgeColor(s.eww_meter)}55` }]}>
                 <Text style={[styles.specialMeterText, { color: ewwBadgeColor(s.eww_meter) }]}>

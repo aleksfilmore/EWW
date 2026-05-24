@@ -2,11 +2,10 @@
  * Special Specimens — app-exclusive collection layer.
  *
  * These creatures exist ONLY in the EWW-niverse app. They are not in any
- * printed book. Earned through gameplay: Contamination Events, Specimen Set
- * completion, Lab Missions, streak milestones, and Stage 5.
+ * printed book. Earned through Contamination Events triggered during quizzes.
  *
- * This file is the Common rarity pool (~15 specimens) — available to both
- * free and paid tiers. Uncommon + Epic ship in v1.1.
+ * Data sourced from special-specimens.json — 15 real curated specimens across
+ * all three book realms (Creepy Creatures, Creepy Dinosaurs, Creepy Earth).
  */
 
 export type SpecialRarity = 'common' | 'uncommon' | 'epic';
@@ -18,138 +17,170 @@ export type SpecialUnlockSource =
   | 'stage';
 
 export interface SpecialSpecimen {
-  id: string;
-  name: string;
-  gross_fact: string;         // ≤200 chars
-  eww_meter: 60 | 80 | 100;
-  rarity: SpecialRarity;
-  unlock_source: SpecialUnlockSource | SpecialUnlockSource[];
+  id:             string;
+  title:          string;
+  realm:          string;
+  gross_fact:     string;
+  eww_meter:      60 | 80 | 100;
+  rarity:         SpecialRarity;
+  tier_required:  'free' | 'paid';
+  unlock_source:  SpecialUnlockSource | SpecialUnlockSource[];
 }
 
 export const SPECIAL_SPECIMENS: SpecialSpecimen[] = [
   {
-    id:           'special-slime-beetle',
-    name:         'Slime Beetle',
-    gross_fact:   'Produces mucus thick enough to suffocate prey. The slime never fully dries and can survive temperatures from -20°C to 80°C.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-hairworm-puppet',
+    title:         'Hairworm Puppet',
+    realm:         'Creepy Creatures',
+    gross_fact:    'Hairworms grow inside crickets, then seem to push them toward water. Once the insect jumps in, the worm slips out of its body like a living shoelace escaping its host.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-lab-mold',
-    name:         "Dr. Icky's Lab Mold",
-    gross_fact:   'Found only inside Dr. Icky\'s laboratory. Releases a smell so powerful that researchers must wear gas masks within 10 metres.',
-    eww_meter:    60,
-    rarity:       'common',
+    id:            'special-jewel-wasp-zombie-roach',
+    title:         'Jewel Wasp Zombie Roach',
+    realm:         'Creepy Creatures',
+    gross_fact:    'This wasp stings a cockroach in the brain, then leads it by the antenna like a pet. After that, the roach becomes a living nursery for the wasp\'s baby.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-gut-crawler',
-    name:         'Gut Crawler',
-    gross_fact:   'Can live inside intestines for decades. Adults grow up to 10 metres long and weigh as much as a small dog.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-sacculina-crab-hijacker',
+    title:         'Sacculina Crab Hijacker',
+    realm:         'Creepy Creatures',
+    gross_fact:    'Sacculina starts as a tiny barnacle, then grows roots through a crab\'s body and hijacks its behavior. The crab protects the parasite\'s young as if they were its own eggs.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-drain-ghost',
-    name:         'Drain Ghost',
-    gross_fact:   'Breeds exclusively in bathroom drain slime. Its wings are made of compressed bacteria from the water directly below.',
-    eww_meter:    60,
-    rarity:       'common',
+    id:            'special-broodsac-snail-zombie',
+    title:         'Broodsac Snail Zombie',
+    realm:         'Creepy Creatures',
+    gross_fact:    'A parasite crawls into a snail\'s eye stalks and makes them pulse with bright stripes. Birds mistake them for juicy caterpillars, eat them, and spread the parasite again.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-lash-mite',
-    name:         'Lash Mite',
-    gross_fact:   'Lives on human eyelashes. Most adults are hosting hundreds right now. Lays eggs inside hair follicles while you sleep.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-guinea-worm-exit',
+    title:         'Guinea Worm Exit',
+    realm:         'Creepy Creatures',
+    gross_fact:    'Guinea worms can grow inside the body, then emerge slowly through a burning blister in the skin. The worm may take days to come out, turning one tiny wound into a nightmare exit door.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-sewer-slug',
-    name:         'Sewer Slug',
-    gross_fact:   'Has no eyes or skin pigment — evolved entirely underground. Feeds exclusively on decomposing material in pipe biofilm.',
-    eww_meter:    60,
-    rarity:       'common',
+    id:            'special-masiakasaurus',
+    title:         'Masiakasaurus',
+    realm:         'Creepy Dinosaurs',
+    gross_fact:    'Masiakasaurus had front teeth that pointed forward instead of straight down, giving its mouth a jagged hook-like shape. Its bite looked wrong, as if the teeth were trying to escape its face.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-snot-crystal',
-    name:         'Snot Crystal',
-    gross_fact:   'Discovered living inside nasal mucus. Multiplies during a cold and feeds on bacteria trapped in the mucus around it.',
-    eww_meter:    60,
-    rarity:       'common',
+    id:            'special-pegomastax',
+    title:         'Pegomastax',
+    realm:         'Creepy Dinosaurs',
+    gross_fact:    'Pegomastax was tiny, bristly, and had strange fangs in its beak-like mouth. It looked like a prehistoric goblin chicken with teeth where no polite bird should have them.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-gum-worm',
-    name:         'Gum Worm',
-    gross_fact:   'Found living between teeth and gum tissue. Feeds on dental plaque and blood that slowly seeps from gums overnight.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-kosmoceratops',
+    title:         'Kosmoceratops',
+    realm:         'Creepy Dinosaurs',
+    gross_fact:    'Kosmoceratops had one of the most crowded skulls ever found, with horns and hooks curling across its face and frill. Its head looked less like armor and more like a bone crown gone insane.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-wound-fly',
-    name:         'Wound Fly',
-    gross_fact:   'Lays eggs inside open wounds. Larvae hatch and eat infected tissue from the inside — occasionally used in hospital maggot therapy.',
-    eww_meter:    100,
-    rarity:       'common',
+    id:            'special-mononykus',
+    title:         'Mononykus',
+    realm:         'Creepy Dinosaurs',
+    gross_fact:    'Mononykus had tiny arms ending in one large claw each. It may have used them to rip into insect nests, making it a feathered little dinosaur with built-in can openers.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-bile-grub',
-    name:         'Bile Grub',
-    gross_fact:   'Found only inside bile ducts of large mammals. Its entire body is permanently stained yellow from a lifetime swimming in bile.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-halszkaraptor',
+    title:         'Halszkaraptor',
+    realm:         'Creepy Dinosaurs',
+    gross_fact:    'Halszkaraptor mixed raptor traits with a long neck, flipper-like arms, and a water-hunting body. It looked like a bird, a swimmer, and a predator stitched into one strange fossil.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-sub-skin-grub',
-    name:         'Sub-Skin Grub',
-    gross_fact:   'Burrows under human skin to feed on tissue from the inside. Can be felt moving. Full removal requires up to 3 weeks.',
-    eww_meter:    100,
-    rarity:       'common',
+    id:            'special-brinicle-death-finger',
+    title:         'Brinicle Death Finger',
+    realm:         'Creepy Earth',
+    gross_fact:    'A brinicle is an underwater icicle that sinks from sea ice and freezes the seafloor as it moves. Small creatures caught in its path can be trapped in ice where they stand.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-nasal-bot',
-    name:         'Nasal Bot',
-    gross_fact:   'Lays larvae inside the nasal passages of large mammals. The larvae feed on mucus membranes before emerging through the nostril.',
-    eww_meter:    100,
-    rarity:       'common',
+    id:            'special-snottite-cave',
+    title:         'Snottite Cave',
+    realm:         'Creepy Earth',
+    gross_fact:    'In some toxic caves, slimy colonies called snottites hang from the ceiling like mucus. They drip acid strong enough to irritate skin and eat through rock over time.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-cyst-mold',
-    name:         'Cyst Mold',
-    gross_fact:   'Discovered growing inside human cysts. Releases an enzyme that smells like decomposing dairy. Grows faster in warm conditions.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-door-to-hell-crater',
+    title:         'Door to Hell Crater',
+    realm:         'Creepy Earth',
+    gross_fact:    'A giant gas crater in Turkmenistan has burned for decades, glowing at night like a hole opened in the planet. The flames come from natural gas feeding the fire below.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-feeding-leech',
-    name:         'Feeding Leech',
-    gross_fact:   'Can triple its body weight in one feeding session. Some species attach undetected for years, feeding slowly in the dark.',
-    eww_meter:    60,
-    rarity:       'common',
+    id:            'special-underwater-brine-lake',
+    title:         'Underwater Brine Lake',
+    realm:         'Creepy Earth',
+    gross_fact:    'Some parts of the ocean floor contain extra-salty brine pools that sit like lakes underwater. Small animals that enter can be poisoned or preserved in the heavy, toxic water.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
   {
-    id:           'special-contamination-mite',
-    name:         'Contamination Mite',
-    gross_fact:   'Only exists in contaminated lab environments. Was first described in Dr. Icky\'s notes as a theoretical creature. Then it appeared.',
-    eww_meter:    80,
-    rarity:       'common',
+    id:            'special-movile-cave',
+    title:         'Movile Cave',
+    realm:         'Creepy Earth',
+    gross_fact:    'Movile Cave was sealed away for millions of years and has air rich in toxic gases. Its strange ecosystem survives on chemical energy, with pale creatures living in permanent darkness.',
+    eww_meter:     100,
+    rarity:        'common',
+    tier_required: 'free',
     unlock_source: 'contamination',
   },
 ];
 
-/** Returns all Common rarity specimens (available to free tier). */
+/** All Common rarity specimens (available to free tier via contamination). */
 export const COMMON_SPECIMENS = SPECIAL_SPECIMENS.filter(
   (s) => s.rarity === 'common',
 );

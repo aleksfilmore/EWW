@@ -68,7 +68,7 @@ export function ContaminationOverlay() {
       {unlockedSpecimen ? (
         <>
           <Text style={styles.specimenLabel}>NEW SPECIMEN ACQUIRED</Text>
-          <Text style={styles.specimenName}>{unlockedSpecimen.name.toUpperCase()}</Text>
+          <Text style={styles.specimenName}>{unlockedSpecimen.title.toUpperCase()}</Text>
         </>
       ) : (
         <Text style={styles.body}>
@@ -81,7 +81,11 @@ export function ContaminationOverlay() {
 
 const styles = StyleSheet.create({
   overlay: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left:     0,
+    right:    0,
+    top:      0,
+    bottom:   0,
     backgroundColor: 'rgba(20, 80, 10, 0.88)',
     zIndex:          999,
     alignItems:      'center',

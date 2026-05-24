@@ -25,6 +25,7 @@ import { getCreatureById } from '@/data/index';
 import { EwwMeter } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { isDailySpecimen, todayString } from '@/utils/daily';
+import { playSfx, playMeterSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const JAR_SIZE = Math.min(SCREEN_W * 0.75, 310);
@@ -65,10 +66,12 @@ export default function CreatureDetail() {
   const fillPct       = creature.eww_meter;
 
   function handleClassify() {
+    if (!creature) return;   // type guard for TS (should never hit — checked above)
     if (isClassified) return;
     if (state === 'locked') {
       const success = consumeScan();
       if (!success) {
+        playSfx('sfx_locked');
         Alert.alert(
           'No scans available',
           'Play the Lab Quiz to earn more scans, or wait for your next free scan.',
@@ -82,6 +85,8 @@ export default function CreatureDetail() {
       setCreatureState(creature.id, 'silhouette');
       setTimeout(() => {
         setCreatureState(creature.id, 'classified');
+        playSfx('sfx_access_granted');
+        playMeterSfx(creature.eww_meter);
         setJustClassified(true);
 
         // Daily Specimen bonus — 2× scans if this is today's featured creature

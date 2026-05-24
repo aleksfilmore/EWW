@@ -8,6 +8,7 @@ import {
   FREE_STAGE_CAP,
   STREAK_REWARD_DAY,
 } from '@/constants/game';
+import { playSfx } from '@/services/audio';
 
 interface UserState {
   profile: UserProfile | null;
@@ -161,10 +162,12 @@ export const useUserStore = create<UserState>((set, get) => ({
         : s.profile,
     })),
 
-  setPaid: (paid) =>
+  setPaid: (paid) => {
+    if (paid) playSfx('sfx_pass_unlock');
     set((s) => ({
       profile: s.profile ? { ...s.profile, is_paid: paid } : s.profile,
-    })),
+    }));
+  },
 
   updateStage: () => {
     const { profile } = get();
@@ -178,6 +181,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     // Cap free tier at stage 2
     if (!profile.is_paid && newStage > FREE_STAGE_CAP) newStage = FREE_STAGE_CAP;
     if (newStage !== profile.eww_stage) {
+      playSfx('sfx_stage_up');
       set((s) => ({
         profile: s.profile ? { ...s.profile, eww_stage: newStage } : s.profile,
       }));

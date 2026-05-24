@@ -29,6 +29,7 @@ import {
   QUIZ_SCAN_REWARDS,
 } from '@/constants/game';
 import { pickRandomUnownedCommon } from '@/data/special-specimens';
+import { playSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const CARD_W     = (SCREEN_W - Spacing.md * 2 - 8) / 2;   // 2-col grid card width
@@ -91,6 +92,7 @@ export default function QuizScreen() {
   const handleSelect = useCallback(
     (id: string) => {
       if (answered) return;
+      playSfx('sfx_answer_tap');
       setSelected(id);
     },
     [answered],
@@ -103,10 +105,12 @@ export default function QuizScreen() {
 
     const isCorrect = selected === q.correctId;
     if (isCorrect) {
+      playSfx('sfx_correct');
       setScore((s) => s + 1);
       recordCorrect();
       // Contamination Event fires when the streak threshold is hit
       if (quizStreak + 1 >= CONTAMINATION_STREAK) {
+        playSfx('sfx_contamination');
         // Pick a random unowned Common specimen to drop
         const ownedIds = getOwnedSpecialIds();
         const dropped  = pickRandomUnownedCommon(ownedIds);
@@ -117,6 +121,7 @@ export default function QuizScreen() {
         userTriggerContamination();
       }
     } else {
+      playSfx('sfx_wrong');
       recordWrong();
     }
 
@@ -125,6 +130,7 @@ export default function QuizScreen() {
       if (currentIdx + 1 >= QUESTIONS_PER_SESSION) {
         const final = isCorrect ? score + 1 : score;
         setFinalScore(final);
+        playSfx('sfx_quiz_complete');
         setSessionDone(true);
         const rewardTable = profile?.is_paid
           ? QUIZ_SCAN_REWARDS.paid
