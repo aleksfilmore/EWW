@@ -22,9 +22,9 @@ import {
 import { router } from 'expo-router';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { Assets } from '@/constants/assets';
-import { creepyCreatures } from '@/data/index';
 import { Creature } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
+import { getDailyCreature } from '@/utils/daily';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const JAR_W = Math.min(SCREEN_W * 0.55, 220);   // large centred jar
@@ -32,12 +32,6 @@ const JAR_W = Math.min(SCREEN_W * 0.55, 220);   // large centred jar
 interface Props {
   lastClaimed: string | null;
   isPaid: boolean;
-}
-
-function getDailyCreature(): Creature {
-  const dayNum = Math.floor(Date.now() / 86_400_000);
-  const pool   = creepyCreatures as Creature[];
-  return pool[dayNum % pool.length];
 }
 
 export function DailySpecimenCard({ lastClaimed, isPaid }: Props) {

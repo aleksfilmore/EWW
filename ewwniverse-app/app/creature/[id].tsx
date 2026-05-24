@@ -24,19 +24,23 @@ import { useUserStore } from '@/store/userStore';
 import { getCreatureById } from '@/data/index';
 import { EwwMeter } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
+import { isDailySpecimen, todayString } from '@/utils/daily';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const JAR_SIZE = Math.min(SCREEN_W * 0.75, 310);
 
 export default function CreatureDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const profile          = useUserStore((s) => s.profile);
-  const creatures        = useUserStore((s) => s.creatures);
-  const consumeScan      = useUserStore((s) => s.consumeScan);
-  const setCreatureState = useUserStore((s) => s.setCreatureState);
+  const profile            = useUserStore((s) => s.profile);
+  const creatures          = useUserStore((s) => s.creatures);
+  const consumeScan        = useUserStore((s) => s.consumeScan);
+  const setCreatureState   = useUserStore((s) => s.setCreatureState);
+  const addScans           = useUserStore((s) => s.addScans);
+  const claimDailySpecimen = useUserStore((s) => s.claimDailySpecimen);
 
-  // Tracks the brief "JUST CLASSIFIED" celebration state
+  // Tracks the brief "JUST CLASSIFIED" celebration state (+bonus scan info)
   const [justClassified, setJustClassified] = useState(false);
+  const [dailyBonusEarned, setDailyBonusEarned] = useState(false);
 
   const creature = getCreatureById(id ?? '');
 
@@ -79,6 +83,18 @@ export default function CreatureDetail() {
       setTimeout(() => {
         setCreatureState(creature.id, 'classified');
         setJustClassified(true);
+
+        // Daily Specimen bonus — 2× scans if this is today's featured creature
+        // and it hasn't been claimed already today.
+        const today = todayString();
+        if (
+          isDailySpecimen(creature.id) &&
+          profile?.daily_specimen_last_claimed !== today
+        ) {
+          claimDailySpecimen();   // stamps today's date so bonus fires only once
+          addScans(2);            // the 2× bonus scans
+          setDailyBonusEarned(true);
+        }
       }, 1200);
     }
   }
@@ -175,6 +191,11 @@ export default function CreatureDetail() {
             activeOpacity={0.85}
           >
             <Text style={styles.classifiedBannerTitle}>☣ CLASSIFIED! ☣</Text>
+            {dailyBonusEarned && (
+              <Text style={styles.classifiedBannerBonus}>
+                +2 BONUS SCANS — Daily Specimen!
+              </Text>
+            )}
             <Text style={styles.classifiedBannerSub}>
               Tap here to return to Lab ›
             </Text>
@@ -357,6 +378,12 @@ const styles = StyleSheet.create({
     fontSize:      26,
     color:         Colors.text.lime,
     letterSpacing: 2,
+  },
+  classifiedBannerBonus: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      14,
+    color:         Colors.eww.amber,
+    letterSpacing: 0.5,
   },
   classifiedBannerSub: {
     fontFamily: FontFamily.boogaloo,

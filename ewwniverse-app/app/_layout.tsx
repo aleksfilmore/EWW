@@ -1,5 +1,5 @@
 import '../global.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Stack, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -14,6 +14,7 @@ import { useUserStore } from '@/store/userStore';
 import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
 import { ONBOARDING_KEY } from '@/constants/storage';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ContaminationOverlay } from '@/components/ContaminationOverlay';
 
 // Keep splash visible until we're ready
 SplashScreen.preventAutoHideAsync();
@@ -28,10 +29,11 @@ const queryClient = new QueryClient({
 });
 
 function AppBootstrap() {
-  const { isHydrated, initUser } = useUserStore();
+  const { isHydrated, initUser, refreshScanIfDue, incrementStreak } = useUserStore();
   const [fontsLoaded] = useFonts({ Boogaloo_400Regular, Creepster_400Regular });
   const [onboardingChecked, setOnboardingChecked] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const refreshIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Check onboarding preference from persistent storage
   useEffect(() => {
@@ -55,6 +57,24 @@ function AppBootstrap() {
     return unsubscribe;
   }, [initUser]);
 
+  // Wire game mechanics once the store is hydrated
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    // Run immediately on first open
+    refreshScanIfDue();
+    incrementStreak();
+
+    // Poll for scan refresh every 60 seconds (cheap check — only fires when due)
+    refreshIntervalRef.current = setInterval(() => {
+      refreshScanIfDue();
+    }, 60_000);
+
+    return () => {
+      if (refreshIntervalRef.current) clearInterval(refreshIntervalRef.current);
+    };
+  }, [isHydrated]);   // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     if (isHydrated && fontsLoaded && onboardingChecked) {
       SplashScreen.hideAsync();
@@ -73,20 +93,22 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <StatusBar style="light" />
         <ErrorBoundary>
-        <AppBootstrap />
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            contentStyle: { backgroundColor: Colors.bg.DEFAULT },
-            animation: 'slide_from_right',
-          }}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="creature/[id]" options={{ animation: 'slide_from_bottom' }} />
-          <Stack.Screen name="quiz/index" options={{ animation: 'slide_from_bottom' }} />
-          <Stack.Screen name="paywall" options={{ animation: 'slide_from_bottom' }} />
-          <Stack.Screen name="onboarding" options={{ animation: 'fade' }} />
-        </Stack>
+          <AppBootstrap />
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              contentStyle: { backgroundColor: Colors.bg.DEFAULT },
+              animation: 'slide_from_right',
+            }}
+          >
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="creature/[id]" options={{ animation: 'slide_from_bottom' }} />
+            <Stack.Screen name="quiz/index" options={{ animation: 'slide_from_bottom' }} />
+            <Stack.Screen name="paywall" options={{ animation: 'slide_from_bottom' }} />
+            <Stack.Screen name="onboarding" options={{ animation: 'fade' }} />
+          </Stack>
+          {/* Contamination Event overlay — renders on top of all screens */}
+          <ContaminationOverlay />
         </ErrorBoundary>
       </SafeAreaProvider>
     </QueryClientProvider>
