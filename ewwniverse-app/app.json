@@ -2,6 +2,7 @@
   "expo": {
     "name": "EWW-niverse",
     "slug": "ewwniverse-app",
+    "owner": "ctrl-alt-block",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -54,7 +55,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4ef7f075-97fb-479a-b60f-474a298a4b13"
+        "projectId": "cbb0b377-c07e-41f8-99ac-56f0b1532454"
       }
     }
   }

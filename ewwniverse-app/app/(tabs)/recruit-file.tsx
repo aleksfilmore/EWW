@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      9,
+    fontSize:      11,
     color:         Colors.text.muted,
     letterSpacing: 1,
   },
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
   stageRowInfo:  { flex: 1 },
   stageRowLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.secondary,
     letterSpacing: 0.5,
   },
@@ -407,20 +407,20 @@ const styles = StyleSheet.create({
   },
   stageRowLock: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   11,
+    fontSize:   13,
     color:      Colors.eww.amber,
     marginTop:  2,
   },
   stageRowCurrent: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      10,
+    fontSize:      12,
     color:         Colors.text.purple,
     letterSpacing: 1,
     marginTop:     2,
   },
   stageRowComplete: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      10,
+    fontSize:      12,
     color:         Colors.text.lime,
     letterSpacing: 1,
     marginTop:     2,
@@ -461,15 +461,15 @@ const styles = StyleSheet.create({
   },
   streakLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.secondary,
     letterSpacing: 1.5,
   },
   streakSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
+    fontSize:   14,
     color:      Colors.text.muted,
-    lineHeight: 16,
+    lineHeight: 20,
     marginTop:  4,
   },
 
@@ -498,16 +498,16 @@ const styles = StyleSheet.create({
   },
   contaminationLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.secondary,
     letterSpacing: 1.2,
   },
   contaminationSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
+    fontSize:   14,
     color:      Colors.text.muted,
     marginTop:  4,
-    lineHeight: 16,
+    lineHeight: 20,
   },
 
   // ── Set card ───────────────────────────────────────────────────────────────
@@ -534,13 +534,13 @@ const styles = StyleSheet.create({
   },
   setCardSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
+    fontSize:   14,
     color:      Colors.text.muted,
     marginTop:  4,
   },
   setCardLink: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
+    fontSize:   14,
     color:      Colors.text.lime,
     marginTop:  6,
   },

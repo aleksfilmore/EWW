@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
   },
   codenameText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.lime,
     letterSpacing: 0.5,
   },
@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
   missionBody:    { flex: 1, gap: 3 },
   missionLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.primary,
     letterSpacing: 0.2,
   },
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
   },
   missionCount: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   10,
+    fontSize:   12,
     color:      Colors.text.muted,
   },
   missionReward: {
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
   },
   missionRewardText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      13,
     color:         Colors.eww.amber,
     letterSpacing: 0.3,
   },
@@ -424,7 +424,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      10,
+    fontSize:      12,
     color:         Colors.text.secondary,
     letterSpacing: 0.2,
     textAlign:     'center',
@@ -450,7 +450,7 @@ const styles = StyleSheet.create({
   },
   quickSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
+    fontSize:   14,
     color:      Colors.text.secondary,
   },
   quickArrow: {
@@ -477,7 +477,7 @@ const styles = StyleSheet.create({
   },
   ewwSub: {
     fontFamily:  FontFamily.boogaloo,
-    fontSize:    13,
+    fontSize:    15,
     color:       Colors.text.secondary,
     textAlign:   'center',
     marginBottom: 6,

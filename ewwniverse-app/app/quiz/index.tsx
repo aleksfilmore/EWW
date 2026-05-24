@@ -277,7 +277,7 @@ export default function QuizScreen() {
                   styles.optionName,
                   answered && isCorrect  && styles.optionNameCorrect,
                   answered && isSelected && !isCorrect && styles.optionNameWrong,
-                ]} numberOfLines={2}>
+                ]}>
                   {opt.title}
                 </Text>
                 {answered && isCorrect  && <Text style={styles.feedbackMark}>✓</Text>}
@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
   },
   questionPrompt: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      14,
+    fontSize:      16,
     color:         Colors.text.muted,
     letterSpacing: 0.3,
   },
@@ -399,9 +399,9 @@ const styles = StyleSheet.create({
   },
   factText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   18,
+    fontSize:   20,
     color:      Colors.text.primary,
-    lineHeight: 26,
+    lineHeight: 28,
   },
 
   // ── Options grid ──────────────────────────────────────────────────────────
@@ -437,10 +437,10 @@ const styles = StyleSheet.create({
   },
   optionName: {
     fontFamily:  FontFamily.boogaloo,
-    fontSize:    13,
+    fontSize:    15,
     color:       Colors.text.secondary,
     textAlign:   'center',
-    lineHeight:  17,
+    lineHeight:  20,
     letterSpacing: 0.2,
   },
   optionNameCorrect: { color: Colors.eww.green },

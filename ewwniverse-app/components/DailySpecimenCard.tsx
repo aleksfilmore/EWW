@@ -1,8 +1,14 @@
 /**
- * DailySpecimenCard — hero home-screen card.
+ * DailySpecimenCard — home screen hero card.
  *
- * Dark-purple lab aesthetic with jar mystery illustration.
- * Shows today's creature name + gross fact preview + CLASSIFY NOW CTA.
+ * Layout:
+ *   "TODAY'S GROSS CHALLENGE" label row
+ *   Large jar illustration centred (jar-mystery with ??? or jar-classified + creature)
+ *   Creature name (or ???)
+ *   Fact preview (classified) / tease text (locked)
+ *   Full-width CTA button
+ *
+ * The jar is the main attraction on the home screen — large and centred.
  */
 import React, { useMemo } from 'react';
 import {
@@ -11,6 +17,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
@@ -18,6 +25,9 @@ import { Assets } from '@/constants/assets';
 import { creepyCreatures } from '@/data/index';
 import { Creature } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
+
+const { width: SCREEN_W } = Dimensions.get('window');
+const JAR_W = Math.min(SCREEN_W * 0.55, 220);   // large centred jar
 
 interface Props {
   lastClaimed: string | null;
@@ -31,9 +41,9 @@ function getDailyCreature(): Creature {
 }
 
 export function DailySpecimenCard({ lastClaimed, isPaid }: Props) {
-  const today    = new Date().toISOString().slice(0, 10);
-  const claimed  = lastClaimed === today;
-  const creature = useMemo(() => getDailyCreature(), []);
+  const today       = new Date().toISOString().slice(0, 10);
+  const claimed     = lastClaimed === today;
+  const creature    = useMemo(() => getDailyCreature(), []);
   const creatureImg = CREATURE_IMAGES[creature.id];
 
   return (
@@ -42,7 +52,7 @@ export function DailySpecimenCard({ lastClaimed, isPaid }: Props) {
       activeOpacity={0.88}
       style={[styles.card, claimed && styles.cardClaimed]}
     >
-      {/* Top label row */}
+      {/* ── Label row ──────────────────────────────────────────────── */}
       <View style={styles.labelRow}>
         <View style={styles.labelBadge}>
           <Text style={styles.labelText}>TODAY'S GROSS CHALLENGE</Text>
@@ -58,41 +68,43 @@ export function DailySpecimenCard({ lastClaimed, isPaid }: Props) {
         )}
       </View>
 
-      {/* Body: jar thumbnail + creature info */}
-      <View style={styles.body}>
-        <View style={styles.jarThumb}>
+      {/* ── Hero jar — the main attraction ─────────────────────────── */}
+      <View style={styles.jarHero}>
+        {/* Jar frame fills the hero area */}
+        <Image
+          source={claimed ? Assets.jarClassified : Assets.jarMystery}
+          style={styles.jarImg}
+          resizeMode="contain"
+        />
+
+        {/* Creature inside jar (classified state only) */}
+        {claimed && creatureImg && (
           <Image
-            source={claimed ? Assets.jarClassified : Assets.jarMystery}
-            style={StyleSheet.absoluteFill}
+            source={creatureImg}
+            style={styles.creatureInJar}
             resizeMode="contain"
           />
-          {claimed && creatureImg && (
-            <Image
-              source={creatureImg}
-              style={styles.thumbCreature}
-              resizeMode="contain"
-            />
-          )}
-        </View>
-
-        <View style={styles.info}>
-          <Text style={styles.creatureName}>
-            {claimed ? creature.title : '???'}
-          </Text>
-          {claimed ? (
-            <Text style={styles.factPreview} numberOfLines={3}>
-              {creature.gross_fact}
-            </Text>
-          ) : (
-            <Text style={styles.mysteryText}>
-              Classify to reveal this specimen
-            </Text>
-          )}
-        </View>
+        )}
       </View>
 
-      {/* CTA button */}
-      <View style={[styles.ctaRow, claimed && styles.ctaRowClaimed]}>
+      {/* ── Creature name ───────────────────────────────────────────── */}
+      <Text style={styles.creatureName}>
+        {claimed ? creature.title.toUpperCase() : '???'}
+      </Text>
+
+      {/* ── Fact / tease text ───────────────────────────────────────── */}
+      {claimed ? (
+        <Text style={styles.factPreview} numberOfLines={3}>
+          {creature.gross_fact}
+        </Text>
+      ) : (
+        <Text style={styles.mysteryText}>
+          Classify this specimen to reveal its gross secret
+        </Text>
+      )}
+
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
+      <View style={[styles.cta, claimed && styles.ctaClaimed]}>
         <Text style={[styles.ctaText, claimed && styles.ctaTextClaimed]}>
           {claimed ? 'VIEW SPECIMEN FILE  ›' : 'CLASSIFY NOW  ›'}
         </Text>
@@ -108,7 +120,8 @@ const styles = StyleSheet.create({
     borderWidth:     2.5,
     borderColor:     Colors.eww.green,
     padding:         Spacing.md,
-    gap:             12,
+    gap:             10,
+    alignItems:      'center',
     shadowColor:     Colors.eww.green,
     shadowOffset:    { width: 0, height: 6 },
     shadowOpacity:   0.35,
@@ -116,15 +129,17 @@ const styles = StyleSheet.create({
     elevation:       8,
   },
   cardClaimed: {
-    borderColor:  Colors.border.subtle,
+    borderColor:   Colors.border.subtle,
     shadowOpacity: 0,
     elevation:     2,
   },
 
+  // ── Label row ────────────────────────────────────────────────────────────
   labelRow: {
     flexDirection:  'row',
     alignItems:     'center',
     justifyContent: 'space-between',
+    width:          '100%',
   },
   labelBadge: {
     backgroundColor: `${Colors.eww.green}22`,
@@ -136,7 +151,7 @@ const styles = StyleSheet.create({
   },
   labelText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      12,
     color:         Colors.text.lime,
     letterSpacing: 1.2,
   },
@@ -150,12 +165,12 @@ const styles = StyleSheet.create({
   },
   rewardText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      12,
+    fontSize:      13,
     color:         '#2A1600',
     letterSpacing: 0.5,
   },
   claimedBadge: {
-    backgroundColor: `${Colors.border.subtle}`,
+    backgroundColor: Colors.border.subtle,
     borderRadius:    Radius.full,
     paddingHorizontal: 10,
     paddingVertical:   4,
@@ -164,65 +179,73 @@ const styles = StyleSheet.create({
   },
   claimedBadgeText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      12,
     color:         Colors.text.muted,
     letterSpacing: 0.5,
   },
 
-  body: {
-    flexDirection: 'row',
-    alignItems:    'center',
-    gap:           Spacing.md,
+  // ── Hero jar ──────────────────────────────────────────────────────────────
+  jarHero: {
+    width:            JAR_W,
+    height:           JAR_W * 1.15,
+    alignItems:       'center',
+    justifyContent:   'center',
+    position:         'relative',
   },
-
-  jarThumb: {
-    width:          72,
-    height:         88,
-    alignItems:     'center',
-    justifyContent: 'center',
-    position:       'relative',
-    flexShrink:     0,
-  },
-  thumbCreature: {
-    width:    38,
-    height:   38,
+  jarImg: {
     position: 'absolute',
-    top:      '18%',
+    top:      0,
+    left:     0,
+    right:    0,
+    bottom:   0,
+  },
+  creatureInJar: {
+    position:  'absolute',
+    width:     JAR_W * 0.58,
+    height:    JAR_W * 0.58,
+    top:       '20%',
+    alignSelf: 'center',
   },
 
-  info: { flex: 1, gap: 5 },
+  // ── Text ─────────────────────────────────────────────────────────────────
   creatureName: {
     fontFamily:    FontFamily.creepster,
-    fontSize:      22,
+    fontSize:      24,
     color:         Colors.text.primary,
-    letterSpacing: 0.8,
-    lineHeight:    25,
+    letterSpacing: 1,
+    textAlign:     'center',
+    lineHeight:    28,
   },
   factPreview: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   13,
+    fontSize:   15,
     color:      Colors.text.secondary,
-    lineHeight: 18,
+    lineHeight: 22,
+    textAlign:  'center',
+    paddingHorizontal: 4,
   },
   mysteryText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   13,
+    fontSize:   15,
     color:      Colors.text.muted,
-    fontStyle:  'italic',
+    textAlign:  'center',
+    lineHeight: 22,
   },
 
-  ctaRow: {
+  // ── CTA ──────────────────────────────────────────────────────────────────
+  cta: {
+    width:           '100%',
     backgroundColor: Colors.eww.green,
     borderRadius:    Radius.md,
-    paddingVertical: 12,
+    paddingVertical: 14,
     alignItems:      'center',
   },
-  ctaRowClaimed: {
+  ctaClaimed: {
     backgroundColor: Colors.bg.elevated,
   },
   ctaText: {
     fontFamily:    FontFamily.creepster,
-    fontSize:      20,
+    fontSize:      22,
     color:         '#000',
     letterSpacing: 1.2,
   },

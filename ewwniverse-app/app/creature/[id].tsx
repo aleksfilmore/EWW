@@ -1,10 +1,11 @@
 /**
  * Creature detail screen.
  *
- * large jar frame → creature inside → CLASSIFIED stamp overlay
- * EWW-meter bar, radar icon, gross fact, illustrated action buttons
+ * large jar frame → creature inside (bigger, dark halo behind it) →
+ * CLASSIFIED stamp → EWW-meter bar → radar gross fact →
+ * illustrated action buttons → post-classify "BACK TO LAB" state
  */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -25,14 +26,17 @@ import { EwwMeter } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 
 const { width: SCREEN_W } = Dimensions.get('window');
-const JAR_SIZE = Math.min(SCREEN_W * 0.72, 300);
+const JAR_SIZE = Math.min(SCREEN_W * 0.75, 310);
 
 export default function CreatureDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const profile        = useUserStore((s) => s.profile);
-  const creatures      = useUserStore((s) => s.creatures);
-  const consumeScan    = useUserStore((s) => s.consumeScan);
+  const profile          = useUserStore((s) => s.profile);
+  const creatures        = useUserStore((s) => s.creatures);
+  const consumeScan      = useUserStore((s) => s.consumeScan);
   const setCreatureState = useUserStore((s) => s.setCreatureState);
+
+  // Tracks the brief "JUST CLASSIFIED" celebration state
+  const [justClassified, setJustClassified] = useState(false);
 
   const creature = getCreatureById(id ?? '');
 
@@ -47,13 +51,14 @@ export default function CreatureDetail() {
     );
   }
 
-  const userCreature   = creatures[creature.id];
-  const state          = userCreature?.state ?? 'locked';
-  const isClassified   = state === 'classified' || state === 'mastered';
-  const isMastered     = state === 'mastered';
-  const creatureImg    = CREATURE_IMAGES[creature.id];
-  const ewwColor       = ewwMeterColor(creature.eww_meter as EwwMeter);
-  const fillPct        = creature.eww_meter;            // 60 | 80 | 100
+  const userCreature  = creatures[creature.id];
+  const state         = userCreature?.state ?? 'locked';
+  const isClassified  = state === 'classified' || state === 'mastered';
+  const isMastered    = state === 'mastered';
+  const isSilhouette  = state === 'silhouette';
+  const creatureImg   = CREATURE_IMAGES[creature.id];
+  const ewwColor      = ewwMeterColor(creature.eww_meter as EwwMeter);
+  const fillPct       = creature.eww_meter;
 
   function handleClassify() {
     if (isClassified) return;
@@ -71,16 +76,23 @@ export default function CreatureDetail() {
         return;
       }
       setCreatureState(creature.id, 'silhouette');
-      setTimeout(() => setCreatureState(creature.id, 'classified'), 1200);
+      setTimeout(() => {
+        setCreatureState(creature.id, 'classified');
+        setJustClassified(true);
+      }, 1200);
     }
   }
 
   function handleMaster() {
     if (!isClassified) return;
-    Alert.alert('Master this specimen', 'Play a quiz round featuring this creature to earn mastery.', [
-      { text: 'Start Quiz', onPress: () => router.push('/quiz') },
-      { text: 'Later' },
-    ]);
+    Alert.alert(
+      'Master this specimen',
+      'Play a quiz round featuring this creature to earn mastery.',
+      [
+        { text: 'Start Quiz', onPress: () => router.push('/quiz') },
+        { text: 'Later' },
+      ],
+    );
   }
 
   return (
@@ -94,25 +106,39 @@ export default function CreatureDetail() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* ── Large jar + creature ──────────────────────────────── */}
+        {/* ── Large jar + creature ─────────────────────────────────── */}
         <View style={[styles.jarWrap, { width: JAR_SIZE, height: JAR_SIZE * 1.1 }]}>
-          {/* Jar frame */}
+          {/* Jar frame — fills container */}
           <Image
             source={Assets.jarLarge}
             style={StyleSheet.absoluteFill}
             resizeMode="contain"
           />
 
-          {/* Creature image inside jar */}
-          {isClassified && creatureImg && (
+          {/* Dark halo behind creature so it pops against the jar art */}
+          {(isClassified || isSilhouette) && (
+            <View
+              style={[
+                styles.creatureHalo,
+                {
+                  width:  JAR_SIZE * 0.60,
+                  height: JAR_SIZE * 0.60,
+                  borderRadius: JAR_SIZE * 0.30,
+                },
+              ]}
+            />
+          )}
+
+          {/* Creature image */}
+          {(isClassified || isSilhouette) && creatureImg && (
             <Image
               source={creatureImg}
               style={[
                 styles.creatureInJar,
                 {
-                  width:  JAR_SIZE * 0.52,
-                  height: JAR_SIZE * 0.52,
-                  opacity: state === 'silhouette' ? 0.3 : 1,
+                  width:   JAR_SIZE * 0.62,
+                  height:  JAR_SIZE * 0.62,
+                  opacity: isSilhouette ? 0.25 : 1,
                 },
               ]}
               resizeMode="contain"
@@ -120,11 +146,11 @@ export default function CreatureDetail() {
           )}
 
           {/* Locked placeholder */}
-          {!isClassified && (
+          {!isClassified && !isSilhouette && (
             <Text style={styles.jarLockText}>?</Text>
           )}
 
-          {/* CLASSIFIED stamp overlay */}
+          {/* CLASSIFIED stamp */}
           {isClassified && (
             <Image
               source={Assets.classifiedStamp}
@@ -133,20 +159,29 @@ export default function CreatureDetail() {
             />
           )}
 
-          {/* Mastered star badge */}
+          {/* Mastered star */}
           {isMastered && (
             <View style={styles.masteredBadge}>
               <Text style={styles.masteredStar}>★</Text>
             </View>
           )}
-
-          {/* Tags */}
-          {isClassified && creature.realm === 'RARE' && (
-            <Image source={Assets.tagRare} style={styles.tagBadge} resizeMode="contain" />
-          )}
         </View>
 
-        {/* ── Name + realm ─────────────────────────────────────── */}
+        {/* ── Post-classify celebration ───────────────────────────── */}
+        {justClassified && (
+          <TouchableOpacity
+            style={styles.classifiedBanner}
+            onPress={() => router.back()}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.classifiedBannerTitle}>☣ CLASSIFIED! ☣</Text>
+            <Text style={styles.classifiedBannerSub}>
+              Tap here to return to Lab ›
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {/* ── Name + realm ─────────────────────────────────────────── */}
         <Text style={styles.title}>
           {isClassified ? creature.title.toUpperCase() : '???'}
         </Text>
@@ -156,33 +191,18 @@ export default function CreatureDetail() {
           </Text>
         )}
 
-        {/* ── EWW-meter bar ─────────────────────────────────────── */}
+        {/* ── EWW-meter bar ─────────────────────────────────────────── */}
         <View style={styles.meterBlock}>
           <View style={styles.meterRow}>
             <Text style={styles.meterLabel}>EWW-METER</Text>
             <Text style={[styles.meterScore, { color: ewwColor }]}>{fillPct}/100</Text>
           </View>
           <View style={styles.meterTrack}>
-            <View
-              style={[
-                styles.meterFill,
-                {
-                  width: `${fillPct}%`,
-                  backgroundColor: ewwColor,
-                },
-              ]}
-            />
-            {/* Glow end cap */}
-            <View
-              style={[
-                styles.meterCap,
-                { left: `${fillPct}%`, backgroundColor: ewwColor },
-              ]}
-            />
+            <View style={[styles.meterFill, { width: `${fillPct}%`, backgroundColor: ewwColor }]} />
           </View>
         </View>
 
-        {/* ── Gross fact ───────────────────────────────────────── */}
+        {/* ── Gross fact ────────────────────────────────────────────── */}
         {isClassified ? (
           <View style={[styles.factCard, { borderColor: `${ewwColor}44` }]}>
             <View style={styles.factHeader}>
@@ -195,12 +215,14 @@ export default function CreatureDetail() {
           <View style={styles.lockedCard}>
             <Image source={Assets.iconLock} style={styles.lockIcon} resizeMode="contain" />
             <Text style={styles.lockedTitle}>LOCKED</Text>
-            <Text style={styles.lockedSub}>Classify this specimen to unlock gross facts</Text>
+            <Text style={styles.lockedSub}>
+              Classify this specimen to unlock gross facts
+            </Text>
           </View>
         )}
 
-        {/* ── Classify CTA ─────────────────────────────────────── */}
-        {!isClassified && (
+        {/* ── Classify CTA ──────────────────────────────────────────── */}
+        {!isClassified && !isSilhouette && (
           <TouchableOpacity
             style={styles.classifyBtn}
             onPress={handleClassify}
@@ -215,53 +237,35 @@ export default function CreatureDetail() {
           </TouchableOpacity>
         )}
 
-        {/* ── Action buttons (classified) ───────────────────────── */}
+        {/* ── Classifying animation placeholder ─────────────────────── */}
+        {isSilhouette && (
+          <View style={styles.classifyingBanner}>
+            <Text style={styles.classifyingText}>CLASSIFYING...</Text>
+          </View>
+        )}
+
+        {/* ── Action buttons (classified) ───────────────────────────── */}
         {isClassified && (
           <View style={styles.actionRow}>
-            <TouchableOpacity
-              style={styles.actionBtn}
-              onPress={handleMaster}
-              activeOpacity={0.8}
-            >
-              <Image
-                source={Assets.btnMaster}
-                style={styles.actionBtnImg}
-                resizeMode="contain"
-              />
+            <TouchableOpacity style={styles.actionBtn} onPress={handleMaster} activeOpacity={0.8}>
+              <Image source={Assets.btnMaster} style={styles.actionBtnImg} resizeMode="contain" />
             </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.actionBtn}
-              activeOpacity={0.8}
-            >
-              <Image
-                source={Assets.btnHearDrIcky}
-                style={styles.actionBtnImg}
-                resizeMode="contain"
-              />
+            <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8}>
+              <Image source={Assets.btnHearDrIcky} style={styles.actionBtnImg} resizeMode="contain" />
             </TouchableOpacity>
-
             <TouchableOpacity
               style={styles.actionBtn}
               onPress={() => router.push('/(tabs)/recruit-file')}
               activeOpacity={0.8}
             >
-              <Image
-                source={Assets.btnAddToSet}
-                style={styles.actionBtnImg}
-                resizeMode="contain"
-              />
+              <Image source={Assets.btnAddToSet} style={styles.actionBtnImg} resizeMode="contain" />
             </TouchableOpacity>
           </View>
         )}
 
-        {/* Quiz prompt (classified, not mastered) */}
+        {/* Quiz nudge */}
         {isClassified && !isMastered && (
-          <TouchableOpacity
-            style={styles.quizNudge}
-            onPress={() => router.push('/quiz')}
-            activeOpacity={0.8}
-          >
+          <TouchableOpacity style={styles.quizNudge} onPress={() => router.push('/quiz')} activeOpacity={0.8}>
             <Text style={styles.quizNudgeText}>
               ☣ Play Lab Quiz to master this specimen ›
             </Text>
@@ -273,14 +277,14 @@ export default function CreatureDetail() {
 }
 
 const styles = StyleSheet.create({
-  root:       { flex: 1, backgroundColor: Colors.bg.DEFAULT },
-  errorText:  { color: Colors.text.muted, fontSize: 16, textAlign: 'center', marginTop: 60 },
+  root:      { flex: 1, backgroundColor: Colors.bg.DEFAULT },
+  errorText: { color: Colors.text.muted, fontSize: 17, textAlign: 'center', marginTop: 60 },
 
-  backBtn:    { paddingHorizontal: Spacing.md, paddingVertical: Spacing.sm },
+  backBtn:   { paddingHorizontal: Spacing.md, paddingVertical: Spacing.sm },
   backLabel: {
-    fontFamily:  FontFamily.boogaloo,
-    fontSize:    14,
-    color:       Colors.text.lime,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      16,
+    color:         Colors.text.lime,
     letterSpacing: 1,
   },
 
@@ -291,31 +295,38 @@ const styles = StyleSheet.create({
     gap:               16,
   },
 
-  // ── Jar ───────────────────────────────────────────────────────────────────
+  // ── Jar ────────────────────────────────────────────────────────────────────
   jarWrap: {
-    alignItems:      'center',
-    justifyContent:  'center',
-    position:        'relative',
+    alignItems:     'center',
+    justifyContent: 'center',
+    position:       'relative',
+  },
+  // Semi-transparent dark oval so creature image pops against jar art
+  creatureHalo: {
+    position:        'absolute',
+    top:             '14%',
+    alignSelf:       'center',
+    backgroundColor: 'rgba(10, 5, 25, 0.50)',
   },
   creatureInJar: {
     position:  'absolute',
-    top:       '20%',
+    top:       '18%',
     alignSelf: 'center',
   },
   jarLockText: {
-    position:   'absolute',
-    fontFamily: FontFamily.creepster,
-    fontSize:   72,
-    color:      Colors.text.disabled,
+    position:      'absolute',
+    fontFamily:    FontFamily.creepster,
+    fontSize:      80,
+    color:         Colors.text.disabled,
     letterSpacing: 4,
   },
   stamp: {
     position: 'absolute',
-    bottom:   '8%',
-    right:    '4%',
-    width:    JAR_SIZE * 0.42,
-    height:   JAR_SIZE * 0.42,
-    opacity:  0.90,
+    bottom:   '6%',
+    right:    '2%',
+    width:    JAR_SIZE * 0.40,
+    height:   JAR_SIZE * 0.40,
+    opacity:  0.88,
   },
   masteredBadge: {
     position:        'absolute',
@@ -329,37 +340,50 @@ const styles = StyleSheet.create({
     justifyContent:  'center',
   },
   masteredStar: { fontSize: 18, color: '#000', fontWeight: '900' },
-  tagBadge: {
-    position: 'absolute',
-    top:      8,
-    left:     8,
-    width:    48,
-    height:   24,
+
+  // ── Post-classify banner ────────────────────────────────────────────────────
+  classifiedBanner: {
+    width:           '100%',
+    backgroundColor: `${Colors.eww.green}22`,
+    borderRadius:    Radius.lg,
+    borderWidth:     2,
+    borderColor:     Colors.eww.green,
+    paddingVertical: 14,
+    alignItems:      'center',
+    gap:             4,
+  },
+  classifiedBannerTitle: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      26,
+    color:         Colors.text.lime,
+    letterSpacing: 2,
+  },
+  classifiedBannerSub: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   15,
+    color:      Colors.text.secondary,
   },
 
-  // ── Name / realm ─────────────────────────────────────────────────────────
+  // ── Name / realm ───────────────────────────────────────────────────────────
   title: {
-    fontFamily:   FontFamily.creepster,
-    fontSize:     30,
-    color:        Colors.text.primary,
-    textAlign:    'center',
-    letterSpacing: 1.5,
+    fontFamily:       FontFamily.creepster,
+    fontSize:         32,
+    color:            Colors.text.primary,
+    textAlign:        'center',
+    letterSpacing:    1.5,
     textShadowColor:  Colors.eww.purple,
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 8,
   },
   realm: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      12,
     letterSpacing: 2.5,
     marginTop:     -8,
   },
 
-  // ── EWW-meter bar ────────────────────────────────────────────────────────
-  meterBlock: {
-    width: '100%',
-    gap:   6,
-  },
+  // ── EWW-meter bar ──────────────────────────────────────────────────────────
+  meterBlock: { width: '100%', gap: 7 },
   meterRow: {
     flexDirection:  'row',
     justifyContent: 'space-between',
@@ -367,22 +391,21 @@ const styles = StyleSheet.create({
   },
   meterLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      12,
     color:         Colors.text.muted,
     letterSpacing: 2,
   },
   meterScore: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      14,
     letterSpacing: 0.5,
   },
   meterTrack: {
     width:           '100%',
-    height:          12,
+    height:          14,
     backgroundColor: Colors.bg.elevated,
     borderRadius:    Radius.full,
     overflow:        'hidden',
-    position:        'relative',
   },
   meterFill: {
     position:     'absolute',
@@ -392,17 +415,8 @@ const styles = StyleSheet.create({
     borderRadius: Radius.full,
     opacity:      0.9,
   },
-  meterCap: {
-    position:     'absolute',
-    top:          2,
-    bottom:       2,
-    width:        8,
-    borderRadius: 4,
-    marginLeft:   -4,
-    opacity:      1,
-  },
 
-  // ── Gross fact card ──────────────────────────────────────────────────────
+  // ── Gross fact ─────────────────────────────────────────────────────────────
   factCard: {
     width:           '100%',
     backgroundColor: Colors.bg.card,
@@ -411,26 +425,22 @@ const styles = StyleSheet.create({
     padding:         Spacing.md,
     gap:             10,
   },
-  factHeader: {
-    flexDirection: 'row',
-    alignItems:    'center',
-    gap:           8,
-  },
-  factIcon: { width: 22, height: 22 },
+  factHeader: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  factIcon:   { width: 24, height: 24 },
   factLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      11,
+    fontSize:      12,
     color:         Colors.text.muted,
     letterSpacing: 2,
   },
   factText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   17,
+    fontSize:   19,
     color:      Colors.text.primary,
-    lineHeight: 24,
+    lineHeight: 27,
   },
 
-  // ── Locked card ──────────────────────────────────────────────────────────
+  // ── Locked card ───────────────────────────────────────────────────────────
   lockedCard: {
     width:           '100%',
     backgroundColor: Colors.bg.card,
@@ -441,69 +451,76 @@ const styles = StyleSheet.create({
     alignItems:      'center',
     gap:             8,
   },
-  lockIcon:     { width: 32, height: 32, opacity: 0.5 },
+  lockIcon:   { width: 32, height: 32, opacity: 0.5 },
   lockedTitle: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      14,
     color:         Colors.text.disabled,
     letterSpacing: 2,
   },
   lockedSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   13,
+    fontSize:   15,
     color:      Colors.text.disabled,
     textAlign:  'center',
-    lineHeight: 18,
+    lineHeight: 22,
   },
 
-  // ── Classify button ──────────────────────────────────────────────────────
+  // ── Classify button ───────────────────────────────────────────────────────
   classifyBtn: {
-    width:           '100%',
-    backgroundColor: Colors.eww.green,
-    borderRadius:    Radius.lg,
-    paddingVertical: 16,
-    alignItems:      'center',
-    gap:             3,
-    shadowColor:     Colors.eww.greenDark,
-    shadowOffset:    { width: 0, height: 5 },
-    shadowOpacity:   0.5,
-    shadowRadius:    8,
-    elevation:       8,
+    width:             '100%',
+    backgroundColor:   Colors.eww.green,
+    borderRadius:      Radius.lg,
+    paddingVertical:   18,
+    alignItems:        'center',
+    gap:               4,
+    shadowColor:       Colors.eww.greenDark,
+    shadowOffset:      { width: 0, height: 5 },
+    shadowOpacity:     0.5,
+    shadowRadius:      8,
+    elevation:         8,
   },
   classifyBtnLabel: {
     fontFamily:    FontFamily.creepster,
-    fontSize:      22,
+    fontSize:      24,
     color:         '#000',
     letterSpacing: 1.5,
   },
   classifyBtnSub: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize:   12,
-    color:      'rgba(0,0,0,0.55)',
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      14,
+    color:         'rgba(0,0,0,0.55)',
     letterSpacing: 0.3,
   },
 
-  // ── Action buttons ───────────────────────────────────────────────────────
-  actionRow: {
-    flexDirection:  'row',
-    width:          '100%',
-    gap:            10,
+  // ── Classifying state ────────────────────────────────────────────────────
+  classifyingBanner: {
+    width:           '100%',
+    backgroundColor: `${Colors.eww.amber}22`,
+    borderRadius:    Radius.lg,
+    paddingVertical: 18,
+    alignItems:      'center',
+    borderWidth:     1,
+    borderColor:     `${Colors.eww.amber}66`,
   },
-  actionBtn: {
-    flex:       1,
-    alignItems: 'center',
-  },
-  actionBtnImg: {
-    width:  '100%',
-    height: 70,
+  classifyingText: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      22,
+    color:         Colors.eww.amber,
+    letterSpacing: 2,
   },
 
-  // ── Quiz nudge ───────────────────────────────────────────────────────────
-  quizNudge: { paddingVertical: 8 },
+  // ── Action buttons ────────────────────────────────────────────────────────
+  actionRow: { flexDirection: 'row', width: '100%', gap: 10 },
+  actionBtn:    { flex: 1, alignItems: 'center' },
+  actionBtnImg: { width: '100%', height: 72 },
+
+  // ── Quiz nudge ────────────────────────────────────────────────────────────
+  quizNudge:     { paddingVertical: 8 },
   quizNudgeText: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize:   13,
-    color:      Colors.text.purple,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      14,
+    color:         Colors.text.purple,
     letterSpacing: 0.3,
   },
 });

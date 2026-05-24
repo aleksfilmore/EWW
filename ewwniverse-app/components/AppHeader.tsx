@@ -2,7 +2,9 @@
  * AppHeader — branded top bar.
  *
  * Scans badge (left) | EWW-NIVERSE logo (centre) | Streak badge (right)
- * Uses the illustrated assets from the mockup.
+ *
+ * Badge overlay is position:absolute so the text sits INSIDE the illustrated
+ * frame, not below it. zIndex:2 guarantees it stays on top of the image.
  */
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { FontFamily } from '@/constants/design';
@@ -19,13 +21,14 @@ export function AppHeader() {
       {/* Scans badge */}
       <View style={styles.badge}>
         <Image source={Assets.badgeScans} style={styles.badgeImg} resizeMode="contain" />
+        {/* Overlay is absolute so it floats ON the badge frame */}
         <View style={styles.badgeOverlay}>
           <Text style={styles.badgeValue}>{scans}</Text>
           <Text style={styles.badgeLabel}>SCANS</Text>
         </View>
       </View>
 
-      {/* Centre: full illustrated logo */}
+      {/* Centre: illustrated logo */}
       <Image source={Assets.logoMain} style={styles.logo} resizeMode="contain" />
 
       {/* Streak badge */}
@@ -42,47 +45,55 @@ export function AppHeader() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection:  'row',
+    alignItems:     'center',
     paddingHorizontal: 8,
-    paddingTop: 6,
-    paddingBottom: 4,
+    paddingTop:     6,
+    paddingBottom:  4,
     backgroundColor: 'transparent',
   },
 
-  // Illustrated badge frame + text overlay
+  // Badge: fixed box so absoluteFill works correctly
   badge: {
-    width: 80,
-    height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width:    90,
+    height:   72,
   },
   badgeImg: {
-    ...StyleSheet.absoluteFillObject,
-    width: '100%',
-    height: '100%',
+    position: 'absolute',
+    top:      0,
+    left:     0,
+    right:    0,
+    bottom:   0,
   },
+  // Overlay is absolute so it renders ON TOP of the image frame
   badgeOverlay: {
-    alignItems: 'center',
+    position:       'absolute',
+    top:            0,
+    left:           0,
+    right:          0,
+    bottom:         0,
+    alignItems:     'center',
+    justifyContent: 'center',
+    zIndex:         2,
   },
   badgeValue: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 18,
-    color: '#fff',
+    fontSize:   22,
+    color:      '#fff',
     fontWeight: '800',
-    lineHeight: 20,
+    lineHeight: 24,
   },
   badgeLabel: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 9,
-    color: 'rgba(255,255,255,0.80)',
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      10,
+    color:         'rgba(255,255,255,0.85)',
     letterSpacing: 0.8,
-    lineHeight: 11,
+    lineHeight:    13,
   },
 
   // Centre logo
   logo: {
-    flex: 1,
+    flex:   1,
     height: 80,
   },
 });
