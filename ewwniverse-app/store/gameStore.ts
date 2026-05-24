@@ -12,6 +12,8 @@ interface GameState {
 
   // Contamination event
   contaminationActive: boolean;
+  /** The Special Specimen unlocked by the most recent contamination event */
+  lastUnlockedSpecimenId: string | null;
 
   // Daily specimen
   dailySpecimenId: string | null;
@@ -21,7 +23,8 @@ interface GameState {
   recordWrongAnswer: () => void;
   useHint: () => void;
   resetQuizSession: () => void;
-  triggerContaminationEvent: () => void;
+  /** Pass the id of the specimen that was unlocked (or null if pool exhausted) */
+  triggerContaminationEvent: (specimenId: string | null) => void;
   dismissContaminationEvent: () => void;
   setDailySpecimen: (id: string) => void;
 }
@@ -31,6 +34,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   quizHintUsed: false,
   lastContaminationAt: null,
   contaminationActive: false,
+  lastUnlockedSpecimenId: null,
   dailySpecimenId: null,
 
   recordCorrectAnswer: () => {
@@ -50,8 +54,12 @@ export const useGameStore = create<GameState>((set, get) => ({
     set({ quizStreak: 0, quizHintUsed: false });
   },
 
-  triggerContaminationEvent: () => {
-    set({ contaminationActive: true, lastContaminationAt: Date.now() });
+  triggerContaminationEvent: (specimenId) => {
+    set({
+      contaminationActive:    true,
+      lastContaminationAt:    Date.now(),
+      lastUnlockedSpecimenId: specimenId,
+    });
   },
 
   dismissContaminationEvent: () => {

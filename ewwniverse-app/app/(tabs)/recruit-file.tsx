@@ -21,6 +21,7 @@ import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
+import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 
@@ -143,6 +144,9 @@ export default function Rewards() {
           </View>
         </View>
 
+        {/* ── Special Specimens ────────────────────────────────── */}
+        <SpecialSpecimensSection ownedIds={Object.keys(profile.special_specimens)} />
+
         {/* ── Streak jar ───────────────────────────────────────── */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>STREAK REWARD</Text>
@@ -227,6 +231,76 @@ export default function Rewards() {
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
+
+function SpecialSpecimensSection({ ownedIds }: { ownedIds: string[] }) {
+  const owned    = new Set(ownedIds);
+  const unlocked = SPECIAL_SPECIMENS.filter((s) => owned.has(s.id));
+  const total    = SPECIAL_SPECIMENS.length;
+
+  const ewwBadgeColor = (meter: 60 | 80 | 100) => {
+    if (meter === 100) return Colors.eww.coral;
+    if (meter === 80)  return Colors.eww.amber;
+    return Colors.eww.green;
+  };
+
+  return (
+    <View style={styles.section}>
+      <View style={styles.sectionHeaderRow}>
+        <Text style={styles.sectionTitle}>SPECIAL SPECIMENS</Text>
+        <Text style={styles.sectionCount}>
+          {unlocked.length} / {total}
+        </Text>
+      </View>
+
+      {unlocked.length === 0 ? (
+        <View style={styles.specialEmpty}>
+          <Text style={styles.specialEmptyIcon}>☣</Text>
+          <Text style={styles.specialEmptyText}>
+            Get 3 quiz answers in a row to trigger a{'\n'}Contamination Event and unlock a specimen
+          </Text>
+        </View>
+      ) : (
+        <View style={styles.specialGrid}>
+          {unlocked.map((s) => (
+            <View key={s.id} style={styles.specialCard}>
+              {/* Jar with green glow for "contaminated" feel */}
+              <View style={styles.specialJarWrap}>
+                <Image
+                  source={Assets.jarClassified}
+                  style={StyleSheet.absoluteFill}
+                  resizeMode="contain"
+                />
+                <Text style={styles.specialJarIcon}>☣</Text>
+              </View>
+              <Text style={styles.specialName} numberOfLines={2}>
+                {s.name.toUpperCase()}
+              </Text>
+              <View style={[styles.specialMeter, { backgroundColor: `${ewwBadgeColor(s.eww_meter)}22`, borderColor: `${ewwBadgeColor(s.eww_meter)}55` }]}>
+                <Text style={[styles.specialMeterText, { color: ewwBadgeColor(s.eww_meter) }]}>
+                  EWW {s.eww_meter}
+                </Text>
+              </View>
+            </View>
+          ))}
+
+          {/* Locked placeholders for unowned */}
+          {SPECIAL_SPECIMENS.filter((s) => !owned.has(s.id)).slice(0, 4).map((s) => (
+            <View key={s.id} style={[styles.specialCard, styles.specialCardLocked]}>
+              <View style={styles.specialJarWrap}>
+                <Image
+                  source={Assets.jarMystery}
+                  style={StyleSheet.absoluteFill}
+                  resizeMode="contain"
+                />
+              </View>
+              <Text style={styles.specialNameLocked}>???</Text>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+}
 
 function StatCard({
   label,
@@ -590,5 +664,96 @@ const styles = StyleSheet.create({
     fontSize:      18,
     color:         '#fff',
     letterSpacing: 1.5,
+  },
+
+  // ── Special Specimens ──────────────────────────────────────────────────────
+  sectionHeaderRow: {
+    flexDirection:  'row',
+    alignItems:     'center',
+    justifyContent: 'space-between',
+  },
+  sectionCount: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      12,
+    color:         Colors.text.muted,
+    letterSpacing: 0.5,
+  },
+  specialEmpty: {
+    backgroundColor: Colors.bg.card,
+    borderRadius:    Radius.lg,
+    borderWidth:     1.5,
+    borderColor:     `${Colors.eww.green}30`,
+    borderStyle:     'dashed',
+    padding:         Spacing.lg,
+    alignItems:      'center',
+    gap:             8,
+  },
+  specialEmptyIcon: {
+    fontSize:  32,
+    color:     `${Colors.eww.green}60`,
+  },
+  specialEmptyText: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   14,
+    color:      Colors.text.muted,
+    textAlign:  'center',
+    lineHeight: 20,
+  },
+  specialGrid: {
+    flexDirection: 'row',
+    flexWrap:      'wrap',
+    gap:           8,
+  },
+  specialCard: {
+    width:           (SCREEN_W - Spacing.md * 2 - 8 * 3) / 4,
+    alignItems:      'center',
+    backgroundColor: Colors.bg.card,
+    borderRadius:    Radius.md,
+    borderWidth:     1.5,
+    borderColor:     `${Colors.eww.green}40`,
+    padding:         6,
+    gap:             4,
+  },
+  specialCardLocked: {
+    borderColor:     Colors.border.subtle,
+    opacity:         0.5,
+  },
+  specialJarWrap: {
+    width:    64,
+    height:   74,
+    position: 'relative',
+    alignItems:     'center',
+    justifyContent: 'center',
+  },
+  specialJarIcon: {
+    fontSize:  22,
+    color:     Colors.eww.green,
+    position:  'absolute',
+    top:       '28%',
+  },
+  specialName: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   10,
+    color:      Colors.text.secondary,
+    textAlign:  'center',
+    lineHeight: 13,
+    letterSpacing: 0.3,
+  },
+  specialNameLocked: {
+    fontFamily: FontFamily.creepster,
+    fontSize:   14,
+    color:      Colors.text.muted,
+    textAlign:  'center',
+  },
+  specialMeter: {
+    borderRadius:      Radius.full,
+    paddingHorizontal: 5,
+    paddingVertical:   2,
+    borderWidth:       1,
+  },
+  specialMeterText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      9,
+    letterSpacing: 0.3,
   },
 });

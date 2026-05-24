@@ -6,6 +6,7 @@ import {
   SCAN_FREE_AMOUNT,
   STAGE_THRESHOLDS,
   FREE_STAGE_CAP,
+  STREAK_REWARD_DAY,
 } from '@/constants/game';
 
 interface UserState {
@@ -25,6 +26,8 @@ interface UserState {
   setPaid: (paid: boolean) => void;
   updateStage: () => void;
   claimDailySpecimen: () => void;
+  unlockSpecialSpecimen: (id: string, source: string) => void;
+  getOwnedSpecialIds: () => string[];
 }
 
 function makeDefaultProfile(uid: string): UserProfile {
@@ -42,6 +45,7 @@ function makeDefaultProfile(uid: string): UserProfile {
     classified_count: 0,
     fastest_quiz_seconds: null,
     daily_specimen_last_claimed: null,
+    special_specimens: {},
     created_at: Date.now(),
   };
 }
@@ -125,18 +129,22 @@ export const useUserStore = create<UserState>((set, get) => ({
     const today = new Date().toISOString().slice(0, 10);
     const profile = get().profile;
     if (!profile) return;
-    if (profile.streak_last_day === today) return; // already counted
+    if (profile.streak_last_day === today) return; // already counted today
+
     const yesterday = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
     const isConsecutive = profile.streak_last_day === yesterday;
+    const newStreak = isConsecutive ? profile.streak_days + 1 : 1;
+
     set((s) => ({
       profile: s.profile
-        ? {
-            ...s.profile,
-            streak_days: isConsecutive ? s.profile.streak_days + 1 : 1,
-            streak_last_day: today,
-          }
+        ? { ...s.profile, streak_days: newStreak, streak_last_day: today }
         : s.profile,
     }));
+
+    // 7-day streak milestone reward — free tier: +1 scan
+    if (newStreak % STREAK_REWARD_DAY === 0) {
+      get().addScans(1);
+    }
   },
 
   resetStreak: () =>
@@ -183,5 +191,26 @@ export const useUserStore = create<UserState>((set, get) => ({
         ? { ...s.profile, daily_specimen_last_claimed: today }
         : s.profile,
     }));
+  },
+
+  unlockSpecialSpecimen: (id, source) => {
+    // Idempotent — don't re-unlock something already owned
+    const existing = get().profile?.special_specimens ?? {};
+    if (existing[id]) return;
+    set((s) => ({
+      profile: s.profile
+        ? {
+            ...s.profile,
+            special_specimens: {
+              ...s.profile.special_specimens,
+              [id]: { unlocked_at: Date.now(), source },
+            },
+          }
+        : s.profile,
+    }));
+  },
+
+  getOwnedSpecialIds: () => {
+    return Object.keys(get().profile?.special_specimens ?? {});
   },
 }));

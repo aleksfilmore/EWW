@@ -28,6 +28,7 @@ import {
   CONTAMINATION_STREAK,
   QUIZ_SCAN_REWARDS,
 } from '@/constants/game';
+import { pickRandomUnownedCommon } from '@/data/special-specimens';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const CARD_W     = (SCREEN_W - Spacing.md * 2 - 8) / 2;   // 2-col grid card width
@@ -64,12 +65,14 @@ function buildQuestions(creatures: Creature[], count: number): Question[] {
 
 export default function QuizScreen() {
   const profile              = useUserStore((s) => s.profile);
-  const addScans             = useUserStore((s) => s.addScans);
-  const recordCorrect        = useGameStore((s) => s.recordCorrectAnswer);
-  const recordWrong          = useGameStore((s) => s.recordWrongAnswer);
-  const quizStreak           = useGameStore((s) => s.quizStreak);
-  const triggerContamination = useGameStore((s) => s.triggerContaminationEvent);
-  const resetQuizSession     = useGameStore((s) => s.resetQuizSession);
+  const addScans                 = useUserStore((s) => s.addScans);
+  const unlockSpecialSpecimen    = useUserStore((s) => s.unlockSpecialSpecimen);
+  const getOwnedSpecialIds       = useUserStore((s) => s.getOwnedSpecialIds);
+  const recordCorrect            = useGameStore((s) => s.recordCorrectAnswer);
+  const recordWrong              = useGameStore((s) => s.recordWrongAnswer);
+  const quizStreak               = useGameStore((s) => s.quizStreak);
+  const triggerContamination     = useGameStore((s) => s.triggerContaminationEvent);
+  const resetQuizSession         = useGameStore((s) => s.resetQuizSession);
   const userTriggerContamination = useUserStore((s) => s.triggerContamination);
 
   const [questions] = useState<Question[]>(() =>
@@ -102,8 +105,15 @@ export default function QuizScreen() {
     if (isCorrect) {
       setScore((s) => s + 1);
       recordCorrect();
+      // Contamination Event fires when the streak threshold is hit
       if (quizStreak + 1 >= CONTAMINATION_STREAK) {
-        triggerContamination();
+        // Pick a random unowned Common specimen to drop
+        const ownedIds = getOwnedSpecialIds();
+        const dropped  = pickRandomUnownedCommon(ownedIds);
+        if (dropped) {
+          unlockSpecialSpecimen(dropped.id, 'contamination');
+        }
+        triggerContamination(dropped?.id ?? null);
         userTriggerContamination();
       }
     } else {

@@ -15,6 +15,7 @@ import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
 import { ONBOARDING_KEY } from '@/constants/storage';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ContaminationOverlay } from '@/components/ContaminationOverlay';
+import { initRevenueCat, checkEntitlement } from '@/services/revenuecat';
 
 // Keep splash visible until we're ready
 SplashScreen.preventAutoHideAsync();
@@ -29,7 +30,7 @@ const queryClient = new QueryClient({
 });
 
 function AppBootstrap() {
-  const { isHydrated, initUser, refreshScanIfDue, incrementStreak } = useUserStore();
+  const { isHydrated, initUser, refreshScanIfDue, incrementStreak, setPaid } = useUserStore();
   const [fontsLoaded] = useFonts({ Boogaloo_400Regular, Creepster_400Regular });
   const [onboardingChecked, setOnboardingChecked] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -64,6 +65,14 @@ function AppBootstrap() {
     // Run immediately on first open
     refreshScanIfDue();
     incrementStreak();
+
+    // Initialize RevenueCat (no-op if keys not configured yet)
+    initRevenueCat().then(() => {
+      // Silently re-check entitlement in case user purchased on another device
+      checkEntitlement().then((entitled) => {
+        if (entitled) setPaid(true);
+      });
+    });
 
     // Poll for scan refresh every 60 seconds (cheap check — only fires when due)
     refreshIntervalRef.current = setInterval(() => {

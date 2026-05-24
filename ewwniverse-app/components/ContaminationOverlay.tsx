@@ -11,10 +11,16 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { useGameStore } from '@/store/gameStore';
 import { Colors, FontFamily } from '@/constants/design';
+import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
 
 export function ContaminationOverlay() {
-  const contaminationActive = useGameStore((s) => s.contaminationActive);
-  const dismiss             = useGameStore((s) => s.dismissContaminationEvent);
+  const contaminationActive    = useGameStore((s) => s.contaminationActive);
+  const lastUnlockedSpecimenId = useGameStore((s) => s.lastUnlockedSpecimenId);
+  const dismiss                = useGameStore((s) => s.dismissContaminationEvent);
+
+  const unlockedSpecimen = lastUnlockedSpecimenId
+    ? SPECIAL_SPECIMENS.find((s) => s.id === lastUnlockedSpecimenId) ?? null
+    : null;
 
   const opacity = useRef(new Animated.Value(0)).current;
 
@@ -59,9 +65,16 @@ export function ContaminationOverlay() {
       <Text style={styles.title}>CONTAMINATION{'\n'}EVENT</Text>
       <Text style={styles.divider}>────────────</Text>
       <Text style={styles.sub}>SLIME SURGE TRIGGERED</Text>
-      <Text style={styles.body}>
-        A Contaminated Specimen{'\n'}has been added to your collection
-      </Text>
+      {unlockedSpecimen ? (
+        <>
+          <Text style={styles.specimenLabel}>NEW SPECIMEN ACQUIRED</Text>
+          <Text style={styles.specimenName}>{unlockedSpecimen.name.toUpperCase()}</Text>
+        </>
+      ) : (
+        <Text style={styles.body}>
+          A Contaminated Specimen{'\n'}has been added to your collection
+        </Text>
+      )}
     </Animated.View>
   );
 }
@@ -110,5 +123,24 @@ const styles = StyleSheet.create({
     textAlign:  'center',
     lineHeight: 22,
     marginTop:  4,
+  },
+  specimenLabel: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    color:         'rgba(255,255,255,0.6)',
+    letterSpacing: 2,
+    textAlign:     'center',
+    marginTop:     8,
+  },
+  specimenName: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      28,
+    color:         Colors.eww.green,
+    letterSpacing: 2,
+    textAlign:     'center',
+    lineHeight:    32,
+    textShadowColor:  '#000',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
   },
 });

@@ -1,5 +1,10 @@
 export type EwwStage = 1 | 2 | 3 | 4 | 5;
 
+export interface UnlockedSpecialSpecimen {
+  unlocked_at: number;          // unix timestamp ms
+  source: string;               // 'contamination' | 'set' | 'mission' | 'streak' | 'stage'
+}
+
 export interface UserProfile {
   uid: string;
   codename: string;
@@ -14,6 +19,8 @@ export interface UserProfile {
   classified_count: number;
   fastest_quiz_seconds: number | null;
   daily_specimen_last_claimed: string | null;
+  /** Map of special specimen id → unlock info */
+  special_specimens: Record<string, UnlockedSpecialSpecimen>;
   created_at: number;
 }
 
