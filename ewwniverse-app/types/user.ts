@@ -19,6 +19,8 @@ export interface UserProfile {
   classified_count: number;
   fastest_quiz_seconds: number | null;
   daily_specimen_last_claimed: string | null;
+  /** ID of the most recently classified creature (drives home screen hero card) */
+  last_classified_creature_id: string | null;
   /** Map of special specimen id → unlock info */
   special_specimens: Record<string, UnlockedSpecialSpecimen>;
   created_at: number;

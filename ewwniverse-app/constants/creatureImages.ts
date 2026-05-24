@@ -183,7 +183,7 @@ export const CREATURE_IMAGES: Record<string, ImageSourcePropType> = {
   'creepy-earth-quicksand-pits': require('../assets/creatures/earth/Quicksand Pits.png'),
   'creepy-earth-belly-button-biodome': require('../assets/creatures/earth/Belly Button Biodome.png'),
   'creepy-earth-zombie-fungus': require('../assets/creatures/earth/Zombie Fungus.png'),
-  'creepy-earth-lake-natrons-statue-victims': require('../assets/creatures/earth/Lake Natron\'s StatueS.png'),
+  'creepy-earth-lake-natrons-statue-victims': require('../assets/creatures/earth/Lake Natrons StatueS.png'),
   'creepy-earth-island-of-garbage': require('../assets/creatures/earth/Island of Garbage.png'),
   'creepy-earth-edible-insect-burgers': require('../assets/creatures/earth/Edible Insect Burgers.png'),
   'creepy-earth-the-pee-pool-problem': require('../assets/creatures/earth/The Pee Pool Problem.png'),

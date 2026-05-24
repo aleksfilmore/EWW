@@ -46,6 +46,7 @@ function makeDefaultProfile(uid: string): UserProfile {
     classified_count: 0,
     fastest_quiz_seconds: null,
     daily_specimen_last_claimed: null,
+    last_classified_creature_id: null,
     special_specimens: {},
     created_at: Date.now(),
   };
@@ -80,10 +81,16 @@ export const useUserStore = create<UserState>((set, get) => ({
       .filter((c) => c.state === 'classified' || c.state === 'mastered').length;
     const mastered_count = Object.values({ ...get().creatures, [id]: update })
       .filter((c) => c.state === 'mastered').length;
+    const isNowClassified = state === 'classified' || state === 'mastered';
     set((s) => ({
       creatures: { ...s.creatures, [id]: update },
       profile: s.profile
-        ? { ...s.profile, classified_count, mastered_count }
+        ? {
+            ...s.profile,
+            classified_count,
+            mastered_count,
+            ...(isNowClassified ? { last_classified_creature_id: id } : {}),
+          }
         : s.profile,
     }));
     get().updateStage();

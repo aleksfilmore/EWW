@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Alert,
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -26,9 +25,12 @@ import { EwwMeter } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { isDailySpecimen, todayString } from '@/utils/daily';
 import { playSfx, playMeterSfx } from '@/services/audio';
+import { ConfirmModal } from '@/components/ConfirmModal';
 
 const { width: SCREEN_W } = Dimensions.get('window');
-const JAR_SIZE = Math.min(SCREEN_W * 0.75, 310);
+// Jar takes up 85% of screen width — large enough for the creature to be
+// the clear focal point, capped at 340 so it doesn't look massive on tablets.
+const JAR_SIZE = Math.min(SCREEN_W * 0.85, 340);
 
 export default function CreatureDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -42,6 +44,8 @@ export default function CreatureDetail() {
   // Tracks the brief "JUST CLASSIFIED" celebration state (+bonus scan info)
   const [justClassified, setJustClassified] = useState(false);
   const [dailyBonusEarned, setDailyBonusEarned] = useState(false);
+  // Which confirm modal is open: null = none, 'noScans' = out-of-scans, 'master' = master prompt
+  const [modalType, setModalType] = useState<'noScans' | 'master' | null>(null);
 
   const creature = getCreatureById(id ?? '');
 
@@ -72,14 +76,7 @@ export default function CreatureDetail() {
       const success = consumeScan();
       if (!success) {
         playSfx('sfx_locked');
-        Alert.alert(
-          'No scans available',
-          'Play the Lab Quiz to earn more scans, or wait for your next free scan.',
-          [
-            { text: 'Play Quiz', onPress: () => router.push('/quiz') },
-            { text: 'OK' },
-          ],
-        );
+        setModalType('noScans');
         return;
       }
       setCreatureState(creature.id, 'silhouette');
@@ -106,18 +103,31 @@ export default function CreatureDetail() {
 
   function handleMaster() {
     if (!isClassified) return;
-    Alert.alert(
-      'Master this specimen',
-      'Play a quiz round featuring this creature to earn mastery.',
-      [
-        { text: 'Start Quiz', onPress: () => router.push('/quiz') },
-        { text: 'Later' },
-      ],
-    );
+    setModalType('master');
   }
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
+      {/* ── Modals ─────────────────────────────────────────────────── */}
+      <ConfirmModal
+        visible={modalType === 'noScans'}
+        title="NO SCANS LEFT"
+        message="Play the Lab Quiz to earn more scans, or wait for your next free scan."
+        primaryLabel="PLAY QUIZ"
+        onPrimary={() => { setModalType(null); router.push('/quiz'); }}
+        dismissLabel="LATER"
+        onDismiss={() => setModalType(null)}
+      />
+      <ConfirmModal
+        visible={modalType === 'master'}
+        title="MASTER THIS SPECIMEN"
+        message="Play a quiz round featuring this creature to earn mastery and unlock bonus facts."
+        primaryLabel="START QUIZ"
+        onPrimary={() => { setModalType(null); router.push('/quiz'); }}
+        dismissLabel="LATER"
+        onDismiss={() => setModalType(null)}
+      />
+
       {/* Back */}
       <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
         <Text style={styles.backLabel}>← BACK</Text>
@@ -142,23 +152,23 @@ export default function CreatureDetail() {
               style={[
                 styles.creatureHalo,
                 {
-                  width:  JAR_SIZE * 0.60,
-                  height: JAR_SIZE * 0.60,
-                  borderRadius: JAR_SIZE * 0.30,
+                  width:  JAR_SIZE * 0.68,
+                  height: JAR_SIZE * 0.68,
+                  borderRadius: JAR_SIZE * 0.34,
                 },
               ]}
             />
           )}
 
-          {/* Creature image */}
+          {/* Creature image — big and centred, the hero of the screen */}
           {(isClassified || isSilhouette) && creatureImg && (
             <Image
               source={creatureImg}
               style={[
                 styles.creatureInJar,
                 {
-                  width:   JAR_SIZE * 0.62,
-                  height:  JAR_SIZE * 0.62,
+                  width:   JAR_SIZE * 0.70,
+                  height:  JAR_SIZE * 0.70,
                   opacity: isSilhouette ? 0.25 : 1,
                 },
               ]}
@@ -276,9 +286,6 @@ export default function CreatureDetail() {
             <TouchableOpacity style={styles.actionBtn} onPress={handleMaster} activeOpacity={0.8}>
               <Image source={Assets.btnMaster} style={styles.actionBtnImg} resizeMode="contain" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8}>
-              <Image source={Assets.btnHearDrIcky} style={styles.actionBtnImg} resizeMode="contain" />
-            </TouchableOpacity>
             <TouchableOpacity
               style={styles.actionBtn}
               onPress={() => router.push('/(tabs)/recruit-file')}
@@ -326,6 +333,7 @@ const styles = StyleSheet.create({
     alignItems:     'center',
     justifyContent: 'center',
     position:       'relative',
+    overflow:       'hidden',   // clip any illustration bleed on Android
   },
   // Semi-transparent dark oval so creature image pops against jar art
   creatureHalo: {
@@ -543,9 +551,9 @@ const styles = StyleSheet.create({
   },
 
   // ── Action buttons ────────────────────────────────────────────────────────
-  actionRow: { flexDirection: 'row', width: '100%', gap: 10 },
+  actionRow: { flexDirection: 'row', width: '100%', gap: 12 },
   actionBtn:    { flex: 1, alignItems: 'center' },
-  actionBtnImg: { width: '100%', height: 72 },
+  actionBtnImg: { width: '100%', height: 84 },
 
   // ── Quiz nudge ────────────────────────────────────────────────────────────
   quizNudge:     { paddingVertical: 8 },

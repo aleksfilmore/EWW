@@ -92,10 +92,11 @@ export default function Home() {
           </TouchableOpacity>
         </View>
 
-        {/* ── HERO: Daily Specimen ────────────────────────── */}
+        {/* ── HERO: Daily Specimen / Last Classified ─────── */}
         <DailySpecimenCard
           lastClaimed={profile.daily_specimen_last_claimed}
           isPaid={profile.is_paid}
+          lastClassifiedId={profile.last_classified_creature_id ?? null}
         />
 
         {/* ── Daily Missions ──────────────────────────────── */}
