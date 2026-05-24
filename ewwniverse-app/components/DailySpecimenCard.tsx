@@ -7,8 +7,9 @@
  *   2. If nothing has been classified yet, fall back to today's Daily
  *      Specimen so the card is never empty.
  *
- * The daily-bonus 2× scan mechanic is independent and is handled by
- * `creature/[id].tsx` when classifying the daily creature.
+ * Classified state  → full-width 1:1 creature image (no jar wrapper).
+ * Mystery state     → jar illustration at explicit pixel dimensions so it
+ *                     cannot bleed outside its container on Android.
  */
 import React, { useMemo } from 'react';
 import {
@@ -27,8 +28,16 @@ import { getDailyCreature } from '@/utils/daily';
 import { getCreatureById } from '@/data/index';
 
 const { width: SCREEN_W } = Dimensions.get('window');
-// Large enough to be the focal point; capped so it doesn't dominate on tablets.
-const JAR_W = Math.min(SCREEN_W * 0.70, 260);
+
+// Full creature image occupies card inner width.
+// Outer scroll padding: 16 each side (32 total).
+// Card internal padding: Spacing.md (16) each side (32 total).
+// Available: SCREEN_W − 64.
+const IMG_SIZE = SCREEN_W - 64;
+
+// Mystery jar rendered at fixed pixel dimensions — NEVER absoluteFill.
+const JAR_W = Math.min(SCREEN_W * 0.52, 190);
+const JAR_H = Math.round(JAR_W * 1.15);
 
 interface Props {
   lastClaimed: string | null;
@@ -40,8 +49,7 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
   const today   = new Date().toISOString().slice(0, 10);
   const claimed = lastClaimed === today;
 
-  // If the user has scanned anything, show their latest find.
-  // Otherwise fall back to today's daily creature.
+  // Show last classified creature if one exists; otherwise fall back to today's daily.
   const lastClassifiedCreature = useMemo(() => {
     if (!lastClassifiedId) return null;
     return getCreatureById(lastClassifiedId) ?? null;
@@ -50,11 +58,10 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
   const dailyCreature = useMemo(() => getDailyCreature(), []);
 
   const isShowingLastClassified = !!lastClassifiedCreature;
-  const creature     = lastClassifiedCreature ?? dailyCreature;
-  const creatureImg  = CREATURE_IMAGES[creature.id];
+  const creature    = lastClassifiedCreature ?? dailyCreature;
+  const creatureImg = CREATURE_IMAGES[creature.id];
 
-  // Whether to render the full classified view (name + image + fact)
-  // vs the mystery "???" teaser.
+  // Whether to render the classified view (image + name + fact) or the mystery jar.
   const showClassified = isShowingLastClassified || claimed;
 
   return (
@@ -84,24 +91,40 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
         )}
       </View>
 
-      {/* ── Hero jar — the main attraction ─────────────────────────── */}
-      <View style={styles.jarHero}>
-        {/* Jar frame — clipped to container on Android */}
-        <Image
-          source={showClassified ? Assets.jarClassified : Assets.jarMystery}
-          style={StyleSheet.absoluteFill}
-          resizeMode="contain"
-        />
+      {/* ── Classified: full-size creature image ─────────────────── */}
+      {showClassified && (
+        <View style={styles.creatureHero}>
+          {creatureImg ? (
+            <>
+              <Image
+                source={creatureImg}
+                style={styles.creatureHeroImg}
+                resizeMode="contain"
+              />
+              {/* Classified stamp overlay */}
+              <Image
+                source={Assets.classifiedStamp}
+                style={styles.heroStamp}
+                resizeMode="contain"
+              />
+            </>
+          ) : (
+            <View style={styles.creatureHeroPlaceholder} />
+          )}
+        </View>
+      )}
 
-        {/* Creature image inside jar */}
-        {showClassified && creatureImg && (
+      {/* ── Mystery: jar at explicit pixel size (no absoluteFill) ─── */}
+      {!showClassified && (
+        <View style={styles.jarMysteryWrap}>
+          {/* Fixed pixel dimensions — cannot bleed outside on Android */}
           <Image
-            source={creatureImg}
-            style={styles.creatureInJar}
+            source={Assets.jarMystery}
+            style={{ width: JAR_W, height: JAR_H }}
             resizeMode="contain"
           />
-        )}
-      </View>
+        </View>
+      )}
 
       {/* ── Creature name ───────────────────────────────────────────── */}
       <Text style={styles.creatureName}>
@@ -207,20 +230,40 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
 
-  // ── Hero jar ──────────────────────────────────────────────────────────────
-  jarHero: {
-    width:    JAR_W,
-    height:   JAR_W * 1.15,
-    overflow: 'hidden',     // clip any bleed on Android
+  // ── Classified: full-size creature image ─────────────────────────────────
+  creatureHero: {
+    width:           IMG_SIZE,
+    height:          IMG_SIZE,
+    borderRadius:    Radius.lg,
+    overflow:        'hidden',
+    backgroundColor: Colors.bg.elevated,
+    borderWidth:     1,
+    borderColor:     `${Colors.eww.purple}30`,
+    alignItems:      'center',
+    justifyContent:  'center',
+  },
+  creatureHeroImg: {
+    width:  '100%',
+    height: '100%',
+  },
+  heroStamp: {
+    position: 'absolute',
+    bottom:   8,
+    right:    8,
+    width:    IMG_SIZE * 0.26,
+    height:   IMG_SIZE * 0.26,
+  },
+  creatureHeroPlaceholder: {
+    width:  '100%',
+    height: '100%',
+    backgroundColor: Colors.bg.elevated,
+  },
+
+  // ── Mystery jar ───────────────────────────────────────────────────────────
+  jarMysteryWrap: {
     alignItems:     'center',
     justifyContent: 'center',
-  },
-  creatureInJar: {
-    position:  'absolute',
-    width:     JAR_W * 0.65,
-    height:    JAR_W * 0.65,
-    top:       '18%',
-    alignSelf: 'center',
+    paddingVertical: 8,
   },
 
   // ── Text ─────────────────────────────────────────────────────────────────

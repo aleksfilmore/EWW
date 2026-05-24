@@ -1,43 +1,36 @@
 /**
  * AppHeader — branded top bar.
  *
- * Scans badge (left) | EWW-NIVERSE logo (centre) | Streak badge (right)
+ * Scans counter (left) | EWW-NIVERSE logo (centre) | Streak counter (right)
  *
- * Badge overlay is position:absolute so the text sits INSIDE the illustrated
- * frame, not below it. zIndex:2 guarantees it stays on top of the image.
+ * Badge frames are styled Views, not image illustrations, so there's
+ * zero risk of illustration bleed on Android.
  */
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { FontFamily } from '@/constants/design';
+import { Colors, FontFamily, Radius } from '@/constants/design';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 
 export function AppHeader() {
   const profile = useUserStore((s) => s.profile);
-  const scans  = profile?.scan_balance ?? 0;
-  const streak = profile?.streak_days  ?? 0;
+  const scans   = profile?.scan_balance ?? 0;
+  const streak  = profile?.streak_days  ?? 0;
 
   return (
     <View style={styles.wrapper}>
-      {/* Scans badge */}
-      <View style={styles.badge}>
-        <Image source={Assets.badgeScans} style={styles.badgeImg} resizeMode="contain" />
-        {/* Overlay is absolute so it floats ON the badge frame */}
-        <View style={styles.badgeOverlay}>
-          <Text style={styles.badgeValue}>{scans}</Text>
-          <Text style={styles.badgeLabel}>SCANS</Text>
-        </View>
+      {/* Scans counter */}
+      <View style={[styles.badge, styles.badgeScans]}>
+        <Text style={styles.badgeValue}>{scans}</Text>
+        <Text style={styles.badgeLabel}>SCANS</Text>
       </View>
 
       {/* Centre: illustrated logo */}
       <Image source={Assets.logoMain} style={styles.logo} resizeMode="contain" />
 
-      {/* Streak badge */}
-      <View style={styles.badge}>
-        <Image source={Assets.badgeStreak} style={styles.badgeImg} resizeMode="contain" />
-        <View style={styles.badgeOverlay}>
-          <Text style={styles.badgeValue}>{streak}</Text>
-          <Text style={styles.badgeLabel}>DAY STREAK</Text>
-        </View>
+      {/* Streak counter */}
+      <View style={[styles.badge, styles.badgeStreak]}>
+        <Text style={styles.badgeValue}>{streak}</Text>
+        <Text style={styles.badgeLabel}>DAY STREAK</Text>
       </View>
     </View>
   );
@@ -45,55 +38,49 @@ export function AppHeader() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flexDirection:  'row',
-    alignItems:     'center',
-    paddingHorizontal: 8,
-    paddingTop:     6,
-    paddingBottom:  4,
-    backgroundColor: 'transparent',
+    flexDirection:     'row',
+    alignItems:        'center',
+    paddingHorizontal: 12,
+    paddingTop:        8,
+    paddingBottom:     4,
+    backgroundColor:   'transparent',
   },
 
-  // Badge: fixed box so absoluteFill works correctly
   badge: {
-    width:    90,
-    height:   72,
-  },
-  badgeImg: {
-    position: 'absolute',
-    top:      0,
-    left:     0,
-    right:    0,
-    bottom:   0,
-  },
-  // Overlay is absolute so it renders ON TOP of the image frame
-  badgeOverlay: {
-    position:       'absolute',
-    top:            0,
-    left:           0,
-    right:          0,
-    bottom:         0,
+    width:          74,
+    height:         54,
+    borderRadius:   Radius.lg,
+    borderWidth:    1.5,
     alignItems:     'center',
     justifyContent: 'center',
-    zIndex:         2,
+    gap:            1,
   },
+  badgeScans: {
+    backgroundColor: `${Colors.eww.green}18`,
+    borderColor:     `${Colors.eww.green}55`,
+  },
+  badgeStreak: {
+    backgroundColor: `${Colors.eww.amber}18`,
+    borderColor:     `${Colors.eww.amber}55`,
+  },
+
   badgeValue: {
     fontFamily: FontFamily.boogaloo,
     fontSize:   22,
     color:      '#fff',
-    fontWeight: '800',
     lineHeight: 24,
   },
   badgeLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      10,
-    color:         'rgba(255,255,255,0.85)',
-    letterSpacing: 0.8,
-    lineHeight:    13,
+    fontSize:      9,
+    color:         'rgba(255,255,255,0.65)',
+    letterSpacing: 0.4,
+    lineHeight:    11,
+    textAlign:     'center',
   },
 
-  // Centre logo
   logo: {
     flex:   1,
-    height: 80,
+    height: 72,
   },
 });

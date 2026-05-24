@@ -28,9 +28,15 @@ import { playSfx, playMeterSfx } from '@/services/audio';
 import { ConfirmModal } from '@/components/ConfirmModal';
 
 const { width: SCREEN_W } = Dimensions.get('window');
-// Jar takes up 85% of screen width — large enough for the creature to be
-// the clear focal point, capped at 340 so it doesn't look massive on tablets.
-const JAR_SIZE = Math.min(SCREEN_W * 0.85, 340);
+
+// Full-width hero image for classified/silhouette state.
+// Content has paddingHorizontal: 16 on each side → available width = SCREEN_W − 32.
+const HERO_SIZE = SCREEN_W - 32;
+
+// Locked-state mystery jar rendered at fixed pixel dimensions so it cannot
+// overflow its container on Android (no absoluteFill).
+const LOCKED_JAR_H = Math.min(SCREEN_W * 0.65, 260);
+const LOCKED_JAR_W = Math.round(LOCKED_JAR_H * 0.91);
 
 export default function CreatureDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -137,66 +143,47 @@ export default function CreatureDetail() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* ── Large jar + creature ─────────────────────────────────── */}
-        <View style={[styles.jarWrap, { width: JAR_SIZE, height: JAR_SIZE * 1.1 }]}>
-          {/* Jar frame — fills container */}
-          <Image
-            source={Assets.jarLarge}
-            style={StyleSheet.absoluteFill}
-            resizeMode="contain"
-          />
+        {/* ── Hero area ────────────────────────────────────────────── */}
 
-          {/* Dark halo behind creature so it pops against the jar art */}
-          {(isClassified || isSilhouette) && (
-            <View
-              style={[
-                styles.creatureHalo,
-                {
-                  width:  JAR_SIZE * 0.68,
-                  height: JAR_SIZE * 0.68,
-                  borderRadius: JAR_SIZE * 0.34,
-                },
-              ]}
-            />
-          )}
+        {/* Classified / silhouette: full-width 1:1 creature image */}
+        {(isClassified || isSilhouette) && (
+          <View style={[styles.heroWrap, isSilhouette && styles.heroWrapSilhouette]}>
+            {creatureImg && (
+              <Image
+                source={creatureImg}
+                style={[styles.heroImage, { opacity: isSilhouette ? 0.18 : 1 }]}
+                resizeMode="contain"
+              />
+            )}
+            {/* CLASSIFIED stamp */}
+            {isClassified && (
+              <Image
+                source={Assets.classifiedStamp}
+                style={styles.heroStamp}
+                resizeMode="contain"
+              />
+            )}
+            {/* Mastered star */}
+            {isMastered && (
+              <View style={styles.masteredBadge}>
+                <Text style={styles.masteredStar}>★</Text>
+              </View>
+            )}
+          </View>
+        )}
 
-          {/* Creature image — big and centred, the hero of the screen */}
-          {(isClassified || isSilhouette) && creatureImg && (
+        {/* Locked: mystery jar at fixed pixel dimensions (no absoluteFill) */}
+        {!isClassified && !isSilhouette && (
+          <View style={styles.lockedJarWrap}>
             <Image
-              source={creatureImg}
-              style={[
-                styles.creatureInJar,
-                {
-                  width:   JAR_SIZE * 0.70,
-                  height:  JAR_SIZE * 0.70,
-                  opacity: isSilhouette ? 0.25 : 1,
-                },
-              ]}
+              source={Assets.jarLarge}
+              style={{ width: LOCKED_JAR_W, height: LOCKED_JAR_H }}
               resizeMode="contain"
             />
-          )}
-
-          {/* Locked placeholder */}
-          {!isClassified && !isSilhouette && (
+            {/* ? overlaid in centre of jar */}
             <Text style={styles.jarLockText}>?</Text>
-          )}
-
-          {/* CLASSIFIED stamp */}
-          {isClassified && (
-            <Image
-              source={Assets.classifiedStamp}
-              style={styles.stamp}
-              resizeMode="contain"
-            />
-          )}
-
-          {/* Mastered star */}
-          {isMastered && (
-            <View style={styles.masteredBadge}>
-              <Text style={styles.masteredStar}>★</Text>
-            </View>
-          )}
-        </View>
+          </View>
+        )}
 
         {/* ── Post-classify celebration ───────────────────────────── */}
         {justClassified && (
@@ -328,24 +315,54 @@ const styles = StyleSheet.create({
     gap:               16,
   },
 
-  // ── Jar ────────────────────────────────────────────────────────────────────
-  jarWrap: {
+  // ── Hero (classified / silhouette) ─────────────────────────────────────────
+  // Full-width square — creature fills this. overflow:hidden clips the image
+  // (safe here because the image has explicit 100% dimensions, not absoluteFill).
+  heroWrap: {
+    width:           HERO_SIZE,
+    height:          HERO_SIZE,
+    borderRadius:    Radius.xl,
+    overflow:        'hidden',
+    backgroundColor: Colors.bg.elevated,
+    borderWidth:     1.5,
+    borderColor:     `${Colors.eww.green}44`,
+    alignItems:      'center',
+    justifyContent:  'center',
+  },
+  heroWrapSilhouette: {
+    borderColor: `${Colors.eww.purple}30`,
+  },
+  heroImage: {
+    width:  '100%',
+    height: '100%',
+  },
+  heroStamp: {
+    position: 'absolute',
+    bottom:   12,
+    right:    12,
+    width:    HERO_SIZE * 0.26,
+    height:   HERO_SIZE * 0.26,
+    opacity:  0.92,
+  },
+  masteredBadge: {
+    position:        'absolute',
+    top:             10,
+    right:           10,
+    backgroundColor: Colors.eww.gold,
+    borderRadius:    16,
+    width:           34,
+    height:          34,
+    alignItems:      'center',
+    justifyContent:  'center',
+  },
+  masteredStar: { fontSize: 19, color: '#000', fontWeight: '900' },
+
+  // ── Locked jar ─────────────────────────────────────────────────────────────
+  // The Image has explicit pixel dimensions (LOCKED_JAR_W × LOCKED_JAR_H) so
+  // the View sizes to the image. The ? text is absolute, centred within it.
+  lockedJarWrap: {
     alignItems:     'center',
     justifyContent: 'center',
-    position:       'relative',
-    overflow:       'hidden',   // clip any illustration bleed on Android
-  },
-  // Semi-transparent dark oval so creature image pops against jar art
-  creatureHalo: {
-    position:        'absolute',
-    top:             '14%',
-    alignSelf:       'center',
-    backgroundColor: 'rgba(10, 5, 25, 0.50)',
-  },
-  creatureInJar: {
-    position:  'absolute',
-    top:       '18%',
-    alignSelf: 'center',
   },
   jarLockText: {
     position:      'absolute',
@@ -354,26 +371,6 @@ const styles = StyleSheet.create({
     color:         Colors.text.disabled,
     letterSpacing: 4,
   },
-  stamp: {
-    position: 'absolute',
-    bottom:   '6%',
-    right:    '2%',
-    width:    JAR_SIZE * 0.40,
-    height:   JAR_SIZE * 0.40,
-    opacity:  0.88,
-  },
-  masteredBadge: {
-    position:        'absolute',
-    top:             8,
-    right:           8,
-    backgroundColor: Colors.eww.gold,
-    borderRadius:    16,
-    width:           32,
-    height:          32,
-    alignItems:      'center',
-    justifyContent:  'center',
-  },
-  masteredStar: { fontSize: 18, color: '#000', fontWeight: '900' },
 
   // ── Post-classify banner ────────────────────────────────────────────────────
   classifiedBanner: {
