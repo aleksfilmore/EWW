@@ -113,6 +113,33 @@ const EVENT_POOLS: Record<DrIckyEvent, string[]> = {
   ],
 };
 
+// ── Special specimen video map ────────────────────────────────────────────────
+// One video per specimen ID — plays on unlock AND when viewing past unlocks.
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const SPECIAL_SPECIMEN_SOURCES: Record<string, any> = {
+  'special-hairworm-puppet':         uri('hairworm.mp4'),
+  'special-jewel-wasp-zombie-roach': uri('jewel-wasp.mp4'),
+  'special-sacculina-crab-hijacker': uri('sacculina-crab.mp4'),
+  'special-broodsac-snail-zombie':   uri('broodsac snail zombie.mp4'),
+  'special-guinea-worm-exit':        uri('guinea-worm.mp4'),
+  'special-masiakasaurus':           uri('masiakasaurus.mp4'),
+  'special-pegomastax':              uri('pegomastax.mp4'),
+  'special-kosmoceratops':           uri('kosmoceratops.mp4'),
+  'special-mononykus':               uri('mononykus.mp4'),
+  'special-halszkaraptor':           uri('halszkaraptor.mp4'),
+  'special-brinicle-death-finger':   uri('brinicle.mp4'),
+  'special-snottite-cave':           uri('slimy-snottites.mp4'),
+  'special-door-to-hell-crater':     uri('road-to-hell.mp4'),
+  'special-underwater-brine-lake':   uri('brine-pools.mp4'),
+  'special-movile-cave':             uri('movile-cave.mp4'),
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function drIckySourceForSpecimen(id: string): any {
+  return SPECIAL_SPECIMEN_SOURCES[id] ?? DR_ICKY_SOURCES['special_acquired_short'];
+}
+
 // ── Helper: pick a random source for an event ─────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

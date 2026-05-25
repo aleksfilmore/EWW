@@ -3,7 +3,7 @@
  * Ephemeral (not persisted to Firestore yet — will be wired when Firebase is set up).
  */
 import { create } from 'zustand';
-import { drIckySourceForEvent, DrIckyEvent } from '@/constants/drIckyVideos';
+import { drIckySourceForEvent, drIckySourceForSpecimen, DrIckyEvent } from '@/constants/drIckyVideos';
 
 interface GameState {
   // Quiz session
@@ -35,6 +35,8 @@ interface GameState {
   setDailySpecimen: (id: string) => void;
   /** Show Dr. Icky for the given event. Respects cooldown for non-critical events. */
   triggerDrIcky: (event: DrIckyEvent, force?: boolean) => void;
+  /** Play the specimen-specific Dr. Icky video (always forced). */
+  triggerDrIckyForSpecimen: (specimenId: string) => void;
   dismissDrIcky: () => void;
 }
 
@@ -74,9 +76,14 @@ export const useGameStore = create<GameState>((set, get) => ({
       lastContaminationAt:    Date.now(),
       lastUnlockedSpecimenId: specimenId,
     });
-    // Dr. Icky appears after the slime surge overlay clears (~2.3s)
+    // Dr. Icky appears after the slime surge overlay clears (~2.3s).
+    // Play the specimen-specific video if we have one; fallback to generic slime_surge.
     setTimeout(() => {
-      get().triggerDrIcky('slime_surge', true);
+      const now    = Date.now();
+      const source = specimenId
+        ? drIckySourceForSpecimen(specimenId)
+        : drIckySourceForEvent('slime_surge');
+      set({ drIckySource: source, drIckyLastShownAt: now });
     }, 2_400);
   },
 
@@ -96,6 +103,11 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (event === 'classify' && Math.random() > 0.60) return;
     const source = drIckySourceForEvent(event);
     set({ drIckySource: source, drIckyLastShownAt: now });
+  },
+
+  triggerDrIckyForSpecimen: (specimenId) => {
+    const source = drIckySourceForSpecimen(specimenId);
+    set({ drIckySource: source, drIckyLastShownAt: Date.now() });
   },
 
   dismissDrIcky: () => {

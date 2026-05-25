@@ -200,11 +200,11 @@ const styles = StyleSheet.create({
     height: 36,
   },
   bookTabLabel: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 13,
-    color: Colors.text.secondary,
-    letterSpacing: 0.2,
-    textAlign: 'center',
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      15,
+    color:         Colors.text.secondary,
+    letterSpacing: 1,
+    textAlign:     'center',
   },
   bookTabLabelActive: {
     color: Colors.text.lime,

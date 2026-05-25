@@ -31,6 +31,7 @@ interface UserState {
   unlockSpecialSpecimen: (id: string, source: string) => void;
   getOwnedSpecialIds: () => string[];
   incrementDailyQuizAnswer: () => void;
+  clearLastUnlockedSpecimen: () => void;
 }
 
 function todayIso(): string {
@@ -287,5 +288,13 @@ export const useUserStore = create<UserState>((set, get) => ({
         },
       };
     });
+  },
+
+  clearLastUnlockedSpecimen: () => {
+    set((s) => ({
+      profile: s.profile
+        ? { ...s.profile, last_unlocked_specimen_id: null }
+        : s.profile,
+    }));
   },
 }));

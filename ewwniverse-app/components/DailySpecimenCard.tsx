@@ -29,6 +29,7 @@ import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { getDailyCreature } from '@/utils/daily';
 import { getCreatureById } from '@/data/index';
 import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
+import { useUserStore } from '@/store/userStore';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 
@@ -55,6 +56,7 @@ export function DailySpecimenCard({
   lastClassifiedId,
   lastUnlockedSpecimenId,
 }: Props) {
+  const clearLastUnlockedSpecimen = useUserStore((s) => s.clearLastUnlockedSpecimen);
   const today   = new Date().toISOString().slice(0, 10);
   const claimed = lastClaimed === today;
 
@@ -96,7 +98,8 @@ export function DailySpecimenCard({
   // CTA destination
   const handlePress = () => {
     if (isShowingSpecialSpecimen) {
-      // Special specimens live on the Rewards screen
+      // Clear the pinned special specimen so regular flow resumes after user visits Rewards
+      clearLastUnlockedSpecimen();
       router.push('/(tabs)/recruit-file');
     } else {
       router.push(`/creature/${displayItem.id}`);

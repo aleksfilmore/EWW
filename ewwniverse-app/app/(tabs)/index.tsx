@@ -21,7 +21,6 @@ import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
-import { EwwMeterArc } from '@/components/EwwMeterArc';
 import { DailySpecimenCard } from '@/components/DailySpecimenCard';
 
 export default function Home() {
@@ -31,40 +30,43 @@ export default function Home() {
 
   const stageLabel = STAGE_LABELS[profile.eww_stage];
 
-  // EWW score derived from progress
-  const totalCreatures   = 75 + 80 + 79;
-  const rawScore         = Math.min(
+  // EWW score derived from progress (weighted: 60% classified, 40% mastered)
+  const totalCreatures = 75 + 80 + 79;
+  const rawScore       = Math.min(
     100,
     Math.round(
       (profile.classified_count / Math.max(totalCreatures, 1)) * 60 +
       (profile.mastered_count   / Math.max(totalCreatures, 1)) * 40,
     ),
   );
-  const ewwMeterValue: 60 | 80 | 100 =
-    rawScore >= 80 ? 100 : rawScore >= 40 ? 80 : 60;
+  // Map to the 3 illustration tiers
+  const ewwMeterImg =
+    rawScore >= 80 ? Assets.ewwMeter100 :
+    rawScore >= 40 ? Assets.ewwMeter80  :
+    Assets.ewwMeter60;
 
   // Daily missions — tracked per-day via dedicated profile counters
   const missions = [
     {
       icon:     Assets.missionScan,
-      label:    'Classify 3 specimens today',
+      label:    'CLASSIFY 3 SPECIMENS',
       current:  Math.min(profile.daily_classified_today ?? 0, 3),
       total:    3,
-      reward:   '+2 scans',
+      reward:   '+2 SCANS',
     },
     {
       icon:     Assets.missionWarning,
-      label:    'Answer 5 quiz questions',
+      label:    'ANSWER 5 QUIZ QUESTIONS',
       current:  Math.min(profile.daily_quiz_answers_today ?? 0, 5),
       total:    5,
-      reward:   '+1 scan',
+      reward:   '+1 SCAN',
     },
     {
       icon:     Assets.missionRare,
-      label:    'Find a rare specimen',
+      label:    'FIND A RARE SPECIMEN',
       current:  profile.daily_rare_found ? 1 : 0,
       total:    1,
-      reward:   '+3 scans',
+      reward:   '+3 SCANS',
     },
   ];
 
@@ -152,10 +154,14 @@ export default function Home() {
         {/* ── EWW-score gauge ─────────────────────────────── */}
         <View style={styles.ewwCard}>
           <Text style={styles.ewwTitle}>YOUR EWW SCORE</Text>
+          <Image
+            source={ewwMeterImg}
+            style={styles.ewwMeterImg}
+            resizeMode="contain"
+          />
           <Text style={styles.ewwSub}>
             Classify more specimens to raise your score
           </Text>
-          <EwwMeterArc value={ewwMeterValue} size={160} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -292,9 +298,9 @@ const styles = StyleSheet.create({
   missionBody:    { flex: 1, gap: 3 },
   missionLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      15,
+    fontSize:      17,
     color:         Colors.text.primary,
-    letterSpacing: 0.2,
+    letterSpacing: 0.8,
   },
   missionLabelDone: { color: Colors.text.muted },
   missionTrack: {
@@ -398,9 +404,10 @@ const styles = StyleSheet.create({
     borderRadius:    Radius.lg,
     borderWidth:     1.5,
     borderColor:     `${Colors.eww.green}40`,
-    padding:         16,
+    paddingVertical:   16,
+    paddingHorizontal: 12,
     alignItems:      'center',
-    gap:             4,
+    gap:             8,
   },
   ewwTitle: {
     fontFamily:    FontFamily.creepster,
@@ -408,11 +415,14 @@ const styles = StyleSheet.create({
     color:         Colors.text.lime,
     letterSpacing: 1.5,
   },
+  ewwMeterImg: {
+    width:  '100%',
+    height: 180,
+  },
   ewwSub: {
-    fontFamily:  FontFamily.boogaloo,
-    fontSize:    15,
-    color:       Colors.text.secondary,
-    textAlign:   'center',
-    marginBottom: 6,
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   15,
+    color:      Colors.text.secondary,
+    textAlign:  'center',
   },
 });

@@ -22,6 +22,7 @@ import { router } from 'expo-router';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
+import { useGameStore } from '@/store/gameStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
 import { SPECIAL_SPECIMENS, SpecialSpecimen } from '@/data/special-specimens';
@@ -44,10 +45,16 @@ const STAGE_ICONS = [
 ] as const;
 
 export default function Rewards() {
-  const profile = useUserStore((s) => s.profile);
+  const profile                 = useUserStore((s) => s.profile);
+  const triggerDrIckyForSpecimen = useGameStore((s) => s.triggerDrIckyForSpecimen);
   const [selectedSpecimen, setSelectedSpecimen] = useState<SpecialSpecimen | null>(null);
 
   if (!profile) return null;
+
+  const handleSelectSpecimen = (s: SpecialSpecimen) => {
+    setSelectedSpecimen(s);
+    triggerDrIckyForSpecimen(s.id);
+  };
 
   const currentStage = profile.eww_stage;
 
@@ -158,7 +165,7 @@ export default function Rewards() {
         {/* ── Special Specimens ────────────────────────────────── */}
         <SpecialSpecimensSection
           ownedIds={Object.keys(profile.special_specimens)}
-          onSelectSpecimen={setSelectedSpecimen}
+          onSelectSpecimen={handleSelectSpecimen}
         />
 
         {/* ── Streak jar ───────────────────────────────────────── */}
@@ -380,7 +387,7 @@ function SpecialSpecimensSection({
                         position:     'absolute',
                         width:        SPECIAL_CREATURE_W,
                         height:       SPECIAL_CREATURE_H,
-                        top:          Math.round(SPECIAL_JAR_H * 0.18),
+                        top:          Math.round(SPECIAL_JAR_H * 0.30),
                         borderRadius: 4,
                       }}
                       resizeMode="cover"

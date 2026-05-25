@@ -51,6 +51,18 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+/**
+ * Trim a gross fact to a kid-friendly length.
+ * Keeps the first 2 sentences, then caps at 140 chars.
+ */
+function kidFact(text: string): string {
+  // Split on sentence boundaries (. ! ?)
+  const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+  const short = sentences.slice(0, 2).join(' ').trim();
+  if (short.length <= 140) return short;
+  return short.slice(0, 137) + '…';
+}
+
 function buildQuestions(creatures: Creature[], count: number): Question[] {
   const pool = shuffle(creatures);
   const questions: Question[] = [];
@@ -58,7 +70,7 @@ function buildQuestions(creatures: Creature[], count: number): Question[] {
     const correct = pool[i];
     const distractors = shuffle(pool.filter((c) => c.id !== correct.id)).slice(0, 3);
     const options = shuffle([correct, ...distractors]);
-    questions.push({ fact: correct.gross_fact, correctId: correct.id, options });
+    questions.push({ fact: kidFact(correct.gross_fact), correctId: correct.id, options });
   }
   return questions;
 }
@@ -306,7 +318,7 @@ export default function QuizScreen() {
                       source={creatureImg}
                       style={[
                         styles.optionCreatureImg,
-                        { width: OPTION_JAR * 0.52, height: OPTION_JAR * 0.52 },
+                        { width: OPTION_JAR * 0.46, height: OPTION_JAR * 0.46 },
                         !revealCreature && styles.silhouette,
                       ]}
                       resizeMode="contain"
@@ -472,7 +484,7 @@ const styles = StyleSheet.create({
   },
   optionCreatureImg: {
     position:  'absolute',
-    top:       '16%',
+    top:       '28%',
     alignSelf: 'center',
   },
   // Silhouette: visible shape with reduced opacity only — no tintColor
@@ -484,10 +496,10 @@ const styles = StyleSheet.create({
   },
   optionName: {
     fontFamily:  FontFamily.boogaloo,
-    fontSize:    14,
+    fontSize:    17,
     color:       Colors.text.secondary,
     textAlign:   'center',
-    lineHeight:  19,
+    lineHeight:  21,
     letterSpacing: 0.2,
   },
   optionNameCorrect: { color: Colors.eww.green },

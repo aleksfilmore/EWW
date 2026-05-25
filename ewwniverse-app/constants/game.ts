@@ -41,19 +41,19 @@ export const DAILY_SPECIMEN_SCAN_MULTIPLIER = 2; // 2x scans if classified withi
 export const BOOKS = [
   {
     id: 'creepy-creatures' as const,
-    label: 'Creepy Creatures',
+    label: 'CREATURES',
     tier: 'free' as const,
     count: 75,
   },
   {
     id: 'creepy-dinosaurs' as const,
-    label: 'Creepy Dinosaurs',
+    label: 'DINOSAURS',
     tier: 'paid' as const,
     count: 75,
   },
   {
     id: 'creepy-earth' as const,
-    label: 'Creepy Earth',
+    label: 'EARTH',
     tier: 'paid' as const,
     count: 75,
   },

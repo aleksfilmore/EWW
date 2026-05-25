@@ -79,4 +79,9 @@ export const Assets = {
   drIckyJar:         require('../assets/dr-icky-jar.png'),
   drIckyCelebrating: require('../assets/dr-icky-celebrating.png'),
   drIckyWarning:     require('../assets/dr-icky-warning.png'),
+
+  // ── EWW Meter illustrations (60 / 80 / 100%) ─────────────────
+  ewwMeter60:  require('../assets/eww-meter-60.png'),
+  ewwMeter80:  require('../assets/eww-meter-80.png'),
+  ewwMeter100: require('../assets/eww-meter-100.png'),
 } as const;
