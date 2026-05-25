@@ -17,10 +17,11 @@
  */
 
 const BUCKET = 'ewwniverse-dev.firebasestorage.app';
-const BASE    = `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/o/dr-icky%2F`;
+// Videos uploaded to bucket root (no subfolder)
+const BASE    = `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/o/`;
 
 function uri(filename: string): { uri: string } {
-  return { uri: `${BASE}${filename}?alt=media` };
+  return { uri: `${BASE}${encodeURIComponent(filename)}?alt=media` };
 }
 
 // ── Raw source map (Firebase Storage URIs) ────────────────────────────────────

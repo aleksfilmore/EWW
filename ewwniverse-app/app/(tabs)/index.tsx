@@ -238,17 +238,17 @@ const styles = StyleSheet.create({
     alignItems:     'center',
   },
   stageBadge: {
-    backgroundColor: `${Colors.eww.purple}22`,
+    backgroundColor: `${Colors.eww.green}18`,
     borderRadius:    Radius.full,
     borderWidth:     1,
-    borderColor:     Colors.border.DEFAULT,
+    borderColor:     `${Colors.eww.green}55`,
     paddingHorizontal: 12,
     paddingVertical:   6,
   },
   stageText: {
     fontFamily:    FontFamily.boogaloo,
     fontSize:      12,
-    color:         Colors.text.purple,
+    color:         Colors.text.lime,
     letterSpacing: 1,
   },
   codenameTag: {
@@ -394,10 +394,10 @@ const styles = StyleSheet.create({
 
   // ── EWW gauge ─────────────────────────────────────────────────────────────
   ewwCard: {
-    backgroundColor: Colors.bg.card,
+    backgroundColor: `${Colors.eww.green}0A`,
     borderRadius:    Radius.lg,
     borderWidth:     1.5,
-    borderColor:     Colors.border.subtle,
+    borderColor:     `${Colors.eww.green}40`,
     padding:         16,
     alignItems:      'center',
     gap:             4,

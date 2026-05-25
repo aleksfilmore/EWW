@@ -73,4 +73,10 @@ export const Assets = {
   tabHome:        require('../assets/tab-home.png'),
   tabExplore:     require('../assets/tab-explore.png'),
   tabRewards:     require('../assets/tab-rewards.png'),
+
+  // ── Dr. Icky illustrations ────────────────────────────────────
+  drIckyPortrait:    require('../assets/dr-icky-portrait.png'),
+  drIckyJar:         require('../assets/dr-icky-jar.png'),
+  drIckyCelebrating: require('../assets/dr-icky-celebrating.png'),
+  drIckyWarning:     require('../assets/dr-icky-warning.png'),
 } as const;

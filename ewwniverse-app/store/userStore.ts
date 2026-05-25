@@ -128,7 +128,8 @@ export const useUserStore = create<UserState>((set, get) => ({
           mastered_count,
           ...(isNowClassified ? {
             last_classified_creature_id: id,
-            last_unlocked_specimen_id: null,
+            // last_unlocked_specimen_id is NOT cleared here — the Slime Surge
+            // specimen stays pinned on the home card until the user visits Rewards.
           } : {}),
           // Increment daily counters only on fresh classification
           ...(isNewClassification ? {

@@ -58,13 +58,11 @@ export function DailySpecimenCard({
   const today   = new Date().toISOString().slice(0, 10);
   const claimed = lastClaimed === today;
 
-  // Priority 1: last classified creature (most recent scan)
   const lastClassifiedCreature = useMemo(() => {
     if (!lastClassifiedId) return null;
     return getCreatureById(lastClassifiedId) ?? null;
   }, [lastClassifiedId]);
 
-  // Priority 2: last unlocked special specimen (contamination event)
   const lastUnlockedSpecimen = useMemo(() => {
     if (!lastUnlockedSpecimenId) return null;
     return SPECIAL_SPECIMENS.find((s) => s.id === lastUnlockedSpecimenId) ?? null;
@@ -72,12 +70,14 @@ export function DailySpecimenCard({
 
   const dailyCreature = useMemo(() => getDailyCreature(), []);
 
-  // Resolve display state
-  const isShowingLastClassified = !!lastClassifiedCreature;
-  const isShowingSpecialSpecimen = !isShowingLastClassified && !!lastUnlockedSpecimen;
+  // Priority 1: special specimen from Slime Surge (most exciting — show it first)
+  // Priority 2: last classified creature
+  // Priority 3: today's mystery daily specimen
+  const isShowingSpecialSpecimen = !!lastUnlockedSpecimen;
+  const isShowingLastClassified  = !isShowingSpecialSpecimen && !!lastClassifiedCreature;
 
-  // The creature or specimen to display
-  const displayItem = lastClassifiedCreature ?? lastUnlockedSpecimen ?? dailyCreature;
+  // The creature or specimen to display (matches priority above)
+  const displayItem = lastUnlockedSpecimen ?? lastClassifiedCreature ?? dailyCreature;
   const creatureImg = CREATURE_IMAGES[displayItem.id];
 
   // Classified view: show full creature image with stamp
@@ -199,7 +199,12 @@ export function DailySpecimenCard({
       )}
 
       {/* ── Creature name ───────────────────────────────────────────── */}
-      <Text style={[styles.creatureName, isShowingSpecialSpecimen && styles.creatureNameSpecial]}>
+      <Text
+        style={[styles.creatureName, isShowingSpecialSpecimen && styles.creatureNameSpecial]}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.72}
+      >
         {showClassified ? displayItem.title.toUpperCase() : '???'}
       </Text>
 
@@ -400,6 +405,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textAlign:     'center',
     lineHeight:    28,
+    width:         '100%',
   },
   creatureNameSpecial: {
     color: Colors.text.lime,
@@ -429,7 +435,7 @@ const styles = StyleSheet.create({
     alignItems:      'center',
   },
   ctaClassified: {
-    backgroundColor: Colors.bg.elevated,
+    backgroundColor: Colors.eww.green,
   },
   ctaSpecial: {
     backgroundColor: Colors.eww.green,
@@ -441,7 +447,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
   },
   ctaTextClassified: {
-    color: Colors.text.secondary,
+    color: '#000',
   },
   ctaTextSpecial: {
     color: '#000',

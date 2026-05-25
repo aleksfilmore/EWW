@@ -30,8 +30,9 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
   const creatureImg  = CREATURE_IMAGES[creature.id];
 
   // Creature clip area: oval to match jar body, centered in jar
-  // Jar body occupies roughly the lower 68% of the card height
-  const clipSize  = Math.round(size * 0.52);
+  // Lid is ~20% of height; body center is around 52% from top.
+  // clipSize = 48% of width; top offset places it inside the body.
+  const clipSize  = Math.round(size * 0.48);
 
   return (
     <TouchableOpacity
@@ -55,7 +56,7 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
               width:        clipSize,
               height:       clipSize,
               borderRadius: clipSize / 2,
-              top:          Math.round(size * 0.14),
+              top:          Math.round(size * 0.22),
             },
           ]}
         >
