@@ -23,7 +23,7 @@ interface UserState {
   refreshScanIfDue: () => void;
   incrementStreak: () => void;
   resetStreak: () => void;
-  triggerContamination: () => void;
+  triggerContamination: (specimenId?: string | null) => void;
   setPaid: (paid: boolean) => void;
   updateStage: () => void;
   claimDailySpecimen: () => void;
@@ -47,6 +47,7 @@ function makeDefaultProfile(uid: string): UserProfile {
     fastest_quiz_seconds: null,
     daily_specimen_last_claimed: null,
     last_classified_creature_id: null,
+    last_unlocked_specimen_id: null,
     special_specimens: {},
     created_at: Date.now(),
   };
@@ -89,7 +90,11 @@ export const useUserStore = create<UserState>((set, get) => ({
             ...s.profile,
             classified_count,
             mastered_count,
-            ...(isNowClassified ? { last_classified_creature_id: id } : {}),
+            // Every scan clears the pending special specimen from the home card
+            ...(isNowClassified ? {
+              last_classified_creature_id: id,
+              last_unlocked_specimen_id: null,
+            } : {}),
           }
         : s.profile,
     }));
@@ -162,10 +167,14 @@ export const useUserStore = create<UserState>((set, get) => ({
         : s.profile,
     })),
 
-  triggerContamination: () =>
+  triggerContamination: (specimenId?: string | null) =>
     set((s) => ({
       profile: s.profile
-        ? { ...s.profile, contamination_count: s.profile.contamination_count + 1 }
+        ? {
+            ...s.profile,
+            contamination_count:    s.profile.contamination_count + 1,
+            last_unlocked_specimen_id: specimenId ?? s.profile.last_unlocked_specimen_id,
+          }
         : s.profile,
     })),
 

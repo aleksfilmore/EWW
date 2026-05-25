@@ -39,3 +39,9 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Original images before compression (backup only — never commit)
+assets/creatures/_originals/
+
+# Play Store key — never commit secrets
+play-store-key.json

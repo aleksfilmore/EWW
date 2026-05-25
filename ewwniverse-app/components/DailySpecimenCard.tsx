@@ -2,12 +2,14 @@
  * DailySpecimenCard — home screen hero card.
  *
  * Priority logic:
- *   1. If the user has classified at least one creature, show their LAST
- *      classified specimen as the featured card (it updates on every scan).
- *   2. If nothing has been classified yet, fall back to today's Daily
- *      Specimen so the card is never empty.
+ *   1. If the user has classified a creature since opening the app, show that
+ *      creature (lastClassifiedId). Clears any pending special specimen.
+ *   2. If a special specimen was unlocked via contamination event and no scan
+ *      has happened since, show that specimen with a SLIME SURGE badge.
+ *   3. Fall back to today's Daily Specimen (mystery jar) so the card is never empty.
  *
  * Classified state  → full-width 1:1 creature image (no jar wrapper).
+ * Special specimen  → full-width 1:1 specimen image with green contamination styling.
  * Mystery state     → jar illustration at explicit pixel dimensions so it
  *                     cannot bleed outside its container on Android.
  */
@@ -26,6 +28,7 @@ import { Assets } from '@/constants/assets';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { getDailyCreature } from '@/utils/daily';
 import { getCreatureById } from '@/data/index';
+import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 
@@ -43,42 +46,96 @@ interface Props {
   lastClaimed: string | null;
   isPaid: boolean;
   lastClassifiedId: string | null;
+  lastUnlockedSpecimenId: string | null;
 }
 
-export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Props) {
+export function DailySpecimenCard({
+  lastClaimed,
+  isPaid,
+  lastClassifiedId,
+  lastUnlockedSpecimenId,
+}: Props) {
   const today   = new Date().toISOString().slice(0, 10);
   const claimed = lastClaimed === today;
 
-  // Show last classified creature if one exists; otherwise fall back to today's daily.
+  // Priority 1: last classified creature (most recent scan)
   const lastClassifiedCreature = useMemo(() => {
     if (!lastClassifiedId) return null;
     return getCreatureById(lastClassifiedId) ?? null;
   }, [lastClassifiedId]);
 
+  // Priority 2: last unlocked special specimen (contamination event)
+  const lastUnlockedSpecimen = useMemo(() => {
+    if (!lastUnlockedSpecimenId) return null;
+    return SPECIAL_SPECIMENS.find((s) => s.id === lastUnlockedSpecimenId) ?? null;
+  }, [lastUnlockedSpecimenId]);
+
   const dailyCreature = useMemo(() => getDailyCreature(), []);
 
+  // Resolve display state
   const isShowingLastClassified = !!lastClassifiedCreature;
-  const creature    = lastClassifiedCreature ?? dailyCreature;
-  const creatureImg = CREATURE_IMAGES[creature.id];
+  const isShowingSpecialSpecimen = !isShowingLastClassified && !!lastUnlockedSpecimen;
 
-  // Whether to render the classified view (image + name + fact) or the mystery jar.
-  const showClassified = isShowingLastClassified || claimed;
+  // The creature or specimen to display
+  const displayItem = lastClassifiedCreature ?? lastUnlockedSpecimen ?? dailyCreature;
+  const creatureImg = CREATURE_IMAGES[displayItem.id];
+
+  // Classified view: show full creature image with stamp
+  const showClassified = isShowingLastClassified || isShowingSpecialSpecimen || claimed;
+
+  // Label and badge text
+  const labelText = isShowingSpecialSpecimen
+    ? 'SLIME SURGE SPECIMEN'
+    : isShowingLastClassified
+    ? 'LAST SPECIMEN CLASSIFIED'
+    : "TODAY'S GROSS CHALLENGE";
+
+  const labelIsGreen = isShowingSpecialSpecimen;
+  const labelIsClassified = isShowingLastClassified;
+
+  // CTA destination
+  const handlePress = () => {
+    if (isShowingSpecialSpecimen) {
+      // Special specimens live on the Rewards screen
+      router.push('/(tabs)/recruit-file');
+    } else {
+      router.push(`/creature/${displayItem.id}`);
+    }
+  };
+
+  const ctaText = isShowingSpecialSpecimen
+    ? 'VIEW IN REWARDS  ›'
+    : showClassified
+    ? 'VIEW SPECIMEN FILE  ›'
+    : 'CLASSIFY NOW  ›';
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(`/creature/${creature.id}`)}
+      onPress={handlePress}
       activeOpacity={0.88}
-      style={[styles.card, showClassified && styles.cardClassified]}
+      style={[
+        styles.card,
+        showClassified && !isShowingSpecialSpecimen && styles.cardClassified,
+        isShowingSpecialSpecimen && styles.cardSpecial,
+      ]}
     >
       {/* ── Label row ──────────────────────────────────────────────── */}
       <View style={styles.labelRow}>
-        <View style={[styles.labelBadge, isShowingLastClassified && styles.labelBadgeClassified]}>
-          <Text style={[styles.labelText, isShowingLastClassified && styles.labelTextClassified]}>
-            {isShowingLastClassified ? 'LAST SPECIMEN CLASSIFIED' : "TODAY'S GROSS CHALLENGE"}
+        <View style={[
+          styles.labelBadge,
+          labelIsClassified && styles.labelBadgeClassified,
+          labelIsGreen && styles.labelBadgeGreen,
+        ]}>
+          <Text style={[
+            styles.labelText,
+            labelIsClassified && styles.labelTextClassified,
+            labelIsGreen && styles.labelTextGreen,
+          ]}>
+            {labelText}
           </Text>
         </View>
 
-        {!isShowingLastClassified && (
+        {!isShowingLastClassified && !isShowingSpecialSpecimen && (
           !claimed ? (
             <View style={styles.rewardBadge}>
               <Text style={styles.rewardText}>2× SCANS</Text>
@@ -89,11 +146,19 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
             </View>
           )
         )}
+        {isShowingSpecialSpecimen && (
+          <View style={styles.slimeBadge}>
+            <Text style={styles.slimeBadgeText}>☣ NEW</Text>
+          </View>
+        )}
       </View>
 
-      {/* ── Classified: full-size creature image ─────────────────── */}
+      {/* ── Classified / Special: full-size creature image ──────────── */}
       {showClassified && (
-        <View style={styles.creatureHero}>
+        <View style={[
+          styles.creatureHero,
+          isShowingSpecialSpecimen && styles.creatureHeroSpecial,
+        ]}>
           {creatureImg ? (
             <>
               <Image
@@ -102,11 +167,18 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
                 resizeMode="contain"
               />
               {/* Classified stamp overlay */}
-              <Image
-                source={Assets.classifiedStamp}
-                style={styles.heroStamp}
-                resizeMode="contain"
-              />
+              {!isShowingSpecialSpecimen && (
+                <Image
+                  source={Assets.classifiedStamp}
+                  style={styles.heroStamp}
+                  resizeMode="contain"
+                />
+              )}
+              {isShowingSpecialSpecimen && (
+                <View style={styles.heroContaminationBadge}>
+                  <Text style={styles.heroContaminationText}>☣</Text>
+                </View>
+              )}
             </>
           ) : (
             <View style={styles.creatureHeroPlaceholder} />
@@ -127,14 +199,14 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
       )}
 
       {/* ── Creature name ───────────────────────────────────────────── */}
-      <Text style={styles.creatureName}>
-        {showClassified ? creature.title.toUpperCase() : '???'}
+      <Text style={[styles.creatureName, isShowingSpecialSpecimen && styles.creatureNameSpecial]}>
+        {showClassified ? displayItem.title.toUpperCase() : '???'}
       </Text>
 
       {/* ── Fact / tease text ───────────────────────────────────────── */}
       {showClassified ? (
         <Text style={styles.factPreview} numberOfLines={3}>
-          {creature.gross_fact}
+          {displayItem.gross_fact}
         </Text>
       ) : (
         <Text style={styles.mysteryText}>
@@ -143,9 +215,17 @@ export function DailySpecimenCard({ lastClaimed, isPaid, lastClassifiedId }: Pro
       )}
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}
-      <View style={[styles.cta, showClassified && styles.ctaClassified]}>
-        <Text style={[styles.ctaText, showClassified && styles.ctaTextClassified]}>
-          {showClassified ? 'VIEW SPECIMEN FILE  ›' : 'CLASSIFY NOW  ›'}
+      <View style={[
+        styles.cta,
+        showClassified && !isShowingSpecialSpecimen && styles.ctaClassified,
+        isShowingSpecialSpecimen && styles.ctaSpecial,
+      ]}>
+        <Text style={[
+          styles.ctaText,
+          showClassified && !isShowingSpecialSpecimen && styles.ctaTextClassified,
+          isShowingSpecialSpecimen && styles.ctaTextSpecial,
+        ]}>
+          {ctaText}
         </Text>
       </View>
     </TouchableOpacity>
@@ -172,6 +252,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
     elevation:     2,
   },
+  cardSpecial: {
+    borderColor:   Colors.eww.green,
+    shadowColor:   Colors.eww.green,
+    shadowOpacity: 0.45,
+    elevation:     10,
+  },
 
   // ── Label row ────────────────────────────────────────────────────────────
   labelRow: {
@@ -192,6 +278,10 @@ const styles = StyleSheet.create({
     backgroundColor: `${Colors.eww.purple}22`,
     borderColor:     Colors.border.DEFAULT,
   },
+  labelBadgeGreen: {
+    backgroundColor: `${Colors.eww.green}28`,
+    borderColor:     Colors.eww.green,
+  },
   labelText: {
     fontFamily:    FontFamily.boogaloo,
     fontSize:      12,
@@ -200,6 +290,9 @@ const styles = StyleSheet.create({
   },
   labelTextClassified: {
     color: Colors.text.purple,
+  },
+  labelTextGreen: {
+    color: Colors.text.lime,
   },
   rewardBadge: {
     backgroundColor:   Colors.eww.amber,
@@ -229,6 +322,20 @@ const styles = StyleSheet.create({
     color:         Colors.text.muted,
     letterSpacing: 0.5,
   },
+  slimeBadge: {
+    backgroundColor:   `${Colors.eww.green}25`,
+    borderRadius:      Radius.full,
+    paddingHorizontal: 10,
+    paddingVertical:   4,
+    borderWidth:       1.5,
+    borderColor:       Colors.eww.green,
+  },
+  slimeBadgeText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    color:         Colors.text.lime,
+    letterSpacing: 0.5,
+  },
 
   // ── Classified: full-size creature image ─────────────────────────────────
   creatureHero: {
@@ -242,6 +349,10 @@ const styles = StyleSheet.create({
     alignItems:      'center',
     justifyContent:  'center',
   },
+  creatureHeroSpecial: {
+    borderColor:   `${Colors.eww.green}55`,
+    borderWidth:   2,
+  },
   creatureHeroImg: {
     width:  '100%',
     height: '100%',
@@ -253,16 +364,31 @@ const styles = StyleSheet.create({
     width:    IMG_SIZE * 0.26,
     height:   IMG_SIZE * 0.26,
   },
+  heroContaminationBadge: {
+    position:        'absolute',
+    bottom:          10,
+    right:           10,
+    width:           48,
+    height:          48,
+    borderRadius:    24,
+    backgroundColor: 'rgba(10,40,6,0.82)',
+    alignItems:      'center',
+    justifyContent:  'center',
+  },
+  heroContaminationText: {
+    fontSize:  26,
+    color:     Colors.eww.green,
+  },
   creatureHeroPlaceholder: {
-    width:  '100%',
-    height: '100%',
-    backgroundColor: Colors.bg.elevated,
+    width:            '100%',
+    height:           '100%',
+    backgroundColor:  Colors.bg.elevated,
   },
 
   // ── Mystery jar ───────────────────────────────────────────────────────────
   jarMysteryWrap: {
-    alignItems:     'center',
-    justifyContent: 'center',
+    alignItems:      'center',
+    justifyContent:  'center',
     paddingVertical: 8,
   },
 
@@ -274,6 +400,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textAlign:     'center',
     lineHeight:    28,
+  },
+  creatureNameSpecial: {
+    color: Colors.text.lime,
   },
   factPreview: {
     fontFamily:        FontFamily.boogaloo,
@@ -302,6 +431,9 @@ const styles = StyleSheet.create({
   ctaClassified: {
     backgroundColor: Colors.bg.elevated,
   },
+  ctaSpecial: {
+    backgroundColor: Colors.eww.green,
+  },
   ctaText: {
     fontFamily:    FontFamily.creepster,
     fontSize:      22,
@@ -310,5 +442,8 @@ const styles = StyleSheet.create({
   },
   ctaTextClassified: {
     color: Colors.text.secondary,
+  },
+  ctaTextSpecial: {
+    color: '#000',
   },
 });

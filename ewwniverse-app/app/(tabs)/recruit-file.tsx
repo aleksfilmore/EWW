@@ -4,7 +4,9 @@
  * Dark-purple lab aesthetic (no parchment).
  * Stage ladder with illustrated icons, streak jar, contamination event,
  * Full Lab Pass upsell card.
+ * Special Specimens: shows creature images, tappable → bottom sheet detail.
  */
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -13,6 +15,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Modal,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -21,9 +24,16 @@ import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
-import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
+import { SPECIAL_SPECIMENS, SpecialSpecimen } from '@/data/special-specimens';
+import { CREATURE_IMAGES } from '@/constants/creatureImages';
 
 const { width: SCREEN_W } = Dimensions.get('window');
+
+// Explicit jar dimensions — no absoluteFill on Android
+const SPECIAL_JAR_W = 64;
+const SPECIAL_JAR_H = 74;
+const SPECIAL_CREATURE_W = 38;
+const SPECIAL_CREATURE_H = 38;
 
 const STAGE_ICONS = [
   Assets.stage1,
@@ -35,6 +45,7 @@ const STAGE_ICONS = [
 
 export default function Rewards() {
   const profile = useUserStore((s) => s.profile);
+  const [selectedSpecimen, setSelectedSpecimen] = useState<SpecialSpecimen | null>(null);
 
   if (!profile) return null;
 
@@ -145,7 +156,10 @@ export default function Rewards() {
         </View>
 
         {/* ── Special Specimens ────────────────────────────────── */}
-        <SpecialSpecimensSection ownedIds={Object.keys(profile.special_specimens)} />
+        <SpecialSpecimensSection
+          ownedIds={Object.keys(profile.special_specimens)}
+          onSelectSpecimen={setSelectedSpecimen}
+        />
 
         {/* ── Streak jar ───────────────────────────────────────── */}
         <View style={styles.section}>
@@ -226,13 +240,94 @@ export default function Rewards() {
           </TouchableOpacity>
         )}
       </ScrollView>
+
+      {/* ── Special Specimen detail modal ───────────────────────── */}
+      <Modal
+        visible={selectedSpecimen !== null}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setSelectedSpecimen(null)}
+      >
+        {selectedSpecimen && (
+          <SpecimenDetailSheet
+            specimen={selectedSpecimen}
+            onClose={() => setSelectedSpecimen(null)}
+          />
+        )}
+      </Modal>
     </SafeAreaView>
   );
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-function SpecialSpecimensSection({ ownedIds }: { ownedIds: string[] }) {
+function SpecimenDetailSheet({
+  specimen,
+  onClose,
+}: {
+  specimen: SpecialSpecimen;
+  onClose: () => void;
+}) {
+  const creatureImg = CREATURE_IMAGES[specimen.id];
+  const IMG_SIZE    = SCREEN_W - 80;
+
+  const meterColor =
+    specimen.eww_meter === 100 ? Colors.eww.coral :
+    specimen.eww_meter === 80  ? Colors.eww.amber :
+    Colors.eww.green;
+
+  return (
+    <View style={styles.sheetBackdrop}>
+      <View style={styles.sheetContainer}>
+        {/* Close button */}
+        <TouchableOpacity style={styles.sheetClose} onPress={onClose}>
+          <Text style={styles.sheetCloseText}>✕</Text>
+        </TouchableOpacity>
+
+        {/* Special badge */}
+        <View style={styles.sheetSpecialBadge}>
+          <Text style={styles.sheetSpecialBadgeText}>☣  SPECIAL SPECIMEN</Text>
+        </View>
+
+        {/* Creature image */}
+        {creatureImg ? (
+          <Image
+            source={creatureImg}
+            style={{ width: IMG_SIZE, height: IMG_SIZE, borderRadius: Radius.lg }}
+            resizeMode="cover"
+          />
+        ) : null}
+
+        {/* Name */}
+        <Text style={styles.sheetName}>{specimen.title.toUpperCase()}</Text>
+
+        {/* Realm */}
+        <Text style={styles.sheetRealm}>{specimen.realm.toUpperCase()}</Text>
+
+        {/* EWW meter */}
+        <View style={[
+          styles.sheetMeter,
+          { backgroundColor: `${meterColor}22`, borderColor: `${meterColor}55` },
+        ]}>
+          <Text style={[styles.sheetMeterText, { color: meterColor }]}>
+            EWW METER  {specimen.eww_meter}
+          </Text>
+        </View>
+
+        {/* Gross fact */}
+        <Text style={styles.sheetFact}>{specimen.gross_fact}</Text>
+      </View>
+    </View>
+  );
+}
+
+function SpecialSpecimensSection({
+  ownedIds,
+  onSelectSpecimen,
+}: {
+  ownedIds: string[];
+  onSelectSpecimen: (s: SpecialSpecimen) => void;
+}) {
   const owned    = new Set(ownedIds);
   const unlocked = SPECIAL_SPECIMENS.filter((s) => owned.has(s.id));
   const total    = SPECIAL_SPECIMENS.length;
@@ -261,35 +356,61 @@ function SpecialSpecimensSection({ ownedIds }: { ownedIds: string[] }) {
         </View>
       ) : (
         <View style={styles.specialGrid}>
-          {unlocked.map((s) => (
-            <View key={s.id} style={styles.specialCard}>
-              {/* Jar with green glow for "contaminated" feel */}
-              <View style={styles.specialJarWrap}>
-                <Image
-                  source={Assets.jarClassified}
-                  style={StyleSheet.absoluteFill}
-                  resizeMode="contain"
-                />
-                <Text style={styles.specialJarIcon}>☣</Text>
-              </View>
-              <Text style={styles.specialName} numberOfLines={2}>
-                {s.title.toUpperCase()}
-              </Text>
-              <View style={[styles.specialMeter, { backgroundColor: `${ewwBadgeColor(s.eww_meter)}22`, borderColor: `${ewwBadgeColor(s.eww_meter)}55` }]}>
-                <Text style={[styles.specialMeterText, { color: ewwBadgeColor(s.eww_meter) }]}>
-                  EWW {s.eww_meter}
+          {unlocked.map((s) => {
+            const creatureImg = CREATURE_IMAGES[s.id];
+            const meterColor  = ewwBadgeColor(s.eww_meter);
+            return (
+              <TouchableOpacity
+                key={s.id}
+                style={styles.specialCard}
+                onPress={() => onSelectSpecimen(s)}
+                activeOpacity={0.8}
+              >
+                {/* Jar with creature image — explicit pixel dimensions, no absoluteFill */}
+                <View style={styles.specialJarWrap}>
+                  <Image
+                    source={Assets.jarClassified}
+                    style={{ width: SPECIAL_JAR_W, height: SPECIAL_JAR_H }}
+                    resizeMode="contain"
+                  />
+                  {creatureImg ? (
+                    <Image
+                      source={creatureImg}
+                      style={{
+                        position:     'absolute',
+                        width:        SPECIAL_CREATURE_W,
+                        height:       SPECIAL_CREATURE_H,
+                        top:          Math.round(SPECIAL_JAR_H * 0.18),
+                        borderRadius: 4,
+                      }}
+                      resizeMode="cover"
+                    />
+                  ) : (
+                    <Text style={styles.specialJarIcon}>☣</Text>
+                  )}
+                </View>
+                <Text style={styles.specialName} numberOfLines={2}>
+                  {s.title.toUpperCase()}
                 </Text>
-              </View>
-            </View>
-          ))}
+                <View style={[
+                  styles.specialMeter,
+                  { backgroundColor: `${meterColor}22`, borderColor: `${meterColor}55` },
+                ]}>
+                  <Text style={[styles.specialMeterText, { color: meterColor }]}>
+                    EWW {s.eww_meter}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
 
-          {/* Locked placeholders for unowned */}
+          {/* Locked placeholders for unowned — show up to 4 */}
           {SPECIAL_SPECIMENS.filter((s) => !owned.has(s.id)).slice(0, 4).map((s) => (
             <View key={s.id} style={[styles.specialCard, styles.specialCardLocked]}>
               <View style={styles.specialJarWrap}>
                 <Image
                   source={Assets.jarMystery}
-                  style={StyleSheet.absoluteFill}
+                  style={{ width: SPECIAL_JAR_W, height: SPECIAL_JAR_H }}
                   resizeMode="contain"
                 />
               </View>
@@ -505,8 +626,8 @@ const styles = StyleSheet.create({
     height:     18,
   },
   ladderConnectorImg: {
-    width:  20,
-    height: 18,
+    width:   20,
+    height:  18,
     opacity: 0.6,
   },
 
@@ -689,8 +810,8 @@ const styles = StyleSheet.create({
     gap:             8,
   },
   specialEmptyIcon: {
-    fontSize:  32,
-    color:     `${Colors.eww.green}60`,
+    fontSize: 32,
+    color:    `${Colors.eww.green}60`,
   },
   specialEmptyText: {
     fontFamily: FontFamily.boogaloo,
@@ -715,28 +836,27 @@ const styles = StyleSheet.create({
     gap:             4,
   },
   specialCardLocked: {
-    borderColor:     Colors.border.subtle,
-    opacity:         0.5,
+    borderColor: Colors.border.subtle,
+    opacity:     0.5,
   },
   specialJarWrap: {
-    width:    64,
-    height:   74,
-    position: 'relative',
+    width:          SPECIAL_JAR_W,
+    height:         SPECIAL_JAR_H,
     alignItems:     'center',
     justifyContent: 'center',
   },
   specialJarIcon: {
-    fontSize:  22,
-    color:     Colors.eww.green,
-    position:  'absolute',
-    top:       '28%',
+    fontSize: 22,
+    color:    Colors.eww.green,
+    position: 'absolute',
+    top:      '28%',
   },
   specialName: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize:   10,
-    color:      Colors.text.secondary,
-    textAlign:  'center',
-    lineHeight: 13,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      10,
+    color:         Colors.text.secondary,
+    textAlign:     'center',
+    lineHeight:    13,
     letterSpacing: 0.3,
   },
   specialNameLocked: {
@@ -755,5 +875,81 @@ const styles = StyleSheet.create({
     fontFamily:    FontFamily.boogaloo,
     fontSize:      9,
     letterSpacing: 0.3,
+  },
+
+  // ── Specimen detail bottom sheet ───────────────────────────────────────────
+  sheetBackdrop: {
+    flex:            1,
+    backgroundColor: 'rgba(0,0,0,0.75)',
+    justifyContent:  'flex-end',
+  },
+  sheetContainer: {
+    backgroundColor:      Colors.bg.card,
+    borderTopLeftRadius:  Radius.xl,
+    borderTopRightRadius: Radius.xl,
+    borderWidth:          1.5,
+    borderColor:          Colors.border.DEFAULT,
+    padding:              Spacing.lg,
+    paddingBottom:        44,
+    gap:                  12,
+    alignItems:           'center',
+  },
+  sheetClose: {
+    alignSelf:      'flex-end',
+    width:          32,
+    height:         32,
+    alignItems:     'center',
+    justifyContent: 'center',
+  },
+  sheetCloseText: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   20,
+    color:      Colors.text.muted,
+  },
+  sheetSpecialBadge: {
+    backgroundColor:   `${Colors.eww.green}22`,
+    borderRadius:      Radius.full,
+    paddingHorizontal: 14,
+    paddingVertical:   5,
+    borderWidth:       1,
+    borderColor:       `${Colors.eww.green}55`,
+  },
+  sheetSpecialBadgeText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      12,
+    color:         Colors.text.lime,
+    letterSpacing: 1.5,
+  },
+  sheetName: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      26,
+    color:         Colors.text.primary,
+    letterSpacing: 1,
+    textAlign:     'center',
+  },
+  sheetRealm: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      12,
+    color:         Colors.text.muted,
+    letterSpacing: 2,
+    textAlign:     'center',
+  },
+  sheetMeter: {
+    borderRadius:      Radius.full,
+    paddingHorizontal: 14,
+    paddingVertical:   6,
+    borderWidth:       1.5,
+  },
+  sheetMeterText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      14,
+    letterSpacing: 0.5,
+  },
+  sheetFact: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   15,
+    color:      Colors.text.secondary,
+    lineHeight: 22,
+    textAlign:  'center',
   },
 });

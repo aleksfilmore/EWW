@@ -2,8 +2,15 @@
  * CreatureGridCard — jar-frame grid cell matching the mockup.
  *
  * locked     → locked jar frame (dark, lock on lid, "???" text)
- * classified → classified jar frame with creature image inside
- * mastered   → classified jar frame + gold star badge
+ * classified → classified jar frame + creature image + CLASSIFIED stamp on top
+ * mastered   → classified jar frame + creature image + stamp + gold star badge
+ *
+ * The CLASSIFIED stamp is rendered as a separate overlay AFTER the creature
+ * image so it always appears on top (fixes z-order issue where the jar frame's
+ * embedded stamp was hidden behind the creature image).
+ *
+ * Creature image is slightly larger (0.58 of size) and raised (top: 12%) so
+ * solid-background dinosaur/earth images fill the jar body better.
  */
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
@@ -23,6 +30,9 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
   const isClassified = state === 'classified' || state === 'mastered';
   const creatureImg  = CREATURE_IMAGES[creature.id];
 
+  // Stamp sits at bottom-right, 28% of cell size
+  const stampSize = Math.round(size * 0.28);
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -40,7 +50,16 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
       {isClassified && creatureImg && (
         <Image
           source={creatureImg}
-          style={[styles.creatureInJar, { width: size * 0.52, height: size * 0.52 }]}
+          style={[styles.creatureInJar, { width: size * 0.58, height: size * 0.58 }]}
+          resizeMode="contain"
+        />
+      )}
+
+      {/* CLASSIFIED stamp overlay — drawn on top of creature image */}
+      {isClassified && (
+        <Image
+          source={Assets.classifiedStamp}
+          style={[styles.classifiedStamp, { width: stampSize, height: stampSize }]}
           resizeMode="contain"
         />
       )}
@@ -69,50 +88,56 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
 
 const styles = StyleSheet.create({
   cell: {
-    alignItems: 'center',
+    alignItems:     'center',
     justifyContent: 'flex-start',
   },
   jarFrame: {
     width: '100%',
-    flex: 1,
+    flex:  1,
   },
   creatureInJar: {
-    position: 'absolute',
-    top: '18%',        // sits inside the jar body
+    position:  'absolute',
+    top:       '12%',       // raised slightly to centre in jar body
     alignSelf: 'center',
   },
-  starBadge: {
+  // CLASSIFIED stamp rendered after creature — always on top
+  classifiedStamp: {
     position: 'absolute',
-    top: 2,
-    right: 2,
+    bottom:   '22%',
+    right:    '4%',
+  },
+  starBadge: {
+    position:        'absolute',
+    top:             2,
+    right:           2,
     backgroundColor: Colors.eww.gold,
-    borderRadius: 10,
-    width: 18,
-    height: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderRadius:    10,
+    width:           18,
+    height:          18,
+    alignItems:      'center',
+    justifyContent:  'center',
   },
   starText: {
-    fontSize: 10,
-    color: '#000',
+    fontSize:   10,
+    color:      '#000',
     fontWeight: '900',
   },
   name: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 9,
-    color: Colors.text.primary,
-    textAlign: 'center',
-    lineHeight: 11,
-    letterSpacing: 0.3,
-    marginTop: 2,
+    fontFamily:        FontFamily.boogaloo,
+    fontSize:          9,
+    color:             Colors.text.primary,
+    textAlign:         'center',
+    lineHeight:        11,
+    letterSpacing:     0.3,
+    marginTop:         2,
     paddingHorizontal: 2,
   },
   mystery: {
-    position: 'absolute',
-    bottom: '28%',
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 12,
-    color: Colors.text.muted,
+    position:      'absolute',
+    bottom:        '28%',
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      12,
+    color:         Colors.text.muted,
     letterSpacing: 2,
   },
 });

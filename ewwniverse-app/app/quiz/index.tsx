@@ -1,10 +1,10 @@
 /**
  * LAB QUIZ — Gross Fact → Name.
  *
- * badgeLabQuiz header, illustrated answer cards with creature jars,
- * progress dots + live streak, SUBMIT ANSWER illustrated button.
+ * Uses ALL_CREATURES (~234 creatures across 3 books) for question diversity.
+ * Contamination event is queued mid-quiz and fires only after the session ends.
  */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,6 @@ import {
   ScrollView,
   StyleSheet,
   Image,
-  Alert,
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -21,7 +20,7 @@ import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { useGameStore } from '@/store/gameStore';
-import { creepyCreatures } from '@/data/index';
+import { ALL_CREATURES } from '@/data/index';
 import { Creature } from '@/types/creature';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import {
@@ -76,8 +75,9 @@ export default function QuizScreen() {
   const resetQuizSession         = useGameStore((s) => s.resetQuizSession);
   const userTriggerContamination = useUserStore((s) => s.triggerContamination);
 
+  // Use ALL_CREATURES for a 234-creature pool — far less repetition
   const [questions] = useState<Question[]>(() =>
-    buildQuestions(creepyCreatures as Creature[], QUESTIONS_PER_SESSION),
+    buildQuestions(ALL_CREATURES as Creature[], QUESTIONS_PER_SESSION),
   );
   const [currentIdx,  setCurrentIdx]  = useState(0);
   const [score,       setScore]       = useState(0);
@@ -85,6 +85,12 @@ export default function QuizScreen() {
   const [answered,    setAnswered]    = useState(false);   // after submit
   const [sessionDone, setSessionDone] = useState(false);
   const [finalScore,  setFinalScore]  = useState(0);
+
+  // Track pending contamination: unlock the specimen immediately,
+  // but delay the overlay until the quiz session ends.
+  const pendingContaminationRef = useRef<{ specimenId: string | null } | null>(null);
+  // Prevent multiple contamination events in one session.
+  const hasContaminatedRef = useRef(false);
 
   const q = questions[currentIdx];
 
@@ -108,17 +114,19 @@ export default function QuizScreen() {
       playSfx('sfx_correct');
       setScore((s) => s + 1);
       recordCorrect();
-      // Contamination Event fires when the streak threshold is hit
-      if (quizStreak + 1 >= CONTAMINATION_STREAK) {
-        playSfx('sfx_contamination');
-        // Pick a random unowned Common specimen to drop
+
+      // Queue contamination event (once per session, when streak threshold hit)
+      if (!hasContaminatedRef.current && quizStreak + 1 >= CONTAMINATION_STREAK) {
+        hasContaminatedRef.current = true;
         const ownedIds = getOwnedSpecialIds();
         const dropped  = pickRandomUnownedCommon(ownedIds);
         if (dropped) {
           unlockSpecialSpecimen(dropped.id, 'contamination');
         }
-        triggerContamination(dropped?.id ?? null);
-        userTriggerContamination();
+        // Pass specimen ID so it appears on the home screen hero card
+        userTriggerContamination(dropped?.id ?? null);
+        // Store for post-quiz display — do NOT trigger overlay now
+        pendingContaminationRef.current = { specimenId: dropped?.id ?? null };
       }
     } else {
       playSfx('sfx_wrong');
@@ -137,6 +145,12 @@ export default function QuizScreen() {
           : QUIZ_SCAN_REWARDS.free;
         const earned = rewardTable[final] ?? 0;
         if (earned > 0) addScans(earned);
+        // Now fire the contamination overlay (after quiz is fully done)
+        if (pendingContaminationRef.current !== null) {
+          playSfx('sfx_contamination');
+          triggerContamination(pendingContaminationRef.current.specimenId);
+          pendingContaminationRef.current = null;
+        }
       } else {
         setCurrentIdx((i) => i + 1);
         setSelected(null);
@@ -168,6 +182,14 @@ export default function QuizScreen() {
             </View>
           ) : (
             <Text style={styles.noReward}>Score 3+ to earn scans next time</Text>
+          )}
+
+          {hasContaminatedRef.current && (
+            <View style={styles.contaminationBadge}>
+              <Text style={styles.contaminationBadgeText}>
+                ☣  CONTAMINATION EVENT — CHECK REWARDS
+              </Text>
+            </View>
           )}
 
           <TouchableOpacity
@@ -253,6 +275,8 @@ export default function QuizScreen() {
               isSelected              ? `${Colors.eww.purple}18`  :
               Colors.bg.card;
 
+            const revealCreature = isSelected || (answered && isCorrect);
+
             return (
               <TouchableOpacity
                 key={opt.id}
@@ -264,13 +288,11 @@ export default function QuizScreen() {
                 activeOpacity={0.75}
                 disabled={answered}
               >
-                {/* Mini jar with creature */}
+                {/* Mini jar with creature — explicit pixel dimensions, no absoluteFill */}
                 <View style={[styles.optionJarWrap, { width: OPTION_JAR, height: OPTION_JAR }]}>
                   <Image
-                    source={isSelected || (answered && isCorrect)
-                      ? Assets.jarClassified
-                      : Assets.jarLockedFrame}
-                    style={StyleSheet.absoluteFill}
+                    source={revealCreature ? Assets.jarClassified : Assets.jarLockedFrame}
+                    style={{ width: OPTION_JAR, height: OPTION_JAR }}
                     resizeMode="contain"
                   />
                   {creatureImg ? (
@@ -278,8 +300,8 @@ export default function QuizScreen() {
                       source={creatureImg}
                       style={[
                         styles.optionCreatureImg,
-                        { width: OPTION_JAR * 0.50, height: OPTION_JAR * 0.50 },
-                        !isSelected && !answered && styles.silhouette,
+                        { width: OPTION_JAR * 0.52, height: OPTION_JAR * 0.52 },
+                        !revealCreature && styles.silhouette,
                       ]}
                       resizeMode="contain"
                     />
@@ -289,11 +311,14 @@ export default function QuizScreen() {
                 </View>
 
                 {/* Name + feedback */}
-                <Text style={[
-                  styles.optionName,
-                  answered && isCorrect  && styles.optionNameCorrect,
-                  answered && isSelected && !isCorrect && styles.optionNameWrong,
-                ]}>
+                <Text
+                  numberOfLines={2}
+                  style={[
+                    styles.optionName,
+                    answered && isCorrect  && styles.optionNameCorrect,
+                    answered && isSelected && !isCorrect && styles.optionNameWrong,
+                  ]}
+                >
                   {opt.title}
                 </Text>
                 {answered && isCorrect  && <Text style={styles.feedbackMark}>✓</Text>}
@@ -441,27 +466,27 @@ const styles = StyleSheet.create({
   },
   optionCreatureImg: {
     position:  'absolute',
-    top:       '18%',
+    top:       '16%',
     alignSelf: 'center',
   },
+  // Silhouette: visible shape with reduced opacity only — no tintColor
   silhouette: {
-    tintColor: Colors.bg.elevated,
-    opacity:   0.35,
+    opacity: 0.30,
   },
   optionPlaceholder: {
     fontSize: 30,
   },
   optionName: {
     fontFamily:  FontFamily.boogaloo,
-    fontSize:    15,
+    fontSize:    14,
     color:       Colors.text.secondary,
     textAlign:   'center',
-    lineHeight:  20,
+    lineHeight:  19,
     letterSpacing: 0.2,
   },
   optionNameCorrect: { color: Colors.eww.green },
   optionNameWrong:   { color: Colors.eww.coral },
-  feedbackMark: { fontSize: 18, color: Colors.eww.green, fontWeight: '900' },
+  feedbackMark:  { fontSize: 18, color: Colors.eww.green, fontWeight: '900' },
   feedbackWrong: { fontSize: 18, color: Colors.eww.coral, fontWeight: '900' },
 
   // ── Submit button ─────────────────────────────────────────────────────────
@@ -525,6 +550,22 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.boogaloo,
     fontSize:   13,
     color:      Colors.text.muted,
+  },
+  contaminationBadge: {
+    backgroundColor: `${Colors.eww.green}20`,
+    borderRadius:    Radius.full,
+    borderWidth:     1,
+    borderColor:     `${Colors.eww.green}55`,
+    paddingHorizontal: 14,
+    paddingVertical:   8,
+    marginTop:         4,
+  },
+  contaminationBadgeText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    color:         Colors.text.lime,
+    letterSpacing: 0.5,
+    textAlign:     'center',
   },
   doneBtn: {
     backgroundColor: Colors.eww.green,

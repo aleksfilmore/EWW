@@ -97,6 +97,7 @@ export default function Home() {
           lastClaimed={profile.daily_specimen_last_claimed}
           isPaid={profile.is_paid}
           lastClassifiedId={profile.last_classified_creature_id ?? null}
+          lastUnlockedSpecimenId={profile.last_unlocked_specimen_id ?? null}
         />
 
         {/* ── Daily Missions ──────────────────────────────── */}

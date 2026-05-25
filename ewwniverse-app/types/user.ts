@@ -21,6 +21,8 @@ export interface UserProfile {
   daily_specimen_last_claimed: string | null;
   /** ID of the most recently classified creature (drives home screen hero card) */
   last_classified_creature_id: string | null;
+  /** ID of the most recently unlocked special specimen — shown on home card until next scan */
+  last_unlocked_specimen_id: string | null;
   /** Map of special specimen id → unlock info */
   special_specimens: Record<string, UnlockedSpecialSpecimen>;
   created_at: number;

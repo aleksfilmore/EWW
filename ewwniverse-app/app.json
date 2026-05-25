@@ -36,8 +36,20 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
+    "updates": {
+      "url": "https://u.expo.dev/cbb0b377-c07e-41f8-99ac-56f0b1532454",
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "requestHeaders": {
+        "expo-channel-name": "preview"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
     "plugins": [
       "expo-router",
+      "expo-updates",
       "expo-image",
       [
         "expo-audio",

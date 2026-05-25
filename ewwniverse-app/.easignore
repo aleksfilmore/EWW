@@ -1,13 +1,19 @@
-# EAS Build ignore file
-# EAS reinstalls node_modules fresh on the build server — no need to upload them
+# ── EAS Build ignore ──────────────────────────────────────────────────────────
+# EAS reinstalls node_modules fresh on the build server via lockfile.
 node_modules/
 
-# Expo local cache
+# Expo local metro / build cache — not needed on the server
 .expo/
+dist/
+web-build/
+.metro-health-check*
 
-# Generated native directories (EAS generates these during build)
+# Generated native directories — EAS generates these during managed build
 android/
 ios/
+
+# Git history — not needed, saves upload time
+.git/
 
 # Logs
 *.log
@@ -15,16 +21,32 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS files
+# OS junk
 .DS_Store
 Thumbs.db
 
-# Git
-.git/
-
-# IDE
+# IDE config
 .vscode/
 .idea/
 
-# Test output
+# Test output / coverage
 coverage/
+__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Play Store service account key — never upload secrets
+play-store-key.json
+
+# Docs / planning files — not needed for build
+docs/
+*.md
+!README.md
+
+# Original pre-compression image backups — huge, never upload
+assets/creatures/_originals/
+
+# Compression script — not needed for build
+scripts/
