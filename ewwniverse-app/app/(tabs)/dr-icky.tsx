@@ -19,7 +19,8 @@ import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { Assets } from '@/constants/assets';
 import { AppHeader } from '@/components/AppHeader';
 import { ALL_CREATURES } from '@/data/index';
-import { playSfx } from '@/services/audio';
+import { useGameStore } from '@/store/gameStore';
+import { DrIckyEvent } from '@/constants/drIckyVideos';
 
 // ── Backstory panels ──────────────────────────────────────────────────────────
 const BACKSTORY_PANELS = [
@@ -54,17 +55,29 @@ const LAB_NOTES = [
   '"A day without a gross fact is a day wasted. I have never wasted a day." — Dr. Icky',
 ];
 
+// Quick-fire event buttons for the Dr. Icky tab
+const QUICK_EVENTS: { label: string; event: DrIckyEvent; color: string }[] = [
+  { label: 'CLASSIFY',         event: 'classify',          color: '#4ade80' },
+  { label: 'RARE FIND',        event: 'classify_rare',     color: '#fbbf24' },
+  { label: 'LEGENDARY',        event: 'classify_legendary',color: '#f87171' },
+  { label: 'SLIME SURGE',      event: 'slime_surge',       color: '#a78bfa' },
+  { label: 'WRONG ANSWER',     event: 'wrong_answer',      color: '#60a5fa' },
+  { label: 'DAILY GREETING',   event: 'daily_return',      color: '#34d399' },
+];
+
 export default function DrIcky() {
   const [currentFact, setCurrentFact] = useState(getRandomFact);
   const [noteIdx, setNoteIdx]         = useState(0);
   const [factCount, setFactCount]     = useState(0);
+  const triggerDrIcky                 = useGameStore((s) => s.triggerDrIcky);
 
   const handleHearDrIcky = useCallback(() => {
-    playSfx('sfx_transmission');
+    // Trigger a random daily-return greeting (most generic / welcoming)
+    triggerDrIcky('daily_return', true);
     setCurrentFact(getRandomFact());
     setFactCount((n) => n + 1);
     setNoteIdx((i) => (i + 1) % LAB_NOTES.length);
-  }, []);
+  }, [triggerDrIcky]);
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
@@ -99,6 +112,24 @@ export default function DrIcky() {
             <Text style={styles.backstoryText}>{panel.text}</Text>
           </View>
         ))}
+
+        {/* ── Trigger buttons ──────────────────────────────── */}
+        <View style={styles.triggerSection}>
+          <Text style={styles.triggerLabel}>PLAY DR. ICKY REACTIONS</Text>
+          <Text style={styles.triggerSub}>Tap any event to see Dr. Icky's response</Text>
+          <View style={styles.triggerGrid}>
+            {QUICK_EVENTS.map((e) => (
+              <TouchableOpacity
+                key={e.event}
+                style={[styles.triggerBtn, { borderColor: `${e.color}55`, backgroundColor: `${e.color}12` }]}
+                onPress={() => triggerDrIcky(e.event, true)}
+                activeOpacity={0.75}
+              >
+                <Text style={[styles.triggerBtnText, { color: e.color }]}>{e.label}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
 
         {/* ── Gross fact generator ─────────────────────────── */}
         <View style={styles.factSection}>
@@ -251,6 +282,37 @@ const styles = StyleSheet.create({
     fontSize:   16,
     color:      Colors.text.secondary,
     lineHeight: 24,
+  },
+
+  // ── Trigger buttons ──────────────────────────────────────────────────────
+  triggerSection: { gap: 10 },
+  triggerLabel: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      11,
+    color:         Colors.text.muted,
+    letterSpacing: 2.5,
+  },
+  triggerSub: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   14,
+    color:      Colors.text.secondary,
+    marginTop:  -4,
+  },
+  triggerGrid: {
+    flexDirection: 'row',
+    flexWrap:      'wrap',
+    gap:           8,
+  },
+  triggerBtn: {
+    borderRadius:      Radius.full,
+    borderWidth:       1.5,
+    paddingHorizontal: 14,
+    paddingVertical:   8,
+  },
+  triggerBtnText: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    letterSpacing: 0.5,
   },
 
   // ── Gross fact generator ─────────────────────────────────────────────────

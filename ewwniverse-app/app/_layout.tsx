@@ -15,7 +15,9 @@ import { signInAnonymously, onAuthStateChanged } from '@/services/firebase';
 import { ONBOARDING_KEY } from '@/constants/storage';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ContaminationOverlay } from '@/components/ContaminationOverlay';
+import { DrIckyOverlay } from '@/components/DrIckyOverlay';
 import { initRevenueCat, checkEntitlement } from '@/services/revenuecat';
+import { useGameStore } from '@/store/gameStore';
 
 // Keep splash visible until we're ready
 SplashScreen.preventAutoHideAsync();
@@ -29,8 +31,13 @@ const queryClient = new QueryClient({
   },
 });
 
+// Track daily Dr. Icky greeting so it only fires once per day
+const DRICKY_DAILY_KEY = 'dricky_greeted_date';
+
 function AppBootstrap() {
   const { isHydrated, initUser, refreshScanIfDue, incrementStreak, setPaid } = useUserStore();
+  const triggerDrIcky  = useGameStore((s) => s.triggerDrIcky);
+  const isHydratedFlag = isHydrated; // stable ref for the daily greeting effect
   const [fontsLoaded] = useFonts({ Boogaloo_400Regular, Creepster_400Regular });
   const [onboardingChecked, setOnboardingChecked] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -72,6 +79,16 @@ function AppBootstrap() {
       checkEntitlement().then((entitled) => {
         if (entitled) setPaid(true);
       });
+    });
+
+    // Dr. Icky daily greeting — fires once per calendar day after a short delay
+    const today = new Date().toISOString().slice(0, 10);
+    AsyncStorage.getItem(DRICKY_DAILY_KEY).then((last) => {
+      if (last !== today) {
+        AsyncStorage.setItem(DRICKY_DAILY_KEY, today);
+        // Delay so app is fully loaded before Dr. Icky appears
+        setTimeout(() => triggerDrIcky('daily_return', true), 1_800);
+      }
     });
 
     // Poll for scan refresh every 60 seconds (cheap check — only fires when due)
@@ -118,6 +135,8 @@ export default function RootLayout() {
           </Stack>
           {/* Contamination Event overlay — renders on top of all screens */}
           <ContaminationOverlay />
+          {/* Dr. Icky video reactions — z-index 998, below ContaminationOverlay (999) */}
+          <DrIckyOverlay />
         </ErrorBoundary>
       </SafeAreaProvider>
     </QueryClientProvider>

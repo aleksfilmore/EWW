@@ -26,6 +26,7 @@ import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { isDailySpecimen, todayString } from '@/utils/daily';
 import { playSfx, playMeterSfx } from '@/services/audio';
 import { ConfirmModal } from '@/components/ConfirmModal';
+import { useGameStore } from '@/store/gameStore';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 
@@ -46,6 +47,7 @@ export default function CreatureDetail() {
   const setCreatureState   = useUserStore((s) => s.setCreatureState);
   const addScans           = useUserStore((s) => s.addScans);
   const claimDailySpecimen = useUserStore((s) => s.claimDailySpecimen);
+  const triggerDrIcky      = useGameStore((s) => s.triggerDrIcky);
 
   // Tracks the brief "JUST CLASSIFIED" celebration state (+bonus scan info)
   const [justClassified, setJustClassified] = useState(false);
@@ -103,6 +105,13 @@ export default function CreatureDetail() {
           addScans(2);            // the 2× bonus scans
           setDailyBonusEarned(true);
         }
+
+        // Dr. Icky reaction — pick event tier by EWW meter
+        const event =
+          creature.eww_meter >= 100 ? 'classify_legendary' :
+          creature.eww_meter >= 80  ? 'classify_rare'      :
+          'classify';
+        triggerDrIcky(event);
       }, 1200);
     }
   }

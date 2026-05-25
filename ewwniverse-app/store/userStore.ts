@@ -43,7 +43,7 @@ function makeDefaultProfile(uid: string): UserProfile {
     codename: `Recruit_${uid.slice(-4).toUpperCase()}`,
     eww_stage: 1,
     is_paid: false,
-    scan_balance: 3,  // starter scans
+    scan_balance: 10, // generous first-session start
     scan_next_refresh: Date.now() + SCAN_REFRESH_MS,
     streak_days: 0,
     streak_last_day: null,

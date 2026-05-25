@@ -75,6 +75,7 @@ export default function QuizScreen() {
   const triggerContamination       = useGameStore((s) => s.triggerContaminationEvent);
   const resetQuizSession           = useGameStore((s) => s.resetQuizSession);
   const userTriggerContamination   = useUserStore((s) => s.triggerContamination);
+  const triggerDrIcky              = useGameStore((s) => s.triggerDrIcky);
 
   // Use ALL_CREATURES for a 234-creature pool — far less repetition
   const [questions] = useState<Question[]>(() =>
@@ -134,6 +135,8 @@ export default function QuizScreen() {
     } else {
       playSfx('sfx_wrong');
       recordWrong();
+      // Wrong answer → Dr. Icky reacts immediately (forced, always fires)
+      triggerDrIcky('wrong_answer', true);
     }
 
     // Advance to next question after delay

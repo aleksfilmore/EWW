@@ -59,7 +59,8 @@
       ],
       "expo-splash-screen",
       "@react-native-firebase/app",
-      "expo-asset"
+      "expo-asset",
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true
