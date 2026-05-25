@@ -1,8 +1,11 @@
 /**
- * Dr. Icky video source map.
+ * Dr. Icky video source map — streamed from Firebase Storage.
  *
- * ALL require() calls must be static string literals — Metro resolves them at
- * bundle time and cannot handle dynamic paths. Add new videos here only.
+ * Videos are NOT bundled in the app binary. They are fetched on-demand
+ * from Firebase Storage to keep the APK small.
+ *
+ * URL format:
+ *   https://firebasestorage.googleapis.com/v0/b/{BUCKET}/o/{PATH}?alt=media
  *
  * Event buckets:
  *   WRONG        → wrong answer in quiz
@@ -13,37 +16,44 @@
  *   DAILY        → first open of the day
  */
 
-// ── Raw source map (Metro static requires) ────────────────────────────────────
+const BUCKET = 'ewwniverse-dev.firebasestorage.app';
+const BASE    = `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/o/dr-icky%2F`;
+
+function uri(filename: string): { uri: string } {
+  return { uri: `${BASE}${filename}?alt=media` };
+}
+
+// ── Raw source map (Firebase Storage URIs) ────────────────────────────────────
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const DR_ICKY_SOURCES: Record<string, any> = {
-  classify_basic:        require('../assets/dr-icky/classify_basic.mp4'),
-  classify_becoming_useful: require('../assets/dr-icky/classify_becoming_useful.mp4'),
-  classify_creepy_long:  require('../assets/dr-icky/classify_creepy_long.mp4'),
-  classify_creepy_medium:require('../assets/dr-icky/classify_creepy_medium.mp4'),
-  classify_creepy_short: require('../assets/dr-icky/classify_creepy_short.mp4'),
-  classify_dangerous:    require('../assets/dr-icky/classify_dangerous.mp4'),
-  classify_harmless:     require('../assets/dr-icky/classify_harmless.mp4'),
-  classify_leave:        require('../assets/dr-icky/classify_leave.mp4'),
-  classify_perfect:      require('../assets/dr-icky/classify_perfect.mp4'),
-  classify_smell_official:require('../assets/dr-icky/classify_smell_official.mp4'),
-  classify_wash_hands_long:  require('../assets/dr-icky/classify_wash_hands_long.mp4'),
-  classify_wash_hands_short: require('../assets/dr-icky/classify_wash_hands_short.mp4'),
-  daily_about_disgusting:require('../assets/dr-icky/daily_about_disgusting.mp4'),
-  daily_discovery:       require('../assets/dr-icky/daily_discovery.mp4'),
-  daily_find_slimy:      require('../assets/dr-icky/daily_find_slimy.mp4'),
-  daily_order_slimy:     require('../assets/dr-icky/daily_order_slimy.mp4'),
-  daily_recruits:        require('../assets/dr-icky/daily_recruits.mp4'),
-  rare_elite:            require('../assets/dr-icky/rare_elite.mp4'),
-  rare_remarkable:       require('../assets/dr-icky/rare_remarkable.mp4'),
-  rare_top_tier:         require('../assets/dr-icky/rare_top_tier.mp4'),
-  slime_delicate:        require('../assets/dr-icky/slime_delicate.mp4'),
-  slime_jar_thinking:    require('../assets/dr-icky/slime_jar_thinking.mp4'),
-  special_acquired_long: require('../assets/dr-icky/special_acquired_long.mp4'),
-  special_acquired_short:require('../assets/dr-icky/special_acquired_short.mp4'),
-  wrong_comeback:        require('../assets/dr-icky/wrong_comeback.mp4'),
-  wrong_disappointed:    require('../assets/dr-icky/wrong_disappointed.mp4'),
-  wrong_jar:             require('../assets/dr-icky/wrong_jar.mp4'),
-  wrong_wrong:           require('../assets/dr-icky/wrong_wrong.mp4'),
+  classify_basic:            uri('classify_basic.mp4'),
+  classify_becoming_useful:  uri('classify_becoming_useful.mp4'),
+  classify_creepy_long:      uri('classify_creepy_long.mp4'),
+  classify_creepy_medium:    uri('classify_creepy_medium.mp4'),
+  classify_creepy_short:     uri('classify_creepy_short.mp4'),
+  classify_dangerous:        uri('classify_dangerous.mp4'),
+  classify_harmless:         uri('classify_harmless.mp4'),
+  classify_leave:            uri('classify_leave.mp4'),
+  classify_perfect:          uri('classify_perfect.mp4'),
+  classify_smell_official:   uri('classify_smell_official.mp4'),
+  classify_wash_hands_long:  uri('classify_wash_hands_long.mp4'),
+  classify_wash_hands_short: uri('classify_wash_hands_short.mp4'),
+  daily_about_disgusting:    uri('daily_about_disgusting.mp4'),
+  daily_discovery:           uri('daily_discovery.mp4'),
+  daily_find_slimy:          uri('daily_find_slimy.mp4'),
+  daily_order_slimy:         uri('daily_order_slimy.mp4'),
+  daily_recruits:            uri('daily_recruits.mp4'),
+  rare_elite:                uri('rare_elite.mp4'),
+  rare_remarkable:           uri('rare_remarkable.mp4'),
+  rare_top_tier:             uri('rare_top_tier.mp4'),
+  slime_delicate:            uri('slime_delicate.mp4'),
+  slime_jar_thinking:        uri('slime_jar_thinking.mp4'),
+  special_acquired_long:     uri('special_acquired_long.mp4'),
+  special_acquired_short:    uri('special_acquired_short.mp4'),
+  wrong_comeback:            uri('wrong_comeback.mp4'),
+  wrong_disappointed:        uri('wrong_disappointed.mp4'),
+  wrong_jar:                 uri('wrong_jar.mp4'),
+  wrong_wrong:               uri('wrong_wrong.mp4'),
 };
 
 // ── Event → candidate video keys ─────────────────────────────────────────────
@@ -104,11 +114,13 @@ const EVENT_POOLS: Record<DrIckyEvent, string[]> = {
 
 // ── Helper: pick a random source for an event ─────────────────────────────────
 
-function pick(keys: string[]): ReturnType<typeof require> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pick(keys: string[]): any {
   const key = keys[Math.floor(Math.random() * keys.length)];
   return DR_ICKY_SOURCES[key];
 }
 
-export function drIckySourceForEvent(event: DrIckyEvent): ReturnType<typeof require> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function drIckySourceForEvent(event: DrIckyEvent): any {
   return pick(EVENT_POOLS[event]);
 }

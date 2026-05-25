@@ -23,13 +23,15 @@ import { Colors, Radius, FontFamily } from '@/constants/design';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
-// ── Root wrapper — watches store, renders player keyed to source ──────────────
+// ── Root wrapper — watches store, renders player keyed to trigger timestamp ───
 export function DrIckyOverlay() {
-  const drIckySource = useGameStore((s) => s.drIckySource);
+  const drIckySource    = useGameStore((s) => s.drIckySource);
+  const drIckyTriggerTs = useGameStore((s) => s.drIckyLastShownAt);
 
   if (!drIckySource) return null;
 
-  return <DrIckyPlayer key={String(drIckySource)} source={drIckySource} />;
+  // Key by timestamp so every trigger (even same video twice) gets a fresh player.
+  return <DrIckyPlayer key={drIckyTriggerTs} source={drIckySource} />;
 }
 
 // ── Player — one instance per video trigger ───────────────────────────────────
