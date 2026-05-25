@@ -9,6 +9,7 @@ import {
   STREAK_REWARD_DAY,
 } from '@/constants/game';
 import { playSfx } from '@/services/audio';
+import { getCreatureById } from '@/data/index';
 
 interface UserState {
   profile: UserProfile | null;
@@ -29,6 +30,11 @@ interface UserState {
   claimDailySpecimen: () => void;
   unlockSpecialSpecimen: (id: string, source: string) => void;
   getOwnedSpecialIds: () => string[];
+  incrementDailyQuizAnswer: () => void;
+}
+
+function todayIso(): string {
+  return new Date().toISOString().slice(0, 10);
 }
 
 function makeDefaultProfile(uid: string): UserProfile {
@@ -50,6 +56,22 @@ function makeDefaultProfile(uid: string): UserProfile {
     last_unlocked_specimen_id: null,
     special_specimens: {},
     created_at: Date.now(),
+    daily_missions_reset: null,
+    daily_classified_today: 0,
+    daily_quiz_answers_today: 0,
+    daily_rare_found: false,
+  };
+}
+
+/** Returns daily-reset patch if today is a new day, else null. */
+function dailyResetPatch(profile: UserProfile): Partial<UserProfile> | null {
+  const today = todayIso();
+  if (profile.daily_missions_reset === today) return null;
+  return {
+    daily_missions_reset:    today,
+    daily_classified_today:  0,
+    daily_quiz_answers_today: 0,
+    daily_rare_found:        false,
   };
 }
 
@@ -69,11 +91,18 @@ export const useUserStore = create<UserState>((set, get) => ({
     if (!profile) return;
     const prev = get().creatures[id];
     const now = Date.now();
+
+    // Only credit a new classification (not re-classifying or silhouette intermediary)
+    const wasAlreadyClassified =
+      prev?.state === 'classified' || prev?.state === 'mastered';
+    const isNowClassified = state === 'classified' || state === 'mastered';
+    const isNewClassification = isNowClassified && !wasAlreadyClassified;
+
     const update: UserCreature = {
       creature_id: id,
       state,
       quiz_correct_count: prev?.quiz_correct_count ?? 0,
-      classified_at: state === 'classified' || state === 'mastered'
+      classified_at: isNowClassified
         ? (prev?.classified_at ?? now)
         : undefined,
       mastered_at: state === 'mastered' ? now : undefined,
@@ -82,22 +111,33 @@ export const useUserStore = create<UserState>((set, get) => ({
       .filter((c) => c.state === 'classified' || c.state === 'mastered').length;
     const mastered_count = Object.values({ ...get().creatures, [id]: update })
       .filter((c) => c.state === 'mastered').length;
-    const isNowClassified = state === 'classified' || state === 'mastered';
-    set((s) => ({
-      creatures: { ...s.creatures, [id]: update },
-      profile: s.profile
-        ? {
-            ...s.profile,
-            classified_count,
-            mastered_count,
-            // Every scan clears the pending special specimen from the home card
-            ...(isNowClassified ? {
-              last_classified_creature_id: id,
-              last_unlocked_specimen_id: null,
-            } : {}),
-          }
-        : s.profile,
-    }));
+
+    // Check if this is a rare specimen (eww_meter ≥ 80) for the daily mission
+    const creatureData  = isNewClassification ? getCreatureById(id) : undefined;
+    const isRare        = (creatureData?.eww_meter ?? 0) >= 80;
+
+    set((s) => {
+      if (!s.profile) return { creatures: { ...s.creatures, [id]: update } };
+      const resetPatch = dailyResetPatch(s.profile) ?? {};
+      const base = { ...s.profile, ...resetPatch };
+      return {
+        creatures: { ...s.creatures, [id]: update },
+        profile: {
+          ...base,
+          classified_count,
+          mastered_count,
+          ...(isNowClassified ? {
+            last_classified_creature_id: id,
+            last_unlocked_specimen_id: null,
+          } : {}),
+          // Increment daily counters only on fresh classification
+          ...(isNewClassification ? {
+            daily_classified_today: (base.daily_classified_today ?? 0) + 1,
+            ...(isRare ? { daily_rare_found: true } : {}),
+          } : {}),
+        },
+      };
+    });
     get().updateStage();
   },
 
@@ -232,5 +272,19 @@ export const useUserStore = create<UserState>((set, get) => ({
 
   getOwnedSpecialIds: () => {
     return Object.keys(get().profile?.special_specimens ?? {});
+  },
+
+  incrementDailyQuizAnswer: () => {
+    set((s) => {
+      if (!s.profile) return s;
+      const resetPatch = dailyResetPatch(s.profile) ?? {};
+      const base = { ...s.profile, ...resetPatch };
+      return {
+        profile: {
+          ...base,
+          daily_quiz_answers_today: (base.daily_quiz_answers_today ?? 0) + 1,
+        },
+      };
+    });
   },
 }));

@@ -43,26 +43,26 @@ export default function Home() {
   const ewwMeterValue: 60 | 80 | 100 =
     rawScore >= 80 ? 100 : rawScore >= 40 ? 80 : 60;
 
-  // Daily missions — progress derived from profile
+  // Daily missions — tracked per-day via dedicated profile counters
   const missions = [
     {
       icon:     Assets.missionScan,
       label:    'Classify 3 specimens today',
-      current:  Math.min(profile.classified_count % 3, 3),
+      current:  Math.min(profile.daily_classified_today ?? 0, 3),
       total:    3,
       reward:   '+2 scans',
     },
     {
       icon:     Assets.missionWarning,
       label:    'Answer 5 quiz questions',
-      current:  Math.min(profile.mastered_count % 5, 5),
+      current:  Math.min(profile.daily_quiz_answers_today ?? 0, 5),
       total:    5,
       reward:   '+1 scan',
     },
     {
       icon:     Assets.missionRare,
       label:    'Find a rare specimen',
-      current:  profile.classified_count > 0 ? 1 : 0,
+      current:  profile.daily_rare_found ? 1 : 0,
       total:    1,
       reward:   '+3 scans',
     },
@@ -149,22 +149,6 @@ export default function Home() {
           />
         </View>
 
-        {/* ── Quick nav ───────────────────────────────────── */}
-        <View style={styles.quickRow}>
-          <QuickCard
-            label="Specimen Files"
-            sub={`${profile.classified_count} / 75 creatures`}
-            color={Colors.eww.green}
-            onPress={() => router.push('/(tabs)/collection')}
-          />
-          <QuickCard
-            label="Rewards"
-            sub={`Stage ${profile.eww_stage}`}
-            color={Colors.eww.purple}
-            onPress={() => router.push('/(tabs)/recruit-file')}
-          />
-        </View>
-
         {/* ── EWW-score gauge ─────────────────────────────── */}
         <View style={styles.ewwCard}>
           <Text style={styles.ewwTitle}>YOUR EWW SCORE</Text>
@@ -232,30 +216,6 @@ function StatBubble({
       <Text style={[styles.statValue, { color }]}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
     </View>
-  );
-}
-
-function QuickCard({
-  label,
-  sub,
-  color,
-  onPress,
-}: {
-  label: string;
-  sub: string;
-  color: string;
-  onPress: () => void;
-}) {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.8}
-      style={[styles.quickCard, { borderColor: `${color}50` }]}
-    >
-      <Text style={[styles.quickLabel, { color }]}>{label}</Text>
-      <Text style={styles.quickSub}>{sub}</Text>
-      <Text style={[styles.quickArrow, { color }]}>›</Text>
-    </TouchableOpacity>
   );
 }
 
@@ -430,35 +390,6 @@ const styles = StyleSheet.create({
     color:         Colors.text.secondary,
     letterSpacing: 0.2,
     textAlign:     'center',
-  },
-
-  // ── Quick nav ─────────────────────────────────────────────────────────────
-  quickRow: {
-    flexDirection: 'row',
-    gap:           10,
-  },
-  quickCard: {
-    flex:            1,
-    backgroundColor: Colors.bg.card,
-    borderRadius:    Radius.lg,
-    borderWidth:     1.5,
-    padding:         14,
-    gap:             4,
-  },
-  quickLabel: {
-    fontFamily:    FontFamily.boogaloo,
-    fontSize:      16,
-    letterSpacing: 0.3,
-  },
-  quickSub: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize:   14,
-    color:      Colors.text.secondary,
-  },
-  quickArrow: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize:   20,
-    marginTop:  4,
   },
 
   // ── EWW gauge ─────────────────────────────────────────────────────────────

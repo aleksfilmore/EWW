@@ -26,6 +26,16 @@ export interface UserProfile {
   /** Map of special specimen id → unlock info */
   special_specimens: Record<string, UnlockedSpecialSpecimen>;
   created_at: number;
+
+  // ── Daily mission tracking ─────────────────────────────────────────────────
+  /** ISO date string of last daily reset, e.g. "2026-05-25" */
+  daily_missions_reset: string | null;
+  /** How many creatures classified today */
+  daily_classified_today: number;
+  /** How many quiz questions answered today */
+  daily_quiz_answers_today: number;
+  /** Whether a rare specimen (eww ≥ 80) was classified today */
+  daily_rare_found: boolean;
 }
 
 export interface QuizResult {

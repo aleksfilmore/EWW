@@ -64,16 +64,17 @@ function buildQuestions(creatures: Creature[], count: number): Question[] {
 }
 
 export default function QuizScreen() {
-  const profile              = useUserStore((s) => s.profile);
-  const addScans                 = useUserStore((s) => s.addScans);
-  const unlockSpecialSpecimen    = useUserStore((s) => s.unlockSpecialSpecimen);
-  const getOwnedSpecialIds       = useUserStore((s) => s.getOwnedSpecialIds);
-  const recordCorrect            = useGameStore((s) => s.recordCorrectAnswer);
-  const recordWrong              = useGameStore((s) => s.recordWrongAnswer);
-  const quizStreak               = useGameStore((s) => s.quizStreak);
-  const triggerContamination     = useGameStore((s) => s.triggerContaminationEvent);
-  const resetQuizSession         = useGameStore((s) => s.resetQuizSession);
-  const userTriggerContamination = useUserStore((s) => s.triggerContamination);
+  const profile                    = useUserStore((s) => s.profile);
+  const addScans                   = useUserStore((s) => s.addScans);
+  const unlockSpecialSpecimen      = useUserStore((s) => s.unlockSpecialSpecimen);
+  const getOwnedSpecialIds         = useUserStore((s) => s.getOwnedSpecialIds);
+  const incrementDailyQuizAnswer   = useUserStore((s) => s.incrementDailyQuizAnswer);
+  const recordCorrect              = useGameStore((s) => s.recordCorrectAnswer);
+  const recordWrong                = useGameStore((s) => s.recordWrongAnswer);
+  const quizStreak                 = useGameStore((s) => s.quizStreak);
+  const triggerContamination       = useGameStore((s) => s.triggerContaminationEvent);
+  const resetQuizSession           = useGameStore((s) => s.resetQuizSession);
+  const userTriggerContamination   = useUserStore((s) => s.triggerContamination);
 
   // Use ALL_CREATURES for a 234-creature pool — far less repetition
   const [questions] = useState<Question[]>(() =>
@@ -110,6 +111,8 @@ export default function QuizScreen() {
     setAnswered(true);
 
     const isCorrect = selected === q.correctId;
+    // Track every answered question toward the daily mission (correct or wrong)
+    incrementDailyQuizAnswer();
     if (isCorrect) {
       playSfx('sfx_correct');
       setScore((s) => s + 1);
@@ -187,7 +190,7 @@ export default function QuizScreen() {
           {hasContaminatedRef.current && (
             <View style={styles.contaminationBadge}>
               <Text style={styles.contaminationBadgeText}>
-                ☣  CONTAMINATION EVENT — CHECK REWARDS
+                ☣  SLIME SURGE TRIGGERED — CHECK REWARDS
               </Text>
             </View>
           )}

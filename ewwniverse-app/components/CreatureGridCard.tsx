@@ -2,15 +2,14 @@
  * CreatureGridCard — jar-frame grid cell matching the mockup.
  *
  * locked     → locked jar frame (dark, lock on lid, "???" text)
- * classified → classified jar frame + creature image + CLASSIFIED stamp on top
- * mastered   → classified jar frame + creature image + stamp + gold star badge
+ * classified → classified jar frame + creature image inside clipped oval
+ * mastered   → classified jar frame + creature image + gold star badge
  *
- * The CLASSIFIED stamp is rendered as a separate overlay AFTER the creature
- * image so it always appears on top (fixes z-order issue where the jar frame's
- * embedded stamp was hidden behind the creature image).
+ * The jar-classified illustration already has the CLASSIFIED stamp embedded,
+ * so we do NOT add a separate stamp overlay (that was causing the double stamp).
  *
- * Creature image is slightly larger (0.58 of size) and raised (top: 12%) so
- * solid-background dinosaur/earth images fill the jar body better.
+ * Creature images are clipped to an oval to handle solid-background JPEGs
+ * (dinosaurs, earth creatures) — they look correct inside the jar body.
  */
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
@@ -30,8 +29,9 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
   const isClassified = state === 'classified' || state === 'mastered';
   const creatureImg  = CREATURE_IMAGES[creature.id];
 
-  // Stamp sits at bottom-right, 28% of cell size
-  const stampSize = Math.round(size * 0.28);
+  // Creature clip area: oval to match jar body, centered in jar
+  // Jar body occupies roughly the lower 68% of the card height
+  const clipSize  = Math.round(size * 0.52);
 
   return (
     <TouchableOpacity
@@ -46,22 +46,25 @@ export function CreatureGridCard({ creature, state, size, onPress }: Props) {
         resizeMode="contain"
       />
 
-      {/* Creature image inside jar (classified / mastered only) */}
+      {/* Creature inside jar — oval clip so solid-BG JPEGs look natural */}
       {isClassified && creatureImg && (
-        <Image
-          source={creatureImg}
-          style={[styles.creatureInJar, { width: size * 0.58, height: size * 0.58 }]}
-          resizeMode="contain"
-        />
-      )}
-
-      {/* CLASSIFIED stamp overlay — drawn on top of creature image */}
-      {isClassified && (
-        <Image
-          source={Assets.classifiedStamp}
-          style={[styles.classifiedStamp, { width: stampSize, height: stampSize }]}
-          resizeMode="contain"
-        />
+        <View
+          style={[
+            styles.creatureClip,
+            {
+              width:        clipSize,
+              height:       clipSize,
+              borderRadius: clipSize / 2,
+              top:          Math.round(size * 0.14),
+            },
+          ]}
+        >
+          <Image
+            source={creatureImg}
+            style={styles.creatureImg}
+            resizeMode="cover"
+          />
+        </View>
       )}
 
       {/* Mastered star badge */}
@@ -95,17 +98,18 @@ const styles = StyleSheet.create({
     width: '100%',
     flex:  1,
   },
-  creatureInJar: {
+
+  // Oval clipping container for creature image
+  creatureClip: {
     position:  'absolute',
-    top:       '12%',       // raised slightly to centre in jar body
     alignSelf: 'center',
+    overflow:  'hidden',
   },
-  // CLASSIFIED stamp rendered after creature — always on top
-  classifiedStamp: {
-    position: 'absolute',
-    bottom:   '22%',
-    right:    '4%',
+  creatureImg: {
+    width:  '100%',
+    height: '100%',
   },
+
   starBadge: {
     position:        'absolute',
     top:             2,
@@ -124,10 +128,10 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily:        FontFamily.boogaloo,
-    fontSize:          9,
+    fontSize:          10,
     color:             Colors.text.primary,
     textAlign:         'center',
-    lineHeight:        11,
+    lineHeight:        12,
     letterSpacing:     0.3,
     marginTop:         2,
     paddingHorizontal: 2,

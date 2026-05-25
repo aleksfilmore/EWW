@@ -267,20 +267,15 @@ export default function CreatureDetail() {
           </View>
         )}
 
-        {/* ── Action buttons (classified) ───────────────────────────── */}
+        {/* ── Action button (classified) ────────────────────────────── */}
         {isClassified && (
-          <View style={styles.actionRow}>
-            <TouchableOpacity style={styles.actionBtn} onPress={handleMaster} activeOpacity={0.8}>
-              <Image source={Assets.btnMaster} style={styles.actionBtnImg} resizeMode="contain" />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.actionBtn}
-              onPress={() => router.push('/(tabs)/recruit-file')}
-              activeOpacity={0.8}
-            >
-              <Image source={Assets.btnAddToSet} style={styles.actionBtnImg} resizeMode="contain" />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.masterBtn}
+            onPress={handleMaster}
+            activeOpacity={0.8}
+          >
+            <Image source={Assets.btnMaster} style={styles.masterBtnImg} resizeMode="contain" />
+          </TouchableOpacity>
         )}
 
         {/* Quiz nudge */}
@@ -547,10 +542,9 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
 
-  // ── Action buttons ────────────────────────────────────────────────────────
-  actionRow: { flexDirection: 'row', width: '100%', gap: 12 },
-  actionBtn:    { flex: 1, alignItems: 'center' },
-  actionBtnImg: { width: '100%', height: 84 },
+  // ── Master button (full-width) ────────────────────────────────────────────
+  masterBtn:    { width: '100%', alignItems: 'center' },
+  masterBtnImg: { width: '100%', height: 84 },
 
   // ── Quiz nudge ────────────────────────────────────────────────────────────
   quizNudge:     { paddingVertical: 8 },

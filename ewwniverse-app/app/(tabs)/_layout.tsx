@@ -6,6 +6,7 @@ const TAB_IMAGES = {
   index:          require('../../assets/tab-home.png'),
   collection:     require('../../assets/tab-explore.png'),
   'recruit-file': require('../../assets/tab-rewards.png'),
+  'dr-icky':      require('../../assets/tab-special.png'),
 } as const;
 
 function TabIcon({ name, focused }: { name: keyof typeof TAB_IMAGES; focused: boolean }) {
@@ -56,6 +57,15 @@ export default function TabLayout() {
           title: 'REWARDS',
           tabBarIcon: ({ focused }) => (
             <TabIcon name="recruit-file" focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="dr-icky"
+        options={{
+          title: 'DR. ICKY',
+          tabBarIcon: ({ focused }) => (
+            <TabIcon name="dr-icky" focused={focused} />
           ),
         }}
       />

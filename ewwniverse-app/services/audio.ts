@@ -72,20 +72,59 @@ let _muted = false;
 export function setMuted(muted: boolean) { _muted = muted; }
 export function isMuted() { return _muted; }
 
+// ─── Pre-loaded player pool ───────────────────────────────────────────────
+// Pre-create players for the most frequently triggered sounds so there is
+// no audio-pipeline init cost at the moment of play (eliminates the ~100-200ms
+// startup delay on first fire of each sound).
+//
+// Strategy: keep ONE ready player per hot key. When consumed, immediately
+// replenish async. Falls back to on-demand creation if the pool is empty.
+
+const HOT_KEYS: SfxKey[] = [
+  'sfx_answer_tap',
+  'sfx_correct',
+  'sfx_wrong',
+  'sfx_card_tap',
+  'sfx_detail_open',
+  'sfx_access_granted',
+];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const _pool: Partial<Record<SfxKey, ReturnType<typeof createAudioPlayer>>> = {};
+
+function _prime(key: SfxKey) {
+  try {
+    if (!_pool[key]) _pool[key] = createAudioPlayer(SFX_SOURCES[key]);
+  } catch {}
+}
+
+// Prime pool on module load (non-blocking — just object creation)
+for (const k of HOT_KEYS) _prime(k);
+
 // ─── SFX playback ─────────────────────────────────────────────────────────
 /**
- * Play a sound effect. Non-blocking — creates a fresh player each call
- * so multiple sounds can overlap. Fails silently on any error.
+ * Play a sound effect. Non-blocking — uses a pre-loaded player for hot keys
+ * (near-instant) and falls back to on-demand creation for others.
+ * Fails silently on any error.
  */
 export function playSfx(key: SfxKey): void {
   if (_muted) return;
   try {
-    const player = createAudioPlayer(SFX_SOURCES[key]);
-    player.play();
-    // Release resources after 15s (generous ceiling for any SFX)
-    setTimeout(() => {
-      try { player.remove(); } catch {}
-    }, 15_000);
+    const ready = _pool[key];
+    if (ready) {
+      // Consume the pre-loaded player and replenish in the background
+      delete _pool[key];
+      ready.play();
+      setTimeout(() => {
+        try { ready.remove(); } catch {}
+        _prime(key); // rebuild for the next call
+      }, 8_000);
+    } else {
+      // On-demand creation (cold path — uncommon sounds or pool exhausted)
+      const player = createAudioPlayer(SFX_SOURCES[key]);
+      player.play();
+      setTimeout(() => { try { player.remove(); } catch {} }, 15_000);
+    }
   } catch {
     // Audio is non-critical — never crash the app over a missing sound
   }

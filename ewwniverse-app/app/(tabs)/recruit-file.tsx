@@ -176,10 +176,10 @@ export default function Rewards() {
           </View>
         </View>
 
-        {/* ── Contamination event ──────────────────────────────── */}
+        {/* ── Slime Surge events ───────────────────────────────── */}
         {profile.contamination_count > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>CONTAMINATION EVENTS</Text>
+            <Text style={styles.sectionTitle}>SLIME SURGES</Text>
             <View style={styles.contaminationCard}>
               <Image
                 source={Assets.bannerSlimeSurge}
@@ -351,7 +351,7 @@ function SpecialSpecimensSection({
         <View style={styles.specialEmpty}>
           <Text style={styles.specialEmptyIcon}>☣</Text>
           <Text style={styles.specialEmptyText}>
-            Get 3 quiz answers in a row to trigger a{'\n'}Contamination Event and unlock a specimen
+            Get 3 quiz answers in a row to trigger a{'\n'}Slime Surge and unlock a specimen
           </Text>
         </View>
       ) : (
