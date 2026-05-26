@@ -1,25 +1,22 @@
 /**
- * Onboarding — 3-slide intro carousel shown on every launch.
- * User can opt out with "Don't show this again".
- *
- * Slide 1: Welcome / what it is
- * Slide 2: Scan → Classify → Master mechanic
- * Slide 3: Stages, streak, daily specimen + dismiss option
+ * Onboarding — 3-slide intro carousel shown on first launch.
+ * Hero area: Dr. Icky video for each slide.
+ * Bottom card: title, body, progress dots, CTA.
  */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import {
   View,
   Text,
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  Image,
   Dimensions,
   Platform,
 } from 'react-native';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { VideoView, useVideoPlayer } from 'expo-video';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { ONBOARDING_KEY } from '@/constants/storage';
 
@@ -28,81 +25,86 @@ const { width: SW, height: SH } = Dimensions.get('window');
 // ── Slide data ────────────────────────────────────────────────────────────────
 
 interface Slide {
-  key: string;
-  image: ReturnType<typeof require>;
-  imageSize: number;
-  tint?: string;
-  title: string;
-  body: string;
+  key:    string;
+  video:  ReturnType<typeof require>;
+  title:  string;
+  body:   string;
   accent: string;
 }
 
 const SLIDES: Slide[] = [
   {
-    key: 'welcome',
-    image: require('../assets/icon.png'),
-    imageSize: 200,
+    key:   'welcome',
+    video: require('../assets/videos/welcome.mp4'),
     title: 'Welcome to\nEWW-NIVERSE',
-    body: 'The grossest creature collection in the universe. Classify specimens, master the lab, and discover what really lurks in the dark.',
+    body:  'The grossest creature collection in the universe. Classify specimens, master the lab, and discover what really lurks in the dark.',
     accent: Colors.eww.green,
   },
   {
-    key: 'classify',
-    image: require('../assets/tab-explore.png'),
-    imageSize: 150,
-    tint: Colors.eww.amber,
+    key:   'classify',
+    video: require('../assets/videos/classify.mp4'),
     title: 'Scan.\nClassify. Master.',
-    body: 'Use scans to unlock creature specimens. Answer correctly to classify — answer three times to master and earn full points. Scans refresh every 12 hours.',
+    body:  'Use scans to unlock creature specimens. Master each creature by acing its quiz — earn scans and badges. Scans refresh every 12 hours.',
     accent: Colors.eww.amber,
   },
   {
-    key: 'stages',
-    image: require('../assets/tab-rewards.png'),
-    imageSize: 150,
-    tint: Colors.eww.purple,
+    key:   'use-scans',
+    video: require('../assets/videos/use-scans.mp4'),
     title: 'Five Stages\nto Dr. Icky',
-    body: 'Rise from Kinda Curious to Full Dr. Icky. Complete the Daily Specimen for double scan rewards. Keep your streak alive to earn bonus scans.',
+    body:  'Rise from Kinda Curious to Full Dr. Icky. Complete the Daily Specimen for double scan rewards. Keep your streak alive to earn bonus scans.',
     accent: Colors.eww.purple,
   },
 ];
 
+// ── Video hero per slide ──────────────────────────────────────────────────────
+
+function SlideVideoHero({ video }: { video: ReturnType<typeof require> }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const player = useVideoPlayer(video as any, (p) => {
+    p.loop = true;
+    p.muted = false;
+    p.play();
+  });
+
+  return (
+    <VideoView
+      player={player}
+      style={styles.heroVideo}
+      contentFit="contain"
+      nativeControls={false}
+    />
+  );
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Onboarding() {
-  const flatListRef = useRef<FlatList>(null);
+  const flatListRef   = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [dontShow, setDontShow] = useState(false);
+  const [dontShow,    setDontShow]      = useState(false);
 
   const isLast = currentIndex === SLIDES.length - 1;
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!isLast) {
       const next = currentIndex + 1;
       flatListRef.current?.scrollToIndex({ index: next, animated: true });
       setCurrentIndex(next);
     }
-  };
+  }, [isLast, currentIndex]);
 
-  const handleEnter = async () => {
+  const handleEnter = useCallback(async () => {
     if (dontShow) {
       await AsyncStorage.setItem(ONBOARDING_KEY, '1');
     }
     router.replace('/(tabs)');
-  };
+  }, [dontShow]);
 
-  const renderSlide = ({ item }: { item: Slide }) => (
+  const renderSlide = useCallback(({ item }: { item: Slide }) => (
     <View style={styles.slide}>
-      {/* Hero area */}
+      {/* Video hero */}
       <View style={styles.heroArea}>
-        <Image
-          source={item.image}
-          style={[
-            styles.heroImage,
-            { width: item.imageSize, height: item.imageSize },
-            item.tint ? { tintColor: item.tint } : undefined,
-          ]}
-          resizeMode="contain"
-        />
+        <SlideVideoHero video={item.video} />
       </View>
 
       {/* Content card */}
@@ -122,14 +124,11 @@ export default function Onboarding() {
           ))}
         </View>
 
-        {/* Title */}
         <Text style={[styles.title, { color: item.accent }]}>{item.title}</Text>
-
-        {/* Body */}
         <Text style={styles.body}>{item.body}</Text>
 
-        {/* Last slide extras */}
-        {item.key === 'stages' && (
+        {/* Last slide: "don't show again" */}
+        {item.key === 'use-scans' && (
           <TouchableOpacity
             style={styles.checkRow}
             onPress={() => setDontShow((v) => !v)}
@@ -142,10 +141,9 @@ export default function Onboarding() {
           </TouchableOpacity>
         )}
 
-        {/* CTA button */}
         {isLast ? (
           <TouchableOpacity
-            style={[styles.ctaBtn, { backgroundColor: item.accent, borderColor: item.accent === Colors.eww.purple ? Colors.eww.purpleDark : Colors.eww.greenDark }]}
+            style={[styles.ctaBtn, { backgroundColor: item.accent, borderColor: `${item.accent}aa` }]}
             onPress={handleEnter}
             activeOpacity={0.85}
           >
@@ -153,7 +151,7 @@ export default function Onboarding() {
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
-            style={[styles.ctaBtn, { backgroundColor: item.accent, borderColor: item.accent === Colors.eww.amber ? '#A06010' : Colors.eww.greenDark }]}
+            style={[styles.ctaBtn, { backgroundColor: item.accent, borderColor: `${item.accent}aa` }]}
             onPress={handleNext}
             activeOpacity={0.85}
           >
@@ -162,7 +160,7 @@ export default function Onboarding() {
         )}
       </View>
     </View>
-  );
+  ), [currentIndex, isLast, dontShow, handleNext, handleEnter]);
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
@@ -191,126 +189,116 @@ export default function Onboarding() {
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 
-const CARD_HEIGHT = SH * 0.56;
+const CARD_HEIGHT = SH * 0.52;
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
+    flex:            1,
     backgroundColor: Colors.bg.DEFAULT,
   },
   slide: {
     width: SW,
-    flex: 1,
+    flex:  1,
   },
   heroArea: {
-    flex: 1,
-    alignItems: 'center',
+    flex:           1,
+    alignItems:     'center',
     justifyContent: 'center',
-    paddingBottom: 16,
   },
-  heroImage: {
-    // size set inline per slide
+  heroVideo: {
+    width:  SW,
+    height: SH - CARD_HEIGHT,
   },
 
-  // Parchment card bottom sheet
   card: {
-    height: CARD_HEIGHT,
-    backgroundColor: Colors.bg.parchment,
-    borderTopLeftRadius: 28,
+    height:               CARD_HEIGHT,
+    backgroundColor:      Colors.bg.parchment,
+    borderTopLeftRadius:  28,
     borderTopRightRadius: 28,
-    borderTopWidth: 3,
-    paddingHorizontal: Spacing.lg,
-    paddingTop: 24,
-    paddingBottom: Platform.OS === 'android' ? 24 : 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 12,
+    borderTopWidth:       3,
+    paddingHorizontal:    Spacing.lg,
+    paddingTop:           24,
+    paddingBottom:        Platform.OS === 'android' ? 24 : 16,
+    shadowColor:          '#000',
+    shadowOffset:         { width: 0, height: -4 },
+    shadowOpacity:        0.25,
+    shadowRadius:         10,
+    elevation:            12,
   },
 
   dots: {
     flexDirection: 'row',
-    gap: 8,
-    marginBottom: 18,
+    gap:           8,
+    marginBottom:  18,
   },
   dot: {
     borderRadius: 5,
-    height: 8,
+    height:       8,
   },
-  dotActive: {
-    width: 24,
-  },
-  dotInactive: {
-    width: 8,
-    backgroundColor: `${Colors.eww.tan}80`,
-  },
+  dotActive:   { width: 24 },
+  dotInactive: { width: 8, backgroundColor: `${Colors.eww.tan}80` },
 
   title: {
-    fontFamily: FontFamily.creepster,
-    fontSize: 34,
-    lineHeight: 36,
+    fontFamily:    FontFamily.creepster,
+    fontSize:      32,
+    lineHeight:    34,
     letterSpacing: 1,
-    marginBottom: 12,
-    // shadow matching website style
-    textShadowColor: 'rgba(0,0,0,0.12)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
+    marginBottom:  10,
   },
   body: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 19,
-    lineHeight: 27,
-    color: Colors.eww.bark,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      18,
+    lineHeight:    26,
+    color:         Colors.eww.bark,
     letterSpacing: 0.2,
-    flex: 1,
+    flex:          1,
   },
 
   checkRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginBottom: 14,
-    marginTop: 4,
+    alignItems:    'center',
+    gap:           10,
+    marginBottom:  14,
+    marginTop:     4,
   },
   checkbox: {
-    width: 22,
-    height: 22,
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: Colors.eww.tan,
+    width:           22,
+    height:          22,
+    borderRadius:    5,
+    borderWidth:     2,
+    borderColor:     Colors.eww.tan,
     backgroundColor: 'transparent',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems:      'center',
+    justifyContent:  'center',
   },
   checkmark: {
-    fontSize: 13,
-    color: '#fff',
+    fontSize:   13,
+    color:      '#fff',
     fontWeight: '900',
     lineHeight: 14,
   },
   checkLabel: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 14,
-    color: Colors.eww.barkLight,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      14,
+    color:         Colors.eww.barkLight,
     letterSpacing: 0.3,
   },
 
   ctaBtn: {
-    borderRadius: Radius.lg,
-    borderWidth: 2.5,
-    paddingVertical: 14,
-    alignItems: 'center',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.35,
-    shadowRadius: 5,
-    elevation: 5,
-    shadowColor: '#000',
+    borderRadius:      Radius.lg,
+    borderWidth:       2.5,
+    paddingVertical:   14,
+    alignItems:        'center',
+    shadowOffset:      { width: 0, height: 3 },
+    shadowOpacity:     0.35,
+    shadowRadius:      5,
+    elevation:         5,
+    shadowColor:       '#000',
   },
   ctaText: {
-    fontFamily: FontFamily.creepster,
-    fontSize: 22,
-    color: '#fff',
+    fontFamily:    FontFamily.creepster,
+    fontSize:      22,
+    color:         '#fff',
     letterSpacing: 1.5,
   },
 });

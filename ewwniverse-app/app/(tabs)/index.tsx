@@ -117,14 +117,14 @@ export default function Home() {
           ))}
         </View>
 
-        {/* ── Quiz CTA ────────────────────────────────────── */}
+        {/* ── Explore CTA ─────────────────────────────────── */}
         <TouchableOpacity
           style={styles.quizBtn}
-          onPress={() => router.push('/quiz')}
+          onPress={() => router.push('/(tabs)/collection')}
           activeOpacity={0.85}
         >
-          <Text style={styles.quizLabel}>READY TO PLAY?</Text>
-          <Text style={styles.quizCta}>START THE QUIZ  ›</Text>
+          <Text style={styles.quizLabel}>READY TO MASTER?</Text>
+          <Text style={styles.quizCta}>EXPLORE SPECIMENS  ›</Text>
         </TouchableOpacity>
 
         {/* ── Progress stats ──────────────────────────────── */}

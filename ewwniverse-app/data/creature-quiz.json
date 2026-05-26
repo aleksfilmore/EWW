@@ -1,0 +1,2777 @@
+{
+  "creepy-creatures-saddleback-caterpillar": {
+    "mastered_success_text": "SPECIMEN MASTERED. Cute shape suspicion upgraded.",
+    "retry_text": "The saddle was cute. The clue was cruel.",
+    "master_text": "Dr. Icky saw the green saddle and thought 'adorable.' The lab report now says NEVER TRUST CUTE SHAPES. This caterpillar carries venomous spines around its bright body, so brushing against it can turn curiosity into burning regret.",
+    "questions": [
+      {
+        "question": "What hides around the cute body?",
+        "options": [
+          "Marshmallow buttons",
+          "Tiny bells",
+          "Soft feathers",
+          "Venomous spines"
+        ],
+        "correct_answer": "Venomous spines"
+      },
+      {
+        "question": "What can touching cause?",
+        "options": [
+          "A free sandwich",
+          "Blue hiccups",
+          "Burning pain",
+          "Instant happiness"
+        ],
+        "correct_answer": "Burning pain"
+      },
+      {
+        "question": "What visual trick fools recruits?",
+        "options": [
+          "A fake mustache",
+          "The cute green saddle",
+          "Invisible wings",
+          "A shiny crown"
+        ],
+        "correct_answer": "The cute green saddle"
+      }
+    ]
+  },
+  "creepy-creatures-rat-tailed-maggot": {
+    "mastered_success_text": "SPECIMEN MASTERED. Sewer noodle breathing approved.",
+    "retry_text": "The snorkel was right there, recruit.",
+    "master_text": "Dr. Icky found this larva breathing from the wrong end of common sense. The rat-tailed maggot lives in dirty, low-oxygen water and uses a long tube like a snorkel to reach air. It is a sewer noodle with respiratory ambition.",
+    "questions": [
+      {
+        "question": "What does the long tail act like?",
+        "options": [
+          "A snorkel",
+          "A fishing rod",
+          "A party streamer",
+          "A magic wand"
+        ],
+        "correct_answer": "A snorkel"
+      },
+      {
+        "question": "Where can it live?",
+        "options": [
+          "Dirty low-oxygen water",
+          "Dry chalk dust",
+          "Hot desert sand",
+          "A clean freezer"
+        ],
+        "correct_answer": "Dirty low-oxygen water"
+      },
+      {
+        "question": "What does the tube help it reach?",
+        "options": [
+          "Moonlight",
+          "Treasure",
+          "Lost socks",
+          "Air"
+        ],
+        "correct_answer": "Air"
+      }
+    ]
+  },
+  "creepy-creatures-aye-aye": {
+    "mastered_success_text": "SPECIMEN MASTERED. Midnight knuckle detective approved.",
+    "retry_text": "The aye-aye heard your wrong answer through a tree. Try again.",
+    "master_text": "Dr. Icky calls the aye-aye 'the midnight knuckle detective.' This strange lemur taps wood, listens for hidden tunnels, then uses one skinny finger to fish grubs out of their secret rooms. It looks like a rumor with ears, but the method is excellent.",
+    "questions": [
+      {
+        "question": "Why does the aye-aye tap wood?",
+        "options": [
+          "To start a drum solo",
+          "To annoy bananas",
+          "To find hollow tunnels",
+          "To wake tree ghosts"
+        ],
+        "correct_answer": "To find hollow tunnels"
+      },
+      {
+        "question": "What does the skinny finger help grab?",
+        "options": [
+          "Lost lab passwords",
+          "Moon crumbs",
+          "Hidden grubs",
+          "Tiny umbrellas"
+        ],
+        "correct_answer": "Hidden grubs"
+      },
+      {
+        "question": "What kind of creature is it?",
+        "options": [
+          "A fish",
+          "A lemur",
+          "A spider",
+          "A poisonous potato"
+        ],
+        "correct_answer": "A lemur"
+      }
+    ]
+  },
+  "creepy-creatures-botfly-larva": {
+    "mastered_success_text": "SPECIMEN MASTERED. Unauthorized nursery closed.",
+    "retry_text": "The squatter is still renting space. Study again.",
+    "master_text": "Dr. Icky calls this one 'the squatter with a breathing tube.' A botfly larva can develop under skin, keeping a small air hole open while it grows. Eventually it leaves to become an adult fly, which is rude after using someone as nursery furniture.",
+    "questions": [
+      {
+        "question": "What does the larva keep open?",
+        "options": [
+          "A tiny window shop",
+          "A music box",
+          "A candy drawer",
+          "A breathing hole"
+        ],
+        "correct_answer": "A breathing hole"
+      },
+      {
+        "question": "Where can it grow?",
+        "options": [
+          "On a clean plate",
+          "Under skin",
+          "Inside a thundercloud",
+          "Between book pages"
+        ],
+        "correct_answer": "Under skin"
+      },
+      {
+        "question": "What does it become later?",
+        "options": [
+          "A mushroom prince",
+          "An adult fly",
+          "A stone button",
+          "A baby octopus"
+        ],
+        "correct_answer": "An adult fly"
+      }
+    ]
+  },
+  "creepy-creatures-bullet-ant": {
+    "mastered_success_text": "SPECIMEN MASTERED. Pain with legs has been respected.",
+    "retry_text": "The ant has filed a sting appeal. Try again.",
+    "master_text": "Dr. Icky keeps the bullet ant in a drawer labeled PAIN WITH LEGS. The ant is famous for a sting that feels wildly out of proportion to its size. Small body, huge warning: rainforest insects do not need to be large to ruin your afternoon.",
+    "questions": [
+      {
+        "question": "What is this ant famous for?",
+        "options": [
+          "A blue mustache",
+          "Perfect handwriting",
+          "A gentle lullaby",
+          "An extremely painful sting"
+        ],
+        "correct_answer": "An extremely painful sting"
+      },
+      {
+        "question": "What is the nasty surprise?",
+        "options": [
+          "Its pain is huge for its size",
+          "It grows wheels",
+          "It steals pancakes",
+          "It turns into a chair"
+        ],
+        "correct_answer": "Its pain is huge for its size"
+      },
+      {
+        "question": "Where does this warning come from?",
+        "options": [
+          "Frozen deserts",
+          "Library carpets",
+          "Space volcanoes",
+          "Rainforest insect life"
+        ],
+        "correct_answer": "Rainforest insect life"
+      }
+    ]
+  },
+  "creepy-creatures-electric-eel": {
+    "mastered_success_text": "SPECIMEN MASTERED. Zap risk reduced by 0.002 percent.",
+    "retry_text": "The tank hummed. Your answer needs rewiring.",
+    "master_text": "Dr. Icky plugged nothing into the tank and still got zapped. Electric eels use special organs as living batteries, sending weak pulses to sense surroundings and stronger shocks to stun or scare. The mud may be cloudy. The electricity has a map.",
+    "questions": [
+      {
+        "question": "What acts like a living battery?",
+        "options": [
+          "Special electric organs",
+          "A glowworm necklace",
+          "A thunder hat",
+          "A metal lunchbox"
+        ],
+        "correct_answer": "Special electric organs"
+      },
+      {
+        "question": "Why use weak pulses?",
+        "options": [
+          "To toast bread",
+          "To annoy clouds",
+          "To charge a pencil",
+          "To sense surroundings"
+        ],
+        "correct_answer": "To sense surroundings"
+      },
+      {
+        "question": "What can strong shocks do?",
+        "options": [
+          "Freeze the moon",
+          "Stun prey or scare threats",
+          "Grow seaweed instantly",
+          "Turn mud into cake"
+        ],
+        "correct_answer": "Stun prey or scare threats"
+      }
+    ]
+  },
+  "creepy-creatures-assassin-bug": {
+    "mastered_success_text": "SPECIMEN MASTERED. The bug straw has been confiscated.",
+    "retry_text": "The assassin bug called your answer 'too crunchy.' Try again.",
+    "master_text": "Dr. Icky found the assassin bug sipping from a victim like it had ordered a smoothie with legs. This bug uses a sharp beak as a stabbing straw, turns prey soft inside, and lets chemistry do the chewing. Some even wear debris or old prey bits as a hideous disguise.",
+    "questions": [
+      {
+        "question": "What is the assassin bug’s beak used for?",
+        "options": [
+          "Stabbing and sipping prey",
+          "Playing trumpet solos",
+          "Brushing tiny teeth",
+          "Planting mushroom flags"
+        ],
+        "correct_answer": "Stabbing and sipping prey"
+      },
+      {
+        "question": "What does the bug use before drinking?",
+        "options": [
+          "Bubblegum perfume",
+          "Freezer dust",
+          "Invisible shoelaces",
+          "Digestive chemicals"
+        ],
+        "correct_answer": "Digestive chemicals"
+      },
+      {
+        "question": "Why would old prey bits help?",
+        "options": [
+          "They work as camouflage",
+          "They polish the floor",
+          "They become a backpack snack",
+          "They improve singing"
+        ],
+        "correct_answer": "They work as camouflage"
+      }
+    ]
+  },
+  "creepy-creatures-eyeless-spider": {
+    "mastered_success_text": "SPECIMEN MASTERED. You waved less. Good.",
+    "retry_text": "The eyeless spider felt the wrong answer coming.",
+    "master_text": "Dr. Icky waved at the eyeless spider and felt silly. Cave life gave this creature no reason to keep normal eyes, so it hunts by touch, vibration, and patience. Darkness is the whole room. The spider still knows when dinner wiggles.",
+    "questions": [
+      {
+        "question": "Why are normal eyes less useful here?",
+        "options": [
+          "It prefers sunglasses",
+          "The cave charges rent",
+          "It lives in darkness",
+          "Eyes are too noisy"
+        ],
+        "correct_answer": "It lives in darkness"
+      },
+      {
+        "question": "How does it find movement?",
+        "options": [
+          "Reading maps",
+          "Watching television",
+          "Touch and vibration",
+          "Smelling colors"
+        ],
+        "correct_answer": "Touch and vibration"
+      },
+      {
+        "question": "What does the spider still detect?",
+        "options": [
+          "Sad furniture",
+          "Wiggling prey",
+          "Invisible soup",
+          "Warm homework"
+        ],
+        "correct_answer": "Wiggling prey"
+      }
+    ]
+  },
+  "creepy-creatures-stonefish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Rock suspicion increased.",
+    "retry_text": "The rock was the specimen. Again.",
+    "master_text": "Dr. Icky lost the specimen for ten minutes because it looked exactly like the problem it causes: a rock you should never step on. The stonefish hides on the seafloor, blends into rough surroundings, and carries venom spines along its back.",
+    "questions": [
+      {
+        "question": "Why is it hard to notice?",
+        "options": [
+          "It blends in like a rock",
+          "It becomes transparent glass",
+          "It hides in trees",
+          "It wears sunglasses"
+        ],
+        "correct_answer": "It blends in like a rock"
+      },
+      {
+        "question": "Where are the venom spines?",
+        "options": [
+          "Along the back",
+          "Inside the eyeballs",
+          "Under tiny shoes",
+          "On the tongue"
+        ],
+        "correct_answer": "Along the back"
+      },
+      {
+        "question": "What is the worst mistake?",
+        "options": [
+          "Counting waves nearby",
+          "Stepping on it",
+          "Drawing it badly",
+          "Saying hello"
+        ],
+        "correct_answer": "Stepping on it"
+      }
+    ]
+  },
+  "creepy-creatures-deathstalker-scorpion": {
+    "mastered_success_text": "SPECIMEN MASTERED. Syringe tail logged and avoided.",
+    "retry_text": "The scorpion glowed in disappointment. Try again.",
+    "master_text": "Dr. Icky turned on the ultraviolet lamp and the deathstalker scorpion glowed like a cursed signpost. It uses pincers to handle prey and a venomous tail to finish arguments. Desert creatures prefer efficiency. This one brought a syringe tail.",
+    "questions": [
+      {
+        "question": "What reveals it under ultraviolet light?",
+        "options": [
+          "Its glowing body",
+          "A secret diary",
+          "Purple shoes",
+          "A neon sandwich"
+        ],
+        "correct_answer": "Its glowing body"
+      },
+      {
+        "question": "Which body part delivers the sting?",
+        "options": [
+          "The left knee",
+          "The eyelashes",
+          "The belly button",
+          "The tail"
+        ],
+        "correct_answer": "The tail"
+      },
+      {
+        "question": "What do pincers help with?",
+        "options": [
+          "Peeling oranges",
+          "Clapping for worms",
+          "Typing emails",
+          "Holding prey"
+        ],
+        "correct_answer": "Holding prey"
+      }
+    ]
+  },
+  "creepy-creatures-black-dragonfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. The deep tank has stopped whispering.",
+    "retry_text": "The dragonfish switched off the lights. Read the clues again.",
+    "master_text": "Dr. Icky lowered a lantern into the deep tank and the black dragonfish laughed in darkness. This predator lives where sunlight gives up, carries needle teeth, and can use strange light tricks while many prey see almost nothing. In the deep sea, unfair is a survival plan.",
+    "questions": [
+      {
+        "question": "Where does this fish belong?",
+        "options": [
+          "A desert cactus",
+          "A school locker",
+          "A sunny birdbath",
+          "The deep dark sea"
+        ],
+        "correct_answer": "The deep dark sea"
+      },
+      {
+        "question": "What gives it a nasty bite look?",
+        "options": [
+          "Soft marshmallow gums",
+          "A zipper mouth",
+          "Needle-like teeth",
+          "Leafy antlers"
+        ],
+        "correct_answer": "Needle-like teeth"
+      },
+      {
+        "question": "Why are light tricks useful there?",
+        "options": [
+          "It grows extra fins instantly",
+          "Light makes soup colder",
+          "It scares homework",
+          "Prey have poor vision in darkness"
+        ],
+        "correct_answer": "Prey have poor vision in darkness"
+      }
+    ]
+  },
+  "creepy-creatures-guinea-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Suspicious water avoided.",
+    "retry_text": "The horror paperwork needs re-reading.",
+    "master_text": "Dr. Icky wrote this file while standing very far from all suspicious water. Guinea worm disease begins when tiny infected water fleas are swallowed, then the worm grows inside the body. Later, a painful blister can send the worm slowly out, which is biology behaving like horror paperwork.",
+    "questions": [
+      {
+        "question": "How can infection begin?",
+        "options": [
+          "Wearing wet socks",
+          "Hearing a worm sneeze",
+          "Swallowing infected water fleas",
+          "Touching a shadow"
+        ],
+        "correct_answer": "Swallowing infected water fleas"
+      },
+      {
+        "question": "Where does the worm grow?",
+        "options": [
+          "On a chalkboard",
+          "Inside a teapot",
+          "Under a leaf hat",
+          "Inside the body"
+        ],
+        "correct_answer": "Inside the body"
+      },
+      {
+        "question": "What may appear later?",
+        "options": [
+          "A painful blister",
+          "A polite invitation",
+          "A gold medal",
+          "A tiny doorbell"
+        ],
+        "correct_answer": "A painful blister"
+      }
+    ]
+  },
+  "creepy-creatures-sea-spider": {
+    "mastered_success_text": "SPECIMEN MASTERED. Walking plumbing mapped.",
+    "retry_text": "You searched for the body. The clue was in the legs.",
+    "master_text": "Dr. Icky tried to find the sea spider’s body and mostly found legs. Some sea spiders are so thin that important organs extend into the legs, and they feed with a proboscis that sucks juices from soft prey. It is walking plumbing.",
+    "questions": [
+      {
+        "question": "Why do organs extend into the legs?",
+        "options": [
+          "The legs pay rent",
+          "The body hates storage",
+          "The body is very small",
+          "The sea made a mistake"
+        ],
+        "correct_answer": "The body is very small"
+      },
+      {
+        "question": "What does it use to feed?",
+        "options": [
+          "A proboscis",
+          "A forked spoon",
+          "A trumpet",
+          "A tiny vacuum cleaner with wheels"
+        ],
+        "correct_answer": "A proboscis"
+      },
+      {
+        "question": "What does it suck from prey?",
+        "options": [
+          "Feathers",
+          "Pebbles",
+          "Juices or fluids",
+          "Moon dust"
+        ],
+        "correct_answer": "Juices or fluids"
+      }
+    ]
+  },
+  "creepy-creatures-hypnotic-stargazer-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Sand face identified.",
+    "retry_text": "The sand had a face. You missed it.",
+    "master_text": "Dr. Icky nearly vacuumed the sand before the stargazer worm introduced its face. This ambush worm hides most of its body below the surface and waits with its head ready. Anything drifting too close becomes a very short conversation.",
+    "questions": [
+      {
+        "question": "Where does most of the worm hide?",
+        "options": [
+          "In a pocket watch",
+          "Inside a fruit bowl",
+          "Under sand",
+          "Behind the moon"
+        ],
+        "correct_answer": "Under sand"
+      },
+      {
+        "question": "What part stays ready?",
+        "options": [
+          "The socks",
+          "The head",
+          "The lunchbox",
+          "The left eyebrow"
+        ],
+        "correct_answer": "The head"
+      },
+      {
+        "question": "What is its hunting style?",
+        "options": [
+          "Chase prey across rooftops",
+          "Ambush nearby prey",
+          "Bake prey a pie",
+          "Sing prey to sleep"
+        ],
+        "correct_answer": "Ambush nearby prey"
+      }
+    ]
+  },
+  "creepy-creatures-brain-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Nerve chaos contained.",
+    "retry_text": "Your signal went down the wrong nerve tunnel. Try again.",
+    "master_text": "Dr. Icky placed this specimen beside a sign reading: BAD NAVIGATION INSIDE ANIMALS. A brain worm may end up in nervous tissue, where signals become messy and movement can turn strange. The gross part is microscopic. The consequences are very visible.",
+    "questions": [
+      {
+        "question": "What system can the worm disturb?",
+        "options": [
+          "The feather system",
+          "The nervous system",
+          "The shoe department",
+          "The lunch menu"
+        ],
+        "correct_answer": "The nervous system"
+      },
+      {
+        "question": "What can become strange?",
+        "options": [
+          "Chair height",
+          "Pencil flavor",
+          "Movement or behavior",
+          "Cloud color"
+        ],
+        "correct_answer": "Movement or behavior"
+      },
+      {
+        "question": "Why is it hard to spot at first?",
+        "options": [
+          "It turns invisible to spoons",
+          "It speaks Latin",
+          "The creature is small inside",
+          "It wears a cape"
+        ],
+        "correct_answer": "The creature is small inside"
+      }
+    ]
+  },
+  "creepy-creatures-cone-snail": {
+    "mastered_success_text": "SPECIMEN MASTERED. Pretty shell suspicion increased.",
+    "retry_text": "The shell looked innocent again. That is how it gets you.",
+    "master_text": "Dr. Icky saw a pretty shell and nearly joined the Museum of Terrible Choices. Cone snails are slow hunters with a hidden venom tooth, like a harpoon tucked inside a seashell. Pretty outside, chemistry nightmare inside.",
+    "questions": [
+      {
+        "question": "What is hidden inside the pretty shell?",
+        "options": [
+          "A beach umbrella",
+          "A tiny piano",
+          "A venom harpoon tooth",
+          "A sleeping bee"
+        ],
+        "correct_answer": "A venom harpoon tooth"
+      },
+      {
+        "question": "Why is slow still dangerous here?",
+        "options": [
+          "The shell tells jokes",
+          "The venom can strike quickly",
+          "Sand moves politely",
+          "The snail owns boots"
+        ],
+        "correct_answer": "The venom can strike quickly"
+      },
+      {
+        "question": "What should recruits avoid doing?",
+        "options": [
+          "Naming a crab",
+          "Looking at clouds",
+          "Picking it up carelessly",
+          "Counting bubbles"
+        ],
+        "correct_answer": "Picking it up carelessly"
+      }
+    ]
+  },
+  "creepy-creatures-hooded-pitohui": {
+    "mastered_success_text": "SPECIMEN MASTERED. Poison bird filed correctly.",
+    "retry_text": "The bird is a snack lawsuit. Re-read.",
+    "master_text": "Dr. Icky tried to file this under BIRDS, then added POISON BIRDS in red ink. The hooded pitohui can carry toxin in its feathers and skin, probably from its diet. It is proof that even a bird can become a bad snack with wings.",
+    "questions": [
+      {
+        "question": "Where can the toxin be found?",
+        "options": [
+          "On the nest’s roof",
+          "Feathers and skin",
+          "Inside its song",
+          "Only the shadow"
+        ],
+        "correct_answer": "Feathers and skin"
+      },
+      {
+        "question": "Where may the toxin come from?",
+        "options": [
+          "Rainbows",
+          "Old feathers",
+          "Moonlight",
+          "Food it eats"
+        ],
+        "correct_answer": "Food it eats"
+      },
+      {
+        "question": "What is the safest conclusion?",
+        "options": [
+          "Ask it to season soup",
+          "Do not treat it as a snack",
+          "Use it as a pillow",
+          "Rub it on toast"
+        ],
+        "correct_answer": "Do not treat it as a snack"
+      }
+    ]
+  },
+  "creepy-creatures-flesh-fly": {
+    "mastered_success_text": "SPECIMEN MASTERED. Nursery Choir silenced.",
+    "retry_text": "The larvae started without you. Read again.",
+    "master_text": "Dr. Icky opened the meat locker and heard the Flesh Fly Nursery Choir. Some flesh flies skip the egg waiting room and release live larvae onto food sources. That means the wriggling staff can begin work immediately. Efficient. Horrible. Very on-brand.",
+    "questions": [
+      {
+        "question": "What shortcut can flesh flies use?",
+        "options": [
+          "Laying square eggs",
+          "Releasing live larvae",
+          "Printing tiny menus",
+          "Freezing time"
+        ],
+        "correct_answer": "Releasing live larvae"
+      },
+      {
+        "question": "Why is that shortcut grossly efficient?",
+        "options": [
+          "Meat becomes musical",
+          "Larvae can feed quickly",
+          "Flies learn math",
+          "The floor grows teeth"
+        ],
+        "correct_answer": "Larvae can feed quickly"
+      },
+      {
+        "question": "Where would Dr. Icky avoid leaving it?",
+        "options": [
+          "Inside a clean snow globe",
+          "On a metal spoon",
+          "Beside dry chalk",
+          "Near decaying meat"
+        ],
+        "correct_answer": "Near decaying meat"
+      }
+    ]
+  },
+  "creepy-creatures-tongue-eating-louse": {
+    "mastered_success_text": "SPECIMEN MASTERED. Nightmare furniture removed.",
+    "retry_text": "The louse sat on the correct clue. Try again.",
+    "master_text": "Dr. Icky tried to write this calmly and failed. The tongue-eating louse attaches inside a fish’s mouth, damages the tongue, then sits where the tongue used to be while feeding on mucus and blood. This is replacement furniture from the nightmare store.",
+    "questions": [
+      {
+        "question": "Where does it attach?",
+        "options": [
+          "Inside a fish’s mouth",
+          "Under a crab shell",
+          "Inside a tree leaf",
+          "On a bird’s wing"
+        ],
+        "correct_answer": "Inside a fish’s mouth"
+      },
+      {
+        "question": "What does it replace?",
+        "options": [
+          "The gill cover",
+          "The tail",
+          "The tongue",
+          "The eye"
+        ],
+        "correct_answer": "The tongue"
+      },
+      {
+        "question": "What does it feed on?",
+        "options": [
+          "Seaweed only",
+          "Pebbles",
+          "Sunlight",
+          "Mucus and blood"
+        ],
+        "correct_answer": "Mucus and blood"
+      }
+    ]
+  },
+  "creepy-creatures-parasitic-barnacle": {
+    "mastered_success_text": "SPECIMEN MASTERED. Ocean paperwork stamped.",
+    "retry_text": "The crab signed the wrong form. Try again.",
+    "master_text": "Dr. Icky hates a barnacle with management skills. This parasite can invade a crab and redirect the crab’s behavior until the crab cares for barnacle young as if they were its own. It is body control with ocean paperwork.",
+    "questions": [
+      {
+        "question": "What animal can it invade?",
+        "options": [
+          "A jellybean",
+          "A cactus",
+          "A crab",
+          "A penguin"
+        ],
+        "correct_answer": "A crab"
+      },
+      {
+        "question": "What behavior can it redirect?",
+        "options": [
+          "Building volcanoes",
+          "Learning guitar",
+          "Care for barnacle young",
+          "Counting sand loudly"
+        ],
+        "correct_answer": "Care for barnacle young"
+      },
+      {
+        "question": "Why is it extra creepy?",
+        "options": [
+          "It wears a bow tie",
+          "It smells like toast",
+          "It hates paperwork",
+          "It controls the host’s behavior"
+        ],
+        "correct_answer": "It controls the host’s behavior"
+      }
+    ]
+  },
+  "creepy-creatures-tiger-leech": {
+    "mastered_success_text": "SPECIMEN MASTERED. Stripey blood straw removed.",
+    "retry_text": "The leech is still sipping your score.",
+    "master_text": "Dr. Icky calls the tiger leech a stripey blood straw with ambition. It uses small jaws to open skin, then saliva helps keep the blood flowing while it feeds. The meal plan is simple: attach, sip, and ruin someone’s hike.",
+    "questions": [
+      {
+        "question": "What opens the skin?",
+        "options": [
+          "A tiny spoon",
+          "A silk ribbon",
+          "Small jaws",
+          "Soft feathers"
+        ],
+        "correct_answer": "Small jaws"
+      },
+      {
+        "question": "What helps blood keep flowing?",
+        "options": [
+          "Cold moonlight",
+          "A polite song",
+          "Mint leaves",
+          "Saliva chemicals"
+        ],
+        "correct_answer": "Saliva chemicals"
+      },
+      {
+        "question": "What is the feeding plan?",
+        "options": [
+          "Eat sunlight",
+          "Sip flower nectar only",
+          "Attach and drink blood",
+          "Chew rocks"
+        ],
+        "correct_answer": "Attach and drink blood"
+      }
+    ]
+  },
+  "creepy-creatures-sea-devil-anglerfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Nightmare lamp dimmed.",
+    "retry_text": "Romance escaped. Biology remained.",
+    "master_text": "Dr. Icky dimmed the lights and the sea devil brought its own nightmare lamp. The female uses a glowing lure to attract prey in deep water. In some species, the tiny male attaches to her body and shares her bloodstream. Romance has left the building.",
+    "questions": [
+      {
+        "question": "What attracts prey?",
+        "options": [
+          "A glowing lure",
+          "A silver spoon",
+          "A warm scarf",
+          "A dinner bell"
+        ],
+        "correct_answer": "A glowing lure"
+      },
+      {
+        "question": "What may the tiny male do?",
+        "options": [
+          "Paint the seafloor",
+          "Build a nest in a cloud",
+          "Grow into a whale",
+          "Attach to the female"
+        ],
+        "correct_answer": "Attach to the female"
+      },
+      {
+        "question": "Why is the lure useful?",
+        "options": [
+          "The sun is too loud",
+          "Glowing makes teeth softer",
+          "Deep water is dark",
+          "Fish love lampshades"
+        ],
+        "correct_answer": "Deep water is dark"
+      }
+    ]
+  },
+  "creepy-creatures-zombie-starfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Detachable grossness approved.",
+    "retry_text": "The crawling arm left with the clue.",
+    "master_text": "Dr. Icky found a starfish arm crawling away and decided to hate the ocean professionally. Some starfish can drop an arm when threatened, and the lost part may keep moving while the body escapes. Later, regeneration can repair the damage. Detachable grossness is strategy.",
+    "questions": [
+      {
+        "question": "What can a starfish drop?",
+        "options": [
+          "A shell hat",
+          "A tongue",
+          "An arm",
+          "Its eyes"
+        ],
+        "correct_answer": "An arm"
+      },
+      {
+        "question": "Why can the lost part keep moving?",
+        "options": [
+          "To learn piano",
+          "To distract danger",
+          "To deliver mail",
+          "To go shopping"
+        ],
+        "correct_answer": "To distract danger"
+      },
+      {
+        "question": "What can help repair damage later?",
+        "options": [
+          "Moon soup",
+          "Regeneration",
+          "A tiny bandage song",
+          "Glue sticks"
+        ],
+        "correct_answer": "Regeneration"
+      }
+    ]
+  },
+  "creepy-creatures-zombie-snail": {
+    "mastered_success_text": "SPECIMEN MASTERED. Hypnotic salad banned.",
+    "retry_text": "The eyestalk billboard fooled you.",
+    "master_text": "Dr. Icky watched the snail’s eyestalks pulse and banned hypnotic salad. A parasite can make the eyestalks look like colorful caterpillars, luring birds to eat them. Inside the bird, the parasite continues its life cycle. The snail becomes advertising.",
+    "questions": [
+      {
+        "question": "What pulses like caterpillars?",
+        "options": [
+          "The slime trail",
+          "The tiny teeth",
+          "The shell roof",
+          "The eyestalks"
+        ],
+        "correct_answer": "The eyestalks"
+      },
+      {
+        "question": "Who gets lured?",
+        "options": [
+          "Bees",
+          "Cows",
+          "Crabs",
+          "Birds"
+        ],
+        "correct_answer": "Birds"
+      },
+      {
+        "question": "Why does the parasite want that?",
+        "options": [
+          "To learn singing",
+          "To win a beauty contest",
+          "To continue its life cycle",
+          "To collect feathers"
+        ],
+        "correct_answer": "To continue its life cycle"
+      }
+    ]
+  },
+  "creepy-creatures-deep-sea-lizardfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Bear trap with scales secured.",
+    "retry_text": "The lizardfish waited. You walked into the wrong answer.",
+    "master_text": "Dr. Icky found this fish waiting in the black water like a bear trap with scales. The deep sea lizardfish has a huge mouth, nasty teeth, and the patience of something that knows lunch cannot see well. It does not chase drama. It opens wide.",
+    "questions": [
+      {
+        "question": "What is its hunting style?",
+        "options": [
+          "Hosting tea parties",
+          "Building coral ladders",
+          "Teaching fish ballet",
+          "Waiting to ambush prey"
+        ],
+        "correct_answer": "Waiting to ambush prey"
+      },
+      {
+        "question": "What makes its mouth frightening?",
+        "options": [
+          "Large jaws and sharp teeth",
+          "A velvet tongue",
+          "Tiny curtains",
+          "A wooden whistle"
+        ],
+        "correct_answer": "Large jaws and sharp teeth"
+      },
+      {
+        "question": "Why does patience help in deep water?",
+        "options": [
+          "Prey may not see danger clearly",
+          "Teeth need naps",
+          "Water is full of clocks",
+          "Fish love paperwork"
+        ],
+        "correct_answer": "Prey may not see danger clearly"
+      }
+    ]
+  },
+  "creepy-creatures-vampire-fish-payara": {
+    "mastered_success_text": "SPECIMEN MASTERED. Horror poster mouth closed.",
+    "retry_text": "The fangs were longer than your attention span.",
+    "master_text": "Dr. Icky measured the payara’s lower fangs and immediately stopped measuring. These saber-like teeth are so long they fit into sockets in the upper jaw when the mouth closes. It hunts other fish with a face that looks built for a horror poster.",
+    "questions": [
+      {
+        "question": "Where do the long fangs fit?",
+        "options": [
+          "Behind the tail",
+          "Under the fins",
+          "Inside the gills",
+          "Sockets in the upper jaw"
+        ],
+        "correct_answer": "Sockets in the upper jaw"
+      },
+      {
+        "question": "What does it hunt?",
+        "options": [
+          "Clouds",
+          "Tree bark",
+          "Other fish",
+          "Glass beads"
+        ],
+        "correct_answer": "Other fish"
+      },
+      {
+        "question": "Why does the mouth look impossible?",
+        "options": [
+          "The lower fangs are huge",
+          "It smiles politely",
+          "It has no lips",
+          "It glows orange"
+        ],
+        "correct_answer": "The lower fangs are huge"
+      }
+    ]
+  },
+  "creepy-creatures-inland-taipan": {
+    "mastered_success_text": "SPECIMEN MASTERED. Empty-room protocol maintained.",
+    "retry_text": "The snake stayed shy. Your answer charged forward.",
+    "master_text": "Dr. Icky locked this snake file inside another snake file. The inland taipan has extremely potent venom shaped for quickly stopping small mammals. It is usually shy, which is excellent, because the bite chemistry deserves an empty room.",
+    "questions": [
+      {
+        "question": "What is its venom built to stop fast?",
+        "options": [
+          "Clouds",
+          "Old sandwiches",
+          "Tree bark",
+          "Small mammals"
+        ],
+        "correct_answer": "Small mammals"
+      },
+      {
+        "question": "How does the file describe its behavior?",
+        "options": [
+          "Always dancing",
+          "Obsessed with hats",
+          "Loud and theatrical",
+          "Usually shy"
+        ],
+        "correct_answer": "Usually shy"
+      },
+      {
+        "question": "Why does Dr. Icky want distance?",
+        "options": [
+          "The snake tells riddles",
+          "The floor is jealous",
+          "The scales squeak",
+          "The venom is extremely potent"
+        ],
+        "correct_answer": "The venom is extremely potent"
+      }
+    ]
+  },
+  "creepy-creatures-poison-dart-frog": {
+    "mastered_success_text": "SPECIMEN MASTERED. Terrible snack avoided.",
+    "retry_text": "The frog’s colors were the answer. Look again.",
+    "master_text": "Dr. Icky keeps this frog in the color-coded cabinet of bad decisions. Many poison dart frogs advertise skin toxins with bright colors, and the chemicals often depend on what they eat in the wild. Pretty frog, terrible snack review.",
+    "questions": [
+      {
+        "question": "What do bright colors advertise?",
+        "options": [
+          "Free candy",
+          "Skin toxins",
+          "Soft pajamas",
+          "A frog parade"
+        ],
+        "correct_answer": "Skin toxins"
+      },
+      {
+        "question": "What can affect the toxins?",
+        "options": [
+          "Shoe size",
+          "How loudly it burps",
+          "Wild diet",
+          "Moon phases only"
+        ],
+        "correct_answer": "Wild diet"
+      },
+      {
+        "question": "What is the correct snack review?",
+        "options": [
+          "Safe lollipop",
+          "Terrible snack",
+          "Excellent sandwich",
+          "Crunchy dessert"
+        ],
+        "correct_answer": "Terrible snack"
+      }
+    ]
+  },
+  "creepy-creatures-goliath-birdeater": {
+    "mastered_success_text": "SPECIMEN MASTERED. Giant spider dignity preserved.",
+    "retry_text": "The tarantula flicked a correction cloud.",
+    "master_text": "Dr. Icky approached the Goliath birdeater with a ruler and returned with respect. This giant tarantula can defend itself by flicking irritating hairs from its body. The name sounds dramatic, but the daily menu is usually more insect-and-small-prey buffet than bird banquet.",
+    "questions": [
+      {
+        "question": "What can it flick for defense?",
+        "options": [
+          "Wet noodles",
+          "Tiny arrows",
+          "Irritating body hairs",
+          "Glittery toenails"
+        ],
+        "correct_answer": "Irritating body hairs"
+      },
+      {
+        "question": "What is it?",
+        "options": [
+          "A furry mushroom",
+          "A giant tarantula",
+          "A lizard",
+          "A crab"
+        ],
+        "correct_answer": "A giant tarantula"
+      },
+      {
+        "question": "What is the name’s trick?",
+        "options": [
+          "It means it can fly",
+          "It sounds more bird-obsessed than daily life",
+          "It means it sings to birds",
+          "It means it eats only bread"
+        ],
+        "correct_answer": "It sounds more bird-obsessed than daily life"
+      }
+    ]
+  },
+  "creepy-creatures-zombie-ant-fungus": {
+    "mastered_success_text": "SPECIMEN MASTERED. Management from hell reported.",
+    "retry_text": "The fungus has reassigned your answer.",
+    "master_text": "Dr. Icky filed this under MANAGEMENT FROM HELL. The fungus infects an ant, changes its behavior, and pushes it to climb to a place where spores can spread. Then a fungal stalk grows from the body. The ant becomes delivery equipment.",
+    "questions": [
+      {
+        "question": "What does the fungus change?",
+        "options": [
+          "The color of rain",
+          "The ant’s shoe size",
+          "The ant’s behavior",
+          "The taste of leaves"
+        ],
+        "correct_answer": "The ant’s behavior"
+      },
+      {
+        "question": "Why does the ant climb?",
+        "options": [
+          "To see a concert",
+          "To become mayor",
+          "To find cake",
+          "To help spores spread"
+        ],
+        "correct_answer": "To help spores spread"
+      },
+      {
+        "question": "What grows after death?",
+        "options": [
+          "A tiny flag",
+          "A fungal stalk",
+          "A new antenna made of gold",
+          "A crystal hat"
+        ],
+        "correct_answer": "A fungal stalk"
+      }
+    ]
+  },
+  "creepy-creatures-australian-funnel-web-spider": {
+    "mastered_success_text": "SPECIMEN MASTERED. The quiet hole respects you now.",
+    "retry_text": "The quiet hole disagrees. Check the file again.",
+    "master_text": "Dr. Icky’s boot went into the funnel web corner and came back emotionally changed. This spider waits in silk-lined burrows, feels vibrations through trip lines, and can strike with serious venom. The hole may look quiet. The hole is listening.",
+    "questions": [
+      {
+        "question": "Where does this spider wait?",
+        "options": [
+          "In a silk-lined burrow",
+          "On a cloud shelf",
+          "Under a microscope hat",
+          "Inside a birthday cake"
+        ],
+        "correct_answer": "In a silk-lined burrow"
+      },
+      {
+        "question": "What warns it that prey is nearby?",
+        "options": [
+          "A glowing sandwich",
+          "The smell of homework",
+          "A doorbell ringtone",
+          "Vibrations on trip lines"
+        ],
+        "correct_answer": "Vibrations on trip lines"
+      },
+      {
+        "question": "Why is the quiet hole dangerous?",
+        "options": [
+          "It tells bad jokes",
+          "The spider can strike from it",
+          "It leaks purple jam",
+          "It burps glitter"
+        ],
+        "correct_answer": "The spider can strike from it"
+      }
+    ]
+  },
+  "creepy-creatures-tsetse-fly": {
+    "mastered_success_text": "SPECIMEN MASTERED. Winged syringe avoided.",
+    "retry_text": "The syringe with wings circled your answer.",
+    "master_text": "Dr. Icky calls the tsetse fly a syringe with wings. It feeds on blood and can carry parasites that cause sleeping sickness, affecting blood and eventually the nervous system. The bite is small. The consequences can become enormous.",
+    "questions": [
+      {
+        "question": "What does it feed on?",
+        "options": [
+          "Old paper",
+          "Blood",
+          "Tree sap only",
+          "Dust"
+        ],
+        "correct_answer": "Blood"
+      },
+      {
+        "question": "What disease is it linked with?",
+        "options": [
+          "Giggle fever",
+          "Sleeping sickness",
+          "Stone toe",
+          "Bubble cough"
+        ],
+        "correct_answer": "Sleeping sickness"
+      },
+      {
+        "question": "What system can later be affected?",
+        "options": [
+          "The shoe system",
+          "The feather system",
+          "The nervous system",
+          "The pencil system"
+        ],
+        "correct_answer": "The nervous system"
+      }
+    ]
+  },
+  "creepy-creatures-immortal-jellyfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Reset button respected.",
+    "retry_text": "The jellyfish reset your score. Try again.",
+    "master_text": "Dr. Icky refuses to call it immortal without making a face. This jellyfish can, under stress, return to an earlier stage of life instead of continuing normally. It is less superhero and more disgusting reset button with tentacles.",
+    "questions": [
+      {
+        "question": "What can it return to?",
+        "options": [
+          "A pile of toast",
+          "A library card",
+          "A fish’s shoe",
+          "An earlier life stage"
+        ],
+        "correct_answer": "An earlier life stage"
+      },
+      {
+        "question": "What can trigger the reset?",
+        "options": [
+          "A clean bathtub",
+          "A violin lesson",
+          "Stress or damage",
+          "A nice compliment"
+        ],
+        "correct_answer": "Stress or damage"
+      },
+      {
+        "question": "Why does Dr. Icky roll his eyes at 'immortal'?",
+        "options": [
+          "It is a reset ability, not magic invincibility",
+          "It cannot count",
+          "It hates nicknames",
+          "It wears fake glasses"
+        ],
+        "correct_answer": "It is a reset ability, not magic invincibility"
+      }
+    ]
+  },
+  "creepy-creatures-goblin-shark": {
+    "mastered_success_text": "SPECIMEN MASTERED. Launching face contained.",
+    "retry_text": "The mouth jumped before your brain did. Again.",
+    "master_text": "Dr. Icky calls the goblin shark 'the face that launches itself.' It cruises deep water with a long snout full of sensors, then snaps prey by firing its jaws forward. The mouth does the jump scare while the rest of the shark stays gloomy.",
+    "questions": [
+      {
+        "question": "What does the long snout help detect?",
+        "options": [
+          "Signals from prey",
+          "Lost socks",
+          "Weather gossip",
+          "Cookie freshness"
+        ],
+        "correct_answer": "Signals from prey"
+      },
+      {
+        "question": "What launches forward?",
+        "options": [
+          "Its eyebrows",
+          "Its tail fin",
+          "Its jaws",
+          "Its whole shadow"
+        ],
+        "correct_answer": "Its jaws"
+      },
+      {
+        "question": "Where does this jump-scare hunter live?",
+        "options": [
+          "A bird nest",
+          "A bathtub full of cereal",
+          "A desert tunnel",
+          "Deep water"
+        ],
+        "correct_answer": "Deep water"
+      }
+    ]
+  },
+  "creepy-creatures-pistol-shrimp": {
+    "mastered_success_text": "SPECIMEN MASTERED. Sound crime logged.",
+    "retry_text": "The ceiling has been cleared. The claw did it.",
+    "master_text": "Dr. Icky heard a snap so loud he blamed the ceiling. The pistol shrimp shuts one special claw at ridiculous speed, making a cavitation bubble that pops like a tiny underwater blast. Small shrimp, large sound crime.",
+    "questions": [
+      {
+        "question": "What makes the blast?",
+        "options": [
+          "A magic shell",
+          "A fast-snapping claw",
+          "A boiling tail",
+          "A trumpet fin"
+        ],
+        "correct_answer": "A fast-snapping claw"
+      },
+      {
+        "question": "What bubble appears?",
+        "options": [
+          "A bubble full of bees",
+          "A cavitation bubble",
+          "A square bubble",
+          "A soap commercial bubble"
+        ],
+        "correct_answer": "A cavitation bubble"
+      },
+      {
+        "question": "What is the main effect?",
+        "options": [
+          "Instant seaweed salad",
+          "A loud stunning pop",
+          "A gentle lullaby",
+          "Freezing sand"
+        ],
+        "correct_answer": "A loud stunning pop"
+      }
+    ]
+  },
+  "creepy-creatures-terrible-claw-lobster": {
+    "mastered_success_text": "SPECIMEN MASTERED. Oversized claw protocol passed.",
+    "retry_text": "The claws grabbed the wrong answer.",
+    "master_text": "Dr. Icky named this lobster’s claws before meeting the rest of it. The terrible claw lobster lives in deep water and carries long, spiny grabbing equipment that looks oversized for its body. When your hands are the horror show, subtlety is finished.",
+    "questions": [
+      {
+        "question": "What body part gives it the name?",
+        "options": [
+          "Striped eyebrows",
+          "Long spiny claws",
+          "A glowing tail",
+          "Tiny teeth"
+        ],
+        "correct_answer": "Long spiny claws"
+      },
+      {
+        "question": "Where does it live?",
+        "options": [
+          "Deep water",
+          "A birdhouse",
+          "Tree trunks",
+          "Hot sand"
+        ],
+        "correct_answer": "Deep water"
+      },
+      {
+        "question": "What are the claws built for?",
+        "options": [
+          "Playing drums",
+          "Grabbing prey",
+          "Opening letters",
+          "Knitting nets"
+        ],
+        "correct_answer": "Grabbing prey"
+      }
+    ]
+  },
+  "creepy-creatures-hagfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Ten buckets of slime archived.",
+    "retry_text": "The slime has expanded over your answer.",
+    "master_text": "Dr. Icky poured one spoonful of panic into the hagfish tank and got ten buckets of slime back. Hagfish slime expands fast into stringy goo that can clog a predator’s gills. It can also tie itself into knots to scrape slime away. Disgusting and organized.",
+    "questions": [
+      {
+        "question": "What does hagfish slime threaten to clog?",
+        "options": [
+          "Predator gills",
+          "Moon tunnels",
+          "Lab calendars",
+          "Spider shoes"
+        ],
+        "correct_answer": "Predator gills"
+      },
+      {
+        "question": "What texture makes it awful?",
+        "options": [
+          "Stringy expanding goo",
+          "Crunchy scales",
+          "Dry powder",
+          "Warm feathers"
+        ],
+        "correct_answer": "Stringy expanding goo"
+      },
+      {
+        "question": "Why does it make body knots?",
+        "options": [
+          "To practice yoga for prizes",
+          "To help scrape slime away",
+          "To become a pretzel",
+          "To trap sunshine"
+        ],
+        "correct_answer": "To help scrape slime away"
+      }
+    ]
+  },
+  "creepy-creatures-spiny-oak-slug-caterpillar": {
+    "mastered_success_text": "SPECIMEN MASTERED. Pain badge avoided.",
+    "retry_text": "The gummy was armed. Try again.",
+    "master_text": "Dr. Icky mistook this caterpillar for a decorative gummy and nearly earned a pain badge. The spiny oak slug caterpillar moves like a little slug and carries venomous spines. Bright, small, and absolutely willing to punish fingers.",
+    "questions": [
+      {
+        "question": "How does it move?",
+        "options": [
+          "Like a little slug",
+          "Like a jumping frog",
+          "Like a flying bat",
+          "Like a rolling wheel"
+        ],
+        "correct_answer": "Like a little slug"
+      },
+      {
+        "question": "What makes the spines dangerous?",
+        "options": [
+          "They play music",
+          "They carry irritating venom",
+          "They attract rainbows",
+          "They are made of sugar"
+        ],
+        "correct_answer": "They carry irritating venom"
+      },
+      {
+        "question": "What should fingers do?",
+        "options": [
+          "Taste the bright parts",
+          "Stay away",
+          "Pet every spine",
+          "Squeeze gently"
+        ],
+        "correct_answer": "Stay away"
+      }
+    ]
+  },
+  "creepy-creatures-peacock-mantis-shrimp": {
+    "mastered_success_text": "SPECIMEN MASTERED. Handshake cancelled.",
+    "retry_text": "The shrimp punched your answer into foam.",
+    "master_text": "Dr. Icky offered this shrimp a handshake and the table cracked from fear. Peacock mantis shrimp swing club-like arms so fast they create tiny shock bubbles. The punch hits, then the collapsing bubble adds another rude little blast.",
+    "questions": [
+      {
+        "question": "What body part does the punch?",
+        "options": [
+          "A rubber tail",
+          "Club-like arms",
+          "Tiny eyebrows",
+          "Feathery ears"
+        ],
+        "correct_answer": "Club-like arms"
+      },
+      {
+        "question": "What forms after the strike?",
+        "options": [
+          "Glass leaves",
+          "Sea balloons",
+          "Shock bubbles",
+          "Chocolate dust"
+        ],
+        "correct_answer": "Shock bubbles"
+      },
+      {
+        "question": "Why is the punch double-rude?",
+        "options": [
+          "It demands applause",
+          "It sends invoices",
+          "It laughs politely",
+          "The hit and bubble both hurt"
+        ],
+        "correct_answer": "The hit and bubble both hurt"
+      }
+    ]
+  },
+  "creepy-creatures-kissing-bug": {
+    "mastered_success_text": "SPECIMEN MASTERED. Romantic name rejected.",
+    "retry_text": "The kiss was a legal trap. Read again.",
+    "master_text": "Dr. Icky banned romantic names after meeting the kissing bug. It feeds on blood around sleeping faces, then its droppings can carry a parasite into the bite area. The kiss is branding. The biology is much worse.",
+    "questions": [
+      {
+        "question": "When does it often feed?",
+        "options": [
+          "At lunchtime only",
+          "While animals sleep",
+          "During loud concerts",
+          "Inside snowstorms"
+        ],
+        "correct_answer": "While animals sleep"
+      },
+      {
+        "question": "Where does it often bite?",
+        "options": [
+          "On feathers only",
+          "On fish scales",
+          "Inside shoes only",
+          "Near the face"
+        ],
+        "correct_answer": "Near the face"
+      },
+      {
+        "question": "What can spread the parasite?",
+        "options": [
+          "Its droppings near the bite",
+          "Blue wallpaper",
+          "Clean rain",
+          "A love song"
+        ],
+        "correct_answer": "Its droppings near the bite"
+      }
+    ]
+  },
+  "creepy-creatures-velvet-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Glue cannon holstered.",
+    "retry_text": "The walking gummy glued your answer down.",
+    "master_text": "Dr. Icky loves velvet worms because they combine softness with ambush crime. The velvet worm shoots twin streams of sticky slime from its head, tangling prey before it bites. It looks like a walking gummy. It fights like a glue cannon.",
+    "questions": [
+      {
+        "question": "What does it shoot?",
+        "options": [
+          "Sticky slime",
+          "Tiny feathers",
+          "Frozen peas",
+          "Hot sand"
+        ],
+        "correct_answer": "Sticky slime"
+      },
+      {
+        "question": "Where does the slime come from?",
+        "options": [
+          "A backpack",
+          "Nozzles on the head",
+          "Its feet",
+          "The tail tip"
+        ],
+        "correct_answer": "Nozzles on the head"
+      },
+      {
+        "question": "What happens before biting?",
+        "options": [
+          "Prey sings",
+          "Prey gets tangled",
+          "Prey turns purple",
+          "Prey gets crowned"
+        ],
+        "correct_answer": "Prey gets tangled"
+      }
+    ]
+  },
+  "creepy-creatures-japanese-spider-crab": {
+    "mastered_success_text": "SPECIMEN MASTERED. Measuring tape replaced.",
+    "retry_text": "The crab walked over the clue with six extra legs.",
+    "master_text": "Dr. Icky placed a measuring tape near this crab and the tape resigned. The Japanese spider crab has absurdly long legs, a spiky shell, and slow deep-water creepiness. Some decorate themselves with bits from the seafloor, because giant sea skeletons apparently need accessories.",
+    "questions": [
+      {
+        "question": "What makes it look enormous?",
+        "options": [
+          "Inflatable cheeks",
+          "Absurdly long legs",
+          "Stacked hats",
+          "A balloon tail"
+        ],
+        "correct_answer": "Absurdly long legs"
+      },
+      {
+        "question": "Where does it creep around?",
+        "options": [
+          "Desert dunes",
+          "Deep water",
+          "Kitchen cabinets",
+          "Tree nests"
+        ],
+        "correct_answer": "Deep water"
+      },
+      {
+        "question": "Why might it wear seafloor bits?",
+        "options": [
+          "To write letters",
+          "Camouflage",
+          "Fashion week",
+          "To scare spoons"
+        ],
+        "correct_answer": "Camouflage"
+      }
+    ]
+  },
+  "creepy-creatures-horse-botfly": {
+    "mastered_success_text": "SPECIMEN MASTERED. Stomach tourist denied boarding.",
+    "retry_text": "The tourist itinerary confused you. Again.",
+    "master_text": "Dr. Icky inspected a horse hair and found a tiny future stomach tourist. Horse botflies glue eggs onto hair, larvae enter after grooming, then develop inside the horse before leaving with the dung. The travel plan is disgusting. The fly is committed.",
+    "questions": [
+      {
+        "question": "Where are eggs placed?",
+        "options": [
+          "On clean spoons",
+          "Under sea rocks",
+          "On horse hair",
+          "Inside thunder"
+        ],
+        "correct_answer": "On horse hair"
+      },
+      {
+        "question": "How can larvae enter?",
+        "options": [
+          "From a cloud tunnel",
+          "By buying a ticket",
+          "Through a telescope",
+          "After the horse grooms or licks"
+        ],
+        "correct_answer": "After the horse grooms or licks"
+      },
+      {
+        "question": "How do they leave later?",
+        "options": [
+          "As flying sparks",
+          "With dung",
+          "In a golden carriage",
+          "Through a zipper"
+        ],
+        "correct_answer": "With dung"
+      }
+    ]
+  },
+  "creepy-creatures-hammerhead-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Chopping plan cancelled.",
+    "retry_text": "The pieces are voting. Try again.",
+    "master_text": "Dr. Icky cut a warning label into three pieces and the hammerhead worm found that inspiring. These flat predators can regenerate from pieces, slide through damp gardens, and use chemical nastiness against prey. Chopping is an invitation, not a solution.",
+    "questions": [
+      {
+        "question": "Why is chopping a bad plan?",
+        "options": [
+          "Pieces may regenerate",
+          "The worm becomes louder",
+          "The knife falls asleep",
+          "The garden sends a bill"
+        ],
+        "correct_answer": "Pieces may regenerate"
+      },
+      {
+        "question": "Where might it slide around?",
+        "options": [
+          "School lockers",
+          "Damp gardens",
+          "Dry ovens",
+          "Frozen clouds"
+        ],
+        "correct_answer": "Damp gardens"
+      },
+      {
+        "question": "What kind of animal is it?",
+        "options": [
+          "A baby snake",
+          "A mushroom fish",
+          "A feathered crab",
+          "A flatworm predator"
+        ],
+        "correct_answer": "A flatworm predator"
+      }
+    ]
+  },
+  "creepy-creatures-stargazer-fish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Sand with eyes identified.",
+    "retry_text": "The sand looked back. You looked elsewhere.",
+    "master_text": "Dr. Icky stepped over sand and the sand looked back. Stargazer fish bury themselves with eyes and mouth facing upward, waiting for prey to pass overhead. Some species add venom or electricity to the already rude surprise package.",
+    "questions": [
+      {
+        "question": "Which direction do the eyes face?",
+        "options": [
+          "Into its own tail",
+          "Backward only",
+          "Upward",
+          "Toward the moon always"
+        ],
+        "correct_answer": "Upward"
+      },
+      {
+        "question": "Where does it hide?",
+        "options": [
+          "On floating leaves",
+          "Buried in sand",
+          "Behind a curtain",
+          "Inside coral mailboxes"
+        ],
+        "correct_answer": "Buried in sand"
+      },
+      {
+        "question": "What makes the ambush extra rude in some species?",
+        "options": [
+          "Free snacks",
+          "A tiny kazoo",
+          "Venom or electricity",
+          "Compliments"
+        ],
+        "correct_answer": "Venom or electricity"
+      }
+    ]
+  },
+  "creepy-creatures-gharial": {
+    "mastered_success_text": "SPECIMEN MASTERED. Fish trap crocodile approved.",
+    "retry_text": "The river trap snapped at the wrong clue.",
+    "master_text": "Dr. Icky respects the gharial because it looks like a crocodile designed by a fish trap. Its long, narrow jaws cut through river water quickly, and the many teeth are built for slippery fish. Wide chewing drama is unnecessary when fish are the assignment.",
+    "questions": [
+      {
+        "question": "What food are its jaws built for?",
+        "options": [
+          "Flying insects",
+          "Slippery fish",
+          "Hot soup",
+          "Coconut shells"
+        ],
+        "correct_answer": "Slippery fish"
+      },
+      {
+        "question": "Why are the jaws narrow?",
+        "options": [
+          "They make better whistles",
+          "They are afraid of spoons",
+          "They move quickly through water",
+          "They fit in pockets"
+        ],
+        "correct_answer": "They move quickly through water"
+      },
+      {
+        "question": "What makes the jaws trap-like?",
+        "options": [
+          "Velvet gums",
+          "A zipper",
+          "Many sharp teeth",
+          "Orange stripes"
+        ],
+        "correct_answer": "Many sharp teeth"
+      }
+    ]
+  },
+  "creepy-creatures-giant-isopod": {
+    "mastered_success_text": "SPECIMEN MASTERED. Deep-Sea Couch Cushion checked.",
+    "retry_text": "The isopod outwaited your answer.",
+    "master_text": "Dr. Icky found the giant isopod under Deep-Sea Couch Cushion 4. It is a huge relative of pill bugs, built for dark seafloor scavenging with armor-like plates and a slow metabolism. It can wait through long empty stretches until dinner finally falls from above.",
+    "questions": [
+      {
+        "question": "What small land creature is it related to?",
+        "options": [
+          "Earth ponies",
+          "Pill bugs",
+          "Butterflies",
+          "Parrots"
+        ],
+        "correct_answer": "Pill bugs"
+      },
+      {
+        "question": "What protects its body?",
+        "options": [
+          "Banana peel",
+          "Armor-like plates",
+          "Silk pajamas",
+          "Soap bubbles"
+        ],
+        "correct_answer": "Armor-like plates"
+      },
+      {
+        "question": "Why can it handle long waits?",
+        "options": [
+          "It naps inside rocks",
+          "It owns a calendar",
+          "Slow metabolism",
+          "It freezes time"
+        ],
+        "correct_answer": "Slow metabolism"
+      }
+    ]
+  },
+  "creepy-creatures-musk-ox-parasite-fly": {
+    "mastered_success_text": "SPECIMEN MASTERED. Hidden cargo inspected.",
+    "retry_text": "The parasite cargo slipped past customs.",
+    "master_text": "Dr. Icky’s musk ox file smells like fur, snow, and betrayal. This parasite fly uses a large animal as living transport and food supply for its larvae. The host keeps walking while the unwanted passengers grow inside or under tissue like rude hidden cargo.",
+    "questions": [
+      {
+        "question": "What does the fly use the musk ox as?",
+        "options": [
+          "A feather pillow",
+          "A snow shovel",
+          "A dance partner",
+          "Living transport and food supply"
+        ],
+        "correct_answer": "Living transport and food supply"
+      },
+      {
+        "question": "Who benefits from the host?",
+        "options": [
+          "The larvae",
+          "The nearest rock",
+          "The clouds",
+          "The ox’s haircut"
+        ],
+        "correct_answer": "The larvae"
+      },
+      {
+        "question": "Why is Dr. Icky offended?",
+        "options": [
+          "The ox sings badly",
+          "The snow is too white",
+          "The passengers are unwanted cargo",
+          "The fly forgot manners class"
+        ],
+        "correct_answer": "The passengers are unwanted cargo"
+      }
+    ]
+  },
+  "creepy-creatures-blue-dragon-sea-slug": {
+    "mastered_success_text": "SPECIMEN MASTERED. Weaponized sea confetti secured.",
+    "retry_text": "The slug stole your confidence. Re-read the file.",
+    "master_text": "Dr. Icky thought this slug was decorative until it stole weapons from its food. The blue dragon floats upside down, eats dangerous jellyfish, and stores their stinging cells for later defense. Tiny, pretty, and armed like a stolen-weapon backpack.",
+    "questions": [
+      {
+        "question": "How does the blue dragon often float?",
+        "options": [
+          "Upside down",
+          "With a parachute",
+          "Inside a shell castle",
+          "On roller skates"
+        ],
+        "correct_answer": "Upside down"
+      },
+      {
+        "question": "What does it steal from jellyfish?",
+        "options": [
+          "Stinging cells",
+          "Jellyfish gossip",
+          "Sea jam recipes",
+          "Tiny sunglasses"
+        ],
+        "correct_answer": "Stinging cells"
+      },
+      {
+        "question": "Why store those stolen parts?",
+        "options": [
+          "To flavor soup",
+          "For defense",
+          "To build a bicycle",
+          "To decorate homework"
+        ],
+        "correct_answer": "For defense"
+      }
+    ]
+  },
+  "creepy-creatures-lamprey": {
+    "mastered_success_text": "SPECIMEN MASTERED. Toothy vacuum unplugged.",
+    "retry_text": "The vacuum mouth found the wrong answer.",
+    "master_text": "Dr. Icky stuck a warning sticker on the lamprey tank: TOOTHY VACUUM. A lamprey attaches with a round sucking mouth, rasps into fish, and feeds on fluids. It looks ancient because it is ancient, which somehow makes the mouth worse.",
+    "questions": [
+      {
+        "question": "What shape is the mouth?",
+        "options": [
+          "Square and fluffy",
+          "Round and sucking",
+          "Star-shaped and polite",
+          "Flat like paper"
+        ],
+        "correct_answer": "Round and sucking"
+      },
+      {
+        "question": "What does it do after attaching?",
+        "options": [
+          "Paints scales",
+          "Writes apologies",
+          "Rasps into fish",
+          "Braids seaweed"
+        ],
+        "correct_answer": "Rasps into fish"
+      },
+      {
+        "question": "What does it feed on?",
+        "options": [
+          "Sunbeams",
+          "Pebbles",
+          "Dry leaves",
+          "Body fluids"
+        ],
+        "correct_answer": "Body fluids"
+      }
+    ]
+  },
+  "creepy-creatures-surinam-toad": {
+    "mastered_success_text": "SPECIMEN MASTERED. Skin-pocket parenting documented.",
+    "retry_text": "Bubble wrap with legs demands another try.",
+    "master_text": "Dr. Icky had to sit down after reading the parenting file. The Surinam toad carries developing young in pockets on the mother’s back. Later, tiny toads emerge from the skin pockets like nature invented bubble wrap with legs.",
+    "questions": [
+      {
+        "question": "Where do the young develop?",
+        "options": [
+          "Inside a shell necklace",
+          "Under river stones",
+          "In back pockets of skin",
+          "In the father’s hat"
+        ],
+        "correct_answer": "In back pockets of skin"
+      },
+      {
+        "question": "What emerges later?",
+        "options": [
+          "Purple seeds",
+          "Little fish",
+          "Tiny toads",
+          "Baby spiders"
+        ],
+        "correct_answer": "Tiny toads"
+      },
+      {
+        "question": "Why is this parenting file disgusting?",
+        "options": [
+          "The babies come out of skin pockets",
+          "The toad writes poems",
+          "The pond is noisy",
+          "The eggs are square"
+        ],
+        "correct_answer": "The babies come out of skin pockets"
+      }
+    ]
+  },
+  "creepy-creatures-horsehair-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Wet spaghetti taxi intercepted.",
+    "retry_text": "The cricket drove your answer into the pond.",
+    "master_text": "Dr. Icky found a cricket walking toward water with suspicious commitment. Horsehair worms grow inside insects, then influence the host to reach water where the adult worm can escape. Imagine being used as a taxi by wet spaghetti.",
+    "questions": [
+      {
+        "question": "What kind of host can carry it?",
+        "options": [
+          "A snowball",
+          "An insect",
+          "A cactus",
+          "A lamp"
+        ],
+        "correct_answer": "An insect"
+      },
+      {
+        "question": "Where does the host get pushed toward?",
+        "options": [
+          "A shoe closet",
+          "The moon",
+          "Water",
+          "A bakery"
+        ],
+        "correct_answer": "Water"
+      },
+      {
+        "question": "Why does the worm want water?",
+        "options": [
+          "To escape and reproduce",
+          "To learn swimming songs",
+          "To polish its hair",
+          "To open a café"
+        ],
+        "correct_answer": "To escape and reproduce"
+      }
+    ]
+  },
+  "creepy-creatures-bombardier-beetle": {
+    "mastered_success_text": "SPECIMEN MASTERED. Rear chemistry respected.",
+    "retry_text": "The beetle fired a correction shot. Try again.",
+    "master_text": "Dr. Icky squeezed the wrong beetle and got a rear-end chemistry lesson. The bombardier beetle keeps ingredients apart until danger arrives, then mixes them into a hot defensive blast. It can aim the disgusting pop with impressive accuracy for something with no laboratory license.",
+    "questions": [
+      {
+        "question": "What makes the blast possible?",
+        "options": [
+          "A tiny oven hat",
+          "Chemicals mixed during danger",
+          "Moon-powered elbows",
+          "Invisible dragon breath"
+        ],
+        "correct_answer": "Chemicals mixed during danger"
+      },
+      {
+        "question": "Where does the spray come from?",
+        "options": [
+          "Its polite smile",
+          "The rear end",
+          "The left antenna",
+          "A secret backpack"
+        ],
+        "correct_answer": "The rear end"
+      },
+      {
+        "question": "What is impressive about the spray?",
+        "options": [
+          "It smells like cake",
+          "It grows feathers",
+          "It plays music",
+          "It can be aimed"
+        ],
+        "correct_answer": "It can be aimed"
+      }
+    ]
+  },
+  "creepy-creatures-africanized-honeybee": {
+    "mastered_success_text": "SPECIMEN MASTERED. You survived the buzzing committee.",
+    "retry_text": "The hive has voted against you. Re-read the file before the stingers hold a second meeting.",
+    "master_text": "Dr. Icky opened Hive Drawer 9 and immediately regretted inventing drawers. Africanized honeybees defend home base as a team: one alarm can recruit many stingers, and the chase may continue long after the first scream. The smart recruit backs away slowly and leaves the buzzing committee alone.",
+    "questions": [
+      {
+        "question": "What starts the hive panic?",
+        "options": [
+          "A moonlit dance-off",
+          "A bored queen wearing boots",
+          "An alarm from threatened bees",
+          "A cracked honey cookie"
+        ],
+        "correct_answer": "An alarm from threatened bees"
+      },
+      {
+        "question": "Best lab move near this specimen?",
+        "options": [
+          "Offer it a tiny crown",
+          "Tap the nest with a pencil",
+          "Back away and leave the hive alone",
+          "Wave both arms like noodles"
+        ],
+        "correct_answer": "Back away and leave the hive alone"
+      },
+      {
+        "question": "Why do the stings feel like waves?",
+        "options": [
+          "Many bees join the defense together",
+          "One bee owns a sting machine",
+          "The honey turns spicy",
+          "The wings throw needles"
+        ],
+        "correct_answer": "Many bees join the defense together"
+      }
+    ]
+  },
+  "creepy-creatures-mouth-brooding-fish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Tooth nursery documented.",
+    "retry_text": "The mouth nursery swallowed the clue.",
+    "master_text": "Dr. Icky checked this fish’s mouth and found parenting, which was disgusting but responsible. Mouth brooders protect eggs or babies inside the mouth, often eating less while the young hide there. It is a nursery with teeth and a serious snack problem.",
+    "questions": [
+      {
+        "question": "Where are eggs or babies protected?",
+        "options": [
+          "Under a sofa",
+          "Inside the parent’s mouth",
+          "In a volcano",
+          "Behind a rainbow"
+        ],
+        "correct_answer": "Inside the parent’s mouth"
+      },
+      {
+        "question": "What problem can the parent face?",
+        "options": [
+          "Growing extra shoes",
+          "Forgetting how to swim",
+          "Turning into a frog",
+          "Eating less than normal"
+        ],
+        "correct_answer": "Eating less than normal"
+      },
+      {
+        "question": "Why is the mouth used?",
+        "options": [
+          "It scares the moon",
+          "It stores treasure maps",
+          "It shelters the young",
+          "It sings louder"
+        ],
+        "correct_answer": "It shelters the young"
+      }
+    ]
+  },
+  "creepy-creatures-blue-ringed-octopus": {
+    "mastered_success_text": "SPECIMEN MASTERED. Fingers remain attached.",
+    "retry_text": "The rings flashed louder. Read before touching.",
+    "master_text": "Dr. Icky filed this octopus under BEAUTIFUL PROBLEMS. It is small enough to look harmless, then flashes blue rings as a warning sign. Its bite can deliver a venom that interferes with nerves, which is why nobody in the lab is allowed to admire it with fingers.",
+    "questions": [
+      {
+        "question": "What do the blue rings signal?",
+        "options": [
+          "A request for tea",
+          "A warning",
+          "A dance contest",
+          "A birthday party"
+        ],
+        "correct_answer": "A warning"
+      },
+      {
+        "question": "Why is its bite dangerous?",
+        "options": [
+          "It sneezes electricity",
+          "It steals fingerprints",
+          "Ink turns into soup",
+          "Venom can affect nerves"
+        ],
+        "correct_answer": "Venom can affect nerves"
+      },
+      {
+        "question": "What is the lab rule?",
+        "options": [
+          "Feed it glitter",
+          "Store it in a teacup",
+          "Admire with eyes, not fingers",
+          "Tickle every tentacle"
+        ],
+        "correct_answer": "Admire with eyes, not fingers"
+      }
+    ]
+  },
+  "creepy-creatures-tongue-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. Airway nightmare filed.",
+    "retry_text": "The hooks caught your wrong answer.",
+    "master_text": "Dr. Icky placed this parasite in the file cabinet labeled AIRWAY NIGHTMARES. Tongue worms use hooks to hold inside hosts and can live in the respiratory passages of reptiles or mammals. It is less wormy tongue, more hooked freeloading tube goblin.",
+    "questions": [
+      {
+        "question": "What helps it hold on?",
+        "options": [
+          "Tiny hands",
+          "Hooks",
+          "Velcro socks",
+          "A glue hat"
+        ],
+        "correct_answer": "Hooks"
+      },
+      {
+        "question": "Where can it live?",
+        "options": [
+          "Inside flower petals",
+          "In dry sand",
+          "Respiratory passages",
+          "On bird wings"
+        ],
+        "correct_answer": "Respiratory passages"
+      },
+      {
+        "question": "What kind of life is it living?",
+        "options": [
+          "Friendly housekeeping",
+          "Cloud farming",
+          "Helpful gardening",
+          "Parasitic freeloading"
+        ],
+        "correct_answer": "Parasitic freeloading"
+      }
+    ]
+  },
+  "creepy-creatures-black-swallower": {
+    "mastered_success_text": "SPECIMEN MASTERED. Oversized dinner contained.",
+    "retry_text": "Your answer was swallowed whole. Try again.",
+    "master_text": "Dr. Icky named this fish 'Regret With Fins.' The black swallower can take on meals that look offensively too large, using a stretchy belly like a horrible grocery bag. The risk: if dinner goes wrong, the fish becomes its own disgusting science problem.",
+    "questions": [
+      {
+        "question": "What is the black swallower famous for?",
+        "options": [
+          "Polishing clam mirrors",
+          "Swallowing oversized prey",
+          "Singing in bubbles",
+          "Knitting seaweed sweaters"
+        ],
+        "correct_answer": "Swallowing oversized prey"
+      },
+      {
+        "question": "What body part does the gross work?",
+        "options": [
+          "A wooden tail",
+          "A glowing eyebrow",
+          "A secret knee",
+          "A stretchy stomach"
+        ],
+        "correct_answer": "A stretchy stomach"
+      },
+      {
+        "question": "Why is huge dinner risky?",
+        "options": [
+          "It may ask for dessert",
+          "It steals the fish’s shoes",
+          "The meal can become a problem inside",
+          "It turns into homework"
+        ],
+        "correct_answer": "The meal can become a problem inside"
+      }
+    ]
+  },
+  "creepy-creatures-nose-horned-viper": {
+    "mastered_success_text": "SPECIMEN MASTERED. Glove privileges partially restored.",
+    "retry_text": "The horn was bait for your attention. Again.",
+    "master_text": "Dr. Icky tried to honk the viper’s nose horn and lost glove privileges. The little horn is for appearance and camouflage, while the real danger is the venomous ambush bite. This snake waits, blends in, and lets curiosity come too close.",
+    "questions": [
+      {
+        "question": "What is the real danger?",
+        "options": [
+          "A venomous ambush bite",
+          "It throws pebbles",
+          "The horn honks loudly",
+          "It sings badly"
+        ],
+        "correct_answer": "A venomous ambush bite"
+      },
+      {
+        "question": "What does the nose horn help with?",
+        "options": [
+          "Flying",
+          "Chewing stones",
+          "Appearance and camouflage",
+          "Opening cans"
+        ],
+        "correct_answer": "Appearance and camouflage"
+      },
+      {
+        "question": "What mistake did Dr. Icky make?",
+        "options": [
+          "Getting curious too close",
+          "Teaching it chess",
+          "Wearing green socks",
+          "Feeding it soup"
+        ],
+        "correct_answer": "Getting curious too close"
+      }
+    ]
+  },
+  "creepy-creatures-komodo-dragon": {
+    "mastered_success_text": "SPECIMEN MASTERED. Walking consequence respected.",
+    "retry_text": "The dragon smelled the wrong answer first.",
+    "master_text": "Dr. Icky does not argue with a lizard that smells dinner from far away. Komodo dragons use a flicking tongue to collect scent clues, serrated teeth to tear, and venom-like compounds that help weaken prey. It is a walking consequence with scales.",
+    "questions": [
+      {
+        "question": "How does it collect scent clues?",
+        "options": [
+          "With toe antennas",
+          "Through invisible eyebrows",
+          "By reading footprints aloud",
+          "With a flicking tongue"
+        ],
+        "correct_answer": "With a flicking tongue"
+      },
+      {
+        "question": "What kind of teeth help tear flesh?",
+        "options": [
+          "Flat chewing plates",
+          "Candy teeth",
+          "Rubber teeth",
+          "Serrated teeth"
+        ],
+        "correct_answer": "Serrated teeth"
+      },
+      {
+        "question": "What helps weaken prey after a bite?",
+        "options": [
+          "Venom-like compounds",
+          "Minty breath",
+          "A lullaby",
+          "Shiny claws only"
+        ],
+        "correct_answer": "Venom-like compounds"
+      }
+    ]
+  },
+  "creepy-creatures-hag-moth-caterpillar": {
+    "mastered_success_text": "SPECIMEN MASTERED. Fuzzy trap carpet respected.",
+    "retry_text": "The cute fuzz has objected. Try again.",
+    "master_text": "Dr. Icky named this caterpillar 'the fuzzy trap carpet.' Its strange arms and soft-looking shape make it tempting to touch, which is exactly the bad idea. Hidden spines can sting skin, proving once again that cute fuzz has legal problems.",
+    "questions": [
+      {
+        "question": "Why is touching it a bad idea?",
+        "options": [
+          "It tells secrets loudly",
+          "It turns into soup",
+          "Hidden spines can sting",
+          "It steals fingerprints"
+        ],
+        "correct_answer": "Hidden spines can sting"
+      },
+      {
+        "question": "What makes it tempting?",
+        "options": [
+          "Its glass wings",
+          "Its fuzzy strange shape",
+          "Its tiny shoes",
+          "Its metal horns"
+        ],
+        "correct_answer": "Its fuzzy strange shape"
+      },
+      {
+        "question": "What is the lab lesson?",
+        "options": [
+          "All caterpillars are pillows",
+          "Spines are for dancing",
+          "Cute fuzz can still hurt",
+          "Green means candy"
+        ],
+        "correct_answer": "Cute fuzz can still hurt"
+      }
+    ]
+  },
+  "creepy-creatures-bristle-worm": {
+    "mastered_success_text": "SPECIMEN MASTERED. The Splinter Incident remains classified.",
+    "retry_text": "The bristles are laughing. Read the file again.",
+    "master_text": "Dr. Icky banned bare hands from the bristle worm tank after the Splinter Incident. Those fuzzy-looking sides carry fragile bristles that break off and irritate skin. It may look like a living pipe cleaner, but the pipe cleaner fights back.",
+    "questions": [
+      {
+        "question": "Why are bare hands banned?",
+        "options": [
+          "Hands become magnetic",
+          "The tank is full of pudding",
+          "The worm asks awkward questions",
+          "The bristles can break into skin"
+        ],
+        "correct_answer": "The bristles can break into skin"
+      },
+      {
+        "question": "What does it resemble from a distance?",
+        "options": [
+          "A flying pancake",
+          "A sleeping helmet",
+          "A glass trumpet",
+          "A fuzzy pipe cleaner"
+        ],
+        "correct_answer": "A fuzzy pipe cleaner"
+      },
+      {
+        "question": "What should a recruit use instead?",
+        "options": [
+          "A tongue",
+          "A wet sock",
+          "Birthday candles",
+          "Tools or protection"
+        ],
+        "correct_answer": "Tools or protection"
+      }
+    ]
+  },
+  "creepy-creatures-asian-giant-hornet": {
+    "mastered_success_text": "SPECIMEN MASTERED. Hive disaster temporarily delayed.",
+    "retry_text": "The hornet scout is drawing a map. Read faster.",
+    "master_text": "Dr. Icky marked this jar with three labels: HUGE, HUNGRY, and KEEP AWAY FROM BEES. Asian giant hornets are armored raiders with slicing jaws, scout behavior, and a taste for hive chaos. A single scout finding a nest can turn lunch into a massacre.",
+    "questions": [
+      {
+        "question": "Why is one scout bad news?",
+        "options": [
+          "It writes poetry on leaves",
+          "It steals tiny helmets",
+          "It can lead others to a hive",
+          "It sleeps inside flowers"
+        ],
+        "correct_answer": "It can lead others to a hive"
+      },
+      {
+        "question": "What makes the hornet a hive raider?",
+        "options": [
+          "A love of puddle soup",
+          "Glow-in-the-dark knees",
+          "Feathers hidden under armor",
+          "Strong jaws and group attacks"
+        ],
+        "correct_answer": "Strong jaws and group attacks"
+      },
+      {
+        "question": "What should Dr. Icky hide from it?",
+        "options": [
+          "A clean notebook",
+          "A honeybee hive",
+          "A jar of moon dust",
+          "A rubber duck"
+        ],
+        "correct_answer": "A honeybee hive"
+      }
+    ]
+  },
+  "creepy-creatures-sea-cucumber": {
+    "mastered_success_text": "SPECIMEN MASTERED. Haunted sock defense accepted.",
+    "retry_text": "The cucumber threw guts at the wrong answer.",
+    "master_text": "Dr. Icky added sea cucumber to the list of animals that weaponize being disgusting. Some fire sticky threads or eject internal parts when threatened, distracting enemies while the body survives. It is the only lab specimen that fights like a haunted sock.",
+    "questions": [
+      {
+        "question": "What can it eject when threatened?",
+        "options": [
+          "Glass marbles",
+          "Tiny fireworks",
+          "Singing bubbles",
+          "Sticky threads or internal parts"
+        ],
+        "correct_answer": "Sticky threads or internal parts"
+      },
+      {
+        "question": "Why eject anything?",
+        "options": [
+          "To decorate the floor",
+          "To feed the moon",
+          "To distract enemies",
+          "To start a parade"
+        ],
+        "correct_answer": "To distract enemies"
+      },
+      {
+        "question": "What is the survival trick?",
+        "options": [
+          "It turns into a crab",
+          "Gross defense buys time",
+          "It learns karate",
+          "It becomes invisible forever"
+        ],
+        "correct_answer": "Gross defense buys time"
+      }
+    ]
+  },
+  "creepy-creatures-maggot-of-the-flesh-fly": {
+    "mastered_success_text": "SPECIMEN MASTERED. Wriggling staff clocked out.",
+    "retry_text": "The cleanup crew is still on shift. Try again.",
+    "master_text": "Dr. Icky separated this from ordinary maggot files because the flesh fly larva arrives ready for business. Some flesh flies release live larvae, so the wrigglers may begin feeding on decay or wounds quickly. Nature’s cleanup crew has terrible manners.",
+    "questions": [
+      {
+        "question": "What makes these larvae arrive ready?",
+        "options": [
+          "They hatch from rocks",
+          "Some are born live",
+          "They read manuals",
+          "They carry tiny forks"
+        ],
+        "correct_answer": "Some are born live"
+      },
+      {
+        "question": "What can they feed on?",
+        "options": [
+          "Dry pencils",
+          "Fresh clouds",
+          "Decay or wounds",
+          "Polished glass"
+        ],
+        "correct_answer": "Decay or wounds"
+      },
+      {
+        "question": "What role can they play in nature?",
+        "options": [
+          "Weather reporter",
+          "Sock designer",
+          "Cleanup crew",
+          "Moon gardener"
+        ],
+        "correct_answer": "Cleanup crew"
+      }
+    ]
+  },
+  "creepy-creatures-flying-snake": {
+    "mastered_success_text": "SPECIMEN MASTERED. Air snake panic reduced.",
+    "retry_text": "The snake glided over your answer. Try again.",
+    "master_text": "Dr. Icky checked the sky for birds and found a snake making terrible decisions elegantly. A flying snake launches from trees, flattens its body, and makes S-shaped movements while gliding. No wings, no apology, plenty of air drama.",
+    "questions": [
+      {
+        "question": "What does it do before gliding?",
+        "options": [
+          "Flattens its body",
+          "Grows feathered elbows",
+          "Builds a tiny airplane",
+          "Inflates a balloon head"
+        ],
+        "correct_answer": "Flattens its body"
+      },
+      {
+        "question": "How does it steer in the air?",
+        "options": [
+          "By shouting left",
+          "With S-shaped movements",
+          "With a steering wheel",
+          "By blinking Morse code"
+        ],
+        "correct_answer": "With S-shaped movements"
+      },
+      {
+        "question": "What does it glide from?",
+        "options": [
+          "Volcano chimneys",
+          "Underwater caves",
+          "Lunch trays",
+          "Trees"
+        ],
+        "correct_answer": "Trees"
+      }
+    ]
+  },
+  "creepy-creatures-vampire-bat": {
+    "mastered_success_text": "SPECIMEN MASTERED. Villain branding acknowledged.",
+    "retry_text": "The bat fed quietly. You missed quietly.",
+    "master_text": "Dr. Icky admits this bat has excellent villain branding. A vampire bat finds warm skin, makes a small cut, and laps blood while saliva slows clotting. It prefers stealth over drama, which makes it somehow ruder.",
+    "questions": [
+      {
+        "question": "What does the bat lap?",
+        "options": [
+          "Cloud juice",
+          "Tree glue",
+          "Blood",
+          "Milk foam"
+        ],
+        "correct_answer": "Blood"
+      },
+      {
+        "question": "What does the saliva do?",
+        "options": [
+          "Makes wings sparkle",
+          "Slows clotting",
+          "Turns fur blue",
+          "Freezes the floor"
+        ],
+        "correct_answer": "Slows clotting"
+      },
+      {
+        "question": "Why is stealth useful?",
+        "options": [
+          "Bats hate applause",
+          "Drama scares the moon",
+          "The host may not notice quickly",
+          "Cuts need music"
+        ],
+        "correct_answer": "The host may not notice quickly"
+      }
+    ]
+  },
+  "creepy-creatures-scaly-foot-snail": {
+    "mastered_success_text": "SPECIMEN MASTERED. Metal attitude logged.",
+    "retry_text": "The tiny knight clanked at your answer.",
+    "master_text": "Dr. Icky salutes the scaly-foot snail as the tiny knight of volcanic plumbing. It lives near deep-sea vents and grows iron-rich armor on its foot. Most snails bring slime. This one brought metal attitude.",
+    "questions": [
+      {
+        "question": "Where does it live?",
+        "options": [
+          "In apple pie",
+          "Inside bird feathers",
+          "On desert fences",
+          "Near deep-sea vents"
+        ],
+        "correct_answer": "Near deep-sea vents"
+      },
+      {
+        "question": "What is special about its foot?",
+        "options": [
+          "A glowing wheel",
+          "Velvet slippers",
+          "Iron-rich armor",
+          "Sticky candy"
+        ],
+        "correct_answer": "Iron-rich armor"
+      },
+      {
+        "question": "Why call it a tiny knight?",
+        "options": [
+          "It rides a horse",
+          "It has armored scales",
+          "It wears a paper crown",
+          "It guards a castle"
+        ],
+        "correct_answer": "It has armored scales"
+      }
+    ]
+  },
+  "creepy-creatures-bat-eating-centipede": {
+    "mastered_success_text": "SPECIMEN MASTERED. You checked the ceiling. Excellent survival behavior.",
+    "retry_text": "You forgot to look up. The ceiling has opinions.",
+    "master_text": "Dr. Icky looked up in the cave and saw legs where legs should never be. This centipede hangs from ceilings, grabs passing bats, and uses venomous claws near its head to control dinner. Gravity is optional. Panic is mandatory.",
+    "questions": [
+      {
+        "question": "Where does it hunt in the lab cave?",
+        "options": [
+          "From the ceiling",
+          "Under a warm pillow",
+          "On Dr. Icky’s hat",
+          "Inside the snack drawer"
+        ],
+        "correct_answer": "From the ceiling"
+      },
+      {
+        "question": "What does it grab?",
+        "options": [
+          "Ice cubes",
+          "Falling cupcakes",
+          "Bats",
+          "Sleepy pencils"
+        ],
+        "correct_answer": "Bats"
+      },
+      {
+        "question": "What helps it control prey?",
+        "options": [
+          "A silver whistle",
+          "Sticky eyebrows",
+          "A polite letter",
+          "Venomous front claws"
+        ],
+        "correct_answer": "Venomous front claws"
+      }
+    ]
+  },
+  "creepy-creatures-harlequin-toad": {
+    "mastered_success_text": "SPECIMEN MASTERED. Tiny painted warning accepted.",
+    "retry_text": "The toad is glowing with judgment.",
+    "master_text": "Dr. Icky loves a creature that dresses like a warning sign. Harlequin toads often use bright colors to tell predators that their skin may be chemically unpleasant. The message is simple: admire the tiny painted toad, then do not make it lunch.",
+    "questions": [
+      {
+        "question": "What do the bright colors say?",
+        "options": [
+          "I contain cake",
+          "I am lost luggage",
+          "Please hug me",
+          "This may be toxic"
+        ],
+        "correct_answer": "This may be toxic"
+      },
+      {
+        "question": "Where is the warning carried?",
+        "options": [
+          "On the skin",
+          "Inside a backpack",
+          "Under a hat",
+          "Between toes only"
+        ],
+        "correct_answer": "On the skin"
+      },
+      {
+        "question": "What should a predator do?",
+        "options": [
+          "Wear it as a sock",
+          "Lick the warning",
+          "Avoid eating it",
+          "Ask for seconds"
+        ],
+        "correct_answer": "Avoid eating it"
+      }
+    ]
+  },
+  "creepy-creatures-candiru-fish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Mystery puddle privileges restored.",
+    "retry_text": "The puddle looked suspicious. Read the clue again.",
+    "master_text": "Dr. Icky refuses to let this tiny Amazon catfish near any mystery puddle. The candiru uses chemical clues in water while searching for hosts, especially around fish gills. It is small, slippery, and surrounded by legends that make the lab shower nervous.",
+    "questions": [
+      {
+        "question": "What kind of clues does it follow?",
+        "options": [
+          "Chemical traces in water",
+          "Moon shadows",
+          "Trumpet music",
+          "Tiny road signs"
+        ],
+        "correct_answer": "Chemical traces in water"
+      },
+      {
+        "question": "What host area is it linked with?",
+        "options": [
+          "Fish gills",
+          "Bird feathers",
+          "Spider webs",
+          "Cactus flowers"
+        ],
+        "correct_answer": "Fish gills"
+      },
+      {
+        "question": "Why does Dr. Icky distrust puddles now?",
+        "options": [
+          "Puddles owe him money",
+          "The fish is tiny and slippery",
+          "Water learned to wink",
+          "A frog signed a contract"
+        ],
+        "correct_answer": "The fish is tiny and slippery"
+      }
+    ]
+  },
+  "creepy-creatures-goliath-tigerfish": {
+    "mastered_success_text": "SPECIMEN MASTERED. Finger-pointing remains banned.",
+    "retry_text": "The river predator caught your wrong answer.",
+    "master_text": "Dr. Icky put this fish in the tank marked DO NOT FINGER-POINT. The Goliath tigerfish is a fast river predator with interlocking teeth and a jaw built for violent grabs. In rushing water, hesitation becomes someone else’s lunch.",
+    "questions": [
+      {
+        "question": "What kind of water does it hunt in?",
+        "options": [
+          "Bathtubs of pudding",
+          "Cloud lakes",
+          "Dry sand bowls",
+          "Fast river water"
+        ],
+        "correct_answer": "Fast river water"
+      },
+      {
+        "question": "What makes the bite look brutal?",
+        "options": [
+          "Interlocking teeth",
+          "Painted whiskers",
+          "Soft lips",
+          "A rubber beak"
+        ],
+        "correct_answer": "Interlocking teeth"
+      },
+      {
+        "question": "What is the main hunting move?",
+        "options": [
+          "A polite handshake",
+          "A sleepy hug",
+          "A fast violent grab",
+          "A magic trick"
+        ],
+        "correct_answer": "A fast violent grab"
+      }
+    ]
+  },
+  "creepy-creatures-cassowary": {
+    "mastered_success_text": "SPECIMEN MASTERED. Giant rainforest chicken classification denied.",
+    "retry_text": "The cassowary kicked your answer into the bushes.",
+    "master_text": "Dr. Icky tried to label the cassowary 'giant rainforest chicken' and the label fled. This huge bird has a helmet-like casque, powerful legs, and a dagger-shaped inner claw. It solves personal space problems by kicking them extremely hard.",
+    "questions": [
+      {
+        "question": "What sits on its head?",
+        "options": [
+          "A helmet-like casque",
+          "A soup bowl",
+          "A paper crown",
+          "A tiny lighthouse"
+        ],
+        "correct_answer": "A helmet-like casque"
+      },
+      {
+        "question": "What makes the feet dangerous?",
+        "options": [
+          "A dagger-shaped claw",
+          "Velvet slippers",
+          "Sticky socks",
+          "Invisible wheels"
+        ],
+        "correct_answer": "A dagger-shaped claw"
+      },
+      {
+        "question": "How does it defend personal space?",
+        "options": [
+          "Slow clapping",
+          "Polite letters",
+          "Bubble blowing",
+          "Powerful kicks"
+        ],
+        "correct_answer": "Powerful kicks"
+      }
+    ]
+  },
+  "creepy-creatures-red-paper-wasp": {
+    "mastered_success_text": "SPECIMEN MASTERED. Stinging architecture respected.",
+    "retry_text": "The nest committee rejected your answer.",
+    "master_text": "Dr. Icky touched the papery nest once and now respects architecture with stingers. Red paper wasps chew wood into nest material and defend the colony if disturbed. The nest looks delicate, which is how pain gets invited to meetings.",
+    "questions": [
+      {
+        "question": "What is the nest made from?",
+        "options": [
+          "Chewed wood fibers",
+          "Sea glass",
+          "Tiny bricks",
+          "Cotton candy"
+        ],
+        "correct_answer": "Chewed wood fibers"
+      },
+      {
+        "question": "What happens if the colony is disturbed?",
+        "options": [
+          "The nest turns blue",
+          "They mail a complaint first",
+          "Wasps may sting defensively",
+          "They host a tea party"
+        ],
+        "correct_answer": "Wasps may sting defensively"
+      },
+      {
+        "question": "Why does the nest fool recruits?",
+        "options": [
+          "It smells like pancakes",
+          "It glows purple",
+          "It looks delicate",
+          "It sings softly"
+        ],
+        "correct_answer": "It looks delicate"
+      }
+    ]
+  },
+  "creepy-creatures-stink-bug": {
+    "mastered_success_text": "SPECIMEN MASTERED. Chemical rudeness contained.",
+    "retry_text": "The smell cloud marked your answer wrong.",
+    "master_text": "Dr. Icky filed the stink bug under CHEMICAL RUDENESS. When bothered, glands release a foul odor that tells predators this meal comes with regrets. The bug does not need speed when it can make the whole room reconsider lunch.",
+    "questions": [
+      {
+        "question": "What releases the smell?",
+        "options": [
+          "A cracked wing",
+          "A secret chimney",
+          "Tiny socks",
+          "Special glands"
+        ],
+        "correct_answer": "Special glands"
+      },
+      {
+        "question": "What is the smell for?",
+        "options": [
+          "Seasoning soup",
+          "Defense from predators",
+          "Calling friends to dinner",
+          "Polishing leaves"
+        ],
+        "correct_answer": "Defense from predators"
+      },
+      {
+        "question": "What does the odor make predators do?",
+        "options": [
+          "Dance in circles",
+          "Collect stickers",
+          "Write a poem",
+          "Reconsider eating it"
+        ],
+        "correct_answer": "Reconsider eating it"
+      }
+    ]
+  }
+}

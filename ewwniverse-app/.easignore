@@ -48,7 +48,10 @@ docs/
 # Original pre-compression image backups — huge, never upload
 assets/creatures/_originals/
 
-# Dr. Icky videos — streamed from Firebase Storage, never bundle in APK
+# Design source originals — not referenced by app code, not needed for build
+images/
+
+# Stale placeholder (videos now live in assets/videos/ and ARE bundled)
 assets/dr-icky/
 
 # Compression script — not needed for build

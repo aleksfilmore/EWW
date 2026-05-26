@@ -52,8 +52,8 @@ export default function CreatureDetail() {
   // Tracks the brief "JUST CLASSIFIED" celebration state (+bonus scan info)
   const [justClassified, setJustClassified] = useState(false);
   const [dailyBonusEarned, setDailyBonusEarned] = useState(false);
-  // Which confirm modal is open: null = none, 'noScans' = out-of-scans, 'master' = master prompt
-  const [modalType, setModalType] = useState<'noScans' | 'master' | null>(null);
+  // Which confirm modal is open: null = none, 'noScans' = out-of-scans
+  const [modalType, setModalType] = useState<'noScans' | null>(null);
 
   const creature = getCreatureById(id ?? '');
 
@@ -117,8 +117,8 @@ export default function CreatureDetail() {
   }
 
   function handleMaster() {
-    if (!isClassified) return;
-    setModalType('master');
+    if (!isClassified || !creature) return;
+    router.push({ pathname: '/quiz', params: { id: creature.id } });
   }
 
   return (
@@ -127,18 +127,9 @@ export default function CreatureDetail() {
       <ConfirmModal
         visible={modalType === 'noScans'}
         title="NO SCANS LEFT"
-        message="Play the Lab Quiz to earn more scans, or wait for your next free scan."
-        primaryLabel="PLAY QUIZ"
-        onPrimary={() => { setModalType(null); router.push('/quiz'); }}
-        dismissLabel="LATER"
-        onDismiss={() => setModalType(null)}
-      />
-      <ConfirmModal
-        visible={modalType === 'master'}
-        title="MASTER THIS SPECIMEN"
-        message="Play a quiz round featuring this creature to earn mastery and unlock bonus facts."
-        primaryLabel="START QUIZ"
-        onPrimary={() => { setModalType(null); router.push('/quiz'); }}
+        message="Master a creature quiz to earn more scans, or wait for your next free scan."
+        primaryLabel="BACK TO LAB"
+        onPrimary={() => setModalType(null)}
         dismissLabel="LATER"
         onDismiss={() => setModalType(null)}
       />
@@ -287,13 +278,11 @@ export default function CreatureDetail() {
           </TouchableOpacity>
         )}
 
-        {/* Quiz nudge */}
-        {isClassified && !isMastered && (
-          <TouchableOpacity style={styles.quizNudge} onPress={() => router.push('/quiz')} activeOpacity={0.8}>
-            <Text style={styles.quizNudgeText}>
-              ☣ Play Lab Quiz to master this specimen ›
-            </Text>
-          </TouchableOpacity>
+        {/* Mastered badge */}
+        {isMastered && (
+          <View style={styles.masteredBanner}>
+            <Text style={styles.masteredBannerText}>★ MASTERED</Text>
+          </View>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -555,12 +544,19 @@ const styles = StyleSheet.create({
   masterBtn:    { width: '100%', alignItems: 'center' },
   masterBtnImg: { width: '100%', height: 84 },
 
-  // ── Quiz nudge ────────────────────────────────────────────────────────────
-  quizNudge:     { paddingVertical: 8 },
-  quizNudgeText: {
-    fontFamily:    FontFamily.boogaloo,
-    fontSize:      14,
-    color:         Colors.text.purple,
-    letterSpacing: 0.3,
+  // ── Mastered banner ───────────────────────────────────────────────────────
+  masteredBanner: {
+    backgroundColor:   `${Colors.eww.gold}22`,
+    borderRadius:      Radius.full,
+    borderWidth:       1.5,
+    borderColor:       Colors.eww.gold,
+    paddingHorizontal: 24,
+    paddingVertical:   10,
+  },
+  masteredBannerText: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      18,
+    color:         Colors.eww.gold,
+    letterSpacing: 2,
   },
 });

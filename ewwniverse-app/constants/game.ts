@@ -12,6 +12,12 @@ export const QUIZ_SCAN_REWARDS = {
   paid: { 5: 6, 4: 4, 3: 2 } as Record<number, number>,
 };
 
+// Scans awarded the first time a creature quiz is mastered (all 3 correct)
+export const MASTERY_QUIZ_SCANS = {
+  free: 4,
+  paid: 5,
+} as const;
+
 export const CONTAMINATION_STREAK = 3; // correct answers in a row without hint
 
 export const STREAK_REWARD_DAY = 7;
