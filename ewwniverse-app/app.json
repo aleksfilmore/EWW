@@ -15,7 +15,10 @@
     "scheme": "ewwniverse",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.ewwniverse.app"
+      "bundleIdentifier": "com.ewwniverse.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.ewwniverse.app",
