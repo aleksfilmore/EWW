@@ -7,31 +7,28 @@ export const metadata: Metadata = {
 
 const callouts = [
   {
-    image: "Dr.%20Icky%20holding%20magnifying%20glass.png",
-    imageAlt: "Dr. Icky with magnifying glass",
+    image: "dr-icky-portrait.png",
+    imageAlt: "Dr. Icky",
     label: "The Mission",
     heading: "Reality is already weirder than anything you'd make up.",
     body: "Dr. Icky started the EWW-niverse project after decades of fieldwork produced findings too revolting for standard academic journals. The peer reviewers kept asking him to remove the grosser details. He did not remove them. He published them as books for children instead.",
     accent: "#5DB84A",
-    bg: "#F7F2E4",
   },
   {
-    image: "Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png",
-    imageAlt: "Dr. Icky with raised finger warning",
+    image: "dr-icky-warning.png",
+    imageAlt: "Dr. Icky warning",
     label: "Accuracy",
     heading: "Every fact has been verified. No exceptions.",
     body: "The real world is already more than sufficient. Dr. Icky does not exaggerate, invent, or embellish. Every creature is real. Every fact is sourced. If it is in the EWW-niverse, it happened — and it is worse than you think.",
-    accent: "#854F0B",
-    bg: "#FAEEDA",
+    accent: "#D48B1A",
   },
   {
-    image: "Dr.%20Icky%20celebrating%20a%20result.png",
+    image: "dr-icky-celebrating.png",
     imageAlt: "Dr. Icky celebrating",
     label: "The Books",
     heading: "Six published. One universe. 450 entries total.",
-    body: "Creepy Creatures. Creepy Earth. Creepy Dinosaurs. Creepy Deep Sea. Creepy Skeletons. Creepy Tiny World. Each one a complete field guide to a different corner of the revolting natural world. Lab Notebook is in development.",
-    accent: "#1A3D0E",
-    bg: "#EAF3DE",
+    body: "Creepy Creatures. Creepy Earth. Creepy Dinosaurs. Creepy Deep Sea. Creepy Skeletons. Creepy Tiny World. Each one a complete field guide to a different corner of the revolting natural world.",
+    accent: "#A78BFA",
   },
 ];
 
@@ -120,20 +117,43 @@ export default function DrIckyPage() {
         />
       </section>
 
+      {/* ── DR. ICKY WELCOME VIDEO ────────────────────────────── */}
+      <section className="py-12 border-t border-[#1A3D0E]" style={{ backgroundColor: "#080808" }}>
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#5DB84A] mb-3">From the lab</p>
+          <h2
+            className="font-creepster text-3xl text-[#E8F5E2] mb-6"
+            style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+          >
+            Dr. Icky Has a Message For You
+          </h2>
+          <video
+            src="/videos/welcome.mp4"
+            controls
+            preload="none"
+            poster="/images/dr-icky/Dr.%20Icky%20holding%20EWW-meter.png"
+            className="rounded-2xl border border-[#5DB84A]/30 w-full mx-auto"
+            style={{ backgroundColor: "#080808", maxWidth: 640 }}
+          />
+          <p className="text-xs text-[#5A8A56] mt-3">Press play. He insists.</p>
+        </div>
+      </section>
+
       {/* ── DOSSIER CALLOUTS ──────────────────────────────────── */}
-      <section className="bg-[#F7F2E4] py-14">
+      <section className="py-14" style={{ backgroundColor: "#0A1205" }}>
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
             <img
               src="/images/ui/Evidence%20tape%20strip%2C%20text-free.png"
               alt=""
               aria-hidden="true"
-              className="w-48 mx-auto mb-4 object-contain opacity-60"
+              className="w-48 mx-auto mb-4 object-contain opacity-40"
+              style={{ mixBlendMode: "screen" }}
             />
             <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
               Specimen notes
             </p>
-            <h2 className="text-2xl text-[#1A3D0E]">
+            <h2 className="text-2xl text-[#E8F5E2]">
               Field observations on the subject
             </h2>
           </div>
@@ -142,11 +162,11 @@ export default function DrIckyPage() {
             {callouts.map((c, i) => (
               <div
                 key={c.label}
-                className={`flex flex-col sm:flex-row ${i % 2 === 1 ? "sm:flex-row-reverse" : ""} gap-0 rounded-2xl overflow-hidden border border-[#C8B89A]`}
-                style={{ background: c.bg }}
+                className={`flex flex-col sm:flex-row ${i % 2 === 1 ? "sm:flex-row-reverse" : ""} gap-0 rounded-2xl overflow-hidden border border-[#2A4020]`}
+                style={{ background: "#0D1A06" }}
               >
                 {/* Illustration */}
-                <div className="sm:w-56 flex-shrink-0 flex items-end justify-center pt-6 px-4" style={{ background: c.bg }}>
+                <div className="sm:w-56 flex-shrink-0 flex items-end justify-center pt-6 px-4" style={{ background: "#0D1A06" }}>
                   <img
                     src={`/images/dr-icky/${c.image}`}
                     alt={c.imageAlt}
@@ -164,19 +184,13 @@ export default function DrIckyPage() {
                     >
                       {c.label}
                     </span>
-                    <img
-                      src="/images/ui/Thin%20slime%20divider%20line.png"
-                      alt=""
-                      aria-hidden="true"
-                      className="flex-1 h-2 object-cover opacity-30"
-                    />
                   </div>
 
-                  <h3 className="text-lg md:text-xl text-[#1A3D0E] leading-snug">
+                  <h3 className="text-lg md:text-xl text-[#C8E8C4] leading-snug">
                     {c.heading}
                   </h3>
 
-                  <p className="text-sm text-[#7A6652] leading-relaxed">
+                  <p className="text-sm text-[#6A9E66] leading-relaxed">
                     {c.body}
                   </p>
                 </div>
@@ -187,20 +201,14 @@ export default function DrIckyPage() {
       </section>
 
       {/* ── THE UNIVERSE ──────────────────────────────────────── */}
-      <section className="py-12 border-t border-[#C8B89A] relative overflow-hidden" style={{ background: "#EDE5CE" }}>
+      <section className="py-12 border-t border-[#1A3D0E] relative overflow-hidden" style={{ background: "#080808" }}>
         <div
-          className="absolute inset-0 opacity-15 pointer-events-none"
-          style={{ backgroundImage: "url(/images/ui/Graph%20paper%20texture.png)", backgroundSize: "300px" }}
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{ backgroundImage: "url(/images/ui/Lab%20tile%20background.png)", backgroundSize: "200px", backgroundRepeat: "repeat" }}
         />
         <div className="relative max-w-5xl mx-auto px-4">
           <div className="flex items-center gap-4 mb-8">
-            <img
-              src="/images/ui/Lab%20receipt%20strip.png"
-              alt=""
-              aria-hidden="true"
-              className="w-10 object-contain opacity-60"
-            />
-            <h2 className="text-2xl text-[#1A3D0E]">
+            <h2 className="text-2xl text-[#E8F5E2]">
               One universe. Multiple surfaces.
             </h2>
           </div>
@@ -209,46 +217,32 @@ export default function DrIckyPage() {
             {[
               {
                 status: "Live",
-                statusColor: "#3B6D11",
-                statusBg: "#EAF3DE",
+                statusColor: "#5DB84A",
                 name: "The Books",
                 desc: "Six published titles. 450 revolting entries. Available on Amazon.",
-                icon: "book-open.svg",
               },
               {
-                status: "Building",
-                statusColor: "#854F0B",
-                statusBg: "#FAEEDA",
+                status: "Live",
+                statusColor: "#5DB84A",
                 name: "The Website",
-                desc: "You're here. Brand hub, creature catalogue, content engine.",
-                icon: "clipboard-check.svg",
+                desc: "You're here. Brand hub, creature catalogue, specimen content engine.",
               },
               {
-                status: "Coming",
-                statusColor: "#5F5E5A",
-                statusBg: "#F1EFE8",
+                status: "Live",
+                statusColor: "#5DB84A",
                 name: "The App",
-                desc: "iOS + Android. Daily engagement. Free tier + Full Lab Pass.",
-                icon: "flask-conical.svg",
+                desc: "iOS + Android. 234 specimens. Free tier + Full Lab Pass at €3.99.",
               },
             ].map((item) => (
-              <div key={item.name} className="rounded-xl border border-[#C8B89A] bg-[#FDFAF3] p-5 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
-                    style={{ color: item.statusColor, backgroundColor: item.statusBg }}
-                  >
-                    {item.status}
-                  </span>
-                  <img
-                    src={`/images/icons/${item.icon}`}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-5 h-5 opacity-40"
-                  />
-                </div>
-                <h3 className="text-base text-[#1A3D0E]">{item.name}</h3>
-                <p className="text-xs text-[#7A6652] leading-relaxed">{item.desc}</p>
+              <div key={item.name} className="rounded-xl border border-[#2A4020] p-5 flex flex-col gap-3" style={{ backgroundColor: "#0D1A06" }}>
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded w-fit border"
+                  style={{ color: item.statusColor, borderColor: item.statusColor + "40", backgroundColor: item.statusColor + "18" }}
+                >
+                  {item.status}
+                </span>
+                <h3 className="font-creepster text-base text-[#C8E8C4]" style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>{item.name}</h3>
+                <p className="text-xs text-[#6A9E66] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

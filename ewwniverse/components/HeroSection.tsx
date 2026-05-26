@@ -120,7 +120,7 @@ export default function HeroSection() {
                 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
               >
                 {[
-                  { href: "/app", label: "Get the Free Lab Kit", bg: "#5DB84A", border: "#2D6018", icon: true },
+                  { href: "/app", label: "Get the App", bg: "#5DB84A", border: "#2D6018", icon: true },
                   { href: "/books", label: "Explore the Books ›", bg: "#6B3FD4", border: "#3D1A8C", icon: false },
                 ].map((b) => (
                   <motion.div key={b.href}

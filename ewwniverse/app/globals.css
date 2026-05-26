@@ -52,8 +52,8 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color: #F7F2E4;
-  color: #3D2B1F;
+  background-color: #080808;
+  color: #C8D4C4;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
@@ -61,7 +61,7 @@ body {
 @layer base {
   h1, h2, h3, h4, h5 {
     font-family: var(--font-boogaloo), cursive;
-    color: #1A3D0E;
+    color: #E8F5E2;
     line-height: 1.15;
   }
 }

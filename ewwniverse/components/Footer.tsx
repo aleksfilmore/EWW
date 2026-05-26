@@ -38,7 +38,7 @@ export default function Footer() {
             {/* Custom logo */}
             <Link href="/">
               <img
-                src="/images/ui/EWWniverse.png"
+                src="/images/ui/logo-main.png"
                 alt="EWW-niverse"
                 className="h-12 w-auto object-contain"
                 style={{ mixBlendMode: "screen" }}

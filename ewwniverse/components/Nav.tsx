@@ -28,7 +28,7 @@ export default function Nav() {
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0" style={{ overflow: "visible" }}>
           <motion.img
-            src="/images/ui/EWWniverse.png"
+            src="/images/ui/logo-main.png"
             alt="EWW-niverse"
             className="w-auto object-contain"
             style={{
