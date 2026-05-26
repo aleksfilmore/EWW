@@ -84,9 +84,9 @@ export default function Explore() {
               ]}
               activeOpacity={0.75}
             >
-              {icon && (
+              {!!icon && (
                 <Image
-                  source={icon}
+                  source={icon as import('react-native').ImageSourcePropType}
                   style={styles.bookTabIcon}
                   resizeMode="contain"
                 />

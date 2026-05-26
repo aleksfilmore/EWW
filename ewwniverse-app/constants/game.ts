@@ -65,13 +65,13 @@ export const BOOKS = [
     id: 'creepy-dinosaurs' as const,
     label: 'DINOSAURS',
     tier: 'paid' as const,
-    count: 75,
+    count: 80,
   },
   {
     id: 'creepy-earth' as const,
     label: 'EARTH',
     tier: 'paid' as const,
-    count: 75,
+    count: 79,
   },
 ] as const;
 

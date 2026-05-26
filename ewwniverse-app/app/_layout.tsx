@@ -123,7 +123,7 @@ function AppBootstrap() {
     if (isHydrated && fontsLoaded && onboardingChecked) {
       SplashScreen.hideAsync();
       if (showOnboarding) {
-        router.replace('/onboarding');
+        router.replace('/onboarding' as any);
       }
     }
   }, [isHydrated, fontsLoaded, onboardingChecked, showOnboarding]);

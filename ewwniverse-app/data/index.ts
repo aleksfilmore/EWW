@@ -5,6 +5,7 @@ import creepyDinosaurs from './creepy-dinosaurs.json';
 import creepyEarth from './creepy-earth.json';
 import creatureQuizRaw from './creature-quiz.json';
 import earthQuizRaw    from './earth-quiz.json';
+import dinosQuizRaw    from './dinos-quiz.json';
 
 export const ALL_CREATURES: Creature[] = [
   ...(creepyCreatures as Creature[]),
@@ -38,6 +39,7 @@ export interface CreatureQuizEntry {
 export const CREATURE_QUIZ: Record<string, CreatureQuizEntry> = {
   ...(creatureQuizRaw as Record<string, CreatureQuizEntry>),
   ...(earthQuizRaw    as Record<string, CreatureQuizEntry>),
+  ...(dinosQuizRaw    as Record<string, CreatureQuizEntry>),
 };
 
 export function getCreatureQuiz(id: string): CreatureQuizEntry | undefined {

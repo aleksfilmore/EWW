@@ -1,0 +1,2962 @@
+{
+  "creepy-dinosaurs-t-rex": {
+    "master_text": "The skull tray hissed when Dr. Icky opened it. T. rex was not just a bite machine; its bones can carry gross evidence of wounds that stayed angry long after the fight. Master note: watch for swollen holes in old skull scars; the real trick is infected battle wounds. Lab rule: old injuries can prove a predator survived ugly fights.",
+    "mastered_success_text": "SPECIMEN CONTAINED: T. rex is now in the vault. The slime alarm approves.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What made T. rex worth mastering?",
+        "options": [
+          "Soft-tissue clues on the head",
+          "Infected battle wounds",
+          "Planet-wide disaster",
+          "Enormous curved claws"
+        ],
+        "correct_answer": "Infected battle wounds"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Cuts that look torn instead of neatly snapped",
+          "A neck reaching food far above others",
+          "Swollen holes in old skull scars",
+          "Bones from multiple animals in one place"
+        ],
+        "correct_answer": "Swollen holes in old skull scars"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Even giants may need body armor",
+          "Old injuries can prove a predator survived ugly fights",
+          "A skull can become protective equipment",
+          "Small predators can still be nasty surprises"
+        ],
+        "correct_answer": "Old injuries can prove a predator survived ugly fights"
+      }
+    ]
+  },
+  "creepy-dinosaurs-tarbosaurus": {
+    "master_text": "Tarbosaurus enters the lab as the Crunch Department’s worst employee. Dr. Icky found the important clue in the damage it could leave behind, because prehistoric meals rarely used napkins. Master note: watch for cracked bones left like chewed leftovers; the real trick is bone-crushing jaws. Lab rule: broken fossils can reveal what dinner looked like.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Tarbosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What would help identify Tarbosaurus fast?",
+        "options": [
+          "Cracked bones left like chewed leftovers",
+          "A body outline made larger by raised spines",
+          "A body stretched into an unusual shape",
+          "Fuzz that complicates the scaly image"
+        ],
+        "correct_answer": "Cracked bones left like chewed leftovers"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Skin and soft parts can change the whole creature",
+          "Broken fossils can reveal what dinner looked like",
+          "Size turns a claw attack into a wrestling match",
+          "Dinosaurs could gather in noisy breeding zones"
+        ],
+        "correct_answer": "Broken fossils can reveal what dinner looked like"
+      },
+      {
+        "question": "What made Tarbosaurus worth mastering?",
+        "options": [
+          "Large raptor claws for gripping struggle",
+          "Thick body armor",
+          "Heavy steps from a giant body",
+          "Bone-crushing jaws"
+        ],
+        "correct_answer": "Bone-crushing jaws"
+      }
+    ]
+  },
+  "creepy-dinosaurs-albertosaurus": {
+    "master_text": "Albertosaurus is filed under ‘bad news with legs.’ Dr. Icky suspects this hunter did not need dramatic roaring when patience, scent, and tired prey could do the disgusting work. Master note: watch for signs that several hunters moved through the same area; the real trick is tracking weak prey over distance. Lab rule: a predator can be terrifying before it is even close.",
+    "mastered_success_text": "MASTERED: Albertosaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "A predator can be terrifying before it is even close",
+          "Huge bodies can reshape the scene",
+          "A fossil can carry mistakes made by people too",
+          "Floods can rearrange the evidence"
+        ],
+        "correct_answer": "A predator can be terrifying before it is even close"
+      },
+      {
+        "question": "Which trait belongs in the Albertosaurus file?",
+        "options": [
+          "A nose horn used for shoving or display",
+          "Tracking weak prey over distance",
+          "Replacement teeth",
+          "A spiked neck frill"
+        ],
+        "correct_answer": "Tracking weak prey over distance"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Empty spaces inside certain bones",
+          "A head that looked more weapon than face",
+          "Cuts that look torn instead of neatly snapped",
+          "Signs that several hunters moved through the same area"
+        ],
+        "correct_answer": "Signs that several hunters moved through the same area"
+      }
+    ]
+  },
+  "creepy-dinosaurs-giganotosaurus": {
+    "master_text": "Giganotosaurus made the lab knives feel unemployed. Its teeth were built for ragged cutting, the sort of bite that turns a clean snack into a red prehistoric curtain. Master note: watch for cuts that look torn instead of neatly snapped; the real trick is serrated slicing teeth. Lab rule: sharp edges can be worse than raw bite strength.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Giganotosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Cuts that look torn instead of neatly snapped",
+          "Bits of food trapped in fossilized waste",
+          "Hands that looked more like tools than fingers",
+          "A dinosaur outline softened by filaments"
+        ],
+        "correct_answer": "Cuts that look torn instead of neatly snapped"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Serrated slicing teeth",
+          "Swallowed grinding stones",
+          "Large back plates",
+          "Soft-tissue clues on the head"
+        ],
+        "correct_answer": "Serrated slicing teeth"
+      },
+      {
+        "question": "What is the lab lesson from Giganotosaurus?",
+        "options": [
+          "Feet can be weapons, which is rude but effective",
+          "Sharp edges can be worse than raw bite strength",
+          "Flight experiments can look like a living trap",
+          "Growing huge can become defense"
+        ],
+        "correct_answer": "Sharp edges can be worse than raw bite strength"
+      }
+    ]
+  },
+  "creepy-dinosaurs-allosaurus": {
+    "master_text": "Allosaurus arrived with the smile of a drawer full of spare blades. Dr. Icky notes that losing teeth mattered less when new ones were waiting backstage like disgusting understudies. Master note: watch for lost teeth that did not end the biting career; the real trick is replacement teeth. Lab rule: a mouth that keeps reloading stays dangerous.",
+    "mastered_success_text": "SPECIMEN MASTERED: Allosaurus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "A gigantic frame that discouraged attackers",
+          "Towering proportions that dominated the landscape",
+          "Lost teeth that did not end the biting career",
+          "Fossils that can freeze a moment of struggle"
+        ],
+        "correct_answer": "Lost teeth that did not end the biting career"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "A mouth that keeps reloading stays dangerous",
+          "Footprints can preserve movement, not just shape",
+          "A strange silhouette can send a message",
+          "Breathing systems can hide inside the skeleton"
+        ],
+        "correct_answer": "A mouth that keeps reloading stays dangerous"
+      },
+      {
+        "question": "What made Allosaurus worth mastering?",
+        "options": [
+          "Mixed body coverings",
+          "Bone-crushing jaws",
+          "Parasites trapped in amber",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Replacement teeth"
+      }
+    ]
+  },
+  "creepy-dinosaurs-ceratosaurus": {
+    "master_text": "Ceratosaurus looks like someone glued a bad idea to its face. Dr. Icky refuses to call that horn cute, because cute things do not usually come with predator teeth. Master note: watch for a head ornament that was not just decoration; the real trick is a nose horn used for shoving or display. Lab rule: weird head gear may be part weapon and part warning sign.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Ceratosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What made Ceratosaurus worth mastering?",
+        "options": [
+          "Constant tooth replacement",
+          "Giant arms and a mismatched body",
+          "A nose horn used for shoving or display",
+          "Large raptor claws for gripping struggle"
+        ],
+        "correct_answer": "A nose horn used for shoving or display"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Bad breath can come from a very successful mouth",
+          "Tiny fossils can accuse a stomach",
+          "Hollow does not mean weak",
+          "Weird head gear may be part weapon and part warning sign"
+        ],
+        "correct_answer": "Weird head gear may be part weapon and part warning sign"
+      },
+      {
+        "question": "What would help identify Ceratosaurus fast?",
+        "options": [
+          "Fossils showing dinosaurs were not smooth cartoons",
+          "A head ornament that was not just decoration",
+          "A head shape that could resonate",
+          "Fossils near nests instead of far away"
+        ],
+        "correct_answer": "A head ornament that was not just decoration"
+      }
+    ]
+  },
+  "creepy-dinosaurs-carnotaurus": {
+    "master_text": "Carnotaurus has arms so tiny the lab mittens laughed. Then the rest of the body charged past them, proving Dr. Icky’s rule: never judge the monster by its stupidest body part. Master note: watch for tiny arms paired with a body built for impact; the real trick is speed and a weaponized head. Lab rule: useless-looking parts do not cancel a dangerous design.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Carnotaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Rotten meat mouth bacteria",
+          "Parasites trapped in amber",
+          "Planet-wide disaster",
+          "Speed and a weaponized head"
+        ],
+        "correct_answer": "Speed and a weaponized head"
+      },
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Length can create reach and vulnerability at once",
+          "Natural shields can ruin a predator’s lunch",
+          "Useless-looking parts do not cancel a dangerous design",
+          "Tiny fossils can accuse a stomach"
+        ],
+        "correct_answer": "Useless-looking parts do not cancel a dangerous design"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Scales and fuzzy features together",
+          "Tiny arms paired with a body built for impact",
+          "Towering proportions that dominated the landscape",
+          "A spiky outline along the neck"
+        ],
+        "correct_answer": "Tiny arms paired with a body built for impact"
+      }
+    ]
+  },
+  "creepy-dinosaurs-majungasaurus": {
+    "master_text": "Majungasaurus is banned from family dinner. Dr. Icky’s file has one word circled in green slime: cannibalism. The bones suggest this predator did not always shop outside its own species. Master note: watch for tooth marks on bones from its own kind; the real trick is cannibal bite evidence. Lab rule: some fossils turn a food chain into a family problem.",
+    "mastered_success_text": "MASTERED: Majungasaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "A nose horn used for shoving or display",
+          "Tiny breathing holes in eggshell",
+          "Cannibal bite evidence",
+          "Colossal body size"
+        ],
+        "correct_answer": "Cannibal bite evidence"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Small predators can still be nasty surprises",
+          "Some fossils turn a food chain into a family problem",
+          "Huge bodies can reshape the scene",
+          "A single claw can change the whole hunting plan"
+        ],
+        "correct_answer": "Some fossils turn a food chain into a family problem"
+      },
+      {
+        "question": "What would help identify Majungasaurus fast?",
+        "options": [
+          "Tooth marks on bones from its own kind",
+          "Bones built to support immense weight",
+          "Messy tracks where animals slipped or stuck",
+          "Layers that covered plants and animals"
+        ],
+        "correct_answer": "Tooth marks on bones from its own kind"
+      }
+    ]
+  },
+  "creepy-dinosaurs-dilophosaurus": {
+    "master_text": "Dilophosaurus made Dr. Icky check the costume closet. Those double crests were more than spooky decoration; they turned the head into a billboard that said, ‘Admire me, then back away.’ Master note: watch for a head shape meant to be seen; the real trick is twin display crests. Lab rule: looking scary can be part of survival.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Dilophosaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What would help identify Dilophosaurus fast?",
+        "options": [
+          "Small bones found inside larger remains",
+          "Bird-like features at a disturbing size",
+          "A head shape meant to be seen",
+          "A long-necked body with extra protection"
+        ],
+        "correct_answer": "A head shape meant to be seen"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Looking scary can be part of survival",
+          "Height can be its own survival advantage",
+          "Skin and soft parts can change the whole creature",
+          "Poop can become a disgusting menu"
+        ],
+        "correct_answer": "Looking scary can be part of survival"
+      },
+      {
+        "question": "Which feature made Dilophosaurus a proper lab hazard?",
+        "options": [
+          "A tail club on a plant-eater",
+          "Small horned-dinosaur defenses",
+          "Twin display crests",
+          "A thick domed skull"
+        ],
+        "correct_answer": "Twin display crests"
+      }
+    ]
+  },
+  "creepy-dinosaurs-spinosaurus": {
+    "master_text": "Spinosaurus made the lab aquarium nervous. This specimen belongs near water, with teeth better suited for grabbing wriggly fish than politely chewing a sandwich. Master note: watch for a body linked to wet hunting; the real trick is fish-gripping teeth. Lab rule: slippery prey needs a trap-like mouth.",
+    "mastered_success_text": "MASTERED: Spinosaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Small predators can still be nasty surprises",
+          "Dinosaur skin could be weirder than plain scales",
+          "Slippery prey needs a trap-like mouth",
+          "Some animals used stones as stomach equipment"
+        ],
+        "correct_answer": "Slippery prey needs a trap-like mouth"
+      },
+      {
+        "question": "Which trait belongs in the Spinosaurus file?",
+        "options": [
+          "Nest guarding behavior",
+          "Thick body armor",
+          "Giant eggs and a huge bird-like body",
+          "Fish-gripping teeth"
+        ],
+        "correct_answer": "Fish-gripping teeth"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "A head shape that could resonate",
+          "A body linked to wet hunting",
+          "A defensive weapon behind the body",
+          "Towering proportions that dominated the landscape"
+        ],
+        "correct_answer": "A body linked to wet hunting"
+      }
+    ]
+  },
+  "creepy-dinosaurs-baryonyx": {
+    "master_text": "Baryonyx scratched one line through the fish tank glass and Dr. Icky applauded, then hid. The claw is the clue: one curved hook, perfect for turning lunch into a panic. Master note: watch for one hand built like a snagging tool; the real trick is a giant hooked claw. Lab rule: a single claw can change the whole hunting plan.",
+    "mastered_success_text": "DR. ICKY APPROVES: Baryonyx has been mastered. New scans released from quarantine.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Old injuries can prove a predator survived ugly fights",
+          "Breathing systems can hide inside the skeleton",
+          "A single claw can change the whole hunting plan",
+          "Escape can be a survival weapon"
+        ],
+        "correct_answer": "A single claw can change the whole hunting plan"
+      },
+      {
+        "question": "Which feature made Baryonyx a proper lab hazard?",
+        "options": [
+          "A helmet-like sound crest",
+          "A spiked neck frill",
+          "Infected battle wounds",
+          "A giant hooked claw"
+        ],
+        "correct_answer": "A giant hooked claw"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "One hand built like a snagging tool",
+          "A dinosaur outline softened by filaments",
+          "Bones showing attacks that did not kill immediately",
+          "A curved blade attached to the body"
+        ],
+        "correct_answer": "One hand built like a snagging tool"
+      }
+    ]
+  },
+  "creepy-dinosaurs-suchomimus": {
+    "master_text": "Suchomimus was assigned to the Slippery Snack Unit. Its narrow face and packed teeth made escape a terrible plan for anything wet, shiny, and foolish enough to wriggle nearby. Master note: watch for tight teeth for holding slippery prey; the real trick is a narrow crocodile-like snout. Lab rule: long jaws can work like a clamp.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Suchomimus is now in the vault. The slime alarm approves.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Long jaws can work like a clamp",
+          "Dinosaurs could be fluffy and still creepy",
+          "Some fossils look disturbingly like a body left behind",
+          "Fossils can reveal creatures built like wrong puzzles"
+        ],
+        "correct_answer": "Long jaws can work like a clamp"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Layers that covered plants and animals",
+          "Tight teeth for holding slippery prey",
+          "Crowded nesting grounds",
+          "A side view that looked like a spear warning"
+        ],
+        "correct_answer": "Tight teeth for holding slippery prey"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "A thick domed skull",
+          "A narrow crocodile-like snout",
+          "Planet-wide disaster",
+          "A fossil skull with human tampering"
+        ],
+        "correct_answer": "A narrow crocodile-like snout"
+      }
+    ]
+  },
+  "creepy-dinosaurs-irritator": {
+    "master_text": "Irritator earned its name in the paperwork swamp. Dr. Icky hates this file because the skull’s story includes ancient biology and modern meddling, which is two messes for one specimen. Master note: watch for damage caused after discovery; the real trick is a fossil skull with human tampering. Lab rule: a fossil can carry mistakes made by people too.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Irritator is now in the vault. The slime alarm approves.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Damage caused after discovery",
+          "Crowded nesting grounds",
+          "Plates that could signal or manage heat",
+          "Tracks from one animal following another"
+        ],
+        "correct_answer": "Damage caused after discovery"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "A fossil skull with human tampering",
+          "Soft feather-like coverings",
+          "Cannibal bite evidence",
+          "Giant eggs and a huge bird-like body"
+        ],
+        "correct_answer": "A fossil skull with human tampering"
+      },
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Some animals used stones as stomach equipment",
+          "Disaster layers can preserve a moment",
+          "A fossil can carry mistakes made by people too",
+          "Footprints can preserve movement, not just shape"
+        ],
+        "correct_answer": "A fossil can carry mistakes made by people too"
+      }
+    ]
+  },
+  "creepy-dinosaurs-deinonychus": {
+    "master_text": "Deinonychus walked into the lab feet-first, which was unwise for everyone else. Dr. Icky underlined the killing claw, because this dinosaur carried trouble below the ankles. Master note: watch for a curved blade attached to the body; the real trick is a hooked foot claw. Lab rule: feet can be weapons, which is rude but effective.",
+    "mastered_success_text": "SPECIMEN MASTERED: Deinonychus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Long jaws can work like a clamp",
+          "Flight experiments can look like a living trap",
+          "Hollow does not mean weak",
+          "Feet can be weapons, which is rude but effective"
+        ],
+        "correct_answer": "Feet can be weapons, which is rude but effective"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "A hooked foot claw",
+          "Bat-like membrane wings",
+          "A heavy tail club",
+          "Fuzzy body covering"
+        ],
+        "correct_answer": "A hooked foot claw"
+      },
+      {
+        "question": "What would help identify Deinonychus fast?",
+        "options": [
+          "Huge limbs paired with odd body features",
+          "Fossils that can freeze a moment of struggle",
+          "Deep calls carried through the crest",
+          "A curved blade attached to the body"
+        ],
+        "correct_answer": "A curved blade attached to the body"
+      }
+    ]
+  },
+  "creepy-dinosaurs-velociraptor": {
+    "master_text": "Velociraptor is why Dr. Icky distrusts anything feathery with confidence. It mixes bird-like features with claws and teeth, creating the emotional discomfort of a chicken that chose violence. Master note: watch for a bird-like body with dangerous claws; the real trick is feathers plus sharp predator tools. Lab rule: familiar-looking animals can still be nasty.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Velociraptor is now in the vault. The slime alarm approves.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Tunnel-like spaces used for hiding or nesting",
+          "A blunt reinforced face instead of long horns",
+          "Ground changed by heavy steps",
+          "A bird-like body with dangerous claws"
+        ],
+        "correct_answer": "A bird-like body with dangerous claws"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Feathers plus sharp predator tools",
+          "Twin display crests",
+          "Possible invisible display markings",
+          "Giant eggs and a huge bird-like body"
+        ],
+        "correct_answer": "Feathers plus sharp predator tools"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Some skulls are built like food machines",
+          "Survival can leave permanent fossil evidence",
+          "Familiar-looking animals can still be nasty",
+          "Evolution sometimes tests very strange prototypes"
+        ],
+        "correct_answer": "Familiar-looking animals can still be nasty"
+      }
+    ]
+  },
+  "creepy-dinosaurs-utahraptor": {
+    "master_text": "Utahraptor made the raptor shelf sag. Dr. Icky’s warning label says this one was not a tiny movie nuisance; it was a heavier problem with claws designed for grabbing. Master note: watch for a bigger body than most people expect from a raptor; the real trick is large raptor claws for gripping struggle. Lab rule: size turns a claw attack into a wrestling match.",
+    "mastered_success_text": "MASTERED: Utahraptor has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "A bird-like body with dangerous claws",
+          "A long-necked body with extra protection",
+          "A bigger body than most people expect from a raptor",
+          "Pores that let embryos exchange air"
+        ],
+        "correct_answer": "A bigger body than most people expect from a raptor"
+      },
+      {
+        "question": "What is the lab lesson from Utahraptor?",
+        "options": [
+          "A mouth that keeps reloading stays dangerous",
+          "Breathing systems can hide inside the skeleton",
+          "Size turns a claw attack into a wrestling match",
+          "Feet can be weapons, which is rude but effective"
+        ],
+        "correct_answer": "Size turns a claw attack into a wrestling match"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Large raptor claws for gripping struggle",
+          "Healed bite marks",
+          "Heavy steps from a giant body",
+          "Swallowed grinding stones"
+        ],
+        "correct_answer": "Large raptor claws for gripping struggle"
+      }
+    ]
+  },
+  "creepy-dinosaurs-microraptor": {
+    "master_text": "Microraptor belongs in the ‘tiny, wrong, airborne’ drawer. Four wing-like limbs made it look as if nature tested a creepy kite and forgot to ask permission. Master note: watch for a small body shaped for weird gliding; the real trick is four wing-like limbs. Lab rule: flight experiments can look like a living trap.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Microraptor cannot legally bite the quiz screen anymore.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What is the lab lesson from Microraptor?",
+        "options": [
+          "Flight experiments can look like a living trap",
+          "Growing huge can become defense",
+          "Small creatures can still leave dramatic evidence",
+          "Useless-looking parts do not cancel a dangerous design"
+        ],
+        "correct_answer": "Flight experiments can look like a living trap"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Tiny hitchhikers preserved with ancient clues",
+          "Small bones found inside larger remains",
+          "A small body shaped for weird gliding",
+          "Flight gear unlike normal bird feathers"
+        ],
+        "correct_answer": "A small body shaped for weird gliding"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Armored preservation",
+          "Tall neck spines",
+          "Four wing-like limbs",
+          "Adult care around eggs"
+        ],
+        "correct_answer": "Four wing-like limbs"
+      }
+    ]
+  },
+  "creepy-dinosaurs-archaeopteryx": {
+    "master_text": "Archaeopteryx looks like a bird halfway through a dinosaur nightmare. Dr. Icky loves it because one body carries feathers, claws, and teeth like evolution spilled the parts bin. Master note: watch for feathers together with teeth and claws; the real trick is bird traits mixed with dinosaur traits. Lab rule: transition fossils can look like two creatures arguing.",
+    "mastered_success_text": "MASTERED: Archaeopteryx has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Feathers together with teeth and claws",
+          "Pores that let embryos exchange air",
+          "Messy tracks where animals slipped or stuck",
+          "A plant-eater with built-in stabbing equipment"
+        ],
+        "correct_answer": "Feathers together with teeth and claws"
+      },
+      {
+        "question": "What is the lab lesson from Archaeopteryx?",
+        "options": [
+          "One step from a giant can be an event",
+          "Old injuries can prove a predator survived ugly fights",
+          "Footprints can preserve movement, not just shape",
+          "Transition fossils can look like two creatures arguing"
+        ],
+        "correct_answer": "Transition fossils can look like two creatures arguing"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "A hooked foot claw",
+          "Giant arms and a mismatched body",
+          "Bird traits mixed with dinosaur traits",
+          "Serrated slicing teeth"
+        ],
+        "correct_answer": "Bird traits mixed with dinosaur traits"
+      }
+    ]
+  },
+  "creepy-dinosaurs-ankylosaurus": {
+    "master_text": "Ankylosaurus is basically a tank with a bad attitude. Dr. Icky labeled the tail ‘Do Not Stand Here,’ then stood there for science and regretted every bone in his shins. Master note: watch for armor plus a crushing weapon at the back; the real trick is a heavy tail club. Lab rule: the rear end can be the danger zone.",
+    "mastered_success_text": "MASTERED: Ankylosaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Floods can rearrange the evidence",
+          "Standing too close can become a poking emergency",
+          "The rear end can be the danger zone",
+          "Disaster layers can preserve a moment"
+        ],
+        "correct_answer": "The rear end can be the danger zone"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Healed bite marks",
+          "A heavy tail club",
+          "Adult size with few likely threats",
+          "Mixed body coverings"
+        ],
+        "correct_answer": "A heavy tail club"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "A defensive weapon behind the body",
+          "Armor plus a crushing weapon at the back",
+          "Fossils near nests instead of far away",
+          "Tracks from one animal following another"
+        ],
+        "correct_answer": "Armor plus a crushing weapon at the back"
+      }
+    ]
+  },
+  "creepy-dinosaurs-euoplocephalus": {
+    "master_text": "Euoplocephalus made the Bite Testing Machine whimper. Its armor was the point: a walking shield covered in bony protection, designed to make teeth feel useless. Master note: watch for bony plates that made biting difficult; the real trick is thick body armor. Lab rule: natural shields can ruin a predator’s lunch.",
+    "mastered_success_text": "DR. ICKY APPROVES: Euoplocephalus has been mastered. New scans released from quarantine.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Bones built to support immense weight",
+          "Fossils showing dinosaurs were not smooth cartoons",
+          "Bony plates that made biting difficult",
+          "Deep calls carried through the crest"
+        ],
+        "correct_answer": "Bony plates that made biting difficult"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Natural shields can ruin a predator’s lunch",
+          "A face can record a fight",
+          "Tiny fossils can accuse a stomach",
+          "A skull can become protective equipment"
+        ],
+        "correct_answer": "Natural shields can ruin a predator’s lunch"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Mud-trap fossil evidence",
+          "Large raptor claws for gripping struggle",
+          "Soft feather-like coverings",
+          "Thick body armor"
+        ],
+        "correct_answer": "Thick body armor"
+      }
+    ]
+  },
+  "creepy-dinosaurs-borealopelta": {
+    "master_text": "Borealopelta is the specimen that made the fossil drawer feel haunted. Its preserved armor gives Dr. Icky the unpleasant feeling that the dinosaur simply forgot to wake up. Master note: watch for a fossil that kept body shape and armor detail; the real trick is armored preservation. Lab rule: some fossils look disturbingly like a body left behind.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Borealopelta cannot legally bite the quiz screen anymore.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What is the lab lesson from Borealopelta?",
+        "options": [
+          "Broken fossils can reveal what dinner looked like",
+          "Some fossils turn a food chain into a family problem",
+          "Some fossils look disturbingly like a body left behind",
+          "Fragile-looking egg clues can point to enormous animals"
+        ],
+        "correct_answer": "Some fossils look disturbingly like a body left behind"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Armored preservation",
+          "Soft ground capturing struggle marks",
+          "Four wing-like limbs",
+          "Bone-crushing jaws"
+        ],
+        "correct_answer": "Armored preservation"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A fossil that kept body shape and armor detail",
+          "Rocks used inside the digestive system",
+          "A side view that looked like a spear warning",
+          "Fossils that can freeze a moment of struggle"
+        ],
+        "correct_answer": "A fossil that kept body shape and armor detail"
+      }
+    ]
+  },
+  "creepy-dinosaurs-stegosaurus": {
+    "master_text": "Stegosaurus looks like a roof walked away from a haunted shed. Dr. Icky’s note says the plates mattered because a body can communicate before it bites, stomps, or panics. Master note: watch for plates that could signal or manage heat; the real trick is large back plates. Lab rule: a strange silhouette can send a message.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Stegosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Looking scary can be part of survival",
+          "A strange silhouette can send a message",
+          "Skin and soft parts can change the whole creature",
+          "Weird head gear may be part weapon and part warning sign"
+        ],
+        "correct_answer": "A strange silhouette can send a message"
+      },
+      {
+        "question": "What would help identify Stegosaurus fast?",
+        "options": [
+          "A gigantic frame that discouraged attackers",
+          "Plates that could signal or manage heat",
+          "Bones showing attacks that did not kill immediately",
+          "Feathers together with teeth and claws"
+        ],
+        "correct_answer": "Plates that could signal or manage heat"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Mud-trap fossil evidence",
+          "A spiked neck frill",
+          "Large back plates",
+          "Small silent predatory size"
+        ],
+        "correct_answer": "Large back plates"
+      }
+    ]
+  },
+  "creepy-dinosaurs-kentrosaurus": {
+    "master_text": "Kentrosaurus is a walking no-touch policy. Dr. Icky tried to hang a lab coat on one spike and created a workplace incident now known as The Pointy Tuesday. Master note: watch for a side view that looked like a spear warning; the real trick is spikes across the body. Lab rule: standing too close can become a poking emergency.",
+    "mastered_success_text": "SPECIMEN MASTERED: Kentrosaurus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "A mouth that keeps reloading stays dangerous",
+          "Floods can rearrange the evidence",
+          "Sharp edges can be worse than raw bite strength",
+          "Standing too close can become a poking emergency"
+        ],
+        "correct_answer": "Standing too close can become a poking emergency"
+      },
+      {
+        "question": "Which feature made Kentrosaurus a proper lab hazard?",
+        "options": [
+          "Spikes across the body",
+          "Footprints showing pursuit",
+          "Speed across open ground",
+          "Massive weight and footprints"
+        ],
+        "correct_answer": "Spikes across the body"
+      },
+      {
+        "question": "What would help identify Kentrosaurus fast?",
+        "options": [
+          "Bones carried together from different bodies",
+          "Fossils that can freeze a moment of struggle",
+          "A side view that looked like a spear warning",
+          "A head shape meant to be seen"
+        ],
+        "correct_answer": "A side view that looked like a spear warning"
+      }
+    ]
+  },
+  "creepy-dinosaurs-triceratops": {
+    "master_text": "Triceratops is the reason Dr. Icky keeps helmets in the plant-eater room. Those horns were not parade decorations when skulls can show scars from serious shoving. Master note: watch for skull marks from rough contact; the real trick is horns used in real clashes. Lab rule: a face can record a fight.",
+    "mastered_success_text": "SPECIMEN MASTERED: Triceratops is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "Bony plates that made biting difficult",
+          "Fossils near nests instead of far away",
+          "Skull marks from rough contact",
+          "Bits of food trapped in fossilized waste"
+        ],
+        "correct_answer": "Skull marks from rough contact"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "A thick nose boss",
+          "Horns used in real clashes",
+          "Feathers plus sharp predator tools",
+          "Giant arms and a mismatched body"
+        ],
+        "correct_answer": "Horns used in real clashes"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "A strange profile can warn, display, or protect",
+          "Mud can record panic",
+          "Fragile-looking egg clues can point to enormous animals",
+          "A face can record a fight"
+        ],
+        "correct_answer": "A face can record a fight"
+      }
+    ]
+  },
+  "creepy-dinosaurs-styracosaurus": {
+    "master_text": "Styracosaurus wore its warning sign around its face. Dr. Icky says the frill looked like a crown designed by someone who hated hugs. Master note: watch for a head outline crowded with points; the real trick is a spiked neck frill. Lab rule: display can also make a body harder to mess with.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Styracosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Bone-crushing jaws",
+          "A spiked neck frill",
+          "Large back plates",
+          "Four wing-like limbs"
+        ],
+        "correct_answer": "A spiked neck frill"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A side view that looked like a spear warning",
+          "Food trapped between predator teeth",
+          "Air moving beyond simple lungs",
+          "A head outline crowded with points"
+        ],
+        "correct_answer": "A head outline crowded with points"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Some fossils turn a food chain into a family problem",
+          "Tiny fossils can accuse a stomach",
+          "Display can also make a body harder to mess with",
+          "Poop can become a disgusting menu"
+        ],
+        "correct_answer": "Display can also make a body harder to mess with"
+      }
+    ]
+  },
+  "creepy-dinosaurs-pachyrhinosaurus": {
+    "master_text": "Pachyrhinosaurus skipped the fancy horn and chose a face-bumper. Dr. Icky respects the efficiency: less pointy drama, more shove-your-problem-into-the-floor energy. Master note: watch for a blunt reinforced face instead of long horns; the real trick is a thick nose boss. Lab rule: ramming tools can be short and brutal.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Pachyrhinosaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "A plant-eater with built-in stabbing equipment",
+          "A head ornament that was not just decoration",
+          "A blunt reinforced face instead of long horns",
+          "A head shape meant to be seen"
+        ],
+        "correct_answer": "A blunt reinforced face instead of long horns"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Preserved droppings",
+          "Parasites trapped in amber",
+          "A sharp thumb spike",
+          "A thick nose boss"
+        ],
+        "correct_answer": "A thick nose boss"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Ramming tools can be short and brutal",
+          "Weird crests can be sound machines",
+          "A dinosaur mouth could keep refreshing its weapons",
+          "A skull can work like a noisy instrument"
+        ],
+        "correct_answer": "Ramming tools can be short and brutal"
+      }
+    ]
+  },
+  "creepy-dinosaurs-protoceratops": {
+    "master_text": "Protoceratops looks manageable until the fossil record starts yelling. Dr. Icky keeps this file because even smaller dinosaurs could end up locked in moments that feel freshly terrible. Master note: watch for fossils that can freeze a moment of struggle; the real trick is small horned-dinosaur defenses. Lab rule: small creatures can still leave dramatic evidence.",
+    "mastered_success_text": "SPECIMEN MASTERED: Protoceratops is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Even giants may need body armor",
+          "Small creatures can still leave dramatic evidence",
+          "Height can be its own survival advantage",
+          "Dinosaurs could gather in noisy breeding zones"
+        ],
+        "correct_answer": "Small creatures can still leave dramatic evidence"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Volcanic ash burial",
+          "Towering height",
+          "Constant tooth replacement",
+          "Small horned-dinosaur defenses"
+        ],
+        "correct_answer": "Small horned-dinosaur defenses"
+      },
+      {
+        "question": "What would help identify Protoceratops fast?",
+        "options": [
+          "Partly digested bits preserved together",
+          "A long-necked body with extra protection",
+          "A head shape that could resonate",
+          "Fossils that can freeze a moment of struggle"
+        ],
+        "correct_answer": "Fossils that can freeze a moment of struggle"
+      }
+    ]
+  },
+  "creepy-dinosaurs-psittacosaurus": {
+    "master_text": "Psittacosaurus made the lab brush try to resign. Its body covering suggests a dinosaur could look partly scaly, partly bristly, and fully unacceptable at breakfast. Master note: watch for a mix of scales and stiff fibers; the real trick is tail bristles and body covering. Lab rule: dinosaur skin could be weirder than plain scales.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Psittacosaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Old injuries can prove a predator survived ugly fights",
+          "Size turns a claw attack into a wrestling match",
+          "Dinosaur skin could be weirder than plain scales",
+          "A skull can work like a noisy instrument"
+        ],
+        "correct_answer": "Dinosaur skin could be weirder than plain scales"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Small bones found inside larger remains",
+          "Rocks used inside the digestive system",
+          "A mix of scales and stiff fibers",
+          "A spiky outline along the neck"
+        ],
+        "correct_answer": "A mix of scales and stiff fibers"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Preserved droppings",
+          "Tail bristles and body covering",
+          "Bird-like breathing spaces",
+          "A giant hooked claw"
+        ],
+        "correct_answer": "Tail bristles and body covering"
+      }
+    ]
+  },
+  "creepy-dinosaurs-parasaurolophus": {
+    "master_text": "Parasaurolophus is the lab’s forbidden trumpet. Dr. Icky does not let recruits blow into the crest model because the last sound made three mealworms faint. Master note: watch for deep calls carried through the crest; the real trick is a long hollow crest. Lab rule: a skull can work like a noisy instrument.",
+    "mastered_success_text": "DR. ICKY APPROVES: Parasaurolophus has been mastered. New scans released from quarantine.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which trait belongs in the Parasaurolophus file?",
+        "options": [
+          "A long hollow crest",
+          "Thick body armor",
+          "Large back plates",
+          "Tiny breathing holes in eggshell"
+        ],
+        "correct_answer": "A long hollow crest"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "A gigantic frame that discouraged attackers",
+          "Lost teeth that did not end the biting career",
+          "Crowded nesting grounds",
+          "Deep calls carried through the crest"
+        ],
+        "correct_answer": "Deep calls carried through the crest"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Familiar-looking animals can still be nasty",
+          "Some animals used stones as stomach equipment",
+          "Dinosaurs could be fluffy and still creepy",
+          "A skull can work like a noisy instrument"
+        ],
+        "correct_answer": "A skull can work like a noisy instrument"
+      }
+    ]
+  },
+  "creepy-dinosaurs-corythosaurus": {
+    "master_text": "Corythosaurus made its head useful in the loudest possible way. Dr. Icky calls it a skull instrument, which is exactly as elegant and disgusting as it sounds. Master note: watch for a head shape that could resonate; the real trick is a helmet-like sound crest. Lab rule: weird crests can be sound machines.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Corythosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A head shape that could resonate",
+          "A head that looked more weapon than face",
+          "Ground changed by heavy steps",
+          "Towering proportions that dominated the landscape"
+        ],
+        "correct_answer": "A head shape that could resonate"
+      },
+      {
+        "question": "What made Corythosaurus worth mastering?",
+        "options": [
+          "Replacement teeth",
+          "Light but strong internal bone structure",
+          "A helmet-like sound crest",
+          "Thick body armor"
+        ],
+        "correct_answer": "A helmet-like sound crest"
+      },
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Dinosaur skin could be weirder than plain scales",
+          "Some skeletons are engineering problems",
+          "Weird crests can be sound machines",
+          "Hollow does not mean weak"
+        ],
+        "correct_answer": "Weird crests can be sound machines"
+      }
+    ]
+  },
+  "creepy-dinosaurs-edmontosaurus": {
+    "master_text": "Edmontosaurus ruined Dr. Icky’s simple duck-bill drawing. Some fossils suggest soft head features, which means the real animal may have looked stranger than the clean skeleton promised. Master note: watch for fossils showing dinosaurs were not smooth cartoons; the real trick is soft-tissue clues on the head. Lab rule: skin and soft parts can change the whole creature.",
+    "mastered_success_text": "DR. ICKY APPROVES: Edmontosaurus has been mastered. New scans released from quarantine.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which trait belongs in the Edmontosaurus file?",
+        "options": [
+          "Healed bite marks",
+          "Large back plates",
+          "A narrow crocodile-like snout",
+          "Soft-tissue clues on the head"
+        ],
+        "correct_answer": "Soft-tissue clues on the head"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "A long-necked body with extra protection",
+          "A fossil that kept body shape and armor detail",
+          "Fossils showing dinosaurs were not smooth cartoons",
+          "Pores that let embryos exchange air"
+        ],
+        "correct_answer": "Fossils showing dinosaurs were not smooth cartoons"
+      },
+      {
+        "question": "What is the lab lesson from Edmontosaurus?",
+        "options": [
+          "A face can record a fight",
+          "Dinosaur categories can get messy fast",
+          "Skin and soft parts can change the whole creature",
+          "Length can create reach and vulnerability at once"
+        ],
+        "correct_answer": "Skin and soft parts can change the whole creature"
+      }
+    ]
+  },
+  "creepy-dinosaurs-iguanodon": {
+    "master_text": "Iguanodon is the plant-eater that makes handshakes dangerous. Dr. Icky highlights the thumb spike because salad fans can still come with personal cutlery. Master note: watch for a plant-eater with built-in stabbing equipment; the real trick is a sharp thumb spike. Lab rule: herbivore does not mean harmless.",
+    "mastered_success_text": "MASTERED: Iguanodon has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Planet-wide disaster",
+          "Many nests grouped together",
+          "A thick nose boss",
+          "A sharp thumb spike"
+        ],
+        "correct_answer": "A sharp thumb spike"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "A small body shaped for weird gliding",
+          "A plant-eater with built-in stabbing equipment",
+          "Layers that covered plants and animals",
+          "Fossils showing dinosaurs were not smooth cartoons"
+        ],
+        "correct_answer": "A plant-eater with built-in stabbing equipment"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Being huge can discourage most trouble",
+          "Bad breath can come from a very successful mouth",
+          "Herbivore does not mean harmless",
+          "Animal messages can exist outside human vision"
+        ],
+        "correct_answer": "Herbivore does not mean harmless"
+      }
+    ]
+  },
+  "creepy-dinosaurs-ouranosaurus": {
+    "master_text": "Ouranosaurus entered sideways because the back sail wanted attention. Dr. Icky says the raised outline turned an ordinary stroll into a dramatic shadow puppet. Master note: watch for a body outline made larger by raised spines; the real trick is a tall back sail. Lab rule: shape can make a dinosaur look more intimidating.",
+    "mastered_success_text": "SPECIMEN MASTERED: Ouranosaurus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "A tall back sail",
+          "Giant arms and a mismatched body",
+          "Adult care around eggs",
+          "A helmet-like sound crest"
+        ],
+        "correct_answer": "A tall back sail"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "A body outline made larger by raised spines",
+          "Bones showing attacks that did not kill immediately",
+          "Tracks from one animal following another",
+          "A head shape that could resonate"
+        ],
+        "correct_answer": "A body outline made larger by raised spines"
+      },
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Standing too close can become a poking emergency",
+          "Weird head gear may be part weapon and part warning sign",
+          "Shape can make a dinosaur look more intimidating",
+          "Sharp edges can be worse than raw bite strength"
+        ],
+        "correct_answer": "Shape can make a dinosaur look more intimidating"
+      }
+    ]
+  },
+  "creepy-dinosaurs-gallimimus": {
+    "master_text": "Gallimimus made the lab security camera dizzy. It was built for noticing trouble and leaving quickly, which Dr. Icky considers cowardice with excellent engineering. Master note: watch for large eyes and long legs; the real trick is speed across open ground. Lab rule: escape can be a survival weapon.",
+    "mastered_success_text": "DR. ICKY APPROVES: Gallimimus has been mastered. New scans released from quarantine.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Large eyes and long legs",
+          "Feathers together with teeth and claws",
+          "A head ornament that was not just decoration",
+          "New teeth waiting behind old ones"
+        ],
+        "correct_answer": "Large eyes and long legs"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Footprints showing pursuit",
+          "Horns used in real clashes",
+          "A tall back sail",
+          "Speed across open ground"
+        ],
+        "correct_answer": "Speed across open ground"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Escape can be a survival weapon",
+          "Thrown-up food can become evidence",
+          "Survival can leave permanent fossil evidence",
+          "Ramming tools can be short and brutal"
+        ],
+        "correct_answer": "Escape can be a survival weapon"
+      }
+    ]
+  },
+  "creepy-dinosaurs-oviraptor": {
+    "master_text": "Oviraptor was framed by bad vibes and egg gossip. Dr. Icky’s newer note says the creature may have guarded a nest, which makes the old thief label smell suspicious. Master note: watch for a fossil found close to eggs; the real trick is nest guarding behavior. Lab rule: being near eggs does not always mean stealing them.",
+    "mastered_success_text": "DR. ICKY APPROVES: Oviraptor has been mastered. New scans released from quarantine.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What made Oviraptor worth mastering?",
+        "options": [
+          "Tall neck spines",
+          "Parasites trapped in amber",
+          "Soft feather-like coverings",
+          "Nest guarding behavior"
+        ],
+        "correct_answer": "Nest guarding behavior"
+      },
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Herbivore does not mean harmless",
+          "A skull can become protective equipment",
+          "Small creatures can still leave dramatic evidence",
+          "Being near eggs does not always mean stealing them"
+        ],
+        "correct_answer": "Being near eggs does not always mean stealing them"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A curved blade attached to the body",
+          "A fossil found close to eggs",
+          "Damage caused after discovery",
+          "Pores that let embryos exchange air"
+        ],
+        "correct_answer": "A fossil found close to eggs"
+      }
+    ]
+  },
+  "creepy-dinosaurs-anzu": {
+    "master_text": "Anzu looks like a chicken that found forbidden gym equipment. Dr. Icky filed it under ‘recognizable, then immediately not okay’ because feathers become unsettling at that height. Master note: watch for bird-like features at a disturbing size; the real trick is a tall feathered body. Lab rule: familiar shapes get creepy when scaled up.",
+    "mastered_success_text": "SPECIMEN MASTERED: Anzu is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Familiar shapes get creepy when scaled up",
+          "Size turns a claw attack into a wrestling match",
+          "Even sealed eggs need hidden airflow",
+          "Length can create reach and vulnerability at once"
+        ],
+        "correct_answer": "Familiar shapes get creepy when scaled up"
+      },
+      {
+        "question": "What would help identify Anzu fast?",
+        "options": [
+          "Layers that covered plants and animals",
+          "A spiky outline along the neck",
+          "Rocks used inside the digestive system",
+          "Bird-like features at a disturbing size"
+        ],
+        "correct_answer": "Bird-like features at a disturbing size"
+      },
+      {
+        "question": "What made Anzu worth mastering?",
+        "options": [
+          "A tall feathered body",
+          "Many nests grouped together",
+          "A nose horn used for shoving or display",
+          "Adult care around eggs"
+        ],
+        "correct_answer": "A tall feathered body"
+      }
+    ]
+  },
+  "creepy-dinosaurs-gigantoraptor": {
+    "master_text": "Gigantoraptor makes regular eggs look emotionally weak. Dr. Icky keeps the shell notes locked up because anything bird-like that huge deserves supervised breakfast. Master note: watch for reproduction on an oversized scale; the real trick is giant eggs and a huge bird-like body. Lab rule: fragile-looking egg clues can point to enormous animals.",
+    "mastered_success_text": "SPECIMEN MASTERED: Gigantoraptor is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Fragile-looking egg clues can point to enormous animals",
+          "Looking scary can be part of survival",
+          "Sharp edges can be worse than raw bite strength",
+          "Herbivore does not mean harmless"
+        ],
+        "correct_answer": "Fragile-looking egg clues can point to enormous animals"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Soft ground capturing struggle marks",
+          "Infected battle wounds",
+          "Giant eggs and a huge bird-like body",
+          "A long hollow crest"
+        ],
+        "correct_answer": "Giant eggs and a huge bird-like body"
+      },
+      {
+        "question": "What would help identify Gigantoraptor fast?",
+        "options": [
+          "A fossil found close to eggs",
+          "Towering proportions that dominated the landscape",
+          "Pores that let embryos exchange air",
+          "Reproduction on an oversized scale"
+        ],
+        "correct_answer": "Reproduction on an oversized scale"
+      }
+    ]
+  },
+  "creepy-dinosaurs-therizinosaurus": {
+    "master_text": "Therizinosaurus has the hands of a haunted gardening accident. Dr. Icky says the claws may not mean movie-monster murder, but they still make every lab curtain nervous. Master note: watch for hands that looked more like tools than fingers; the real trick is enormous curved claws. Lab rule: plant-eaters can carry nightmare hardware.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Therizinosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Nest guarding behavior",
+          "A nose horn used for shoving or display",
+          "Enormous curved claws",
+          "Soft feather-like coverings"
+        ],
+        "correct_answer": "Enormous curved claws"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Plant-eaters can carry nightmare hardware",
+          "Some dinosaurs may have lived partly below the surface",
+          "One step from a giant can be an event",
+          "Hollow does not mean weak"
+        ],
+        "correct_answer": "Plant-eaters can carry nightmare hardware"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "A spiky outline along the neck",
+          "Hands that looked more like tools than fingers",
+          "Air moving beyond simple lungs",
+          "Fossils that can freeze a moment of struggle"
+        ],
+        "correct_answer": "Hands that looked more like tools than fingers"
+      }
+    ]
+  },
+  "creepy-dinosaurs-deinocheirus": {
+    "master_text": "Deinocheirus looks assembled after the lights went out. Dr. Icky loves the mismatch: massive arms, strange body, and the general energy of a creature designed by committee. Master note: watch for huge limbs paired with odd body features; the real trick is giant arms and a mismatched body. Lab rule: fossils can reveal creatures built like wrong puzzles.",
+    "mastered_success_text": "MASTERED: Deinocheirus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Fossils can reveal creatures built like wrong puzzles",
+          "Long jaws can work like a clamp",
+          "Size turns a claw attack into a wrestling match",
+          "Some animals used stones as stomach equipment"
+        ],
+        "correct_answer": "Fossils can reveal creatures built like wrong puzzles"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Large raptor claws for gripping struggle",
+          "A long hollow crest",
+          "Giant arms and a mismatched body",
+          "Speed and a weaponized head"
+        ],
+        "correct_answer": "Giant arms and a mismatched body"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "A mix of scales and stiff fibers",
+          "Huge limbs paired with odd body features",
+          "Empty spaces inside certain bones",
+          "A bigger body than most people expect from a raptor"
+        ],
+        "correct_answer": "Huge limbs paired with odd body features"
+      }
+    ]
+  },
+  "creepy-dinosaurs-compsognathus": {
+    "master_text": "Compsognathus is the dinosaur Dr. Icky would least like to find in a lunchbox. Small does not mean harmless when the small thing has teeth and opinions. Master note: watch for tiny body with meat-eater habits; the real trick is small silent predatory size. Lab rule: small predators can still be nasty surprises.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Compsognathus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What made Compsognathus worth mastering?",
+        "options": [
+          "Armored preservation",
+          "A thick nose boss",
+          "Small silent predatory size",
+          "An extremely long neck"
+        ],
+        "correct_answer": "Small silent predatory size"
+      },
+      {
+        "question": "What is the lab lesson from Compsognathus?",
+        "options": [
+          "Being huge can discourage most trouble",
+          "Fossils can reveal creatures built like wrong puzzles",
+          "Standing too close can become a poking emergency",
+          "Small predators can still be nasty surprises"
+        ],
+        "correct_answer": "Small predators can still be nasty surprises"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Tiny body with meat-eater habits",
+          "A head that looked more weapon than face",
+          "A head outline crowded with points",
+          "A fossil found close to eggs"
+        ],
+        "correct_answer": "Tiny body with meat-eater habits"
+      }
+    ]
+  },
+  "creepy-dinosaurs-sinosauropteryx": {
+    "master_text": "Sinosauropteryx made the reptile shelf grow fuzz. Dr. Icky says the body covering gives it the unpleasant charm of a lizard wearing a haunted sweater. Master note: watch for a dinosaur outline softened by filaments; the real trick is fuzzy body covering. Lab rule: some dinosaurs looked stranger than scaly monsters.",
+    "mastered_success_text": "MASTERED: Sinosauropteryx has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Growing huge can become defense",
+          "A single claw can change the whole hunting plan",
+          "Some dinosaurs looked stranger than scaly monsters",
+          "Even giants may need body armor"
+        ],
+        "correct_answer": "Some dinosaurs looked stranger than scaly monsters"
+      },
+      {
+        "question": "Which feature made Sinosauropteryx a proper lab hazard?",
+        "options": [
+          "Swallowed grinding stones",
+          "Fuzzy body covering",
+          "Possible invisible display markings",
+          "Mixed body coverings"
+        ],
+        "correct_answer": "Fuzzy body covering"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Empty spaces inside certain bones",
+          "A long-necked body with extra protection",
+          "A dinosaur outline softened by filaments",
+          "Bits of food trapped in fossilized waste"
+        ],
+        "correct_answer": "A dinosaur outline softened by filaments"
+      }
+    ]
+  },
+  "creepy-dinosaurs-yi-qi": {
+    "master_text": "Yi qi is what happens when the flight department gets experimental. Dr. Icky calls it a prehistoric umbrella with bones, which is rude but not entirely unfair. Master note: watch for flight gear unlike normal bird feathers; the real trick is bat-like membrane wings. Lab rule: evolution sometimes tests very strange prototypes.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Yi qi is now in the vault. The slime alarm approves.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Light but strong internal bone structure",
+          "Bat-like membrane wings",
+          "Possible invisible display markings",
+          "A long hollow crest"
+        ],
+        "correct_answer": "Bat-like membrane wings"
+      },
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Escape can be a survival weapon",
+          "Evolution sometimes tests very strange prototypes",
+          "One step from a giant can be an event",
+          "Floods can rearrange the evidence"
+        ],
+        "correct_answer": "Evolution sometimes tests very strange prototypes"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Flight gear unlike normal bird feathers",
+          "Fuzz that complicates the scaly image",
+          "A head shape that could resonate",
+          "Tiny hitchhikers preserved with ancient clues"
+        ],
+        "correct_answer": "Flight gear unlike normal bird feathers"
+      }
+    ]
+  },
+  "creepy-dinosaurs-kulindadromeus": {
+    "master_text": "Kulindadromeus is the messy closet of dinosaur skin. Dr. Icky uses it to remind recruits that ‘scaly’ and ‘feathery’ are not neat little boxes. Master note: watch for scales and fuzzy features together; the real trick is mixed body coverings. Lab rule: dinosaur categories can get messy fast.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Kulindadromeus is now in the vault. The slime alarm approves.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "Scales and fuzzy features together",
+          "A long-necked body with extra protection",
+          "Rocks used inside the digestive system",
+          "Crowded nesting grounds"
+        ],
+        "correct_answer": "Scales and fuzzy features together"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Weird head gear may be part weapon and part warning sign",
+          "Some fossils turn a food chain into a family problem",
+          "Dinosaur categories can get messy fast",
+          "Natural shields can ruin a predator’s lunch"
+        ],
+        "correct_answer": "Dinosaur categories can get messy fast"
+      },
+      {
+        "question": "Which feature made Kulindadromeus a proper lab hazard?",
+        "options": [
+          "Tracking weak prey over distance",
+          "Mixed body coverings",
+          "Many skeletons preserved together",
+          "A hooked foot claw"
+        ],
+        "correct_answer": "Mixed body coverings"
+      }
+    ]
+  },
+  "creepy-dinosaurs-pachycephalosaurus": {
+    "master_text": "Pachycephalosaurus brought its own helmet and used its face as the business end. Dr. Icky keeps it away from glass doors for obvious reasons. Master note: watch for a head built to handle impact; the real trick is a thick domed skull. Lab rule: a skull can become protective equipment.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Pachycephalosaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which feature made Pachycephalosaurus a proper lab hazard?",
+        "options": [
+          "A narrow crocodile-like snout",
+          "A thick domed skull",
+          "Adult size with few likely threats",
+          "Possible invisible display markings"
+        ],
+        "correct_answer": "A thick domed skull"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Plant-eaters can swing back",
+          "A skull can become protective equipment",
+          "One catastrophe can rewrite life on Earth",
+          "Poop can become a disgusting menu"
+        ],
+        "correct_answer": "A skull can become protective equipment"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A neck reaching food far above others",
+          "A head built to handle impact",
+          "Tiny hitchhikers preserved with ancient clues",
+          "Tiny arms paired with a body built for impact"
+        ],
+        "correct_answer": "A head built to handle impact"
+      }
+    ]
+  },
+  "creepy-dinosaurs-stygimoloch": {
+    "master_text": "Stygimoloch has the sort of head that makes polite conversation impossible. Dr. Icky’s drawing just says ‘too many points’ and a small crying beaker. Master note: watch for a head that looked more weapon than face; the real trick is spikes and a rough skull. Lab rule: skull shape can intimidate before contact.",
+    "mastered_success_text": "MASTERED: Stygimoloch has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What would help identify Stygimoloch fast?",
+        "options": [
+          "A head that looked more weapon than face",
+          "Swollen holes in old skull scars",
+          "Bodies caught after stepping into soft ground",
+          "Bony plates that made biting difficult"
+        ],
+        "correct_answer": "A head that looked more weapon than face"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Skull shape can intimidate before contact",
+          "The ground can become the monster",
+          "Standing too close can become a poking emergency",
+          "Even sealed eggs need hidden airflow"
+        ],
+        "correct_answer": "Skull shape can intimidate before contact"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "A tall feathered body",
+          "Spikes and a rough skull",
+          "Fuzzy body covering",
+          "Bone-crushing jaws"
+        ],
+        "correct_answer": "Spikes and a rough skull"
+      }
+    ]
+  },
+  "creepy-dinosaurs-diplodocus": {
+    "master_text": "Diplodocus is long enough to cause problems in several rooms at once. Dr. Icky warns recruits about the tail, because the danger may arrive after the head has already left. Master note: watch for a long tail that could crack through air; the real trick is a whip-like tail. Lab rule: distance does not always make you safe.",
+    "mastered_success_text": "MASTERED: Diplodocus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Looking scary can be part of survival",
+          "Some skulls are built like food machines",
+          "Skin and soft parts can change the whole creature",
+          "Distance does not always make you safe"
+        ],
+        "correct_answer": "Distance does not always make you safe"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Fuzzy body covering",
+          "A whip-like tail",
+          "Volcanic ash burial",
+          "Horns used in real clashes"
+        ],
+        "correct_answer": "A whip-like tail"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "A fossil that kept body shape and armor detail",
+          "A spiky outline along the neck",
+          "Rocks used inside the digestive system",
+          "A long tail that could crack through air"
+        ],
+        "correct_answer": "A long tail that could crack through air"
+      }
+    ]
+  },
+  "creepy-dinosaurs-apatosaurus": {
+    "master_text": "Apatosaurus does not need drama. It simply walks, and the ground receives a formal complaint. Dr. Icky measures the footprints like craters made by a sleepy building. Master note: watch for ground changed by heavy steps; the real trick is massive weight and footprints. Lab rule: huge bodies can reshape the scene.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Apatosaurus cannot legally bite the quiz screen anymore.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "A mix of scales and stiff fibers",
+          "Tight teeth for holding slippery prey",
+          "Ground changed by heavy steps",
+          "Bony plates that made biting difficult"
+        ],
+        "correct_answer": "Ground changed by heavy steps"
+      },
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Survival can leave permanent fossil evidence",
+          "Huge bodies can reshape the scene",
+          "Some dinosaurs may have protected their young",
+          "Disaster layers can preserve a moment"
+        ],
+        "correct_answer": "Huge bodies can reshape the scene"
+      },
+      {
+        "question": "Which trait belongs in the Apatosaurus file?",
+        "options": [
+          "Small armor plates",
+          "Spikes and a rough skull",
+          "Massive weight and footprints",
+          "Tail bristles and body covering"
+        ],
+        "correct_answer": "Massive weight and footprints"
+      }
+    ]
+  },
+  "creepy-dinosaurs-brachiosaurus": {
+    "master_text": "Brachiosaurus made the ceiling feel underqualified. Dr. Icky stores its file on the top shelf, where only this absurd neck could have approved it. Master note: watch for a neck reaching food far above others; the real trick is towering height. Lab rule: height can be its own survival advantage.",
+    "mastered_success_text": "MASTERED: Brachiosaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Crowded nesting grounds",
+          "A bigger body than most people expect from a raptor",
+          "A neck reaching food far above others",
+          "A head shape meant to be seen"
+        ],
+        "correct_answer": "A neck reaching food far above others"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Towering height",
+          "Hundreds of grazing teeth",
+          "A tall feathered body",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Towering height"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "A dinosaur mouth could keep refreshing its weapons",
+          "Height can be its own survival advantage",
+          "Growing huge can become defense",
+          "Mass fossil sites can reveal group disasters"
+        ],
+        "correct_answer": "Height can be its own survival advantage"
+      }
+    ]
+  },
+  "creepy-dinosaurs-giraffatitan": {
+    "master_text": "Giraffatitan is filed under ‘too tall to argue with.’ Dr. Icky says some dinosaurs did not need spikes when their basic posture already looked like a moving tower. Master note: watch for towering proportions that dominated the landscape; the real trick is an enormous upright body. Lab rule: being huge can discourage most trouble.",
+    "mastered_success_text": "MASTERED: Giraffatitan has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which feature made Giraffatitan a proper lab hazard?",
+        "options": [
+          "Spikes and a rough skull",
+          "Thick body armor",
+          "Speed and a weaponized head",
+          "An enormous upright body"
+        ],
+        "correct_answer": "An enormous upright body"
+      },
+      {
+        "question": "What would help identify Giraffatitan fast?",
+        "options": [
+          "A head shape that could resonate",
+          "Tracks from one animal following another",
+          "Towering proportions that dominated the landscape",
+          "Armor plus a crushing weapon at the back"
+        ],
+        "correct_answer": "Towering proportions that dominated the landscape"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Fossils can reveal creatures built like wrong puzzles",
+          "Being huge can discourage most trouble",
+          "Transition fossils can look like two creatures arguing",
+          "Familiar-looking animals can still be nasty"
+        ],
+        "correct_answer": "Being huge can discourage most trouble"
+      }
+    ]
+  },
+  "creepy-dinosaurs-mamenchisaurus": {
+    "master_text": "Mamenchisaurus turns neck measurements into a panic attack. Dr. Icky needed three rulers, one ladder, and a deeply unhelpful intern named Greg. Master note: watch for a body stretched into an unusual shape; the real trick is an extremely long neck. Lab rule: length can create reach and vulnerability at once.",
+    "mastered_success_text": "DR. ICKY APPROVES: Mamenchisaurus has been mastered. New scans released from quarantine.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What made Mamenchisaurus worth mastering?",
+        "options": [
+          "A whip-like tail",
+          "An extremely long neck",
+          "Underground shelters",
+          "Mud-trap fossil evidence"
+        ],
+        "correct_answer": "An extremely long neck"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Swollen holes in old skull scars",
+          "A body stretched into an unusual shape",
+          "One hand built like a snagging tool",
+          "A curved blade attached to the body"
+        ],
+        "correct_answer": "A body stretched into an unusual shape"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Fragile-looking egg clues can point to enormous animals",
+          "Even sealed eggs need hidden airflow",
+          "Natural shields can ruin a predator’s lunch",
+          "Length can create reach and vulnerability at once"
+        ],
+        "correct_answer": "Length can create reach and vulnerability at once"
+      }
+    ]
+  },
+  "creepy-dinosaurs-argentinosaurus": {
+    "master_text": "Argentinosaurus made the scale leave early. Dr. Icky treats its bones like construction beams, because at this size the animal starts behaving like architecture with digestion. Master note: watch for bones built to support immense weight; the real trick is colossal body size. Lab rule: some skeletons are engineering problems.",
+    "mastered_success_text": "MASTERED: Argentinosaurus has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Some skeletons are engineering problems",
+          "Dinosaurs could be fluffy and still creepy",
+          "Standing too close can become a poking emergency",
+          "Flight experiments can look like a living trap"
+        ],
+        "correct_answer": "Some skeletons are engineering problems"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Colossal body size",
+          "A hooked foot claw",
+          "Nest guarding behavior",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Colossal body size"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Bones built to support immense weight",
+          "A head shape meant to be seen",
+          "A body outline made larger by raised spines",
+          "A mix of scales and stiff fibers"
+        ],
+        "correct_answer": "Bones built to support immense weight"
+      }
+    ]
+  },
+  "creepy-dinosaurs-patagotitan": {
+    "master_text": "Patagotitan is less a dinosaur and more a walking weather warning. Dr. Icky says its footsteps probably had more authority than several smaller predators combined. Master note: watch for massive movement across the ground; the real trick is heavy steps from a giant body. Lab rule: one step from a giant can be an event.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Patagotitan cannot legally bite the quiz screen anymore.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "One step from a giant can be an event",
+          "Footprints can preserve movement, not just shape",
+          "Natural shields can ruin a predator’s lunch",
+          "Some dinosaurs may have lived partly below the surface"
+        ],
+        "correct_answer": "One step from a giant can be an event"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Messy tracks where animals slipped or stuck",
+          "Fossils that can freeze a moment of struggle",
+          "A dinosaur outline softened by filaments",
+          "Massive movement across the ground"
+        ],
+        "correct_answer": "Massive movement across the ground"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Fuzzy body covering",
+          "Mud-trap fossil evidence",
+          "An extremely long neck",
+          "Heavy steps from a giant body"
+        ],
+        "correct_answer": "Heavy steps from a giant body"
+      }
+    ]
+  },
+  "creepy-dinosaurs-saltasaurus": {
+    "master_text": "Saltasaurus did not trust size alone. Dr. Icky appreciates the paranoia: a long-necked dinosaur with armor bits is basically a moving salad tower wearing safety bumps. Master note: watch for a long-necked body with extra protection; the real trick is small armor plates. Lab rule: even giants may need body armor.",
+    "mastered_success_text": "DR. ICKY APPROVES: Saltasaurus has been mastered. New scans released from quarantine.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "A long-necked body with extra protection",
+          "Empty spaces inside certain bones",
+          "Bones built to support immense weight",
+          "Plates that could signal or manage heat"
+        ],
+        "correct_answer": "A long-necked body with extra protection"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "A skull can become protective equipment",
+          "One catastrophe can rewrite life on Earth",
+          "Even giants may need body armor",
+          "Evolution sometimes tests very strange prototypes"
+        ],
+        "correct_answer": "Even giants may need body armor"
+      },
+      {
+        "question": "What made Saltasaurus worth mastering?",
+        "options": [
+          "Bird traits mixed with dinosaur traits",
+          "Small armor plates",
+          "Possible invisible display markings",
+          "Swallowed grinding stones"
+        ],
+        "correct_answer": "Small armor plates"
+      }
+    ]
+  },
+  "creepy-dinosaurs-shunosaurus": {
+    "master_text": "Shunosaurus keeps the peaceful herbivore myth in a jar and rattles it. Dr. Icky’s file says the tail club made the back end extremely unfriendly. Master note: watch for a defensive weapon behind the body; the real trick is a tail club on a plant-eater. Lab rule: plant-eaters can swing back.",
+    "mastered_success_text": "SPECIMEN MASTERED: Shunosaurus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "A head ornament that was not just decoration",
+          "A gigantic frame that discouraged attackers",
+          "Tiny hitchhikers preserved with ancient clues",
+          "A defensive weapon behind the body"
+        ],
+        "correct_answer": "A defensive weapon behind the body"
+      },
+      {
+        "question": "What is the lab lesson from Shunosaurus?",
+        "options": [
+          "Escape can be a survival weapon",
+          "Some fossils turn a food chain into a family problem",
+          "Plant-eaters can swing back",
+          "Being huge can discourage most trouble"
+        ],
+        "correct_answer": "Plant-eaters can swing back"
+      },
+      {
+        "question": "Which feature made Shunosaurus a proper lab hazard?",
+        "options": [
+          "Preserved droppings",
+          "Enormous curved claws",
+          "Tiny breathing holes in eggshell",
+          "A tail club on a plant-eater"
+        ],
+        "correct_answer": "A tail club on a plant-eater"
+      }
+    ]
+  },
+  "creepy-dinosaurs-amargasaurus": {
+    "master_text": "Amargasaurus looks like its neck grew a fence. Dr. Icky calls the spines ‘decorative menace,’ which is science when written on a clipboard. Master note: watch for a spiky outline along the neck; the real trick is tall neck spines. Lab rule: a strange profile can warn, display, or protect.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Amargasaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Which feature made Amargasaurus a proper lab hazard?",
+        "options": [
+          "Massive weight and footprints",
+          "Soft-tissue clues on the head",
+          "Tall neck spines",
+          "Tail bristles and body covering"
+        ],
+        "correct_answer": "Tall neck spines"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Layers that covered plants and animals",
+          "Deep calls carried through the crest",
+          "A spiky outline along the neck",
+          "Bird-like features at a disturbing size"
+        ],
+        "correct_answer": "A spiky outline along the neck"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Disaster layers can preserve a moment",
+          "A mouth that keeps reloading stays dangerous",
+          "A strange profile can warn, display, or protect",
+          "Skull shape can intimidate before contact"
+        ],
+        "correct_answer": "A strange profile can warn, display, or protect"
+      }
+    ]
+  },
+  "creepy-dinosaurs-nigersaurus": {
+    "master_text": "Nigersaurus has the mouth of a cursed lawn tool. Dr. Icky counted too many teeth, got suspicious, and placed the clipboard in protective custody. Master note: watch for a mouth like a plant-cutting strip; the real trick is hundreds of grazing teeth. Lab rule: some skulls are built like food machines.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Nigersaurus is now in the vault. The slime alarm approves.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What is the lab lesson from Nigersaurus?",
+        "options": [
+          "A strange silhouette can send a message",
+          "Animal messages can exist outside human vision",
+          "Ramming tools can be short and brutal",
+          "Some skulls are built like food machines"
+        ],
+        "correct_answer": "Some skulls are built like food machines"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Preserved droppings",
+          "Hundreds of grazing teeth",
+          "Fish-gripping teeth",
+          "Fuzzy body covering"
+        ],
+        "correct_answer": "Hundreds of grazing teeth"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Feathers together with teeth and claws",
+          "Food trapped between predator teeth",
+          "A mouth like a plant-cutting strip",
+          "A small body shaped for weird gliding"
+        ],
+        "correct_answer": "A mouth like a plant-cutting strip"
+      }
+    ]
+  },
+  "creepy-dinosaurs-dreadnoughtus": {
+    "master_text": "Dreadnoughtus means the lab door should apologize. Dr. Icky’s file says a fully grown one may have been so huge that most danger had to reconsider its schedule. Master note: watch for a gigantic frame that discouraged attackers; the real trick is adult size with few likely threats. Lab rule: growing huge can become defense.",
+    "mastered_success_text": "SPECIMEN MASTERED: Dreadnoughtus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Escape can be a survival weapon",
+          "Weird crests can be sound machines",
+          "Evolution sometimes tests very strange prototypes",
+          "Growing huge can become defense"
+        ],
+        "correct_answer": "Growing huge can become defense"
+      },
+      {
+        "question": "Which trait belongs in the Dreadnoughtus file?",
+        "options": [
+          "Many nests grouped together",
+          "Soft ground capturing struggle marks",
+          "Preserved droppings",
+          "Adult size with few likely threats"
+        ],
+        "correct_answer": "Adult size with few likely threats"
+      },
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "A head shape meant to be seen",
+          "Tiny arms paired with a body built for impact",
+          "A fossil that kept body shape and armor detail",
+          "A gigantic frame that discouraged attackers"
+        ],
+        "correct_answer": "A gigantic frame that discouraged attackers"
+      }
+    ]
+  },
+  "creepy-dinosaurs-plateosaurus": {
+    "master_text": "Plateosaurus teaches Dr. Icky’s nastiest lesson: sometimes the predator is just mud with patience. One wrong step, then the planet starts collecting you. Master note: watch for bodies caught after stepping into soft ground; the real trick is mud-trap fossil evidence. Lab rule: the ground can become the monster.",
+    "mastered_success_text": "SPECIMEN MASTERED: Plateosaurus is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Flight gear unlike normal bird feathers",
+          "Tiny body with meat-eater habits",
+          "Bodies caught after stepping into soft ground",
+          "A body linked to wet hunting"
+        ],
+        "correct_answer": "Bodies caught after stepping into soft ground"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Giant eggs and a huge bird-like body",
+          "Adult care around eggs",
+          "Mud-trap fossil evidence",
+          "Speed and a weaponized head"
+        ],
+        "correct_answer": "Mud-trap fossil evidence"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Some animals used stones as stomach equipment",
+          "Weird head gear may be part weapon and part warning sign",
+          "The ground can become the monster",
+          "Familiar-looking animals can still be nasty"
+        ],
+        "correct_answer": "The ground can become the monster"
+      }
+    ]
+  },
+  "creepy-dinosaurs-coelophysis": {
+    "master_text": "Coelophysis goes into the ‘dinner got personal’ cabinet. Dr. Icky keeps the stomach clues sealed because meals involving your own species ruin the cafeteria mood. Master note: watch for small bones found inside larger remains; the real trick is possible feeding on its own kind. Lab rule: tiny fossils can accuse a stomach.",
+    "mastered_success_text": "SPECIMEN MASTERED: Coelophysis is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Broken fossils can reveal what dinner looked like",
+          "Some dinosaurs may have lived partly below the surface",
+          "Familiar-looking animals can still be nasty",
+          "Tiny fossils can accuse a stomach"
+        ],
+        "correct_answer": "Tiny fossils can accuse a stomach"
+      },
+      {
+        "question": "What made Coelophysis worth mastering?",
+        "options": [
+          "Small horned-dinosaur defenses",
+          "Possible feeding on its own kind",
+          "Adult care around eggs",
+          "A thick domed skull"
+        ],
+        "correct_answer": "Possible feeding on its own kind"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Small bones found inside larger remains",
+          "Bits of food trapped in fossilized waste",
+          "Bird-like features at a disturbing size",
+          "A dinosaur outline softened by filaments"
+        ],
+        "correct_answer": "Small bones found inside larger remains"
+      }
+    ]
+  },
+  "creepy-dinosaurs-tooth-conveyor": {
+    "master_text": "The Tooth Conveyor is Dr. Icky’s nightmare escalator. Old teeth fall out, new teeth move in, and the mouth keeps operating like a tiny factory with terrible customer service. Master note: watch for new teeth waiting behind old ones; the real trick is constant tooth replacement. Lab rule: a dinosaur mouth could keep refreshing its weapons.",
+    "mastered_success_text": "DR. ICKY APPROVES: Tooth Conveyor has been mastered. New scans released from quarantine.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Growing huge can become defense",
+          "A dinosaur mouth could keep refreshing its weapons",
+          "Plant-eaters can carry nightmare hardware",
+          "Even dinosaurs may have carried pests"
+        ],
+        "correct_answer": "A dinosaur mouth could keep refreshing its weapons"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "A fossil found close to eggs",
+          "A blunt reinforced face instead of long horns",
+          "Layers that covered plants and animals",
+          "New teeth waiting behind old ones"
+        ],
+        "correct_answer": "New teeth waiting behind old ones"
+      },
+      {
+        "question": "What made Tooth Conveyor worth mastering?",
+        "options": [
+          "Constant tooth replacement",
+          "Giant arms and a mismatched body",
+          "Colossal body size",
+          "Light but strong internal bone structure"
+        ],
+        "correct_answer": "Constant tooth replacement"
+      }
+    ]
+  },
+  "creepy-dinosaurs-bite-scars": {
+    "master_text": "Bite Scars are the lab’s oldest complaint forms. Dr. Icky reads them as proof that some dinosaurs walked around carrying the receipts from attacks they survived. Master note: watch for bones showing attacks that did not kill immediately; the real trick is healed bite marks. Lab rule: survival can leave permanent fossil evidence.",
+    "mastered_success_text": "MASTERED: Bite Scars has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Height can be its own survival advantage",
+          "Growing huge can become defense",
+          "Length can create reach and vulnerability at once",
+          "Survival can leave permanent fossil evidence"
+        ],
+        "correct_answer": "Survival can leave permanent fossil evidence"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Speed across open ground",
+          "Spikes across the body",
+          "Constant tooth replacement",
+          "Healed bite marks"
+        ],
+        "correct_answer": "Healed bite marks"
+      },
+      {
+        "question": "What would help identify Bite Scars fast?",
+        "options": [
+          "Tiny hitchhikers preserved with ancient clues",
+          "Bones showing attacks that did not kill immediately",
+          "Food trapped between predator teeth",
+          "Bits of food trapped in fossilized waste"
+        ],
+        "correct_answer": "Bones showing attacks that did not kill immediately"
+      }
+    ]
+  },
+  "creepy-dinosaurs-poop-fossil": {
+    "master_text": "Poop Fossil is why Dr. Icky owns gloves, backup gloves, and gloves for the gloves. Fossil dung can preserve meal clues, which is science behaving horribly on purpose. Master note: watch for bits of food trapped in fossilized waste; the real trick is preserved droppings. Lab rule: poop can become a disgusting menu.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Poop Fossil cannot legally bite the quiz screen anymore.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "Small predators can still be nasty surprises",
+          "Some fossils turn a food chain into a family problem",
+          "Poop can become a disgusting menu",
+          "One catastrophe can rewrite life on Earth"
+        ],
+        "correct_answer": "Poop can become a disgusting menu"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Messy tracks where animals slipped or stuck",
+          "Bodies caught after stepping into soft ground",
+          "Bits of food trapped in fossilized waste",
+          "Bones built to support immense weight"
+        ],
+        "correct_answer": "Bits of food trapped in fossilized waste"
+      },
+      {
+        "question": "Which feature made Poop Fossil a proper lab hazard?",
+        "options": [
+          "Volcanic ash burial",
+          "Preserved droppings",
+          "Replacement teeth",
+          "Small silent predatory size"
+        ],
+        "correct_answer": "Preserved droppings"
+      }
+    ]
+  },
+  "creepy-dinosaurs-vomit-rock": {
+    "master_text": "Vomit Rock sits in a sealed drawer labeled ‘Absolutely Not Soup.’ Dr. Icky studies it because a prehistoric upchuck can freeze the story of a meal that went wrong. Master note: watch for partly digested bits preserved together; the real trick is regurgitated meal remains. Lab rule: thrown-up food can become evidence.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Vomit Rock cannot legally bite the quiz screen anymore.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What would help identify Vomit Rock fast?",
+        "options": [
+          "Partly digested bits preserved together",
+          "A head ornament that was not just decoration",
+          "Armor plus a crushing weapon at the back",
+          "Ground changed by heavy steps"
+        ],
+        "correct_answer": "Partly digested bits preserved together"
+      },
+      {
+        "question": "What is the lab lesson from Vomit Rock?",
+        "options": [
+          "Sharp edges can be worse than raw bite strength",
+          "Thrown-up food can become evidence",
+          "A skull can become protective equipment",
+          "Ramming tools can be short and brutal"
+        ],
+        "correct_answer": "Thrown-up food can become evidence"
+      },
+      {
+        "question": "What made Vomit Rock worth mastering?",
+        "options": [
+          "Healed bite marks",
+          "Cannibal bite evidence",
+          "Regurgitated meal remains",
+          "Bone-crushing jaws"
+        ],
+        "correct_answer": "Regurgitated meal remains"
+      }
+    ]
+  },
+  "creepy-dinosaurs-stone-stomachs": {
+    "master_text": "Stone Stomachs made Dr. Icky ban gravel snacks. Some dinosaurs swallowed rocks to help grind food, which is rude to teeth and impressive to stomachs. Master note: watch for rocks used inside the digestive system; the real trick is swallowed grinding stones. Lab rule: some animals used stones as stomach equipment.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Stone Stomachs cannot legally bite the quiz screen anymore.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Bones from multiple animals in one place",
+          "Bony plates that made biting difficult",
+          "Rocks used inside the digestive system",
+          "A bigger body than most people expect from a raptor"
+        ],
+        "correct_answer": "Rocks used inside the digestive system"
+      },
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Even dinosaurs may have carried pests",
+          "Mud can record panic",
+          "Some animals used stones as stomach equipment",
+          "Animal messages can exist outside human vision"
+        ],
+        "correct_answer": "Some animals used stones as stomach equipment"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Swallowed grinding stones",
+          "Cannibal bite evidence",
+          "Twin display crests",
+          "Infected battle wounds"
+        ],
+        "correct_answer": "Swallowed grinding stones"
+      }
+    ]
+  },
+  "creepy-dinosaurs-egg-pores": {
+    "master_text": "Egg Pores are microscopic little air doors. Dr. Icky keeps a magnifier nearby because the creepy part is simple: even inside a shell, a baby dinosaur had to breathe. Master note: watch for pores that let embryos exchange air; the real trick is tiny breathing holes in eggshell. Lab rule: even sealed eggs need hidden airflow.",
+    "mastered_success_text": "DR. ICKY APPROVES: Egg Pores has been mastered. New scans released from quarantine.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "Which feature made Egg Pores a proper lab hazard?",
+        "options": [
+          "Fish-gripping teeth",
+          "Feathers plus sharp predator tools",
+          "Possible feeding on its own kind",
+          "Tiny breathing holes in eggshell"
+        ],
+        "correct_answer": "Tiny breathing holes in eggshell"
+      },
+      {
+        "question": "What is the lab lesson from Egg Pores?",
+        "options": [
+          "A skull can work like a noisy instrument",
+          "Even sealed eggs need hidden airflow",
+          "Floods can rearrange the evidence",
+          "Being huge can discourage most trouble"
+        ],
+        "correct_answer": "Even sealed eggs need hidden airflow"
+      },
+      {
+        "question": "What would help identify Egg Pores fast?",
+        "options": [
+          "A head that looked more weapon than face",
+          "Bones carried together from different bodies",
+          "Pores that let embryos exchange air",
+          "Bodies caught after stepping into soft ground"
+        ],
+        "correct_answer": "Pores that let embryos exchange air"
+      }
+    ]
+  },
+  "creepy-dinosaurs-nest-cities": {
+    "master_text": "Nest Cities are the prehistoric version of every neighbor having babies at once. Dr. Icky calls it adorable, then immediately disinfects the word adorable. Master note: watch for crowded nesting grounds; the real trick is many nests grouped together. Lab rule: dinosaurs could gather in noisy breeding zones.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Nest Cities is now in the vault. The slime alarm approves.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Ground changed by heavy steps",
+          "A defensive weapon behind the body",
+          "Signals humans might not see",
+          "Crowded nesting grounds"
+        ],
+        "correct_answer": "Crowded nesting grounds"
+      },
+      {
+        "question": "Which feature made Nest Cities a proper lab hazard?",
+        "options": [
+          "Speed and a weaponized head",
+          "Many nests grouped together",
+          "Possible invisible display markings",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Many nests grouped together"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Dinosaurs could gather in noisy breeding zones",
+          "A strange profile can warn, display, or protect",
+          "Huge bodies can reshape the scene",
+          "Growing huge can become defense"
+        ],
+        "correct_answer": "Dinosaurs could gather in noisy breeding zones"
+      }
+    ]
+  },
+  "creepy-dinosaurs-amber-tick": {
+    "master_text": "Amber Tick is proof the ancient world also had freeloaders. Dr. Icky hates parasites with professional respect, especially when amber traps them like sticky yellow evidence. Master note: watch for tiny hitchhikers preserved with ancient clues; the real trick is parasites trapped in amber. Lab rule: even dinosaurs may have carried pests.",
+    "mastered_success_text": "SPECIMEN CONTAINED: Amber Tick is now in the vault. The slime alarm approves.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Feet can be weapons, which is rude but effective",
+          "Even dinosaurs may have carried pests",
+          "Natural shields can ruin a predator’s lunch",
+          "Distance does not always make you safe"
+        ],
+        "correct_answer": "Even dinosaurs may have carried pests"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Parasites trapped in amber",
+          "A thick nose boss",
+          "Small armor plates",
+          "An enormous upright body"
+        ],
+        "correct_answer": "Parasites trapped in amber"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Empty spaces inside certain bones",
+          "A bigger body than most people expect from a raptor",
+          "Tiny hitchhikers preserved with ancient clues",
+          "A head built to handle impact"
+        ],
+        "correct_answer": "Tiny hitchhikers preserved with ancient clues"
+      }
+    ]
+  },
+  "creepy-dinosaurs-feather-fuzz": {
+    "master_text": "Feather Fuzz ruins the classic monster poster. Dr. Icky says fuzz does not make a dinosaur cuddly; it makes the predator look like it escaped from a cursed pillow. Master note: watch for fuzz that complicates the scaly image; the real trick is soft feather-like coverings. Lab rule: dinosaurs could be fluffy and still creepy.",
+    "mastered_success_text": "SPECIMEN MASTERED: Feather Fuzz is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "Which trait belongs in the Feather Fuzz file?",
+        "options": [
+          "Soft ground capturing struggle marks",
+          "A thick domed skull",
+          "Tiny breathing holes in eggshell",
+          "Soft feather-like coverings"
+        ],
+        "correct_answer": "Soft feather-like coverings"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "A body outline made larger by raised spines",
+          "Fuzz that complicates the scaly image",
+          "A head that looked more weapon than face",
+          "Fossils showing dinosaurs were not smooth cartoons"
+        ],
+        "correct_answer": "Fuzz that complicates the scaly image"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Some skulls are built like food machines",
+          "Dinosaur skin could be weirder than plain scales",
+          "Dinosaurs could be fluffy and still creepy",
+          "Dinosaurs could gather in noisy breeding zones"
+        ],
+        "correct_answer": "Dinosaurs could be fluffy and still creepy"
+      }
+    ]
+  },
+  "creepy-dinosaurs-uv-patterns": {
+    "master_text": "UV Patterns make Dr. Icky suspicious of every plain-looking fossil. If dinosaur displays included colors or signals beyond our eyes, the boring parts may have been secretly shouting. Master note: watch for signals humans might not see; the real trick is possible invisible display markings. Lab rule: animal messages can exist outside human vision.",
+    "mastered_success_text": "SPECIMEN MASTERED: UV Patterns is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What made UV Patterns worth mastering?",
+        "options": [
+          "A spiked neck frill",
+          "Possible invisible display markings",
+          "Tiny breathing holes in eggshell",
+          "A sharp thumb spike"
+        ],
+        "correct_answer": "Possible invisible display markings"
+      },
+      {
+        "question": "What is the big disgusting takeaway?",
+        "options": [
+          "Skin and soft parts can change the whole creature",
+          "Animal messages can exist outside human vision",
+          "Weird head gear may be part weapon and part warning sign",
+          "Some skeletons are engineering problems"
+        ],
+        "correct_answer": "Animal messages can exist outside human vision"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "Scales and fuzzy features together",
+          "Signals humans might not see",
+          "A small body shaped for weird gliding",
+          "A head shape meant to be seen"
+        ],
+        "correct_answer": "Signals humans might not see"
+      }
+    ]
+  },
+  "creepy-dinosaurs-air-sacs": {
+    "master_text": "Air Sacs made Dr. Icky accuse the skeleton of having secret rooms. Bird-like breathing spaces suggest some dinosaurs moved air through the body in surprisingly complex ways. Master note: watch for air moving beyond simple lungs; the real trick is bird-like breathing spaces. Lab rule: breathing systems can hide inside the skeleton.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Air Sacs cannot legally bite the quiz screen anymore.",
+    "retry_text": "Containment failed. Re-read the specimen note, scrape the slime off your thinking organ, and try again.",
+    "questions": [
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Some skulls are built like food machines",
+          "Breathing systems can hide inside the skeleton",
+          "Thrown-up food can become evidence",
+          "A strange profile can warn, display, or protect"
+        ],
+        "correct_answer": "Breathing systems can hide inside the skeleton"
+      },
+      {
+        "question": "Which detail would Dr. Icky circle in slime?",
+        "options": [
+          "A head outline crowded with points",
+          "Hands that looked more like tools than fingers",
+          "Rapid environmental change",
+          "Air moving beyond simple lungs"
+        ],
+        "correct_answer": "Air moving beyond simple lungs"
+      },
+      {
+        "question": "Which trait belongs in the Air Sacs file?",
+        "options": [
+          "A whip-like tail",
+          "Bird-like breathing spaces",
+          "Large back plates",
+          "Serrated slicing teeth"
+        ],
+        "correct_answer": "Bird-like breathing spaces"
+      }
+    ]
+  },
+  "creepy-dinosaurs-hollow-bones": {
+    "master_text": "Hollow Bones sound like a design flaw until Dr. Icky taps the specimen tray. Some bones used internal spaces to reduce weight while staying strong, which is clever and slightly spooky. Master note: watch for empty spaces inside certain bones; the real trick is light but strong internal bone structure. Lab rule: hollow does not mean weak.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED: Hollow Bones cannot legally bite the quiz screen anymore.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "A hooked foot claw",
+          "Light but strong internal bone structure",
+          "Cannibal bite evidence",
+          "Soft feather-like coverings"
+        ],
+        "correct_answer": "Light but strong internal bone structure"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Hollow does not mean weak",
+          "Standing too close can become a poking emergency",
+          "A skull can become protective equipment",
+          "Some skulls are built like food machines"
+        ],
+        "correct_answer": "Hollow does not mean weak"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Food trapped between predator teeth",
+          "Partly digested bits preserved together",
+          "Bones showing attacks that did not kill immediately",
+          "Empty spaces inside certain bones"
+        ],
+        "correct_answer": "Empty spaces inside certain bones"
+      }
+    ]
+  },
+  "creepy-dinosaurs-trackway-chase": {
+    "master_text": "Trackway Chase is a fossil crime scene with no witnesses except mud. Dr. Icky follows the prints and finds the best kind of evidence: something moved, and something else followed. Master note: watch for tracks from one animal following another; the real trick is footprints showing pursuit. Lab rule: footprints can preserve movement, not just shape.",
+    "mastered_success_text": "MASTERED: Trackway Chase has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "Large eyes and long legs",
+          "Flight gear unlike normal bird feathers",
+          "A long tail that could crack through air",
+          "Tracks from one animal following another"
+        ],
+        "correct_answer": "Tracks from one animal following another"
+      },
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "Slippery prey needs a trap-like mouth",
+          "Some fossils turn a food chain into a family problem",
+          "Footprints can preserve movement, not just shape",
+          "Survival can leave permanent fossil evidence"
+        ],
+        "correct_answer": "Footprints can preserve movement, not just shape"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Footprints showing pursuit",
+          "A thick nose boss",
+          "Light but strong internal bone structure",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Footprints showing pursuit"
+      }
+    ]
+  },
+  "creepy-dinosaurs-mud-trap": {
+    "master_text": "Mud Trap is the swamp writing a diary in footprints. Dr. Icky sees slipping, dragging, and escape marks, which means the ground may have been the villain. Master note: watch for messy tracks where animals slipped or stuck; the real trick is soft ground capturing struggle marks. Lab rule: mud can record panic.",
+    "mastered_success_text": "MASTERED: Mud Trap has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What is the lab lesson from Mud Trap?",
+        "options": [
+          "Dinosaurs could be fluffy and still creepy",
+          "Mud can record panic",
+          "Some skeletons are engineering problems",
+          "Small creatures can still leave dramatic evidence"
+        ],
+        "correct_answer": "Mud can record panic"
+      },
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Tracks from one animal following another",
+          "A gigantic frame that discouraged attackers",
+          "Messy tracks where animals slipped or stuck",
+          "Towering proportions that dominated the landscape"
+        ],
+        "correct_answer": "Messy tracks where animals slipped or stuck"
+      },
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Soft ground capturing struggle marks",
+          "Possible feeding on its own kind",
+          "Parasites trapped in amber",
+          "A hooked foot claw"
+        ],
+        "correct_answer": "Soft ground capturing struggle marks"
+      }
+    ]
+  },
+  "creepy-dinosaurs-bonebed-hill": {
+    "master_text": "Bonebed Hill is the drawer Dr. Icky opens only after lunch. Too many bones in one place suggests a bigger story, usually involving trouble, time, and a spectacular lack of privacy. Master note: watch for bones from multiple animals in one place; the real trick is many skeletons preserved together. Lab rule: mass fossil sites can reveal group disasters.",
+    "mastered_success_text": "MASTERED: Bonebed Hill has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "Which trait belongs in the Bonebed Hill file?",
+        "options": [
+          "Many skeletons preserved together",
+          "Soft-tissue clues on the head",
+          "A heavy tail club",
+          "A spiked neck frill"
+        ],
+        "correct_answer": "Many skeletons preserved together"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Messy tracks where animals slipped or stuck",
+          "A small body shaped for weird gliding",
+          "Bones from multiple animals in one place",
+          "A bird-like body with dangerous claws"
+        ],
+        "correct_answer": "Bones from multiple animals in one place"
+      },
+      {
+        "question": "What is the lab lesson from Bonebed Hill?",
+        "options": [
+          "Small creatures can still leave dramatic evidence",
+          "Mass fossil sites can reveal group disasters",
+          "The ground can become the monster",
+          "Being huge can discourage most trouble"
+        ],
+        "correct_answer": "Mass fossil sites can reveal group disasters"
+      }
+    ]
+  },
+  "creepy-dinosaurs-ash-blanket": {
+    "master_text": "Ash Blanket sounds cozy until the volcano enters the room. Dr. Icky’s note says ash can bury a scene, then harden the mess into a fossil time capsule. Master note: watch for layers that covered plants and animals; the real trick is volcanic ash burial. Lab rule: disaster layers can preserve a moment.",
+    "mastered_success_text": "MASTERED: Ash Blanket has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "What should recruits remember before celebrating?",
+        "options": [
+          "A mouth that keeps reloading stays dangerous",
+          "Dinosaur skin could be weirder than plain scales",
+          "Weird head gear may be part weapon and part warning sign",
+          "Disaster layers can preserve a moment"
+        ],
+        "correct_answer": "Disaster layers can preserve a moment"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Volcanic ash burial",
+          "Speed across open ground",
+          "Mixed body coverings",
+          "Replacement teeth"
+        ],
+        "correct_answer": "Volcanic ash burial"
+      },
+      {
+        "question": "What evidence points to this specimen?",
+        "options": [
+          "A mouth like a plant-cutting strip",
+          "Empty spaces inside certain bones",
+          "Layers that covered plants and animals",
+          "Large eyes and long legs"
+        ],
+        "correct_answer": "Layers that covered plants and animals"
+      }
+    ]
+  },
+  "creepy-dinosaurs-flood-pile": {
+    "master_text": "Flood Pile is what happens when water becomes a terrible organizer. Dr. Icky warns recruits that bones found together may have been dragged there by a rushing prehistoric mess. Master note: watch for bones carried together from different bodies; the real trick is water mixing remains. Lab rule: floods can rearrange the evidence.",
+    "mastered_success_text": "MASTERED: Flood Pile has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Which clue should a recruit spot first?",
+        "options": [
+          "Bones carried together from different bodies",
+          "A plant-eater with built-in stabbing equipment",
+          "A curved blade attached to the body",
+          "Reproduction on an oversized scale"
+        ],
+        "correct_answer": "Bones carried together from different bodies"
+      },
+      {
+        "question": "What is the lab lesson from Flood Pile?",
+        "options": [
+          "Mud can record panic",
+          "Even dinosaurs may have carried pests",
+          "Looking scary can be part of survival",
+          "Floods can rearrange the evidence"
+        ],
+        "correct_answer": "Floods can rearrange the evidence"
+      },
+      {
+        "question": "What did Dr. Icky mark as the main specimen trick?",
+        "options": [
+          "Bone-crushing jaws",
+          "Rotten meat mouth bacteria",
+          "Water mixing remains",
+          "A heavy tail club"
+        ],
+        "correct_answer": "Water mixing remains"
+      }
+    ]
+  },
+  "creepy-dinosaurs-dino-burrows": {
+    "master_text": "Dino Burrows prove the ground had tenants. Dr. Icky dislikes any dinosaur that can vanish below your shoes and possibly redecorate under the lab. Master note: watch for tunnel-like spaces used for hiding or nesting; the real trick is underground shelters. Lab rule: some dinosaurs may have lived partly below the surface.",
+    "mastered_success_text": "DR. ICKY APPROVES: Dino Burrows has been mastered. New scans released from quarantine.",
+    "retry_text": "The specimen remains unmastered. Dr. Icky suggests using the brain, even briefly.",
+    "questions": [
+      {
+        "question": "Why does this specimen belong in containment?",
+        "options": [
+          "Sharp edges can be worse than raw bite strength",
+          "Tiny fossils can accuse a stomach",
+          "Display can also make a body harder to mess with",
+          "Some dinosaurs may have lived partly below the surface"
+        ],
+        "correct_answer": "Some dinosaurs may have lived partly below the surface"
+      },
+      {
+        "question": "Which body feature or clue powers this specimen?",
+        "options": [
+          "Hundreds of grazing teeth",
+          "Massive weight and footprints",
+          "Bird traits mixed with dinosaur traits",
+          "Underground shelters"
+        ],
+        "correct_answer": "Underground shelters"
+      },
+      {
+        "question": "Which sign belongs with this specimen?",
+        "options": [
+          "Large eyes and long legs",
+          "Partly digested bits preserved together",
+          "Damage caused after discovery",
+          "Tunnel-like spaces used for hiding or nesting"
+        ],
+        "correct_answer": "Tunnel-like spaces used for hiding or nesting"
+      }
+    ]
+  },
+  "creepy-dinosaurs-egg-guardians": {
+    "master_text": "Egg Guardians are filed under ‘surprisingly responsible, still alarming.’ Dr. Icky admits some dinosaurs may have stayed near eggs, which is sweet until the claws are remembered. Master note: watch for fossils near nests instead of far away; the real trick is adult care around eggs. Lab rule: some dinosaurs may have protected their young.",
+    "mastered_success_text": "MASTERED: Egg Guardians has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Incorrect. The fossil cabinet is judging you. Retry until the lab stops screaming.",
+    "questions": [
+      {
+        "question": "What rule keeps recruits from becoming fossil paperwork?",
+        "options": [
+          "Mass fossil sites can reveal group disasters",
+          "Some fossils turn a food chain into a family problem",
+          "Familiar-looking animals can still be nasty",
+          "Some dinosaurs may have protected their young"
+        ],
+        "correct_answer": "Some dinosaurs may have protected their young"
+      },
+      {
+        "question": "Why did the containment tray start sweating?",
+        "options": [
+          "Adult care around eggs",
+          "Nest guarding behavior",
+          "Armored preservation",
+          "Regurgitated meal remains"
+        ],
+        "correct_answer": "Adult care around eggs"
+      },
+      {
+        "question": "What would help identify Egg Guardians fast?",
+        "options": [
+          "Fossils near nests instead of far away",
+          "Damage caused after discovery",
+          "Scales and fuzzy features together",
+          "Layers that covered plants and animals"
+        ],
+        "correct_answer": "Fossils near nests instead of far away"
+      }
+    ]
+  },
+  "creepy-dinosaurs-dino-breath": {
+    "master_text": "Dino Breath is why Dr. Icky outlawed yawning in the predator wing. Meat scraps, bacteria, and big teeth create the kind of mouth that could ruin a week. Master note: watch for food trapped between predator teeth; the real trick is rotten meat mouth bacteria. Lab rule: bad breath can come from a very successful mouth.",
+    "mastered_success_text": "SPECIMEN MASTERED: Dino Breath is sealed, labeled, and mildly offended. New scans earned.",
+    "retry_text": "Not contained yet. Review the clue, avoid panic, and poke the quiz again.",
+    "questions": [
+      {
+        "question": "What is the gross survival tool here?",
+        "options": [
+          "Adult care around eggs",
+          "Replacement teeth",
+          "Rotten meat mouth bacteria",
+          "Light but strong internal bone structure"
+        ],
+        "correct_answer": "Rotten meat mouth bacteria"
+      },
+      {
+        "question": "What should be written on the lab clipboard?",
+        "options": [
+          "Tooth marks on bones from its own kind",
+          "A defensive weapon behind the body",
+          "Food trapped between predator teeth",
+          "Bones showing attacks that did not kill immediately"
+        ],
+        "correct_answer": "Food trapped between predator teeth"
+      },
+      {
+        "question": "Which statement best explains the specimen?",
+        "options": [
+          "Even giants may need body armor",
+          "Floods can rearrange the evidence",
+          "Bad breath can come from a very successful mouth",
+          "Some dinosaurs looked stranger than scaly monsters"
+        ],
+        "correct_answer": "Bad breath can come from a very successful mouth"
+      }
+    ]
+  },
+  "creepy-dinosaurs-extinction-night": {
+    "master_text": "Extinction Night is the file with the lights dimmed. Dr. Icky treats it with rare seriousness, because this was not one specimen misbehaving; it was the planet changing the rules. Master note: watch for rapid environmental change; the real trick is planet-wide disaster. Lab rule: one catastrophe can rewrite life on Earth.",
+    "mastered_success_text": "MASTERED: Extinction Night has been contained. Dr. Icky is pretending this was expected.",
+    "retry_text": "Wrong slime trail. Check the mastery note again before the specimen escapes through the vents.",
+    "questions": [
+      {
+        "question": "Which clue proves the file was not ordinary?",
+        "options": [
+          "Flight gear unlike normal bird feathers",
+          "Rapid environmental change",
+          "Partly digested bits preserved together",
+          "Bony plates that made biting difficult"
+        ],
+        "correct_answer": "Rapid environmental change"
+      },
+      {
+        "question": "Which warning did Dr. Icky underline twice?",
+        "options": [
+          "One catastrophe can rewrite life on Earth",
+          "Some skulls are built like food machines",
+          "Long jaws can work like a clamp",
+          "A single claw can change the whole hunting plan"
+        ],
+        "correct_answer": "One catastrophe can rewrite life on Earth"
+      },
+      {
+        "question": "Which trait belongs in the Extinction Night file?",
+        "options": [
+          "Bone-crushing jaws",
+          "Planet-wide disaster",
+          "A spiked neck frill",
+          "Bird-like breathing spaces"
+        ],
+        "correct_answer": "Planet-wide disaster"
+      }
+    ]
+  }
+}

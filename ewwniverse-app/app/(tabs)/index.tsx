@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  ImageSourcePropType,
   Animated,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,6 +25,9 @@ import { useUserStore } from '@/store/userStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
 import { DailySpecimenCard } from '@/components/DailySpecimenCard';
+import { ALL_CREATURES } from '@/data/index';
+
+const TOTAL_CREATURES = ALL_CREATURES.length; // 234 (75 creatures + 80 dinos + 79 earth)
 
 export default function Home() {
   const profile = useUserStore((s) => s.profile);
@@ -33,8 +37,7 @@ export default function Home() {
   const stageLabel = STAGE_LABELS[profile.eww_stage];
 
   // EWW score: square-root curve so early progress feels fast.
-  // 100% = all 225 creatures classified AND mastered (full paid tier).
-  const TOTAL_CREATURES = 225;
+  // 100% = all creatures classified AND mastered (full paid tier).
   const linearProgress  =
     (profile.classified_count * 0.35 + profile.mastered_count * 0.65) / TOTAL_CREATURES;
   const ewwScore = Math.min(100, Math.round(Math.sqrt(linearProgress) * 100));
@@ -165,7 +168,7 @@ function MissionRow({
   total,
   reward,
 }: {
-  icon: ReturnType<typeof require>;
+  icon: ImageSourcePropType;
   label: string;
   current: number;
   total: number;
