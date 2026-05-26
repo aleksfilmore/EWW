@@ -37,11 +37,16 @@ const DRICKY_DAILY_KEY = 'dricky_greeted_date';
 function AppBootstrap() {
   const { isHydrated, initUser, refreshScanIfDue, incrementStreak, setPaid } = useUserStore();
   const triggerDrIcky  = useGameStore((s) => s.triggerDrIcky);
-  const isHydratedFlag = isHydrated; // stable ref for the daily greeting effect
+  const isHydratedFlag = isHydrated;
   const [fontsLoaded] = useFonts({ Boogaloo_400Regular, Creepster_400Regular });
   const [onboardingChecked, setOnboardingChecked] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const refreshIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Track whether the Zustand persist layer has finished reading from AsyncStorage
+  const [storeReady, setStoreReady] = useState(
+    () => useUserStore.persist.hasHydrated(),
+  );
 
   // Check onboarding preference from persistent storage
   useEffect(() => {
@@ -51,8 +56,21 @@ function AppBootstrap() {
     });
   }, []);
 
+  // Subscribe to persist hydration completion so we know when AsyncStorage has loaded
   useEffect(() => {
-    // Anonymous Firebase auth — creates a persistent UID on first launch
+    if (storeReady) return;
+    const unsub = useUserStore.persist.onFinishHydration(() => setStoreReady(true));
+    // Guard: hydration may have completed between the useState initializer and this effect
+    if (useUserStore.persist.hasHydrated()) setStoreReady(true);
+    return unsub;
+  }, [storeReady]);
+
+  useEffect(() => {
+    // Only subscribe to Firebase auth AFTER the persisted store has loaded.
+    // This prevents the race where auth fires first, sees profile=null, and
+    // resets the user's data with a fresh default profile.
+    if (!storeReady) return;
+
     const unsubscribe = onAuthStateChanged((user) => {
       if (user) {
         initUser(user.uid);
@@ -63,7 +81,7 @@ function AppBootstrap() {
       }
     });
     return unsubscribe;
-  }, [initUser]);
+  }, [storeReady, initUser]);
 
   // Wire game mechanics once the store is hydrated
   useEffect(() => {
