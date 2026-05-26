@@ -1,0 +1,2925 @@
+{
+  "creepy-earth-blood-falls": {
+    "master_text": "SLIME-SAFE DOSSIER: Dr. Icky filed Blood Falls under 'planet behaving badly.' Expect a glacier with a rusty nosebleed. The nasty engine is iron-rich salty water rusting in air. The first clue is red stains seeping from the ice. Your survival rule is simple: do not lick mystery glacier juice. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Blood Falls: what caused the horrible part?",
+        "options": [
+          "ants charging the mud with batteries",
+          "iron-rich salty water rusting in air",
+          "a ghost whale using a hair dryer",
+          "a frog orchestra shaking the soil"
+        ],
+        "correct_answer": "iron-rich salty water rusting in air"
+      },
+      {
+        "question": "Blood Falls: how does a smart recruit survive it?",
+        "options": [
+          "taste it for science",
+          "do not lick mystery glacier juice",
+          "use it as a pillow",
+          "lick the evidence bag"
+        ],
+        "correct_answer": "do not lick mystery glacier juice"
+      },
+      {
+        "question": "Blood Falls: which clue points to the hazard?",
+        "options": [
+          "a cheerful banjo sound",
+          "a floating birthday balloon",
+          "a polite note from the mud",
+          "red stains seeping from the ice"
+        ],
+        "correct_answer": "red stains seeping from the ice"
+      }
+    ]
+  },
+  "creepy-earth-brain-eating-amoeba": {
+    "master_text": "SLIME-SAFE DOSSIER: Specimen 002 arrived as warm water with a microscopic villain problem. Dr. Icky circled one cause in green slime: an amoeba entering through the nose. Spot warm untreated water near your face before getting brave. Field rule: keep dirty warm water out of your nose. Science survives. Dignity does not.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Brain-Eating Amoeba: which choice would keep the lab open?",
+        "options": [
+          "throw it at the ceiling fan",
+          "keep dirty warm water out of your nose",
+          "collect it in your socks",
+          "let it babysit the hamster"
+        ],
+        "correct_answer": "keep dirty warm water out of your nose"
+      },
+      {
+        "question": "Brain-Eating Amoeba: what is the secret engine of the mess?",
+        "options": [
+          "a giant invisible blender",
+          "an angry sandwich gaining weather powers",
+          "an amoeba entering through the nose",
+          "a ghost whale using a hair dryer"
+        ],
+        "correct_answer": "an amoeba entering through the nose"
+      },
+      {
+        "question": "Brain-Eating Amoeba: what made the slime alarm blink?",
+        "options": [
+          "a well-behaved flowerpot",
+          "a postcard from Grandma",
+          "warm untreated water near your face",
+          "a perfectly clean towel"
+        ],
+        "correct_answer": "warm untreated water near your face"
+      }
+    ]
+  },
+  "creepy-earth-poop-transplants": {
+    "master_text": "CONTAMINATION CARD: Poop Transplants belongs in the cabinet labeled 'Earth Has Problems.' It starts with helpful microbes moved into a sick gut, then announces itself through bad bacteria taking over the belly. Recruits who want clean shoes follow one rule: leave poop medicine to doctors. Science survives. Dignity does not.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Poop Transplants: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "squeeze it until it answers",
+          "leave poop medicine to doctors",
+          "bring it to show-and-tell unsealed",
+          "mail it to your cousin"
+        ],
+        "correct_answer": "leave poop medicine to doctors"
+      },
+      {
+        "question": "Poop Transplants: what started the lab incident?",
+        "options": [
+          "a birthday cake collapsing into mud",
+          "helpful microbes moved into a sick gut",
+          "evil confetti dissolving into rain",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "helpful microbes moved into a sick gut"
+      },
+      {
+        "question": "Poop Transplants: which warning sign matters most?",
+        "options": [
+          "bad bacteria taking over the belly",
+          "a smug but harmless paperclip",
+          "a tiny trophy for hygiene",
+          "a tidy shoe rack"
+        ],
+        "correct_answer": "bad bacteria taking over the belly"
+      }
+    ]
+  },
+  "creepy-earth-the-acid-clouds-of-java": {
+    "master_text": "DR. ICKY FIELD NOTE: If you meet The Acid Clouds of Java, assume the planet is testing you. The gross mechanism is sulfur gas turning the air corrosive. The warning sign is yellow crust and choking fumes. Dr. Icky’s order: never chase pretty sulfur smoke. New slime stains are pending.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "The Acid Clouds of Java: what is hiding behind the slime alarm?",
+        "options": [
+          "sulfur gas turning the air corrosive",
+          "a sandwich crust becoming sentient",
+          "a volcano swallowing chewing gum",
+          "tiny ghosts chewing the pavement"
+        ],
+        "correct_answer": "sulfur gas turning the air corrosive"
+      },
+      {
+        "question": "The Acid Clouds of Java: what would Dr. Icky forbid?",
+        "options": [
+          "use it as cake frosting",
+          "hide it in the classroom sink",
+          "trade it for cafeteria fries",
+          "never chase pretty sulfur smoke"
+        ],
+        "correct_answer": "never chase pretty sulfur smoke"
+      },
+      {
+        "question": "The Acid Clouds of Java: what should go in the field notes?",
+        "options": [
+          "yellow crust and choking fumes",
+          "a gold star on the sewer lid",
+          "a silent disco near the sink",
+          "a smug but harmless paperclip"
+        ],
+        "correct_answer": "yellow crust and choking fumes"
+      }
+    ]
+  },
+  "creepy-earth-the-fatberg-of-london": {
+    "master_text": "PLANETARY YUCK NOTICE: The Fatberg of London is what happens when normal Earth stuff gets a disgusting promotion. Blame grease mixing with wipes and trash. Look for blocked drains and waxy sewer lumps. The official recruit command is: keep grease and wipes out of drains. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "The Fatberg of London: what should a recruit avoid?",
+        "options": [
+          "keep grease and wipes out of drains",
+          "hide it in the classroom sink",
+          "make it your bathwater",
+          "open the jar during math class"
+        ],
+        "correct_answer": "keep grease and wipes out of drains"
+      },
+      {
+        "question": "The Fatberg of London: what is the secret engine of the mess?",
+        "options": [
+          "haunted glitter clogging the atmosphere",
+          "slime coins multiplying in pipes",
+          "dinosaurs sneezing under the floor",
+          "grease mixing with wipes and trash"
+        ],
+        "correct_answer": "grease mixing with wipes and trash"
+      },
+      {
+        "question": "The Fatberg of London: what is the specimen’s giveaway?",
+        "options": [
+          "a puddle that says thank you",
+          "blocked drains and waxy sewer lumps",
+          "a cupcake wearing goggles",
+          "a smiling rock wearing glasses"
+        ],
+        "correct_answer": "blocked drains and waxy sewer lumps"
+      }
+    ]
+  },
+  "creepy-earth-the-composting-human": {
+    "master_text": "PLANETARY YUCK NOTICE: The lab nearly survived The Composting Human until somebody got curious. This specimen runs on heat and microbes breaking down tissue. It gives itself away with warm compost doing quiet corpse work. The safe move is: respect the process and skip the sniff test. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "The Composting Human: what clue should a recruit notice first?",
+        "options": [
+          "a frog with a clipboard",
+          "a squeaky clean puddle",
+          "a normal pencil rolling politely",
+          "warm compost doing quiet corpse work"
+        ],
+        "correct_answer": "warm compost doing quiet corpse work"
+      },
+      {
+        "question": "The Composting Human: which move keeps the specimen contained?",
+        "options": [
+          "sleep next to it for warmth",
+          "respect the process and skip the sniff test",
+          "bring it to show-and-tell unsealed",
+          "stir it with your finger"
+        ],
+        "correct_answer": "respect the process and skip the sniff test"
+      },
+      {
+        "question": "The Composting Human: what is hiding behind the slime alarm?",
+        "options": [
+          "heat and microbes breaking down tissue",
+          "beans arguing inside a volcano",
+          "a volcano swallowing chewing gum",
+          "a lizard pushing buttons in the basement"
+        ],
+        "correct_answer": "heat and microbes breaking down tissue"
+      }
+    ]
+  },
+  "creepy-earth-quicksand-pits": {
+    "master_text": "SLIME-SAFE DOSSIER: Quicksand Pits looks like ground pretending to be solid. The trick is water loosening sand until it swallows weight. A sharp recruit watches for wet sand that jiggles under pressure, then remembers the lab rule: move slowly and spread your weight. New slime stains are pending.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Quicksand Pits: what is hiding behind the slime alarm?",
+        "options": [
+          "water loosening sand until it swallows weight",
+          "a volcano swallowing chewing gum",
+          "a ghost whale using a hair dryer",
+          "a rubber duck overheating the planet"
+        ],
+        "correct_answer": "water loosening sand until it swallows weight"
+      },
+      {
+        "question": "Quicksand Pits: which detail belongs in the danger log?",
+        "options": [
+          "a glass of sparkling lemonade",
+          "a clean spoon on a clean plate",
+          "wet sand that jiggles under pressure",
+          "a neat row of harmless pebbles"
+        ],
+        "correct_answer": "wet sand that jiggles under pressure"
+      },
+      {
+        "question": "Quicksand Pits: what should a recruit do near this mess?",
+        "options": [
+          "keep it under your bed",
+          "comb it into your hair",
+          "trade it for cafeteria fries",
+          "move slowly and spread your weight"
+        ],
+        "correct_answer": "move slowly and spread your weight"
+      }
+    ]
+  },
+  "creepy-earth-belly-button-biodome": {
+    "master_text": "CONTAMINATION CARD: Dr. Icky filed Belly Button Biodome under 'planet behaving badly.' Expect a tiny cave rented by skin microbes. The nasty engine is sweat and skin flakes feeding bacteria. The first clue is lint, smell, and crust in the navel. Your survival rule is simple: clean the belly button crater gently. New slime stains are pending.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Belly Button Biodome: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "challenge it to a burping contest",
+          "clean the belly button crater gently",
+          "taste it for science",
+          "use it as cake frosting"
+        ],
+        "correct_answer": "clean the belly button crater gently"
+      },
+      {
+        "question": "Belly Button Biodome: what is the gross science here?",
+        "options": [
+          "a nervous cactus sweating glue",
+          "sweat and skin flakes feeding bacteria",
+          "a broomstick drilling for pudding",
+          "cheese fumes bending gravity"
+        ],
+        "correct_answer": "sweat and skin flakes feeding bacteria"
+      },
+      {
+        "question": "Belly Button Biodome: what would Dr. Icky circle in green slime?",
+        "options": [
+          "a smug but harmless paperclip",
+          "freshly folded laundry",
+          "a well-behaved flowerpot",
+          "lint, smell, and crust in the navel"
+        ],
+        "correct_answer": "lint, smell, and crust in the navel"
+      }
+    ]
+  },
+  "creepy-earth-zombie-fungus": {
+    "master_text": "DO-NOT-LICK REPORT: Specimen 009 arrived as an ant turned into a fungus puppet. Dr. Icky circled one cause in green slime: fungus steering an insect before sprouting. Spot a doomed ant climbing to die before getting brave. Field rule: do not trust mushrooms with mind-control hobbies. The lab gloves are nervous.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Zombie Fungus: what would Dr. Icky circle in green slime?",
+        "options": [
+          "a tiny flag saying 'safe'",
+          "a tiny bow tie on a worm",
+          "a doomed ant climbing to die",
+          "a soap bubble doing taxes"
+        ],
+        "correct_answer": "a doomed ant climbing to die"
+      },
+      {
+        "question": "Zombie Fungus: what caused the horrible part?",
+        "options": [
+          "fungus steering an insect before sprouting",
+          "worms writing poems in concrete",
+          "ancient bubble wrap under the sea",
+          "the sun burping into a drain"
+        ],
+        "correct_answer": "fungus steering an insect before sprouting"
+      },
+      {
+        "question": "Zombie Fungus: what should a recruit do near this mess?",
+        "options": [
+          "race it down the hallway",
+          "whisper secrets into the drain",
+          "do not trust mushrooms with mind-control hobbies",
+          "use it as a pillow"
+        ],
+        "correct_answer": "do not trust mushrooms with mind-control hobbies"
+      }
+    ]
+  },
+  "creepy-earth-lake-natrons-statue-victims": {
+    "master_text": "EARTH HORROR LOG: Lake Natron’s Statue Victims belongs in the cabinet labeled 'Earth Has Problems.' It starts with alkaline mineral water drying bodies hard, then announces itself through chalky birds around the shore. Recruits who want clean shoes follow one rule: treat strange crusty lake edges as danger zones. The lab gloves are nervous.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Lake Natron’s Statue Victims: what makes this specimen turn nasty?",
+        "options": [
+          "moonlight turning dirt into jelly",
+          "alkaline mineral water drying bodies hard",
+          "a volcano swallowing chewing gum",
+          "a rubber duck overheating the planet"
+        ],
+        "correct_answer": "alkaline mineral water drying bodies hard"
+      },
+      {
+        "question": "Lake Natron’s Statue Victims: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "treat strange crusty lake edges as danger zones",
+          "poke it with your tongue",
+          "stir it with your finger",
+          "collect it in your socks"
+        ],
+        "correct_answer": "treat strange crusty lake edges as danger zones"
+      },
+      {
+        "question": "Lake Natron’s Statue Victims: what made the slime alarm blink?",
+        "options": [
+          "a cheerful banjo sound",
+          "a squeaky clean puddle",
+          "a cheerful sticker on the wall",
+          "chalky birds around the shore"
+        ],
+        "correct_answer": "chalky birds around the shore"
+      }
+    ]
+  },
+  "creepy-earth-island-of-garbage": {
+    "master_text": "CONTAMINATION CARD: If you meet Island of Garbage, assume the planet is testing you. The gross mechanism is currents trapping floating plastic pieces. The warning sign is tiny fragments hiding in normal-looking water. Dr. Icky’s order: never assume clean-looking ocean is clean. That is how socks become evidence.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Island of Garbage: which action belongs in the safety manual?",
+        "options": [
+          "teach it to play recorder",
+          "challenge it to a burping contest",
+          "sleep next to it for warmth",
+          "never assume clean-looking ocean is clean"
+        ],
+        "correct_answer": "never assume clean-looking ocean is clean"
+      },
+      {
+        "question": "Island of Garbage: what started the lab incident?",
+        "options": [
+          "a sandwich fossil waking up",
+          "a giant invisible blender",
+          "evil confetti dissolving into rain",
+          "currents trapping floating plastic pieces"
+        ],
+        "correct_answer": "currents trapping floating plastic pieces"
+      },
+      {
+        "question": "Island of Garbage: what should go in the field notes?",
+        "options": [
+          "a perfectly clean towel",
+          "a postcard from Grandma",
+          "tiny fragments hiding in normal-looking water",
+          "a cupcake wearing goggles"
+        ],
+        "correct_answer": "tiny fragments hiding in normal-looking water"
+      }
+    ]
+  },
+  "creepy-earth-edible-insect-burgers": {
+    "master_text": "LAB RECRUIT BRIEF: Edible Insect Burgers is what happens when normal Earth stuff gets a disgusting promotion. Blame insect protein ground into food. Look for mealworm or cricket ingredients. The official recruit command is: read the label before dramatic screaming. The janitor has requested emotional compensation.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Edible Insect Burgers: what is Dr. Icky blaming?",
+        "options": [
+          "a giant invisible blender",
+          "insect protein ground into food",
+          "a sandwich fossil waking up",
+          "ice cubes forming a secret union"
+        ],
+        "correct_answer": "insect protein ground into food"
+      },
+      {
+        "question": "Edible Insect Burgers: which detail belongs in the danger log?",
+        "options": [
+          "mealworm or cricket ingredients",
+          "sparkly footprints shaped like hearts",
+          "a clean spoon on a clean plate",
+          "a polite musical beep"
+        ],
+        "correct_answer": "mealworm or cricket ingredients"
+      },
+      {
+        "question": "Edible Insect Burgers: what is the safe move?",
+        "options": [
+          "keep it under your bed",
+          "race it down the hallway",
+          "ask it for career advice",
+          "read the label before dramatic screaming"
+        ],
+        "correct_answer": "read the label before dramatic screaming"
+      }
+    ]
+  },
+  "creepy-earth-the-pee-pool-problem": {
+    "master_text": "LAB RECRUIT BRIEF: The lab nearly survived The Pee Pool Problem until somebody got curious. This specimen runs on urine reacting with pool chlorine. It gives itself away with sharp pool smell and irritated eyes. The safe move is: use the toilet before the water does science. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "The Pee Pool Problem: what is the official no-gagging strategy?",
+        "options": [
+          "use the toilet before the water does science",
+          "teach it to play recorder",
+          "sprinkle it on cereal",
+          "poke it with your tongue"
+        ],
+        "correct_answer": "use the toilet before the water does science"
+      },
+      {
+        "question": "The Pee Pool Problem: which detail belongs in the danger log?",
+        "options": [
+          "a smug but harmless paperclip",
+          "a pleasant smell of toast",
+          "a frog with a clipboard",
+          "sharp pool smell and irritated eyes"
+        ],
+        "correct_answer": "sharp pool smell and irritated eyes"
+      },
+      {
+        "question": "The Pee Pool Problem: what powers this Earth gross-out?",
+        "options": [
+          "ants charging the mud with batteries",
+          "a raccoon pressing the disaster button",
+          "urine reacting with pool chlorine",
+          "a ghost whale using a hair dryer"
+        ],
+        "correct_answer": "urine reacting with pool chlorine"
+      }
+    ]
+  },
+  "creepy-earth-flesh-melting-lake": {
+    "master_text": "GROSS PLANET FILE: Flesh-Melting Lake looks like a calm lake with invisible suffocation power. The trick is carbon dioxide bursting out and sinking low. A sharp recruit watches for silent air that can smother animals, then remembers the lab rule: run uphill from strange gas near lakes. The cafeteria has been warned.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Flesh-Melting Lake: what makes this specimen turn nasty?",
+        "options": [
+          "carbon dioxide bursting out and sinking low",
+          "the sun burping into a drain",
+          "a volcano swallowing chewing gum",
+          "slime coins multiplying in pipes"
+        ],
+        "correct_answer": "carbon dioxide bursting out and sinking low"
+      },
+      {
+        "question": "Flesh-Melting Lake: which sign says the specimen is active?",
+        "options": [
+          "silent air that can smother animals",
+          "a silent disco near the sink",
+          "a tiny bow tie on a worm",
+          "a cheerful banjo sound"
+        ],
+        "correct_answer": "silent air that can smother animals"
+      },
+      {
+        "question": "Flesh-Melting Lake: what should happen next?",
+        "options": [
+          "paint the walls with it",
+          "invite it into your backpack",
+          "use it as a bookmark",
+          "run uphill from strange gas near lakes"
+        ],
+        "correct_answer": "run uphill from strange gas near lakes"
+      }
+    ]
+  },
+  "creepy-earth-buried-in-sludge": {
+    "master_text": "DO-NOT-LICK REPORT: Dr. Icky filed Buried in Sludge under 'planet behaving badly.' Expect a red mud flood with chemical teeth. The nasty engine is caustic industrial waste rushing downhill. The first clue is red sludge coating streets and water. Your survival rule is simple: avoid bright toxic mud entirely. Science survives. Dignity does not.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Buried in Sludge: what is the specimen’s giveaway?",
+        "options": [
+          "a cheerful banjo sound",
+          "a suspiciously normal sandwich",
+          "red sludge coating streets and water",
+          "a very organized bucket"
+        ],
+        "correct_answer": "red sludge coating streets and water"
+      },
+      {
+        "question": "Buried in Sludge: what should a recruit do near this mess?",
+        "options": [
+          "avoid bright toxic mud entirely",
+          "bring it to show-and-tell unsealed",
+          "store it beside clean snacks",
+          "poke it with your tongue"
+        ],
+        "correct_answer": "avoid bright toxic mud entirely"
+      },
+      {
+        "question": "Buried in Sludge: what is the gross science here?",
+        "options": [
+          "evil confetti dissolving into rain",
+          "a raccoon pressing the disaster button",
+          "ants charging the mud with batteries",
+          "caustic industrial waste rushing downhill"
+        ],
+        "correct_answer": "caustic industrial waste rushing downhill"
+      }
+    ]
+  },
+  "creepy-earth-snot-bubbles": {
+    "master_text": "CONTAMINATION CARD: Specimen 016 arrived as a frog nursery made from whipped mucus. Dr. Icky circled one cause in green slime: mucus foam protecting eggs. Spot bubbly slime nests above water before getting brave. Field rule: do not pop amphibian baby foam. The cafeteria has been warned.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Snot Bubbles: what powers this Earth gross-out?",
+        "options": [
+          "mucus foam protecting eggs",
+          "purple glitter breeding underground",
+          "a frog orchestra shaking the soil",
+          "dinosaurs sneezing under the floor"
+        ],
+        "correct_answer": "mucus foam protecting eggs"
+      },
+      {
+        "question": "Snot Bubbles: what made the slime alarm blink?",
+        "options": [
+          "bubbly slime nests above water",
+          "a puddle that says thank you",
+          "a cloud shaped like a puppy",
+          "a tiny bow tie on a worm"
+        ],
+        "correct_answer": "bubbly slime nests above water"
+      },
+      {
+        "question": "Snot Bubbles: what is the correct lab rule?",
+        "options": [
+          "rub it on your homework",
+          "paint the walls with it",
+          "do not pop amphibian baby foam",
+          "challenge it to a burping contest"
+        ],
+        "correct_answer": "do not pop amphibian baby foam"
+      }
+    ]
+  },
+  "creepy-earth-rusty-rain": {
+    "master_text": "DR. ICKY FIELD NOTE: Rusty Rain belongs in the cabinet labeled 'Earth Has Problems.' It starts with dust or iron particles mixing with rain, then announces itself through orange stains after a storm. Recruits who want clean shoes follow one rule: check weird rain marks before touching them. Science survives. Dignity does not.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Rusty Rain: what caused the horrible part?",
+        "options": [
+          "dust or iron particles mixing with rain",
+          "a birthday cake collapsing into mud",
+          "evil confetti dissolving into rain",
+          "a frog orchestra shaking the soil"
+        ],
+        "correct_answer": "dust or iron particles mixing with rain"
+      },
+      {
+        "question": "Rusty Rain: which warning sign matters most?",
+        "options": [
+          "a glass of sparkling lemonade",
+          "a postcard from Grandma",
+          "orange stains after a storm",
+          "a tiny choir of clean socks"
+        ],
+        "correct_answer": "orange stains after a storm"
+      },
+      {
+        "question": "Rusty Rain: which action belongs in the safety manual?",
+        "options": [
+          "check weird rain marks before touching them",
+          "feed it lunch meat",
+          "sprinkle it on cereal",
+          "rub it on a sandwich"
+        ],
+        "correct_answer": "check weird rain marks before touching them"
+      }
+    ]
+  },
+  "creepy-earth-shower-mold-explosion": {
+    "master_text": "SLIME-SAFE DOSSIER: If you meet Shower Mold Explosion, assume the planet is testing you. The gross mechanism is mold spores feeding on damp grime. The warning sign is black spots, musty smell, and steam. Dr. Icky’s order: dry the shower before the fuzz army moves in. The janitor has requested emotional compensation.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Shower Mold Explosion: what should happen next?",
+        "options": [
+          "rub it on your homework",
+          "poke it with your tongue",
+          "dry the shower before the fuzz army moves in",
+          "pour it into your shoes"
+        ],
+        "correct_answer": "dry the shower before the fuzz army moves in"
+      },
+      {
+        "question": "Shower Mold Explosion: which force created the yuck?",
+        "options": [
+          "robot pigeons overheating the soil",
+          "ancient bubble wrap under the sea",
+          "invisible goblins polishing rocks",
+          "mold spores feeding on damp grime"
+        ],
+        "correct_answer": "mold spores feeding on damp grime"
+      },
+      {
+        "question": "Shower Mold Explosion: what clue should a recruit notice first?",
+        "options": [
+          "a tiny bow tie on a worm",
+          "black spots, musty smell, and steam",
+          "a harmless-looking teddy bear",
+          "a clean spoon on a clean plate"
+        ],
+        "correct_answer": "black spots, musty smell, and steam"
+      }
+    ]
+  },
+  "creepy-earth-the-toothpaste-sandwich": {
+    "master_text": "LAB RECRUIT BRIEF: The Toothpaste Sandwich is what happens when normal Earth stuff gets a disgusting promotion. Blame chemicals meant for teeth ending up in food. Look for soapy mint taste where food should be. The official recruit command is: keep bathroom goo away from sandwiches. New slime stains are pending.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "The Toothpaste Sandwich: what is the official no-gagging strategy?",
+        "options": [
+          "keep bathroom goo away from sandwiches",
+          "invite it into your backpack",
+          "mail it to your cousin",
+          "hide it in the classroom sink"
+        ],
+        "correct_answer": "keep bathroom goo away from sandwiches"
+      },
+      {
+        "question": "The Toothpaste Sandwich: what powers this Earth gross-out?",
+        "options": [
+          "a frog orchestra shaking the soil",
+          "chemicals meant for teeth ending up in food",
+          "dinosaurs sneezing under the floor",
+          "a sandwich crust becoming sentient"
+        ],
+        "correct_answer": "chemicals meant for teeth ending up in food"
+      },
+      {
+        "question": "The Toothpaste Sandwich: what would Dr. Icky circle in green slime?",
+        "options": [
+          "a cupcake wearing goggles",
+          "a smug but harmless paperclip",
+          "a tiny trophy for hygiene",
+          "soapy mint taste where food should be"
+        ],
+        "correct_answer": "soapy mint taste where food should be"
+      }
+    ]
+  },
+  "creepy-earth-exploding-graveyards": {
+    "master_text": "DO-NOT-LICK REPORT: The lab nearly survived Exploding Graveyards until somebody got curious. This specimen runs on rotting gases building inside sealed spaces. It gives itself away with swollen ground or cracked grave covers. The safe move is: never poke a bulging old burial site. New slime stains are pending.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Exploding Graveyards: what should a recruit do near this mess?",
+        "options": [
+          "mail it to your cousin",
+          "never poke a bulging old burial site",
+          "name it Captain Goo",
+          "keep it under your bed"
+        ],
+        "correct_answer": "never poke a bulging old burial site"
+      },
+      {
+        "question": "Exploding Graveyards: what is doing the disgusting work?",
+        "options": [
+          "haunted glitter clogging the atmosphere",
+          "rotting gases building inside sealed spaces",
+          "worms writing poems in concrete",
+          "a sandwich crust becoming sentient"
+        ],
+        "correct_answer": "rotting gases building inside sealed spaces"
+      },
+      {
+        "question": "Exploding Graveyards: which sign says the specimen is active?",
+        "options": [
+          "swollen ground or cracked grave covers",
+          "a soap bubble doing taxes",
+          "an elegant napkin",
+          "a harmless-looking teddy bear"
+        ],
+        "correct_answer": "swollen ground or cracked grave covers"
+      }
+    ]
+  },
+  "creepy-earth-toxic-foam-flood": {
+    "master_text": "CONTAMINATION CARD: Toxic Foam Flood looks like a bubbly street disaster that smells illegal. The trick is polluted water whipping into chemical foam. A sharp recruit watches for thick suds rolling through streets, then remembers the lab rule: stay out of suspicious disaster bubbles. Science survives. Dignity does not.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Toxic Foam Flood: what caused the horrible part?",
+        "options": [
+          "a rubber duck overheating the planet",
+          "polluted water whipping into chemical foam",
+          "angry socks absorbing moonbeams",
+          "a giant invisible blender"
+        ],
+        "correct_answer": "polluted water whipping into chemical foam"
+      },
+      {
+        "question": "Toxic Foam Flood: what gave the specimen away?",
+        "options": [
+          "a sleeping rubber duck",
+          "thick suds rolling through streets",
+          "an elegant napkin",
+          "a normal pencil rolling politely"
+        ],
+        "correct_answer": "thick suds rolling through streets"
+      },
+      {
+        "question": "Toxic Foam Flood: what would Dr. Icky forbid?",
+        "options": [
+          "stay out of suspicious disaster bubbles",
+          "sprinkle it on cereal",
+          "squeeze it until it answers",
+          "race it down the hallway"
+        ],
+        "correct_answer": "stay out of suspicious disaster bubbles"
+      }
+    ]
+  },
+  "creepy-earth-eye-eating-parasite": {
+    "master_text": "GROSS PLANET FILE: Dr. Icky filed Eye-Eating Parasite under 'planet behaving badly.' Expect a microscopic hitchhiker with terrible manners. The nasty engine is a parasite infecting delicate eye tissue. The first clue is dirty water or lenses near eyes. Your survival rule is simple: keep lenses and eyes away from contaminated water. The lab gloves are nervous.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Eye-Eating Parasite: which detail belongs in the danger log?",
+        "options": [
+          "a neat row of harmless pebbles",
+          "a well-behaved flowerpot",
+          "a gentle breeze smelling of cupcakes",
+          "dirty water or lenses near eyes"
+        ],
+        "correct_answer": "dirty water or lenses near eyes"
+      },
+      {
+        "question": "Eye-Eating Parasite: what caused the horrible part?",
+        "options": [
+          "dinosaurs sneezing under the floor",
+          "ice cubes forming a secret union",
+          "a parasite infecting delicate eye tissue",
+          "a frog orchestra shaking the soil"
+        ],
+        "correct_answer": "a parasite infecting delicate eye tissue"
+      },
+      {
+        "question": "Eye-Eating Parasite: how does a smart recruit survive it?",
+        "options": [
+          "trade it for cafeteria fries",
+          "keep lenses and eyes away from contaminated water",
+          "pour it into your shoes",
+          "taste it for science"
+        ],
+        "correct_answer": "keep lenses and eyes away from contaminated water"
+      }
+    ]
+  },
+  "creepy-earth-sludge-filled-basements": {
+    "master_text": "CONTAMINATION CARD: Specimen 023 arrived as a basement turning into sewer soup. Dr. Icky circled one cause in green slime: floodwater dragging filth indoors. Spot brown water, oily scum, and stink before getting brave. Field rule: treat flooded basements as contamination zones. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Sludge-Filled Basements: what tells you the area is getting gross?",
+        "options": [
+          "brown water, oily scum, and stink",
+          "a polite sparkle over clean water",
+          "a sleeping rubber duck",
+          "a floating birthday balloon"
+        ],
+        "correct_answer": "brown water, oily scum, and stink"
+      },
+      {
+        "question": "Sludge-Filled Basements: what is doing the disgusting work?",
+        "options": [
+          "worms writing poems in concrete",
+          "moonlight turning dirt into jelly",
+          "a nervous cactus sweating glue",
+          "floodwater dragging filth indoors"
+        ],
+        "correct_answer": "floodwater dragging filth indoors"
+      },
+      {
+        "question": "Sludge-Filled Basements: which action belongs in the safety manual?",
+        "options": [
+          "mail it to your cousin",
+          "treat flooded basements as contamination zones",
+          "put it in someone’s lunchbox",
+          "whisper secrets into the drain"
+        ],
+        "correct_answer": "treat flooded basements as contamination zones"
+      }
+    ]
+  },
+  "creepy-earth-sewer-gas-explosions": {
+    "master_text": "PLANETARY YUCK NOTICE: Sewer Gas Explosions belongs in the cabinet labeled 'Earth Has Problems.' It starts with flammable sewer gases collecting in closed spaces, then announces itself through rotten egg smell near drains. Recruits who want clean shoes follow one rule: ventilate and leave before sparks happen. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Sewer Gas Explosions: how does a smart recruit survive it?",
+        "options": [
+          "ventilate and leave before sparks happen",
+          "use it as a bookmark",
+          "race it down the hallway",
+          "hide it in the classroom sink"
+        ],
+        "correct_answer": "ventilate and leave before sparks happen"
+      },
+      {
+        "question": "Sewer Gas Explosions: what makes this specimen turn nasty?",
+        "options": [
+          "flammable sewer gases collecting in closed spaces",
+          "toothpaste fermenting in thunder",
+          "a raccoon pressing the disaster button",
+          "grandma’s soup becoming magnetic"
+        ],
+        "correct_answer": "flammable sewer gases collecting in closed spaces"
+      },
+      {
+        "question": "Sewer Gas Explosions: which detail belongs in the danger log?",
+        "options": [
+          "a frog with a clipboard",
+          "a puddle that says thank you",
+          "a smug but harmless paperclip",
+          "rotten egg smell near drains"
+        ],
+        "correct_answer": "rotten egg smell near drains"
+      }
+    ]
+  },
+  "creepy-earth-vomit-comet": {
+    "master_text": "DR. ICKY FIELD NOTE: If you meet Vomit Comet, assume the planet is testing you. The gross mechanism is motion confusing the inner ear. The warning sign is spinning, nausea, and pale faces. Dr. Icky’s order: face forward before your lunch resigns. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Vomit Comet: what should happen next?",
+        "options": [
+          "face forward before your lunch resigns",
+          "pour it into your shoes",
+          "hide it in the classroom sink",
+          "open the jar during math class"
+        ],
+        "correct_answer": "face forward before your lunch resigns"
+      },
+      {
+        "question": "Vomit Comet: what clue should a recruit notice first?",
+        "options": [
+          "an elegant napkin",
+          "a postcard from Grandma",
+          "a tiny flag saying 'safe'",
+          "spinning, nausea, and pale faces"
+        ],
+        "correct_answer": "spinning, nausea, and pale faces"
+      },
+      {
+        "question": "Vomit Comet: what is the secret engine of the mess?",
+        "options": [
+          "a ghost whale using a hair dryer",
+          "ice cubes forming a secret union",
+          "motion confusing the inner ear",
+          "the sun burping into a drain"
+        ],
+        "correct_answer": "motion confusing the inner ear"
+      }
+    ]
+  },
+  "creepy-earth-bubble-boils": {
+    "master_text": "EARTH HORROR LOG: Bubble Boils is what happens when normal Earth stuff gets a disgusting promotion. Blame gas pushing through wet mud. Look for bubbles rising from suspicious ground. The official recruit command is: do not step on burping mud. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Bubble Boils: which detail belongs in the danger log?",
+        "options": [
+          "bubbles rising from suspicious ground",
+          "a polite sparkle over clean water",
+          "a silent disco near the sink",
+          "a well-behaved flowerpot"
+        ],
+        "correct_answer": "bubbles rising from suspicious ground"
+      },
+      {
+        "question": "Bubble Boils: what is the secret engine of the mess?",
+        "options": [
+          "dinosaurs sneezing under the floor",
+          "mold learning karate",
+          "gas pushing through wet mud",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "gas pushing through wet mud"
+      },
+      {
+        "question": "Bubble Boils: what should a recruit do near this mess?",
+        "options": [
+          "do not step on burping mud",
+          "ask it for career advice",
+          "paint the walls with it",
+          "taste it for science"
+        ],
+        "correct_answer": "do not step on burping mud"
+      }
+    ]
+  },
+  "creepy-earth-rat-king": {
+    "master_text": "PLANETARY YUCK NOTICE: The lab nearly survived Rat King until somebody got curious. This specimen runs on tails trapped together by dirt or sticky mess. It gives itself away with squeaking from a moving fur clump. The safe move is: call pest control and protect your ankles. New slime stains are pending.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Rat King: what is the secret engine of the mess?",
+        "options": [
+          "ice cubes forming a secret union",
+          "haunted glitter clogging the atmosphere",
+          "tails trapped together by dirt or sticky mess",
+          "radioactive marshmallows melting underground"
+        ],
+        "correct_answer": "tails trapped together by dirt or sticky mess"
+      },
+      {
+        "question": "Rat King: what should go in the field notes?",
+        "options": [
+          "squeaking from a moving fur clump",
+          "a harmless-looking teddy bear",
+          "a suspiciously normal sandwich",
+          "a clean spoon on a clean plate"
+        ],
+        "correct_answer": "squeaking from a moving fur clump"
+      },
+      {
+        "question": "Rat King: which move keeps the specimen contained?",
+        "options": [
+          "call pest control and protect your ankles",
+          "collect it in your socks",
+          "hide it in the classroom sink",
+          "use it as a bookmark"
+        ],
+        "correct_answer": "call pest control and protect your ankles"
+      }
+    ]
+  },
+  "creepy-earth-skin-peeling-lake": {
+    "master_text": "DR. ICKY FIELD NOTE: Skin-Peeling Lake looks like water with a nasty chemistry temper. The trick is extreme acidity or alkalinity damaging skin. A sharp recruit watches for burning water and mineral crust, then remembers the lab rule: never swim in strange colored hot water. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Skin-Peeling Lake: what is the safe move?",
+        "options": [
+          "never swim in strange colored hot water",
+          "open the jar during math class",
+          "rub it on your homework",
+          "paint the walls with it"
+        ],
+        "correct_answer": "never swim in strange colored hot water"
+      },
+      {
+        "question": "Skin-Peeling Lake: what makes this specimen turn nasty?",
+        "options": [
+          "a broomstick drilling for pudding",
+          "a giant invisible blender",
+          "a frog orchestra shaking the soil",
+          "extreme acidity or alkalinity damaging skin"
+        ],
+        "correct_answer": "extreme acidity or alkalinity damaging skin"
+      },
+      {
+        "question": "Skin-Peeling Lake: what clue should a recruit notice first?",
+        "options": [
+          "burning water and mineral crust",
+          "an elegant napkin",
+          "a tiny choir of clean socks",
+          "a cheerful sticker on the wall"
+        ],
+        "correct_answer": "burning water and mineral crust"
+      }
+    ]
+  },
+  "creepy-earth-the-leech-pool": {
+    "master_text": "UNDERGROUND WARNING: Dr. Icky filed The Leech Pool under 'planet behaving badly.' Expect a pond with living noodles looking for blood. The nasty engine is leeches detecting movement and warmth. The first clue is thin dark shapes sliding in water. Your survival rule is simple: avoid barefoot wading in leechy ponds. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "The Leech Pool: which choice would keep the lab open?",
+        "options": [
+          "avoid barefoot wading in leechy ponds",
+          "pour it into your shoes",
+          "comb it into your hair",
+          "feed it lunch meat"
+        ],
+        "correct_answer": "avoid barefoot wading in leechy ponds"
+      },
+      {
+        "question": "The Leech Pool: which sign says the specimen is active?",
+        "options": [
+          "a tiny bow tie on a worm",
+          "a neat row of harmless pebbles",
+          "a squeaky clean puddle",
+          "thin dark shapes sliding in water"
+        ],
+        "correct_answer": "thin dark shapes sliding in water"
+      },
+      {
+        "question": "The Leech Pool: what is the gross science here?",
+        "options": [
+          "a haunted fridge leaking feelings",
+          "cheese fumes bending gravity",
+          "leeches detecting movement and warmth",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "leeches detecting movement and warmth"
+      }
+    ]
+  },
+  "creepy-earth-corpse-blooms": {
+    "master_text": "UNDERGROUND WARNING: Specimen 030 arrived as flowers that smell like a dead thing auditioning. Dr. Icky circled one cause in green slime: rotting odors attracting carrion insects. Spot meat stink around a giant bloom before getting brave. Field rule: smell from a distance and regret safely. The lab gloves are nervous.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Corpse Blooms: what should go in the field notes?",
+        "options": [
+          "a floating birthday balloon",
+          "meat stink around a giant bloom",
+          "a smug but harmless paperclip",
+          "a glass of sparkling lemonade"
+        ],
+        "correct_answer": "meat stink around a giant bloom"
+      },
+      {
+        "question": "Corpse Blooms: what is the official no-gagging strategy?",
+        "options": [
+          "paint the walls with it",
+          "open the jar during math class",
+          "lick the evidence bag",
+          "smell from a distance and regret safely"
+        ],
+        "correct_answer": "smell from a distance and regret safely"
+      },
+      {
+        "question": "Corpse Blooms: what is doing the disgusting work?",
+        "options": [
+          "radioactive marshmallows melting underground",
+          "the sun burping into a drain",
+          "rotting odors attracting carrion insects",
+          "a lizard pushing buttons in the basement"
+        ],
+        "correct_answer": "rotting odors attracting carrion insects"
+      }
+    ]
+  },
+  "creepy-earth-the-chernobyl-forest": {
+    "master_text": "LAB RECRUIT BRIEF: The Chernobyl Forest belongs in the cabinet labeled 'Earth Has Problems.' It starts with radioactive particles lingering in soil and plants, then announces itself through contamination signs in wild-looking woods. Recruits who want clean shoes follow one rule: never forage in radioactive zones. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "The Chernobyl Forest: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "throw it at the ceiling fan",
+          "store it beside clean snacks",
+          "never forage in radioactive zones",
+          "rub it on your homework"
+        ],
+        "correct_answer": "never forage in radioactive zones"
+      },
+      {
+        "question": "The Chernobyl Forest: which sign says the specimen is active?",
+        "options": [
+          "a gold star on the sewer lid",
+          "fresh cookies near the danger zone",
+          "a polite sparkle over clean water",
+          "contamination signs in wild-looking woods"
+        ],
+        "correct_answer": "contamination signs in wild-looking woods"
+      },
+      {
+        "question": "The Chernobyl Forest: what is the gross science here?",
+        "options": [
+          "toothpaste fermenting in thunder",
+          "radioactive particles lingering in soil and plants",
+          "a toaster haunting the river",
+          "mold learning karate"
+        ],
+        "correct_answer": "radioactive particles lingering in soil and plants"
+      }
+    ]
+  },
+  "creepy-earth-black-mayonnaise": {
+    "master_text": "SLIME-SAFE DOSSIER: If you meet Black Mayonnaise, assume the planet is testing you. The gross mechanism is oil, mud, and waste mixing into tarry muck. The warning sign is black sticky goo in the water. Dr. Icky’s order: keep hands out of mystery black sludge. The lab gloves are nervous.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Black Mayonnaise: which force created the yuck?",
+        "options": [
+          "oil, mud, and waste mixing into tarry muck",
+          "haunted glitter clogging the atmosphere",
+          "a sandwich crust becoming sentient",
+          "the lab mascot yelling at water"
+        ],
+        "correct_answer": "oil, mud, and waste mixing into tarry muck"
+      },
+      {
+        "question": "Black Mayonnaise: what should a recruit do near this mess?",
+        "options": [
+          "mail it to your cousin",
+          "keep hands out of mystery black sludge",
+          "feed it lunch meat",
+          "trade it for cafeteria fries"
+        ],
+        "correct_answer": "keep hands out of mystery black sludge"
+      },
+      {
+        "question": "Black Mayonnaise: what screams 'back away'?",
+        "options": [
+          "a polite sparkle over clean water",
+          "an elegant napkin",
+          "black sticky goo in the water",
+          "a cupcake wearing goggles"
+        ],
+        "correct_answer": "black sticky goo in the water"
+      }
+    ]
+  },
+  "creepy-earth-brain-boil": {
+    "master_text": "UNDERGROUND WARNING: Brain Boil is what happens when normal Earth stuff gets a disgusting promotion. Blame infection or heat stressing the brain. Look for confusion, high heat, and misery. The official recruit command is: treat brain symptoms as emergency trouble. The specimen already knows where the vents are.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Brain Boil: which move keeps the specimen contained?",
+        "options": [
+          "treat brain symptoms as emergency trouble",
+          "balance it on your nose",
+          "use it as a bookmark",
+          "lick the evidence bag"
+        ],
+        "correct_answer": "treat brain symptoms as emergency trouble"
+      },
+      {
+        "question": "Brain Boil: what powers this Earth gross-out?",
+        "options": [
+          "worms writing poems in concrete",
+          "a cursed spoon stirring the clouds",
+          "invisible goblins polishing rocks",
+          "infection or heat stressing the brain"
+        ],
+        "correct_answer": "infection or heat stressing the brain"
+      },
+      {
+        "question": "Brain Boil: which sign says the specimen is active?",
+        "options": [
+          "confusion, high heat, and misery",
+          "a very organized bucket",
+          "a glass of sparkling lemonade",
+          "a floating birthday balloon"
+        ],
+        "correct_answer": "confusion, high heat, and misery"
+      }
+    ]
+  },
+  "creepy-earth-toxic-tumbleweeds": {
+    "master_text": "LAB RECRUIT BRIEF: The lab nearly survived Toxic Tumbleweeds until somebody got curious. This specimen runs on dry weeds collecting pollutants and dust. It gives itself away with dead plants blowing through dirty ground. The safe move is: do not hug suspicious desert tumble-balls. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Toxic Tumbleweeds: which force created the yuck?",
+        "options": [
+          "radioactive marshmallows melting underground",
+          "worms writing poems in concrete",
+          "dry weeds collecting pollutants and dust",
+          "invisible goblins polishing rocks"
+        ],
+        "correct_answer": "dry weeds collecting pollutants and dust"
+      },
+      {
+        "question": "Toxic Tumbleweeds: what should a recruit do near this mess?",
+        "options": [
+          "invite it into your backpack",
+          "do not hug suspicious desert tumble-balls",
+          "open the jar during math class",
+          "let it babysit the hamster"
+        ],
+        "correct_answer": "do not hug suspicious desert tumble-balls"
+      },
+      {
+        "question": "Toxic Tumbleweeds: what screams 'back away'?",
+        "options": [
+          "a smug but harmless paperclip",
+          "a smiling rock wearing glasses",
+          "dead plants blowing through dirty ground",
+          "a very organized bucket"
+        ],
+        "correct_answer": "dead plants blowing through dirty ground"
+      }
+    ]
+  },
+  "creepy-earth-bubblegut-bacteria": {
+    "master_text": "PLANETARY YUCK NOTICE: Bubblegut Bacteria looks like belly microbes holding a gas concert. The trick is bacteria fermenting food in the gut. A sharp recruit watches for bloating, gurgles, and rude bubbles, then remembers the lab rule: respect the stomach orchestra. The cafeteria has been warned.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Bubblegut Bacteria: what turned normal Earth into trouble?",
+        "options": [
+          "worms writing poems in concrete",
+          "bacteria fermenting food in the gut",
+          "an angry sandwich gaining weather powers",
+          "a sandwich fossil waking up"
+        ],
+        "correct_answer": "bacteria fermenting food in the gut"
+      },
+      {
+        "question": "Bubblegut Bacteria: which sign says the specimen is active?",
+        "options": [
+          "a frog with a clipboard",
+          "a gentle breeze smelling of cupcakes",
+          "bloating, gurgles, and rude bubbles",
+          "a tiny trophy for hygiene"
+        ],
+        "correct_answer": "bloating, gurgles, and rude bubbles"
+      },
+      {
+        "question": "Bubblegut Bacteria: which choice would keep the lab open?",
+        "options": [
+          "respect the stomach orchestra",
+          "make it your bathwater",
+          "pour it into your shoes",
+          "rub it on a sandwich"
+        ],
+        "correct_answer": "respect the stomach orchestra"
+      }
+    ]
+  },
+  "creepy-earth-rust-blood": {
+    "master_text": "CONTAMINATION CARD: Dr. Icky filed Rust Blood under 'planet behaving badly.' Expect water looking like something bled metal. The nasty engine is iron minerals coloring liquid red-brown. The first clue is rust stains around wet surfaces. Your survival rule is simple: test rusty water before trusting it. The specimen already knows where the vents are.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Rust Blood: which force created the yuck?",
+        "options": [
+          "iron minerals coloring liquid red-brown",
+          "clouds sneezing into the sewer",
+          "robot pigeons overheating the soil",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "iron minerals coloring liquid red-brown"
+      },
+      {
+        "question": "Rust Blood: which detail belongs in the danger log?",
+        "options": [
+          "a pleasant smell of toast",
+          "rust stains around wet surfaces",
+          "a polite musical beep",
+          "a harmless-looking teddy bear"
+        ],
+        "correct_answer": "rust stains around wet surfaces"
+      },
+      {
+        "question": "Rust Blood: what would Dr. Icky forbid?",
+        "options": [
+          "test rusty water before trusting it",
+          "mail it to your cousin",
+          "ask it for career advice",
+          "make it your bathwater"
+        ],
+        "correct_answer": "test rusty water before trusting it"
+      }
+    ]
+  },
+  "creepy-earth-spontaneous-showers": {
+    "master_text": "EARTH HORROR LOG: Specimen 037 arrived as the sky dumping water with terrible timing. Dr. Icky circled one cause in green slime: sudden local weather changes releasing rain. Spot dark clouds and rushing cool air before getting brave. Field rule: watch the sky before the sky watches you. The lab gloves are nervous.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Spontaneous Showers: which action belongs in the safety manual?",
+        "options": [
+          "poke it with your tongue",
+          "watch the sky before the sky watches you",
+          "stir it with your finger",
+          "wear it as a face mask"
+        ],
+        "correct_answer": "watch the sky before the sky watches you"
+      },
+      {
+        "question": "Spontaneous Showers: which detail belongs in the danger log?",
+        "options": [
+          "dark clouds and rushing cool air",
+          "a rainbow with excellent posture",
+          "a tiny bow tie on a worm",
+          "a suspiciously normal sandwich"
+        ],
+        "correct_answer": "dark clouds and rushing cool air"
+      },
+      {
+        "question": "Spontaneous Showers: what started the lab incident?",
+        "options": [
+          "worms writing poems in concrete",
+          "a rubber duck overheating the planet",
+          "slime coins multiplying in pipes",
+          "sudden local weather changes releasing rain"
+        ],
+        "correct_answer": "sudden local weather changes releasing rain"
+      }
+    ]
+  },
+  "creepy-earth-vomit-tunnel": {
+    "master_text": "GROSS PLANET FILE: Vomit Tunnel belongs in the cabinet labeled 'Earth Has Problems.' It starts with bad air, motion, or smell triggering nausea, then announces itself through stale stink and dizzy walking. Recruits who want clean shoes follow one rule: leave the tunnel before breakfast returns. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Vomit Tunnel: which force created the yuck?",
+        "options": [
+          "bad air, motion, or smell triggering nausea",
+          "grandma’s soup becoming magnetic",
+          "a nervous cactus sweating glue",
+          "a raccoon pressing the disaster button"
+        ],
+        "correct_answer": "bad air, motion, or smell triggering nausea"
+      },
+      {
+        "question": "Vomit Tunnel: what should a recruit do near this mess?",
+        "options": [
+          "invite it into your backpack",
+          "put it in someone’s lunchbox",
+          "leave the tunnel before breakfast returns",
+          "use it as a bookmark"
+        ],
+        "correct_answer": "leave the tunnel before breakfast returns"
+      },
+      {
+        "question": "Vomit Tunnel: what tells you the area is getting gross?",
+        "options": [
+          "a neat row of harmless pebbles",
+          "a polite sparkle over clean water",
+          "a polite musical beep",
+          "stale stink and dizzy walking"
+        ],
+        "correct_answer": "stale stink and dizzy walking"
+      }
+    ]
+  },
+  "creepy-earth-the-boiling-river": {
+    "master_text": "EARTH HORROR LOG: If you meet The Boiling River, assume the planet is testing you. The gross mechanism is geothermal heat warming flowing water. The warning sign is steam rising from the current. Dr. Icky’s order: never dip toes into steaming rivers. New slime stains are pending.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "The Boiling River: what makes this specimen turn nasty?",
+        "options": [
+          "evil confetti dissolving into rain",
+          "cheese fumes bending gravity",
+          "geothermal heat warming flowing water",
+          "toothpaste fermenting in thunder"
+        ],
+        "correct_answer": "geothermal heat warming flowing water"
+      },
+      {
+        "question": "The Boiling River: what should happen next?",
+        "options": [
+          "lick the evidence bag",
+          "never dip toes into steaming rivers",
+          "open the jar during math class",
+          "rub it on your homework"
+        ],
+        "correct_answer": "never dip toes into steaming rivers"
+      },
+      {
+        "question": "The Boiling River: what made the slime alarm blink?",
+        "options": [
+          "steam rising from the current",
+          "a tiny flag saying 'safe'",
+          "a silent disco near the sink",
+          "a squeaky clean puddle"
+        ],
+        "correct_answer": "steam rising from the current"
+      }
+    ]
+  },
+  "creepy-earth-bacterial-brick-walls": {
+    "master_text": "UNDERGROUND WARNING: Bacterial Brick Walls is what happens when normal Earth stuff gets a disgusting promotion. Blame bacteria helping minerals bind together. Look for living materials hardening into brick-like forms. The official recruit command is: do not eat the experimental wall. The cafeteria has been warned.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Bacterial Brick Walls: which sign says the specimen is active?",
+        "options": [
+          "a smiling rock wearing glasses",
+          "a rainbow with excellent posture",
+          "a very organized bucket",
+          "living materials hardening into brick-like forms"
+        ],
+        "correct_answer": "living materials hardening into brick-like forms"
+      },
+      {
+        "question": "Bacterial Brick Walls: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "do not eat the experimental wall",
+          "sleep next to it for warmth",
+          "open the jar during math class",
+          "paint the walls with it"
+        ],
+        "correct_answer": "do not eat the experimental wall"
+      },
+      {
+        "question": "Bacterial Brick Walls: what is the secret engine of the mess?",
+        "options": [
+          "bacteria helping minerals bind together",
+          "grandma’s soup becoming magnetic",
+          "ice cubes forming a secret union",
+          "a cursed spoon stirring the clouds"
+        ],
+        "correct_answer": "bacteria helping minerals bind together"
+      }
+    ]
+  },
+  "creepy-earth-bubble-wrap-earthquakes": {
+    "master_text": "CONTAMINATION CARD: The lab nearly survived Bubble Wrap Earthquakes until somebody got curious. This specimen runs on shaking forcing trapped gas or water upward. It gives itself away with pops, cracks, and bubbling soil. The safe move is: back away from ground making snack noises. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Bubble Wrap Earthquakes: what should a recruit do near this mess?",
+        "options": [
+          "poke it with your tongue",
+          "balance it on your nose",
+          "back away from ground making snack noises",
+          "use it to moisturize elbows"
+        ],
+        "correct_answer": "back away from ground making snack noises"
+      },
+      {
+        "question": "Bubble Wrap Earthquakes: what is Dr. Icky blaming?",
+        "options": [
+          "toothpaste fermenting in thunder",
+          "shaking forcing trapped gas or water upward",
+          "dinosaurs sneezing under the floor",
+          "purple glitter breeding underground"
+        ],
+        "correct_answer": "shaking forcing trapped gas or water upward"
+      },
+      {
+        "question": "Bubble Wrap Earthquakes: what should go in the field notes?",
+        "options": [
+          "a gentle breeze smelling of cupcakes",
+          "a well-behaved flowerpot",
+          "a tiny bow tie on a worm",
+          "pops, cracks, and bubbling soil"
+        ],
+        "correct_answer": "pops, cracks, and bubbling soil"
+      }
+    ]
+  },
+  "creepy-earth-the-sizzling-sidewalk": {
+    "master_text": "DR. ICKY FIELD NOTE: The Sizzling Sidewalk looks like pavement hot enough to roast bad decisions. The trick is sun-heated concrete storing heat. A sharp recruit watches for waves of heat above the ground, then remembers the lab rule: protect bare feet from scorching pavement. The janitor has requested emotional compensation.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "The Sizzling Sidewalk: what clue should a recruit notice first?",
+        "options": [
+          "a smug but harmless paperclip",
+          "waves of heat above the ground",
+          "a rock playing the triangle",
+          "a gentle breeze smelling of cupcakes"
+        ],
+        "correct_answer": "waves of heat above the ground"
+      },
+      {
+        "question": "The Sizzling Sidewalk: what should a recruit do near this mess?",
+        "options": [
+          "stir it with your finger",
+          "protect bare feet from scorching pavement",
+          "comb it into your hair",
+          "sprinkle it on cereal"
+        ],
+        "correct_answer": "protect bare feet from scorching pavement"
+      },
+      {
+        "question": "The Sizzling Sidewalk: what started the lab incident?",
+        "options": [
+          "ancient bubble wrap under the sea",
+          "a frog orchestra shaking the soil",
+          "sun-heated concrete storing heat",
+          "purple glitter breeding underground"
+        ],
+        "correct_answer": "sun-heated concrete storing heat"
+      }
+    ]
+  },
+  "creepy-earth-dirty-snow": {
+    "master_text": "PLANETARY YUCK NOTICE: Dr. Icky filed Dirty Snow under 'planet behaving badly.' Expect snow that arrived wearing pollution makeup. The nasty engine is soot and dust darkening snow. The first clue is gray crystals instead of clean white flakes. Your survival rule is simple: skip eating roadside snow. The lab gloves are nervous.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Dirty Snow: what turned normal Earth into trouble?",
+        "options": [
+          "beans arguing inside a volcano",
+          "soot and dust darkening snow",
+          "a birthday cake collapsing into mud",
+          "slime coins multiplying in pipes"
+        ],
+        "correct_answer": "soot and dust darkening snow"
+      },
+      {
+        "question": "Dirty Snow: what should go in the field notes?",
+        "options": [
+          "gray crystals instead of clean white flakes",
+          "freshly folded laundry",
+          "a soap bubble doing taxes",
+          "a cheerful banjo sound"
+        ],
+        "correct_answer": "gray crystals instead of clean white flakes"
+      },
+      {
+        "question": "Dirty Snow: what is the safe move?",
+        "options": [
+          "rub it on your homework",
+          "lick the evidence bag",
+          "ask it for career advice",
+          "skip eating roadside snow"
+        ],
+        "correct_answer": "skip eating roadside snow"
+      }
+    ]
+  },
+  "creepy-earth-flesheating-mudslides": {
+    "master_text": "EARTH HORROR LOG: Specimen 044 arrived as a mud wave carrying rocks, germs, and doom. Dr. Icky circled one cause in green slime: waterlogged soil collapsing downhill. Spot fast dirty flow after heavy rain before getting brave. Field rule: move away from steep soaked slopes. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Flesheating Mudslides: what should a recruit do near this mess?",
+        "options": [
+          "mail it to your cousin",
+          "open the jar during math class",
+          "move away from steep soaked slopes",
+          "wear it as a face mask"
+        ],
+        "correct_answer": "move away from steep soaked slopes"
+      },
+      {
+        "question": "Flesheating Mudslides: which detail belongs in the danger log?",
+        "options": [
+          "a tidy shoe rack",
+          "a neat row of harmless pebbles",
+          "a tiny choir of clean socks",
+          "fast dirty flow after heavy rain"
+        ],
+        "correct_answer": "fast dirty flow after heavy rain"
+      },
+      {
+        "question": "Flesheating Mudslides: what is the secret engine of the mess?",
+        "options": [
+          "a nervous cactus sweating glue",
+          "toothpaste fermenting in thunder",
+          "dinosaurs sneezing under the floor",
+          "waterlogged soil collapsing downhill"
+        ],
+        "correct_answer": "waterlogged soil collapsing downhill"
+      }
+    ]
+  },
+  "creepy-earth-trash-avalanche": {
+    "master_text": "LAB RECRUIT BRIEF: Trash Avalanche belongs in the cabinet labeled 'Earth Has Problems.' It starts with unstable landfill waste collapsing, then announces itself through shifting piles after rain. Recruits who want clean shoes follow one rule: stay off garbage slopes. The cafeteria has been warned.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Trash Avalanche: which choice would keep the lab open?",
+        "options": [
+          "stay off garbage slopes",
+          "use it as a bookmark",
+          "whisper secrets into the drain",
+          "use it to moisturize elbows"
+        ],
+        "correct_answer": "stay off garbage slopes"
+      },
+      {
+        "question": "Trash Avalanche: what started the lab incident?",
+        "options": [
+          "slime coins multiplying in pipes",
+          "clouds sneezing into the sewer",
+          "clouds filled with spicy pudding",
+          "unstable landfill waste collapsing"
+        ],
+        "correct_answer": "unstable landfill waste collapsing"
+      },
+      {
+        "question": "Trash Avalanche: which sign says the specimen is active?",
+        "options": [
+          "shifting piles after rain",
+          "a squeaky clean puddle",
+          "a smiling rock wearing glasses",
+          "a cheerful banjo sound"
+        ],
+        "correct_answer": "shifting piles after rain"
+      }
+    ]
+  },
+  "creepy-earth-alien-slime-rain": {
+    "master_text": "PLANETARY YUCK NOTICE: If you meet Alien Slime Rain, assume the planet is testing you. The gross mechanism is gelatinous material dropping during strange weather. The warning sign is clear jelly blobs on the ground. Dr. Icky’s order: bag the blob, never taste the blob. The specimen already knows where the vents are.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Alien Slime Rain: which clue points to the hazard?",
+        "options": [
+          "clear jelly blobs on the ground",
+          "a suspiciously normal sandwich",
+          "fresh cookies near the danger zone",
+          "a floating birthday balloon"
+        ],
+        "correct_answer": "clear jelly blobs on the ground"
+      },
+      {
+        "question": "Alien Slime Rain: what should a recruit avoid?",
+        "options": [
+          "mail it to your cousin",
+          "open the jar during math class",
+          "bag the blob, never taste the blob",
+          "balance it on your nose"
+        ],
+        "correct_answer": "bag the blob, never taste the blob"
+      },
+      {
+        "question": "Alien Slime Rain: what is the secret engine of the mess?",
+        "options": [
+          "gelatinous material dropping during strange weather",
+          "ice cubes forming a secret union",
+          "robot pigeons overheating the soil",
+          "a toaster haunting the river"
+        ],
+        "correct_answer": "gelatinous material dropping during strange weather"
+      }
+    ]
+  },
+  "creepy-earth-oil-boils": {
+    "master_text": "EARTH HORROR LOG: Oil Boils is what happens when normal Earth stuff gets a disgusting promotion. Blame crude oil and gas pushing upward. Look for tar smell and slick bubbling spots. The official recruit command is: keep flames away from oily eruptions. The cafeteria has been warned.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "Oil Boils: what is hiding behind the slime alarm?",
+        "options": [
+          "angry socks absorbing moonbeams",
+          "beans arguing inside a volcano",
+          "crude oil and gas pushing upward",
+          "a broomstick drilling for pudding"
+        ],
+        "correct_answer": "crude oil and gas pushing upward"
+      },
+      {
+        "question": "Oil Boils: what should a recruit avoid?",
+        "options": [
+          "keep it under your bed",
+          "mail it to your cousin",
+          "keep flames away from oily eruptions",
+          "put it in someone’s lunchbox"
+        ],
+        "correct_answer": "keep flames away from oily eruptions"
+      },
+      {
+        "question": "Oil Boils: which detail belongs in the danger log?",
+        "options": [
+          "a pleasant smell of toast",
+          "a neat row of harmless pebbles",
+          "a sleeping rubber duck",
+          "tar smell and slick bubbling spots"
+        ],
+        "correct_answer": "tar smell and slick bubbling spots"
+      }
+    ]
+  },
+  "creepy-earth-the-slime-coast": {
+    "master_text": "DR. ICKY FIELD NOTE: The lab nearly survived The Slime Coast until somebody got curious. This specimen runs on algae multiplying and rotting near shore. It gives itself away with green water and rotten egg smell. The safe move is: avoid swimming through algae soup. The cafeteria has been warned.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "The Slime Coast: what should go in the field notes?",
+        "options": [
+          "a soap bubble doing taxes",
+          "a tiny trophy for hygiene",
+          "a glass of sparkling lemonade",
+          "green water and rotten egg smell"
+        ],
+        "correct_answer": "green water and rotten egg smell"
+      },
+      {
+        "question": "The Slime Coast: what is the secret engine of the mess?",
+        "options": [
+          "a toaster haunting the river",
+          "toothpaste fermenting in thunder",
+          "angry socks absorbing moonbeams",
+          "algae multiplying and rotting near shore"
+        ],
+        "correct_answer": "algae multiplying and rotting near shore"
+      },
+      {
+        "question": "The Slime Coast: what is the safe move?",
+        "options": [
+          "mail it to your cousin",
+          "avoid swimming through algae soup",
+          "race it down the hallway",
+          "keep it under your bed"
+        ],
+        "correct_answer": "avoid swimming through algae soup"
+      }
+    ]
+  },
+  "creepy-earth-burnt-toast-fog": {
+    "master_text": "CONTAMINATION CARD: Burnt Toast Fog looks like air that smells like breakfast got cursed. The trick is smog particles irritating lungs. A sharp recruit watches for scorched smell and hazy air, then remembers the lab rule: limit breathing time in dirty fog. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Burnt Toast Fog: what is hiding behind the slime alarm?",
+        "options": [
+          "smog particles irritating lungs",
+          "grandma’s soup becoming magnetic",
+          "a lizard pushing buttons in the basement",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "smog particles irritating lungs"
+      },
+      {
+        "question": "Burnt Toast Fog: what is the official no-gagging strategy?",
+        "options": [
+          "limit breathing time in dirty fog",
+          "rub it on a sandwich",
+          "put it in someone’s lunchbox",
+          "feed it lunch meat"
+        ],
+        "correct_answer": "limit breathing time in dirty fog"
+      },
+      {
+        "question": "Burnt Toast Fog: what screams 'back away'?",
+        "options": [
+          "a squeaky clean puddle",
+          "scorched smell and hazy air",
+          "a gold star on the sewer lid",
+          "a sleeping rubber duck"
+        ],
+        "correct_answer": "scorched smell and hazy air"
+      }
+    ]
+  },
+  "creepy-earth-sewage-tsunami": {
+    "master_text": "CONTAMINATION CARD: Dr. Icky filed Sewage Tsunami under 'planet behaving badly.' Expect a wave nobody should surf. The nasty engine is burst sewer water rushing through streets. The first clue is brown floodwater and rotten gas. Your survival rule is simple: avoid contact with sewage floods. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Sewage Tsunami: what clue should a recruit notice first?",
+        "options": [
+          "a gold star on the sewer lid",
+          "fresh cookies near the danger zone",
+          "brown floodwater and rotten gas",
+          "a polite musical beep"
+        ],
+        "correct_answer": "brown floodwater and rotten gas"
+      },
+      {
+        "question": "Sewage Tsunami: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "throw it at the ceiling fan",
+          "pour it into your shoes",
+          "keep it under your bed",
+          "avoid contact with sewage floods"
+        ],
+        "correct_answer": "avoid contact with sewage floods"
+      },
+      {
+        "question": "Sewage Tsunami: what is doing the disgusting work?",
+        "options": [
+          "mold learning karate",
+          "grandma’s soup becoming magnetic",
+          "a rubber duck overheating the planet",
+          "burst sewer water rushing through streets"
+        ],
+        "correct_answer": "burst sewer water rushing through streets"
+      }
+    ]
+  },
+  "creepy-earth-foaming-gut-lakes": {
+    "master_text": "GROSS PLANET FILE: Specimen 051 arrived as a lake bubbling like a monster stomach. Dr. Icky circled one cause in green slime: gases and microbes foaming the water. Spot suds rising from stinky lake water before getting brave. Field rule: do not paddle through unknown foam. New slime stains are pending.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Foaming Gut Lakes: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "store it beside clean snacks",
+          "ask it for career advice",
+          "wear it as a face mask",
+          "do not paddle through unknown foam"
+        ],
+        "correct_answer": "do not paddle through unknown foam"
+      },
+      {
+        "question": "Foaming Gut Lakes: what made the slime alarm blink?",
+        "options": [
+          "a rainbow with excellent posture",
+          "suds rising from stinky lake water",
+          "a polite sparkle over clean water",
+          "fresh cookies near the danger zone"
+        ],
+        "correct_answer": "suds rising from stinky lake water"
+      },
+      {
+        "question": "Foaming Gut Lakes: what caused the horrible part?",
+        "options": [
+          "gases and microbes foaming the water",
+          "a volcano swallowing chewing gum",
+          "ice cubes forming a secret union",
+          "the sun burping into a drain"
+        ],
+        "correct_answer": "gases and microbes foaming the water"
+      }
+    ]
+  },
+  "creepy-earth-grease-trap-geyser": {
+    "master_text": "UNDERGROUND WARNING: Grease Trap Geyser belongs in the cabinet labeled 'Earth Has Problems.' It starts with blocked grease traps building pressure, then announces itself through rancid oil smell near drains. Recruits who want clean shoes follow one rule: call maintenance before the kitchen erupts. The janitor has requested emotional compensation.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Grease Trap Geyser: what made the slime alarm blink?",
+        "options": [
+          "a polite note from the mud",
+          "fresh cookies near the danger zone",
+          "rancid oil smell near drains",
+          "a squeaky clean puddle"
+        ],
+        "correct_answer": "rancid oil smell near drains"
+      },
+      {
+        "question": "Grease Trap Geyser: which action belongs in the safety manual?",
+        "options": [
+          "call maintenance before the kitchen erupts",
+          "collect it in your socks",
+          "name it Captain Goo",
+          "open the jar during math class"
+        ],
+        "correct_answer": "call maintenance before the kitchen erupts"
+      },
+      {
+        "question": "Grease Trap Geyser: what powers this Earth gross-out?",
+        "options": [
+          "clouds filled with spicy pudding",
+          "the sun burping into a drain",
+          "blocked grease traps building pressure",
+          "grandma’s soup becoming magnetic"
+        ],
+        "correct_answer": "blocked grease traps building pressure"
+      }
+    ]
+  },
+  "creepy-earth-flesh-rotting-fungi": {
+    "master_text": "DR. ICKY FIELD NOTE: If you meet Flesh-Rotting Fungi, assume the planet is testing you. The gross mechanism is fungal growth invading damaged tissue. The warning sign is spreading rash, rot, or fuzzy patches. Dr. Icky’s order: get help before the fuzz expands. Science survives. Dignity does not.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Flesh-Rotting Fungi: what made the planet act disgusting?",
+        "options": [
+          "a raccoon pressing the disaster button",
+          "fungal growth invading damaged tissue",
+          "a frog orchestra shaking the soil",
+          "a haunted fridge leaking feelings"
+        ],
+        "correct_answer": "fungal growth invading damaged tissue"
+      },
+      {
+        "question": "Flesh-Rotting Fungi: how does a smart recruit survive it?",
+        "options": [
+          "use it as cake frosting",
+          "get help before the fuzz expands",
+          "taste it for science",
+          "squeeze it until it answers"
+        ],
+        "correct_answer": "get help before the fuzz expands"
+      },
+      {
+        "question": "Flesh-Rotting Fungi: what gave the specimen away?",
+        "options": [
+          "a floating birthday balloon",
+          "spreading rash, rot, or fuzzy patches",
+          "a rock playing the triangle",
+          "an elegant napkin"
+        ],
+        "correct_answer": "spreading rash, rot, or fuzzy patches"
+      }
+    ]
+  },
+  "creepy-earth-pimpled-planet-surface": {
+    "master_text": "DO-NOT-LICK REPORT: Pimpled Planet Surface is what happens when normal Earth stuff gets a disgusting promotion. Blame bubbles, vents, or mud lumps swelling upward. Look for raised bumps across the ground. The official recruit command is: do not stomp geological pimples. The lab gloves are nervous.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Pimpled Planet Surface: what should a recruit do near this mess?",
+        "options": [
+          "sprinkle it on cereal",
+          "do not stomp geological pimples",
+          "let it babysit the hamster",
+          "use it as a bookmark"
+        ],
+        "correct_answer": "do not stomp geological pimples"
+      },
+      {
+        "question": "Pimpled Planet Surface: what clue should a recruit notice first?",
+        "options": [
+          "a cheerful banjo sound",
+          "a polite note from the mud",
+          "a tiny flag saying 'safe'",
+          "raised bumps across the ground"
+        ],
+        "correct_answer": "raised bumps across the ground"
+      },
+      {
+        "question": "Pimpled Planet Surface: what is hiding behind the slime alarm?",
+        "options": [
+          "ice cubes forming a secret union",
+          "dinosaurs sneezing under the floor",
+          "bubbles, vents, or mud lumps swelling upward",
+          "radioactive marshmallows melting underground"
+        ],
+        "correct_answer": "bubbles, vents, or mud lumps swelling upward"
+      }
+    ]
+  },
+  "creepy-earth-hot-garbage-rain": {
+    "master_text": "PLANETARY YUCK NOTICE: The lab nearly survived Hot Garbage Rain until somebody got curious. This specimen runs on storms carrying landfill debris. It gives itself away with warm stink and scraps after rain. The safe move is: wear gloves around storm-thrown garbage. The specimen already knows where the vents are.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Hot Garbage Rain: which detail belongs in the danger log?",
+        "options": [
+          "a cheerful banjo sound",
+          "fresh cookies near the danger zone",
+          "a squeaky clean puddle",
+          "warm stink and scraps after rain"
+        ],
+        "correct_answer": "warm stink and scraps after rain"
+      },
+      {
+        "question": "Hot Garbage Rain: what is the correct lab rule?",
+        "options": [
+          "wear gloves around storm-thrown garbage",
+          "let it babysit the hamster",
+          "make it your bathwater",
+          "whisper secrets into the drain"
+        ],
+        "correct_answer": "wear gloves around storm-thrown garbage"
+      },
+      {
+        "question": "Hot Garbage Rain: what is the gross science here?",
+        "options": [
+          "dinosaurs sneezing under the floor",
+          "the sun burping into a drain",
+          "storms carrying landfill debris",
+          "a cursed spoon stirring the clouds"
+        ],
+        "correct_answer": "storms carrying landfill debris"
+      }
+    ]
+  },
+  "creepy-earth-rotting-tap-water": {
+    "master_text": "CONTAMINATION CARD: Rotting Tap Water looks like a sink serving swamp flavor. The trick is pipe contamination or stagnant water. A sharp recruit watches for bad smell, odd color, or slime, then remembers the lab rule: stop drinking water that smells alive. That is how socks become evidence.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Rotting Tap Water: what should happen next?",
+        "options": [
+          "sleep next to it for warmth",
+          "rub it on a sandwich",
+          "make it your bathwater",
+          "stop drinking water that smells alive"
+        ],
+        "correct_answer": "stop drinking water that smells alive"
+      },
+      {
+        "question": "Rotting Tap Water: what is the secret engine of the mess?",
+        "options": [
+          "clouds filled with spicy pudding",
+          "pipe contamination or stagnant water",
+          "a ghost whale using a hair dryer",
+          "robot pigeons overheating the soil"
+        ],
+        "correct_answer": "pipe contamination or stagnant water"
+      },
+      {
+        "question": "Rotting Tap Water: what made the slime alarm blink?",
+        "options": [
+          "a polite musical beep",
+          "bad smell, odd color, or slime",
+          "a postcard from Grandma",
+          "a frog with a clipboard"
+        ],
+        "correct_answer": "bad smell, odd color, or slime"
+      }
+    ]
+  },
+  "creepy-earth-the-bubbly-battlefield": {
+    "master_text": "UNDERGROUND WARNING: Dr. Icky filed The Bubbly Battlefield under 'planet behaving badly.' Expect muddy ground fizzing after a fight with water. The nasty engine is buried gas escaping through saturated soil. The first clue is bubbles popping in muddy holes. Your survival rule is simple: avoid bubbling mud near damaged ground. The lab gloves are nervous.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "The Bubbly Battlefield: which sign says the specimen is active?",
+        "options": [
+          "a pleasant smell of toast",
+          "a well-behaved flowerpot",
+          "a glass of sparkling lemonade",
+          "bubbles popping in muddy holes"
+        ],
+        "correct_answer": "bubbles popping in muddy holes"
+      },
+      {
+        "question": "The Bubbly Battlefield: what is doing the disgusting work?",
+        "options": [
+          "a frog orchestra shaking the soil",
+          "robot pigeons overheating the soil",
+          "buried gas escaping through saturated soil",
+          "slime coins multiplying in pipes"
+        ],
+        "correct_answer": "buried gas escaping through saturated soil"
+      },
+      {
+        "question": "The Bubbly Battlefield: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "avoid bubbling mud near damaged ground",
+          "put it in someone’s lunchbox",
+          "store it beside clean snacks",
+          "use it to moisturize elbows"
+        ],
+        "correct_answer": "avoid bubbling mud near damaged ground"
+      }
+    ]
+  },
+  "creepy-earth-kitchen-sponge-swamp": {
+    "master_text": "LAB RECRUIT BRIEF: Specimen 058 arrived as a sponge pretending to help while raising microbes. Dr. Icky circled one cause in green slime: food scraps feeding bacteria in damp foam. Spot sour smell from a wet sponge before getting brave. Field rule: replace or disinfect the sponge swamp. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Kitchen Sponge Swamp: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "replace or disinfect the sponge swamp",
+          "use it as a pillow",
+          "keep it under your bed",
+          "pour it into your shoes"
+        ],
+        "correct_answer": "replace or disinfect the sponge swamp"
+      },
+      {
+        "question": "Kitchen Sponge Swamp: which clue points to the hazard?",
+        "options": [
+          "a cupcake wearing goggles",
+          "a squeaky clean puddle",
+          "a postcard from Grandma",
+          "sour smell from a wet sponge"
+        ],
+        "correct_answer": "sour smell from a wet sponge"
+      },
+      {
+        "question": "Kitchen Sponge Swamp: what is Dr. Icky blaming?",
+        "options": [
+          "the sun burping into a drain",
+          "food scraps feeding bacteria in damp foam",
+          "ants charging the mud with batteries",
+          "a sandwich fossil waking up"
+        ],
+        "correct_answer": "food scraps feeding bacteria in damp foam"
+      }
+    ]
+  },
+  "creepy-earth-concrete-pus": {
+    "master_text": "PLANETARY YUCK NOTICE: Concrete Pus belongs in the cabinet labeled 'Earth Has Problems.' It starts with water pushing minerals through concrete, then announces itself through white crust or wet ooze on walls. Recruits who want clean shoes follow one rule: trace the leak before the wall gets grosser. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Concrete Pus: what clue should a recruit notice first?",
+        "options": [
+          "a tiny trophy for hygiene",
+          "a polite musical beep",
+          "a clean spoon on a clean plate",
+          "white crust or wet ooze on walls"
+        ],
+        "correct_answer": "white crust or wet ooze on walls"
+      },
+      {
+        "question": "Concrete Pus: what is the gross science here?",
+        "options": [
+          "clouds filled with spicy pudding",
+          "a giant invisible blender",
+          "water pushing minerals through concrete",
+          "a raccoon pressing the disaster button"
+        ],
+        "correct_answer": "water pushing minerals through concrete"
+      },
+      {
+        "question": "Concrete Pus: what should a recruit do near this mess?",
+        "options": [
+          "feed it lunch meat",
+          "trace the leak before the wall gets grosser",
+          "keep it under your bed",
+          "ask it for career advice"
+        ],
+        "correct_answer": "trace the leak before the wall gets grosser"
+      }
+    ]
+  },
+  "creepy-earth-the-boneyard-flood": {
+    "master_text": "LAB RECRUIT BRIEF: If you meet The Boneyard Flood, assume the planet is testing you. The gross mechanism is floodwater eroding burial ground. The warning sign is muddy water carrying pale fragments. Dr. Icky’s order: report exposed bones respectfully. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "The Boneyard Flood: how does a smart recruit survive it?",
+        "options": [
+          "balance it on your nose",
+          "report exposed bones respectfully",
+          "paint the walls with it",
+          "keep it under your bed"
+        ],
+        "correct_answer": "report exposed bones respectfully"
+      },
+      {
+        "question": "The Boneyard Flood: what tells you the area is getting gross?",
+        "options": [
+          "a floating birthday balloon",
+          "a tiny choir of clean socks",
+          "muddy water carrying pale fragments",
+          "a glass of sparkling lemonade"
+        ],
+        "correct_answer": "muddy water carrying pale fragments"
+      },
+      {
+        "question": "The Boneyard Flood: what is the gross science here?",
+        "options": [
+          "a cursed spoon stirring the clouds",
+          "tiny ghosts chewing the pavement",
+          "floodwater eroding burial ground",
+          "slime coins multiplying in pipes"
+        ],
+        "correct_answer": "floodwater eroding burial ground"
+      }
+    ]
+  },
+  "creepy-earth-mummy-mushrooms": {
+    "master_text": "DO-NOT-LICK REPORT: Mummy Mushrooms is what happens when normal Earth stuff gets a disgusting promotion. Blame spores feeding on old organic material. Look for mushrooms near dusty dead stuff. The official recruit command is: do not breathe suspicious tomb spores. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Mummy Mushrooms: what gave the specimen away?",
+        "options": [
+          "a harmless-looking teddy bear",
+          "a tiny trophy for hygiene",
+          "mushrooms near dusty dead stuff",
+          "a soap bubble doing taxes"
+        ],
+        "correct_answer": "mushrooms near dusty dead stuff"
+      },
+      {
+        "question": "Mummy Mushrooms: what should happen next?",
+        "options": [
+          "feed it lunch meat",
+          "do not breathe suspicious tomb spores",
+          "ask it for career advice",
+          "use it to moisturize elbows"
+        ],
+        "correct_answer": "do not breathe suspicious tomb spores"
+      },
+      {
+        "question": "Mummy Mushrooms: what powers this Earth gross-out?",
+        "options": [
+          "a nervous cactus sweating glue",
+          "a rubber duck overheating the planet",
+          "spores feeding on old organic material",
+          "ancient bubble wrap under the sea"
+        ],
+        "correct_answer": "spores feeding on old organic material"
+      }
+    ]
+  },
+  "creepy-earth-ball-lightning-bloopers": {
+    "master_text": "DO-NOT-LICK REPORT: The lab nearly survived Ball Lightning Bloopers until somebody got curious. This specimen runs on rare electrical energy forming a moving glow. It gives itself away with floating light during stormy conditions. The safe move is: never chase storm electricity. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Ball Lightning Bloopers: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "bring it to show-and-tell unsealed",
+          "sprinkle it on cereal",
+          "never chase storm electricity",
+          "let it babysit the hamster"
+        ],
+        "correct_answer": "never chase storm electricity"
+      },
+      {
+        "question": "Ball Lightning Bloopers: what caused the horrible part?",
+        "options": [
+          "rare electrical energy forming a moving glow",
+          "a raccoon pressing the disaster button",
+          "slime coins multiplying in pipes",
+          "angry socks absorbing moonbeams"
+        ],
+        "correct_answer": "rare electrical energy forming a moving glow"
+      },
+      {
+        "question": "Ball Lightning Bloopers: what tells you the area is getting gross?",
+        "options": [
+          "a tiny flag saying 'safe'",
+          "a floating birthday balloon",
+          "floating light during stormy conditions",
+          "a gentle breeze smelling of cupcakes"
+        ],
+        "correct_answer": "floating light during stormy conditions"
+      }
+    ]
+  },
+  "creepy-earth-acid-rain-hair-day": {
+    "master_text": "DR. ICKY FIELD NOTE: Acid Rain Hair Day looks like rain giving buildings a chemical shampoo. The trick is pollution making raindrops acidic. A sharp recruit watches for damaged surfaces after dirty rain, then remembers the lab rule: rinse off after suspicious rain. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Acid Rain Hair Day: what clue should a recruit notice first?",
+        "options": [
+          "an elegant napkin",
+          "a glass of sparkling lemonade",
+          "damaged surfaces after dirty rain",
+          "a tiny bow tie on a worm"
+        ],
+        "correct_answer": "damaged surfaces after dirty rain"
+      },
+      {
+        "question": "Acid Rain Hair Day: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "sleep next to it for warmth",
+          "collect it in your socks",
+          "rinse off after suspicious rain",
+          "feed it lunch meat"
+        ],
+        "correct_answer": "rinse off after suspicious rain"
+      },
+      {
+        "question": "Acid Rain Hair Day: what is the gross science here?",
+        "options": [
+          "a broomstick drilling for pudding",
+          "invisible goblins polishing rocks",
+          "a raccoon pressing the disaster button",
+          "pollution making raindrops acidic"
+        ],
+        "correct_answer": "pollution making raindrops acidic"
+      }
+    ]
+  },
+  "creepy-earth-the-sludge-volcano": {
+    "master_text": "CONTAMINATION CARD: Dr. Icky filed The Sludge Volcano under 'planet behaving badly.' Expect Earth burping mud instead of lava. The nasty engine is pressure pushing mud and gas upward. The first clue is cold mud bubbling from a cone. Your survival rule is simple: keep clear of mud vents. The janitor has requested emotional compensation.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "The Sludge Volcano: what powers this Earth gross-out?",
+        "options": [
+          "radioactive marshmallows melting underground",
+          "pressure pushing mud and gas upward",
+          "a lizard pushing buttons in the basement",
+          "a haunted fridge leaking feelings"
+        ],
+        "correct_answer": "pressure pushing mud and gas upward"
+      },
+      {
+        "question": "The Sludge Volcano: what is the official no-gagging strategy?",
+        "options": [
+          "keep clear of mud vents",
+          "balance it on your nose",
+          "poke it with your tongue",
+          "stir it with your finger"
+        ],
+        "correct_answer": "keep clear of mud vents"
+      },
+      {
+        "question": "The Sludge Volcano: what is the specimen’s giveaway?",
+        "options": [
+          "a silent disco near the sink",
+          "a cupcake wearing goggles",
+          "a smiling rock wearing glasses",
+          "cold mud bubbling from a cone"
+        ],
+        "correct_answer": "cold mud bubbling from a cone"
+      }
+    ]
+  },
+  "creepy-earth-the-crusty-carpet": {
+    "master_text": "CONTAMINATION CARD: Specimen 065 arrived as floor fabric collecting a secret ecosystem. Dr. Icky circled one cause in green slime: skin flakes, dust, and dampness feeding pests. Spot stiff fibers, smell, and dusty crust before getting brave. Field rule: vacuum before the carpet becomes a habitat. That is how socks become evidence.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "The Crusty Carpet: what is the correct lab rule?",
+        "options": [
+          "keep it under your bed",
+          "sleep next to it for warmth",
+          "paint the walls with it",
+          "vacuum before the carpet becomes a habitat"
+        ],
+        "correct_answer": "vacuum before the carpet becomes a habitat"
+      },
+      {
+        "question": "The Crusty Carpet: what clue should a recruit notice first?",
+        "options": [
+          "a neat row of harmless pebbles",
+          "stiff fibers, smell, and dusty crust",
+          "a puddle that says thank you",
+          "a tiny trophy for hygiene"
+        ],
+        "correct_answer": "stiff fibers, smell, and dusty crust"
+      },
+      {
+        "question": "The Crusty Carpet: what turned normal Earth into trouble?",
+        "options": [
+          "the lab mascot yelling at water",
+          "haunted glitter clogging the atmosphere",
+          "ants charging the mud with batteries",
+          "skin flakes, dust, and dampness feeding pests"
+        ],
+        "correct_answer": "skin flakes, dust, and dampness feeding pests"
+      }
+    ]
+  },
+  "creepy-earth-radioactive-wolf-puke": {
+    "master_text": "LAB RECRUIT BRIEF: Radioactive Wolf Puke belongs in the cabinet labeled 'Earth Has Problems.' It starts with animals moving contamination through food and waste, then announces itself through puke or scat inside restricted zones. Recruits who want clean shoes follow one rule: never touch animal mess in contaminated areas. The janitor has requested emotional compensation.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Radioactive Wolf Puke: what is the safe move?",
+        "options": [
+          "never touch animal mess in contaminated areas",
+          "poke it with your tongue",
+          "hide it in the classroom sink",
+          "make it your bathwater"
+        ],
+        "correct_answer": "never touch animal mess in contaminated areas"
+      },
+      {
+        "question": "Radioactive Wolf Puke: what is doing the disgusting work?",
+        "options": [
+          "robot pigeons overheating the soil",
+          "cheese fumes bending gravity",
+          "radioactive marshmallows melting underground",
+          "animals moving contamination through food and waste"
+        ],
+        "correct_answer": "animals moving contamination through food and waste"
+      },
+      {
+        "question": "Radioactive Wolf Puke: what would Dr. Icky circle in green slime?",
+        "options": [
+          "puke or scat inside restricted zones",
+          "a polite sparkle over clean water",
+          "a well-behaved flowerpot",
+          "a perfectly clean towel"
+        ],
+        "correct_answer": "puke or scat inside restricted zones"
+      }
+    ]
+  },
+  "creepy-earth-flesh-eating-street-bacteria": {
+    "master_text": "GROSS PLANET FILE: If you meet Flesh-Eating Street Bacteria, assume the planet is testing you. The gross mechanism is aggressive bacteria destroying tissue. The warning sign is fast pain, swelling, and spreading redness. Dr. Icky’s order: clean wounds and get help fast. The lab gloves are nervous.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Flesh-Eating Street Bacteria: which clue points to the hazard?",
+        "options": [
+          "a gentle breeze smelling of cupcakes",
+          "fast pain, swelling, and spreading redness",
+          "a perfectly clean towel",
+          "a rainbow with excellent posture"
+        ],
+        "correct_answer": "fast pain, swelling, and spreading redness"
+      },
+      {
+        "question": "Flesh-Eating Street Bacteria: what turned normal Earth into trouble?",
+        "options": [
+          "ice cubes forming a secret union",
+          "a nervous cactus sweating glue",
+          "angry socks absorbing moonbeams",
+          "aggressive bacteria destroying tissue"
+        ],
+        "correct_answer": "aggressive bacteria destroying tissue"
+      },
+      {
+        "question": "Flesh-Eating Street Bacteria: which action belongs in the safety manual?",
+        "options": [
+          "clean wounds and get help fast",
+          "sprinkle it on cereal",
+          "feed it lunch meat",
+          "invite it into your backpack"
+        ],
+        "correct_answer": "clean wounds and get help fast"
+      }
+    ]
+  },
+  "creepy-earth-earthquake-toilet-floods": {
+    "master_text": "EARTH HORROR LOG: Earthquake Toilet Floods is what happens when normal Earth stuff gets a disgusting promotion. Blame quakes breaking sewer lines and pressure paths. Look for dirty water rising from drains. The official recruit command is: avoid sewage backflow after shaking. The janitor has requested emotional compensation.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Earthquake Toilet Floods: what is the safe move?",
+        "options": [
+          "avoid sewage backflow after shaking",
+          "comb it into your hair",
+          "whisper secrets into the drain",
+          "shake it beside candles"
+        ],
+        "correct_answer": "avoid sewage backflow after shaking"
+      },
+      {
+        "question": "Earthquake Toilet Floods: which sign says the specimen is active?",
+        "options": [
+          "a cheerful banjo sound",
+          "a sleeping rubber duck",
+          "a polite sparkle over clean water",
+          "dirty water rising from drains"
+        ],
+        "correct_answer": "dirty water rising from drains"
+      },
+      {
+        "question": "Earthquake Toilet Floods: what is hiding behind the slime alarm?",
+        "options": [
+          "clouds sneezing into the sewer",
+          "ants charging the mud with batteries",
+          "quakes breaking sewer lines and pressure paths",
+          "a raccoon pressing the disaster button"
+        ],
+        "correct_answer": "quakes breaking sewer lines and pressure paths"
+      }
+    ]
+  },
+  "creepy-earth-cemetery-sinkholes": {
+    "master_text": "LAB RECRUIT BRIEF: The lab nearly survived Cemetery Sinkholes until somebody got curious. This specimen runs on wet soil and rotting coffins creating voids. It gives itself away with tilted markers and sinking patches. The safe move is: stay back from sagging cemetery ground. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG. The specimen has escaped into the notes. Re-read the field brief and try again.",
+    "questions": [
+      {
+        "question": "Cemetery Sinkholes: what should happen next?",
+        "options": [
+          "bring it to show-and-tell unsealed",
+          "throw it at the ceiling fan",
+          "stay back from sagging cemetery ground",
+          "use it as a pillow"
+        ],
+        "correct_answer": "stay back from sagging cemetery ground"
+      },
+      {
+        "question": "Cemetery Sinkholes: what makes this specimen turn nasty?",
+        "options": [
+          "evil confetti dissolving into rain",
+          "a toaster haunting the river",
+          "wet soil and rotting coffins creating voids",
+          "radioactive marshmallows melting underground"
+        ],
+        "correct_answer": "wet soil and rotting coffins creating voids"
+      },
+      {
+        "question": "Cemetery Sinkholes: what made the slime alarm blink?",
+        "options": [
+          "a cheerful sticker on the wall",
+          "tilted markers and sinking patches",
+          "a soap bubble doing taxes",
+          "a tidy shoe rack"
+        ],
+        "correct_answer": "tilted markers and sinking patches"
+      }
+    ]
+  },
+  "creepy-earth-tapeworm-towns": {
+    "master_text": "SLIME-SAFE DOSSIER: Tapeworm Towns looks like parasite eggs building trouble inside bodies. The trick is tapeworm larvae settling in organs. A sharp recruit watches for contaminated food or water exposure, then remembers the lab rule: wash hands and cook food properly. New slime stains are pending.",
+    "mastered_success_text": "SPECIMEN MASTERED. New scans earned. Dr. Icky is impressed and pretending he expected this.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Tapeworm Towns: what should happen next?",
+        "options": [
+          "wash hands and cook food properly",
+          "mail it to your cousin",
+          "use it as cake frosting",
+          "rub it on your homework"
+        ],
+        "correct_answer": "wash hands and cook food properly"
+      },
+      {
+        "question": "Tapeworm Towns: what made the planet act disgusting?",
+        "options": [
+          "tapeworm larvae settling in organs",
+          "a toaster haunting the river",
+          "tiny ghosts chewing the pavement",
+          "an angry sandwich gaining weather powers"
+        ],
+        "correct_answer": "tapeworm larvae settling in organs"
+      },
+      {
+        "question": "Tapeworm Towns: what made the slime alarm blink?",
+        "options": [
+          "a floating birthday balloon",
+          "contaminated food or water exposure",
+          "a gold star on the sewer lid",
+          "a soap bubble doing taxes"
+        ],
+        "correct_answer": "contaminated food or water exposure"
+      }
+    ]
+  },
+  "creepy-earth-sewer-ratsplosion": {
+    "master_text": "UNDERGROUND WARNING: Dr. Icky filed Sewer Ratsplosion under 'planet behaving badly.' Expect pipes delivering a whiskered nightmare. The nasty engine is rats using sewers and pressure shifts to travel. The first clue is scratching pipes and sudden toilet movement. Your survival rule is simple: close lids and call professionals. That is how socks become evidence.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Sewer Ratsplosion: which force created the yuck?",
+        "options": [
+          "rats using sewers and pressure shifts to travel",
+          "dinosaurs sneezing under the floor",
+          "purple glitter breeding underground",
+          "worms writing poems in concrete"
+        ],
+        "correct_answer": "rats using sewers and pressure shifts to travel"
+      },
+      {
+        "question": "Sewer Ratsplosion: which order keeps shoes, skin, or dignity safer?",
+        "options": [
+          "close lids and call professionals",
+          "sprinkle it on cereal",
+          "make it your bathwater",
+          "hide it in the classroom sink"
+        ],
+        "correct_answer": "close lids and call professionals"
+      },
+      {
+        "question": "Sewer Ratsplosion: which sign says the specimen is active?",
+        "options": [
+          "a postcard from Grandma",
+          "a cheerful banjo sound",
+          "a tiny choir of clean socks",
+          "scratching pipes and sudden toilet movement"
+        ],
+        "correct_answer": "scratching pipes and sudden toilet movement"
+      }
+    ]
+  },
+  "creepy-earth-the-skin-loss-slide": {
+    "master_text": "CONTAMINATION CARD: Specimen 072 arrived as a natural slide with chemical bite marks. Dr. Icky circled one cause in green slime: acidic or alkaline water damaging skin. Spot slick water that burns or peels before getting brave. Field rule: avoid sliding in unknown mineral water. The specimen already knows where the vents are.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "INCORRECT. The slime alarm is judging you. Check the clues and retry.",
+    "questions": [
+      {
+        "question": "The Skin-Loss Slide: what would Dr. Icky circle in green slime?",
+        "options": [
+          "slick water that burns or peels",
+          "a cheerful banjo sound",
+          "a gentle breeze smelling of cupcakes",
+          "a glass of sparkling lemonade"
+        ],
+        "correct_answer": "slick water that burns or peels"
+      },
+      {
+        "question": "The Skin-Loss Slide: what is doing the disgusting work?",
+        "options": [
+          "acidic or alkaline water damaging skin",
+          "a sandwich crust becoming sentient",
+          "evil confetti dissolving into rain",
+          "a sandwich fossil waking up"
+        ],
+        "correct_answer": "acidic or alkaline water damaging skin"
+      },
+      {
+        "question": "The Skin-Loss Slide: how does a smart recruit survive it?",
+        "options": [
+          "use it as a bookmark",
+          "keep it under your bed",
+          "comb it into your hair",
+          "avoid sliding in unknown mineral water"
+        ],
+        "correct_answer": "avoid sliding in unknown mineral water"
+      }
+    ]
+  },
+  "creepy-earth-underground-scream-pipes": {
+    "master_text": "UNDERGROUND WARNING: Underground Scream Pipes belongs in the cabinet labeled 'Earth Has Problems.' It starts with wind and pressure vibrating through tunnels, then announces itself through moans rising from drains or vents. Recruits who want clean shoes follow one rule: check airflow before blaming ghosts. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "CONTAINMENT SUCCESSFUL. New scans earned. The specimen is back in the jar, probably.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Underground Scream Pipes: what made the planet act disgusting?",
+        "options": [
+          "worms writing poems in concrete",
+          "wind and pressure vibrating through tunnels",
+          "a nervous cactus sweating glue",
+          "slime coins multiplying in pipes"
+        ],
+        "correct_answer": "wind and pressure vibrating through tunnels"
+      },
+      {
+        "question": "Underground Scream Pipes: how does a smart recruit survive it?",
+        "options": [
+          "check airflow before blaming ghosts",
+          "use it to moisturize elbows",
+          "feed it lunch meat",
+          "throw it at the ceiling fan"
+        ],
+        "correct_answer": "check airflow before blaming ghosts"
+      },
+      {
+        "question": "Underground Scream Pipes: which detail belongs in the danger log?",
+        "options": [
+          "a well-behaved flowerpot",
+          "a polite musical beep",
+          "moans rising from drains or vents",
+          "a polite sparkle over clean water"
+        ],
+        "correct_answer": "moans rising from drains or vents"
+      }
+    ]
+  },
+  "creepy-earth-maggot-vents": {
+    "master_text": "GROSS PLANET FILE: If you meet Maggot Vents, assume the planet is testing you. The gross mechanism is fly larvae hatching in warm garbage spaces. The warning sign is small pale larvae near vents. Dr. Icky’s order: remove the garbage source. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Maggot Vents: what would Dr. Icky circle in green slime?",
+        "options": [
+          "a well-behaved flowerpot",
+          "a smug but harmless paperclip",
+          "small pale larvae near vents",
+          "a tiny bow tie on a worm"
+        ],
+        "correct_answer": "small pale larvae near vents"
+      },
+      {
+        "question": "Maggot Vents: what is the safe move?",
+        "options": [
+          "wear it as a face mask",
+          "open the jar during math class",
+          "remove the garbage source",
+          "teach it to play recorder"
+        ],
+        "correct_answer": "remove the garbage source"
+      },
+      {
+        "question": "Maggot Vents: what makes this specimen turn nasty?",
+        "options": [
+          "ants charging the mud with batteries",
+          "tiny ghosts chewing the pavement",
+          "fly larvae hatching in warm garbage spaces",
+          "a nervous cactus sweating glue"
+        ],
+        "correct_answer": "fly larvae hatching in warm garbage spaces"
+      }
+    ]
+  },
+  "creepy-earth-exploding-whale-cleanup": {
+    "master_text": "PLANETARY YUCK NOTICE: Exploding Whale Cleanup is what happens when normal Earth stuff gets a disgusting promotion. Blame rot gas building inside a dead whale. Look for swollen body and terrible smell. The official recruit command is: let trained crews handle bloated animals. That is how socks become evidence.",
+    "mastered_success_text": "MASTERED. New scans earned. Your brain now smells faintly of dangerous science.",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "Exploding Whale Cleanup: what turned normal Earth into trouble?",
+        "options": [
+          "moonlight turning dirt into jelly",
+          "toothpaste fermenting in thunder",
+          "radioactive marshmallows melting underground",
+          "rot gas building inside a dead whale"
+        ],
+        "correct_answer": "rot gas building inside a dead whale"
+      },
+      {
+        "question": "Exploding Whale Cleanup: what should happen next?",
+        "options": [
+          "let trained crews handle bloated animals",
+          "pour it into your shoes",
+          "sprinkle it on cereal",
+          "feed it lunch meat"
+        ],
+        "correct_answer": "let trained crews handle bloated animals"
+      },
+      {
+        "question": "Exploding Whale Cleanup: which sign says the specimen is active?",
+        "options": [
+          "a tiny choir of clean socks",
+          "swollen body and terrible smell",
+          "a harmless-looking teddy bear",
+          "a polite sparkle over clean water"
+        ],
+        "correct_answer": "swollen body and terrible smell"
+      }
+    ]
+  },
+  "creepy-earth-rotting-desert-fish-pits": {
+    "master_text": "CONTAMINATION CARD: The lab nearly survived Rotting Desert Fish Pits until somebody got curious. This specimen runs on evaporation trapping and rotting stranded fish. It gives itself away with cracked mud with fish smell. The safe move is: avoid dried ponds full of decay. Anyone ignoring that earns mop duty.",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "NOPE. Dr. Icky dropped his clipboard in disappointment. Read, gag, try again.",
+    "questions": [
+      {
+        "question": "Rotting Desert Fish Pits: what is the gross science here?",
+        "options": [
+          "evaporation trapping and rotting stranded fish",
+          "mold learning karate",
+          "dinosaurs sneezing under the floor",
+          "angry socks absorbing moonbeams"
+        ],
+        "correct_answer": "evaporation trapping and rotting stranded fish"
+      },
+      {
+        "question": "Rotting Desert Fish Pits: what would Dr. Icky forbid?",
+        "options": [
+          "make it your bathwater",
+          "let it babysit the hamster",
+          "avoid dried ponds full of decay",
+          "collect it in your socks"
+        ],
+        "correct_answer": "avoid dried ponds full of decay"
+      },
+      {
+        "question": "Rotting Desert Fish Pits: what should go in the field notes?",
+        "options": [
+          "fresh cookies near the danger zone",
+          "cracked mud with fish smell",
+          "an elegant napkin",
+          "a sleeping rubber duck"
+        ],
+        "correct_answer": "cracked mud with fish smell"
+      }
+    ]
+  },
+  "creepy-earth-stomach-eating-sea-foam": {
+    "master_text": "CONTAMINATION CARD: Stomach-Eating Sea Foam looks like beach bubbles hiding a chemical tantrum. The trick is algae and bacteria making irritating foam. A sharp recruit watches for thick sea foam after blooms, then remembers the lab rule: keep foam away from mouth and eyes. Dr. Icky has marked this as 'smell first, regret second.'",
+    "mastered_success_text": "EARTH HORROR MASTERED. New scans earned. Please return the emergency goggles.",
+    "retry_text": "FAILED CONTAINMENT. The specimen is still loose. Return to the brief.",
+    "questions": [
+      {
+        "question": "Stomach-Eating Sea Foam: what made the planet act disgusting?",
+        "options": [
+          "algae and bacteria making irritating foam",
+          "the lab mascot yelling at water",
+          "grandma’s soup becoming magnetic",
+          "moonlight turning dirt into jelly"
+        ],
+        "correct_answer": "algae and bacteria making irritating foam"
+      },
+      {
+        "question": "Stomach-Eating Sea Foam: what would Dr. Icky circle in green slime?",
+        "options": [
+          "a sleeping rubber duck",
+          "a tiny choir of clean socks",
+          "a polite musical beep",
+          "thick sea foam after blooms"
+        ],
+        "correct_answer": "thick sea foam after blooms"
+      },
+      {
+        "question": "Stomach-Eating Sea Foam: how does a smart recruit survive it?",
+        "options": [
+          "sleep next to it for warmth",
+          "keep foam away from mouth and eyes",
+          "feed it lunch meat",
+          "make it your bathwater"
+        ],
+        "correct_answer": "keep foam away from mouth and eyes"
+      }
+    ]
+  },
+  "creepy-earth-the-wormfall-phenomenon": {
+    "master_text": "EARTH HORROR LOG: Dr. Icky filed The Wormfall Phenomenon under 'planet behaving badly.' Expect worms appearing like the sky coughed noodles. The nasty engine is rain flooding soil and pushing worms upward. The first clue is wet pavement covered in worms. Your survival rule is simple: step carefully and let worms relocate. That is how socks become evidence.",
+    "mastered_success_text": "MASTER BADGE UNLOCKED. New scans earned. Dr. Icky has downgraded you from 'liability' to 'useful.'",
+    "retry_text": "NOT MASTERED YET. The specimen remains suspiciously smug. Re-read the text.",
+    "questions": [
+      {
+        "question": "The Wormfall Phenomenon: which force created the yuck?",
+        "options": [
+          "a ghost whale using a hair dryer",
+          "a volcano swallowing chewing gum",
+          "rain flooding soil and pushing worms upward",
+          "worms writing poems in concrete"
+        ],
+        "correct_answer": "rain flooding soil and pushing worms upward"
+      },
+      {
+        "question": "The Wormfall Phenomenon: which action belongs in the safety manual?",
+        "options": [
+          "rub it on your homework",
+          "paint the walls with it",
+          "mail it to your cousin",
+          "step carefully and let worms relocate"
+        ],
+        "correct_answer": "step carefully and let worms relocate"
+      },
+      {
+        "question": "The Wormfall Phenomenon: what screams 'back away'?",
+        "options": [
+          "a tiny flag saying 'safe'",
+          "a tiny choir of clean socks",
+          "wet pavement covered in worms",
+          "a cheerful sticker on the wall"
+        ],
+        "correct_answer": "wet pavement covered in worms"
+      }
+    ]
+  },
+  "creepy-earth-tongue-leech-springs": {
+    "master_text": "DR. ICKY FIELD NOTE: Specimen 079 arrived as freshwater with tiny vampires looking for soft tissue. Dr. Icky circled one cause in green slime: leeches attaching inside the mouth or throat. Spot untreated spring water in leech country before getting brave. Field rule: filter water before drinking from wild springs. That is how socks become evidence.",
+    "mastered_success_text": "SPECIMEN LOGGED. New scans earned. The lab has stopped screaming for now.",
+    "retry_text": "WRONG ANSWER. The lab goggles fogged up from shame. Try again.",
+    "questions": [
+      {
+        "question": "Tongue-Leech Springs: what is doing the disgusting work?",
+        "options": [
+          "mold learning karate",
+          "radioactive marshmallows melting underground",
+          "leeches attaching inside the mouth or throat",
+          "a birthday cake collapsing into mud"
+        ],
+        "correct_answer": "leeches attaching inside the mouth or throat"
+      },
+      {
+        "question": "Tongue-Leech Springs: what made the slime alarm blink?",
+        "options": [
+          "a very organized bucket",
+          "a tiny bow tie on a worm",
+          "untreated spring water in leech country",
+          "a glass of sparkling lemonade"
+        ],
+        "correct_answer": "untreated spring water in leech country"
+      },
+      {
+        "question": "Tongue-Leech Springs: what should happen next?",
+        "options": [
+          "open the jar during math class",
+          "name it Captain Goo",
+          "throw it at the ceiling fan",
+          "filter water before drinking from wild springs"
+        ],
+        "correct_answer": "filter water before drinking from wild springs"
+      }
+    ]
+  }
+}
