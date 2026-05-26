@@ -58,13 +58,28 @@ const SLIDES: Slide[] = [
 
 // ── Video hero per slide ──────────────────────────────────────────────────────
 
-function SlideVideoHero({ video }: { video: ReturnType<typeof require> }) {
+function SlideVideoHero({
+  video,
+  isActive,
+}: {
+  video: ReturnType<typeof require>;
+  isActive: boolean;
+}) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const player = useVideoPlayer(video as any, (p) => {
     p.loop = true;
     p.muted = false;
-    p.play();
+    // Don't auto-play — playback is controlled by isActive
   });
+
+  // Play or pause based on whether this slide is currently visible
+  React.useEffect(() => {
+    if (isActive) {
+      player.play();
+    } else {
+      player.pause();
+    }
+  }, [isActive, player]);
 
   return (
     <VideoView
@@ -100,11 +115,11 @@ export default function Onboarding() {
     router.replace('/(tabs)');
   }, [dontShow]);
 
-  const renderSlide = useCallback(({ item }: { item: Slide }) => (
+  const renderSlide = useCallback(({ item, index }: { item: Slide; index: number }) => (
     <View style={styles.slide}>
-      {/* Video hero */}
+      {/* Video hero — only plays when this slide is active */}
       <View style={styles.heroArea}>
-        <SlideVideoHero video={item.video} />
+        <SlideVideoHero video={item.video} isActive={index === currentIndex} />
       </View>
 
       {/* Content card */}

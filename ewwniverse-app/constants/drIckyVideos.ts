@@ -159,15 +159,26 @@ export function drIckySourceForSpecimen(id: string): any {
   return SPECIAL_SPECIMEN_SOURCES[id] ?? DR_ICKY_SOURCES['special_acquired_short'];
 }
 
-// ── Helper: pick a random source for an event ─────────────────────────────────
+// ── Helper: non-repeating random pick per event ───────────────────────────────
+// Tracks the last-used key per event so the same video is never played twice in
+// a row (for pools with more than 1 video). Rotates through all options before
+// repeating any single one using a per-event shuffled queue.
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function pick(keys: string[]): any {
-  const key = keys[Math.floor(Math.random() * keys.length)];
-  return DR_ICKY_SOURCES[key];
+const _queues: Partial<Record<DrIckyEvent, string[]>> = {};
+
+function getQueue(event: DrIckyEvent): string[] {
+  const pool = EVENT_POOLS[event];
+  if (!_queues[event] || _queues[event]!.length === 0) {
+    // Shuffle a fresh copy of the pool
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    _queues[event] = shuffled;
+  }
+  return _queues[event]!;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function drIckySourceForEvent(event: DrIckyEvent): any {
-  return pick(EVENT_POOLS[event]);
+  const queue = getQueue(event);
+  const key   = queue.shift()!;
+  return DR_ICKY_SOURCES[key];
 }

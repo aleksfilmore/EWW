@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Image, StyleSheet } from 'react-native';
 import { Colors, FontFamily } from '@/constants/design';
+import { playSfx } from '@/services/audio';
 
 const TAB_IMAGES = {
   index:          require('../../assets/tab-home.png'),
@@ -47,6 +48,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: TAB_COLORS.index,
           tabBarIcon: ({ focused }) => <TabIcon name="index" focused={focused} />,
         }}
+        listeners={{ tabPress: () => playSfx('sfx_tab') }}
       />
       <Tabs.Screen
         name="collection"
@@ -55,6 +57,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: TAB_COLORS.collection,
           tabBarIcon: ({ focused }) => <TabIcon name="collection" focused={focused} />,
         }}
+        listeners={{ tabPress: () => playSfx('sfx_tab') }}
       />
       <Tabs.Screen
         name="recruit-file"
@@ -63,6 +66,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: TAB_COLORS['recruit-file'],
           tabBarIcon: ({ focused }) => <TabIcon name="recruit-file" focused={focused} />,
         }}
+        listeners={{ tabPress: () => playSfx('sfx_tab') }}
       />
       <Tabs.Screen
         name="dr-icky"
@@ -71,6 +75,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: TAB_COLORS['dr-icky'],
           tabBarIcon: ({ focused }) => <TabIcon name="dr-icky" focused={focused} />,
         }}
+        listeners={{ tabPress: () => playSfx('sfx_tab') }}
       />
     </Tabs>
   );

@@ -52,8 +52,8 @@ export default function CreatureDetail() {
   // Tracks the brief "JUST CLASSIFIED" celebration state (+bonus scan info)
   const [justClassified, setJustClassified] = useState(false);
   const [dailyBonusEarned, setDailyBonusEarned] = useState(false);
-  // Which confirm modal is open: null = none, 'noScans' = out-of-scans
-  const [modalType, setModalType] = useState<'noScans' | null>(null);
+  // Which confirm modal is open: null = none, 'noScans' = out-of-scans, 'freeComplete' = all 75 free classified
+  const [modalType, setModalType] = useState<'noScans' | 'freeComplete' | null>(null);
 
   const creature = getCreatureById(id ?? '');
 
@@ -104,6 +104,7 @@ export default function CreatureDetail() {
           claimDailySpecimen();   // stamps today's date so bonus fires only once
           addScans(2);            // the 2× bonus scans
           setDailyBonusEarned(true);
+          playSfx('sfx_unlock');
         }
 
         // Dr. Icky reaction — pick event tier by EWW meter
@@ -112,6 +113,12 @@ export default function CreatureDetail() {
           creature.eww_meter >= 80  ? 'classify_rare'      :
           'classify';
         triggerDrIcky(event);
+
+        // If free user just classified all 75 free creatures, prompt upgrade
+        const freshProfile = useUserStore.getState().profile;
+        if (!freshProfile?.is_paid && (freshProfile?.classified_count ?? 0) >= 75) {
+          setTimeout(() => setModalType('freeComplete'), 1800);
+        }
       }, 1200);
     }
   }
@@ -127,10 +134,20 @@ export default function CreatureDetail() {
       <ConfirmModal
         visible={modalType === 'noScans'}
         title="NO SCANS LEFT"
-        message="Master a creature quiz to earn more scans, or wait for your next free scan."
+        message="Master a creature quiz to earn 2 more scans, or wait for your next free scan refresh."
         primaryLabel="BACK TO LAB"
         onPrimary={() => setModalType(null)}
         dismissLabel="LATER"
+        onDismiss={() => setModalType(null)}
+      />
+
+      <ConfirmModal
+        visible={modalType === 'freeComplete'}
+        title="COLLECTION COMPLETE!"
+        message={"You've classified all 75 free Creepy Creatures! 🎉\n\nUpgrade to the Full Lab Pass to unlock 155 more specimens across Creepy Dinosaurs and Creepy Earth — one payment, no subscription."}
+        primaryLabel="GET FULL PASS"
+        onPrimary={() => { setModalType(null); router.push('/paywall'); }}
+        dismissLabel="MAYBE LATER"
         onDismiss={() => setModalType(null)}
       />
 

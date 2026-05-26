@@ -13,6 +13,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
@@ -20,6 +21,7 @@ import { Assets } from '@/constants/assets';
 import { ALL_CREATURES } from '@/data/index';
 import { useGameStore } from '@/store/gameStore';
 import { DrIckyEvent } from '@/constants/drIckyVideos';
+import { playSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 
@@ -57,6 +59,7 @@ export default function DrIcky() {
   const triggerDrIcky                 = useGameStore((s) => s.triggerDrIcky);
 
   const handleHearDrIcky = useCallback(() => {
+    playSfx('sfx_transmission');
     triggerDrIcky('daily_return', true);
     setCurrentFact(getRandomFact());
     setFactCount((n) => n + 1);
@@ -174,6 +177,39 @@ export default function DrIcky() {
           <Text style={styles.statsCount}>{ALL_CREATURES.length}</Text>
           <Text style={styles.statsSub}>across 3 books · more being discovered</Text>
         </View>
+
+        {/* ── Book series ──────────────────────────────────── */}
+        <TouchableOpacity
+          style={styles.booksCard}
+          onPress={() => Linking.openURL('https://www.amazon.com/dp/B0FGDLRXVH')}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.booksLabel}>THE EWW-NIVERSE BOOK SERIES</Text>
+          <Text style={styles.booksSub}>
+            The creatures in this app come straight from Dr. Icky's field guides.
+            Get the full books on Amazon!
+          </Text>
+          <View style={styles.booksCovers}>
+            <Image
+              source={Assets.bookCoverCreatures}
+              style={styles.bookCover}
+              resizeMode="contain"
+            />
+            <Image
+              source={Assets.bookCoverDinosaurs}
+              style={styles.bookCover}
+              resizeMode="contain"
+            />
+            <Image
+              source={Assets.bookCoverEarth}
+              style={styles.bookCover}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.booksBtn}>
+            <Text style={styles.booksBtnText}>VIEW ON AMAZON  ›</Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -402,6 +438,55 @@ const styles = StyleSheet.create({
     fontSize:   15,
     color:      Colors.text.secondary,
     lineHeight: 22,
+  },
+
+  // ── Book series card ──────────────────────────────────────────────────────
+  booksCard: {
+    backgroundColor:  `${Colors.eww.amber}10`,
+    borderRadius:     Radius.lg,
+    borderWidth:      1.5,
+    borderColor:      `${Colors.eww.amber}44`,
+    marginHorizontal: Spacing.md,
+    padding:          Spacing.md,
+    gap:              10,
+    alignItems:       'center',
+  },
+  booksLabel: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      11,
+    color:         Colors.eww.amber,
+    letterSpacing: 2.5,
+    textAlign:     'center',
+  },
+  booksSub: {
+    fontFamily: FontFamily.boogaloo,
+    fontSize:   16,
+    color:      Colors.text.secondary,
+    lineHeight: 22,
+    textAlign:  'center',
+  },
+  booksCovers: {
+    flexDirection:  'row',
+    gap:            8,
+    justifyContent: 'center',
+  },
+  bookCover: {
+    width:  (SCREEN_W - Spacing.md * 2 - Spacing.md * 2 - 16) / 3,
+    height: 140,
+    borderRadius: Radius.sm,
+  },
+  booksBtn: {
+    backgroundColor:   Colors.eww.amber,
+    borderRadius:      Radius.full,
+    paddingVertical:   12,
+    paddingHorizontal: 28,
+    marginTop:         4,
+  },
+  booksBtnText: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      18,
+    color:         '#2A1600',
+    letterSpacing: 1,
   },
 
   // ── Stats card ────────────────────────────────────────────────────────────

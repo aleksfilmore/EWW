@@ -9,7 +9,7 @@
  *   - First time mastering a creature: award MASTERY_QUIZ_SCANS, set state → 'mastered'
  *   - Repeat attempts: no scan reward, unlimited retries
  */
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
@@ -79,6 +79,13 @@ export default function QuizScreen() {
 
   const alreadyMastered = creatures[id ?? '']?.state === 'mastered';
 
+  // Play a sound cue each time a new question is shown
+  useEffect(() => {
+    if (phase === 'question') {
+      playSfx('sfx_question');
+    }
+  }, [phase, currentIdx]);
+
   const handleStartQuiz = useCallback(() => {
     setPhase('question');
     setCurrentIdx(0);
@@ -105,12 +112,12 @@ export default function QuizScreen() {
       playSfx('sfx_correct');
     } else {
       playSfx('sfx_wrong');
-      triggerDrIcky('wrong_answer', true);
+      // Do NOT trigger wrong_answer video here — quiz_fail fires in the timeout below
     }
 
     setTimeout(() => {
       if (!isCorrect) {
-        // Any wrong answer → fail immediately
+        // Any wrong answer → fail immediately; quiz_fail video plays once
         triggerDrIcky('quiz_fail', true);
         setPhase('failed');
         return;
@@ -332,71 +339,75 @@ export default function QuizScreen() {
         ))}
       </View>
 
-      <ScrollView
-        contentContainerStyle={styles.questionContent}
-        showsVerticalScrollIndicator={false}
+      {/* Question — fixed card, not scrollable */}
+      <View style={styles.questionCard}>
+        <Text style={styles.questionText}>{q.question}</Text>
+      </View>
+
+      {/* Options — flex to fill remaining space */}
+      <View style={styles.optionsList}>
+        {q.options.map((option, optIdx) => {
+          const isCorrect  = option === q.correct_answer;
+          const isSelected = option === selected;
+
+          // Distinct accent color per option index for a kid-friendly look
+          const OPTION_COLORS = [
+            Colors.eww.amber,   // 0
+            Colors.eww.green,   // 1
+            Colors.eww.coral,   // 2
+            Colors.eww.purple,  // 3
+          ];
+          const accentColor = OPTION_COLORS[optIdx % OPTION_COLORS.length];
+
+          const borderColor: string =
+            answered && isCorrect   ? Colors.eww.green  :
+            answered && isSelected  ? Colors.eww.coral  :
+            isSelected              ? accentColor       :
+            `${accentColor}55`;
+
+          const bgColor: string =
+            answered && isCorrect   ? `${Colors.eww.green}25`  :
+            answered && isSelected  ? `${Colors.eww.coral}25`  :
+            isSelected              ? `${accentColor}22`       :
+            `${accentColor}0D`;
+
+          const textColor: string =
+            answered && isCorrect   ? Colors.eww.green :
+            answered && isSelected  ? Colors.eww.coral :
+            isSelected              ? accentColor      :
+            Colors.text.primary;
+
+          return (
+            <TouchableOpacity
+              key={option}
+              style={[styles.optionBtn, { borderColor, backgroundColor: bgColor }]}
+              onPress={() => handleSelect(option)}
+              activeOpacity={0.75}
+              disabled={answered}
+            >
+              <Text style={[styles.optionText, { color: textColor }]}>
+                {option}
+              </Text>
+              {answered && isCorrect  && <Text style={styles.feedbackMark}>✓</Text>}
+              {answered && isSelected && !isCorrect && <Text style={styles.feedbackWrong}>✗</Text>}
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+
+      {/* Submit */}
+      <TouchableOpacity
+        onPress={handleSubmit}
+        disabled={!selected || answered}
+        activeOpacity={0.8}
+        style={[styles.submitWrap, (!selected || answered) && styles.submitDisabled]}
       >
-        {/* Question */}
-        <View style={styles.questionCard}>
-          <Text style={styles.questionText}>{q.question}</Text>
-        </View>
-
-        {/* Options */}
-        <View style={styles.optionsList}>
-          {q.options.map((option) => {
-            const isCorrect  = option === q.correct_answer;
-            const isSelected = option === selected;
-
-            const borderColor: string =
-              answered && isCorrect   ? Colors.eww.green  :
-              answered && isSelected  ? Colors.eww.coral  :
-              isSelected              ? Colors.eww.purple :
-              Colors.border.subtle;
-
-            const bgColor: string =
-              answered && isCorrect   ? `${Colors.eww.green}18`  :
-              answered && isSelected  ? `${Colors.eww.coral}18`  :
-              isSelected              ? `${Colors.eww.purple}18` :
-              Colors.bg.card;
-
-            return (
-              <TouchableOpacity
-                key={option}
-                style={[styles.optionBtn, { borderColor, backgroundColor: bgColor }]}
-                onPress={() => handleSelect(option)}
-                activeOpacity={0.75}
-                disabled={answered}
-              >
-                <Text
-                  style={[
-                    styles.optionText,
-                    answered && isCorrect  && styles.optionTextCorrect,
-                    answered && isSelected && !isCorrect && styles.optionTextWrong,
-                  ]}
-                >
-                  {option}
-                </Text>
-                {answered && isCorrect  && <Text style={styles.feedbackMark}>✓</Text>}
-                {answered && isSelected && !isCorrect && <Text style={styles.feedbackWrong}>✗</Text>}
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-
-        {/* Submit */}
-        <TouchableOpacity
-          onPress={handleSubmit}
-          disabled={!selected || answered}
-          activeOpacity={0.8}
-          style={[styles.submitWrap, (!selected || answered) && styles.submitDisabled]}
-        >
-          <Image
-            source={Assets.btnSubmitAnswer}
-            style={styles.submitImg}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </ScrollView>
+        <Image
+          source={Assets.btnSubmitAnswer}
+          style={styles.submitImg}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -514,12 +525,12 @@ const styles = StyleSheet.create({
   },
   closeBtn: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   20,
+    fontSize:   22,
     color:      Colors.text.muted,
   },
   headerCreature: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      13,
+    fontSize:      15,
     color:         Colors.text.secondary,
     letterSpacing: 1,
     flex:          1,
@@ -527,8 +538,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   headerProgress: {
-    fontFamily:    FontFamily.boogaloo,
-    fontSize:      14,
+    fontFamily:    FontFamily.creepster,
+    fontSize:      18,
     color:         Colors.eww.amber,
     letterSpacing: 0.5,
     minWidth:      36,
@@ -539,70 +550,74 @@ const styles = StyleSheet.create({
   dotsRow: {
     flexDirection:  'row',
     justifyContent: 'center',
-    gap:            8,
+    gap:            10,
     marginBottom:   10,
     marginTop:      4,
   },
   dot: {
-    width:           12,
-    height:          12,
-    borderRadius:    6,
+    width:           14,
+    height:          14,
+    borderRadius:    7,
     backgroundColor: Colors.bg.elevated,
   },
   dotDone: { backgroundColor: Colors.eww.green },
   dotActive: {
     backgroundColor: Colors.eww.amber,
-    transform:       [{ scale: 1.25 }],
+    transform:       [{ scale: 1.3 }],
   },
 
   // ── Question ──────────────────────────────────────────────────────────────
-  questionContent: {
-    paddingHorizontal: Spacing.md,
-    paddingBottom:     Spacing.xxl,
-    gap:               16,
-  },
   questionCard: {
-    backgroundColor: Colors.bg.card,
-    borderRadius:    Radius.lg,
-    borderWidth:     1.5,
-    borderColor:     Colors.border.DEFAULT,
-    padding:         Spacing.md,
+    backgroundColor:   Colors.bg.elevated,
+    borderRadius:      Radius.lg,
+    borderWidth:       2,
+    borderColor:       `${Colors.eww.amber}55`,
+    padding:           Spacing.md,
+    marginHorizontal:  Spacing.md,
+    marginBottom:      12,
   },
   questionText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   22,
+    fontSize:   26,
     color:      Colors.text.primary,
-    lineHeight: 30,
+    lineHeight: 34,
   },
 
   // ── Options ───────────────────────────────────────────────────────────────
-  optionsList: { gap: 10 },
+  optionsList: {
+    flex:              1,
+    gap:               10,
+    paddingHorizontal: Spacing.md,
+    justifyContent:    'center',
+  },
   optionBtn: {
-    width:           '100%',
-    borderRadius:    Radius.md,
-    borderWidth:     1.5,
-    padding:         Spacing.md,
-    flexDirection:   'row',
-    alignItems:      'center',
-    justifyContent:  'space-between',
-    gap:             8,
+    width:          '100%',
+    borderRadius:   Radius.md,
+    borderWidth:    2,
+    paddingVertical:  14,
+    paddingHorizontal: Spacing.md,
+    flexDirection:  'row',
+    alignItems:     'center',
+    justifyContent: 'space-between',
+    gap:            8,
   },
   optionText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   18,
-    color:      Colors.text.secondary,
+    fontSize:   20,
     flex:       1,
-    lineHeight: 24,
+    lineHeight: 26,
   },
-  optionTextCorrect: { color: Colors.eww.green },
-  optionTextWrong:   { color: Colors.eww.coral },
-  feedbackMark:  { fontSize: 18, color: Colors.eww.green, fontWeight: '900' },
-  feedbackWrong: { fontSize: 18, color: Colors.eww.coral, fontWeight: '900' },
+  feedbackMark:  { fontSize: 22, color: Colors.eww.green, fontWeight: '900' },
+  feedbackWrong: { fontSize: 22, color: Colors.eww.coral, fontWeight: '900' },
 
   // ── Submit ────────────────────────────────────────────────────────────────
-  submitWrap: { width: '100%', alignItems: 'center' },
+  submitWrap: {
+    paddingHorizontal: Spacing.md,
+    paddingBottom:     Spacing.sm,
+    alignItems:        'center',
+  },
   submitDisabled: { opacity: 0.35 },
-  submitImg: { width: '100%', height: 64 },
+  submitImg: { width: '100%', height: 72 },
 
   // ── Result screens ────────────────────────────────────────────────────────
   resultScreen: {

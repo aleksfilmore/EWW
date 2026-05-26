@@ -84,4 +84,9 @@ export const Assets = {
   ewwMeter60:  require('../assets/eww-meter-60.png'),
   ewwMeter80:  require('../assets/eww-meter-80.png'),
   ewwMeter100: require('../assets/eww-meter-100.png'),
+
+  // ── Book covers ───────────────────────────────────────────────
+  bookCoverCreatures:  require('../assets/book-cover-creatures.png'),
+  bookCoverDinosaurs:  require('../assets/book-cover-dinosaurs.png'),
+  bookCoverEarth:      require('../assets/book-cover-earth.png'),
 } as const;

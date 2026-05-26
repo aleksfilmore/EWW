@@ -22,6 +22,7 @@ import { creepyCreatures, creepyDinosaurs, creepyEarth } from '@/data/index';
 import { Creature, Book } from '@/types/creature';
 import { CreatureGridCard } from '@/components/CreatureGridCard';
 import { AppHeader } from '@/components/AppHeader';
+import { playSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const CARD_GAP  = 8;
@@ -132,7 +133,10 @@ export default function Explore() {
               creature={item}
               state={state}
               size={CARD_SIZE}
-              onPress={() => router.push(`/creature/${item.id}`)}
+              onPress={() => {
+                playSfx('sfx_detail_open');
+                router.push(`/creature/${item.id}`);
+              }}
             />
           );
         }}

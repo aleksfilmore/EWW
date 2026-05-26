@@ -14,7 +14,7 @@ export const QUIZ_SCAN_REWARDS = {
 
 // Scans awarded the first time a creature quiz is mastered (all 3 correct)
 export const MASTERY_QUIZ_SCANS = {
-  free: 4,
+  free: 2,
   paid: 5,
 } as const;
 
