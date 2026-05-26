@@ -9,13 +9,21 @@ const TAB_IMAGES = {
   'dr-icky':      require('../../assets/tab-special.png'),
 } as const;
 
+// Active color per tab — each tab gets its own identity
+const TAB_COLORS: Record<keyof typeof TAB_IMAGES, string> = {
+  index:          Colors.eww.green,
+  collection:     Colors.eww.amber,
+  'recruit-file': Colors.eww.purple,
+  'dr-icky':      Colors.eww.coral,
+};
+
 function TabIcon({ name, focused }: { name: keyof typeof TAB_IMAGES; focused: boolean }) {
   return (
     <Image
       source={TAB_IMAGES[name]}
       style={[
         styles.icon,
-        { tintColor: focused ? Colors.eww.green : 'rgba(255,255,255,0.38)' },
+        { tintColor: focused ? TAB_COLORS[name] : 'rgba(255,255,255,0.32)' },
       ]}
       resizeMode="contain"
     />
@@ -28,8 +36,7 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.bar,
-        tabBarActiveTintColor: Colors.eww.green,
-        tabBarInactiveTintColor: 'rgba(255,255,255,0.38)',
+        tabBarInactiveTintColor: 'rgba(255,255,255,0.32)',
         tabBarLabelStyle: styles.label,
       }}
     >
@@ -37,36 +44,32 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'HOME',
-          tabBarIcon: ({ focused }) => (
-            <TabIcon name="index" focused={focused} />
-          ),
+          tabBarActiveTintColor: TAB_COLORS.index,
+          tabBarIcon: ({ focused }) => <TabIcon name="index" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="collection"
         options={{
           title: 'EXPLORE',
-          tabBarIcon: ({ focused }) => (
-            <TabIcon name="collection" focused={focused} />
-          ),
+          tabBarActiveTintColor: TAB_COLORS.collection,
+          tabBarIcon: ({ focused }) => <TabIcon name="collection" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="recruit-file"
         options={{
           title: 'REWARDS',
-          tabBarIcon: ({ focused }) => (
-            <TabIcon name="recruit-file" focused={focused} />
-          ),
+          tabBarActiveTintColor: TAB_COLORS['recruit-file'],
+          tabBarIcon: ({ focused }) => <TabIcon name="recruit-file" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="dr-icky"
         options={{
           title: 'DR. ICKY',
-          tabBarIcon: ({ focused }) => (
-            <TabIcon name="dr-icky" focused={focused} />
-          ),
+          tabBarActiveTintColor: TAB_COLORS['dr-icky'],
+          tabBarIcon: ({ focused }) => <TabIcon name="dr-icky" focused={focused} />,
         }}
       />
     </Tabs>
@@ -75,21 +78,21 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   bar: {
-    backgroundColor: '#0A0618',  // slightly darker than bg for contrast
-    borderTopColor: `${Colors.eww.green}25`,
-    borderTopWidth: 1.5,
-    height: 64,
-    paddingBottom: 10,
-    paddingTop: 4,
+    backgroundColor: '#0A0618',
+    borderTopColor:  `${Colors.eww.green}22`,
+    borderTopWidth:  1.5,
+    height:          74,
+    paddingBottom:   14,
+    paddingTop:      6,
   },
   icon: {
-    width: 26,
-    height: 26,
+    width:        28,
+    height:       28,
     marginBottom: -2,
   },
   label: {
-    fontFamily: FontFamily.boogaloo,
-    fontSize: 10,
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      10,
     letterSpacing: 1.2,
   },
 });

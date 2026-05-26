@@ -20,6 +20,16 @@ export const MASTERY_QUIZ_SCANS = {
 
 export const CONTAMINATION_STREAK = 3; // correct answers in a row without hint
 
+/**
+ * Mastery milestones for Slime Surge unlocks.
+ * Index = contamination_count (number of surges already fired).
+ * Value = mastered_count threshold that triggers the next surge.
+ * 15 entries → 15 special specimens, paced over ~2–3 weeks of play.
+ */
+export const MASTERY_MILESTONES: number[] = [
+  1, 4, 8, 13, 19, 26, 33, 41, 49, 57, 62, 66, 70, 73, 75,
+];
+
 export const STREAK_REWARD_DAY = 7;
 
 export const FREE_MAX_SPECIAL_SPECIMENS = 5;

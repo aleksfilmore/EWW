@@ -6,7 +6,7 @@
  * Full Lab Pass upsell card.
  * Special Specimens: shows creature images, tappable → bottom sheet detail.
  */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -45,15 +45,30 @@ const STAGE_ICONS = [
 ] as const;
 
 export default function Rewards() {
-  const profile                 = useUserStore((s) => s.profile);
+  const profile                  = useUserStore((s) => s.profile);
   const triggerDrIckyForSpecimen = useGameStore((s) => s.triggerDrIckyForSpecimen);
+  const drIckySource             = useGameStore((s) => s.drIckySource);
   const [selectedSpecimen, setSelectedSpecimen] = useState<SpecialSpecimen | null>(null);
+  const [pendingSpecimen,  setPendingSpecimen]  = useState<SpecialSpecimen | null>(null);
+
+  // When Dr. Icky video finishes (source clears), open the queued specimen modal
+  useEffect(() => {
+    if (drIckySource === null && pendingSpecimen !== null) {
+      setSelectedSpecimen(pendingSpecimen);
+      setPendingSpecimen(null);
+    }
+  }, [drIckySource, pendingSpecimen]);
 
   if (!profile) return null;
 
   const handleSelectSpecimen = (s: SpecialSpecimen) => {
-    setSelectedSpecimen(s);
     triggerDrIckyForSpecimen(s.id);
+    // If no video is available for this specimen, open modal immediately
+    if (useGameStore.getState().drIckySource === null) {
+      setSelectedSpecimen(s);
+    } else {
+      setPendingSpecimen(s);
+    }
   };
 
   const currentStage = profile.eww_stage;
@@ -201,7 +216,7 @@ export default function Rewards() {
                   SLIME SURGE{profile.contamination_count !== 1 ? 'S' : ''} TRIGGERED
                 </Text>
                 <Text style={styles.contaminationSub}>
-                  Get 3 quiz answers in a row to trigger a Slime Surge
+                  Master specimens to trigger Slime Surges and unlock special specimens
                 </Text>
               </View>
             </View>
@@ -216,7 +231,7 @@ export default function Rewards() {
             onPress={() => router.push('/(tabs)/collection')}
             activeOpacity={0.85}
           >
-            <Image source={Assets.set3Cards} style={styles.setCardImg} resizeMode="contain" />
+            <Image source={Assets.jarClassified} style={styles.setCardImg} resizeMode="contain" />
             <View style={styles.setCardInfo}>
               <Text style={styles.setCardTitle}>CREEPY CREATURES</Text>
               <Text style={styles.setCardSub}>
@@ -354,11 +369,15 @@ function SpecialSpecimensSection({
         </Text>
       </View>
 
+      {unlocked.length > 0 && (
+        <Text style={styles.specialHint}>Tap a specimen to watch Dr. Icky ▶</Text>
+      )}
+
       {unlocked.length === 0 ? (
         <View style={styles.specialEmpty}>
           <Text style={styles.specialEmptyIcon}>☣</Text>
           <Text style={styles.specialEmptyText}>
-            Get 3 quiz answers in a row to trigger a{'\n'}Slime Surge and unlock a specimen
+            Master your first specimen to trigger a{'\n'}Slime Surge and unlock a special specimen
           </Text>
         </View>
       ) : (
@@ -724,8 +743,8 @@ const styles = StyleSheet.create({
     gap:             Spacing.md,
   },
   setCardImg: {
-    width:  90,
-    height: 70,
+    width:  64,
+    height: 80,
   },
   setCardInfo:  { flex: 1 },
   setCardTitle: {
@@ -805,6 +824,14 @@ const styles = StyleSheet.create({
     fontSize:      12,
     color:         Colors.text.muted,
     letterSpacing: 0.5,
+  },
+  specialHint: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    color:         Colors.eww.green,
+    letterSpacing: 0.3,
+    opacity:       0.7,
+    marginTop:     -4,
   },
   specialEmpty: {
     backgroundColor: Colors.bg.card,

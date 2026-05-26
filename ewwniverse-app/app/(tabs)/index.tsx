@@ -6,6 +6,7 @@
  *   → Daily Missions → Big quiz CTA → Stats bubbles
  *   → Quick nav → EWW-score gauge
  */
+import { useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,6 +14,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  Animated,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -30,20 +32,12 @@ export default function Home() {
 
   const stageLabel = STAGE_LABELS[profile.eww_stage];
 
-  // EWW score derived from progress (weighted: 60% classified, 40% mastered)
-  const totalCreatures = 75 + 80 + 79;
-  const rawScore       = Math.min(
-    100,
-    Math.round(
-      (profile.classified_count / Math.max(totalCreatures, 1)) * 60 +
-      (profile.mastered_count   / Math.max(totalCreatures, 1)) * 40,
-    ),
-  );
-  // Map to the 3 illustration tiers
-  const ewwMeterImg =
-    rawScore >= 80 ? Assets.ewwMeter100 :
-    rawScore >= 40 ? Assets.ewwMeter80  :
-    Assets.ewwMeter60;
+  // EWW score: square-root curve so early progress feels fast.
+  // 100% = all 225 creatures classified AND mastered (full paid tier).
+  const TOTAL_CREATURES = 225;
+  const linearProgress  =
+    (profile.classified_count * 0.35 + profile.mastered_count * 0.65) / TOTAL_CREATURES;
+  const ewwScore = Math.min(100, Math.round(Math.sqrt(linearProgress) * 100));
 
   // Daily missions — tracked per-day via dedicated profile counters
   const missions = [
@@ -152,17 +146,11 @@ export default function Home() {
         </View>
 
         {/* ── EWW-score gauge ─────────────────────────────── */}
-        <View style={styles.ewwCard}>
-          <Text style={styles.ewwTitle}>YOUR EWW SCORE</Text>
-          <Image
-            source={ewwMeterImg}
-            style={styles.ewwMeterImg}
-            resizeMode="contain"
-          />
-          <Text style={styles.ewwSub}>
-            Classify more specimens to raise your score
-          </Text>
-        </View>
+        <EwwScoreGauge
+          score={ewwScore}
+          classified={profile.classified_count}
+          mastered={profile.mastered_count}
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -221,6 +209,90 @@ function StatBubble({
     <View style={[styles.statBubble, { borderColor: `${color}40` }]}>
       <Text style={[styles.statValue, { color }]}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function EwwScoreGauge({
+  score,
+  classified,
+  mastered,
+}: {
+  score: number;
+  classified: number;
+  mastered: number;
+}) {
+  const anim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.spring(anim, {
+      toValue:         score / 100,
+      friction:        7,
+      tension:         30,
+      useNativeDriver: false,
+    }).start();
+  }, [score]);
+
+  const fillColor =
+    score >= 66 ? Colors.eww.coral :
+    score >= 33 ? Colors.eww.amber :
+    Colors.eww.green;
+
+  const zone =
+    score >= 66 ? 'DR. ICKY TERRITORY' :
+    score >= 33 ? 'PROPERLY SLIMY'     :
+    'KINDA CURIOUS';
+
+  return (
+    <View style={styles.ewwCard}>
+      {/* Header row */}
+      <View style={styles.ewwHeader}>
+        <Text style={styles.ewwTitle}>YOUR EWW SCORE</Text>
+        <View style={[styles.ewwScorePill, { borderColor: `${fillColor}66`, backgroundColor: `${fillColor}18` }]}>
+          <Text style={[styles.ewwScoreNum, { color: fillColor }]}>{score}%</Text>
+        </View>
+      </View>
+
+      {/* Zone label */}
+      <Text style={[styles.ewwZoneLabel, { color: fillColor }]}>
+        ☣  {zone}
+      </Text>
+
+      {/* Animated fill bar */}
+      <View style={styles.ewwTrack}>
+        {/* Subtle tinted zones in the track */}
+        <View style={[styles.ewwZoneTint, { left: 0, width: '33.3%', backgroundColor: `${Colors.eww.green}15` }]} />
+        <View style={[styles.ewwZoneTint, { left: '33.3%', width: '33.4%', backgroundColor: `${Colors.eww.amber}15` }]} />
+        <View style={[styles.ewwZoneTint, { left: '66.7%', width: '33.3%', backgroundColor: `${Colors.eww.coral}15` }]} />
+
+        {/* Animated slime fill */}
+        <Animated.View
+          style={[
+            styles.ewwFill,
+            {
+              width:           anim.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }),
+              backgroundColor: fillColor,
+              shadowColor:     fillColor,
+            },
+          ]}
+        />
+
+        {/* Zone dividers */}
+        <View style={[styles.ewwDivider, { left: '33.3%' }]} />
+        <View style={[styles.ewwDivider, { left: '66.7%' }]} />
+      </View>
+
+      {/* Zone labels under bar */}
+      <View style={styles.ewwBarLabels}>
+        <Text style={[styles.ewwBarLabel, { color: `${Colors.eww.green}80` }]}>CURIOUS</Text>
+        <Text style={[styles.ewwBarLabel, { color: `${Colors.eww.amber}80` }]}>SLIMY</Text>
+        <Text style={[styles.ewwBarLabel, { color: `${Colors.eww.coral}80` }]}>DR. ICKY</Text>
+      </View>
+
+      {/* Stats */}
+      <Text style={styles.ewwStats}>
+        {classified} classified · {mastered} mastered / 225 total
+      </Text>
     </View>
   );
 }
@@ -400,14 +472,17 @@ const styles = StyleSheet.create({
 
   // ── EWW gauge ─────────────────────────────────────────────────────────────
   ewwCard: {
-    backgroundColor: `${Colors.eww.green}0A`,
+    backgroundColor: `${Colors.eww.green}08`,
     borderRadius:    Radius.lg,
     borderWidth:     1.5,
-    borderColor:     `${Colors.eww.green}40`,
-    paddingVertical:   16,
-    paddingHorizontal: 12,
-    alignItems:      'center',
-    gap:             8,
+    borderColor:     `${Colors.eww.green}30`,
+    padding:         Spacing.md,
+    gap:             10,
+  },
+  ewwHeader: {
+    flexDirection:  'row',
+    alignItems:     'center',
+    justifyContent: 'space-between',
   },
   ewwTitle: {
     fontFamily:    FontFamily.creepster,
@@ -415,14 +490,68 @@ const styles = StyleSheet.create({
     color:         Colors.text.lime,
     letterSpacing: 1.5,
   },
-  ewwMeterImg: {
-    width:  '100%',
-    height: 180,
+  ewwScorePill: {
+    borderRadius:      Radius.full,
+    borderWidth:       1.5,
+    paddingHorizontal: 14,
+    paddingVertical:   5,
   },
-  ewwSub: {
+  ewwScoreNum: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      24,
+    letterSpacing: 1,
+  },
+  ewwZoneLabel: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      13,
+    letterSpacing: 1.2,
+    marginTop:     -4,
+  },
+  ewwTrack: {
+    height:          26,
+    borderRadius:    Radius.full,
+    backgroundColor: Colors.bg.elevated,
+    borderWidth:     1,
+    borderColor:     Colors.border.subtle,
+    overflow:        'hidden',
+    position:        'relative',
+  },
+  ewwZoneTint: {
+    position: 'absolute',
+    top:      0,
+    bottom:   0,
+  },
+  ewwFill: {
+    position:      'absolute',
+    left:          0,
+    top:           0,
+    bottom:        0,
+    shadowOffset:  { width: 0, height: 0 },
+    shadowOpacity: 0.55,
+    shadowRadius:  8,
+  },
+  ewwDivider: {
+    position:        'absolute',
+    top:             0,
+    bottom:          0,
+    width:           1,
+    backgroundColor: 'rgba(255,255,255,0.10)',
+  },
+  ewwBarLabels: {
+    flexDirection:  'row',
+    justifyContent: 'space-between',
+    marginTop:      -2,
+  },
+  ewwBarLabel: {
+    fontFamily:    FontFamily.boogaloo,
+    fontSize:      10,
+    letterSpacing: 0.8,
+  },
+  ewwStats: {
     fontFamily: FontFamily.boogaloo,
-    fontSize:   15,
-    color:      Colors.text.secondary,
+    fontSize:   14,
+    color:      Colors.text.muted,
     textAlign:  'center',
+    marginTop:  2,
   },
 });

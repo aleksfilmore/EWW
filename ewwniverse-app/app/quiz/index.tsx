@@ -27,7 +27,8 @@ import { useUserStore } from '@/store/userStore';
 import { useGameStore } from '@/store/gameStore';
 import { getCreatureById, getCreatureQuiz } from '@/data/index';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
-import { MASTERY_QUIZ_SCANS } from '@/constants/game';
+import { MASTERY_QUIZ_SCANS, MASTERY_MILESTONES } from '@/constants/game';
+import { pickRandomUnownedCommon } from '@/data/special-specimens';
 import { playSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
@@ -48,10 +49,13 @@ export default function QuizScreen() {
 
   const profile                  = useUserStore((s) => s.profile);
   const creatures                = useUserStore((s) => s.creatures);
-  const addScans                 = useUserStore((s) => s.addScans);
-  const setCreatureState         = useUserStore((s) => s.setCreatureState);
-  const incrementDailyQuizAnswer = useUserStore((s) => s.incrementDailyQuizAnswer);
-  const triggerDrIcky            = useGameStore((s) => s.triggerDrIcky);
+  const addScans                  = useUserStore((s) => s.addScans);
+  const setCreatureState          = useUserStore((s) => s.setCreatureState);
+  const incrementDailyQuizAnswer  = useUserStore((s) => s.incrementDailyQuizAnswer);
+  const unlockSpecialSpecimen     = useUserStore((s) => s.unlockSpecialSpecimen);
+  const triggerContamination      = useUserStore((s) => s.triggerContamination);
+  const triggerDrIcky             = useGameStore((s) => s.triggerDrIcky);
+  const triggerContaminationEvent = useGameStore((s) => s.triggerContaminationEvent);
 
   const creature    = id ? getCreatureById(id) : undefined;
   const quizEntry   = id ? getCreatureQuiz(id) : undefined;
@@ -66,11 +70,12 @@ export default function QuizScreen() {
     }));
   }, [quizEntry]);
 
-  const [phase,       setPhase]       = useState<Phase>('intro');
-  const [currentIdx,  setCurrentIdx]  = useState(0);
-  const [selected,    setSelected]    = useState<string | null>(null);
-  const [answered,    setAnswered]    = useState(false);
-  const [scansEarned, setScansEarned] = useState(0);
+  const [phase,               setPhase]               = useState<Phase>('intro');
+  const [currentIdx,          setCurrentIdx]          = useState(0);
+  const [selected,            setSelected]            = useState<string | null>(null);
+  const [answered,            setAnswered]            = useState(false);
+  const [scansEarned,         setScansEarned]         = useState(0);
+  const [slimeSurgeTriggered, setSlimeSurgeTriggered] = useState(false);
 
   const alreadyMastered = creatures[id ?? '']?.state === 'mastered';
 
@@ -115,6 +120,9 @@ export default function QuizScreen() {
       if (nextIdx >= shuffledQuestions.length) {
         // All 3 correct → mastered
         playSfx('sfx_quiz_complete');
+
+        let didSurge = false;
+
         if (!alreadyMastered) {
           setCreatureState(id!, 'mastered');
           const earned = profile?.is_paid
@@ -122,8 +130,32 @@ export default function QuizScreen() {
             : MASTERY_QUIZ_SCANS.free;
           addScans(earned);
           setScansEarned(earned);
+
+          // Read fresh profile after state update to get accurate counts
+          const fresh          = useUserStore.getState().profile;
+          const newMastered    = fresh?.mastered_count ?? 0;
+          const surgeIdx       = fresh?.contamination_count ?? 0;
+
+          if (
+            surgeIdx < MASTERY_MILESTONES.length &&
+            newMastered >= MASTERY_MILESTONES[surgeIdx]
+          ) {
+            const ownedIds = Object.keys(fresh?.special_specimens ?? {});
+            const specimen = pickRandomUnownedCommon(ownedIds);
+            if (specimen) {
+              unlockSpecialSpecimen(specimen.id, 'contamination');
+              triggerContamination(specimen.id);
+              triggerContaminationEvent(specimen.id);
+              playSfx('sfx_contamination');
+              setSlimeSurgeTriggered(true);
+              didSurge = true;
+            }
+          }
         }
-        triggerDrIcky('mastered', true);
+
+        if (!didSurge) {
+          triggerDrIcky('mastered', true);
+        }
         setPhase('mastered');
       } else {
         setCurrentIdx(nextIdx);
@@ -131,7 +163,7 @@ export default function QuizScreen() {
         setAnswered(false);
       }
     }, 1200);
-  }, [selected, answered, currentIdx, shuffledQuestions, quizEntry, alreadyMastered, id, profile, incrementDailyQuizAnswer]);
+  }, [selected, answered, currentIdx, shuffledQuestions, quizEntry, alreadyMastered, id, profile, incrementDailyQuizAnswer, unlockSpecialSpecimen, triggerContamination, triggerContaminationEvent]);
 
   const handleRetry = useCallback(() => {
     setPhase('intro');
@@ -217,6 +249,12 @@ export default function QuizScreen() {
             <View style={styles.rewardBadge}>
               <Image source={Assets.iconSlimeCoin} style={styles.slimeCoinIcon} resizeMode="contain" />
               <Text style={styles.rewardText}>+{scansEarned} SCANS EARNED</Text>
+            </View>
+          )}
+
+          {slimeSurgeTriggered && (
+            <View style={styles.surgeBadge}>
+              <Text style={styles.surgeText}>☣  SLIME SURGE UNLOCKED</Text>
             </View>
           )}
 
@@ -610,6 +648,23 @@ const styles = StyleSheet.create({
     fontFamily:    FontFamily.creepster,
     fontSize:      18,
     color:         Colors.eww.gold,
+    letterSpacing: 1,
+  },
+  surgeBadge: {
+    flexDirection:     'row',
+    alignItems:        'center',
+    backgroundColor:   `${Colors.eww.green}22`,
+    borderRadius:      Radius.full,
+    borderWidth:       1.5,
+    borderColor:       `${Colors.eww.green}66`,
+    paddingHorizontal: 18,
+    paddingVertical:   10,
+    marginTop:         4,
+  },
+  surgeText: {
+    fontFamily:    FontFamily.creepster,
+    fontSize:      17,
+    color:         Colors.text.lime,
     letterSpacing: 1,
   },
   noReward: {
