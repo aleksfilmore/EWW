@@ -27,8 +27,8 @@ import { REVENUECAT_ENTITLEMENT } from '@/constants/game';
 // ─── API Keys ──────────────────────────────────────────────────────────────────
 // Found in: RevenueCat Dashboard → Project → Apps → [your app] → API Keys
 // Use the PUBLIC (SDK) key — never the secret key.
-const REVENUECAT_API_KEY_ANDROID = 'test_umgQRkRIznRveenWeiDFMlXnmGc';
-const REVENUECAT_API_KEY_IOS     = 'YOUR_REVENUECAT_IOS_KEY_HERE';
+const REVENUECAT_API_KEY_ANDROID = 'goog_ODdbXORqxqegrYMYPbMvlSkicau';
+const REVENUECAT_API_KEY_IOS     = 'appl_BSnfsKcpIUxnRnYaBfGscSOwvhJ';
 // ──────────────────────────────────────────────────────────────────────────────
 
 let _initialized = false;
