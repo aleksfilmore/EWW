@@ -1,11 +1,9 @@
 /**
  * Paywall — Full Lab Pass upgrade screen.
  *
- * €3.99 one-time IAP via RevenueCat.
- *
- * SETUP: add your RevenueCat API keys in services/revenuecat.ts before
- * building for distribution. The purchase button uses a dev-mode mock
- * when keys are not yet configured.
+ * Lifetime one-time IAP via RevenueCat.
+ * Presents the custom EWW-niverse paywall UI.
+ * "Manage subscription / get support" opens the RevenueCat Customer Center.
  */
 import React, { useEffect, useState } from 'react';
 import {
@@ -28,6 +26,7 @@ import {
   getDefaultPackage,
   purchaseFullLabPass,
   restorePurchases,
+  presentCustomerCenter,
 } from '@/services/revenuecat';
 import type { PurchasesPackage } from 'react-native-purchases';
 
@@ -131,6 +130,16 @@ export default function Paywall() {
     }
   }
 
+  async function handleCustomerCenter() {
+    await presentCustomerCenter((customerInfo) => {
+      // If the user restored inside Customer Center, sync local state
+      if (customerInfo.entitlements.active['full_lab_pass']) {
+        setPaid(true);
+        router.back();
+      }
+    });
+  }
+
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <TouchableOpacity
@@ -203,6 +212,14 @@ export default function Paywall() {
           disabled={loading}
         >
           <Text style={styles.restoreBtnText}>Restore purchase</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={handleCustomerCenter}
+          style={styles.restoreBtn}
+          disabled={loading}
+        >
+          <Text style={styles.restoreBtnText}>Manage · Get support</Text>
         </TouchableOpacity>
 
         <Text style={styles.legal}>

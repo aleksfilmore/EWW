@@ -91,9 +91,10 @@ function AppBootstrap() {
     refreshScanIfDue();
     incrementStreak();
 
-    // Initialize RevenueCat (no-op if keys not configured yet)
-    initRevenueCat().then(() => {
-      // Silently re-check entitlement in case user purchased on another device
+    // Initialize RevenueCat and silently re-sync entitlement.
+    // We pass the Firebase UID so cross-device purchases are linked.
+    const uid = useUserStore.getState().profile?.uid;
+    initRevenueCat(uid ?? undefined).then(() => {
       checkEntitlement().then((entitled) => {
         if (entitled) setPaid(true);
       });
