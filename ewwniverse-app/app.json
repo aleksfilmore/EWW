@@ -74,6 +74,7 @@
           "resizeMode": "contain"
         }
       ],
+      "./plugins/withModularHeaders",
       "@react-native-firebase/app",
       "./plugins/withObjcAppDelegate",
       "expo-asset",
