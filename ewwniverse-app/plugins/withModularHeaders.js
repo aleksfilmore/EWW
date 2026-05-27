@@ -1,16 +1,22 @@
 /**
  * withModularHeaders.js
  *
- * Firebase (Swift) requires `use_modular_headers!` so that GoogleUtilities
- * and FirebaseCoreInternal generate module maps.  However, that flag breaks
- * gRPC-Core / BoringSSL-GRPC / gRPC-C++ (used by Firestore) because those
- * pods don't support modular headers.
+ * Applies three Podfile patches required to build @react-native-firebase
+ * with Firestore on Expo managed workflow:
  *
- * Fix: enable modular headers globally, then explicitly opt-out the three
- * gRPC pods by re-declaring them with `:modular_headers => false` inside
- * the main app target.
+ * 1. use_modular_headers! — Firebase Swift pods (FirebaseCoreInternal) need
+ *    GoogleUtilities to define modules; this enables that globally.
  *
- * The Podfile is regenerated every EAS build so this must be a plugin.
+ * 2. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ (used by
+ *    Firestore) cannot build with modular headers. Re-declared with
+ *    :modular_headers => false to override the global flag.
+ *
+ * 3. C++17 post_install hook — Abseil (absl) removed make_unique in newer
+ *    releases; it requires C++17. Without this the Xcode build fails with
+ *    "no template named 'make_unique' in namespace 'absl'".
+ *
+ * The Podfile is regenerated every EAS build so all patches must be applied
+ * via a config plugin.
  */
 const { withDangerousMod } = require('@expo/config-plugins');
 const fs = require('fs');
@@ -49,6 +55,21 @@ module.exports = function withModularHeaders(config) {
           /([ \t]*use_expo_modules!)/,
           `$1\n\n${GRPC_MARKER}\n${GRPC_OVERRIDES}`
         );
+      }
+
+      // ── 3. Add C++17 post_install hook for Abseil / absl::make_unique ────────
+      const CXX_MARKER = '# [withModularHeaders] C++17';
+      if (!contents.includes(CXX_MARKER)) {
+        contents += `
+${CXX_MARKER}
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+    end
+  end
+end
+`;
       }
 
       fs.writeFileSync(podfilePath, contents, 'utf8');
