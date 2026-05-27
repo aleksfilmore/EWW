@@ -73,8 +73,8 @@
           "resizeMode": "contain"
         }
       ],
-      "./plugins/withObjcAppDelegate",
       "@react-native-firebase/app",
+      "./plugins/withObjcAppDelegate",
       "expo-asset",
       "expo-video"
     ],

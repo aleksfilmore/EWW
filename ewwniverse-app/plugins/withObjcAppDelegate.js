@@ -3,15 +3,27 @@
  *
  * Expo SDK 50+ generates a Swift AppDelegate by default, but
  * @react-native-firebase/app v17 can only inject its initialization code
- * into Objective-C delegates. This plugin runs BEFORE the Firebase plugin
- * and converts the generated AppDelegate to ObjC++ so Firebase can inject
- * properly.
+ * into an Objective-C delegate.
  *
- * Must appear in app.json plugins list BEFORE "@react-native-firebase/app".
+ * This plugin uses withDangerousMod to convert AppDelegate.swift →
+ * AppDelegate.mm on disk BEFORE the Firebase dangerous-mod callback reads
+ * the file. It MUST appear AFTER "@react-native-firebase/app" in the
+ * app.json plugins array — the dangerous-mod pipeline is LIFO, so the
+ * last-registered callback executes first.
  */
-const { withAppDelegate } = require('@expo/config-plugins');
+const { withDangerousMod } = require('@expo/config-plugins');
+const fs = require('fs');
+const path = require('path');
 
-const OBJC_APP_DELEGATE = `\
+const OBJC_APP_DELEGATE_H = `\
+#import <RCTAppDelegate.h>
+#import <UIKit/UIKit.h>
+
+@interface AppDelegate : RCTAppDelegate
+@end
+`;
+
+const OBJC_APP_DELEGATE_MM = `\
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -27,12 +39,38 @@ const OBJC_APP_DELEGATE = `\
 `;
 
 module.exports = function withObjcAppDelegate(config) {
-  return withAppDelegate(config, (config) => {
-    if (config.modResults.language === 'swift') {
-      // Switch to ObjC++ so @react-native-firebase/app can inject Firebase init
-      config.modResults.language = 'objcpp';
-      config.modResults.contents = OBJC_APP_DELEGATE;
-    }
-    return config;
-  });
+  return withDangerousMod(config, [
+    'ios',
+    async (config) => {
+      const iosDir = path.join(config.modRequest.projectRoot, 'ios');
+
+      // The AppDelegate lives in a subdirectory named after the app
+      let swiftPath = null;
+      for (const entry of fs.readdirSync(iosDir, { withFileTypes: true })) {
+        if (!entry.isDirectory()) continue;
+        const candidate = path.join(iosDir, entry.name, 'AppDelegate.swift');
+        if (fs.existsSync(candidate)) {
+          swiftPath = candidate;
+          break;
+        }
+      }
+
+      if (!swiftPath) return config; // already ObjC or not found — nothing to do
+
+      const dir = path.dirname(swiftPath);
+      const mmPath = path.join(dir, 'AppDelegate.mm');
+      const hPath  = path.join(dir, 'AppDelegate.h');
+
+      // Write ObjC files
+      fs.writeFileSync(mmPath, OBJC_APP_DELEGATE_MM, 'utf8');
+      if (!fs.existsSync(hPath)) {
+        fs.writeFileSync(hPath, OBJC_APP_DELEGATE_H, 'utf8');
+      }
+
+      // Remove the Swift file so Firebase doesn't find it
+      fs.unlinkSync(swiftPath);
+
+      return config;
+    },
+  ]);
 };
