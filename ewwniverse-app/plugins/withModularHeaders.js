@@ -57,19 +57,25 @@ module.exports = function withModularHeaders(config) {
         );
       }
 
-      // ── 3. Add C++17 post_install hook for Abseil / absl::make_unique ────────
+      // ── 3. Inject C++17 into the existing post_install block ─────────────────
+      // CocoaPods forbids multiple post_install blocks, so we inject into the
+      // one Expo already generates rather than appending a new one.
       const CXX_MARKER = '# [withModularHeaders] C++17';
       if (!contents.includes(CXX_MARKER)) {
-        contents += `
-${CXX_MARKER}
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
-    end
-  end
-end
-`;
+        const CXX_SNIPPET = [
+          `  ${CXX_MARKER}`,
+          '  installer.pods_project.targets.each do |target|',
+          '    target.build_configurations.each do |config|',
+          "      config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'",
+          '    end',
+          '  end',
+        ].join('\n');
+
+        // Insert right after the opening `post_install do |installer|` line
+        contents = contents.replace(
+          /(post_install do \|installer\|)/,
+          `$1\n${CXX_SNIPPET}`
+        );
       }
 
       fs.writeFileSync(podfilePath, contents, 'utf8');
