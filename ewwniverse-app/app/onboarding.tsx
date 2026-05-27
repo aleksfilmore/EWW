@@ -67,7 +67,7 @@ function SlideVideoHero({
 }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const player = useVideoPlayer(video as any, (p) => {
-    p.loop = true;
+    p.loop = false;  // Play once then stop
     p.muted = false;
     // Don't auto-play — playback is controlled by isActive
   });

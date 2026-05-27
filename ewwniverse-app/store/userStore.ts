@@ -9,6 +9,7 @@ import {
   STAGE_THRESHOLDS,
   FREE_STAGE_CAP,
   STREAK_REWARD_DAY,
+  DAILY_MISSION_REWARDS,
 } from '@/constants/game';
 import { playSfx } from '@/services/audio';
 import { getCreatureById } from '@/data/index';
@@ -63,6 +64,9 @@ function makeDefaultProfile(uid: string): UserProfile {
     daily_classified_today: 0,
     daily_quiz_answers_today: 0,
     daily_rare_found: false,
+    daily_mission_classify_done: false,
+    daily_mission_quiz_done: false,
+    daily_mission_rare_done: false,
   };
 }
 
@@ -70,10 +74,13 @@ function dailyResetPatch(profile: UserProfile): Partial<UserProfile> | null {
   const today = todayIso();
   if (profile.daily_missions_reset === today) return null;
   return {
-    daily_missions_reset:     today,
-    daily_classified_today:   0,
-    daily_quiz_answers_today: 0,
-    daily_rare_found:         false,
+    daily_missions_reset:          today,
+    daily_classified_today:        0,
+    daily_quiz_answers_today:      0,
+    daily_rare_found:              false,
+    daily_mission_classify_done:   false,
+    daily_mission_quiz_done:       false,
+    daily_mission_rare_done:       false,
   };
 }
 
@@ -123,24 +130,57 @@ export const useUserStore = create<UserState>()(
         const creatureData = isNewClassification ? getCreatureById(id) : undefined;
         const isRare       = (creatureData?.eww_meter ?? 0) >= 80;
 
+        // Pre-compute mission completion using current profile so we can
+        // trigger SFX after set() without re-reading stale flags.
+        const resetPatchPre = dailyResetPatch(profile) ?? {};
+        const basePre = { ...profile, ...resetPatchPre };
+        const newDailyClassifiedPre = isNewClassification
+          ? (basePre.daily_classified_today ?? 0) + 1
+          : (basePre.daily_classified_today ?? 0);
+        const classifyMissionJustDone =
+          isNewClassification &&
+          newDailyClassifiedPre === 3 &&
+          !(basePre.daily_mission_classify_done ?? false);
+        const rareMissionJustDone =
+          isNewClassification &&
+          isRare &&
+          !(basePre.daily_rare_found ?? false) &&
+          !(basePre.daily_mission_rare_done ?? false);
+
         set((s) => {
           if (!s.profile) return { creatures: { ...s.creatures, [id]: update } };
           const resetPatch = dailyResetPatch(s.profile) ?? {};
           const base = { ...s.profile, ...resetPatch };
+
+          const newDailyClassified = isNewClassification
+            ? (base.daily_classified_today ?? 0) + 1
+            : (base.daily_classified_today ?? 0);
+
           return {
             creatures: { ...s.creatures, [id]: update },
             profile: {
               ...base,
               classified_count,
               mastered_count,
+              // Scan rewards for completed missions
+              scan_balance:
+                base.scan_balance +
+                (classifyMissionJustDone ? DAILY_MISSION_REWARDS.classify3 : 0) +
+                (rareMissionJustDone     ? DAILY_MISSION_REWARDS.findRare   : 0),
               ...(isNowClassified ? { last_classified_creature_id: id } : {}),
               ...(isNewClassification ? {
-                daily_classified_today: (base.daily_classified_today ?? 0) + 1,
+                daily_classified_today: newDailyClassified,
                 ...(isRare ? { daily_rare_found: true } : {}),
+                ...(classifyMissionJustDone ? { daily_mission_classify_done: true } : {}),
+                ...(rareMissionJustDone     ? { daily_mission_rare_done:     true } : {}),
               } : {}),
             },
           };
         });
+        // SFX when a daily mission completes
+        if (classifyMissionJustDone || rareMissionJustDone) {
+          playSfx('sfx_unlock');
+        }
         get().updateStage();
       },
 
@@ -279,10 +319,18 @@ export const useUserStore = create<UserState>()(
           if (!s.profile) return s;
           const resetPatch = dailyResetPatch(s.profile) ?? {};
           const base = { ...s.profile, ...resetPatch };
+          const newCount = (base.daily_quiz_answers_today ?? 0) + 1;
+
+          // Mission: answer 5 quiz questions → +1 scan (once per day)
+          const quizMissionJustDone =
+            newCount === 5 && !(base.daily_mission_quiz_done ?? false);
+
           return {
             profile: {
               ...base,
-              daily_quiz_answers_today: (base.daily_quiz_answers_today ?? 0) + 1,
+              daily_quiz_answers_today: newCount,
+              scan_balance: base.scan_balance + (quizMissionJustDone ? DAILY_MISSION_REWARDS.quiz5answers : 0),
+              ...(quizMissionJustDone ? { daily_mission_quiz_done: true } : {}),
             },
           };
         });

@@ -13,9 +13,10 @@ export const QUIZ_SCAN_REWARDS = {
 };
 
 // Scans awarded the first time a creature quiz is mastered (all 3 correct)
+// Deliberately modest to preserve scan economy — mastery is its own reward
 export const MASTERY_QUIZ_SCANS = {
   free: 2,
-  paid: 5,
+  paid: 2,
 } as const;
 
 export const CONTAMINATION_STREAK = 3; // correct answers in a row without hint
@@ -44,15 +45,25 @@ export const STAGE_LABELS = {
   5: 'Full Dr. Icky',
 } as const;
 
+// Stage thresholds based on classified count.
+// Scaled for paid tier (234 total specimens) so Stage 5 is a genuine achievement.
+// Free users (75 specimens) are hard-capped at Stage 2 via FREE_STAGE_CAP regardless.
 export const STAGE_THRESHOLDS = {
   1: 0,
-  2: 10,   // classified count
-  3: 25,
-  4: 50,
-  5: 75,
+  2: 15,   // ~6% of paid library — quick early win
+  3: 50,   // ~21%
+  4: 120,  // ~51%
+  5: 200,  // ~85% — reserved for dedicated collectors
 } as const;
 
 export const DAILY_SPECIMEN_SCAN_MULTIPLIER = 2; // 2x scans if classified within 24h
+
+// Daily mission scan rewards (granted once per day per mission)
+export const DAILY_MISSION_REWARDS = {
+  classify3:   2,  // classify 3 specimens → +2 scans
+  quiz5answers: 1, // answer 5 quiz questions → +1 scan
+  findRare:    3,  // classify a rare specimen (eww ≥ 80) → +3 scans
+} as const;
 
 export const BOOKS = [
   {

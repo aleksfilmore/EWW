@@ -99,16 +99,6 @@ function AppBootstrap() {
       });
     });
 
-    // Dr. Icky daily greeting — fires once per calendar day after a short delay
-    const today = new Date().toISOString().slice(0, 10);
-    AsyncStorage.getItem(DRICKY_DAILY_KEY).then((last) => {
-      if (last !== today) {
-        AsyncStorage.setItem(DRICKY_DAILY_KEY, today);
-        // Delay so app is fully loaded before Dr. Icky appears
-        setTimeout(() => triggerDrIcky('daily_return', true), 1_800);
-      }
-    });
-
     // Poll for scan refresh every 60 seconds (cheap check — only fires when due)
     refreshIntervalRef.current = setInterval(() => {
       refreshScanIfDue();
@@ -118,6 +108,21 @@ function AppBootstrap() {
       if (refreshIntervalRef.current) clearInterval(refreshIntervalRef.current);
     };
   }, [isHydrated]);   // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Dr. Icky daily greeting — fires once per day, ONLY after onboarding is resolved
+  // and ONLY when onboarding is NOT showing (prevents the video playing over slides)
+  useEffect(() => {
+    if (!isHydrated || !onboardingChecked || showOnboarding) return;
+
+    const today = new Date().toISOString().slice(0, 10);
+    AsyncStorage.getItem(DRICKY_DAILY_KEY).then((last) => {
+      if (last !== today) {
+        AsyncStorage.setItem(DRICKY_DAILY_KEY, today);
+        // Short delay so the main tabs are fully visible before Dr. Icky appears
+        setTimeout(() => triggerDrIcky('daily_return', true), 1_800);
+      }
+    });
+  }, [isHydrated, onboardingChecked, showOnboarding]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (isHydrated && fontsLoaded && onboardingChecked) {

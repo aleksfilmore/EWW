@@ -36,6 +36,12 @@ export interface UserProfile {
   daily_quiz_answers_today: number;
   /** Whether a rare specimen (eww ≥ 80) was classified today */
   daily_rare_found: boolean;
+  /** Whether the "+2 scans for classifying 3" mission reward was granted today */
+  daily_mission_classify_done: boolean;
+  /** Whether the "+1 scan for answering 5 quiz questions" mission reward was granted today */
+  daily_mission_quiz_done: boolean;
+  /** Whether the "+3 scans for finding a rare specimen" mission reward was granted today */
+  daily_mission_rare_done: boolean;
 }
 
 export interface QuizResult {

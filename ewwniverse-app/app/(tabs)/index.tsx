@@ -43,6 +43,7 @@ export default function Home() {
   const ewwScore = Math.min(100, Math.round(Math.sqrt(linearProgress) * 100));
 
   // Daily missions — tracked per-day via dedicated profile counters
+  // Rewards are granted automatically in the store when conditions are met
   const missions = [
     {
       icon:     Assets.missionScan,
@@ -50,6 +51,7 @@ export default function Home() {
       current:  Math.min(profile.daily_classified_today ?? 0, 3),
       total:    3,
       reward:   '+2 SCANS',
+      claimed:  profile.daily_mission_classify_done ?? false,
     },
     {
       icon:     Assets.missionWarning,
@@ -57,6 +59,7 @@ export default function Home() {
       current:  Math.min(profile.daily_quiz_answers_today ?? 0, 5),
       total:    5,
       reward:   '+1 SCAN',
+      claimed:  profile.daily_mission_quiz_done ?? false,
     },
     {
       icon:     Assets.missionRare,
@@ -64,6 +67,7 @@ export default function Home() {
       current:  profile.daily_rare_found ? 1 : 0,
       total:    1,
       reward:   '+3 SCANS',
+      claimed:  profile.daily_mission_rare_done ?? false,
     },
   ];
 
@@ -110,6 +114,7 @@ export default function Home() {
               current={m.current}
               total={m.total}
               reward={m.reward}
+              claimed={m.claimed}
             />
           ))}
         </View>
@@ -153,6 +158,7 @@ export default function Home() {
           score={ewwScore}
           classified={profile.classified_count}
           mastered={profile.mastered_count}
+          total={TOTAL_CREATURES}
         />
       </ScrollView>
     </SafeAreaView>
@@ -167,12 +173,14 @@ function MissionRow({
   current,
   total,
   reward,
+  claimed,
 }: {
   icon: ImageSourcePropType;
   label: string;
   current: number;
   total: number;
   reward: string;
+  claimed: boolean;
 }) {
   const done = current >= total;
   const pct  = Math.min(current / total, 1);
@@ -192,8 +200,8 @@ function MissionRow({
           {current} / {total}
         </Text>
       </View>
-      <View style={[styles.missionReward, done && styles.missionRewardDone]}>
-        <Text style={styles.missionRewardText}>{done ? '✓' : reward}</Text>
+      <View style={[styles.missionReward, (done || claimed) && styles.missionRewardDone]}>
+        <Text style={styles.missionRewardText}>{claimed ? '✓ CLAIMED' : done ? '✓' : reward}</Text>
       </View>
     </View>
   );
@@ -220,10 +228,12 @@ function EwwScoreGauge({
   score,
   classified,
   mastered,
+  total,
 }: {
   score: number;
   classified: number;
   mastered: number;
+  total: number;
 }) {
   const anim = useRef(new Animated.Value(0)).current;
 
@@ -294,7 +304,7 @@ function EwwScoreGauge({
 
       {/* Stats */}
       <Text style={styles.ewwStats}>
-        {classified} classified · {mastered} mastered / 225 total
+        {classified} classified · {mastered} mastered / {total} total
       </Text>
     </View>
   );
