@@ -53,6 +53,7 @@
       "policy": "fingerprint"
     },
     "plugins": [
+      "./plugins/withCrunchPngsFix",
       "expo-router",
       "expo-updates",
       "expo-image",
