@@ -81,7 +81,7 @@ module.exports = function withModularHeaders(config) {
           '    boringssl.source_build_phase.files.each do |file|',
           '      if file.settings && file.settings[\'COMPILER_FLAGS\']',
           '        flags = file.settings[\'COMPILER_FLAGS\'].split',
-          "        flags.reject! { |f| f == '-G' }",
+          "        flags.reject! { |f| f.start_with?('-GCC_WARN') }",
           "        file.settings['COMPILER_FLAGS'] = flags.join(' ')",
           '      end',
           '    end',
