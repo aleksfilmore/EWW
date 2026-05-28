@@ -19,19 +19,24 @@
  *    Strip it from per-file COMPILER_FLAGS in the BoringSSL-GRPC target.
  *
  * Injection strategy for (3) & (4):
- *   CocoaPods only allows one post_install block (Expo already has one).
- *   We inject our Ruby code immediately before the closing `end` of that
- *   block using lastIndexOf — format-agnostic and always runs AFTER
- *   react_native_post_install, so our settings are never overridden.
+ *   We inject our Ruby code immediately AFTER the line containing
+ *   react_native_post_install(installer). This anchor is:
+ *     - Always present in Expo-generated Podfiles
+ *     - Always inside the post_install block (installer is in scope)
+ *     - Format-agnostic: works whether post_install is nested inside
+ *       the target block or defined at the top level
+ *   This avoids the lastIndexOf('\nend') pitfall where — when post_install
+ *   is nested inside the target block — the wrong `end` is found and the
+ *   snippets land outside post_install where `installer` is not in scope.
  *
- * The Podfile is regenerated every EAS build, so all patches must be
- * applied via a config plugin.
+ * C++17 loop uses installer.pods_project.targets (available in all
+ * CocoaPods versions) rather than installer.generated_projects (1.10+).
  */
 const { withDangerousMod } = require('@expo/config-plugins');
 const fs   = require('fs');
 const path = require('path');
 
-// ── Patch 2: pod-level opt-outs injected inside the target block ─────────────
+// ── Patch 2: pod-level opt-outs injected right after use_expo_modules! ───────
 const GRPC_OVERRIDES = [
   "  pod 'BoringSSL-GRPC',  :modular_headers => false",
   "  pod 'gRPC-Core',       :modular_headers => false",
@@ -39,18 +44,20 @@ const GRPC_OVERRIDES = [
 ].join('\n');
 const GRPC_MARKER = '# [withModularHeaders] gRPC overrides';
 
-// ── Patches 3 & 4: injected before the closing `end` of post_install ─────────
-// Uses installer.generated_projects (modern CocoaPods API, broader coverage).
+// ── Patches 3 & 4: anchor — guaranteed inside post_install ───────────────────
+// Match the start of the call so variations like
+//   react_native_post_install(installer, :mac_catalyst_enabled => false)
+// are also handled.
+const RN_POST_INSTALL_ANCHOR = 'react_native_post_install(installer';
+
 const CXX_MARKER    = '# [withModularHeaders] C++17';
 const BORING_MARKER = '# [withModularHeaders] BoringSSL-GRPC -GCC_WARN fix';
 
 const CXX_SNIPPET = `
   ${CXX_MARKER}
-  installer.generated_projects.each do |project|
-    project.targets.each do |target|
-      target.build_configurations.each do |cfg|
-        cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
-      end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |cfg|
+      cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
     end
   end`;
 
@@ -92,17 +99,23 @@ module.exports = function withModularHeaders(config) {
         );
       }
 
-      // ── 3 & 4. Inject before the closing `end` of the post_install block ─────
-      // lastIndexOf('\nend') finds the `end` that closes `post_install do`.
-      // Our snippets run after react_native_post_install so they're final.
+      // ── 3 & 4. Inject right after react_native_post_install(installer...) ────
+      // Using this anchor guarantees installer is in scope, regardless of
+      // whether post_install is nested inside the target block or top-level.
       let snippets = '';
       if (!contents.includes(CXX_MARKER))    snippets += CXX_SNIPPET;
       if (!contents.includes(BORING_MARKER)) snippets += '\n' + BORING_SNIPPET;
 
       if (snippets) {
-        const lastEnd = contents.lastIndexOf('\nend');
-        if (lastEnd !== -1) {
-          contents = contents.slice(0, lastEnd) + snippets + '\n' + contents.slice(lastEnd);
+        const anchorIdx = contents.lastIndexOf(RN_POST_INSTALL_ANCHOR);
+        if (anchorIdx !== -1) {
+          // Advance to the end of the anchor line, then insert after it.
+          const endOfLine = contents.indexOf('\n', anchorIdx);
+          const insertPos = endOfLine !== -1 ? endOfLine + 1 : anchorIdx + RN_POST_INSTALL_ANCHOR.length;
+          contents =
+            contents.slice(0, insertPos) +
+            snippets + '\n' +
+            contents.slice(insertPos);
         }
       }
 
