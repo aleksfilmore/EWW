@@ -10,9 +10,14 @@
  * 2. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ cannot
  *    build with modular headers; opt them back out.
  *
- * 3. C++17 standard — Abseil (absl) aliases make_unique to std::make_unique
- *    only when compiled with C++14+. Without this setting pods default to
- *    C++11, where std::make_unique does not exist.
+ * 3. C++20 standard — React Native 0.85 (Fabric / Hermes / codegen) uses
+ *    C++20 features: the `concept` keyword, std::identity, std::bit_width.
+ *    Abseil (in BoringSSL-GRPC / gRPC-Core) needs at least C++14 for the
+ *    absl::make_unique alias to std::make_unique. C++20 satisfies both
+ *    requirements and is what react-native/scripts/cocoapods/helpers.rb
+ *    returns from cxx_language_standard(), so we mirror it for every pod.
+ *    Without this override, RN pods default to whatever their xcconfig
+ *    says, which our post_install pass would clobber to C++11 otherwise.
  *
  * 4. BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS flag — Apple Clang
  *    parses this as the -G flag, which is unsupported on arm64 targets.
@@ -29,7 +34,7 @@
  *   run AFTER react_native_post_install (ensuring our settings are not
  *   overridden by it).
  *
- * C++17 loop uses installer.pods_project.targets (available in all
+ * C++20 loop uses installer.pods_project.targets (available in all
  * CocoaPods versions) rather than installer.generated_projects (1.10+).
  */
 const { withDangerousMod } = require('@expo/config-plugins');
@@ -45,14 +50,14 @@ const GRPC_OVERRIDES = [
 const GRPC_MARKER = '# [withModularHeaders] gRPC overrides';
 
 // ── Patches 3 & 4 ─────────────────────────────────────────────────────────────
-const CXX_MARKER    = '# [withModularHeaders] C++17';
+const CXX_MARKER    = '# [withModularHeaders] C++20';
 const BORING_MARKER = '# [withModularHeaders] BoringSSL-GRPC -GCC_WARN fix';
 
 const CXX_SNIPPET = `
   ${CXX_MARKER}
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |cfg|
-      cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
     end
   end`;
 
