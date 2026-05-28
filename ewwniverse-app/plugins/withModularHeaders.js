@@ -8,10 +8,17 @@
  * 1. use_modular_headers! — Firebase Swift pods need GoogleUtilities
  *    to define modules.
  *
- * 2. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ cannot
+ * 2. Explicit pod declarations — FirebaseAuth must be listed as a
+ *    top-level pod so CocoaPods compiles it (and generates its Swift
+ *    bridging header FirebaseAuth-Swift.h) before RNFBApp / RNFBFirestore
+ *    which import it via the Firebase umbrella header. Without this
+ *    explicit declaration it is only a transitive dep and may not be
+ *    compiled early enough, causing a build failure on newer Xcode.
+ *
+ * 3. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ cannot
  *    build with modular headers; opt them back out.
  *
- * 3. BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS flag — Apple Clang
+ * 4. BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS flag — Apple Clang
  *    parses this as the -G flag, which is unsupported on arm64 targets.
  *    Strip it from per-file COMPILER_FLAGS in the BoringSSL-GRPC target.
  *
@@ -24,7 +31,7 @@
  *   here just creates the C++17 ↔ C++20 conflict we saw with
  *   Firebase 10.7 — leave each pod alone.
  *
- * Injection strategy for (3):
+ * Injection strategy for (4):
  *   Find `post_install do |installer|` and its closing `end` by
  *   matching the indent. Snippet runs after react_native_post_install
  *   so our settings are final.
@@ -33,8 +40,9 @@ const { withDangerousMod } = require('@expo/config-plugins');
 const fs   = require('fs');
 const path = require('path');
 
-// ── Patch 2: pod-level opt-outs injected right after use_expo_modules! ───────
+// ── Patches 2+3: explicit pods + gRPC opt-outs after use_expo_modules! ───────
 const GRPC_OVERRIDES = [
+  "  pod 'FirebaseAuth'",
   "  pod 'BoringSSL-GRPC',  :modular_headers => false",
   "  pod 'gRPC-Core',       :modular_headers => false",
   "  pod 'gRPC-C++',        :modular_headers => false",
@@ -104,7 +112,7 @@ module.exports = function withModularHeaders(config) {
         );
       }
 
-      // ── 2. Per-pod opt-outs right after use_expo_modules! ────────────────────
+      // ── 2+3. Explicit pods + gRPC opt-outs right after use_expo_modules! ──────
       if (!contents.includes(GRPC_MARKER)) {
         contents = contents.replace(
           /([ \t]*use_expo_modules!)/,
@@ -112,7 +120,7 @@ module.exports = function withModularHeaders(config) {
         );
       }
 
-      // ── 3. BoringSSL-GRPC -GCC_WARN strip in post_install ───────────────────
+      // ── 4. BoringSSL-GRPC -GCC_WARN strip in post_install ───────────────────
       if (!contents.includes(BORING_MARKER)) {
         const insertPos = findPostInstallInsertPoint(contents);
         if (insertPos !== -1) {
