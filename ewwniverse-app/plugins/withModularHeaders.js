@@ -10,14 +10,21 @@
  * 2. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ cannot
  *    build with modular headers; opt them back out.
  *
- * 3. C++20 standard — React Native 0.85 (Fabric / Hermes / codegen) uses
- *    C++20 features: the `concept` keyword, std::identity, std::bit_width.
- *    Abseil (in BoringSSL-GRPC / gRPC-Core) needs at least C++14 for the
- *    absl::make_unique alias to std::make_unique. C++20 satisfies both
- *    requirements and is what react-native/scripts/cocoapods/helpers.rb
- *    returns from cxx_language_standard(), so we mirror it for every pod.
- *    Without this override, RN pods default to whatever their xcconfig
- *    says, which our post_install pass would clobber to C++11 otherwise.
+ * 3. Per-target C++ standard — There's a fundamental conflict in this
+ *    dependency set:
+ *      • React Native 0.85 (Fabric / Hermes / codegen) requires C++20
+ *        — uses `concept`, std::identity, std::bit_width. RN pods set
+ *        this via pod_target_xcconfig.
+ *      • Firebase iOS SDK 10.7's bundled abseil only defines
+ *        `absl::make_unique` (as `using std::make_unique`) for
+ *        C++14 / C++17. Under C++20 the conditional is omitted, so
+ *        any Firestore C++ source that calls absl::make_unique fails
+ *        with "no template named 'make_unique' in namespace 'absl'".
+ *    So we set C++17 explicitly only on the Firebase/abseil/gRPC
+ *    chain, and we DO NOT touch RN/Expo/Reanimated pods — their
+ *    xcconfig sets C++20 and that's what we want them to use.
+ *    CocoaPods build_settings only override xcconfig when set, so
+ *    leaving them unset for RN targets preserves their C++20.
  *
  * 4. BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS flag — Apple Clang
  *    parses this as the -G flag, which is unsupported on arm64 targets.
@@ -34,7 +41,7 @@
  *   run AFTER react_native_post_install (ensuring our settings are not
  *   overridden by it).
  *
- * C++20 loop uses installer.pods_project.targets (available in all
+ * C++17 loop uses installer.pods_project.targets (available in all
  * CocoaPods versions) rather than installer.generated_projects (1.10+).
  */
 const { withDangerousMod } = require('@expo/config-plugins');
@@ -50,14 +57,18 @@ const GRPC_OVERRIDES = [
 const GRPC_MARKER = '# [withModularHeaders] gRPC overrides';
 
 // ── Patches 3 & 4 ─────────────────────────────────────────────────────────────
-const CXX_MARKER    = '# [withModularHeaders] C++20';
+const CXX_MARKER    = '# [withModularHeaders] C++17 for Firebase/abseil/gRPC chain only';
 const BORING_MARKER = '# [withModularHeaders] BoringSSL-GRPC -GCC_WARN fix';
 
+// We target only the Firebase iOS SDK 10.7 dependency chain. RN/Expo/
+// Reanimated pods set C++20 in their podspec and we don't touch them.
 const CXX_SNIPPET = `
   ${CXX_MARKER}
+  cxx17_prefixes = ['abseil', 'BoringSSL', 'gRPC', 'Firebase', 'leveldb-library', 'nanopb']
   installer.pods_project.targets.each do |target|
+    next unless cxx17_prefixes.any? { |p| target.name.start_with?(p) }
     target.build_configurations.each do |cfg|
-      cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
+      cfg.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
     end
   end`;
 
