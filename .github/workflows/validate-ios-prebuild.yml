@@ -1,0 +1,110 @@
+name: Validate iOS Prebuild
+
+# Runs on every push to main so we catch regressions before
+# the next EAS build. No Mac needed locally — GitHub provides
+# free macOS runners.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ewwniverse-app/**'
+  pull_request:
+    paths:
+      - 'ewwniverse-app/**'
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  prebuild:
+    name: expo prebuild (iOS)
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ewwniverse-app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: ewwniverse-app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Prebuild generates ios/ from app.json + config plugins.
+      # We use --no-install to skip pod install (faster; we only
+      # need the generated files, not a compilable project).
+      - name: Run expo prebuild
+        run: npx expo prebuild --clean --platform ios --no-install
+        env:
+          # Prevent prebuild from prompting for anything
+          CI: '1'
+
+      # ── Validation checks ──────────────────────────────────────
+
+      - name: Check AppDelegate.swift exists
+        run: |
+          FILE="ios/EWWniverse/AppDelegate.swift"
+          if [ ! -f "$FILE" ]; then
+            echo "❌ $FILE is missing"
+            echo "withObjcAppDelegate or another plugin may have deleted it."
+            ls ios/EWWniverse/ || true
+            exit 1
+          fi
+          echo "✅ $FILE exists"
+          cat "$FILE"
+
+      - name: Check AppDelegate.mm does NOT exist
+        run: |
+          FILE="ios/EWWniverse/AppDelegate.mm"
+          if [ -f "$FILE" ]; then
+            echo "❌ $FILE found — withObjcAppDelegate plugin is still active and will break the build"
+            exit 1
+          fi
+          echo "✅ No stale AppDelegate.mm"
+
+      - name: Validate Podfile — use_frameworks
+        run: |
+          if ! grep -q "use_frameworks! :linkage => :static" ios/Podfile; then
+            echo "❌ use_frameworks! :linkage => :static not found in Podfile"
+            grep "use_frameworks" ios/Podfile || echo "(no use_frameworks line at all)"
+            exit 1
+          fi
+          echo "✅ use_frameworks! :linkage => :static present"
+
+      - name: Validate Podfile — pre_install gRPC hook
+        run: |
+          if ! grep -q "pre_install" ios/Podfile; then
+            echo "❌ pre_install hook missing from Podfile"
+            exit 1
+          fi
+          if ! grep -q "Pod::BuildType.static_library" ios/Podfile; then
+            echo "❌ gRPC static_library override missing from pre_install hook"
+            exit 1
+          fi
+          echo "✅ pre_install gRPC hook present"
+
+      - name: Validate Podfile — BoringSSL post_install fix
+        run: |
+          if ! grep -q "GCC_WARN" ios/Podfile; then
+            echo "❌ BoringSSL -GCC_WARN post_install fix missing from Podfile"
+            exit 1
+          fi
+          echo "✅ BoringSSL post_install fix present"
+
+      - name: Print generated Podfile
+        run: cat ios/Podfile
+
+      # Upload the whole ios/ tree so you can inspect any generated
+      # file without needing a Mac locally.
+      - name: Upload generated ios/ directory
+        uses: actions/upload-artifact@v4
+        if: always() # upload even on failure so you can debug
+        with:
+          name: ios-prebuild-${{ github.sha }}
+          path: ewwniverse-app/ios/
+          retention-days: 7
