@@ -5,53 +5,55 @@
  * (app + auth + firestore) v24 with Expo managed workflow on modern
  * Xcode + arm64.
  *
- * 1. use_modular_headers! — Firebase Swift pods need GoogleUtilities
- *    to define modules.
+ * 1. use_frameworks! :linkage => :static
+ *    Firebase iOS SDK 12.x (RNFB v24) contains Swift code in FirebaseAuth.
+ *    In a static-library CocoaPods setup (use_modular_headers! only), the
+ *    Swift compiler puts the generated ObjC interface header
+ *    (FirebaseAuth-Swift.h) in a per-target derived-sources directory that
+ *    is invisible to other pods at compile time. Building as static
+ *    frameworks copies that header into the framework's Headers/ directory,
+ *    making `#import <FirebaseAuth/FirebaseAuth-Swift.h>` resolve correctly
+ *    in RNFBAuth, RNFBFirestore, and RNFBApp.
  *
- * 2. Explicit pod declarations — FirebaseAuth must be listed as a
- *    top-level pod so CocoaPods compiles it (and generates its Swift
- *    bridging header FirebaseAuth-Swift.h) before RNFBApp / RNFBFirestore
- *    which import it via the Firebase umbrella header. Without this
- *    explicit declaration it is only a transitive dep and may not be
- *    compiled early enough, causing a build failure on newer Xcode.
+ * 2. pre_install: gRPC pods -> static_library
+ *    gRPC-Core, gRPC-C++, and BoringSSL-GRPC cannot be compiled as
+ *    frameworks. A pre_install hook monkey-patches their build_type back
+ *    to Pod::BuildType.static_library, opting them out of use_frameworks!.
  *
- * 3. gRPC pod opt-outs — gRPC-Core / BoringSSL-GRPC / gRPC-C++ cannot
- *    build with modular headers; opt them back out.
- *
- * 4. BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS flag — Apple Clang
- *    parses this as the -G flag, which is unsupported on arm64 targets.
+ * 3. post_install: strip BoringSSL-GRPC -GCC_WARN_INHIBIT_ALL_WARNINGS
+ *    Apple Clang parses this flag as -G, which is unsupported on arm64.
  *    Strip it from per-file COMPILER_FLAGS in the BoringSSL-GRPC target.
  *
  * NOTE on C++ standard:
  *   We deliberately do NOT override CLANG_CXX_LANGUAGE_STANDARD here.
- *   With Firebase iOS SDK 12.10 (pulled by RNFB v24) the bundled
- *   abseil is modern and aligns with RN 0.85's C++20 requirement.
- *   Every relevant podspec (React-*, Expo*, Reanimated, Firebase 12)
- *   sets its own standard via pod_target_xcconfig. Touching it from
- *   here just creates the C++17 ↔ C++20 conflict we saw with
- *   Firebase 10.7 — leave each pod alone.
- *
- * Injection strategy for (4):
- *   Find `post_install do |installer|` and its closing `end` by
- *   matching the indent. Snippet runs after react_native_post_install
- *   so our settings are final.
+ *   With Firebase iOS SDK 12.x (RNFB v24) the bundled abseil is modern
+ *   and aligns with RN 0.85's C++20 requirement. Touching it from here
+ *   creates the C++17 vs C++20 conflict we saw with Firebase 10.7.
  */
 const { withDangerousMod } = require('@expo/config-plugins');
 const fs   = require('fs');
 const path = require('path');
 
-// ── Patches 2+3: explicit pods + gRPC opt-outs after use_expo_modules! ───────
-const GRPC_OVERRIDES = [
-  "  pod 'FirebaseAuth'",
-  "  pod 'BoringSSL-GRPC',  :modular_headers => false",
-  "  pod 'gRPC-Core',       :modular_headers => false",
-  "  pod 'gRPC-C++',        :modular_headers => false",
-].join('\n');
-const GRPC_MARKER = '# [withModularHeaders] gRPC overrides';
+// ── Patch 1 ──────────────────────────────────────────────────────────────────
+const FRAMEWORKS_MARKER = '# [withModularHeaders] use_frameworks';
 
-// ── Patch 3 ─────────────────────────────────────────────────────────────────
+// ── Patch 2 ──────────────────────────────────────────────────────────────────
+const PRE_INSTALL_MARKER = '# [withModularHeaders] pre_install gRPC';
+const PRE_INSTALL_SNIPPET = `
+${PRE_INSTALL_MARKER}
+pre_install do |installer|
+  installer.pod_targets.each do |pod|
+    if %w[gRPC-Core gRPC-C++ BoringSSL-GRPC].include?(pod.name)
+      def pod.build_type
+        Pod::BuildType.static_library
+      end
+    end
+  end
+end
+`;
+
+// ── Patch 3 ──────────────────────────────────────────────────────────────────
 const BORING_MARKER = '# [withModularHeaders] BoringSSL-GRPC -GCC_WARN fix';
-
 const BORING_SNIPPET = `
   ${BORING_MARKER}
   boringssl = installer.pods_project.targets.find { |t| t.name == 'BoringSSL-GRPC' }
@@ -66,11 +68,8 @@ const BORING_SNIPPET = `
   end`;
 
 /**
- * Find the insertion point right before the closing `end` of the
- * post_install block, by indent-matching `post_install do |installer|`
- * to its closing end. Format-agnostic: works whether post_install is
- * nested in the target block or at the top level, and regardless of
- * how react_native_post_install is called.
+ * Find the insertion point just before the closing `end` of the
+ * post_install block by matching the opening line's indent.
  */
 function findPostInstallInsertPoint(contents) {
   const postInstallRe = /^([ \t]*)post_install do \|[^|]*\|[ \t]*$/m;
@@ -104,23 +103,26 @@ module.exports = function withModularHeaders(config) {
 
       let contents = fs.readFileSync(podfilePath, 'utf8');
 
-      // ── 1. Global use_modular_headers! after the platform line ───────────────
-      if (!contents.includes('use_modular_headers!')) {
+      // ── 1. use_frameworks! :linkage => :static after the platform line ───────
+      // Remove any legacy use_modular_headers! left by older versions of this plugin.
+      contents = contents.replace(/\nuse_modular_headers!\n?/g, '\n');
+
+      if (!contents.includes(FRAMEWORKS_MARKER)) {
         contents = contents.replace(
           /(^platform :ios.+$)/m,
-          '$1\nuse_modular_headers!'
+          `$1\n${FRAMEWORKS_MARKER}\nuse_frameworks! :linkage => :static`,
         );
       }
 
-      // ── 2+3. Explicit pods + gRPC opt-outs right after use_expo_modules! ──────
-      if (!contents.includes(GRPC_MARKER)) {
+      // ── 2. pre_install hook before the first target block ────────────────────
+      if (!contents.includes(PRE_INSTALL_MARKER)) {
         contents = contents.replace(
-          /([ \t]*use_expo_modules!)/,
-          `$1\n\n${GRPC_MARKER}\n${GRPC_OVERRIDES}`
+          /(\ntarget\s+['"][^'"]+['"]\s+do\s*\n)/,
+          `\n${PRE_INSTALL_SNIPPET}$1`,
         );
       }
 
-      // ── 4. BoringSSL-GRPC -GCC_WARN strip in post_install ───────────────────
+      // ── 3. BoringSSL-GRPC -GCC_WARN strip in post_install ───────────────────
       if (!contents.includes(BORING_MARKER)) {
         const insertPos = findPostInstallInsertPoint(contents);
         if (insertPos !== -1) {
@@ -129,7 +131,7 @@ module.exports = function withModularHeaders(config) {
             BORING_SNIPPET + '\n' +
             contents.slice(insertPos);
         } else {
-          // Fallback: balanced-paren scan from react_native_post_install(
+          // Fallback: inject right after react_native_post_install(...)
           const rnCall = 'react_native_post_install(';
           const rnIdx  = contents.lastIndexOf(rnCall);
           if (rnIdx !== -1) {
