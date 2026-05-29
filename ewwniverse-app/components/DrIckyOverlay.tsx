@@ -7,7 +7,7 @@
  * The inner DrIckyPlayer is keyed by the video source so each trigger gets a
  * fresh player (expo-video players don't re-seek cleanly on hot-swap).
  */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,6 +17,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
+import { Asset } from 'expo-asset';
 import { useEventListener } from 'expo';
 import { useGameStore } from '@/store/gameStore';
 import { Colors, Radius, FontFamily } from '@/constants/design';
@@ -39,20 +40,62 @@ export function DrIckyOverlay() {
   return <DrIckyPlayer key={drIckyTriggerTs} source={drIckySource} />;
 }
 
+// ── Debug HUD ─────────────────────────────────────────────────────────────────
+// Flip to `true`, ship via `eas update`, and a small overlay on the Dr. Icky
+// panel shows the player's live status, the resolved URI scheme (file:// = good
+// local playback, https:// = still streaming from the CDN), current/total time,
+// and any error message. Set back to `false` before a real release.
+const DRICKY_DEBUG = false;
+
+// Hard cap: never let the overlay stay on screen longer than this, even if the
+// clip stalls and neither playToEnd nor the stall watchdog fires. Clips are ≤10s.
+const MAX_VISIBLE_MS = 14_000;
+// Stall watchdog: if playback time stops advancing for this long, treat the clip
+// as finished and dismiss (covers a frozen/stalled player that never emits end).
+const STALL_TIMEOUT_MS = 3_000;
+
 // ── Player — one instance per video trigger ───────────────────────────────────
 function DrIckyPlayer({ source }: { source: unknown }) {
   const dismiss = useGameStore((s) => s.dismissDrIcky);
   const slideY  = useRef(new Animated.Value(SCREEN_H)).current;
+  const dismissedRef    = useRef(false);
+  const lastTimeRef     = useRef(0);
+  const lastProgressRef = useRef(Date.now());
 
-  // Create and auto-play the video
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const player = useVideoPlayer(source as any, (p) => {
-    // iOS: share the audio session instead of being interrupted by the SFX /
-    // ambient expo-audio players. Without this the AVPlayer is paused a couple
-    // seconds in when another player toggles the shared session (Android is fine).
+  // Debug HUD state (only ever updated when DRICKY_DEBUG is on)
+  const [dbg, setDbg] = useState({ status: 'idle', scheme: '—', err: '', t: 0, dur: 0 });
+
+  // Create the player WITHOUT a source — we load it from the local file below.
+  // Passing the require()'d module directly lets expo-asset hand expo-video the
+  // remote (EAS Update CDN) `uri` instead of the embedded file, so iOS ends up
+  // *streaming* a "bundled" clip and stalls a couple seconds in. Resolving the
+  // asset to its localUri first guarantees true local playback.
+  const player = useVideoPlayer(null, (p) => {
     p.audioMixingMode = 'mixWithOthers';
-    p.play();
+    p.timeUpdateEventInterval = 0.5;  // enable timeUpdate events for the watchdog
   });
+
+  // Resolve the bundled asset to a local file:// path, then load & play it.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const asset = Asset.fromModule(source as number);
+        await asset.downloadAsync();                 // instant for embedded assets
+        if (cancelled) return;
+        const uri = asset.localUri ?? asset.uri;     // prefer the local file
+        if (DRICKY_DEBUG) setDbg((d) => ({ ...d, scheme: uri.split(':')[0] }));
+        await player.replaceAsync({ uri });          // async load (off UI thread)
+        if (cancelled) return;
+        lastProgressRef.current = Date.now();        // start the stall clock now
+        player.play();
+      } catch {
+        // If the clip can't be loaded, don't leave the overlay stuck.
+        handleDismiss();
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [source, player]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   // Slide-up animation on mount
   useEffect(() => {
@@ -64,10 +107,42 @@ function DrIckyPlayer({ source }: { source: unknown }) {
     }).start();
   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Safety nets so the overlay can never get permanently stuck ───────────────
+  // 1. Stall watchdog — dismiss if currentTime stops advancing while "playing".
+  // 2. Absolute cap — dismiss after MAX_VISIBLE_MS no matter what.
+  useEffect(() => {
+    const stall = setInterval(() => {
+      const t = player.currentTime ?? 0;
+      if (DRICKY_DEBUG) {
+        setDbg((d) => ({ ...d, t, dur: player.duration ?? 0 }));
+      }
+      if (t > lastTimeRef.current + 0.05) {
+        lastTimeRef.current     = t;
+        lastProgressRef.current = Date.now();
+      } else if (
+        player.playing &&
+        Date.now() - lastProgressRef.current > STALL_TIMEOUT_MS
+      ) {
+        handleDismiss();
+      }
+    }, 1_000);
+    const cap = setTimeout(handleDismiss, MAX_VISIBLE_MS);
+    return () => { clearInterval(stall); clearTimeout(cap); };
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+
   // Dismiss when video finishes
   useEventListener(player, 'playToEnd', handleDismiss);
 
+  // Debug: track status transitions and any error message
+  useEventListener(player, 'statusChange', ({ status, error }) => {
+    if (DRICKY_DEBUG) {
+      setDbg((d) => ({ ...d, status, err: error?.message ?? d.err }));
+    }
+  });
+
   function handleDismiss() {
+    if (dismissedRef.current) return;   // idempotent — many paths can call this
+    dismissedRef.current = true;
     Animated.timing(slideY, {
       toValue:         SCREEN_H,
       duration:        260,
@@ -86,6 +161,20 @@ function DrIckyPlayer({ source }: { source: unknown }) {
         contentFit="contain"
         nativeControls={false}
       />
+
+      {/* Debug HUD — only rendered when DRICKY_DEBUG is on */}
+      {DRICKY_DEBUG && (
+        <View style={styles.debugHud} pointerEvents="none">
+          <Text style={styles.debugText}>
+            {dbg.status} · {dbg.scheme} · {dbg.t.toFixed(1)}/{dbg.dur.toFixed(1)}s
+          </Text>
+          {!!dbg.err && (
+            <Text style={[styles.debugText, styles.debugErr]} numberOfLines={2}>
+              ⚠ {dbg.err}
+            </Text>
+          )}
+        </View>
+      )}
 
       {/* Skip tap target — covers the whole overlay */}
       <TouchableOpacity
@@ -134,6 +223,26 @@ const styles = StyleSheet.create({
     width:     VIDEO_W,
     height:    VIDEO_H,
     alignSelf: 'center',
+  },
+  debugHud: {
+    position:          'absolute',
+    top:               8,
+    left:              8,
+    right:             8,
+    backgroundColor:   'rgba(0,0,0,0.7)',
+    borderRadius:      Radius.sm,
+    paddingHorizontal: 8,
+    paddingVertical:   4,
+  },
+  debugText: {
+    color:        '#7AE838',
+    fontSize:     11,
+    fontFamily:   FontFamily.boogaloo,
+    letterSpacing: 0.5,
+  },
+  debugErr: {
+    color:     '#FF8C00',
+    marginTop: 2,
   },
   skipArea: {
     position:       'absolute',

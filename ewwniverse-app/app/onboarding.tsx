@@ -17,6 +17,7 @@ import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { VideoView, useVideoPlayer } from 'expo-video';
+import { Asset } from 'expo-asset';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
 import { IS_TABLET, CONTENT_W, fs } from '@/constants/responsive';
 import { ONBOARDING_KEY } from '@/constants/storage';
@@ -66,8 +67,7 @@ function SlideVideoHero({
   video: ReturnType<typeof require>;
   isActive: boolean;
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const player = useVideoPlayer(video as any, (p) => {
+  const player = useVideoPlayer(null, (p) => {
     p.loop = false;  // Play once then stop
     p.muted = false;
     // iOS: share the audio session so the clip isn't interrupted a couple
@@ -76,8 +76,32 @@ function SlideVideoHero({
     // Don't auto-play — playback is controlled by isActive
   });
 
+  const readyRef = React.useRef(false);
+
+  // Resolve the bundled clip to a local file:// path before loading it. Passing
+  // the require()'d module directly lets expo-video stream from the EAS Update
+  // CDN on iOS (stalls a couple seconds in); localUri guarantees local playback.
+  React.useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const asset = Asset.fromModule(video as number);
+        await asset.downloadAsync();
+        if (cancelled) return;
+        await player.replaceAsync({ uri: asset.localUri ?? asset.uri });
+        if (cancelled) return;
+        readyRef.current = true;
+        if (isActive) player.play();
+      } catch {
+        // Non-fatal — a failed onboarding clip just shows a blank hero.
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [video, player]);  // eslint-disable-line react-hooks/exhaustive-deps
+
   // Play or pause based on whether this slide is currently visible
   React.useEffect(() => {
+    if (!readyRef.current) return;
     if (isActive) {
       player.play();
     } else {
