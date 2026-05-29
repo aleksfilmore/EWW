@@ -45,7 +45,7 @@ export function DrIckyOverlay() {
 // panel shows the player's live status, the resolved URI scheme (file:// = good
 // local playback, https:// = still streaming from the CDN), current/total time,
 // and any error message. Set back to `false` before a real release.
-const DRICKY_DEBUG = false;
+const DRICKY_DEBUG = true;
 
 // Hard cap: never let the overlay stay on screen longer than this, even if the
 // clip stalls and neither playToEnd nor the stall watchdog fires. Clips are ≤10s.
