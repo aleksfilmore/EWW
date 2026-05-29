@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Image, StyleSheet } from 'react-native';
 import { Colors, FontFamily } from '@/constants/design';
+import { IS_TABLET, fs } from '@/constants/responsive';
 import { playSfx } from '@/services/audio';
 
 const TAB_IMAGES = {
@@ -86,18 +87,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#0A0618',
     borderTopColor:  `${Colors.eww.green}22`,
     borderTopWidth:  1.5,
-    height:          74,
+    height:          IS_TABLET ? 88 : 74,
     paddingBottom:   14,
     paddingTop:      6,
   },
   icon: {
-    width:        28,
-    height:       28,
+    width:        fs(28),
+    height:       fs(28),
     marginBottom: -2,
   },
   label: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      10,
+    fontSize:      fs(10),
     letterSpacing: 1.2,
   },
 });

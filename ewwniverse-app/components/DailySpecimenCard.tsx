@@ -30,8 +30,11 @@ import { getDailyCreature } from '@/utils/daily';
 import { getCreatureById } from '@/data/index';
 import { SPECIAL_SPECIMENS } from '@/data/special-specimens';
 import { useUserStore } from '@/store/userStore';
+import { IS_TABLET, CONTENT_W } from '@/constants/responsive';
 
-const { width: SCREEN_W } = Dimensions.get('window');
+// Cap width on tablet so the card matches the centred content column.
+const { width: RAW_SCREEN_W } = Dimensions.get('window');
+const SCREEN_W = IS_TABLET ? Math.min(RAW_SCREEN_W, CONTENT_W) : RAW_SCREEN_W;
 
 // Full creature image occupies card inner width.
 // Outer scroll padding: 16 each side (32 total).

@@ -17,6 +17,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ContaminationOverlay } from '@/components/ContaminationOverlay';
 import { DrIckyOverlay } from '@/components/DrIckyOverlay';
 import { initRevenueCat, checkEntitlement } from '@/services/revenuecat';
+import { initAudioSession } from '@/services/audio';
 import { useGameStore } from '@/store/gameStore';
 
 // Keep splash visible until we're ready
@@ -47,6 +48,12 @@ function AppBootstrap() {
   const [storeReady, setStoreReady] = useState(
     () => useUserStore.persist.hasHydrated(),
   );
+
+  // Configure the iOS audio session once so SFX/ambient players don't interrupt
+  // the Dr. Icky video (and voiceovers stay audible with the ringer switch off).
+  useEffect(() => {
+    initAudioSession();
+  }, []);
 
   // Check onboarding preference from persistent storage
   useEffect(() => {

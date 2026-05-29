@@ -20,8 +20,13 @@ import { VideoView, useVideoPlayer } from 'expo-video';
 import { useEventListener } from 'expo';
 import { useGameStore } from '@/store/gameStore';
 import { Colors, Radius, FontFamily } from '@/constants/design';
+import { IS_TABLET, CONTENT_W, fs } from '@/constants/responsive';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
+
+// Video panel width — full width on phone, capped & centred on tablet so the
+// portrait Dr. Icky clip isn't surrounded by huge black bars.
+const VIDEO_W = IS_TABLET ? Math.min(SCREEN_W, CONTENT_W) : SCREEN_W;
 
 // ── Root wrapper — watches store, renders player keyed to trigger timestamp ───
 export function DrIckyOverlay() {
@@ -42,6 +47,10 @@ function DrIckyPlayer({ source }: { source: unknown }) {
   // Create and auto-play the video
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const player = useVideoPlayer(source as any, (p) => {
+    // iOS: share the audio session instead of being interrupted by the SFX /
+    // ambient expo-audio players. Without this the AVPlayer is paused a couple
+    // seconds in when another player toggles the shared session (Android is fine).
+    p.audioMixingMode = 'mixWithOthers';
     p.play();
   });
 
@@ -94,7 +103,9 @@ function DrIckyPlayer({ source }: { source: unknown }) {
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 
-const VIDEO_H  = Math.round(SCREEN_H * 0.52);
+const VIDEO_H  = IS_TABLET
+  ? Math.min(Math.round(SCREEN_H * 0.5), 620)
+  : Math.round(SCREEN_H * 0.52);
 
 const styles = StyleSheet.create({
   container: {
@@ -120,8 +131,9 @@ const styles = StyleSheet.create({
     elevation:       20,
   },
   video: {
-    width:  SCREEN_W,
-    height: VIDEO_H,
+    width:     VIDEO_W,
+    height:    VIDEO_H,
+    alignSelf: 'center',
   },
   skipArea: {
     position:       'absolute',
@@ -143,7 +155,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      12,
+    fontSize:      fs(12),
     color:         'rgba(255,255,255,0.55)',
     letterSpacing: 1.5,
   },

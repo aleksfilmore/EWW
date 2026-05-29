@@ -27,8 +27,11 @@ import { isDailySpecimen, todayString } from '@/utils/daily';
 import { playSfx, playMeterSfx } from '@/services/audio';
 import { ConfirmModal } from '@/components/ConfirmModal';
 import { useGameStore } from '@/store/gameStore';
+import { IS_TABLET, CONTENT_W, centeredColumn } from '@/constants/responsive';
 
-const { width: SCREEN_W } = Dimensions.get('window');
+// Cap layout width on tablet so the hero & lore form a centred, readable column.
+const { width: RAW_SCREEN_W } = Dimensions.get('window');
+const SCREEN_W = IS_TABLET ? Math.min(RAW_SCREEN_W, CONTENT_W) : RAW_SCREEN_W;
 
 // Full-width hero image for classified/silhouette state.
 // Content has paddingHorizontal: 16 on each side → available width = SCREEN_W − 32.
@@ -323,6 +326,7 @@ const styles = StyleSheet.create({
     paddingBottom:     Spacing.xxl,
     alignItems:        'center',
     gap:               16,
+    ...centeredColumn,
   },
 
   // ── Hero (classified / silhouette) ─────────────────────────────────────────

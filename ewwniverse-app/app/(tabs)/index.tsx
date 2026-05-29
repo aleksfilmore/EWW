@@ -24,6 +24,7 @@ import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { STAGE_LABELS } from '@/constants/game';
 import { AppHeader } from '@/components/AppHeader';
+import { centeredColumn } from '@/constants/responsive';
 import { DailySpecimenCard } from '@/components/DailySpecimenCard';
 import { ALL_CREATURES } from '@/data/index';
 
@@ -320,6 +321,7 @@ const styles = StyleSheet.create({
     paddingBottom:     Spacing.xxl,
     paddingTop:        10,
     gap:               14,
+    ...centeredColumn,
   },
 
   // ── Top row ───────────────────────────────────────────────────────────────

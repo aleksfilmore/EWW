@@ -14,7 +14,8 @@
     "userInterfaceStyle": "dark",
     "scheme": "ewwniverse",
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
+      "requireFullScreen": true,
       "bundleIdentifier": "com.ewwniverse.app",
       "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {

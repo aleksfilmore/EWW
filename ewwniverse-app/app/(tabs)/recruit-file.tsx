@@ -28,6 +28,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
+import { IS_TABLET, CONTENT_W, centeredColumn } from '@/constants/responsive';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { useGameStore } from '@/store/gameStore';
@@ -37,6 +38,10 @@ import { SPECIAL_SPECIMENS, SpecialSpecimen } from '@/data/special-specimens';
 import { CREATURE_IMAGES } from '@/constants/creatureImages';
 
 const { width: SCREEN_W } = Dimensions.get('window');
+
+// Special-specimen grid columns — 4 on phone, denser on tablet. Card width is
+// derived from the centred content column (CONTENT_W) so it never overflows.
+const SPECIAL_COLS = IS_TABLET ? 6 : 4;
 
 // Explicit jar dimensions — no absoluteFill on Android
 const SPECIAL_JAR_W = 64;
@@ -280,7 +285,7 @@ function SpecimenDetailSheet({
   onClose: () => void;
 }) {
   const creatureImg = CREATURE_IMAGES[specimen.id];
-  const IMG_SIZE    = SCREEN_W - 80;
+  const IMG_SIZE    = Math.min(SCREEN_W, CONTENT_W) - 80;
 
   const meterColor =
     specimen.eww_meter === 100 ? Colors.eww.coral :
@@ -496,6 +501,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.md,
     paddingBottom:     Spacing.xxl,
     gap:               14,
+    ...centeredColumn,
   },
 
   // ── Stats row ──────────────────────────────────────────────────────────────
@@ -817,7 +823,7 @@ const styles = StyleSheet.create({
     gap:           8,
   },
   specialCard: {
-    width:           (SCREEN_W - Spacing.md * 2 - 8 * 3) / 4,
+    width:           (CONTENT_W - Spacing.md * 2 - 8 * (SPECIAL_COLS - 1)) / SPECIAL_COLS,
     alignItems:      'center',
     backgroundColor: Colors.bg.card,
     borderRadius:    Radius.md,
@@ -884,6 +890,7 @@ const styles = StyleSheet.create({
     paddingBottom:        44,
     gap:                  12,
     alignItems:           'center',
+    ...(IS_TABLET ? { width: CONTENT_W, alignSelf: 'center' as const } : {}),
   },
   sheetClose: {
     alignSelf:      'flex-end',

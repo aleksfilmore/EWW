@@ -22,8 +22,13 @@ import { ALL_CREATURES } from '@/data/index';
 import { useGameStore } from '@/store/gameStore';
 import { DrIckyEvent } from '@/constants/drIckyVideos';
 import { playSfx } from '@/services/audio';
+import { IS_TABLET, CONTENT_W, centeredColumn, fs } from '@/constants/responsive';
 
-const { width: SCREEN_W } = Dimensions.get('window');
+// Cap the layout width on tablet so the hero & content form a centred,
+// readable column instead of stretching across the whole iPad. All style math
+// below derives from this, so capping here keeps everything consistent.
+const { width: RAW_SCREEN_W } = Dimensions.get('window');
+const SCREEN_W = IS_TABLET ? Math.min(RAW_SCREEN_W, CONTENT_W) : RAW_SCREEN_W;
 
 // ── Pick a random gross fact ───────────────────────────────────────────────────
 function getRandomFact(): { fact: string; creature: string } {
@@ -221,7 +226,7 @@ const HERO_H = Math.round(SCREEN_W * 0.72);
 
 const styles = StyleSheet.create({
   root:    { flex: 1, backgroundColor: Colors.bg.DEFAULT },
-  content: { paddingBottom: Spacing.xxl, gap: 14 },
+  content: { paddingBottom: Spacing.xxl, gap: 14, ...centeredColumn },
 
   // ── Hero ──────────────────────────────────────────────────────────────────
   hero: {
@@ -259,7 +264,7 @@ const styles = StyleSheet.create({
   },
   heroTitle: {
     fontFamily:       FontFamily.creepster,
-    fontSize:         44,
+    fontSize:         fs(44),
     color:            Colors.text.lime,
     letterSpacing:    3,
     textShadowColor:  Colors.eww.greenDark,

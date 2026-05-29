@@ -30,8 +30,11 @@ import { CREATURE_IMAGES } from '@/constants/creatureImages';
 import { MASTERY_QUIZ_SCANS, MASTERY_MILESTONES } from '@/constants/game';
 import { pickRandomUnownedCommon } from '@/data/special-specimens';
 import { playSfx } from '@/services/audio';
+import { IS_TABLET, CONTENT_W, centeredColumn } from '@/constants/responsive';
 
-const { width: SCREEN_W } = Dimensions.get('window');
+// Cap layout width on tablet so the quiz forms a centred, readable column.
+const { width: RAW_SCREEN_W } = Dimensions.get('window');
+const SCREEN_W = IS_TABLET ? Math.min(RAW_SCREEN_W, CONTENT_W) : RAW_SCREEN_W;
 
 type Phase = 'intro' | 'question' | 'mastered' | 'failed';
 
@@ -339,6 +342,8 @@ export default function QuizScreen() {
         ))}
       </View>
 
+      {/* Body — centred to a readable column on tablet */}
+      <View style={styles.quizBody}>
       {/* Question — fixed card, not scrollable */}
       <View style={styles.questionCard}>
         <Text style={styles.questionText}>{q.question}</Text>
@@ -408,6 +413,7 @@ export default function QuizScreen() {
           resizeMode="contain"
         />
       </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -416,6 +422,7 @@ export default function QuizScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: Colors.bg.DEFAULT },
+  quizBody: { flex: 1, width: '100%', ...centeredColumn },
 
   backBtn: { paddingHorizontal: Spacing.md, paddingVertical: Spacing.sm },
   backLabel: {
@@ -438,6 +445,7 @@ const styles = StyleSheet.create({
     paddingBottom:     Spacing.xxl,
     alignItems:        'center',
     gap:               16,
+    ...centeredColumn,
   },
   introCreatureImg: {
     width:  SCREEN_W * 0.55,
@@ -626,6 +634,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding:        Spacing.xl,
     gap:            14,
+    ...centeredColumn,
   },
   resultCreatureImg: {
     width:        SCREEN_W * 0.5,
