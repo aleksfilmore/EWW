@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "EWW-niverse privacy policy — what data we collect, how we use it, and your rights.",
+  description: "EWW-niverse privacy policy — what data our website and app collect, how we use it, and your rights.",
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "22 May 2026";
+const LAST_UPDATED = "30 May 2026";
 
 export default function PrivacyPage() {
   return (
@@ -48,6 +48,26 @@ export default function PrivacyPage() {
             </ul>
           </Section>
 
+          <Section title="The EWW-niverse app">
+            <p>The sections above describe this website. This section describes our mobile app, <strong>EWW-niverse</strong>, on the App Store and Google Play. The app is designed for children and is built to collect as little data as possible.</p>
+            <p>The app does <strong>not</strong> collect names, email addresses, dates of birth, location, contacts, photos, or any other personal profile information. It has no account registration, no login with personal credentials, no messaging, no social features, no public profiles, no user-generated content, and no camera, microphone, location, or contacts access. It does not show an App Tracking Transparency prompt because it does not track.</p>
+            <p>Gameplay and progression state — such as unlocked specimen cards, quiz progress, scan and reward status, and premium entitlement — is stored locally on your device to support the in-app experience.</p>
+          </Section>
+
+          <Section title="App — third-party services">
+            <p>The app uses a small number of third-party services strictly for core functionality, each subject to its own privacy policy:</p>
+            <ul>
+              <li><strong>Firebase Authentication</strong> (Google) — used only for anonymous sign-in, which creates a random anonymous identifier so progress can be restored. No name, email, or personal profile information is collected. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy</a></li>
+              <li><strong>RevenueCat</strong> — used only to manage the Full Lab Pass in-app purchase. It receives an anonymous app-user identifier and the purchase/receipt data needed to validate and restore the entitlement. Purchases are processed through Apple&apos;s and Google&apos;s in-app purchase systems. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat Privacy</a></li>
+            </ul>
+            <p>The app does <strong>not</strong> use Firestore, Realtime Database, Firebase Analytics, Firebase Storage, Cloudinary, or any cloud database to store user data.</p>
+          </Section>
+
+          <Section title="App — analytics, advertising and tracking">
+            <p>The app contains <strong>no third-party analytics and no advertising</strong>. There is no Firebase Analytics, Google Analytics, Meta SDK, ad-attribution SDK, ad network, behavioural or contextual ads, or any other third-party analytics or advertising service in the app. No user or device data is collected for analytics, advertising, tracking, profiling, or marketing, and none is shared with third parties for those purposes.</p>
+            <p>The app may download over-the-air updates from our hosting provider (Expo), which processes a device IP address only to deliver the update. This is not used to identify or track children.</p>
+          </Section>
+
           <Section title="Data retention">
             <p>We keep your email address for as long as you are subscribed to our newsletter. If you unsubscribe, your address is removed from our active list within 10 business days. Anonymised analytics data may be retained indefinitely in aggregate form.</p>
           </Section>
@@ -61,6 +81,7 @@ export default function PrivacyPage() {
               <li>Object to processing of your data</li>
               <li>Unsubscribe from our newsletter at any time</li>
             </ul>
+            <p><strong>App data:</strong> The app stores its data only on your device. Uninstalling the app permanently deletes all of it — unlocked content, quiz progress, scan and reward status, and entitlement state. The anonymous sign-in identifier contains no personal information; you can request its deletion using the contact details below.</p>
             <p>To exercise these rights, email us at the address on our <a href="/for-parents">For Parents</a> page.</p>
           </Section>
 
