@@ -10,7 +10,7 @@ export const SITE_URL = "https://ewwniverse.com";
 
 // Rights holder shown in copyright / IP notices. Change this if you register a
 // company or want a different legal name on the notice.
-export const COPYRIGHT_HOLDER = "Aleks Filmore";
+export const COPYRIGHT_HOLDER = "Alex Filip";
 export const RIGHTS_SINCE = 2026;
 
 // Live product facts — keep in sync with the app.
