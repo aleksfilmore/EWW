@@ -8,6 +8,11 @@ export const CONTACT_EMAIL = "hello@ewwniverse.com";
 
 export const SITE_URL = "https://ewwniverse.com";
 
+// Rights holder shown in copyright / IP notices. Change this if you register a
+// company or want a different legal name on the notice.
+export const COPYRIGHT_HOLDER = "Aleks Filmore";
+export const RIGHTS_SINCE = 2026;
+
 // Live product facts — keep in sync with the app.
 export const PRODUCT = {
   // Specimen library: 75 creatures + 80 dinosaurs + 79 earth = 234 base specimens,
