@@ -41,8 +41,9 @@ export default function CoppaPage() {
         <p>Parents and guardians have the right to review, request deletion of, or refuse further collection of any personal information relating to their child. To exercise these rights, contact us via our <a href="/for-parents">For Parents &amp; Educators</a> page. We will respond within 30 days.</p>
       </LegalSection>
 
-      <LegalSection title="No behavioural advertising">
-        <p>We do not engage in behavioural advertising or build profiles of children for advertising purposes. No third-party advertising networks are used on the website or in the app.</p>
+      <LegalSection title="Advertising and tracking">
+        <p>The <strong>app</strong> does not track children, build advertising profiles of them, or contain any advertising or analytics SDKs — there are no ad networks in the app at all.</p>
+        <p>This <strong>website</strong> is a general-audience marketing site aimed at parents, guardians and educators. Like most websites, it may use analytics and marketing tools (such as measurement cookies or a marketing pixel) to understand its audience and promote our books and app to adults. These tools are never used to knowingly track children, and the site is not directed at children — children should not enter personal information here. See our <a href="/cookies">Cookie Policy</a> for what the website uses.</p>
       </LegalSection>
 
       <LegalSection title="Questions and complaints">
