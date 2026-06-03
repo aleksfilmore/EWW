@@ -5,6 +5,8 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import JsonLd from "@/components/JsonLd";
+import { APP_STORE_URL, PRODUCT, SITE_URL } from "@/lib/site";
 
 const creepster = Creepster({
   weight: "400",
@@ -84,6 +86,44 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${creepster.variable} ${boogaloo.variable}`}>
       <body>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": `${SITE_URL}/#organization`,
+                name: "EWW-niverse",
+                url: SITE_URL,
+                logo: `${SITE_URL}/images/ui/logo-main.png`,
+                description:
+                  "The gross science app and book universe for weirdly curious kids, hosted by Dr. Icky.",
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${SITE_URL}/#website`,
+                name: "EWW-niverse",
+                url: SITE_URL,
+                publisher: { "@id": `${SITE_URL}/#organization` },
+              },
+              {
+                "@type": "MobileApplication",
+                name: "EWW-niverse",
+                applicationCategory: "EducationalApplication",
+                operatingSystem: "iOS, iPadOS",
+                url: APP_STORE_URL,
+                installUrl: APP_STORE_URL,
+                description:
+                  "Scan the specimen, survive the quiz, master the EWW-niverse. A creepy classification game built on real science facts.",
+                publisher: { "@id": `${SITE_URL}/#organization` },
+                offers: [
+                  { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+                  { "@type": "Offer", name: "Full Lab Pass (one-time)", price: PRODUCT.price.replace("$", ""), priceCurrency: "USD" },
+                ],
+              },
+            ],
+          }}
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DR7683Y874"

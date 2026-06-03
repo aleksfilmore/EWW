@@ -1,159 +1,164 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import { CONTACT_EMAIL } from "@/lib/site";
+import SectionHeading from "@/components/SectionHeading";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "For Parents",
-  description: "COPPA compliance, age guidance, privacy policy, and FAQ for parents and educators using EWW-niverse.",
+  description:
+    "What EWW-niverse is, what it does, and what it deliberately does not do. No ads, no tracking, no accounts, no personal data collected. Real science, kid-safe grossness for ages 7+.",
+  alternates: { canonical: "/for-parents" },
 };
+
+const trust = [
+  { t: "No ads, ever", d: "The app is funded by one optional one-time purchase. No advertisements at any tier." },
+  { t: "No tracking", d: "No analytics SDKs, no advertising IDs, no behavioural profiling of your child." },
+  { t: "No accounts", d: "No name, email, password or sign-up. Your child never creates a profile." },
+  { t: "No personal data", d: "Nothing personal is collected — so there's nothing to sell, leak, or consent away." },
+];
+
+const ageContent = [
+  "Gross — intentionally and specifically",
+  "Scientifically accurate — every fact has a source",
+  "Never violent in a graphic sense",
+  "Never sexual",
+  "Never horror-scary — disgusting and scary are different things",
+  "Always grounded in real biology, never fabricated for effect",
+];
 
 const faqs = [
   {
     q: "What age is EWW-niverse designed for?",
-    a: "The books are written for ages 7 and up. The content is gross but never violent, never sexual, and always grounded in real science. The app follows the same standard.",
+    a: "Ages 7 and up. The content is gross but never violent, never sexual, and always grounded in real science. The books and the app follow the same standard.",
   },
   {
-    q: "How does the app handle my child's data?",
-    a: "The app is COPPA-compliant. No personally identifiable information is collected from children. When a child reaches the paywall or wants to save progress, a parent email is required. No date of birth is stored. No child record contains PII.",
+    q: "What data does the app collect about my child?",
+    a: "None that identifies them. The app uses anonymous sign-in (no name, email, or password) so progress can be saved on the device, plus a purchase manager (RevenueCat) to handle the one-time unlock. There is no analytics, no tracking, no advertising, and no database of personal child information.",
+  },
+  {
+    q: "Does my child need an account or my email?",
+    a: "No. There are no accounts and no email is required to play. Your child can use the whole free tier without entering any personal information at all.",
   },
   {
     q: "Is there a subscription?",
-    a: "No subscription. The Free tier is free, permanently, with no ads. The Full Lab Pass is a one-time purchase. You pay once. There are no recurring charges.",
+    a: "No. The app is free with no ads. The Full Lab Pass is a single one-time purchase — you pay once, it lasts forever, and there are no recurring charges.",
   },
   {
-    q: "Are there ads in the app?",
-    a: "No. No ads in any tier. The business model is one-time purchase only.",
+    q: "Are there ads or social features?",
+    a: "No ads, no social feeds, no chat, no comments, and no user-generated content. There is nothing for your child to post and no strangers for them to encounter.",
   },
   {
-    q: "How do book bundle codes work?",
-    a: "Each print book includes a unique code. Entering the code in the app unlocks that book's content without any additional purchase. One code per book. Print only.",
+    q: "How are purchases handled?",
+    a: "The one-time Full Lab Pass is purchased and managed through Apple's App Store and RevenueCat. We never see or store your payment details.",
   },
   {
     q: "Is the science accurate?",
-    a: "Yes. Every creature, fact, and figure has been verified. Dr. Icky does not traffic in exaggeration. The real facts are already more than sufficient.",
-  },
-  {
-    q: "What does COPPA compliance mean for us?",
-    a: "COPPA (Children's Online Privacy Protection Act) governs how apps collect data from children under 13. Our app requires verifiable parental consent before any account creation. Children can explore the free tier without creating an account.",
+    a: "Yes. Every creature, fact, and figure is verified. Dr. Icky does not traffic in exaggeration — the real facts are already more than sufficient.",
   },
 ];
 
 export default function ForParentsPage() {
   return (
     <>
-      {/* Header */}
-      <section
-        style={{
-          backgroundColor: "#F4EED8",
-          backgroundImage: [
-            "repeating-linear-gradient(transparent 0px,transparent 31px,rgba(150,170,130,0.28) 31px,rgba(150,170,130,0.28) 32px)",
-            "linear-gradient(90deg,transparent 88px,rgba(210,100,100,0.15) 88px,rgba(210,100,100,0.15) 90px,transparent 90px)",
-          ].join(","),
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
         }}
-      >
-        <div style={{ height: 6, backgroundColor: "#3D7A08", opacity: 0.7 }} className="w-full" />
-        <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      />
+
+      {/* ── HERO (calmer) ──────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16 md:py-20">
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-[1fr_auto]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
-              Transparency
-            </p>
-            <h1
-              className="text-5xl md:text-6xl text-[#1A3D0E] mb-4"
-            >
-              For Parents
-            </h1>
-            <p className="text-[#7A6652] leading-relaxed max-w-md">
-              Everything you need to know about what EWW-niverse is, what it does, what it does not do, and how it handles your family&apos;s information.
-            </p>
+            <SectionHeading
+              eyebrow="For parents & educators"
+              title="Gross for kids. Clean for parents."
+              sub="Everything EWW-niverse is, what it does, and what it deliberately does not do — written plainly, and matching our Privacy Policy exactly."
+            />
           </div>
-          <div className="flex justify-end">
+          <div className="relative mx-auto w-40 sm:w-48">
+            <div className="absolute inset-0 -z-10 rounded-full blur-2xl" style={{ background: "radial-gradient(circle, rgba(141,231,28,0.22), transparent 70%)" }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
-              alt="Dr. Icky with documentation"
-              className="illustration-character w-40 md:w-48 object-contain"
+              src="/images/dr-icky-real/dr-icky-portrait.webp"
+              alt="Dr. Icky"
+              className="w-full rounded-2xl object-cover"
+              style={{ border: "1px solid var(--color-lab-line)" }}
             />
           </div>
         </div>
       </section>
 
-      {/* Trust signals */}
-      <section className="bg-[#FDFAF3] py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-12">
-            {[
-              { icon: "/images/ui/Approved%20by%20Dr.%20Icky%20stamp.png", title: "No ads, ever", desc: "The app is funded by one-time purchases. Advertisements are not part of the model at any tier." },
-              { icon: "/images/ui/Do%20Not%20Lick%20stamp.png", title: "No child PII", desc: "Children can explore the free tier without creating an account. Account creation requires a parent email." },
-              { icon: "/images/ui/Green%20Risk%20sticker.png", title: "COPPA compliant", desc: "Verifiable parental consent before any account creation. No date of birth collected. No tracking." },
-            ].map((item) => (
-              <div key={item.title} className="flex flex-col gap-3 rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-5">
-                <img src={item.icon} alt="" aria-hidden="true" className="illustration w-12 h-12 object-contain" />
-                <h3
-                  className="text-base text-[#1A3D0E]"
-                >
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#7A6652] leading-relaxed">{item.desc}</p>
+      {/* ── TRUST CARDS ────────────────────────────────────────── */}
+      <section className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-14">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trust.map((c) => (
+              <div key={c.t} className="lab-panel p-5">
+                <p className="text-base font-semibold text-[var(--color-neon)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>{c.t}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-dim)]">{c.d}</p>
               </div>
             ))}
           </div>
 
-          {/* Age guidance */}
-          <div className="rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-6 mb-6">
-            <h2
-              className="text-xl text-[#1A3D0E] mb-3"
-            >
-              Age appropriateness
-            </h2>
-            <p className="text-sm text-[#7A6652] leading-relaxed mb-3">
-              EWW-niverse is designed for children ages 7 and up. The content is:
+          {/* What the app uses (matches privacy) */}
+          <div className="lab-panel mt-6 p-6">
+            <p className="lab-label text-[var(--color-neon)]">What the app actually uses</p>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-dim)]">
+              Two services, nothing more: <span className="text-[var(--color-ink)]">Firebase anonymous authentication</span> (an
+              anonymous ID so progress saves on the device — no personal login) and{" "}
+              <span className="text-[var(--color-ink)]">RevenueCat</span> (to manage the one-time Full Lab Pass). No Firebase
+              Analytics, no Firestore or Realtime Database, no ad networks, no third-party tracking. See the{" "}
+              <Link href="/privacy" className="text-[var(--color-neon)] underline underline-offset-2">Privacy Policy</Link> and{" "}
+              <Link href="/coppa" className="text-[var(--color-neon)] underline underline-offset-2">COPPA</Link> page.
             </p>
-            <ul className="flex flex-col gap-2">
-              {[
-                "Gross — intentionally and specifically",
-                "Scientifically accurate — every fact has a source",
-                "Never violent in a graphic sense",
-                "Never sexual",
-                "Never scary in a horror sense — disgusting and scary are different things",
-                "Always grounded in real biology, not fabricated for effect",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm">
-                  <span className="text-[#5DB84A] flex-shrink-0 mt-0.5">✓</span>
-                  <span className="text-[#3D2B1F]">{item}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── AGE + FAQ ──────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
+        <div className="relative mx-auto max-w-4xl px-4">
+          <div className="lab-panel mb-8 p-6">
+            <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Age appropriateness — built for ages 7+</h2>
+            <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {ageContent.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-[var(--color-ink-dim)]">
+                  <span className="mt-0.5 flex-shrink-0 text-[var(--color-neon)]">✓</span>
+                  {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* FAQ */}
-          <h2
-            className="text-2xl text-[#1A3D0E] mb-5"
-          >
-            Frequently asked questions
-          </h2>
-          <div className="flex flex-col gap-4">
+          <SectionHeading eyebrow="The details" title="Frequently asked questions" />
+          <div className="mt-6 flex flex-col gap-3">
             {faqs.map((faq) => (
-              <div key={faq.q} className="rounded-xl border border-[#C8B89A] bg-[#F7F2E4] p-5">
-                <h3
-                  className="text-sm font-semibold text-[#1A3D0E] mb-2"
-                >
-                  {faq.q}
-                </h3>
-                <p className="text-sm text-[#7A6652] leading-relaxed">{faq.a}</p>
+              <div key={faq.q} className="lab-panel p-5">
+                <h3 className="text-sm font-semibold text-[var(--color-ink)]">{faq.q}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-dim)]">{faq.a}</p>
               </div>
             ))}
           </div>
 
-          {/* Contact form */}
-          <div className="mt-8 rounded-xl border border-[#C8B89A] bg-[#EDE5CE] p-6">
-            <h3
-              className="text-lg text-[#1A3D0E] mb-1"
-            >
-              Still have questions?
-            </h3>
-            <p className="text-sm text-[#7A6652] mb-6">
-              Dr. Icky&apos;s lab is open to parent inquiries. Fill in the form and you will receive a reply at the email you provide.
+          {/* Contact */}
+          <div className="lab-panel mt-8 p-6">
+            <h3 className="text-lg text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Still have questions?</h3>
+            <p className="mt-1 text-sm text-[var(--color-ink-dim)]">
+              Dr. Icky&apos;s lab is open to parent inquiries. Send a note below, or email{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[var(--color-neon)] underline underline-offset-2">{CONTACT_EMAIL}</a>.
             </p>
-            <ContactForm />
+            <div className="mt-6">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>

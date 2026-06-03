@@ -6,6 +6,8 @@ export const APP_STORE_URL =
 
 export const CONTACT_EMAIL = "hello@ewwniverse.com";
 
+export const SITE_URL = "https://ewwniverse.com";
+
 // Live product facts — keep in sync with the app.
 export const PRODUCT = {
   // Specimen library: 75 creatures + 80 dinosaurs + 79 earth = 234 base specimens,

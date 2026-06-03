@@ -16,12 +16,12 @@ const categoryLabels: Record<string, string> = {
 };
 
 const features = [
-  { icon: "🔬", title: "Scan mystery specimens", desc: "Spend a scan to crack open a sealed specimen jar and reveal what's lurking inside.", accent: "var(--color-neon)" },
-  { icon: "🤢", title: "Reveal gross facts", desc: "Every classified specimen unlocks a real — and genuinely disgusting — science fact.", accent: "var(--color-amber)" },
+  { icon: "🔬", title: "Scan mystery specimens", desc: "Spend a scan to crack open a sealed specimen jar and reveal what's lurking inside.", accent: "#8DE71C" },
+  { icon: "🤢", title: "Reveal gross facts", desc: "Every classified specimen unlocks a real — and genuinely disgusting — science fact.", accent: "#E8932E" },
   { icon: "❓", title: "Answer the lab quiz", desc: "Prove you actually understand the specimen by surviving Dr. Icky's questions.", accent: "#A78BFA" },
-  { icon: "✅", title: "Master specimens", desc: "Ace the quiz to stamp a specimen MASTERED and earn bonus scans.", accent: "var(--color-neon)" },
-  { icon: "📈", title: "Raise your EWW score", desc: "Climb five stages — from Kinda Curious all the way to Full Dr. Icky.", accent: "var(--color-amber)" },
-  { icon: "🧪", title: "Unlock 100/100 finds", desc: "Hunt the Total Barf tier: the rarest, most revolting EWW-100 discoveries.", accent: "var(--color-danger)" },
+  { icon: "✅", title: "Master specimens", desc: "Ace the quiz to stamp a specimen MASTERED and earn bonus scans.", accent: "#3FB6F0" },
+  { icon: "📈", title: "Raise your EWW score", desc: "Climb five stages — from Kinda Curious all the way to Full Dr. Icky.", accent: "#2BD4B0" },
+  { icon: "🧪", title: "Unlock 100/100 finds", desc: "Hunt the Total Barf tier: the rarest, most revolting EWW-100 discoveries.", accent: "#E0403C" },
 ];
 
 const screenshots = [

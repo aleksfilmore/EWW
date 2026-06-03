@@ -179,6 +179,16 @@ export const books: Book[] = [
 
 export const specimenPosts: SpecimenPost[] = [
   {
+    slug: "surinam-toad-birth",
+    title: "The Toad That Gives Birth Through Its Own Back",
+    date: "2026-05-22",
+    excerpt:
+      "The Surinam toad doesn't lay eggs in a pond. The eggs sink into the skin of the mother's back, seal over, and grow there — until dozens of fully formed toadlets erupt out of her, all at once.",
+    category: "specimen-of-the-week",
+    readTime: 4,
+    creatureName: "Surinam Toad",
+  },
+  {
     slug: "zombie-ant-fungus",
     title: "The Fungus That Turns Ants Into Zombies",
     date: "2026-05-15",
@@ -206,6 +216,14 @@ export const specimenPosts: SpecimenPost[] = [
     creatureName: "Hagfish",
   },
 ];
+
+// EWW level shown on each specimen-file post (matches the creature's meter).
+export const postEwwLevel: Record<string, 60 | 80 | 100> = {
+  "zombie-ant-fungus": 100,
+  "tongue-eating-louse": 100,
+  "hagfish-slime": 100,
+  "surinam-toad-birth": 100,
+};
 
 export const ewwMeterLabels: Record<EwwMeter, { label: string; color: string; bg: string }> = {
   60: { label: "Kinda Revolting", color: "#854F0B", bg: "#FAEEDA" },

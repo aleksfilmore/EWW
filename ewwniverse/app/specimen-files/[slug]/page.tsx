@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { specimenPosts, ewwMeterLabels, creatureImagePath } from "@/lib/data";
 import GrossReveal from "@/components/GrossReveal";
+import AppStoreButton from "@/components/AppStoreButton";
 
 /* ─── Article content ──────────────────────────────────────────────── */
 
@@ -36,6 +37,127 @@ interface ArticleData {
 }
 
 const articles: Record<string, ArticleData> = {
+  "surinam-toad-birth": {
+    slug: "surinam-toad-birth",
+    creatureName: "Surinam Toad",
+    ewwMeter: 100,
+    seoDescription:
+      "The Surinam toad (Pipa pipa) embeds its eggs in the skin of the mother's back, where they grow into fully formed toadlets that erupt out weeks later — no tadpole stage, no pond. Real gross science for kids.",
+    seoKeywords:
+      "Surinam toad, Pipa pipa, toad gives birth through back, frog eggs in skin, weird amphibians, gross animal facts for kids",
+    classification: "Pipa pipa",
+    quickStats: [
+      { label: "Type", value: "Aquatic frog" },
+      { label: "Lives", value: "Amazon basin, South America" },
+      { label: "Eggs on her back", value: "Up to ~100" },
+      { label: "Skips", value: "The tadpole stage entirely" },
+    ],
+    intro: (
+      <>
+        <p>
+          Most frogs lay eggs in water, the eggs hatch into tadpoles, and the tadpoles slowly grow legs.
+          The Surinam toad skips all of that. Its babies grow <em>inside the skin of their mother&apos;s back</em> —
+          and then climb out of it.
+        </p>
+        <p>
+          It is flat, it has no tongue, and it carries its children like a living honeycomb. Nature did not
+          have to do this. It did it anyway.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "A frog built like a soggy leaf",
+        icon: "🍃",
+        body: (
+          <>
+            <p>
+              The Surinam toad looks less like an animal and more like something that fell off a tree and got
+              wet. Its body is almost completely flat and brown, which makes it nearly invisible against the
+              muddy bottom of slow Amazon rivers.
+            </p>
+            <p>
+              It has no tongue to catch food. Instead, the tips of its fingers end in tiny star-shaped points
+              that feel around in the murky water. When they touch something edible, the toad lunges and
+              vacuums it in.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "Its star-tipped fingers are sensors, not claws. The Surinam toad basically tastes the water with its hands.",
+        },
+      },
+      {
+        heading: "The underwater somersault",
+        icon: "🤸",
+        body: (
+          <>
+            <p>
+              When it is time to breed, a pair performs a slow series of underwater somersaults. Each time they
+              loop through the water, the female releases a few eggs and the male presses them onto her back as
+              they tumble.
+            </p>
+            <p>
+              By the end of the dance, dozens of sticky eggs are stuck across the mother&apos;s back in neat rows.
+              And then something strange starts to happen to her skin.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "The whole egg-placing dance is done in the water, upside down and right-side up, over and over — sometimes for hours.",
+        },
+      },
+      {
+        heading: "Skin like a honeycomb",
+        icon: "🍯",
+        body: (
+          <>
+            <p>
+              Over the next day, the mother&apos;s back swells and grows up and around each egg until they sink
+              in completely. Each egg ends up sealed inside its own little pocket of skin, like a living bubble
+              wrap of babies.
+            </p>
+            <p>
+              For the next three to four months, the young grow in those pockets — egg, then embryo, then a
+              proper little toad — fed and protected inside their mother&apos;s back the entire time. No pond.
+              No tadpoles swimming around. Just skin.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "There is no free-swimming tadpole stage at all. The babies go from egg to fully formed toad without ever leaving her back.",
+        },
+      },
+      {
+        heading: "The eruption",
+        icon: "💥",
+        body: (
+          <>
+            <p>
+              When they are ready, the toadlets push the lids off their pockets and haul themselves out of their
+              mother&apos;s back — sometimes dozens of them, wriggling free within minutes of each other. Fully
+              formed, miniature, and immediately on their own.
+            </p>
+            <p>
+              Afterwards, the mother often sheds the used layer of skin, leaving her back smooth again — ready,
+              eventually, to do the whole thing over.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "Videos of the toadlets emerging are famously hard to watch. The science word for fear of clustered holes — trypophobia — gets a real workout here.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "Dozens of fully formed baby toads erupt out of holes in their mother's back, all at once. They grew there — sealed inside her skin — with no pond and no tadpole stage.",
+    drIckyVerdict:
+      "I have watched this footage 41 times. I have not enjoyed it once. And yet — no pond, no tadpoles, the babies just walk out of mum. That is brilliant, efficient, and deeply, profoundly upsetting. Full marks.",
+  },
   "zombie-ant-fungus": {
     slug: "zombie-ant-fungus",
     creatureName: "Zombie Ant Fungus",
@@ -451,14 +573,23 @@ export default async function SpecimenPostPage({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: article.seoDescription,
     datePublished: post.date,
+    dateModified: post.date,
+    articleSection: getCategoryLabel(post.category),
+    keywords: article.seoKeywords,
+    wordCount: post.readTime * 200,
     author: { "@type": "Person", name: "Dr. Icky" },
-    publisher: { "@type": "Organization", name: "EWW-niverse", url: "https://ewwniverse.com" },
+    publisher: {
+      "@type": "Organization",
+      name: "EWW-niverse",
+      url: "https://ewwniverse.com",
+      logo: { "@type": "ImageObject", url: "https://ewwniverse.com/images/ui/logo-main.png" },
+    },
     image: `https://ewwniverse.com${creatureImagePath(article.creatureName)}`,
-    mainEntityOfPage: `https://ewwniverse.com/specimen-files/${slug}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://ewwniverse.com/specimen-files/${slug}` },
   };
 
   return (
@@ -545,250 +676,120 @@ export default async function SpecimenPostPage({
         </div>
       </section>
 
-      {/* Slime drip */}
-      <div className="relative h-10 bg-[#F7F2E4] overflow-hidden">
-        <img
-          src="/images/ui/Slime%20drip%20top%20border%2C%20full%20width.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute top-0 left-0 w-full illustration"
-          style={{ height: "40px", objectFit: "cover", objectPosition: "top", mixBlendMode: "multiply" }}
-        />
-      </div>
-
       {/* ── SPECIMEN VISUAL ────────────────────────────────────────── */}
-      <section
-        className="bg-[#F7F2E4] py-10 relative"
-        style={{
-          backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
-          backgroundSize: "cover",
-          backgroundBlendMode: "multiply",
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-8 items-start">
+      <section className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-12">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr_240px]">
             {/* Quick stats */}
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 mb-2">
-                <img
-                  src="/images/ui/Classified%20stamp.png"
-                  alt="Classified"
-                  className="illustration w-10 h-10 object-contain"
-                />
-                <h2
-                  className="text-lg text-[#1A3D0E]"
-                >
-                  Specimen Classification
+              <div className="mb-1 flex items-center gap-3">
+                <span className="rounded border border-[var(--color-danger)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--color-danger)]">
+                  Classified
+                </span>
+                <h2 className="text-lg text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>
+                  Specimen classification
                 </h2>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {article.quickStats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-xl border border-[#C8B89A] bg-[#FDFAF3] p-3"
-                  >
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#7A6652] mb-0.5">
-                      {stat.label}
-                    </p>
-                    <p
-                      className="text-sm text-[#1A3D0E] font-semibold"
-                    >
-                      {stat.value}
-                    </p>
+                  <div key={stat.label} className="lab-panel p-3">
+                    <p className="mb-0.5 text-[10px] font-bold uppercase tracking-widest text-[var(--color-ink-mute)]">{stat.label}</p>
+                    <p className="text-sm font-semibold text-[var(--color-ink)]">{stat.value}</p>
                   </div>
                 ))}
               </div>
-
-              {/* Intro text */}
               <div className="prose-eww mt-4">{article.intro}</div>
             </div>
 
-            {/* Creature image — big */}
+            {/* Creature image */}
             <div className="flex flex-col items-center gap-3">
-              <div className="rounded-2xl border-2 border-[#C8B89A] bg-[#EDE5CE] overflow-hidden p-6 w-full aspect-square flex items-center justify-center relative">
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage: "url(/images/ui/Stained%20notebook%20paper%20background.png)",
-                    backgroundSize: "cover",
-                  }}
-                />
+              <div className="lab-panel relative flex aspect-square w-full items-center justify-center overflow-hidden p-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={creatureImagePath(article.creatureName)}
                   alt={article.creatureName}
-                  className="relative z-10 illustration w-full h-full object-contain"
+                  className="relative z-10 h-full w-full object-contain"
                 />
               </div>
-              <p className="text-xs text-center text-[#7A6652] italic">{article.creatureName}</p>
-              <img
-                src="/images/ui/Do%20Not%20Lick%20stamp.png"
-                alt="Do not lick"
-                className="illustration w-16 object-contain"
-              />
+              <p className="text-center text-xs italic text-[var(--color-ink-mute)]">{article.creatureName}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Hazard tape divider */}
-      <div className="w-full overflow-hidden h-8 relative">
-        <img
-          src="/images/ui/Hazard%20tape%20strip%2C%20text-free.png"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover illustration"
-          style={{ mixBlendMode: "multiply" }}
-        />
-      </div>
-
       {/* ── ARTICLE BODY ───────────────────────────────────────────── */}
-      <section className="bg-[#FDFAF3] py-14">
-        <div className="max-w-3xl mx-auto px-4">
-
+      <section className="bg-[var(--color-lab-void)] py-14">
+        <div className="mx-auto max-w-3xl px-4">
           {/* Gross fact reveal — interactive */}
           <GrossReveal fact={article.grossFactHighlight} />
 
-          {/* Sections */}
           {article.sections.map((section, i) => (
             <div key={section.heading} className="mb-12">
-              {/* Section heading */}
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-9 h-9 rounded-full bg-[#1A3D0E] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full text-xs font-bold text-black" style={{ backgroundColor: "var(--color-neon)" }}>
                   {i + 1}
                 </div>
-                <span className="text-xl mr-1" aria-hidden="true">{section.icon}</span>
-                <h2
-                  className="text-xl text-[#1A3D0E]"
-                >
-                  {section.heading}
-                </h2>
+                <span className="mr-1 text-xl" aria-hidden="true">{section.icon}</span>
+                <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>{section.heading}</h2>
               </div>
 
-              {/* Body */}
               <div className="prose-eww mb-5">{section.body}</div>
 
-              {/* Callout box */}
               {section.callout && (() => {
                 const style = calloutStyles[section.callout.type];
                 return (
-                  <div
-                    className="rounded-xl border-l-4 p-4 flex gap-3 items-start"
-                    style={{ borderColor: style.border, backgroundColor: style.bg }}
-                  >
-                    <span className="text-base flex-shrink-0 mt-0.5" aria-hidden="true">
-                      {style.icon}
-                    </span>
+                  <div className="flex items-start gap-3 rounded-xl border-l-4 p-4" style={{ borderColor: style.border, backgroundColor: style.bg }}>
+                    <span className="mt-0.5 flex-shrink-0 text-base" aria-hidden="true">{style.icon}</span>
                     <div>
-                      <p
-                        className="text-[10px] font-bold uppercase tracking-widest mb-1"
-                        style={{ color: style.labelColor }}
-                      >
-                        {style.label}
-                      </p>
-                      <p className="text-sm text-[#3D2B1F] leading-relaxed">
-                        {section.callout.text}
-                      </p>
+                      <p className="mb-1 text-[10px] font-bold uppercase tracking-widest" style={{ color: style.labelColor }}>{style.label}</p>
+                      <p className="text-sm leading-relaxed text-[#3D2B1F]">{section.callout.text}</p>
                     </div>
                   </div>
                 );
               })()}
-
-              {/* Thin slime divider between sections (not after last) */}
-              {i < article.sections.length - 1 && (
-                <div className="mt-10 w-full overflow-hidden h-4">
-                  <img
-                    src="/images/ui/Thin%20slime%20divider%20line.png"
-                    alt=""
-                    aria-hidden="true"
-                    className="w-full h-full object-cover illustration"
-                    style={{ mixBlendMode: "multiply" }}
-                  />
-                </div>
-              )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* Evidence tape divider */}
-      <div className="w-full overflow-hidden h-8 relative">
-        <img
-          src="/images/ui/Evidence%20tape%20strip%2C%20text-free.png"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover illustration"
-          style={{ mixBlendMode: "multiply" }}
-        />
-      </div>
-
       {/* ── DR. ICKY'S VERDICT ─────────────────────────────────────── */}
-      <section className="dark-section bg-[#1A3D0E] py-14 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage: "url(/images/ui/slime%20splat.png)",
-            backgroundSize: "120px",
-            backgroundRepeat: "repeat",
-          }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-6 items-start">
-            <div className="flex-shrink-0 flex flex-col items-center gap-3">
+      <section className="relative overflow-hidden border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-14">
+        <div className="lab-haze pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-3xl px-4">
+          <div className="flex flex-col items-start gap-6 sm:flex-row">
+            <div className="relative w-28 flex-shrink-0">
+              <div className="absolute inset-0 -z-10 rounded-2xl blur-xl" style={{ background: "radial-gradient(circle, rgba(141,231,28,0.35), transparent 70%)" }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/dr-icky/Dr.%20Icky%20holding%20a%20clipboard.png"
+                src="/images/dr-icky-real/dr-icky-avatar.webp"
                 alt="Dr. Icky"
-                className="illustration-character w-28 object-contain"
-              />
-              <img
-                src="/images/ui/Dr.%20Icky%20Approved%20badge.png"
-                alt="Dr. Icky Approved"
-                className="illustration w-16 object-contain"
-                style={{ mixBlendMode: "normal" }}
+                className="w-28 rounded-2xl object-cover"
+                style={{ border: "1px solid var(--color-lab-line-bright)" }}
               />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#5DB84A] mb-3">
-                Dr. Icky&apos;s Verdict
-              </p>
-              <p
-                className="text-xl text-[#F7F2E4] leading-relaxed"
-              >
-                &ldquo;{article.drIckyVerdict}&rdquo;
-              </p>
+              <p className="lab-label mb-3 text-[var(--color-neon)]">Dr. Icky&apos;s verdict</p>
+              <p className="text-xl leading-relaxed text-[var(--color-ink)]">&ldquo;{article.drIckyVerdict}&rdquo;</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
-      <section className="bg-[#EDE5CE] py-12 border-t border-[#C8B89A]">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="bg-[var(--color-lab-void)] py-12">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-[var(--color-lab-line-bright)] bg-[var(--color-lab-panel)] p-7 sm:flex-row">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#5DB84A] mb-2">
-                There are 74 more
-              </p>
-              <h3
-                className="text-2xl text-[#1A3D0E] mb-3"
-              >
-                The full Creepy Creatures catalog
-              </h3>
-              <p className="text-sm text-[#7A6652] max-w-md leading-relaxed">
-                75 creatures. Every fact verified and revolting. In print and as an app.
+              <p className="lab-label mb-2 text-[var(--color-neon)]">Classify it yourself</p>
+              <h3 className="text-2xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>234 specimens are waiting</h3>
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-[var(--color-ink-dim)]">
+                Scan this specimen, survive the quiz, and master it in the free app — then hunt the other 233.
               </p>
             </div>
-            <div className="flex flex-col gap-3 flex-shrink-0">
-              <Link
-                href="/books"
-                className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors text-center"
-              >
+            <div className="flex flex-shrink-0 flex-col gap-3">
+              <AppStoreButton size="md" />
+              <Link href="/books" className="rounded-full border border-[var(--color-lab-line-bright)] px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]">
                 See the books
-              </Link>
-              <Link
-                href="/app"
-                className="border border-[#C8B89A] hover:border-[#5DB84A] text-[#3D2B1F] font-semibold px-6 py-3 rounded-full text-sm transition-colors bg-[#F7F2E4] text-center"
-              >
-                The app
               </Link>
             </div>
           </div>
@@ -796,19 +797,11 @@ export default async function SpecimenPostPage({
       </section>
 
       {/* Back link */}
-      <section className="bg-[#F7F2E4] py-8 border-t border-[#C8B89A]">
-        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
-          <Link
-            href="/specimen-files"
-            className="text-sm text-[#7A6652] hover:text-[#5DB84A] transition-colors flex items-center gap-1.5"
-          >
+      <section className="border-t border-[var(--color-lab-line)] bg-[var(--color-lab-void)] py-8">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4">
+          <Link href="/specimen-files" className="flex items-center gap-1.5 text-sm text-[var(--color-ink-mute)] transition-colors hover:text-[var(--color-neon)]">
             <span aria-hidden="true">&#8592;</span> All Specimen Files
           </Link>
-          <img
-            src="/images/ui/Junior%20Grossologist%20badge.png"
-            alt="Junior Grossologist"
-            className="illustration w-12 object-contain"
-          />
         </div>
       </section>
     </>

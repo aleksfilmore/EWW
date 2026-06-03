@@ -60,11 +60,12 @@ export default function GrossReveal({ fact }: GrossRevealProps) {
           ) : (
             /* Revealed state */
             <div className="flex gap-4 items-start">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/ui/Dr.%20Icky%20shocked%20by%20gross%20goo.png"
+                src="/images/dr-icky-real/dr-icky-avatar.webp"
                 alt="Dr. Icky reacting"
-                className="illustration w-14 flex-shrink-0 object-contain"
-                style={{ mixBlendMode: "multiply" }}
+                className="w-14 h-14 flex-shrink-0 rounded-xl object-cover"
+                style={{ border: "1px solid #854F0B" }}
               />
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-[#854F0B] mb-2">

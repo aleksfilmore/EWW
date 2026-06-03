@@ -198,11 +198,11 @@ body {
 .rarity-rare      { background: #185FA5; color: #fff; }
 .rarity-epic      { background: #6B3FD4; color: #fff; }
 
-/* Article body prose styles for specimen posts */
+/* Article body prose styles for specimen posts (dark lab theme) */
 .prose-eww p {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: #3D2B1F;
+  line-height: 1.8;
+  color: var(--color-ink-dim);
   margin-bottom: 1rem;
 }
 
