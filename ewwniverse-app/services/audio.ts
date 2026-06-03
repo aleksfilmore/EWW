@@ -7,7 +7,27 @@
  * Ambient tracks (amb_home, amb_lab, amb_launch) are handled separately
  * via a single looping player — swap on route change.
  */
-import { createAudioPlayer } from 'expo-audio';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+
+// ─── iOS audio session ──────────────────────────────────────────────────────
+/**
+ * Configure the shared audio session once at startup.
+ *
+ * On iOS every expo-audio (SFX/ambient) and expo-video (Dr. Icky) player shares
+ * a single AVAudioSession. If it's left at the OS default, the SFX/ambient
+ * players toggling the session interrupt the Dr. Icky video a couple seconds in
+ * (the video freezes — only on iOS). `mixWithOthers` lets them coexist, and
+ * `playsInSilentMode` keeps voiceovers audible when the ringer switch is muted.
+ *
+ * Fire-and-forget; failures are non-fatal.
+ */
+export function initAudioSession(): void {
+  setAudioModeAsync({
+    playsInSilentMode: true,
+    interruptionMode:  'mixWithOthers',
+    shouldPlayInBackground: false,
+  }).catch(() => {});
+}
 
 // ─── SFX key type ─────────────────────────────────────────────────────────
 export type SfxKey =

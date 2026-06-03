@@ -15,6 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
+import { fs, gridCols } from '@/constants/responsive';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { BOOKS } from '@/constants/game';
@@ -26,7 +27,7 @@ import { playSfx } from '@/services/audio';
 
 const { width: SCREEN_W } = Dimensions.get('window');
 const CARD_GAP  = 8;
-const COLS      = 3;
+const COLS      = gridCols(3);   // 3 on phone, more on tablet
 const CARD_SIZE = (SCREEN_W - Spacing.md * 2 - CARD_GAP * (COLS - 1)) / COLS;
 
 const BOOK_DATA: Record<Book, Creature[]> = {
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     fontFamily: FontFamily.creepster,
-    fontSize: 28,
+    fontSize: fs(28),
     color: Colors.text.lime,
     letterSpacing: 2,
     textShadowColor: Colors.eww.greenDark,
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
   },
   pageSub: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 11,
+    fontSize: fs(11),
     color: Colors.text.purple,
     letterSpacing: 2.5,
     marginTop: 2,
@@ -200,12 +201,12 @@ const styles = StyleSheet.create({
     opacity: 0.45,
   },
   bookTabIcon: {
-    width: 36,
-    height: 36,
+    width: fs(36),
+    height: fs(36),
   },
   bookTabLabel: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      15,
+    fontSize:      fs(15),
     color:         Colors.text.secondary,
     letterSpacing: 1,
     textAlign:     'center',
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 12,
+    fontSize: fs(12),
     color: Colors.text.lime,
     letterSpacing: 0.5,
   },
@@ -248,7 +249,7 @@ const styles = StyleSheet.create({
   },
   scansText: {
     fontFamily: FontFamily.boogaloo,
-    fontSize: 12,
+    fontSize: fs(12),
     color: Colors.text.purple,
     letterSpacing: 0.5,
   },

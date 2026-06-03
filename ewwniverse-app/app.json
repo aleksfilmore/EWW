@@ -14,8 +14,10 @@
     "userInterfaceStyle": "dark",
     "scheme": "ewwniverse",
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
+      "requireFullScreen": true,
       "bundleIdentifier": "com.ewwniverse.app",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -50,7 +52,7 @@
       }
     },
     "runtimeVersion": {
-      "policy": "fingerprint"
+      "policy": "appVersion"
     },
     "plugins": [
       "./plugins/withCrunchPngsFix",
@@ -73,6 +75,7 @@
           "resizeMode": "contain"
         }
       ],
+      "./plugins/withModularHeaders",
       "@react-native-firebase/app",
       "expo-asset",
       "expo-video"

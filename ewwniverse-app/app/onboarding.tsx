@@ -17,7 +17,9 @@ import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { VideoView, useVideoPlayer } from 'expo-video';
+import { Asset } from 'expo-asset';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
+import { IS_TABLET, CONTENT_W, fs } from '@/constants/responsive';
 import { ONBOARDING_KEY } from '@/constants/storage';
 
 const { width: SW, height: SH } = Dimensions.get('window');
@@ -65,15 +67,41 @@ function SlideVideoHero({
   video: ReturnType<typeof require>;
   isActive: boolean;
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const player = useVideoPlayer(video as any, (p) => {
+  const player = useVideoPlayer(null, (p) => {
     p.loop = false;  // Play once then stop
     p.muted = false;
+    // iOS: share the audio session so the clip isn't interrupted a couple
+    // seconds in by other (SFX/ambient) players (see DrIckyOverlay for details).
+    p.audioMixingMode = 'mixWithOthers';
     // Don't auto-play — playback is controlled by isActive
   });
 
+  const readyRef = React.useRef(false);
+
+  // Resolve the bundled clip to a local file:// path before loading it. Passing
+  // the require()'d module directly lets expo-video stream from the EAS Update
+  // CDN on iOS (stalls a couple seconds in); localUri guarantees local playback.
+  React.useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const asset = Asset.fromModule(video as number);
+        await asset.downloadAsync();
+        if (cancelled) return;
+        await player.replaceAsync({ uri: asset.localUri ?? asset.uri });
+        if (cancelled) return;
+        readyRef.current = true;
+        if (isActive) player.play();
+      } catch {
+        // Non-fatal — a failed onboarding clip just shows a blank hero.
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [video, player]);  // eslint-disable-line react-hooks/exhaustive-deps
+
   // Play or pause based on whether this slide is currently visible
   React.useEffect(() => {
+    if (!readyRef.current) return;
     if (isActive) {
       player.play();
     } else {
@@ -124,6 +152,7 @@ export default function Onboarding() {
 
       {/* Content card */}
       <View style={[styles.card, { borderTopColor: item.accent }]}>
+       <View style={styles.cardInner}>
         {/* Progress dots */}
         <View style={styles.dots}>
           {SLIDES.map((_, i) => (
@@ -173,6 +202,7 @@ export default function Onboarding() {
             <Text style={styles.ctaText}>NEXT  ›</Text>
           </TouchableOpacity>
         )}
+       </View>
       </View>
     </View>
   ), [currentIndex, isLast, dontShow, handleNext, handleEnter]);
@@ -221,8 +251,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   heroVideo: {
-    width:  SW,
+    width:  IS_TABLET ? Math.min(SW, CONTENT_W) : SW,
     height: SH - CARD_HEIGHT,
+    alignSelf: 'center',
+  },
+
+  // Centred, readable content column inside the bottom card on tablet.
+  cardInner: {
+    flex:      1,
+    width:     '100%',
+    maxWidth:  CONTENT_W,
+    alignSelf: 'center',
   },
 
   card: {
@@ -255,15 +294,15 @@ const styles = StyleSheet.create({
 
   title: {
     fontFamily:    FontFamily.creepster,
-    fontSize:      32,
-    lineHeight:    34,
+    fontSize:      fs(32),
+    lineHeight:    fs(34),
     letterSpacing: 1,
     marginBottom:  10,
   },
   body: {
     fontFamily:    FontFamily.boogaloo,
-    fontSize:      18,
-    lineHeight:    26,
+    fontSize:      fs(18),
+    lineHeight:    fs(26),
     color:         Colors.eww.bark,
     letterSpacing: 0.2,
     flex:          1,

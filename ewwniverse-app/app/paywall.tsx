@@ -19,6 +19,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Colors, FontFamily, Spacing, Radius } from '@/constants/design';
+import { centeredColumn } from '@/constants/responsive';
 import { Assets } from '@/constants/assets';
 import { useUserStore } from '@/store/userStore';
 import { PAYWALL_PRICE } from '@/constants/game';
@@ -255,6 +256,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.md,
     paddingBottom:     Spacing.xl,
     alignItems:        'center',
+    ...centeredColumn,
   },
 
   heroImg: {

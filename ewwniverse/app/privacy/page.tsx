@@ -32,7 +32,8 @@ export default function PrivacyPage() {
           <li><strong>Firebase Anonymous Authentication</strong> — issues an anonymous ID so game progress can be saved on the device. No name, email, or login is involved.</li>
           <li><strong>RevenueCat</strong> — manages the optional one-time Full Lab Pass purchase.</li>
         </ul>
-        <p>The app uses <strong>no Firebase Analytics, no Firestore or Realtime Database, no advertising networks, and no third-party tracking</strong>. There are no accounts, no email collection, no ads, and no social or user-generated content.</p>
+        <p>The app uses <strong>no Firebase Analytics, no Firestore or Realtime Database, no Firebase Storage, no Cloudinary, no advertising networks, and no third-party tracking</strong>. There are no accounts, no email collection, no ads, and no social or user-generated content. It does not request camera, microphone, location, or contacts access, and shows no App Tracking Transparency prompt — because it does not track.</p>
+        <p>Gameplay and progression — unlocked specimens, quiz progress, scan and reward status, and your Full Lab Pass entitlement — is stored locally on your device. Uninstalling the app permanently deletes all of it. The app may download over-the-air updates from our hosting provider (Expo), which processes a device IP address only to deliver the update, never to identify or track children.</p>
       </LegalSection>
 
       <LegalSection title="How we use data">
