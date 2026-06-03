@@ -1,4 +1,7 @@
-# Root gitignore for the EWW monorepo
+# Root gitignore for the EWW monorepo (now website-only)
+# The mobile app lives in its own repo: github.com/aleksfilmore/ewwniverse-app
+# (worked on at C:/dev/ewwniverse-app). Keep it out of this repo.
+ewwniverse-app/
 
 # Dependencies — never commit node_modules
 node_modules/
