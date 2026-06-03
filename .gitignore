@@ -3,6 +3,16 @@
 # (worked on at C:/dev/ewwniverse-app). Keep it out of this repo.
 ewwniverse-app/
 
+# Source art/audio for books + app — kept out of this website repo.
+# (Originals live with book/app production, not the marketing site.)
+/images/
+/fonts/
+/sounds/
+/creepy creatures/
+/creepy dinosaurs/
+/creepy earth/
+/special unlocks/
+
 # Dependencies — never commit node_modules
 node_modules/
 **/node_modules/
