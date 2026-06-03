@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "eww-web",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "start", "-p", "3210"],
+      "port": 3210,
+      "cwd": "C:\\Users\\iamal\\OneDrive\\Documents\\GitHub\\EWW\\ewwniverse"
+    }
+  ]
+}

@@ -25,20 +25,20 @@ const BASE_URL = "https://ewwniverse.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Dr. Icky's EWW-niverse — Gross Science Books & App for Kids",
+    default: "Dr. Icky's EWW-niverse — The Gross Science App for Kids",
     template: "%s | EWW-niverse",
   },
   description:
-    "75 of nature's most revolting creatures — scientifically accurate, grotesquely rated, and approved by Dr. Icky. Books, app, and field reports for kids who love weird science.",
+    "The gross science app for weirdly curious kids. Scan strange specimens, reveal real disgusting science facts, survive the quiz, raise your EWW score, and master 234 specimens with Dr. Icky. Free to start on iPhone & iPad.",
   keywords: [
-    "gross science books for kids",
+    "gross science app for kids",
+    "science game for kids",
     "weird animal facts for kids",
     "Dr. Icky",
     "EWW-niverse",
-    "creepy creatures book",
-    "children's science books",
+    "creepy creatures",
     "gross facts for kids",
-    "science app for kids",
+    "kids classification game",
   ],
   authors: [{ name: "Dr. Icky" }],
   creator: "EWW-niverse",
@@ -52,14 +52,15 @@ export const metadata: Metadata = {
     siteName: "EWW-niverse",
     type: "website",
     url: BASE_URL,
-    title: "Dr. Icky's EWW-niverse — Gross Science Books & App for Kids",
+    title: "Dr. Icky's EWW-niverse — The Gross Science App for Kids",
     description:
-      "75 of nature's most revolting creatures — scientifically accurate, grotesquely rated, and approved by Dr. Icky.",
+      "Scan the specimen. Survive the quiz. Master the EWW-niverse. Real science facts as a creepy classification game.",
     images: [
       {
-        url: "/images/ui/Dr. Icky holding EWW-meter.png",
-        width: 800,
-        alt: "Dr. Icky holding the EWW-meter",
+        url: "/images/og-eww.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dr. Icky — Chief Specimen Scientist of the EWW-niverse",
       },
     ],
   },
@@ -67,8 +68,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dr. Icky's EWW-niverse",
     description:
-      "75 of nature's most revolting creatures — books, app, and more.",
-    images: ["/images/ui/Dr. Icky holding EWW-meter.png"],
+      "The gross science app for weirdly curious kids. Scan, classify, quiz, master.",
+    images: ["/images/og-eww.jpg"],
   },
   alternates: {
     canonical: BASE_URL,

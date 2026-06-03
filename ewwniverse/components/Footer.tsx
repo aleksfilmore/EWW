@@ -1,12 +1,12 @@
 import Link from "next/link";
+import AppStoreButton from "@/components/AppStoreButton";
 
 const footerLinks = [
+  { href: "/app",            label: "The App" },
   { href: "/books",          label: "The Books" },
   { href: "/specimen-files", label: "Specimen Files" },
-  { href: "/app",            label: "The App" },
   { href: "/dr-icky",        label: "About Dr. Icky" },
   { href: "/for-parents",    label: "For Parents & Educators" },
-  { href: "/redeem",         label: "Redeem a Code" },
 ];
 
 const legalLinks = [
@@ -17,26 +17,16 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#080808" }} className="relative overflow-hidden border-t border-[#5DB84A]/15">
+    <footer style={{ backgroundColor: "#0C0718" }} className="relative overflow-hidden border-t border-[var(--color-lab-line)]">
+      {/* hazard accent strip */}
+      <div className="hazard-stripe h-2 w-full opacity-70" />
 
-      {/* Bug trail top decoration */}
-      <div className="w-full overflow-hidden h-12 relative">
-        <img
-          src="/images/ui/Bug%20trail%20dotted%20path.png"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover opacity-30"
-          style={{ mixBlendMode: "screen" }}
-        />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 pb-10">
+      <div className="max-w-6xl mx-auto px-4 pb-10 pt-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
-
           {/* Brand column */}
           <div className="flex flex-col gap-4">
-            {/* Custom logo */}
             <Link href="/">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/ui/logo-main.png"
                 alt="EWW-niverse"
@@ -44,17 +34,20 @@ export default function Footer() {
                 style={{ mixBlendMode: "screen" }}
               />
             </Link>
-            <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-              Dr. Icky&apos;s collection of the grossest, weirdest, most revolting facts in the known universe.
-              For kids who like facts too weird for normal science apps.
+            <p className="text-sm text-white/45 leading-relaxed max-w-xs">
+              The gross science app for weirdly curious kids. Scan specimens, survive the quiz, and
+              master the EWW-niverse — backed by the printed field guides.
             </p>
+            <div className="mt-1">
+              <AppStoreButton size="md" />
+            </div>
           </div>
 
           {/* Links column */}
           <div className="flex flex-col gap-2">
             <span
-              className="text-xs font-bold uppercase tracking-widest mb-3"
-              style={{ color: "#5DB84A", fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+              className="lab-label mb-3 text-[var(--color-neon)]"
+              style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
             >
               Explore
             </span>
@@ -62,29 +55,26 @@ export default function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-sm text-white/50 hover:text-[#5DB84A] transition-colors w-fit"
+                className="text-sm text-white/50 hover:text-[var(--color-neon)] transition-colors w-fit"
               >
                 {l.label}
               </Link>
             ))}
           </div>
 
-          {/* Dr. Icky column */}
-          <div className="flex flex-col items-start md:items-end gap-4">
+          {/* Real Dr. Icky column */}
+          <div className="flex flex-col items-start md:items-end gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ui/EWWniverse%20Dr%20Icky.png"
-              alt="Dr. Icky — EWW-niverse"
-              className="w-36 md:w-44 object-contain"
-              style={{ mixBlendMode: "screen" }}
+              src="/images/dr-icky-real/dr-icky-portrait.webp"
+              alt="Dr. Icky — Chief Specimen Scientist"
+              className="w-28 rounded-2xl object-cover"
+              style={{ border: "1px solid var(--color-lab-line)" }}
+              loading="lazy"
             />
-            <div className="flex flex-col gap-2 md:items-end">
-              <span className="text-xs text-white/30 uppercase tracking-widest">Approved by Dr. Icky</span>
-              <img
-                src="/images/ui/Dr.%20Icky%20Approved%20badge.png"
-                alt="Approved by Dr. Icky"
-                className="w-16 object-contain"
-                style={{ mixBlendMode: "screen" }}
-              />
+            <div className="flex flex-col gap-1 md:items-end">
+              <span className="lab-label text-[var(--color-neon)]">Approved by Dr. Icky</span>
+              <span className="text-xs text-white/30">Chief Specimen Scientist, EWW-niverse Labs</span>
             </div>
           </div>
         </div>
@@ -96,7 +86,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-5 text-xs text-white/30">
             {legalLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-[#5DB84A] transition-colors">
+              <Link key={l.href} href={l.href} className="hover:text-[var(--color-neon)] transition-colors">
                 {l.label}
               </Link>
             ))}

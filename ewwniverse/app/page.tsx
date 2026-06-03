@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { books, creatures, specimenPosts, creatureImagePath } from "@/lib/data";
-import BookCard from "@/components/BookCard";
-import CreatureCard from "@/components/CreatureCard";
-import EmailSignupForm from "@/components/EmailSignupForm";
+import { books, specimenPosts, creatureImagePath, bookCoverPath } from "@/lib/data";
+import { PRODUCT, APP_STORE_URL } from "@/lib/site";
 import HeroSection from "@/components/HeroSection";
-
-const featuredCreatures = creatures.filter((c) => c.ewwMeter === 100).slice(0, 8);
+import SectionHeading from "@/components/SectionHeading";
+import FeatureCard from "@/components/FeatureCard";
+import PhoneFrame from "@/components/PhoneFrame";
+import LabTransmission from "@/components/LabTransmission";
+import AppStoreButton from "@/components/AppStoreButton";
+import CTABanner from "@/components/CTABanner";
 
 const categoryLabels: Record<string, string> = {
   "specimen-of-the-week": "Specimen of the Week",
@@ -13,345 +15,327 @@ const categoryLabels: Record<string, string> = {
   "reader-submission": "Reader Submission",
 };
 
+const features = [
+  { icon: "🔬", title: "Scan mystery specimens", desc: "Spend a scan to crack open a sealed specimen jar and reveal what's lurking inside.", accent: "var(--color-neon)" },
+  { icon: "🤢", title: "Reveal gross facts", desc: "Every classified specimen unlocks a real — and genuinely disgusting — science fact.", accent: "var(--color-amber)" },
+  { icon: "❓", title: "Answer the lab quiz", desc: "Prove you actually understand the specimen by surviving Dr. Icky's questions.", accent: "#A78BFA" },
+  { icon: "✅", title: "Master specimens", desc: "Ace the quiz to stamp a specimen MASTERED and earn bonus scans.", accent: "var(--color-neon)" },
+  { icon: "📈", title: "Raise your EWW score", desc: "Climb five stages — from Kinda Curious all the way to Full Dr. Icky.", accent: "var(--color-amber)" },
+  { icon: "🧪", title: "Unlock 100/100 finds", desc: "Hunt the Total Barf tier: the rarest, most revolting EWW-100 discoveries.", accent: "var(--color-danger)" },
+];
+
+const screenshots = [
+  { src: "/images/screenshots/shot-01.webp", alt: "Home screen with today's gross challenge", caption: "A fresh mystery jar every single day." },
+  { src: "/images/screenshots/shot-02.webp", alt: "Classified specimen with EWW-meter and gross fact", caption: "Classified. EWW-meter maxed. Fact revealed." },
+  { src: "/images/screenshots/shot-04.webp", alt: "Specimen Files grid across field guides", caption: "Collect all 234 across three field guides." },
+  { src: "/images/screenshots/shot-05.webp", alt: "Recruit file with stage ladder", caption: "Your stage ladder, streaks and rewards." },
+];
+
+const appBookIds = new Set(["creepy-creatures", "creepy-dinosaurs", "creepy-earth"]);
+
 export default function Home() {
   return (
     <>
       <HeroSection />
 
-      {/* ── THREE PILLARS ─────────────────────────────────────────────── */}
-      <section className="bg-[#1A3D0E] py-8 border-y-2 border-[#5DB84A]/40">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { icon: "/images/ui/petri%20dish.png", color: "#5DB84A", bg: "#0D2007", label: "Gross Facts", desc: "Mind-blowing facts that are actually true (and totally gross)." },
-              { icon: "/images/ui/magnifying%20glass.png", color: "#D48B1A", bg: "#1A1206", label: "Creepy Creatures", desc: "Meet the weirdest animals on Earth and beyond." },
-              { icon: "/images/ui/microscope.png", color: "#6B3FD4", bg: "#110823", label: "Lab Missions", desc: "Experiments, codes, and slimey challenges." },
-            ].map((p) => (
-              <div key={p.label}
-                className="flex items-center gap-4 rounded-2xl border px-5 py-4"
-                style={{ borderColor: p.color + "40", backgroundColor: p.bg }}>
-                <img src={p.icon} alt="" aria-hidden="true"
-                  className="w-10 h-10 object-contain flex-shrink-0"
-                  style={{ mixBlendMode: "normal" }} />
-                <div>
-                  <p className="font-creepster text-base mb-0.5"
-                    style={{ color: p.color, fontFamily: "var(--font-creepster), 'Cantora One', serif" }}>
-                    {p.label}
-                  </p>
-                  <p className="text-sm text-[#8A9E86] leading-relaxed">{p.desc}</p>
-                </div>
-              </div>
+      {/* ── WHAT YOU DO IN THE LAB ─────────────────────────────────── */}
+      <section id="inside" className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            eyebrow="The gameplay loop"
+            title="What you do in the lab"
+            sub="Scan → classify → learn the gross fact → survive the quiz → master it → unlock more. Every loop raises your EWW score."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f) => (
+              <FeatureCard key={f.title} icon={f.icon} title={f.title} desc={f.desc} accent={f.accent} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── STATS STRIPE ──────────────────────────────────────────────── */}
-      <section className="bg-[#0D2007] py-8 border-b border-[#1A3D0E] relative overflow-hidden">
-        <img src="/images/ui/slime-blob-face.png" alt="" aria-hidden="true"
-          className="illustration absolute right-4 top-1/2 -translate-y-1/2 w-16 opacity-20 pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:divide-x md:divide-[#1A3D0E]">
-            {[
-              { n: "6",   label: "Books published",   sub: "" },
-              { n: "234", label: "Creatures total",   sub: "3 books, live now" },
-              { n: "450+",label: "Gross-out facts",   sub: "" },
-              { n: "01",  label: "Mad scientist",     sub: "" },
-            ].map((s) => (
-              <div key={s.label} className="flex flex-col items-center text-center md:px-6">
-                <span
-                  className="font-creepster text-5xl leading-none"
-                  style={{ color: "#5DB84A", fontFamily: "var(--font-creepster), 'Cantora One', serif", WebkitTextStroke: "1px #3D8C2A", paintOrder: "stroke fill" }}
-                >
-                  {s.n}
-                </span>
-                <span className="text-xs text-[#8A9E86] uppercase tracking-widest mt-1">{s.label}</span>
-                {s.sub && <span className="text-[10px] text-[#5DB84A]/60 tracking-wider mt-0.5">{s.sub}</span>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SPECIMEN CARDS — collectible style ────────────────────────── */}
-      <section
-        className="py-16"
-        style={{
-          backgroundImage: "url(/images/ui/Lab%20tile%20background.png)",
-          backgroundSize: "200px",
-          backgroundRepeat: "repeat",
-          backgroundColor: "#0A1205",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Section header */}
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <img src="/images/ui/Total%20Barf%20sticker.png" alt="Total Barf" className="w-10 h-10 object-contain" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[#E05050]">Total Barf tier — EWW 100</span>
-              </div>
-              <h2
-                className="font-creepster text-4xl text-[#6ED44F]"
-                style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+      {/* ── REAL DR. ICKY — LAB TRANSMISSION ───────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
+        <div className="lab-haze pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2">
+          <div>
+            <SectionHeading
+              eyebrow="Direct from the lab"
+              title="Dr. Icky has a verdict"
+              sub="Professor Ignatius Icky — Chief Specimen Scientist and self-appointed keeper of gross facts. He personally inspected, sniffed, and documented every specimen in the EWW-niverse. His colleagues disagree that this is science."
+            />
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <AppStoreButton />
+              <Link
+                href="/dr-icky"
+                className="rounded-full border border-[var(--color-lab-line-bright)] px-5 py-3 text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]"
               >
-                Unlock Specimen Files
-              </h2>
-              <p className="text-xs text-[#5A8A56] mt-1 uppercase tracking-widest">Collect. Learn. Gross out.</p>
-            </div>
-            <div className="hidden sm:flex flex-col items-end gap-1">
-              <span
-                className="font-creepster text-6xl leading-none text-[#5DB84A]"
-                style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
-              >234</span>
-              <span className="text-[10px] uppercase tracking-widest text-[#5A8A56]">specimens total</span>
-              <Link href="/specimen-files" className="text-xs font-bold text-[#5DB84A] hover:underline mt-1">Browse all →</Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {featuredCreatures.map((c) => (
-              <CreatureCard key={c.name} creature={c} showFact />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hazard tape divider */}
-      <div className="w-full h-7 overflow-hidden">
-        <img src="/images/ui/Hazard%20tape%20strip%2C%20text-free.png" alt="" aria-hidden="true"
-          className="w-full h-full object-cover illustration" style={{ mixBlendMode: "multiply" }} />
-      </div>
-
-      {/* ── BOOKS ─────────────────────────────────────────────────────── */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: "#080808" }}>
-        <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{ backgroundImage: "url(/images/ui/Lab%20tile%20background.png)", backgroundSize: "200px", backgroundRepeat: "repeat" }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#5DB84A] mb-2">The collection</p>
-              <h2
-                className="font-creepster text-4xl md:text-5xl text-[#E8F5E2]"
-                style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
-              >
-                Meet the Books
-              </h2>
-            </div>
-            <div className="hidden sm:flex items-center gap-3">
-              <img src="/images/ui/Field%20Safe%20Copy%20stamp.png" alt="" aria-hidden="true"
-                className="w-12 h-12 object-contain opacity-70" style={{ mixBlendMode: "screen" }} />
-              <Link href="/books" className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors uppercase tracking-wide">
-                View All Books
+                Meet Dr. Icky
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {books.slice(0, 3).map((book) => (
-              <BookCard key={book.id} book={book} />
+          <LabTransmission
+            src="/videos/dr-icky-intro.mp4"
+            poster="/videos/dr-icky-intro-poster.jpg"
+            label="Incoming transmission"
+            caption="A short transmission from EWW-niverse Labs."
+          />
+        </div>
+      </section>
+
+      {/* ── APP SCREENSHOTS ────────────────────────────────────────── */}
+      <section className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            eyebrow="Inside the app"
+            title="The product, not a promise"
+            sub="Real screens from the live app — built like a lab interface, slimy enough for kids, clean enough for parents."
+            align="center"
+          />
+          <div className="mt-10 grid grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-4">
+            {screenshots.map((s, i) => (
+              <div key={s.src} className="flex flex-col items-center gap-3">
+                <PhoneFrame src={s.src} alt={s.alt} priority={i === 0} className="w-full max-w-[220px]" />
+                <p className="max-w-[220px] text-center text-xs leading-relaxed text-[var(--color-ink-dim)]">
+                  {s.caption}
+                </p>
+              </div>
             ))}
           </div>
-          <div className="mt-6 flex justify-center sm:hidden">
-            <Link href="/books"
-              className="border-2 border-[#5DB84A] text-[#5DB84A] font-bold px-6 py-3 rounded-full hover:bg-[#5DB84A] hover:text-white transition-colors text-sm uppercase tracking-wide">
-              See all 6 books
+        </div>
+      </section>
+
+      {/* ── PRICING — one free app, one optional unlock ────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
+        <div className="lab-haze pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-4xl px-4">
+          <SectionHeading
+            eyebrow="Free to play"
+            title="Free to download. No ads. Ever."
+            sub="EWW-niverse is free for everyone — the full 75-specimen Creepy Creatures field guide, a new gross challenge every day, quizzes, mastery and stages, with zero ads and no sign-up. One optional unlock opens the whole lab, forever."
+            align="center"
+          />
+
+          {/* Single product card: free app, then optional in-app unlock */}
+          <div
+            className="mt-10 overflow-hidden rounded-[1.5rem]"
+            style={{ border: "1px solid var(--color-lab-line-bright)", boxShadow: "0 24px 60px -30px rgba(0,0,0,0.7)" }}
+          >
+            {/* FREE — the whole app */}
+            <div className="flex flex-col gap-6 bg-[var(--color-lab-panel)] p-7 sm:p-9">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="lab-label text-[var(--color-neon)]">The app — free for everyone</p>
+                  <p
+                    className="mt-2 font-creepster text-5xl text-[var(--color-ink)]"
+                    style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+                  >
+                    Free
+                  </p>
+                </div>
+                <AppStoreButton />
+              </div>
+              <ul className="grid grid-cols-1 gap-2.5 text-sm text-[var(--color-ink-dim)] sm:grid-cols-2">
+                {[
+                  "No ads — not a single one",
+                  "No sign-up, no account, no tracking",
+                  "All 75 Creepy Creatures specimens",
+                  "A new Today's Gross Challenge daily",
+                  "Lab quizzes, mastery and bonus scans",
+                  "Stages 1–2: Kinda Curious → Properly Revolted",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2.5">
+                    <span className="text-[var(--color-neon)]">✓</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* OPTIONAL in-app unlock */}
+            <div
+              className="flex flex-col gap-5 p-7 sm:p-9"
+              style={{
+                background: "linear-gradient(165deg, var(--color-lab-panel-2), var(--color-lab-panel))",
+                borderTop: "1px solid var(--color-neon)",
+              }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="lab-label text-[var(--color-neon)]">Optional · one-time in-app unlock</p>
+                <span
+                  className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-black"
+                  style={{ backgroundColor: "var(--color-neon)" }}
+                >
+                  {PRODUCT.price} · lifetime
+                </span>
+              </div>
+              <h3
+                className="text-2xl text-[var(--color-ink)]"
+                style={{ fontFamily: "var(--font-boogaloo), cursive" }}
+              >
+                Full Lab Pass — unlock the whole lab
+              </h3>
+              <ul className="grid grid-cols-1 gap-2.5 text-sm text-[var(--color-ink-dim)] sm:grid-cols-2">
+                {[
+                  "All 234 specimens — Creatures, Dinosaurs & Earth",
+                  "All 15 special Slime Surge unlocks",
+                  "Stages 3–5: Super Slimy → Full Dr. Icky",
+                  "One-time $3.99. No subscription, ever.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2.5">
+                    <span className="text-[var(--color-neon)]">✓</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-[var(--color-ink-mute)]">
+                Unlock it from inside the free app whenever you&apos;re ready — it&apos;s a single purchase that lasts forever, on every device signed in to your Apple account.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BOOKS — FIELD GUIDES ───────────────────────────────────── */}
+      <section className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading
+              eyebrow="The collection"
+              title="The field guides behind the lab"
+              sub="The EWW-niverse books are the printed field guides. The app turns the same gross-science universe into scans, quizzes, scores, and Dr. Icky's verdicts."
+            />
+            <Link
+              href="/books"
+              className="rounded-full bg-[var(--color-neon)] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
+            >
+              View all {PRODUCT.booksPublished} books
+            </Link>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
+            {books.map((book) => (
+              <a
+                key={book.id}
+                href={book.amazonUrl}
+                target="_blank"
+                rel="noopener"
+                className="lab-card group flex flex-col gap-2 overflow-hidden p-2.5"
+              >
+                <div className="relative overflow-hidden rounded-lg">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={bookCoverPath(book.coverFile)}
+                    alt={`${book.title} book cover`}
+                    loading="lazy"
+                    className="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {appBookIds.has(book.id) && (
+                    <span
+                      className="absolute left-1.5 top-1.5 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-black"
+                      style={{ backgroundColor: "var(--color-neon)" }}
+                    >
+                      In the app
+                    </span>
+                  )}
+                </div>
+                <p className="px-1 text-xs font-semibold leading-snug text-[var(--color-ink)]">{book.title}</p>
+              </a>
+            ))}
+          </div>
+          <p className="mt-5 text-center text-sm text-[var(--color-ink-mute)]">
+            Read the field guides. Then classify the specimens in the app.
+          </p>
+        </div>
+      </section>
+
+      {/* ── PARENT TRUST ───────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
+        <div className="relative mx-auto max-w-5xl px-4">
+          <SectionHeading
+            eyebrow="For parents"
+            title="Gross for kids. Clean for parents."
+            sub="No ads. No tracking. No social feeds. No user-generated content. Just real science facts, strange creatures, creepy discoveries, and a one-time Full Lab Pass."
+            align="center"
+          />
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { t: "No ads, ever", d: "No banners, no pop-ups, no third-party ad networks." },
+              { t: "No tracking", d: "No analytics SDKs, no advertising IDs, no behavioural profiling." },
+              { t: "No accounts", d: "No sign-up, no email, no personal child data collected." },
+              { t: "No social, no UGC", d: "No feeds, no chat, no comments — nothing user-generated to moderate." },
+            ].map((c) => (
+              <div key={c.t} className="lab-panel p-5">
+                <p className="text-base font-semibold text-[var(--color-neon)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>
+                  {c.t}
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-dim)]">{c.d}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/for-parents"
+              className="rounded-full border border-[var(--color-lab-line-bright)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]"
+            >
+              Read the full parent guide
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Evidence tape divider */}
-      <div className="w-full h-7 overflow-hidden">
-        <img src="/images/ui/Evidence%20tape%20strip%2C%20text-free.png" alt="" aria-hidden="true"
-          className="w-full h-full object-cover illustration" style={{ mixBlendMode: "multiply" }} />
-      </div>
-
-      {/* ── APP — DARK SECTION ────────────────────────────────────────── */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: "#0D0820" }}>
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: "url(/images/ui/Lab%20tile%20background.png)", backgroundSize: "200px", backgroundRepeat: "repeat" }}
-        />
-        <img src="/images/ui/Slime%20drip%20top%20border%2C%20full%20width.png" alt="" aria-hidden="true"
-          className="absolute top-0 left-0 w-full pointer-events-none"
-          style={{ height: 32, objectFit: "cover", objectPosition: "top", mixBlendMode: "soft-light" }} />
-
-        <div className="relative max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-col gap-5">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#A78BFA]">Live now — iOS &amp; Android</p>
-            <h2
-              className="font-creepster leading-tight"
-              style={{
-                fontFamily: "var(--font-creepster), 'Cantora One', serif",
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                color: "#F7F2E4",
-              }}
-            >
-              The App is{" "}
-              <span style={{ color: "#5DB84A", WebkitTextStroke: "1px #3D8C2A", paintOrder: "stroke fill" }}>
-                Live
-              </span>
-            </h2>
-            <p className="text-[#A78BFA] leading-relaxed text-base">
-              Scan specimens, master creatures, unlock Dr. Icky videos, and earn your EWW score. Free to start — 75 creatures with the free tier.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/app"
-                className="bg-[#5DB84A] hover:bg-[#3D8C2A] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm uppercase tracking-wide">
-                Get the App →
-              </Link>
-            </div>
-            {/* App badges */}
-            <div className="flex gap-3 mt-2">
-              {[
-                { img: "/images/ui/Mission%20Complete%20sticker.png",       label: "Mission Complete" },
-                { img: "/images/ui/Badge%20Unlocked%20sticker.png",          label: "Badge Unlocked" },
-                { img: "/images/ui/Total%20Barf%20Certified%20badge.png",    label: "Total Barf Certified" },
-              ].map((b) => (
-                <div key={b.label} className="flex flex-col items-center gap-1">
-                  <img src={b.img} alt={b.label}
-                    className="w-14 h-14 object-contain"
-                    style={{ mixBlendMode: "screen" }} />
-                  <span className="text-[10px] text-[#A78BFA] uppercase tracking-widest text-center leading-tight">{b.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Dr. Icky video clip */}
-            <div className="mt-2">
-              <p className="text-[10px] text-[#A78BFA]/70 uppercase tracking-widest mb-2">Dr. Icky explains</p>
-              <video
-                src="/videos/classify_basic.mp4"
-                controls
-                preload="none"
-                poster="/images/ui/Dr.%20Icky%20holding%20EWW-meter.png"
-                className="rounded-2xl border border-[#5DB84A]/30 w-full max-w-sm"
-                style={{ backgroundColor: "#080808" }}
-              />
-            </div>
-          </div>
-
-          {/* Phone mockups — real app screenshots */}
-          <div className="relative flex items-end justify-center md:justify-end gap-0 mt-8 md:mt-0">
-            {/* Back-left phone */}
-            <div className="flex-shrink-0 relative z-10" style={{ transform: "rotate(-7deg) translateY(20px) translateX(16px)" }}>
-              <img src="/images/ui/APP2.png" alt="EWW-niverse specimen files screen"
-                className="w-36 md:w-44 object-contain drop-shadow-2xl" />
-            </div>
-            {/* Center phone — largest, front */}
-            <div className="flex-shrink-0 relative z-20">
-              <img src="/images/ui/APP3.png" alt="EWW-niverse home screen"
-                className="w-44 md:w-56 object-contain drop-shadow-2xl" />
-            </div>
-            {/* Back-right phone */}
-            <div className="flex-shrink-0 relative z-10" style={{ transform: "rotate(7deg) translateY(20px) translateX(-16px)" }}>
-              <img src="/images/ui/APP6.png" alt="EWW-niverse lab mission screen"
-                className="w-36 md:w-44 object-contain drop-shadow-2xl" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SPECIMEN FILES ─────────────────────────────────────────────── */}
-      <section className="py-16 border-t border-[#1A3D0E]" style={{ backgroundColor: "#080808" }}>
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#5DB84A] mb-1">From the field</p>
-              <h2
-                className="font-creepster text-3xl text-[#E8F5E2]"
-                style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
-              >
-                Specimen Files
-              </h2>
-            </div>
-            <Link href="/specimen-files" className="text-sm font-bold text-[#5DB84A] hover:text-[#6ED44F] transition-colors hidden sm:block uppercase tracking-wide">
+      {/* ── SPECIMEN FILES ─────────────────────────────────────────── */}
+      <section className="border-t border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading eyebrow="From the field" title="Specimen Files" />
+            <Link href="/specimen-files" className="text-sm font-bold uppercase tracking-wide text-[var(--color-neon)] hover:underline">
               All files →
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
             {specimenPosts.map((post) => (
-              <Link key={post.slug} href={`/specimen-files/${post.slug}`}
-                className="group flex flex-col rounded-xl border border-[#2A4020] bg-[#0A1405] overflow-hidden hover:border-[#5DB84A] hover:shadow-lg hover:shadow-[#5DB84A]/10 transition-all">
-                {/* Creature image */}
-                <div className="relative h-36 flex items-center justify-center overflow-hidden"
-                  style={{ backgroundColor: "#0D1A06" }}>
-                  <img src={creatureImagePath(post.creatureName)} alt={post.creatureName}
-                    className="h-28 object-contain group-hover:scale-105 transition-transform duration-300" />
+              <Link
+                key={post.slug}
+                href={`/specimen-files/${post.slug}`}
+                className="lab-card group flex flex-col overflow-hidden"
+              >
+                <div className="relative flex h-36 items-center justify-center overflow-hidden bg-[var(--color-lab-void)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={creatureImagePath(post.creatureName)}
+                    alt={post.creatureName}
+                    loading="lazy"
+                    className="h-28 object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
-                <div className="flex-1 p-4 flex flex-col gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#5DB84A]">
-                    {categoryLabels[post.category]}
-                  </span>
+                <div className="flex flex-1 flex-col gap-2 p-4">
+                  <span className="lab-label text-[var(--color-neon)]">{categoryLabels[post.category]}</span>
                   <h3
-                    className="font-creepster text-base text-[#C8E8C4] leading-snug group-hover:text-[#5DB84A] transition-colors"
-                    style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
+                    className="text-base leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-neon)]"
+                    style={{ fontFamily: "var(--font-boogaloo), cursive" }}
                   >
                     {post.title}
                   </h3>
-                  <p className="text-xs text-[#5A8A56] leading-relaxed flex-1 line-clamp-2">{post.excerpt}</p>
-                  <div className="flex items-center justify-between pt-2 border-t border-[#1A3D0E]">
-                    <span className="text-xs text-[#5A8A56]">{post.readTime} min read</span>
-                    <span className="text-xs font-bold text-[#5DB84A] group-hover:underline">Open →</span>
+                  <p className="line-clamp-2 flex-1 text-xs leading-relaxed text-[var(--color-ink-dim)]">{post.excerpt}</p>
+                  <div className="flex items-center justify-between border-t border-[var(--color-lab-line)] pt-2">
+                    <span className="text-xs text-[var(--color-ink-mute)]">{post.readTime} min read</span>
+                    <span className="text-xs font-bold text-[var(--color-neon)] group-hover:underline">Open →</span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-[#1A3D0E] py-8 border-t-2 border-[#5DB84A]/30">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { icon: "/images/ui/Green%20Risk%20sticker.png", color: "#5DB84A", title: "Kid-Safe Gross Fun", desc: "Designed for curious kids. Approved by parents." },
-              { icon: "/images/ui/petri%20dish.png", color: "#A78BFA", title: "STEM Curiosity", desc: "Sparks wonder through science and discovery." },
-              { icon: "/images/ui/Lab%20Safety%20Oath.png", color: "#D48B1A", title: "Printable Activities", desc: "Fun worksheets and labs you can print anytime." },
-            ].map((t) => (
-              <div key={t.title} className="flex items-center gap-4">
-                <img src={t.icon} alt="" aria-hidden="true"
-                  className="illustration w-10 h-10 object-contain flex-shrink-0"
-                  style={{ mixBlendMode: "normal" }} />
-                <div>
-                  <p className="font-semibold text-sm" style={{ color: t.color }}>{t.title}</p>
-                  <p className="text-xs text-[#8A9E86] leading-relaxed">{t.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── EMAIL CAPTURE ─────────────────────────────────────────────── */}
-      <section className="py-14 border-t border-[#1A3D0E] relative overflow-hidden" style={{ backgroundColor: "#0D1806" }}>
-        <img src="/images/ui/Goo%20footprint%20trail.png" alt="" aria-hidden="true"
-          className="absolute left-0 top-0 h-full opacity-5 pointer-events-none"
-          style={{ objectFit: "cover", mixBlendMode: "screen" }} />
-        <div className="relative max-w-2xl mx-auto px-4 text-center">
-          {/* Dr. Icky inside slime circle frame */}
-          <div className="relative w-28 mx-auto mb-4">
-            <img src="/images/ui/slime-circle-frame.png" alt="" aria-hidden="true"
-              className="w-28 h-28 object-contain absolute inset-0" style={{ mixBlendMode: "screen" }} />
-            <img src="/images/dr-icky/Dr.%20Icky%20warning%20pose%20with%20raised%20finger.png"
-              alt="Dr. Icky has an announcement"
-              className="w-20 h-20 object-contain mx-auto relative pt-2" />
-          </div>
-          <h2
-            className="font-creepster text-3xl text-[#E8F5E2] mb-3"
-            style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif" }}
-          >
-            Stay Classified
-          </h2>
-          <p className="text-sm text-[#8AAE86] mb-6 leading-relaxed">
-            New specimen files, book news, and app updates. No spam. Dr. Icky does not tolerate spam.
+          <p className="mt-6 text-center text-sm text-[var(--color-ink-mute)]">
+            Want to classify specimens yourself?{" "}
+            <a href={APP_STORE_URL} target="_blank" rel="noopener" className="font-semibold text-[var(--color-neon)] hover:underline">
+              Get the app →
+            </a>
           </p>
-          <EmailSignupForm buttonText="Subscribe" />
         </div>
       </section>
+
+      {/* ── FINAL CTA ──────────────────────────────────────────────── */}
+      <CTABanner />
     </>
   );
 }

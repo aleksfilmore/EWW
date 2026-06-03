@@ -4,12 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { APP_STORE_URL } from "@/lib/site";
 
+// App-first navigation order.
 const links = [
-  { href: "/books",          label: "Books",     idleColor: "#5DB84A" },
-  { href: "/specimen-files", label: "Specimens", idleColor: "#D48B1A" },
+  { href: "/app",            label: "App",       idleColor: "#8DE71C" },
+  { href: "/books",          label: "Books",     idleColor: "#7CD93A" },
+  { href: "/specimen-files", label: "Specimens", idleColor: "#E8932E" },
   { href: "/dr-icky",        label: "Dr. Icky",  idleColor: "#A78BFA" },
-  { href: "/app",            label: "App",       idleColor: "#E86C5D" },
+  { href: "/for-parents",    label: "Parents",   idleColor: "#B5A8DC" },
 ];
 
 export default function Nav() {
@@ -18,12 +21,12 @@ export default function Nav() {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[#5DB84A]/20"
-      style={{ backgroundColor: "#080808" }}
+      className="sticky top-0 z-50 border-b border-[var(--color-lab-line)]"
+      style={{ backgroundColor: "rgba(12,7,24,0.92)", backdropFilter: "blur(8px)" }}
     >
       <div
         className="max-w-6xl mx-auto px-4 flex items-center justify-between"
-        style={{ height: "88px" }}
+        style={{ height: "84px" }}
       >
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0" style={{ overflow: "visible" }}>
@@ -31,13 +34,7 @@ export default function Nav() {
             src="/images/ui/logo-main.png"
             alt="EWW-niverse"
             className="w-auto object-contain"
-            style={{
-              mixBlendMode: "screen",
-              height: "72px",
-              rotate: -5,
-              translateY: 2,
-              transformOrigin: "left center",
-            }}
+            style={{ height: "64px", rotate: -5, translateY: 2, transformOrigin: "left center" }}
             whileHover={{ rotate: -9, scale: 1.07, translateY: 0 }}
             whileTap={{ scale: 0.94 }}
             transition={{ type: "spring", stiffness: 380, damping: 12 }}
@@ -45,69 +42,52 @@ export default function Nav() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => {
             const active = pathname === l.href || pathname.startsWith(l.href + "/");
             return (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="relative group flex flex-col items-center"
-              >
+              <Link key={l.href} href={l.href} className="relative group flex flex-col items-center">
                 <span
                   className="transition-colors duration-150"
                   style={{
-                    color: active ? "#6ED44F" : l.idleColor,
+                    color: active ? "#A6F23C" : l.idleColor,
                     fontFamily: "var(--font-boogaloo), cursive",
                     fontSize: "1.05rem",
                     letterSpacing: "0.02em",
-                    textShadow: active
-                      ? `0 0 12px ${l.idleColor}80`
-                      : `0 0 8px ${l.idleColor}40`,
+                    textShadow: active ? `0 0 12px ${l.idleColor}80` : `0 0 8px ${l.idleColor}30`,
                   }}
                 >
                   {l.label}
                 </span>
-                {/* Slime underline indicator */}
                 <motion.span
                   className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                  style={{ backgroundColor: "#6ED44F" }}
+                  style={{ backgroundColor: "#A6F23C" }}
                   initial={false}
                   animate={{ scaleX: active ? 1 : 0, opacity: active ? 1 : 0 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 24 }}
-                />
-                {/* Hover underline (non-active) */}
-                <motion.span
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                  style={{ backgroundColor: "#5DB84A" }}
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileHover={!active ? { scaleX: 1, opacity: 0.6 } : {}}
                   transition={{ type: "spring", stiffness: 400, damping: 24 }}
                 />
               </Link>
             );
           })}
 
-          {/* Flask CTA icon */}
-          <motion.div
-            whileHover={{ scale: 1.12, rotate: -8 }}
-            whileTap={{ scale: 0.92 }}
-            transition={{ type: "spring", stiffness: 380, damping: 12 }}
+          {/* Primary CTA */}
+          <motion.a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 380, damping: 14 }}
+            className="rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-black"
+            style={{
+              backgroundColor: "var(--color-neon)",
+              boxShadow: "0 0 22px rgba(141,231,28,0.45)",
+              fontFamily: "var(--font-boogaloo), cursive",
+              letterSpacing: "0.04em",
+            }}
           >
-            <Link
-              href="/app"
-              aria-label="Get the App"
-              className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#5DB84A]/60 hover:border-[#6ED44F] transition-colors"
-              style={{ backgroundColor: "#0D2007" }}
-            >
-              <img
-                src="/images/ui/EWW%20gross.png"
-                alt="Lab"
-                className="w-7 h-7 object-contain"
-                style={{ mixBlendMode: "screen" }}
-              />
-            </Link>
-          </motion.div>
+            Get the App
+          </motion.a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -126,8 +106,8 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="md:hidden border-t border-[#5DB84A]/20 px-5 py-5 flex flex-col gap-5"
-            style={{ backgroundColor: "#090909" }}
+            className="md:hidden border-t border-[var(--color-lab-line)] px-5 py-5 flex flex-col gap-5"
+            style={{ backgroundColor: "#0C0718" }}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -144,6 +124,16 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-full px-5 py-3 text-center text-sm font-bold uppercase tracking-wide text-black"
+              style={{ backgroundColor: "var(--color-neon)", fontFamily: "var(--font-boogaloo), cursive" }}
+            >
+              Get the App
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
