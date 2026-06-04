@@ -8,13 +8,13 @@ import JsonLd from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "For Parents",
   description:
-    "What EWW-niverse is, what it does, and what it deliberately does not do. No ads, no tracking, no accounts, no personal data collected. Real science, kid-safe grossness for ages 7+.",
+    "What EWW-niverse is, what it does, and what it deliberately does not do. No ads, no in-app tracking, no accounts, no personal data collected. Real science, kid-safe grossness, best for ages 9–12.",
   alternates: { canonical: "/for-parents" },
 };
 
 const trust = [
   { t: "No ads, ever", d: "The app is funded by one optional one-time purchase. No advertisements at any tier." },
-  { t: "No tracking", d: "No analytics SDKs, no advertising IDs, no behavioural profiling of your child." },
+  { t: "No tracking in the app", d: "The app has no analytics SDKs, no advertising IDs, and no behavioural profiling of your child." },
   { t: "No accounts", d: "No name, email, password or sign-up. Your child never creates a profile." },
   { t: "No personal data", d: "Nothing personal is collected — so there's nothing to sell, leak, or consent away." },
 ];
@@ -31,7 +31,7 @@ const ageContent = [
 const faqs = [
   {
     q: "What age is EWW-niverse designed for?",
-    a: "Ages 7 and up. The content is gross but never violent, never sexual, and always grounded in real science. The books and the app follow the same standard.",
+    a: "Best for curious kids ages 9–12. The content is gross but never violent, never sexual, and always grounded in real science. The books and the app follow the same standard. (Apple's technical App Store rating is 4+.)",
   },
   {
     q: "What data does the app collect about my child?",
@@ -128,7 +128,7 @@ export default function ForParentsPage() {
       <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
         <div className="relative mx-auto max-w-4xl px-4">
           <div className="lab-panel mb-8 p-6">
-            <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Age appropriateness — built for ages 7+</h2>
+            <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Age appropriateness — designed for curious kids 9–12</h2>
             <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {ageContent.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-[var(--color-ink-dim)]">

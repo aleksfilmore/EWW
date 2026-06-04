@@ -180,7 +180,7 @@ export default function Home() {
                   "All 234 specimens — Creatures, Dinosaurs & Earth",
                   "All 15 special Slime Surge unlocks",
                   "Stages 3–5: Super Slimy → Full Dr. Icky",
-                  "One-time $3.99. No subscription, ever.",
+                  "One-time Full Lab Pass — $3.99 in the US, local pricing may vary. No subscription, ever.",
                 ].map((t) => (
                   <li key={t} className="flex gap-2.5">
                     <span className="text-[var(--color-neon)]">✓</span>
@@ -254,13 +254,13 @@ export default function Home() {
           <SectionHeading
             eyebrow="For parents"
             title="Gross for kids. Clean for parents."
-            sub="No ads. No tracking. No social feeds. No user-generated content. Just real science facts, strange creatures, creepy discoveries, and a one-time Full Lab Pass."
+            sub="No ads. No tracking in the app. No social feeds. No user-generated content. Just real science facts, strange creatures, creepy discoveries, and a one-time Full Lab Pass."
             align="center"
           />
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { t: "No ads, ever", d: "No banners, no pop-ups, no third-party ad networks." },
-              { t: "No tracking", d: "No analytics SDKs, no advertising IDs, no behavioural profiling." },
+              { t: "No tracking in the app", d: "The app has no analytics SDKs, no advertising IDs, and no child profiling." },
               { t: "No accounts", d: "No sign-up, no email, no personal child data collected." },
               { t: "No social, no UGC", d: "No feeds, no chat, no comments — nothing user-generated to moderate." },
             ].map((c) => (

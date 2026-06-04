@@ -95,7 +95,7 @@ export default function BooksPage() {
                       </span>
                     )}
                     <span className="rounded-full border border-[var(--color-lab-line)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--color-ink-mute)]">
-                      Ages 7+
+                      Ages 9–12
                     </span>
                   </div>
                   <h2 className="text-2xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>{book.title}</h2>

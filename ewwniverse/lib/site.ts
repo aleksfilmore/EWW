@@ -24,6 +24,12 @@ export const PRODUCT = {
   booksPublished: 6,
   stages: 5,
   price: "$3.99",
-  priceLabel: "$3.99 — one-time, lifetime access",
+  // App Store US price. Apple shows local pricing per storefront, so marketing
+  // copy qualifies the figure as US to stay accurate for European visitors.
+  priceNote: "$3.99 in the US — local pricing may vary",
+  priceLabel: "$3.99 in the US — one-time, lifetime access (local pricing may vary)",
   platform: "iPhone & iPad", // App Store live; Android not yet
+  // Marketing age audience. Apple's technical rating is 4+ ("Made for 9–11"),
+  // but the brand markets to curious kids 9–12. Keep this consistent everywhere.
+  ageRange: "9–12",
 } as const;

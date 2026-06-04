@@ -168,7 +168,7 @@ export default function AppPage() {
               </div>
               <h3 className="text-2xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Full Lab Pass — unlock the whole lab</h3>
               <ul className="grid grid-cols-1 gap-2.5 text-sm text-[var(--color-ink-dim)] sm:grid-cols-2">
-                {["All 234 specimens — Creatures, Dinosaurs & Earth", "All 15 special Slime Surge unlocks", "Stages 3–5: Super Slimy → Full Dr. Icky", "One-time $3.99. No subscription, ever."].map((t) => (
+                {["All 234 specimens — Creatures, Dinosaurs & Earth", "All 15 special Slime Surge unlocks", "Stages 3–5: Super Slimy → Full Dr. Icky", "One-time Full Lab Pass — $3.99 in the US, local pricing may vary. No subscription, ever."].map((t) => (
                   <li key={t} className="flex gap-2.5"><span className="text-[var(--color-neon)]">✓</span>{t}</li>
                 ))}
               </ul>
