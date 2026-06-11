@@ -215,6 +215,51 @@ export const specimenPosts: SpecimenPost[] = [
     readTime: 5,
     creatureName: "Hagfish",
   },
+  {
+    slug: "candiru-fish-legend",
+    title: "Field Report: The Vampire Catfish of the Amazon",
+    date: "2026-06-11",
+    excerpt: "Dr. Icky investigates the candiru — a tiny, translucent catfish that lodges itself inside the gills of other fish to drink their blood. And yes, we'll talk about the legend.",
+    category: "field-report",
+    readTime: 4,
+    creatureName: "Candiru Fish",
+  },
+  {
+    slug: "zombie-snail-eyestalks",
+    title: "The Parasite That Turns Snails Into Pulsing Caterpillars",
+    date: "2026-06-14",
+    excerpt: "The Leucochloridium flatworm takes over a snail's mind, drives it into the sunlight, and turns its eyestalks into colorful, pulsating tubes that birds can't resist eating.",
+    category: "specimen-of-the-week",
+    readTime: 5,
+    creatureName: "Zombie Snail",
+  },
+  {
+    slug: "guinea-worm-extraction",
+    title: "The Meter-Long Worm That Escapes Through Your Foot",
+    date: "2026-06-17",
+    excerpt: "The Guinea worm grows silently inside the body for a year, eventually causing a painful blister so it can slowly, agonizingly push its way out. It has to be wound out on a stick.",
+    category: "specimen-of-the-week",
+    readTime: 5,
+    creatureName: "Guinea Worm",
+  },
+  {
+    slug: "assassin-bug-smoothie",
+    title: "Field Report: The Bug That Drinks Other Bugs",
+    date: "2026-06-20",
+    excerpt: "Dr. Icky details the hunting tactics of the Assassin Bug. It doesn't chew its food. It stabs its prey, liquefies their insides, and drinks them like a smoothie.",
+    category: "field-report",
+    readTime: 4,
+    creatureName: "Assassin Bug",
+  },
+  {
+    slug: "goblin-shark-jaws",
+    title: "The Shark with a Spring-Loaded Face",
+    date: "2026-06-23",
+    excerpt: "Hidden in the deep sea, the goblin shark has a special trick for catching fish: its entire jaw detaches from its skull and shoots forward to snatch prey.",
+    category: "specimen-of-the-week",
+    readTime: 4,
+    creatureName: "Goblin Shark",
+  },
 ];
 
 // EWW level shown on each specimen-file post (matches the creature's meter).
@@ -223,6 +268,11 @@ export const postEwwLevel: Record<string, 60 | 80 | 100> = {
   "tongue-eating-louse": 100,
   "hagfish-slime": 100,
   "surinam-toad-birth": 100,
+  "candiru-fish-legend": 80,
+  "zombie-snail-eyestalks": 100,
+  "guinea-worm-extraction": 100,
+  "assassin-bug-smoothie": 80,
+  "goblin-shark-jaws": 100,
 };
 
 export const ewwMeterLabels: Record<EwwMeter, { label: string; color: string; bg: string }> = {

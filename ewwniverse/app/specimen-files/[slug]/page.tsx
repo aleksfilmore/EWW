@@ -481,6 +481,443 @@ const articles: Record<string, ArticleData> = {
     drIckyVerdict:
       "300 million years. Before the first dinosaur. Before the first mammal. Before most things currently on this planet. The hagfish was already doing this. It did not need to evolve further. It was already perfect.",
   },
+
+  "candiru-fish-legend": {
+    slug: "candiru-fish-legend",
+    creatureName: "Candiru Fish",
+    ewwMeter: 80,
+    seoDescription:
+      "The candiru is a tiny, translucent catfish from the Amazon that lodges itself inside the gills of other fish to drink their blood. Learn the real facts and the scary legends.",
+    seoKeywords:
+      "candiru fish, vampire catfish, amazon river monsters, candiru legend, weird fish, gross animals for kids",
+    classification: "Vandellia cirrhosa",
+    quickStats: [
+      { label: "Type", value: "Parasitic catfish" },
+      { label: "Lives", value: "Amazon basin, South America" },
+      { label: "Size", value: "2 to 3 centimetres long" },
+      { label: "Diet", value: "Blood" },
+    ],
+    intro: (
+      <>
+        <p>
+          The candiru is a tiny, practically invisible catfish that makes its living by swimming into the gills of larger fish, locking itself in place, and drinking their blood.
+        </p>
+        <p>
+          But its biological reality is often overshadowed by a famous, terrifying legend about what happens when humans swim in its river.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The Gill Invader",
+        icon: "🩸",
+        body: (
+          <>
+            <p>
+              Candiru are so small and translucent that they are nearly invisible in the murky waters of the Amazon. They don't hunt normally. Instead, they track the chemical trails of ammonia that other fish release from their gills while breathing.
+            </p>
+            <p>
+              When a candiru finds a host, it swims straight into the gill cavity, which is dark, warm, and full of blood-rich tissue.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "The candiru is the only vertebrate known to parasitize another vertebrate by entering its body cavities to feed on its blood.",
+        },
+      },
+      {
+        heading: "The Barbed Grip",
+        icon: "🪝",
+        body: (
+          <>
+            <p>
+              Once inside a tight space, the candiru has to make sure it doesn't get washed out. It does this by deploying a set of backwards-facing spines that open like an umbrella.
+            </p>
+            <p>
+              These spines dig into the host's tissue, locking the candiru firmly in place. Then, it uses its needle-like teeth to bite an artery and feast. The whole meal takes only a few minutes before the candiru drops off and sinks back to the river bottom to digest.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "Because the spines point backwards, pulling on the fish only makes them dig deeper. The only way out is for the candiru to let go.",
+        },
+      },
+      {
+        heading: "The Legend",
+        icon: "😱",
+        body: (
+          <>
+            <p>
+              The candiru is most famous for a horrific legend: that it mistakes human urine for fish gills and swims up human urethras. Stories claim that once inside, it locks its spines, requiring painful surgery to remove.
+            </p>
+            <p>
+              While there is one documented medical case from 1997, many scientists are skeptical that it happens often, or even that candiru are actually attracted to urine. However, the fear alone is enough to keep many people out of the water.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "True or not, the candiru has earned a reputation as the one fish locals fear more than piranhas.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "Once inside a gill or cavity, the candiru deploys backwards-facing umbrella-like spines to lock itself in place. Pulling it out physically only drives the spikes deeper into the flesh.",
+    drIckyVerdict:
+      "Whether the human stories are completely true or mostly myth, a translucent vampire catfish that lodges itself in gills with backwards spikes is a verified biological nightmare.",
+  },
+
+  "zombie-snail-eyestalks": {
+    slug: "zombie-snail-eyestalks",
+    creatureName: "Zombie Snail",
+    ewwMeter: 100,
+    seoDescription:
+      "The Leucochloridium flatworm takes over a snail's mind, drives it into the sunlight, and turns its eyestalks into colorful, pulsating tubes to trick birds into eating them. Real gross science.",
+    seoKeywords:
+      "zombie snail, Leucochloridium paradoxum, parasitic flatworm, mind control parasite, weird animals for kids, gross science",
+    classification: "Leucochloridium paradoxum",
+    quickStats: [
+      { label: "Type", value: "Parasitic flatworm" },
+      { label: "Host", value: "Amber snails" },
+      { label: "Location", value: "Europe and North America" },
+      { label: "Disguise", value: "Pulsing caterpillar" },
+    ],
+    intro: (
+      <>
+        <p>
+          Some parasites hide. Leucochloridium paradoxum puts on a brightly colored, pulsating light show. But it does this using the body of a snail.
+        </p>
+        <p>
+          This flatworm invades a snail, takes over its brain, and transforms its eyestalks into swollen, banded, thrashing tubes that look exactly like caterpillars. And then it waits for a bird.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The Invasion",
+        icon: "🐌",
+        body: (
+          <>
+            <p>
+              The nightmare begins on the forest floor. A snail eats bird droppings that happen to contain the microscopic eggs of the flatworm. Once inside the snail's digestive system, the eggs hatch.
+            </p>
+            <p>
+              The flatworms grow and form a massive network of tubes throughout the snail's body. As they mature, they pack hundreds of themselves into a special sac called a broodsac.
+            </p>
+          </>
+        ),
+      },
+      {
+        heading: "The Caterpillar Disguise",
+        icon: "🐛",
+        body: (
+          <>
+            <p>
+              The broodsac grows so large that it pushes its way into the snail's translucent eyestalks, stretching them out. The sac is banded with bright green, brown, and white stripes.
+            </p>
+            <p>
+              Inside the eyestalks, the sac begins to rapidly pulse and twitch. To a hungry bird looking down from above, the snail's eyestalk no longer looks like part of a snail — it looks exactly like a juicy, wriggling caterpillar.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "The parasite only pulses when it senses daylight. In the dark, it stops moving to save energy, knowing birds only hunt by sight during the day.",
+        },
+      },
+      {
+        heading: "The Mind Control",
+        icon: "🧠",
+        body: (
+          <>
+            <p>
+              Having a great disguise isn't enough if the snail stays hidden in the dark, damp places it usually prefers. So the parasite alters the snail's behavior.
+            </p>
+            <p>
+              It somehow rewires the snail's brain, forcing it to crawl out into the open, climb up high onto exposed leaves, and sit perfectly still in the bright sunlight — effectively serving itself up on a silver platter.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "When a bird swoops down, it usually bites off just the swollen eyestalk. The snail survives, regenerates its eyestalk, and can actually be infected again.",
+        },
+      },
+      {
+        heading: "The Final Stage",
+        icon: "🐦",
+        body: (
+          <>
+            <p>
+              Once the bird eats the "caterpillar", the flatworms safely reach their final destination: the bird's gut. There, they finally become adults, reproduce, and lay eggs.
+            </p>
+            <p>
+              The eggs are pooped out onto leaves by the bird, waiting for another unsuspecting snail to come along and eat them.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "This multi-host lifecycle is common in parasites, but Leucochloridium is unique in its spectacular, visual method of moving from snail to bird.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "The snail's eyestalks are physically stretched to their limit, filled with the swollen, pulsating bodies of the flatworms moving in a hypnotic rhythm to attract predators.",
+    drIckyVerdict:
+      "Mind control, radical body modification, and a brightly colored light show, all designed specifically to get eaten by a bird. Nature is ruthless, and this worm is an artist of disgust.",
+  },
+
+  "guinea-worm-extraction": {
+    slug: "guinea-worm-extraction",
+    creatureName: "Guinea Worm",
+    ewwMeter: 100,
+    seoDescription:
+      "The Guinea worm grows up to a meter long inside the human body before slowly emerging through a blister in the skin. Real gross science for kids.",
+    seoKeywords:
+      "guinea worm, Dracunculus medinensis, parasitic worms, gross parasites, weird medical science, gross animals for kids",
+    classification: "Dracunculus medinensis",
+    quickStats: [
+      { label: "Type", value: "Parasitic nematode" },
+      { label: "Host", value: "Humans and dogs" },
+      { label: "Length", value: "Up to 80 cm" },
+      { label: "Emergence", value: "Takes weeks" },
+    ],
+    intro: (
+      <>
+        <p>
+          The Guinea worm doesn&apos;t just live inside its host. It grows inside the body for a year until the female—which can be nearly a meter long—decides it is time to leave.
+        </p>
+        <p>
+          It creates a painful blister on the skin and slowly, agonizingly, pushes its way out. You cannot just pull it out quickly. It has to be wound out over days.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The Silent Year",
+        icon: "💧",
+        body: (
+          <>
+            <p>
+              The lifecycle begins when a person drinks water contaminated with tiny water fleas that carry Guinea worm larvae. Once inside the stomach, the fleas die, but the larvae survive.
+            </p>
+            <p>
+              They bore through the stomach wall and move into the body cavity. For a whole year, the host has no idea they are there. The worms mate, the males die, and the females grow to the size of a long piece of spaghetti.
+            </p>
+          </>
+        ),
+      },
+      {
+        heading: "The Blister",
+        icon: "🔥",
+        body: (
+          <>
+            <p>
+              When a female is ready to release her eggs, she travels down the body, usually to the lower leg or foot. She secretes an acid-like substance that creates a burning, painful blister on the skin.
+            </p>
+            <p>
+              The burning sensation is intentional. It drives the person to find water to cool the wound. As soon as the blister touches water, it bursts, and the worm releases millions of eggs into the water to start the cycle again.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "The pain is so intense that the disease gets its name, Dracunculiasis, from a Latin phrase meaning 'affliction with little dragons.'",
+        },
+      },
+      {
+        heading: "The Extraction",
+        icon: "🥢",
+        body: (
+          <>
+            <p>
+              There is no medicine to kill the worm and no vaccine. The only way to remove it is the same way it has been done for thousands of years: wrapping the emerging worm around a small stick.
+            </p>
+            <p>
+              The worm must be pulled out incredibly slowly, usually just a few centimeters a day. If you pull too hard and it snaps inside the body, the remaining piece can cause a massive, life-threatening infection.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "Global health efforts have reduced Guinea worm cases from 3.5 million in 1986 to just a handful today. It is on the brink of being completely eradicated.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "The extraction process can take weeks of slowly winding a meter-long live worm out of your foot on a wooden stick.",
+    drIckyVerdict:
+      "A meter-long noodle of pure misery that you have to slowly wind out of your own leg. Fortunately, human science is close to making this worm extinct. Good riddance.",
+  },
+
+  "assassin-bug-smoothie": {
+    slug: "assassin-bug-smoothie",
+    creatureName: "Assassin Bug",
+    ewwMeter: 80,
+    seoDescription:
+      "The Assassin Bug stabs its prey, injects digestive juices to liquefy their insides, and drinks them like a bug smoothie. Gross science facts for kids.",
+    seoKeywords:
+      "assassin bug, true bugs, predatory insects, bug smoothie, weird insects, gross animals for kids",
+    classification: "Reduviidae (family)",
+    quickStats: [
+      { label: "Type", value: "Predatory insect" },
+      { label: "Weapon", value: "Curved stabbing beak" },
+      { label: "Diet", value: "Other insects" },
+      { label: "Location", value: "Worldwide" },
+    ],
+    intro: (
+      <>
+        <p>
+          Most predators have teeth, claws, or crushing jaws. The Assassin Bug comes equipped with a hypodermic needle folded under its face.
+        </p>
+        <p>
+          It doesn&apos;t chew its food. It stabs it, melts the insides with potent digestive enzymes, and drinks the liquefied remains. 
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The Deadly Beak",
+        icon: "🗡️",
+        body: (
+          <>
+            <p>
+              The assassin bug belongs to a group of insects known as "true bugs," which are characterized by piercing and sucking mouthparts called a rostrum.
+            </p>
+            <p>
+              When hunting, the bug slowly stalks its prey. When it gets close, it flicks its beak forward and drives it violently into the victim&apos;s body. The bite is immediate and paralyzing.
+            </p>
+          </>
+        ),
+      },
+      {
+        heading: "The Bug Smoothie",
+        icon: "🥤",
+        body: (
+          <>
+            <p>
+              Once the beak is securely lodged in the prey, the assassin bug pumps in toxic saliva. This venom not only paralyzes the victim but contains enzymes that immediately start breaking down tissues.
+            </p>
+            <p>
+              The inside of the prey turns to mush. The assassin bug then uses its beak like a straw to suck out all the nutritious, liquefied guts, leaving behind nothing but a dry, empty exoskeleton.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "Some larger species of assassin bugs will bite humans in self-defense. The bite is incredibly painful due to those tissue-melting enzymes.",
+        },
+      },
+      {
+        heading: "The Macabre Camouflage",
+        icon: "🎒",
+        body: (
+          <>
+            <p>
+              While all assassin bugs are ruthless, one type—the masked hunter—takes it a step further. After sucking a bug dry, it glues the empty corpse of its victim onto its back.
+            </p>
+            <p>
+              Over time, it builds a massive pile of dead ants, flies, and beetles that it wears like a backpack. This gruesome armor acts as camouflage to hide it from spiders and birds.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "Some wear the empty corpses of up to 20 ants stacked on their backs to mask their scent from other hunting ants.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "Certain species of assassin bugs stick the empty, hollowed-out corpses of their prey onto their backs to wear as armor and camouflage.",
+    drIckyVerdict:
+      "Drinking your enemies is already hardcore. Wearing their empty shells as a backpack to sneak up on more enemies? That's just showing off.",
+  },
+
+  "goblin-shark-jaws": {
+    slug: "goblin-shark-jaws",
+    creatureName: "Goblin Shark",
+    ewwMeter: 100,
+    seoDescription:
+      "The Goblin Shark lives in the deep sea and can detach its jaws, shooting them forward to snatch prey. Weird ocean science for kids.",
+    seoKeywords:
+      "goblin shark, Mitsukurina owstoni, deep sea sharks, weird ocean creatures, gross science, creepy sharks",
+    classification: "Mitsukurina owstoni",
+    quickStats: [
+      { label: "Type", value: "Deep-sea shark" },
+      { label: "Location", value: "Deep oceans worldwide" },
+      { label: "Snout", value: "Long and blade-like" },
+      { label: "Jaws", value: "Slingshot action" },
+    ],
+    intro: (
+      <>
+        <p>
+          In the crushing darkness of the deep sea, the goblin shark drifts like a pale ghost. It has a long, flattened snout that looks like a sword jutting out of its forehead.
+        </p>
+        <p>
+          But its nose isn&apos;t the scary part. When a fish swims too close, the goblin shark&apos;s entire jaw detaches from its skull and shoots forward to grab it.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The Shovel Snout",
+        icon: "📡",
+        body: (
+          <>
+            <p>
+              The deep sea is completely dark, so the goblin shark doesn't rely on sight. Its enormous, flattened snout is packed with special pores called ampullae of Lorenzini.
+            </p>
+            <p>
+              These pores act like a metal detector, but instead of metal, they detect the tiny electrical signals made by the muscles of other fish. The shark swings its snout back and forth over the sand, sweeping for hidden prey.
+            </p>
+          </>
+        ),
+      },
+      {
+        heading: "The Slingshot Jaws",
+        icon: "🚀",
+        body: (
+          <>
+            <p>
+              When the shark detects a crab or fish, it doesn't need to swim fast to catch it. Instead, it engages a mechanism unique among sharks.
+            </p>
+            <p>
+              Its jaws are attached to its skull by elastic ligaments. When it opens its mouth, the tension releases, and the entire jaw rapidly catapults forward out of its face. The jaws snap shut on the prey, then retract back into the head.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "The jaw shoots forward at over 3 meters per second. The whole extension and retraction takes a fraction of a second.",
+        },
+      },
+      {
+        heading: "Nail-like Teeth",
+        icon: "🦷",
+        body: (
+          <>
+            <p>
+              The goblin shark doesn&apos;t have the triangular, serrated teeth of a great white shark. Instead, its mouth is full of long, thin, curved needles.
+            </p>
+            <p>
+              These teeth aren&apos;t made for cutting; they are made for snagging. In the deep sea, food is scarce and often slippery, like squid. Once those needle teeth pierce a soft body, escape is impossible.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "Because of its pinkish-grey color and flabby body, Japanese fishermen originally called it tenguzame—named after a mythical goblin with a long nose.",
+        },
+      },
+    ],
+    grossFactHighlight:
+      "Its jaws are held by elastic ligaments. When it strikes, the jaws catapult forward out of its head, moving fast enough to snatch a fish before it can react.",
+    drIckyVerdict:
+      "A face only a mother could love, and even then, she probably jumps out of the way when the jaws shoot out. Absolute deep-sea perfection.",
+  },
 };
 
 /* ─── Helpers ──────────────────────────────────────────────────────── */
