@@ -38,7 +38,13 @@ export default function SpecimenFilesPage() {
       <section className="border-y border-[var(--color-lab-line)] bg-[var(--color-lab-base)] py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {specimenPosts.map((post) => {
+            {specimenPosts
+              .filter((post) => {
+                // Only show posts whose date is on or before today
+                const today = new Date().toISOString().split("T")[0];
+                return post.date <= today;
+              })
+              .map((post) => {
               const ewwLevel = postEwwLevel[post.slug] ?? 60;
               const ewwConfig = ewwMeterLabels[ewwLevel];
               return (
