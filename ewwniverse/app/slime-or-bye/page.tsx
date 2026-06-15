@@ -20,10 +20,10 @@ const GOLD = "#FFC53D";
 const OOZE = "#A855F7";
 
 const screenshots = [
-  { src: "/images/slime-or-bye/phone-home.webp", alt: "Slime or Bye home screen with quiz-pack carousel", caption: "Pick a quiz pack and step on stage." },
-  { src: "/images/slime-or-bye/phone-game.webp", alt: "Slime or Bye quiz question with Dr. Icky host cam", caption: "Dr. Icky asks. The clock is ticking." },
-  { src: "/images/slime-or-bye/phone-reveal.webp", alt: "Answer reveal with the real gross-science fact", caption: "See the answer — and the real gross fact." },
-  { src: "/images/slime-or-bye/phone-badges.webp", alt: "Badge gallery for streaks, wins and milestones", caption: "Earn badges for streaks, wins & milestones." },
+  { src: "/images/slime-or-bye/sob-home.webp", alt: "Slime or Bye home screen with quiz-pack selection", caption: "Pick a quiz pack and step on stage." },
+  { src: "/images/slime-or-bye/sob-lab.webp", alt: "Specimen Lab grid of collected gross-science cards", caption: "Collect 180 specimen cards in the lab." },
+  { src: "/images/slime-or-bye/sob-badges.webp", alt: "Badge gallery for streaks, wins and milestones", caption: "Earn badges for streaks, wins & milestones." },
+  { src: "/images/slime-or-bye/sob-store.webp", alt: "One-time pack and bundle purchases, no subscriptions", caption: "Optional one-time unlocks — never a subscription." },
 ];
 
 const loop = [
@@ -114,13 +114,13 @@ export default function SlimeOrBytePage() {
 
           <div className="relative mx-auto flex w-full max-w-md items-end justify-center gap-3">
             <div className="w-36 sm:w-40" style={{ transform: "rotate(-6deg) translateY(14px)" }}>
-              <PhoneFrame src="/images/slime-or-bye/phone-game.webp" alt="Slime or Bye quiz question" />
+              <PhoneFrame src="/images/slime-or-bye/sob-quiz.webp" alt="Slime or Bye quiz question with Dr. Icky" />
             </div>
             <div className="z-10 w-44 sm:w-52">
-              <PhoneFrame src="/images/slime-or-bye/phone-home.webp" alt="Slime or Bye home screen" priority />
+              <PhoneFrame src="/images/slime-or-bye/sob-landing.webp" alt="Slime or Bye — Dr. Icky's gross-science quiz show" priority />
             </div>
             <div className="w-36 sm:w-40" style={{ transform: "rotate(6deg) translateY(14px)" }}>
-              <PhoneFrame src="/images/slime-or-bye/phone-reveal.webp" alt="Slime or Bye answer reveal" />
+              <PhoneFrame src="/images/slime-or-bye/sob-reveal.webp" alt="Slime or Bye answer reveal with gross fact" />
             </div>
           </div>
         </div>
