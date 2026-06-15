@@ -48,18 +48,18 @@ export default function CopyrightPage() {
 
       <LegalSection title="Brand names and characters">
         <p>
-          The names <strong>EWW-niverse&trade;</strong> and <strong>Dr. Icky&trade;</strong>, the EWW-niverse logo, and
-          the Dr. Icky character are trademarks of {COPYRIGHT_HOLDER}, used and claimed under common law. Using these
-          marks — or any confusingly similar name, character, look, or branding — in a way likely to cause confusion, or
-          to imitate the EWW-niverse &ldquo;gross science&rdquo; brand in order to trade on its reputation, is
-          prohibited.
+          The names <strong>EWW-niverse&trade;</strong>, <strong>Dr. Icky&trade;</strong> and <strong>Slime or Bye&trade;</strong>,
+          the EWW-niverse and Slime or Bye logos, and the Dr. Icky character are trademarks of {COPYRIGHT_HOLDER}, used and
+          claimed under common law. Using these marks — or any confusingly similar name, character, look, or branding — in a
+          way likely to cause confusion, or to imitate the EWW-niverse &ldquo;gross science&rdquo; brand in order to trade on
+          its reputation, is prohibited.
         </p>
       </LegalSection>
 
       <LegalSection title="What you may do">
         <p>
           You are welcome to link to this website, share our public pages, quote a short passage with credit, and of
-          course buy, read, review, and recommend our books and app.
+          course buy, read, review, and recommend our books and apps.
         </p>
       </LegalSection>
 

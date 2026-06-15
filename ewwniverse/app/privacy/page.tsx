@@ -3,18 +3,23 @@ import { LegalShell, LegalSection } from "@/components/Legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "EWW-niverse privacy policy — what the website and the app collect, how it's used, and your rights.",
+  description: "EWW-niverse privacy policy — what the website and our apps (EWW-niverse and Slime or Bye) collect, how it's used, and your rights.",
   robots: { index: true, follow: true },
   alternates: { canonical: "/privacy" },
 };
 
-const LAST_UPDATED = "3 June 2026";
+const LAST_UPDATED = "15 June 2026";
 
 export default function PrivacyPage() {
   return (
     <LegalShell title="Privacy Policy" lastUpdated={LAST_UPDATED}>
       <LegalSection title="Who we are">
-        <p>EWW-niverse is a children&apos;s science book and app brand. This website (<strong>ewwniverse.com</strong>) is its promotional hub. The EWW-niverse app is published on the Apple App Store. We are based in Belgium.</p>
+        <p>EWW-niverse is a children&apos;s science book and app brand from Dr. Icky. This website (<strong>ewwniverse.com</strong>) is its promotional hub. We publish two mobile apps:</p>
+        <ul>
+          <li><strong>EWW-niverse</strong> — a specimen-classification game, live on the Apple App Store.</li>
+          <li><strong>Slime or Bye</strong> — a gross-science quiz show, launching on the Apple App Store and Google Play.</li>
+        </ul>
+        <p>This policy covers the website and both apps. Where the two apps differ, the differences are spelled out below. We are based in Belgium.</p>
       </LegalSection>
 
       <LegalSection title="What the website collects">
@@ -26,14 +31,22 @@ export default function PrivacyPage() {
         <p>We do not collect names, payment details, or any other personal data through this website, and we do not knowingly collect personal data from children under 13. See our <a href="/coppa">COPPA notice</a>.</p>
       </LegalSection>
 
-      <LegalSection title="What the app collects">
-        <p>The EWW-niverse app is built to collect <strong>no personal data</strong>. It uses exactly two services:</p>
+      <LegalSection title="What the apps collect">
+        <p>Both apps are built to collect <strong>no personal data</strong>. Neither has accounts, email collection, ads, analytics, third-party tracking, or any social or user-generated content. Neither requests camera, location, or contacts access, and neither shows an App Tracking Transparency prompt — because neither tracks. All gameplay and progression is stored <strong>locally on your device</strong>, and uninstalling an app permanently deletes it.</p>
+        <p>The two apps differ slightly in the technical services they use:</p>
+        <p><strong>The EWW-niverse app</strong> uses exactly two services:</p>
         <ul>
           <li><strong>Firebase Anonymous Authentication</strong> — issues an anonymous ID so game progress can be saved on the device. No name, email, or login is involved.</li>
           <li><strong>RevenueCat</strong> — manages the optional one-time Full Lab Pass purchase.</li>
         </ul>
-        <p>The app uses <strong>no Firebase Analytics, no Firestore or Realtime Database, no Firebase Storage, no Cloudinary, no advertising networks, and no third-party tracking</strong>. There are no accounts, no email collection, no ads, and no social or user-generated content. It does not request camera, microphone, location, or contacts access, and shows no App Tracking Transparency prompt — because it does not track.</p>
-        <p>Gameplay and progression — unlocked specimens, quiz progress, scan and reward status, and your Full Lab Pass entitlement — is stored locally on your device. Uninstalling the app permanently deletes all of it. The app may download over-the-air updates from our hosting provider (Expo), which processes a device IP address only to deliver the update, never to identify or track children.</p>
+        <p>It uses no Firebase Analytics, no Firestore or Realtime Database, no Firebase Storage, no Cloudinary, no advertising networks, and no third-party tracking.</p>
+        <p><strong>The Slime or Bye app</strong> is simpler still:</p>
+        <ul>
+          <li>It uses <strong>no Firebase and no sign-in of any kind</strong>. Progress, scores, collected specimen cards and badges are saved only in the app&apos;s on-device storage.</li>
+          <li><strong>RevenueCat</strong> — manages the optional one-time pack and bundle purchases. Every purchase sits behind a parent gate.</li>
+          <li>It does not use the microphone to record or listen — there is no voice input, recording, or speech feature in the app.</li>
+        </ul>
+        <p>Both apps may download over-the-air updates from our hosting provider (Expo), which processes a device IP address only to deliver the update, never to identify or track children.</p>
       </LegalSection>
 
       <LegalSection title="How we use data">
@@ -49,7 +62,8 @@ export default function PrivacyPage() {
           <li><strong>Google Analytics</strong> — website traffic measurement.</li>
           <li><strong>MailerLite</strong> — newsletter delivery, if you subscribe.</li>
           <li><strong>Vercel</strong> — website hosting.</li>
-          <li><strong>Apple App Store &amp; RevenueCat</strong> — app distribution and purchase management.</li>
+          <li><strong>Apple App Store, Google Play &amp; RevenueCat</strong> — app distribution and one-time purchase management.</li>
+          <li><strong>Expo</strong> — delivers over-the-air app updates (device IP only, to deliver the update).</li>
           <li><strong>Amazon</strong> — external links to purchase our books, governed by Amazon&apos;s own policy.</li>
         </ul>
       </LegalSection>
@@ -59,7 +73,7 @@ export default function PrivacyPage() {
       </LegalSection>
 
       <LegalSection title="Cookies">
-        <p>The website uses a small number of cookies. See our <a href="/cookies">Cookie Policy</a> for a full breakdown. The app uses no cookies.</p>
+        <p>The website uses a small number of cookies. See our <a href="/cookies">Cookie Policy</a> for a full breakdown. Neither app uses cookies.</p>
       </LegalSection>
 
       <LegalSection title="Changes to this policy">

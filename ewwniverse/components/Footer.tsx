@@ -3,7 +3,9 @@ import AppStoreButton from "@/components/AppStoreButton";
 import { COPYRIGHT_HOLDER, RIGHTS_SINCE } from "@/lib/site";
 
 const footerLinks = [
-  { href: "/app",            label: "The App" },
+  { href: "/apps",           label: "Our Apps" },
+  { href: "/app",            label: "EWW-niverse App" },
+  { href: "/slime-or-bye",   label: "Slime or Bye" },
   { href: "/books",          label: "The Books" },
   { href: "/specimen-files", label: "Specimen Files" },
   { href: "/dr-icky",        label: "About Dr. Icky" },

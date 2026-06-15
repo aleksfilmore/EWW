@@ -3,12 +3,12 @@ import { LegalShell, LegalSection } from "@/components/Legal";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "EWW-niverse cookie policy — what cookies this website uses and why. The app uses no cookies and no tracking.",
+  description: "EWW-niverse cookie policy — what cookies this website uses and why. Our apps use no cookies and no tracking.",
   robots: { index: true, follow: true },
   alternates: { canonical: "/cookies" },
 };
 
-const LAST_UPDATED = "3 June 2026";
+const LAST_UPDATED = "15 June 2026";
 
 type CookieRow = { name: string; type: string; purpose: string; duration: string };
 
@@ -59,8 +59,8 @@ export default function CookiesPage() {
         </div>
       </LegalSection>
 
-      <LegalSection title="The app uses no cookies">
-        <p>The EWW-niverse mobile app does not use cookies, analytics, or any tracking. See the <a href="/privacy">Privacy Policy</a> for the full app data model.</p>
+      <LegalSection title="Our apps use no cookies">
+        <p>Neither the EWW-niverse app nor the Slime or Bye app uses cookies, analytics, or any tracking. See the <a href="/privacy">Privacy Policy</a> for the full data model of each app.</p>
       </LegalSection>
 
       <LegalSection title="Third-party cookies">

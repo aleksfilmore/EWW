@@ -4,11 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { APP_STORE_URL } from "@/lib/site";
 
 // App-first navigation order.
 const links = [
-  { href: "/app",            label: "App",       idleColor: "#8DE71C" },
+  { href: "/apps",           label: "Apps",      idleColor: "#8DE71C" },
   { href: "/books",          label: "Books",     idleColor: "#7CD93A" },
   { href: "/specimen-files", label: "Specimens", idleColor: "#E8932E" },
   { href: "/dr-icky",        label: "Dr. Icky",  idleColor: "#A78BFA" },
@@ -44,7 +43,11 @@ export default function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => {
-            const active = pathname === l.href || pathname.startsWith(l.href + "/");
+            let active = pathname === l.href || pathname.startsWith(l.href + "/");
+            // The "Apps" hub also represents the individual app pages.
+            if (l.href === "/apps" && (pathname.startsWith("/app") || pathname.startsWith("/slime-or-bye"))) {
+              active = true;
+            }
             return (
               <Link key={l.href} href={l.href} className="relative group flex flex-col items-center">
                 <span
@@ -71,23 +74,20 @@ export default function Nav() {
           })}
 
           {/* Primary CTA */}
-          <motion.a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 380, damping: 14 }}
-            className="rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-black"
-            style={{
-              backgroundColor: "var(--color-neon)",
-              boxShadow: "0 0 22px rgba(141,231,28,0.45)",
-              fontFamily: "var(--font-boogaloo), cursive",
-              letterSpacing: "0.04em",
-            }}
-          >
-            Get the App
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 380, damping: 14 }}>
+            <Link
+              href="/apps"
+              className="block rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-black"
+              style={{
+                backgroundColor: "var(--color-neon)",
+                boxShadow: "0 0 22px rgba(141,231,28,0.45)",
+                fontFamily: "var(--font-boogaloo), cursive",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Our Apps
+            </Link>
+          </motion.div>
         </nav>
 
         {/* Mobile hamburger */}
@@ -124,16 +124,14 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
-            <a
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener"
+            <Link
+              href="/apps"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-full px-5 py-3 text-center text-sm font-bold uppercase tracking-wide text-black"
               style={{ backgroundColor: "var(--color-neon)", fontFamily: "var(--font-boogaloo), cursive" }}
             >
-              Get the App
-            </a>
+              Our Apps
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

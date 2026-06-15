@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { books, specimenPosts, creatureImagePath, bookCoverPath } from "@/lib/data";
-import { PRODUCT, APP_STORE_URL } from "@/lib/site";
+import { PRODUCT, APP_STORE_URL, SLIME } from "@/lib/site";
 import HeroSection from "@/components/HeroSection";
 import SectionHeading from "@/components/SectionHeading";
 import FeatureCard from "@/components/FeatureCard";
@@ -245,6 +245,60 @@ export default function Home() {
           <p className="mt-5 text-center text-sm text-[var(--color-ink-mute)]">
             Read the field guides. Then classify the specimens in the app.
           </p>
+        </div>
+      </section>
+
+      {/* ── SECOND APP — SLIME OR BYE ──────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
+        <div className="lab-haze pointer-events-none absolute inset-0" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(60% 60% at 80% 30%, rgba(168,85,247,0.18), transparent 70%)" }}
+        />
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-[auto_1fr]">
+          <Link href="/slime-or-bye" className="mx-auto block w-32 sm:w-40">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/slime-or-bye/app-icon.webp"
+              alt="Slime or Bye app icon"
+              className="w-full rounded-[1.5rem] object-cover transition-transform duration-300 hover:scale-105"
+              style={{ border: "1px solid rgba(57,255,20,0.4)", boxShadow: "0 18px 50px -20px rgba(57,255,20,0.5)" }}
+            />
+          </Link>
+          <div>
+            <div className="mb-3 flex flex-wrap items-center gap-3">
+              <p className="lab-label" style={{ color: "#39FF14" }}>A second app from Dr. Icky</p>
+              <span className="rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-black" style={{ background: "#39FF14" }}>
+                {SLIME.status}
+              </span>
+            </div>
+            <h2
+              className="font-creepster"
+              style={{ fontFamily: "var(--font-creepster), 'Cantora One', serif", fontSize: "clamp(2rem,4.5vw,3rem)", color: "#39FF14", textShadow: "0 0 24px rgba(57,255,20,0.45)" }}
+            >
+              Slime or Bye
+            </h2>
+            <p className="mt-3 max-w-xl leading-relaxed text-[var(--color-ink-dim)]">
+              {SLIME.tagline}. Answer Dr. Icky&apos;s questions, beat the slime timer, survive the round, collect specimen
+              cards and earn badges. Free to start, no ads, no tracking — coming soon to {SLIME.platform}.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Link
+                href="/slime-or-bye"
+                className="rounded-full px-5 py-3 text-sm font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
+                style={{ background: "#39FF14", boxShadow: "0 0 22px rgba(57,255,20,0.45)" }}
+              >
+                Preview the quiz show →
+              </Link>
+              <Link
+                href="/apps"
+                className="rounded-full border border-[var(--color-lab-line-bright)] px-5 py-3 text-sm font-bold uppercase tracking-wide text-[var(--color-ink)] transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)]"
+              >
+                Compare both apps
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

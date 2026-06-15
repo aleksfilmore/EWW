@@ -8,14 +8,14 @@ import JsonLd from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "For Parents",
   description:
-    "What EWW-niverse is, what it does, and what it deliberately does not do. No ads, no in-app tracking, no accounts, no personal data collected. Real science, kid-safe grossness, best for ages 9–12.",
+    "What our apps — EWW-niverse and Slime or Bye — are, what they do, and what they deliberately do not do. No ads, no in-app tracking, no accounts, no personal data collected. Real science, kid-safe grossness, made for curious kids 7–12.",
   alternates: { canonical: "/for-parents" },
 };
 
 const trust = [
-  { t: "No ads, ever", d: "The app is funded by one optional one-time purchase. No advertisements at any tier." },
-  { t: "No tracking in the app", d: "The app has no analytics SDKs, no advertising IDs, and no behavioural profiling of your child." },
-  { t: "No accounts", d: "No name, email, password or sign-up. Your child never creates a profile." },
+  { t: "No ads, ever", d: "Both apps are funded by optional one-time purchases — never subscriptions. No advertisements at any tier." },
+  { t: "No tracking in the apps", d: "Neither app has analytics SDKs, advertising IDs, or any behavioural profiling of your child." },
+  { t: "No accounts", d: "No name, email, password or sign-up. Your child never creates a profile in either app." },
   { t: "No personal data", d: "Nothing personal is collected — so there's nothing to sell, leak, or consent away." },
 ];
 
@@ -30,28 +30,36 @@ const ageContent = [
 
 const faqs = [
   {
-    q: "What age is EWW-niverse designed for?",
-    a: "Best for curious kids ages 9–12. The content is gross but never violent, never sexual, and always grounded in real science. The books and the app follow the same standard. (Apple's technical App Store rating is 4+.)",
+    q: "What apps do you make, and what's the difference?",
+    a: "Two. The EWW-niverse app is a specimen-classification game — scan, classify and master 234 specimens across three field guides. Slime or Bye is a gross-science quiz show — answer Dr. Icky's questions, survive the round, collect specimen cards and earn badges. Both share the same brand, the same real science, and the same no-ads, no-tracking, no-accounts design.",
   },
   {
-    q: "What data does the app collect about my child?",
-    a: "None that identifies them. The app uses anonymous sign-in (no name, email, or password) so progress can be saved on the device, plus a purchase manager (RevenueCat) to handle the one-time unlock. There is no analytics, no tracking, no advertising, and no database of personal child information.",
+    q: "What age are the apps designed for?",
+    a: "Curious kids roughly 7–12. EWW-niverse is best for ages 9–12; Slime or Bye is a Designed-for-Families title for ages 7–12. The content is gross but never violent, never sexual, and always grounded in real science. The books and both apps follow the same standard.",
+  },
+  {
+    q: "What platforms are they on?",
+    a: "The EWW-niverse app is live on the Apple App Store for iPhone and iPad. Slime or Bye is launching on the Apple App Store and Google Play, for iPhone, iPad and Android.",
+  },
+  {
+    q: "What data do the apps collect about my child?",
+    a: "None that identifies them. EWW-niverse uses anonymous sign-in (no name, email, or password) so progress saves on the device, plus a purchase manager (RevenueCat) for the one-time unlock. Slime or Bye has no sign-in at all — progress saves only in on-device storage — and uses RevenueCat for one-time purchases. Neither app has analytics, tracking, advertising, or any database of personal child information.",
   },
   {
     q: "Does my child need an account or my email?",
-    a: "No. There are no accounts and no email is required to play. Your child can use the whole free tier without entering any personal information at all.",
+    a: "No. Neither app has accounts and no email is required to play. Your child can use the free content without entering any personal information at all.",
   },
   {
     q: "Is there a subscription?",
-    a: "No. The app is free with no ads. The Full Lab Pass is a single one-time purchase — you pay once, it lasts forever, and there are no recurring charges.",
+    a: "No subscriptions in either app — ever. EWW-niverse is free with an optional one-time Full Lab Pass. Slime or Bye is free to start, with optional one-time quiz-pack purchases and an unlock-everything bundle. You pay once, it lasts forever, with no recurring charges.",
+  },
+  {
+    q: "How are purchases handled, and can my child buy things by accident?",
+    a: "All purchases are one-time and processed through Apple's App Store or Google Play and RevenueCat — we never see or store your payment details. In Slime or Bye, a parent gate (a maths challenge) sits in front of every purchase, on top of the device's own purchase authentication. EWW-niverse's purchases use Apple's standard purchase authentication.",
   },
   {
     q: "Are there ads or social features?",
-    a: "No ads, no social feeds, no chat, no comments, and no user-generated content. There is nothing for your child to post and no strangers for them to encounter.",
-  },
-  {
-    q: "How are purchases handled?",
-    a: "The one-time Full Lab Pass is purchased and managed through Apple's App Store and RevenueCat. We never see or store your payment details.",
+    a: "No ads, no social feeds, no chat, no comments, and no user-generated content in either app. There is nothing for your child to post and no strangers for them to encounter.",
   },
   {
     q: "Is the science accurate?",
@@ -81,7 +89,7 @@ export default function ForParentsPage() {
             <SectionHeading
               eyebrow="For parents & educators"
               title="Gross for kids. Clean for parents."
-              sub="Everything EWW-niverse is, what it does, and what it deliberately does not do — written plainly, and matching our Privacy Policy exactly."
+              sub="Everything our apps — EWW-niverse and Slime or Bye — are, what they do, and what they deliberately do not do, written plainly and matching our Privacy Policy exactly."
             />
           </div>
           <div className="relative mx-auto w-40 sm:w-48">
@@ -109,14 +117,16 @@ export default function ForParentsPage() {
             ))}
           </div>
 
-          {/* What the app uses (matches privacy) */}
+          {/* What the apps use (matches privacy) */}
           <div className="lab-panel mt-6 p-6">
-            <p className="lab-label text-[var(--color-neon)]">What the app actually uses</p>
+            <p className="lab-label text-[var(--color-neon)]">What the apps actually use</p>
             <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-dim)]">
-              Two services, nothing more: <span className="text-[var(--color-ink)]">Firebase anonymous authentication</span> (an
-              anonymous ID so progress saves on the device — no personal login) and{" "}
-              <span className="text-[var(--color-ink)]">RevenueCat</span> (to manage the one-time Full Lab Pass). No Firebase
-              Analytics, no Firestore or Realtime Database, no ad networks, no third-party tracking. See the{" "}
+              The <span className="text-[var(--color-ink)]">EWW-niverse app</span> uses two services, nothing more:{" "}
+              <span className="text-[var(--color-ink)]">Firebase anonymous authentication</span> (an anonymous ID so progress
+              saves on the device — no personal login) and <span className="text-[var(--color-ink)]">RevenueCat</span> (to
+              manage the one-time Full Lab Pass). <span className="text-[var(--color-ink)]">Slime or Bye</span> is simpler
+              still — no sign-in at all (progress saves only on the device) plus RevenueCat for one-time purchases. Neither app
+              has analytics, a remote database, ad networks, or third-party tracking. See the{" "}
               <Link href="/privacy" className="text-[var(--color-neon)] underline underline-offset-2">Privacy Policy</Link> and{" "}
               <Link href="/coppa" className="text-[var(--color-neon)] underline underline-offset-2">COPPA</Link> page.
             </p>
@@ -128,7 +138,7 @@ export default function ForParentsPage() {
       <section className="relative overflow-hidden bg-[var(--color-lab-void)] py-16">
         <div className="relative mx-auto max-w-4xl px-4">
           <div className="lab-panel mb-8 p-6">
-            <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Age appropriateness — designed for curious kids 9–12</h2>
+            <h2 className="text-xl text-[var(--color-ink)]" style={{ fontFamily: "var(--font-boogaloo), cursive" }}>Age appropriateness — designed for curious kids 7–12</h2>
             <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {ageContent.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-[var(--color-ink-dim)]">

@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import JsonLd from "@/components/JsonLd";
-import { APP_STORE_URL, PRODUCT, SITE_URL } from "@/lib/site";
+import { APP_STORE_URL, PRODUCT, SITE_URL, SLIME, SLIME_APP_STORE_URL, SLIME_PLAY_STORE_URL } from "@/lib/site";
 
 const creepster = Creepster({
   weight: "400",
@@ -83,6 +83,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Only advertise Slime or Bye to search engines once it has a real store
+  // listing — until then we don't emit a MobileApplication with no install URL.
+  const slimeInstallUrl = SLIME_APP_STORE_URL || SLIME_PLAY_STORE_URL;
+  const slimeApp = slimeInstallUrl
+    ? [
+        {
+          "@type": "MobileApplication",
+          name: SLIME.name,
+          applicationCategory: "GameApplication",
+          operatingSystem: SLIME_PLAY_STORE_URL ? "iOS, iPadOS, Android" : "iOS, iPadOS",
+          url: slimeInstallUrl,
+          installUrl: slimeInstallUrl,
+          description:
+            "Dr. Icky's gross-science quiz show for kids. Answer the questions, survive the round, collect specimen cards and earn badges.",
+          publisher: { "@id": `${SITE_URL}/#organization` },
+          offers: [
+            { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+            { "@type": "Offer", name: "Quiz pack (one-time)", price: SLIME.packPrice.replace("$", ""), priceCurrency: "USD" },
+            { "@type": "Offer", name: "Unlock Everything (one-time)", price: SLIME.bundlePrice.replace("$", ""), priceCurrency: "USD" },
+          ],
+        },
+      ]
+    : [];
   return (
     <html lang="en" className={`${creepster.variable} ${boogaloo.variable}`}>
       <body>
@@ -121,6 +144,7 @@ export default function RootLayout({
                   { "@type": "Offer", name: "Full Lab Pass (one-time)", price: PRODUCT.price.replace("$", ""), priceCurrency: "USD" },
                 ],
               },
+              ...slimeApp,
             ],
           }}
         />
