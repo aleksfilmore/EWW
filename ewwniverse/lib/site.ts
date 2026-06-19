@@ -7,9 +7,9 @@ export const APP_STORE_URL =
 
 // Slime or Bye store links. Leave these EMPTY until each store goes live —
 // the UI shows a "Coming soon" state automatically while a link is blank, then
-// activates everywhere the moment you paste the real URL in. (iOS is pending
-// Apple review; Android is planned.)
-export const SLIME_APP_STORE_URL = "";
+// activates everywhere the moment you paste the real URL in. (iOS is live;
+// Android is planned.)
+export const SLIME_APP_STORE_URL = "https://apps.apple.com/us/app/slime-or-bye/id6780097924";
 export const SLIME_PLAY_STORE_URL = "";
 
 export const CONTACT_EMAIL = "hello@ewwniverse.com";
@@ -59,6 +59,6 @@ export const SLIME = {
   platform: "iPhone, iPad & Android",
   // Designed for Families / Kids category (Apple & Google), audience 7–12.
   ageRange: "7–12",
-  // iOS submitted to Apple, awaiting review; Android planned.
-  status: "Coming soon",
+  // iOS is live; Android planned.
+  status: "Live on App Store",
 } as const;
