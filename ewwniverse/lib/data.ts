@@ -260,6 +260,15 @@ export const specimenPosts: SpecimenPost[] = [
     readTime: 4,
     creatureName: "Goblin Shark",
   },
+  {
+    slug: "blue-ringed-octopus-venom",
+    title: "The Tiny Octopus with a Venom Warning Light",
+    date: "2026-06-23",
+    excerpt: "The blue-ringed octopus is small enough to hide in a shell, but when its electric-blue rings flash, the message is simple: back away before the painless bite becomes a paralysis problem.",
+    category: "specimen-of-the-week",
+    readTime: 4,
+    creatureName: "Blue-Ringed Octopus",
+  },
 ];
 
 // EWW level shown on each specimen-file post (matches the creature's meter).
@@ -273,6 +282,7 @@ export const postEwwLevel: Record<string, 60 | 80 | 100> = {
   "guinea-worm-extraction": 100,
   "assassin-bug-smoothie": 80,
   "goblin-shark-jaws": 100,
+  "blue-ringed-octopus-venom": 100,
 };
 
 export const ewwMeterLabels: Record<EwwMeter, { label: string; color: string; bg: string }> = {

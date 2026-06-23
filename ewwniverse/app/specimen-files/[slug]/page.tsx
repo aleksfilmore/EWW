@@ -918,6 +918,121 @@ const articles: Record<string, ArticleData> = {
     drIckyVerdict:
       "A face only a mother could love, and even then, she probably jumps out of the way when the jaws shoot out. Absolute deep-sea perfection.",
   },
+
+  "blue-ringed-octopus-venom": {
+    slug: "blue-ringed-octopus-venom",
+    creatureName: "Blue-Ringed Octopus",
+    ewwMeter: 100,
+    seoDescription:
+      "The blue-ringed octopus flashes brilliant blue rings as a warning, then can deliver tetrodotoxin through a tiny bite. Real venom science for kids.",
+    seoKeywords:
+      "blue-ringed octopus, Hapalochlaena, tetrodotoxin, venomous octopus, blue rings warning, gross science for kids",
+    classification: "Hapalochlaena spp.",
+    quickStats: [
+      { label: "Type", value: "Venomous cephalopod" },
+      { label: "Lives", value: "Indo-Pacific reefs and tide pools" },
+      { label: "Warning", value: "Flashing blue rings" },
+      { label: "Venom", value: "Tetrodotoxin saliva" },
+    ],
+    intro: (
+      <>
+        <p>
+          The blue-ringed octopus looks like something a tide pool invented to trick curious hands. It is small,
+          soft, and decorated with bright blue rings that seem almost too pretty to be a warning label.
+        </p>
+        <p>
+          That is exactly what they are. When those rings flash, the octopus is not showing off. It is saying:
+          this tiny body is carrying one of the nastiest nerve toxins in the ocean.
+        </p>
+      </>
+    ),
+    sections: [
+      {
+        heading: "The prettiest stop sign",
+        icon: "💍",
+        body: (
+          <>
+            <p>
+              Blue-ringed octopuses spend much of their time tucked into cracks, shells, coral rubble, and rocky
+              seafloor hideouts. Most of the time, they would rather stay hidden than start trouble.
+            </p>
+            <p>
+              If a predator gets too close, the disguise changes. The octopus flashes bright blue patterns across
+              its body and arms, turning itself into a living warning sign. In nature, bright colors often mean
+              one thing: do not test me.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "weird",
+          text: "The blue rings are not just paint. Special light-reflecting skin cells help make them shine when the octopus puts on its warning display.",
+        },
+      },
+      {
+        heading: "The bacteria in the bite",
+        icon: "🧫",
+        body: (
+          <>
+            <p>
+              The really alarming part is hiding in the salivary glands. Blue-ringed octopuses carry bacteria
+              that produce tetrodotoxin, the same kind of nerve toxin made famous by pufferfish.
+            </p>
+            <p>
+              Tetrodotoxin blocks nerve signals. Muscles stop getting the messages they need to move. That is
+              useful when the octopus wants a crab or shrimp to stop fighting. It is a terrible surprise for
+              anything that grabs the octopus.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "danger",
+          text: "The bite can be tiny and almost painless, which is the worst possible style for a bite that can cause paralysis.",
+        },
+      },
+      {
+        heading: "Paralysis, not poison slime",
+        icon: "🫁",
+        body: (
+          <>
+            <p>
+              This is venom, not magic goo. The octopus has to deliver it with a bite. Once tetrodotoxin is in
+              the body, it can interfere with the muscles used for breathing while the victim may still be awake
+              and aware.
+            </p>
+            <p>
+              There is no special antidote for tetrodotoxin. Doctors keep the person breathing until the toxin
+              wears off. Dr. Icky&apos;s official field rule is therefore simple: admire the blue rings from far away,
+              and never pick one up.
+            </p>
+          </>
+        ),
+        callout: {
+          type: "science",
+          text: "The danger comes from blocked nerve messages, not from the octopus being aggressive. Most bites happen when people handle or harass one.",
+        },
+      },
+      {
+        heading: "How it eats armored snacks",
+        icon: "🦀",
+        body: (
+          <>
+            <p>
+              A blue-ringed octopus hunts small crabs, shrimp, and fish. It pounces, wraps the prey in its arms,
+              and uses its hard beak to punch through shells or soft tissue.
+            </p>
+            <p>
+              Then the venom does the quiet work. The prey stops moving, the octopus gets dinner, and the ocean
+              receives another reminder that small does not mean harmless.
+            </p>
+          </>
+        ),
+      },
+    ],
+    grossFactHighlight:
+      "A blue-ringed octopus bite can be so small and painless that a person may not notice the bite itself before the nerve toxin starts causing numbness and paralysis.",
+    drIckyVerdict:
+      "Beautiful warning lights, bacteria-made venom, and a bite that barely announces itself. It is the ocean's tiniest flashing 'absolutely do not touch' sign. Total Barf, with excellent branding.",
+  },
 };
 
 /* ─── Helpers ──────────────────────────────────────────────────────── */
