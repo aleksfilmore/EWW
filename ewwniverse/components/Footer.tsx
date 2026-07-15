@@ -95,9 +95,20 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col gap-3 border-t border-[#0C1F05]/25 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-[#15300A]">
-            &copy; {range} {COPYRIGHT_HOLDER}. EWW-niverse&trade; &amp; Dr. Icky&trade;. All rights reserved.
-          </p>
+          <div className="text-xs text-[#15300A]">
+            <p>&copy; {range} {COPYRIGHT_HOLDER}. EWW-niverse&trade; &amp; Dr. Icky&trade;. All rights reserved.</p>
+            <p className="mt-1 text-[10px] text-[#15300A]/80">
+              Designed and curated by{" "}
+              <a
+                href="https://alfable.com"
+                className="underline underline-offset-2 transition-opacity hover:opacity-70"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                ALFable.com
+              </a>
+            </p>
+          </div>
           <div className="flex flex-wrap gap-5 text-xs text-[#16320B]">
             {legalLinks.map((l) => (
               <Link key={l.href} href={l.href} className="font-medium transition-opacity hover:opacity-70">
