@@ -100,12 +100,12 @@ export default function Footer() {
             <p className="mt-1 text-[10px] text-[#15300A]/80">
               Designed and curated by{" "}
               <a
-                href="https://alfable.com"
+                href="https://pluriel.ro"
                 className="underline underline-offset-2 transition-opacity hover:opacity-70"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                ALFable.com
+                Pluriel.ro
               </a>
             </p>
           </div>
