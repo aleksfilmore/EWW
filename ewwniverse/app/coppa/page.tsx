@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { LegalShell, LegalSection } from "@/components/Legal";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "COPPA Notice — Children's Privacy",
   description: "EWW-niverse children's privacy notice. The website and both apps (EWW-niverse and Slime or Bye) do not collect personal information from children under 13.",
+  openGraph: pageOpenGraph(
+    "/coppa",
+    "COPPA Notice — Children's Privacy | EWW-niverse",
+    "EWW-niverse children's privacy notice. The website and both apps do not collect personal information from children under 13.",
+  ),
   robots: { index: true, follow: true },
   alternates: { canonical: "/coppa" },
 };

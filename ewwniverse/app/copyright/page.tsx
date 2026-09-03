@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { LegalShell, LegalSection } from "@/components/Legal";
 import { COPYRIGHT_HOLDER, RIGHTS_SINCE } from "@/lib/site";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Copyright & Intellectual Property",
   description:
-    "EWW-niverse and Dr. Icky are original creative works, protected by copyright from the moment of creation under EU law and the Berne Convention. All rights reserved.",
+    "Copyright and intellectual-property information for the original EWW-niverse and Dr. Icky creative works.",
+  openGraph: pageOpenGraph(
+    "/copyright",
+    "Copyright & Intellectual Property | EWW-niverse",
+    "Copyright and intellectual-property information for the original EWW-niverse and Dr. Icky creative works.",
+  ),
   robots: { index: true, follow: true },
   alternates: { canonical: "/copyright" },
 };

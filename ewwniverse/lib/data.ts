@@ -37,11 +37,11 @@ export interface SpecimenPost {
 }
 
 export function creatureImagePath(name: string): string {
-  return `/images/creatures/${encodeURIComponent(name)}.png`;
+  return `/images/creatures/${encodeURIComponent(name)}.webp`;
 }
 
 export function bookCoverPath(file: string): string {
-  return `/images/book-covers/${encodeURIComponent(file)}`;
+  return `/images/book-covers/${encodeURIComponent(file.replace(/\.png$/i, ".webp"))}`;
 }
 
 // All 75 Creepy Creatures — EWW meters and facts sourced from eww_niverse_creepy_creatures_75.xlsx

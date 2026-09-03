@@ -4,11 +4,17 @@ import { specimenPosts, ewwMeterLabels, creatureImagePath, postEwwLevel } from "
 import { APP_STORE_URL } from "@/lib/site";
 import SectionHeading from "@/components/SectionHeading";
 import EmailSignupForm from "@/components/EmailSignupForm";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Specimen Files",
   description:
-    "Deep-dives into the grossest creatures on the planet — field reports and weird science from Dr. Icky's lab. Then classify the specimens yourself in the app.",
+    "Field reports and weird science on the planet's grossest creatures from Dr. Icky's lab. Then classify them yourself in the app.",
+  openGraph: pageOpenGraph(
+    "/specimen-files",
+    "Specimen Files | EWW-niverse",
+    "Field reports and weird science on the planet's grossest creatures from Dr. Icky's lab. Then classify them yourself in the app.",
+  ),
   alternates: { canonical: "/specimen-files" },
 };
 
@@ -29,6 +35,7 @@ export default function SpecimenFilesPage() {
           <SectionHeading
             eyebrow="From the field"
             title="Specimen Files"
+            as="h1"
             sub="Deep-dives into the grossest creatures on the planet — verified by Dr. Icky, dangerous to read before lunch."
           />
         </div>

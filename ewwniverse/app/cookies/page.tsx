@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { LegalShell, LegalSection } from "@/components/Legal";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "EWW-niverse cookie policy — what cookies this website uses and why. Our apps use no cookies and no tracking.",
+  openGraph: pageOpenGraph(
+    "/cookies",
+    "Cookie Policy | EWW-niverse",
+    "EWW-niverse cookie policy — what cookies this website uses and why. Our apps use no cookies and no tracking.",
+  ),
   robots: { index: true, follow: true },
   alternates: { canonical: "/cookies" },
 };

@@ -42,7 +42,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Surinam Toad",
     ewwMeter: 100,
     seoDescription:
-      "The Surinam toad (Pipa pipa) embeds its eggs in the skin of the mother's back, where they grow into fully formed toadlets that erupt out weeks later — no tadpole stage, no pond. Real gross science for kids.",
+      "The Surinam toad grows its young in skin on the mother's back, where toadlets emerge weeks later. Real gross science for kids.",
     seoKeywords:
       "Surinam toad, Pipa pipa, toad gives birth through back, frog eggs in skin, weird amphibians, gross animal facts for kids",
     classification: "Pipa pipa",
@@ -163,7 +163,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Zombie Ant Fungus",
     ewwMeter: 100,
     seoDescription:
-      "The Ophiocordyceps unilateralis fungus hijacks carpenter ants, controls their brains, and forces them to die in the exact spot the fungus needs to reproduce. Full gross science for kids.",
+      "A fungus hijacks carpenter ants, controls their behavior, and uses their final climb to spread spores. Real gross science for kids.",
     seoKeywords:
       "zombie ant fungus, Ophiocordyceps unilateralis, zombie ants, mind-controlling fungi, parasitic fungus, weird animals for kids",
     classification: "Ophiocordyceps unilateralis",
@@ -286,7 +286,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Tongue-Eating Louse",
     ewwMeter: 100,
     seoDescription:
-      "Cymothoa exigua enters through a fish's gills, severs its tongue, and replaces it with its own body. The fish keeps eating. The louse takes a cut. Full gross science for kids.",
+      "Cymothoa exigua enters a fish through its gills, replaces its tongue, and feeds there. Discover the real science behind the horror.",
     seoKeywords:
       "tongue-eating louse, Cymothoa exigua, parasitic isopod, fish parasite, gross animals for kids, weird ocean creatures",
     classification: "Cymothoa exigua",
@@ -384,7 +384,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Hagfish",
     ewwMeter: 100,
     seoDescription:
-      "The hagfish is not a fish. It's 300 million years old, has no jaw, and can fill a bucket with slime in under half a second. Here's the full gross science breakdown for kids.",
+      "Hagfish are jawless animals that can flood water with slime in seconds. Discover the gross science behind their strange defense.",
     seoKeywords:
       "hagfish, hagfish slime, weird deep sea creatures, Myxini, gross science for kids, ocean animals facts",
     classification: "Myxini (class)",
@@ -487,7 +487,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Candiru Fish",
     ewwMeter: 80,
     seoDescription:
-      "The candiru is a tiny, translucent catfish from the Amazon that lodges itself inside the gills of other fish to drink their blood. Learn the real facts and the scary legends.",
+      "The candiru is a translucent Amazon catfish that feeds on other fish. Separate the real facts from scary stories in Dr. Icky's field report.",
     seoKeywords:
       "candiru fish, vampire catfish, amazon river monsters, candiru legend, weird fish, gross animals for kids",
     classification: "Vandellia cirrhosa",
@@ -574,7 +574,7 @@ const articles: Record<string, ArticleData> = {
     creatureName: "Zombie Snail",
     ewwMeter: 100,
     seoDescription:
-      "The Leucochloridium flatworm takes over a snail's mind, drives it into the sunlight, and turns its eyestalks into colorful, pulsating tubes to trick birds into eating them. Real gross science.",
+      "A parasite takes over a snail and turns its eyestalks into pulsing tubes that trick birds. Learn the real gross science.",
     seoKeywords:
       "zombie snail, Leucochloridium paradoxum, parasitic flatworm, mind control parasite, weird animals for kids, gross science",
     classification: "Leucochloridium paradoxum",
@@ -1095,13 +1095,14 @@ export async function generateMetadata({
   if (!post || !article) return {};
 
   return {
-    title: post.title,
+    title: slug === "hagfish-slime" ? "Hagfish: Gross Slime, Weird Facts" : post.title,
     description: article.seoDescription,
     keywords: article.seoKeywords,
     openGraph: {
       title: post.title,
       description: article.seoDescription,
       type: "article",
+      url: `/specimen-files/${slug}`,
       publishedTime: post.date,
       images: [{ url: creatureImagePath(article.creatureName) }],
     },
@@ -1210,14 +1211,14 @@ export default async function SpecimenPostPage({
             {/* EWW meter + creature image */}
             <div className="flex flex-col items-center gap-4">
               <img
-                src={`/images/ui/EWW-meter%20${article.ewwMeter}%25.png`}
+                src={`/images/ui/EWW-meter%20${article.ewwMeter}%25.webp`}
                 alt={`EWW meter ${article.ewwMeter}%`}
                 className="illustration w-28 object-contain"
                 style={{ mixBlendMode: "normal" }}
               />
               {article.ewwMeter === 100 && (
                 <img
-                  src="/images/ui/Total%20Barf%20sticker.png"
+                  src="/images/ui/Total%20Barf%20sticker.webp"
                   alt="Total Barf!"
                   className="illustration w-20 object-contain"
                   style={{ mixBlendMode: "normal" }}

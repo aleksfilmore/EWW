@@ -4,11 +4,17 @@ import { PRODUCT, SITE_URL } from "@/lib/site";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
 import JsonLd from "@/components/JsonLd";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "The Books",
   description:
-    "The 6 published EWW-niverse field guides by Dr. Icky — Creepy Creatures, Earth, Dinosaurs, Deep Sea, Skeletons and Tiny World. Read the field guides, then classify the specimens in the app.",
+    "Explore six EWW-niverse field guides by Dr. Icky, then bring Creepy Creatures, Dinosaurs and Earth to life in the app.",
+  openGraph: pageOpenGraph(
+    "/books",
+    "The Books | EWW-niverse",
+    "Explore six EWW-niverse field guides by Dr. Icky, then bring Creepy Creatures, Dinosaurs and Earth to life in the app.",
+  ),
   alternates: { canonical: "/books" },
 };
 
@@ -60,6 +66,7 @@ export default function BooksPage() {
           <SectionHeading
             eyebrow="The collection"
             title="The field guides behind the lab"
+            as="h1"
             sub={`${PRODUCT.booksPublished} printed field guides to the revolting natural world. Three of them power the app today — read the field guide, then classify the specimens in the app.`}
           />
         </div>

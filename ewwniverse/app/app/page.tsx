@@ -7,11 +7,17 @@ import PhoneFrame from "@/components/PhoneFrame";
 import AppStoreButton from "@/components/AppStoreButton";
 import LabTransmission from "@/components/LabTransmission";
 import CTABanner from "@/components/CTABanner";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "The App",
   description:
-    "234 gross specimens across three field guides. Scan, classify, survive the quiz, master specimens, and raise your EWW score with Dr. Icky. Free to start on iPhone & iPad.",
+    "Scan 234 gross specimens, classify them, beat Dr. Icky's quiz and raise your EWW score. Free to start on iPhone and iPad.",
+  openGraph: pageOpenGraph(
+    "/app",
+    "The App | EWW-niverse",
+    "Scan 234 gross specimens, classify them, beat Dr. Icky's quiz and raise your EWW score. Free to start on iPhone and iPad.",
+  ),
   alternates: { canonical: "/app" },
 };
 

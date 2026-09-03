@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { LegalShell, LegalSection } from "@/components/Legal";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "EWW-niverse privacy policy — what the website and our apps (EWW-niverse and Slime or Bye) collect, how it's used, and your rights.",
+  openGraph: pageOpenGraph(
+    "/privacy",
+    "Privacy Policy | EWW-niverse",
+    "EWW-niverse privacy policy — what the website and our apps collect, how that information is used, and your rights.",
+  ),
   robots: { index: true, follow: true },
   alternates: { canonical: "/privacy" },
 };

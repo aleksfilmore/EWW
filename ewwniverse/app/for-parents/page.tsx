@@ -4,11 +4,17 @@ import ContactForm from "@/components/ContactForm";
 import { CONTACT_EMAIL } from "@/lib/site";
 import SectionHeading from "@/components/SectionHeading";
 import JsonLd from "@/components/JsonLd";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "For Parents",
   description:
-    "What our apps — EWW-niverse and Slime or Bye — are, what they do, and what they deliberately do not do. No ads, no in-app tracking, no accounts, no personal data collected. Real science, kid-safe grossness, made for curious kids 7–12.",
+    "A guide for parents and educators: real science, kid-safe grossness, no ads, no tracking, no accounts, and no personal data collected.",
+  openGraph: pageOpenGraph(
+    "/for-parents",
+    "For Parents | EWW-niverse",
+    "A guide for parents and educators: real science, kid-safe grossness, no ads, no tracking, no accounts, and no personal data collected.",
+  ),
   alternates: { canonical: "/for-parents" },
 };
 
@@ -89,6 +95,7 @@ export default function ForParentsPage() {
             <SectionHeading
               eyebrow="For parents & educators"
               title="Gross for kids. Clean for parents."
+              as="h1"
               sub="Everything our apps — EWW-niverse and Slime or Bye — are, what they do, and what they deliberately do not do, written plainly and matching our Privacy Policy exactly."
             />
           </div>

@@ -3,11 +3,17 @@ import Link from "next/link";
 import { APP_STORE_URL, PRODUCT, SLIME, SLIME_APP_STORE_URL, SLIME_PLAY_STORE_URL } from "@/lib/site";
 import SectionHeading from "@/components/SectionHeading";
 import StoreBadge from "@/components/StoreBadge";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Our Apps",
   description:
-    "Two gross-science apps from Dr. Icky's EWW-niverse: the EWW-niverse specimen-classification game (live on iPhone & iPad) and Slime or Bye, the gross-science quiz show (coming soon to iPhone, iPad & Android). No ads, no tracking, no accounts.",
+    "Explore EWW-niverse, the specimen-classification game for iPhone and iPad, and Slime or Bye, Dr. Icky's gross-science quiz show.",
+  openGraph: pageOpenGraph(
+    "/apps",
+    "Our Apps | EWW-niverse",
+    "Explore EWW-niverse, the specimen-classification game for iPhone and iPad, and Slime or Bye, Dr. Icky's gross-science quiz show.",
+  ),
   alternates: { canonical: "/apps" },
 };
 
@@ -20,6 +26,7 @@ export default function AppsPage() {
           <SectionHeading
             eyebrow="From Dr. Icky's lab"
             title="Two ways into the EWW-niverse"
+            as="h1"
             sub="Both apps are built the same way: real gross science, kid-safe design, no ads, no tracking, no accounts. Pick your poison."
             align="center"
           />

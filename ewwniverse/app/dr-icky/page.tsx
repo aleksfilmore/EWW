@@ -3,11 +3,17 @@ import { PRODUCT } from "@/lib/site";
 import SectionHeading from "@/components/SectionHeading";
 import LabTransmission from "@/components/LabTransmission";
 import CTABanner from "@/components/CTABanner";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Dr. Icky",
   description:
-    "Professor Ignatius Icky — Chief Specimen Scientist of the EWW-niverse. A classified personnel file: who he is, the mission, and the one rule of the lab — real science, gross facts, zero fake monsters.",
+    "Meet Professor Ignatius Icky, Chief Specimen Scientist. Discover the mission: real science, gross facts and zero fake monsters.",
+  openGraph: pageOpenGraph(
+    "/dr-icky",
+    "About Dr. Icky | EWW-niverse",
+    "Meet Professor Ignatius Icky, Chief Specimen Scientist. Discover the mission: real science, gross facts and zero fake monsters.",
+  ),
   alternates: { canonical: "/dr-icky" },
 };
 

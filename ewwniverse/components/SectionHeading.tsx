@@ -7,12 +7,14 @@ export default function SectionHeading({
   sub,
   align = "left",
   className = "",
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: ReactNode;
   sub?: ReactNode;
   align?: "left" | "center";
   className?: string;
+  as?: "h1" | "h2";
 }) {
   const center = align === "center";
   return (
@@ -20,7 +22,7 @@ export default function SectionHeading({
       {eyebrow && (
         <p className="lab-label mb-3 text-[var(--color-neon)]">{eyebrow}</p>
       )}
-      <h2
+      <Heading
         className="font-creepster neon-text leading-tight"
         style={{
           fontFamily: "var(--font-creepster), 'Cantora One', serif",
@@ -28,7 +30,7 @@ export default function SectionHeading({
         }}
       >
         {title}
-      </h2>
+      </Heading>
       {sub && (
         <p
           className={`mt-3 text-[var(--color-ink-dim)] leading-relaxed ${

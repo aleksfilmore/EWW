@@ -19,7 +19,7 @@ export default function GrossReveal({ fact }: GrossRevealProps) {
         {/* Header bar */}
         <div className="bg-[#854F0B] px-5 py-2 flex items-center gap-3">
           <img
-            src="/images/ui/hazard%20triangle.png"
+            src="/images/ui/hazard%20triangle.webp"
             alt=""
             aria-hidden="true"
             className="illustration w-6 h-6 object-contain flex-shrink-0"
@@ -28,7 +28,7 @@ export default function GrossReveal({ fact }: GrossRevealProps) {
             Gross Fact — Classified
           </span>
           <img
-            src="/images/ui/hazard%20triangle.png"
+            src="/images/ui/hazard%20triangle.webp"
             alt=""
             aria-hidden="true"
             className="illustration w-6 h-6 object-contain flex-shrink-0 ml-auto"
@@ -41,7 +41,7 @@ export default function GrossReveal({ fact }: GrossRevealProps) {
             <div className="flex flex-col items-center gap-4 py-2">
               <div className="flex items-center gap-3">
                 <img
-                  src="/images/ui/warning%20stamp.png"
+                  src="/images/ui/warning%20stamp.webp"
                   alt=""
                   aria-hidden="true"
                   className="illustration w-12 h-12 object-contain"

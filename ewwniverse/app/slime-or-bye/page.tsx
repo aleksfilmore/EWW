@@ -5,11 +5,17 @@ import SectionHeading from "@/components/SectionHeading";
 import FeatureCard from "@/components/FeatureCard";
 import PhoneFrame from "@/components/PhoneFrame";
 import StoreBadge from "@/components/StoreBadge";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Slime or Bye — Dr. Icky's Gross-Science Quiz Show",
   description:
-    "Slime or Bye is Dr. Icky's gross-science quiz show for kids 7–12. Answer the questions, survive the round, collect specimen cards, and earn badges. No ads, no tracking, no accounts. Coming soon to iPhone, iPad & Android.",
+    "Dr. Icky's gross-science quiz show for kids 7–12: answer questions, collect specimen cards, earn badges and survive the round. Coming soon.",
+  openGraph: pageOpenGraph(
+    "/slime-or-bye",
+    "Slime or Bye | EWW-niverse",
+    "Dr. Icky's gross-science quiz show for kids 7–12: answer questions, collect specimen cards, earn badges and survive the round. Coming soon.",
+  ),
   alternates: { canonical: "/slime-or-bye" },
 };
 

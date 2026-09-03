@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | EWW-niverse",
   },
   description:
-    "The gross science app for weirdly curious kids. Scan strange specimens, reveal real disgusting science facts, survive the quiz, raise your EWW score, and master 234 specimens with Dr. Icky. Free to start on iPhone & iPad.",
+    "Gross science for curious kids: scan strange specimens, uncover true facts, beat quizzes and raise your EWW score. Free to start on iPhone and iPad.",
   keywords: [
     "gross science app for kids",
     "science game for kids",
